@@ -1,0 +1,106 @@
+{
+  "state": "SEALED",
+  "source_analysis_commit": "48e854ff2107dffb217dfe7c487b1b9d36a7f41d",
+  "pause_documentation_commit": "1a1a735aee40da2ede434f39f2a0775f2dc36ff1",
+  "files": [
+    {
+      "path": "00-START-HERE.md",
+      "bytes": 9006,
+      "sha256": "23f796b3765363019bfe1ba0edb70abc41fdaa4c9b97ebf7abab87da210c1f65"
+    },
+    {
+      "path": "01-architecture-and-stack.md",
+      "bytes": 20051,
+      "sha256": "4b9534693e2f9fbf5660e4011b76caee5c0b673ca8fdc30018382032d30f8abe"
+    },
+    {
+      "path": "02-data-model-and-transactions.md",
+      "bytes": 40494,
+      "sha256": "0fb6d6e5efa4f3d56420d8315e3d5df084cc8ff19cff81a3aa6d061919ebc31d"
+    },
+    {
+      "path": "03-product-and-user-workflows.md",
+      "bytes": 79036,
+      "sha256": "ae2072e319327d9f301f00875a532b5cd0a3df9026e544fac62c5513e5cbe54a"
+    },
+    {
+      "path": "04-authentication-registration-and-access.md",
+      "bytes": 66501,
+      "sha256": "c88b08178820870e72e15b740a9afb8f5ef326d433943d46f80bd2ca1dc298d9"
+    },
+    {
+      "path": "05-integrations-and-external-effects.md",
+      "bytes": 28696,
+      "sha256": "b52c2eac90688b991db4150814f894b0a13036d5f3acaaf08ed8b28efae17f80"
+    },
+    {
+      "path": "06-deployment-and-operations-sop.md",
+      "bytes": 32605,
+      "sha256": "4b0bb95ceab2da098f1aada7bfba8fa9a9289a2a1ad185e8e0fb169960b26578"
+    },
+    {
+      "path": "07-security-privacy-quality-and-evidence.md",
+      "bytes": 17519,
+      "sha256": "d84092e9875922f74969108cf4d25446fa121c6c26f61f1e406f7d9a459fdcc1"
+    },
+    {
+      "path": "08-PAUSE-AND-CONTINUE.md",
+      "bytes": 11146,
+      "sha256": "380f6ea43aaa36cd24659041cf44d39202cc12eabd342fd37c93c2692b6dd8bb"
+    },
+    {
+      "path": "09-improvement-review-guide-and-open-decisions.md",
+      "bytes": 11347,
+      "sha256": "e5e9ae16d59c7d8ef78771714104761348aa6ae3b9fc7a49db5ed8ca1cfba325"
+    },
+    {
+      "path": "10-http-routes-and-templates.md",
+      "bytes": 19814,
+      "sha256": "3e72609b407e644a9f59d6977b0b93a3bd21ee7fec56c3755988641955b9f3b1"
+    },
+    {
+      "path": "11-models-configuration-and-dependencies.md",
+      "bytes": 61969,
+      "sha256": "9ea149b3b5a1769f658071a4b344be97adc9f792af7282839feed2e286cd0d3b"
+    },
+    {
+      "path": "12-source-map-tests-and-manifest.md",
+      "bytes": 64056,
+      "sha256": "24a464bc7c714d9c9a18b6f120254db339ba2c6d547bce1ac95590c01a4fa497"
+    },
+    {
+      "path": "13-production-stage-differences.md",
+      "bytes": 20243,
+      "sha256": "7c54e273d768d0aadfc4319a161ef64250c97bee269ecbb529fadfa5216be0af"
+    },
+    {
+      "path": "PACKAGE-VERIFICATION.json",
+      "bytes": 2013,
+      "sha256": "c66d1124c919cbc68d207b9576e042339bde30e81da423d419d5a7322bc98ad0"
+    },
+    {
+      "path": "source-snapshot-manifest.json",
+      "bytes": 71736,
+      "sha256": "50fe4f61060ef3b44ef9d2523cdf5bfc0305bd29a1ac6c0888c6da227f4a3b5b"
+    },
+    {
+      "path": "timeKER-FULL-DOSSIER.md",
+      "bytes": 487432,
+      "sha256": "703e609d00d4ee4f59244ea063ae005e55563ac3d8a70c497803389fc3b3be15"
+    }
+  ],
+  "external_desktop_files": [
+    {
+      "path": "C:\\Users\\edlop\\OneDrive\\Desktop\\timeKER-FULL-DOSSIER-2026-10-16.md",
+      "sha256": "e459aa7439f928b65cd6a655bac61ea2103df4af411fafe3819d223cc7060d21",
+      "bytes": 488192
+    },
+    {
+      "path": "C:\\Users\\edlop\\OneDrive\\Desktop\\timeKER-START-HERE-2026-10-16.md",
+      "sha256": "bdfb97cd9100cd30c297455606199fd431a2c6ccbc6d1e3bf7a25c16806449c6",
+      "bytes": 711
+    }
+  ],
+  "self_hash_excluded": true,
+  "sha256sums_hash_excluded": true
+}
