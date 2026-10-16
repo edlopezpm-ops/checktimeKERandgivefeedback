@@ -1,0 +1,49 @@
+{
+  "state": "PASS",
+  "final_seal": true,
+  "verified_utc": "2026-10-16T20:59:23.135701+00:00",
+  "analysis_source": "48e854ff2107dffb217dfe7c487b1b9d36a7f41d",
+  "current_documentation_head": "1a1a735aee40da2ede434f39f2a0775f2dc36ff1",
+  "production_head": "dfb2538ec81d07f1c91fdf2bdc5096d4d0313609",
+  "production_clean_and_unchanged": true,
+  "project_lifecycle": "PAUSED_HOC",
+  "documentation_delivery": "DONE",
+  "chapter_and_index_markdown_files": 14,
+  "generated_combined_copies": 2,
+  "desktop_entry_files": 1,
+  "local_links_checked": 1914,
+  "source_pointers_checked": 6162,
+  "external_links_listed_not_network_checked": 3,
+  "source_pointer_files": 156,
+  "utf8_no_NUL_and_fences_valid": true,
+  "credential_pattern_check": "PASS",
+  "continuation_copy_matches_canonical": true,
+  "source_changes_documentation_only": true,
+  "application_imports": 0,
+  "product_tests_executed": 0,
+  "database_actions": 0,
+  "provider_actions": 0,
+  "deployments": 0,
+  "customer_messages": 0,
+  "review": "Separate-agent bounded review of source-backed chapters; inherited context, not a fresh Full Audit or security scan",
+  "limitations": [
+    "No new runtime health/provider/browser test",
+    "No human product UAT",
+    "No recovery or source-data backup supplied"
+  ],
+  "desktop_full_markdown": {
+    "path": "C:\\Users\\edlop\\OneDrive\\Desktop\\timeKER-FULL-DOSSIER-2026-10-16.md",
+    "sha256": "e459aa7439f928b65cd6a655bac61ea2103df4af411fafe3819d223cc7060d21",
+    "bytes": 488192
+  },
+  "desktop_entry": {
+    "path": "C:\\Users\\edlop\\OneDrive\\Desktop\\timeKER-START-HERE-2026-10-16.md",
+    "sha256": "bdfb97cd9100cd30c297455606199fd431a2c6ccbc6d1e3bf7a25c16806449c6",
+    "bytes": 711
+  },
+  "combined_package_markdown": {
+    "path": "C:\\Users\\edlop\\OneDrive\\Desktop\\timeKER-Codebase-Dossier-2026-10-16\\timeKER-FULL-DOSSIER.md",
+    "sha256": "703e609d00d4ee4f59244ea063ae005e55563ac3d8a70c497803389fc3b3be15",
+    "bytes": 487432
+  }
+}
