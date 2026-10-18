@@ -1,0 +1,345 @@
+erDiagram
+    admission_identities {
+        uuid id PK
+    }
+    alembic_version {
+        character_varying_32 version_num PK
+    }
+    app_settings {
+        uuid id PK
+    }
+    audit_events {
+        uuid actor_id FK
+        uuid id PK
+    }
+    case_time_allocations {
+        uuid id PK
+        uuid entry_id FK
+        uuid case_id FK
+        uuid actor_id FK
+    }
+    cases {
+        uuid id PK
+        uuid client_id FK
+        uuid project_id FK
+        uuid owner_id FK
+    }
+    client_drafts {
+        uuid id PK
+        uuid owner_id FK
+    }
+    client_source_references {
+        uuid id PK
+        uuid client_id FK
+        uuid uploaded_by FK
+    }
+    clients {
+        uuid id PK
+    }
+    contact_attempts {
+        uuid id PK
+    }
+    contacts {
+        uuid client_id FK
+        uuid id PK
+    }
+    credit_memos {
+        uuid id PK
+        uuid invoice_id FK
+        uuid actor_id FK
+    }
+    email_auth_challenges {
+        uuid id PK
+        uuid owner_id FK
+    }
+    integration_codes {
+        uuid id PK
+        uuid grant_id FK
+    }
+    integration_grants {
+        uuid id PK
+        uuid owner_id FK
+    }
+    integration_operations {
+        uuid id PK
+        uuid grant_id FK
+    }
+    integration_tokens {
+        uuid id PK
+        uuid grant_id FK
+    }
+    invoice_artifacts {
+        uuid invoice_id FK
+        uuid id PK
+    }
+    invoice_lines {
+        uuid invoice_id FK
+        uuid project_id FK
+        uuid id PK
+    }
+    invoice_time_entries {
+        uuid entry_id PK
+        uuid invoice_id FK
+    }
+    invoices {
+        uuid client_id FK
+        uuid id PK
+        uuid fixed_fee_project_id FK
+        uuid manual_extra_project_id FK
+    }
+    library_document_versions {
+        uuid document_id FK
+        uuid owner_id FK
+        uuid source_upload_id FK
+        uuid id PK
+    }
+    library_documents {
+        uuid owner_id FK
+        uuid case_id FK
+        uuid client_id FK
+        uuid project_id FK
+        uuid id PK
+    }
+    library_uploads {
+        uuid document_id FK
+        uuid uploaded_by FK
+        uuid id PK
+    }
+    mail_addresses {
+        uuid owner_id FK
+        uuid client_id FK
+        uuid project_id FK
+        uuid case_id FK
+        uuid id PK
+    }
+    mail_attachments {
+        uuid message_id FK
+        uuid id PK
+    }
+    mail_messages {
+        uuid owner_id FK
+        uuid client_id FK
+        uuid project_id FK
+        uuid case_id FK
+        uuid id PK
+    }
+    owner_identities {
+        uuid id PK
+        uuid owner_id FK
+    }
+    owner_registrations {
+        uuid id PK
+        uuid owner_id FK
+    }
+    payments {
+        uuid invoice_id FK
+        uuid created_by FK
+        uuid id PK
+    }
+    project_agreements {
+        uuid id PK
+        uuid project_id FK
+        uuid uploaded_by FK
+    }
+    projects {
+        uuid client_id FK
+        uuid id PK
+    }
+    proposal_sending_attempts {
+        uuid delivery_id FK
+        uuid id PK
+    }
+    proposal_sending_deliveries {
+        uuid owner_id FK
+        uuid case_id FK
+        uuid quote_artifact_id FK
+        uuid library_version_id FK
+        uuid id PK
+    }
+    public_email_challenges {
+        uuid id PK
+    }
+    quote_artifacts {
+        uuid revision_id FK
+        uuid owner_id FK
+        uuid id PK
+    }
+    quote_lines {
+        uuid revision_id FK
+        uuid id PK
+    }
+    quote_revisions {
+        uuid quote_id FK
+        uuid parent_revision_id FK
+        uuid case_id FK
+        uuid client_id FK
+        uuid project_id FK
+        uuid id PK
+    }
+    quotes {
+        uuid owner_id FK
+        uuid id PK
+    }
+    sending_attempts {
+        uuid id PK
+        uuid delivery_id FK
+    }
+    sending_deliveries {
+        uuid id PK
+        uuid owner_id FK
+        uuid plan_id FK
+    }
+    sending_plans {
+        uuid id PK
+        uuid owner_id FK
+        uuid invoice_id FK
+        uuid artifact_id FK
+    }
+    sending_preferences {
+        uuid id PK
+        uuid owner_id FK
+    }
+    subscription_billing_accounts {
+        integer id PK
+        uuid owner_id FK
+        uuid checkout_id FK
+    }
+    subscription_billing_events {
+        uuid id PK
+    }
+    subscription_billing_operations {
+        uuid id PK
+        uuid owner_id FK
+    }
+    subscription_operations {
+        uuid id PK
+        uuid owner_id FK
+    }
+    time_contributions {
+        uuid id PK
+        uuid actor_id FK
+        uuid import_record_id FK
+        uuid timecard_id FK
+        uuid project_id FK
+        uuid entry_id FK
+        uuid case_id FK
+    }
+    time_entries {
+        uuid timecard_id FK
+        uuid project_id FK
+        uuid id PK
+    }
+    time_import_records {
+        uuid id PK
+        uuid actor_id FK
+    }
+    time_operations {
+        uuid id PK
+        uuid actor_id FK
+    }
+    timecards {
+        uuid owner_id FK
+        uuid client_id FK
+        uuid id PK
+        uuid internal_case_id FK
+    }
+    users {
+        uuid id PK
+    }
+    workspace_admissions {
+        uuid id PK
+    }
+    workspace_subscriptions {
+        integer id PK
+        uuid owner_id FK
+    }
+    users |o--o{ audit_events : "actor_id"
+    users ||--o{ case_time_allocations : "actor_id"
+    cases ||--o{ case_time_allocations : "case_id"
+    time_entries ||--o{ case_time_allocations : "entry_id"
+    clients ||--o{ cases : "client_id"
+    users ||--o{ cases : "owner_id"
+    projects ||--o{ cases : "project_id"
+    users ||--o{ client_drafts : "owner_id"
+    clients ||--o| client_source_references : "client_id"
+    users ||--o{ client_source_references : "uploaded_by"
+    clients ||--o{ contacts : "client_id"
+    users ||--o{ credit_memos : "actor_id"
+    invoices ||--o| credit_memos : "invoice_id"
+    users ||--o{ email_auth_challenges : "owner_id"
+    integration_grants ||--o{ integration_codes : "grant_id"
+    users ||--o{ integration_grants : "owner_id"
+    integration_grants ||--o{ integration_operations : "grant_id"
+    integration_grants ||--o{ integration_tokens : "grant_id"
+    invoices ||--o| invoice_artifacts : "invoice_id"
+    invoices ||--o{ invoice_lines : "invoice_id"
+    projects ||--o{ invoice_lines : "project_id"
+    time_entries ||--o| invoice_time_entries : "entry_id"
+    invoices ||--o{ invoice_time_entries : "invoice_id"
+    projects |o--o{ invoices : "fixed_fee_project_id"
+    projects |o--o{ invoices : "manual_extra_project_id"
+    clients ||--o{ invoices : "client_id"
+    library_documents ||--o{ library_document_versions : "document_id"
+    users ||--o{ library_document_versions : "owner_id"
+    library_uploads |o--o{ library_document_versions : "source_upload_id"
+    cases |o--o{ library_documents : "case_id"
+    clients |o--o{ library_documents : "client_id"
+    users ||--o{ library_documents : "owner_id"
+    projects |o--o{ library_documents : "project_id"
+    library_documents ||--o{ library_uploads : "document_id"
+    users ||--o{ library_uploads : "uploaded_by"
+    cases |o--o{ mail_addresses : "case_id"
+    clients ||--o{ mail_addresses : "client_id"
+    users ||--o{ mail_addresses : "owner_id"
+    projects |o--o{ mail_addresses : "project_id"
+    mail_messages ||--o{ mail_attachments : "message_id"
+    cases |o--o{ mail_messages : "case_id"
+    clients ||--o{ mail_messages : "client_id"
+    users ||--o{ mail_messages : "owner_id"
+    projects |o--o{ mail_messages : "project_id"
+    users ||--o{ owner_identities : "owner_id"
+    users ||--o{ owner_registrations : "owner_id"
+    users ||--o{ payments : "created_by"
+    invoices ||--o{ payments : "invoice_id"
+    projects ||--o| project_agreements : "project_id"
+    users ||--o{ project_agreements : "uploaded_by"
+    clients ||--o{ projects : "client_id"
+    proposal_sending_deliveries ||--o{ proposal_sending_attempts : "delivery_id"
+    cases ||--o{ proposal_sending_deliveries : "case_id"
+    library_document_versions |o--o{ proposal_sending_deliveries : "library_version_id"
+    users ||--o{ proposal_sending_deliveries : "owner_id"
+    quote_artifacts |o--o{ proposal_sending_deliveries : "quote_artifact_id"
+    users ||--o{ quote_artifacts : "owner_id"
+    quote_revisions ||--o| quote_artifacts : "revision_id"
+    quote_revisions ||--o{ quote_lines : "revision_id"
+    cases ||--o{ quote_revisions : "case_id"
+    clients ||--o{ quote_revisions : "client_id"
+    quote_revisions |o--o{ quote_revisions : "parent_revision_id"
+    projects ||--o{ quote_revisions : "project_id"
+    quotes ||--o{ quote_revisions : "quote_id"
+    users ||--o{ quotes : "owner_id"
+    sending_deliveries ||--o{ sending_attempts : "delivery_id"
+    users ||--o{ sending_deliveries : "owner_id"
+    sending_plans ||--o{ sending_deliveries : "plan_id"
+    invoice_artifacts ||--o{ sending_plans : "artifact_id"
+    invoices ||--o| sending_plans : "invoice_id"
+    users ||--o{ sending_plans : "owner_id"
+    users ||--o| sending_preferences : "owner_id"
+    subscription_billing_operations ||--o{ subscription_billing_accounts : "checkout_id"
+    users ||--o{ subscription_billing_accounts : "owner_id"
+    users ||--o{ subscription_billing_operations : "owner_id"
+    users ||--o{ subscription_operations : "owner_id"
+    users ||--o{ time_contributions : "actor_id"
+    cases |o--o{ time_contributions : "case_id"
+    time_entries |o--o{ time_contributions : "entry_id"
+    time_import_records |o--o{ time_contributions : "import_record_id"
+    projects ||--o{ time_contributions : "project_id"
+    timecards ||--o{ time_contributions : "timecard_id"
+    projects |o--o{ time_entries : "project_id"
+    timecards ||--o{ time_entries : "timecard_id"
+    users ||--o{ time_import_records : "actor_id"
+    users ||--o{ time_operations : "actor_id"
+    clients |o--o{ timecards : "client_id"
+    cases |o--o{ timecards : "internal_case_id"
+    users ||--o{ timecards : "owner_id"
+    users ||--o{ workspace_subscriptions : "owner_id"

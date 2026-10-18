@@ -6,8 +6,11 @@ This chapter describes declarations and service behavior at source `9fc9eeb`
 in `edlopezpm-ops/timeker-PH2`, the prepared PH3 branch. PH2 is administratively
 closed at tag `ph2-closeout-2026-10-18` / `39bcde0`; the retained Stage runtime
 is Stage 29 / `e282985`. The expected migration head is
-`ph3_009_read_indexes`. No database, real record, key or provider was queried
-for this dossier refresh.
+`ph3_009_read_indexes`. The initial general dossier refresh queried no database,
+real record, key or provider. The later [complete database reference](database/README.md)
+reconstructs all 26 migrations in a new empty local database and provides all 55
+physical table layouts, 90 foreign keys and final SQL definitions. It queried no
+hosted database or business records.
 
 The entity catalog below is explanatory. Chapter 11 supplies the complete
 declaration index; source models/migrations remain authoritative. Historical
@@ -263,8 +266,9 @@ evidence; source presence alone cannot establish hosted installation.
 
 Canonical closure carries assistant end-to-end proof, owner UAT, operational
 backup/restore/custody choices and later provider rehearsals into PH3. Retained
-migration-preservation evidence is attributed in `docs/STATUS.md`; this dossier
-refresh adds no database, migration, recovery or runtime-test PASS.
+migration-preservation evidence is attributed in `docs/STATUS.md`. The database
+extension adds empty local migration/catalog/DDL checks only; it adds no hosted
+migration, recovery or product-test PASS.
 
 Sources: `alembic/versions/ph3_007_work_records.py`,
 `alembic/versions/ph3_008_client_lifecycle.py`,

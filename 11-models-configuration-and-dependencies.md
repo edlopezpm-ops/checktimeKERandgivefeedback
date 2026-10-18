@@ -7,6 +7,11 @@ Generated offline from tracked source only. No app import, product-test executio
 
 Fields below are directly declared annotated attributes, including relationships; common Base/mixin fields are inherited separately. This is not a database reflection or proof of deployed grants/indexes. No row values or secrets are included.
 
+For complete inherited column layouts, physical keys/indexes, SQL defaults,
+identity sequences and final trigger/function definitions, use the
+[native database reference](database/README.md). That separate extension reflects
+an empty local migration reconstruction, not the hosted database.
+
 ### `workspace_admissions` — `WorkspaceAdmission`
 
 [`app/admission_models.py:12`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L12); bases: `Entity`, `Base`.

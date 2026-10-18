@@ -1,7 +1,7 @@
-# timeKER — full current dossier and PH3 prompt handoff
+# timeKER â€” full current dossier and PH3 prompt handoff
 
 Snapshot2026-10-18; source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. Generated reading copy of the canonical
-index and fourteen chapters below. No product/runtime test or deployment is
+index and sixteen chapters below. No product test or deployment is
 performed by dossier generation. PH2 closed administratively; PH3 awaits owner
 prompts; Stage continues; future PROD combines PH2+PH3.
 
@@ -28,7 +28,7 @@ human acceptance or production authority follows from this package.
 | Original production source | `edlopezpm-ops/timeKER`, main `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`, clean and unchanged by this session |
 | Production URL | https://timeker.aekr.io |
 | Inventory | 503 tracked paths; 291 Python files; 180 literal route decorators; 54 mapped class/table declarations; 48 Settings fields; 90 Jinja templates; 1089 declared test functions |
-| Generation | Offline AST/TOML/JSON/Git and maintained source/documentation; no application imports or product tests |
+| Generation | Main inventories: offline AST/TOML/JSON/Git. Database extension: model imports and 26 migrations in a new empty local PostgreSQL 18.4 database; no hosted connections, business-row reads or product tests |
 
 Source pointers are pinned to the analyzed commit and actual one-based lines.
 Private source links can require repository access; the narrative and complete
@@ -56,6 +56,8 @@ copy, or the chapters below. The dated 2026-10-18 combined copy has identical by
 | [Source/test manifest](12-source-map-tests-and-manifest.md) | Every tracked source path with raw-byte hash and complete static test/module catalogs. |
 | [Production/Stage differences](13-production-stage-differences.md) | Exact source-tree comparison and dated environment differences; original production untouched. |
 | [PH3 prompt-refresh brief](14-phase3-prompt-refresh-brief.md) | Instructions and acceptance boundaries for revising the owner-supplied PH3 prompts. |
+| [Complete database reference](15-database-reference.md) | All tables/columns, schemas and unknown live names, relationship map, final SQL functions/triggers, procedures inventory and native metadata/DDL exports. |
+| [Code flow and maintenance](16-code-flow-and-maintenance.md) | Module flowcharts, exact function/transaction/error traces, browser flow, troubleshooting maps and complete Python AST symbol/call-site index. |
 
 ## Current delivery truth
 
@@ -87,8 +89,8 @@ custody is not off-host recovery. Current tests/migrations/contracts remain acti
 [source-snapshot-manifest.json](source-snapshot-manifest.json) pins all source
 paths/raw bytes/hashes and Git blob IDs. [PACKAGE-MANIFEST.json](PACKAGE-MANIFEST.json)
 and [SHA256SUMS.txt](SHA256SUMS.txt) bind current review-package files.
-[PACKAGE-VERIFICATION.json](PACKAGE-VERIFICATION.json) records actual offline
-checks and limitations. Package integrity is not product correctness, security
+[PACKAGE-VERIFICATION.json](PACKAGE-VERIFICATION.json) records actual package
+checks, local database reconstruction and limitations. Package integrity is not product correctness, security
 certification, UAT, deployment or recovery proof.
 
 No private archives, business records, actual uploaded contracts, environment
@@ -344,8 +346,11 @@ This chapter describes declarations and service behavior at source `9fc9eeb`
 in `edlopezpm-ops/timeker-PH2`, the prepared PH3 branch. PH2 is administratively
 closed at tag `ph2-closeout-2026-10-18` / `39bcde0`; the retained Stage runtime
 is Stage 29 / `e282985`. The expected migration head is
-`ph3_009_read_indexes`. No database, real record, key or provider was queried
-for this dossier refresh.
+`ph3_009_read_indexes`. The initial general dossier refresh queried no database,
+real record, key or provider. The later [complete database reference](database/README.md)
+reconstructs all 26 migrations in a new empty local database and provides all 55
+physical table layouts, 90 foreign keys and final SQL definitions. It queried no
+hosted database or business records.
 
 The entity catalog below is explanatory. Chapter 11 supplies the complete
 declaration index; source models/migrations remain authoritative. Historical
@@ -601,8 +606,9 @@ evidence; source presence alone cannot establish hosted installation.
 
 Canonical closure carries assistant end-to-end proof, owner UAT, operational
 backup/restore/custody choices and later provider rehearsals into PH3. Retained
-migration-preservation evidence is attributed in `docs/STATUS.md`; this dossier
-refresh adds no database, migration, recovery or runtime-test PASS.
+migration-preservation evidence is attributed in `docs/STATUS.md`. The database
+extension adds empty local migration/catalog/DDL checks only; it adds no hosted
+migration, recovery or product-test PASS.
 
 Sources: `alembic/versions/ph3_007_work_records.py`,
 `alembic/versions/ph3_008_client_lifecycle.py`,
@@ -1472,7 +1478,7 @@ uv run timeker doctor
 uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
-`doctor` checks safe readiness/PDF rendering. Fictional seeding is distinct from private real-data import. Development login is explicitly nonproduction. Compose/demo overrides require separate local database/volume custody and are not hosted deployment profiles. Sources: [app/cli.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/cli.py#L1), [compose.yaml:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/compose.yaml#L1), [compose.demo.yaml:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/compose.demo.yaml#L1).
+`doctor` executes a database `SELECT 1` and imports/reports the WeasyPrint version; it does not render a PDF or prove hosted readiness. Fictional seeding is distinct from private real-data import. Development login is explicitly nonproduction. Compose/demo overrides require separate local database/volume custody and are not hosted deployment profiles. Sources: [app/cli.py:54](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/cli.py#L54), [compose.yaml:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/compose.yaml#L1), [compose.demo.yaml:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/compose.demo.yaml#L1).
 
 Use new receipt/log/XML names and source attribution for required checks. Concurrent backend/browser selections require separate targets; downgrade tests require a separate disposable migration database. Browser port 8019 cannot be shared concurrently; external E2E origin is limited to the isolated local demo at `http://127.0.0.1:8029`. Fixtures use synthetic mail/payment data. Install matching Playwright/Pango dependencies only for the selected tests. Sources: [tests/e2e/conftest.py:14](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/conftest.py#L14), [tests/migration_target.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/migration_target.py#L1).
 
@@ -2313,6 +2319,11 @@ Generated offline from tracked source only. No app import, product-test executio
 ## 54 mapped class/table declarations
 
 Fields below are directly declared annotated attributes, including relationships; common Base/mixin fields are inherited separately. This is not a database reflection or proof of deployed grants/indexes. No row values or secrets are included.
+
+For complete inherited column layouts, physical keys/indexes, SQL defaults,
+identity sequences and final trigger/function definitions, use the
+[native database reference](database/README.md). That separate extension reflects
+an empty local migration reconstruction, not the hosted database.
 
 ### `workspace_admissions` — `WorkspaceAdmission`
 
@@ -4706,3 +4717,86 @@ reviewed production readiness or support for a client/voice surface.
 
 This repository authorizes review/proposal preparation only. Execution follows
 the owner's later prompts in the maintained application checkout.
+
+---
+
+# 15 — Complete application database reference
+
+The [database folder](database/README.md) contains the complete physical database
+reference produced by the pinned PH3 source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`
+at migration head `ph3_009_read_indexes`.
+
+This extension applied all 26 migrations to a new, empty, loopback-only
+PostgreSQL 18.4 database, inspected native catalogs and ran Alembic metadata
+comparison successfully. It imported models and executed local migrations only;
+it did not start the application, seed/read business records, connect to a hosted
+database or run product tests. The owned local server was stopped afterward.
+
+| Reference object | Count |
+| --- | --- |
+| Application tables | 54 |
+| Tables including `alembic_version` | 55 |
+| Columns | 634 |
+| Foreign keys | 90 |
+| Indexes, including PK/unique backing indexes | 192 |
+| Sequences | 8 |
+| Final application PL/pgSQL functions | 36 |
+| Application stored procedures | 0 |
+| Application triggers | 61: 57 ordinary,4 deferred constraint triggers |
+| PostgreSQL-generated FK triggers in this build | 360 |
+
+Read the [schema inventory](database/01-schemas-and-tenancy.md),
+[all table layouts](database/02-tables-and-layouts.md),
+[full relationship map](database/03-relationships-and-map.md),
+[all final function bodies](database/04-functions-and-procedures.md),
+[every application trigger](database/05-application-triggers.md) and
+[internal objects](database/06-internal-triggers-and-other-objects.md).
+The [catalog JSON](database/catalog.json),
+[schema-only SQL](database/reference-schema.sql) and
+[provenance](database/PROVENANCE.json) supply machine-readable structure.
+
+`timeker_reference` is a synthetic local name. The last retained Stage evidence
+counts9 maintained schemas and 5 quarantines, but the complete exact live schema
+names and provider/system inventory are unavailable in the permitted source.
+Those unknowns are explicit; no live parity claim follows from reconstruction.
+[Read-only inventory instructions](database/07-inspect-live-metadata.md) and
+[SQL](database/inventory-live.sql) support collecting that metadata separately.
+
+The migration-only reference retains default PUBLIC EXECUTE on6 older functions;
+30 revoke it during migrations. The separate source runtime-grants policy revokes
+all application-function PUBLIC access. Hosted role/grant installation was not
+performed or freshly verified here; the schema-only export omits privileges.
+SQLAlchemy client defaults and Python domain behavior remain separate from
+PostgreSQL defaults, trigger guards and stored procedures.
+
+---
+
+# 16 — Code flow and maintenance keystone
+
+The [code-flow reference](code-flow/README.md) traces the pinned PH3 source
+`9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` through real functions, branches,
+transactions, persistence guards, external effects and error outcomes.
+
+Read the [single code-flow Markdown](code-flow/timeKER-CODE-FLOW-FULL.md), or the
+eight module chapters in that folder. GitHub renders their Mermaid diagrams
+directly. The modules cover runtime/requests, identity/admission, work/billing,
+documents/Mail/Sending, integrations/subscriptions, operations/troubleshooting,
+browser/UI and the complete Python symbol index.
+
+The deterministic AST index covers 118 production/support Python modules,
+103 classes, 945 functions/async declarations, 13,140 syntactic call sites and
+438 internal declared-import edges; it includes 180 app literal route decorators.
+It provides source locations rather than claiming runtime call resolution,
+execution order, coverage or reachability. All browser scripts and Worker entry
+boundaries are described separately in the relevant flow chapters.
+
+Each narrative diagram explains its actual decision points, transaction owner,
+durable state, failure/retry boundaries and existing test/source pointers. A
+symptom map and incident evidence template support future troubleshooting. The
+folder connects to the [full database reference](database/README.md), existing
+route/test catalogs and current scope/authority boundaries.
+
+This is a maintenance and future whitepaper/SDK foundation. No SDK, public API
+compatibility guarantee, new feature, hosted validation or production authority
+is created by the diagrams. Product/runtime tests were not rerun for this
+source-only documentation extension.

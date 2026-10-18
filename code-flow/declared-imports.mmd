@@ -1,0 +1,558 @@
+flowchart LR
+    %% Declared internal Python imports; not runtime call order.
+    n0["alembic.env"]
+    n1["alembic.versions.3f3c0f09ecf4_mail_custody_and_six_month_archive"]
+    n2["alembic.versions.7e416c6444fe_baseline"]
+    n3["alembic.versions.a10d45de891c_issued_status_guard"]
+    n4["alembic.versions.a82d43cf6120_project_workflow_and_agreements"]
+    n5["alembic.versions.b07c9d621a30_pin_guard_schema"]
+    n6["alembic.versions.c41894d13cb7_project_commercial_metadata"]
+    n7["alembic.versions.c46f2f62a011_immutable_artifacts"]
+    n8["alembic.versions.d3517d81ce20_contact_reservations"]
+    n9["alembic.versions.d529b08f14a2_project_billing"]
+    n10["alembic.versions.e3b42aea781a_parent_guards_and_sessions"]
+    n11["alembic.versions.e640ab7230cd_case_identity_and_types"]
+    n12["alembic.versions.e672c40fa912_cases_and_allocations"]
+    n13["alembic.versions.f409a1ac1700_parent_lock_guards"]
+    n14["alembic.versions.f710bc319ae2_mail_attachment_custody"]
+    n15["alembic.versions.ph2_001_credit_memos"]
+    n16["alembic.versions.ph2_002_time_commands"]
+    n17["alembic.versions.ph2_003_integrations"]
+    n18["alembic.versions.ph3_001_subscriptions"]
+    n19["alembic.versions.ph3_002_sandbox_billing"]
+    n20["alembic.versions.ph3_003_onboarding_auth"]
+    n21["alembic.versions.ph3_004_sending"]
+    n22["alembic.versions.ph3_005_public_admission"]
+    n23["alembic.versions.ph3_006_quoting_library"]
+    n24["alembic.versions.ph3_007_work_records"]
+    n25["alembic.versions.ph3_008_client_lifecycle"]
+    n26["alembic.versions.ph3_009_read_indexes"]
+    n27["app.__init__"]
+    n28["app.admission"]
+    n29["app.admission_models"]
+    n30["app.admission_operations"]
+    n31["app.archive_routes"]
+    n32["app.archiving"]
+    n33["app.audit"]
+    n34["app.auth"]
+    n35["app.billing"]
+    n36["app.bot_check"]
+    n37["app.case_routes"]
+    n38["app.cases"]
+    n39["app.cli"]
+    n40["app.client_drafts"]
+    n41["app.client_sources"]
+    n42["app.clients"]
+    n43["app.config"]
+    n44["app.contact"]
+    n45["app.credit_memo_models"]
+    n46["app.dashboard"]
+    n47["app.db"]
+    n48["app.demo"]
+    n49["app.domain"]
+    n50["app.email_auth"]
+    n51["app.enrollment"]
+    n52["app.enrollment_models"]
+    n53["app.enrollment_routes"]
+    n54["app.flexfields"]
+    n55["app.forms"]
+    n56["app.integration_auth"]
+    n57["app.integration_models"]
+    n58["app.integration_routes"]
+    n59["app.internal_routes"]
+    n60["app.library"]
+    n61["app.library_models"]
+    n62["app.library_routes"]
+    n63["app.logging"]
+    n64["app.lookups"]
+    n65["app.mail_models"]
+    n66["app.mail_routes"]
+    n67["app.mail_service"]
+    n68["app.main"]
+    n69["app.models"]
+    n70["app.paddle"]
+    n71["app.pagination"]
+    n72["app.pdf"]
+    n73["app.privacy"]
+    n74["app.project_attachments"]
+    n75["app.project_billing_routes"]
+    n76["app.project_routes"]
+    n77["app.project_terms"]
+    n78["app.proposal_sending"]
+    n79["app.proposal_sending_models"]
+    n80["app.proposal_sending_routes"]
+    n81["app.proposal_sending_transport"]
+    n82["app.quoting"]
+    n83["app.quoting_models"]
+    n84["app.quoting_routes"]
+    n85["app.record_references"]
+    n86["app.reference_choices"]
+    n87["app.reports"]
+    n88["app.repositories"]
+    n89["app.search_routes"]
+    n90["app.seed"]
+    n91["app.sending"]
+    n92["app.sending_dispatch_routes"]
+    n93["app.sending_models"]
+    n94["app.sending_routes"]
+    n95["app.sending_transport"]
+    n96["app.settings"]
+    n97["app.social_auth"]
+    n98["app.static_assets"]
+    n99["app.subscription_billing"]
+    n100["app.subscription_billing_models"]
+    n101["app.subscription_models"]
+    n102["app.subscription_payment_routes"]
+    n103["app.subscription_routes"]
+    n104["app.subscriptions"]
+    n105["app.tenancy"]
+    n106["app.tenant_demo"]
+    n107["app.time_command_models"]
+    n108["app.time_commands"]
+    n109["app.time_import"]
+    n110["app.time_import_routes"]
+    n111["app.timecards"]
+    n112["app.usage"]
+    n113["app.work_history"]
+    n114["app.work_lifecycle"]
+    n115["app.workspace_operations"]
+    n116["app.workspace_search"]
+    n117["scripts.render_invitation"]
+    n0 --> n29
+    n0 --> n43
+    n0 --> n45
+    n0 --> n52
+    n0 --> n57
+    n0 --> n61
+    n0 --> n65
+    n0 --> n69
+    n0 --> n79
+    n0 --> n83
+    n0 --> n93
+    n0 --> n100
+    n0 --> n101
+    n0 --> n107
+    n28 --> n29
+    n28 --> n49
+    n28 --> n51
+    n28 --> n52
+    n28 --> n69
+    n28 --> n101
+    n29 --> n69
+    n30 --> n28
+    n30 --> n29
+    n30 --> n52
+    n30 --> n69
+    n31 --> n32
+    n31 --> n49
+    n31 --> n65
+    n31 --> n69
+    n32 --> n49
+    n32 --> n65
+    n32 --> n69
+    n32 --> n114
+    n33 --> n69
+    n34 --> n51
+    n34 --> n69
+    n35 --> n33
+    n35 --> n45
+    n35 --> n49
+    n35 --> n54
+    n35 --> n69
+    n35 --> n72
+    n35 --> n77
+    n35 --> n88
+    n35 --> n91
+    n36 --> n43
+    n37 --> n32
+    n37 --> n34
+    n37 --> n38
+    n37 --> n55
+    n37 --> n64
+    n37 --> n65
+    n37 --> n69
+    n37 --> n71
+    n37 --> n88
+    n38 --> n32
+    n38 --> n33
+    n38 --> n49
+    n38 --> n54
+    n38 --> n55
+    n38 --> n65
+    n38 --> n69
+    n38 --> n71
+    n38 --> n88
+    n38 --> n107
+    n38 --> n114
+    n39 --> n30
+    n39 --> n35
+    n39 --> n43
+    n39 --> n47
+    n39 --> n48
+    n39 --> n63
+    n39 --> n90
+    n39 --> n105
+    n39 --> n115
+    n40 --> n33
+    n40 --> n49
+    n40 --> n57
+    n40 --> n69
+    n40 --> n88
+    n41 --> n33
+    n41 --> n34
+    n41 --> n55
+    n41 --> n67
+    n41 --> n69
+    n41 --> n88
+    n42 --> n32
+    n42 --> n33
+    n42 --> n49
+    n42 --> n54
+    n42 --> n55
+    n42 --> n69
+    n42 --> n77
+    n42 --> n88
+    n42 --> n104
+    n42 --> n114
+    n43 --> n56
+    n43 --> n70
+    n44 --> n34
+    n44 --> n36
+    n44 --> n69
+    n45 --> n69
+    n46 --> n49
+    n46 --> n69
+    n48 --> n35
+    n48 --> n42
+    n48 --> n49
+    n48 --> n69
+    n48 --> n90
+    n48 --> n111
+    n50 --> n49
+    n50 --> n51
+    n50 --> n52
+    n50 --> n69
+    n51 --> n33
+    n51 --> n49
+    n51 --> n52
+    n51 --> n69
+    n51 --> n101
+    n51 --> n104
+    n52 --> n69
+    n53 --> n28
+    n53 --> n34
+    n53 --> n49
+    n53 --> n50
+    n53 --> n51
+    n53 --> n52
+    n53 --> n56
+    n53 --> n69
+    n53 --> n97
+    n53 --> n104
+    n53 --> n105
+    n54 --> n33
+    n54 --> n55
+    n55 --> n49
+    n56 --> n33
+    n56 --> n51
+    n56 --> n57
+    n56 --> n69
+    n57 --> n69
+    n58 --> n32
+    n58 --> n33
+    n58 --> n34
+    n58 --> n38
+    n58 --> n40
+    n58 --> n45
+    n58 --> n49
+    n58 --> n55
+    n58 --> n56
+    n58 --> n57
+    n58 --> n69
+    n58 --> n88
+    n58 --> n105
+    n58 --> n107
+    n58 --> n108
+    n59 --> n32
+    n59 --> n49
+    n59 --> n63
+    n59 --> n65
+    n59 --> n67
+    n59 --> n69
+    n59 --> n91
+    n59 --> n95
+    n60 --> n33
+    n60 --> n49
+    n60 --> n54
+    n60 --> n55
+    n60 --> n61
+    n60 --> n67
+    n60 --> n69
+    n60 --> n72
+    n61 --> n69
+    n62 --> n34
+    n62 --> n55
+    n62 --> n60
+    n62 --> n61
+    n62 --> n64
+    n62 --> n69
+    n62 --> n71
+    n64 --> n49
+    n64 --> n69
+    n64 --> n96
+    n65 --> n69
+    n66 --> n31
+    n66 --> n32
+    n66 --> n34
+    n66 --> n49
+    n66 --> n55
+    n66 --> n64
+    n66 --> n65
+    n66 --> n67
+    n66 --> n69
+    n66 --> n71
+    n67 --> n32
+    n67 --> n33
+    n67 --> n49
+    n67 --> n55
+    n67 --> n65
+    n67 --> n69
+    n67 --> n88
+    n68 --> n28
+    n68 --> n31
+    n68 --> n32
+    n68 --> n34
+    n68 --> n35
+    n68 --> n36
+    n68 --> n37
+    n68 --> n41
+    n68 --> n42
+    n68 --> n43
+    n68 --> n45
+    n68 --> n46
+    n68 --> n49
+    n68 --> n51
+    n68 --> n52
+    n68 --> n53
+    n68 --> n54
+    n68 --> n55
+    n68 --> n56
+    n68 --> n58
+    n68 --> n59
+    n68 --> n62
+    n68 --> n63
+    n68 --> n64
+    n68 --> n66
+    n68 --> n69
+    n68 --> n71
+    n68 --> n73
+    n68 --> n75
+    n68 --> n76
+    n68 --> n80
+    n68 --> n84
+    n68 --> n86
+    n68 --> n87
+    n68 --> n88
+    n68 --> n89
+    n68 --> n92
+    n68 --> n94
+    n68 --> n96
+    n68 --> n97
+    n68 --> n98
+    n68 --> n102
+    n68 --> n103
+    n68 --> n104
+    n68 --> n105
+    n68 --> n110
+    n68 --> n111
+    n68 --> n112
+    n68 --> n113
+    n70 --> n49
+    n71 --> n96
+    n72 --> n49
+    n72 --> n63
+    n73 --> n34
+    n74 --> n33
+    n74 --> n34
+    n74 --> n55
+    n74 --> n67
+    n74 --> n69
+    n74 --> n88
+    n75 --> n34
+    n75 --> n35
+    n75 --> n49
+    n75 --> n55
+    n75 --> n69
+    n75 --> n71
+    n75 --> n77
+    n76 --> n34
+    n76 --> n42
+    n76 --> n49
+    n76 --> n55
+    n76 --> n64
+    n76 --> n69
+    n76 --> n71
+    n76 --> n74
+    n76 --> n77
+    n76 --> n85
+    n76 --> n88
+    n76 --> n104
+    n76 --> n113
+    n77 --> n49
+    n77 --> n55
+    n78 --> n33
+    n78 --> n49
+    n78 --> n60
+    n78 --> n69
+    n78 --> n71
+    n78 --> n79
+    n78 --> n81
+    n78 --> n82
+    n78 --> n88
+    n79 --> n69
+    n80 --> n34
+    n80 --> n78
+    n80 --> n81
+    n81 --> n49
+    n81 --> n78
+    n82 --> n33
+    n82 --> n49
+    n82 --> n54
+    n82 --> n69
+    n82 --> n71
+    n82 --> n83
+    n82 --> n88
+    n83 --> n69
+    n84 --> n34
+    n84 --> n38
+    n84 --> n49
+    n84 --> n54
+    n84 --> n55
+    n84 --> n64
+    n84 --> n69
+    n84 --> n72
+    n84 --> n82
+    n84 --> n83
+    n87 --> n32
+    n87 --> n35
+    n87 --> n49
+    n87 --> n69
+    n87 --> n71
+    n87 --> n77
+    n88 --> n32
+    n88 --> n49
+    n88 --> n69
+    n89 --> n116
+    n90 --> n33
+    n90 --> n69
+    n91 --> n33
+    n91 --> n35
+    n91 --> n49
+    n91 --> n69
+    n91 --> n71
+    n91 --> n88
+    n91 --> n93
+    n92 --> n34
+    n92 --> n91
+    n92 --> n94
+    n92 --> n95
+    n93 --> n69
+    n94 --> n34
+    n94 --> n49
+    n94 --> n55
+    n94 --> n91
+    n95 --> n43
+    n95 --> n91
+    n96 --> n33
+    n96 --> n42
+    n96 --> n49
+    n96 --> n55
+    n96 --> n69
+    n96 --> n88
+    n97 --> n49
+    n97 --> n51
+    n99 --> n33
+    n99 --> n49
+    n99 --> n55
+    n99 --> n69
+    n99 --> n70
+    n99 --> n88
+    n99 --> n100
+    n99 --> n101
+    n99 --> n104
+    n99 --> n114
+    n100 --> n69
+    n101 --> n69
+    n102 --> n34
+    n102 --> n49
+    n102 --> n55
+    n102 --> n70
+    n102 --> n99
+    n102 --> n100
+    n102 --> n104
+    n103 --> n34
+    n103 --> n49
+    n103 --> n55
+    n103 --> n99
+    n103 --> n104
+    n104 --> n33
+    n104 --> n49
+    n104 --> n69
+    n104 --> n88
+    n104 --> n101
+    n104 --> n114
+    n105 --> n29
+    n105 --> n30
+    n105 --> n43
+    n105 --> n44
+    n105 --> n47
+    n105 --> n56
+    n106 --> n32
+    n106 --> n33
+    n106 --> n35
+    n106 --> n38
+    n106 --> n42
+    n106 --> n49
+    n106 --> n67
+    n106 --> n69
+    n106 --> n77
+    n106 --> n105
+    n106 --> n111
+    n107 --> n69
+    n108 --> n32
+    n108 --> n33
+    n108 --> n49
+    n108 --> n69
+    n108 --> n88
+    n108 --> n107
+    n108 --> n109
+    n109 --> n49
+    n110 --> n32
+    n110 --> n34
+    n110 --> n49
+    n110 --> n69
+    n110 --> n88
+    n110 --> n107
+    n110 --> n108
+    n110 --> n109
+    n111 --> n32
+    n111 --> n33
+    n111 --> n49
+    n111 --> n69
+    n111 --> n88
+    n111 --> n107
+    n112 --> n63
+    n112 --> n73
+    n113 --> n69
+    n113 --> n71
+    n114 --> n32
+    n114 --> n55
+    n114 --> n69
+    n115 --> n28
+    n115 --> n30
+    n115 --> n47
+    n115 --> n105
+    n116 --> n32
+    n116 --> n69
+    n116 --> n83
+    n116 --> n85

@@ -1,0 +1,21 @@
+{
+  "source_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+  "counts": {
+    "python_modules": 118,
+    "app_python_modules": 90,
+    "migration_python_modules": 27,
+    "script_python_modules": 1,
+    "class_declarations": 103,
+    "function_and_async_declarations": 945,
+    "syntactic_call_sites": 13140,
+    "internal_declared_import_edges": 438,
+    "app_literal_route_decorators": 180
+  },
+  "generated_without_app_imports": true,
+  "execution_inferred": false,
+  "sha256": {
+    "module-symbol-call-index.json": "5ca783e9ca101780640b5cd551ad700590241ef57525b95a1ae23c71b5a44754",
+    "declared-imports.mmd": "51ff664b1321682c8fe91c4cfd43d79eab3ed0493d61c8547118b4187fa04e78",
+    "08-module-and-symbol-index.md": "e961bba0c34d91f9ec468af227556b7dcdc355090ed0acbf2426a87f417def37"
+  }
+}

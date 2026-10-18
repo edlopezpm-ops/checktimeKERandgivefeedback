@@ -34,5 +34,62 @@
   "fresh_hosted_verification": false,
   "human_uat_complete": false,
   "hosted_restore_proven": false,
-  "production_release_authorized": false
+  "production_release_authorized": false,
+  "database_reference": {
+    "path": "database/README.md",
+    "source_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+    "scope": "empty local PostgreSQL 18.4 migration reconstruction; no hosted catalog",
+    "migration_head": "ph3_009_read_indexes",
+    "counts": {
+      "mapped_application_tables": 54,
+      "physical_tables_in_reference_schema": 55,
+      "columns": 634,
+      "primary_keys": 55,
+      "unique_constraints": 55,
+      "check_constraints": 128,
+      "foreign_keys": 90,
+      "not_null_catalog_constraints_pg18": 537,
+      "constraint_trigger_constraints": 4,
+      "indexes_including_constraint_backing_indexes": 192,
+      "sequences": 8,
+      "application_functions": 36,
+      "application_stored_procedures": 0,
+      "application_triggers": 61,
+      "ordinary_application_triggers": 57,
+      "deferred_constraint_triggers": 4,
+      "internal_fk_triggers_pg18": 360,
+      "views": 0,
+      "materialized_views": 0,
+      "rls_policies": 0,
+      "custom_enum_domain_range_types": 0
+    },
+    "local_migrations_applied": 26,
+    "alembic_metadata_check": "PASS",
+    "published_ddl_replay": "PASS",
+    "read_only_collector_local_check": "PASS",
+    "hosted_connections": 0,
+    "business_rows_read": false,
+    "complete_live_schema_names_available": false
+  },
+  "code_flow_reference": {
+    "path": "code-flow/README.md",
+    "single_markdown": "code-flow/timeKER-CODE-FLOW-FULL.md",
+    "source_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+    "source_traced_module_chapters": 8,
+    "static_index_counts": {
+      "python_modules": 118,
+      "app_python_modules": 90,
+      "migration_python_modules": 27,
+      "script_python_modules": 1,
+      "class_declarations": 103,
+      "function_and_async_declarations": 945,
+      "syntactic_call_sites": 13140,
+      "internal_declared_import_edges": 438,
+      "app_literal_route_decorators": 180
+    },
+    "static_index_is_runtime_call_graph": false,
+    "new_sdk_or_product_features": false,
+    "hosted_connections": 0,
+    "product_tests": 0
+  }
 }

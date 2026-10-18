@@ -21,7 +21,7 @@ human acceptance or production authority follows from this package.
 | Original production source | `edlopezpm-ops/timeKER`, main `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`, clean and unchanged by this session |
 | Production URL | https://timeker.aekr.io |
 | Inventory | 503 tracked paths; 291 Python files; 180 literal route decorators; 54 mapped class/table declarations; 48 Settings fields; 90 Jinja templates; 1089 declared test functions |
-| Generation | Offline AST/TOML/JSON/Git and maintained source/documentation; no application imports or product tests |
+| Generation | Main inventories: offline AST/TOML/JSON/Git. Database extension: model imports and 26 migrations in a new empty local PostgreSQL 18.4 database; no hosted connections, business-row reads or product tests |
 
 Source pointers are pinned to the analyzed commit and actual one-based lines.
 Private source links can require repository access; the narrative and complete
@@ -49,6 +49,8 @@ copy, or the chapters below. The dated 2026-10-18 combined copy has identical by
 | [Source/test manifest](12-source-map-tests-and-manifest.md) | Every tracked source path with raw-byte hash and complete static test/module catalogs. |
 | [Production/Stage differences](13-production-stage-differences.md) | Exact source-tree comparison and dated environment differences; original production untouched. |
 | [PH3 prompt-refresh brief](14-phase3-prompt-refresh-brief.md) | Instructions and acceptance boundaries for revising the owner-supplied PH3 prompts. |
+| [Complete database reference](15-database-reference.md) | All tables/columns, schemas and unknown live names, relationship map, final SQL functions/triggers, procedures inventory and native metadata/DDL exports. |
+| [Code flow and maintenance](16-code-flow-and-maintenance.md) | Module flowcharts, exact function/transaction/error traces, browser flow, troubleshooting maps and complete Python AST symbol/call-site index. |
 
 ## Current delivery truth
 
@@ -80,8 +82,8 @@ custody is not off-host recovery. Current tests/migrations/contracts remain acti
 [source-snapshot-manifest.json](source-snapshot-manifest.json) pins all source
 paths/raw bytes/hashes and Git blob IDs. [PACKAGE-MANIFEST.json](PACKAGE-MANIFEST.json)
 and [SHA256SUMS.txt](SHA256SUMS.txt) bind current review-package files.
-[PACKAGE-VERIFICATION.json](PACKAGE-VERIFICATION.json) records actual offline
-checks and limitations. Package integrity is not product correctness, security
+[PACKAGE-VERIFICATION.json](PACKAGE-VERIFICATION.json) records actual package
+checks, local database reconstruction and limitations. Package integrity is not product correctness, security
 certification, UAT, deployment or recovery proof.
 
 No private archives, business records, actual uploaded contracts, environment

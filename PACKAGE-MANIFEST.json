@@ -15,8 +15,8 @@
     },
     {
       "path": "00-START-HERE.md",
-      "bytes": 6889,
-      "sha256": "00cd5c45b59e399d33243891b2b4ec5e3e8593568975ce3201d3fe7a9ccfa1b1"
+      "bytes": 7446,
+      "sha256": "99c5b0f2a6d43c83fb81a5b1ff2eb5da699966eb03199bd1f1f78ad3b3686198"
     },
     {
       "path": "01-architecture-and-stack.md",
@@ -25,8 +25,8 @@
     },
     {
       "path": "02-data-model-and-transactions.md",
-      "bytes": 15533,
-      "sha256": "923bd42657f037b3748eb36593b0aea8dfb3d1e9e8cf8df8dba95cca2f644e9b"
+      "bytes": 15854,
+      "sha256": "de746e3152ef2635b69695451d0d7459888f5199558ffeb06fe1e16ef3df3c99"
     },
     {
       "path": "03-product-and-user-workflows.md",
@@ -45,8 +45,8 @@
     },
     {
       "path": "06-deployment-and-operations-sop.md",
-      "bytes": 28206,
-      "sha256": "0fa5e43d91d2b44312269770c89684849c39e6ae9434215adf4a43c04fc089b7"
+      "bytes": 28298,
+      "sha256": "b007efef1b9a74c26bde6d98575d0bb3a343751ef2970b4d91ded6c89fbef03c"
     },
     {
       "path": "07-security-privacy-quality-and-evidence.md",
@@ -70,8 +70,8 @@
     },
     {
       "path": "11-models-configuration-and-dependencies.md",
-      "bytes": 66494,
-      "sha256": "4b2d76dfddfa0f2fc7132154a3d576a661b7e0d21e98a10b65014ffc36a729fe"
+      "bytes": 66786,
+      "sha256": "31703892ff56e85e1d4952eff641a350b44e2b1f2bd4d63026c22b3102c3ad4c"
     },
     {
       "path": "12-source-map-tests-and-manifest.md",
@@ -89,9 +89,154 @@
       "sha256": "a8ee5b1a9a474b09031c040a0734bc44c22a1ef2076ad686012f6fd67d86047c"
     },
     {
+      "path": "15-database-reference.md",
+      "bytes": 2589,
+      "sha256": "1a0f56ab6271223a94a58be8ac6a679170e7785c8fb0e7cab4b333805163922d"
+    },
+    {
+      "path": "16-code-flow-and-maintenance.md",
+      "bytes": 1741,
+      "sha256": "8e4eb7469ee7f5485cc69934d8bb6425274253a8c83ea58f8808ff8e48be442d"
+    },
+    {
+      "path": "code-flow/01-runtime-and-request.md",
+      "bytes": 17850,
+      "sha256": "67aeb82702258dd9507b1db922ff342deeb8b3193ead23af54f33b3c6b84b703"
+    },
+    {
+      "path": "code-flow/02-identity-and-admission.md",
+      "bytes": 25878,
+      "sha256": "687c7b65efd4730f1d034bd3e0c2497b91b496263afbf9681d7f10dbbb7add18"
+    },
+    {
+      "path": "code-flow/03-work-and-billing.md",
+      "bytes": 23296,
+      "sha256": "086374fab036cc408a8d8e0509f9aba6d4a2988d981a777f24d0c08f7c03380c"
+    },
+    {
+      "path": "code-flow/04-documents-mail-and-sending.md",
+      "bytes": 26241,
+      "sha256": "c7b303bac6107667a3d0e91be3490f639ed18087ecbc0ae352e3052e2020eac0"
+    },
+    {
+      "path": "code-flow/05-integrations-and-subscriptions.md",
+      "bytes": 32870,
+      "sha256": "666f5b775287e10038ade1f646c0bade09bd39b3c234dec5d982ba2fb21eed85"
+    },
+    {
+      "path": "code-flow/06-operations-and-troubleshooting.md",
+      "bytes": 32861,
+      "sha256": "ae45c0eae3ba27d5fb9d22da9c2f6eda3cfe8fb1f5c09feda2b53d34ca1d2bc2"
+    },
+    {
+      "path": "code-flow/07-browser-and-ui.md",
+      "bytes": 14016,
+      "sha256": "1b92d5d1ba996fc68c12b7aea5bd281a16b69683780f0da9154c4e92427faa1e"
+    },
+    {
+      "path": "code-flow/08-module-and-symbol-index.md",
+      "bytes": 283402,
+      "sha256": "e961bba0c34d91f9ec468af227556b7dcdc355090ed0acbf2426a87f417def37"
+    },
+    {
+      "path": "code-flow/declared-imports.mmd",
+      "bytes": 11302,
+      "sha256": "51ff664b1321682c8fe91c4cfd43d79eab3ed0493d61c8547118b4187fa04e78"
+    },
+    {
+      "path": "code-flow/INDEX-PROVENANCE.json",
+      "bytes": 799,
+      "sha256": "2ec527d5e48b06972323fa1894cc2fb23b80f80129bb609afefc5e351ff17759"
+    },
+    {
+      "path": "code-flow/module-symbol-call-index.json",
+      "bytes": 2408578,
+      "sha256": "5ca783e9ca101780640b5cd551ad700590241ef57525b95a1ae23c71b5a44754"
+    },
+    {
+      "path": "code-flow/README.md",
+      "bytes": 8746,
+      "sha256": "4f87e201f5be82ee1c823744a907c77a9a0d65f3a4bba3a989454ce5e0a23df1"
+    },
+    {
+      "path": "code-flow/timeKER-CODE-FLOW-FULL.md",
+      "bytes": 465406,
+      "sha256": "7e38a70dba130dc0f43bfc5a7ded4668eef276ef810b104c3c3ec4c1f4111d0f"
+    },
+    {
       "path": "CURRENT-STATE.json",
-      "bytes": 1297,
-      "sha256": "57575ca8808935c7e1763cc0d7c07fa377449f07128087c350f0455171f07af0"
+      "bytes": 3351,
+      "sha256": "55fbd89d93ef278e80680e2fee9de2e4ea36c679a92bbcfc615fcdaeb9ea5948"
+    },
+    {
+      "path": "database/01-schemas-and-tenancy.md",
+      "bytes": 11355,
+      "sha256": "cde19bdf1073e6f486d39c960afeb0f08f35657ce69ef02d61a55e53a5c5e72e"
+    },
+    {
+      "path": "database/02-tables-and-layouts.md",
+      "bytes": 224455,
+      "sha256": "6e44745b96d1c96e3b04c3e06a469bb6116bc890b07631a733d7e773650ac7d6"
+    },
+    {
+      "path": "database/03-relationships-and-map.md",
+      "bytes": 22120,
+      "sha256": "918db9036671283bb80366fcbbe74eda3b954d9978c9ce8117551d5a24bbd465"
+    },
+    {
+      "path": "database/04-functions-and-procedures.md",
+      "bytes": 73613,
+      "sha256": "493d1cbe963eea11f9017ca3de08082c824809266f681d414707979948c786c2"
+    },
+    {
+      "path": "database/05-application-triggers.md",
+      "bytes": 28907,
+      "sha256": "b5631bab47e8772fe2024da616b54adafe1e1c2e44337072c3325a328163a94d"
+    },
+    {
+      "path": "database/06-internal-triggers-and-other-objects.md",
+      "bytes": 54787,
+      "sha256": "ab4794215b18562668f857e8d03a78d1a0e66557c776ab3a09749b40ef2dc86a"
+    },
+    {
+      "path": "database/07-inspect-live-metadata.md",
+      "bytes": 6968,
+      "sha256": "490080bb86b92d5b671540a284d582fe8c60ae954a8dd5555f641af7d22bbd72"
+    },
+    {
+      "path": "database/catalog.json",
+      "bytes": 989593,
+      "sha256": "461413c4ba43edf96c08b9916e34ef8821dd2629386d22159b384e35838d8301"
+    },
+    {
+      "path": "database/inventory-live.sql",
+      "bytes": 6775,
+      "sha256": "dc3d85538808a91f9df19ffb36145c13884a305f6f7a03c6966e49197e8a5f7f"
+    },
+    {
+      "path": "database/PROVENANCE.json",
+      "bytes": 7212,
+      "sha256": "da9f885c14277a14ea48c6e00a98e079e4c88d67bbb33388c2bca21dd1275b01"
+    },
+    {
+      "path": "database/README.md",
+      "bytes": 5625,
+      "sha256": "5b2612419ed126b3684200b63d89954cb488a1ac4a431795e4c18ca76efc0085"
+    },
+    {
+      "path": "database/reference-schema.sql",
+      "bytes": 220778,
+      "sha256": "6c93efc76bc581bcd9f9fd9ff6b5232f3d6d52aaa97e8785466909b96087230b"
+    },
+    {
+      "path": "database/relationships.mmd",
+      "bytes": 9847,
+      "sha256": "e964ff77c6146bf8930f0497991ed6f4b712e0420525ef0c60c96040779c14ec"
+    },
+    {
+      "path": "database/timeKER-DATABASE-FULL.md",
+      "bytes": 428074,
+      "sha256": "a18823649692a50439de06799aab0a021b935b00a53fd66ea0adfbf3a1892ede"
     },
     {
       "path": "LICENSE",
@@ -100,13 +245,13 @@
     },
     {
       "path": "PACKAGE-VERIFICATION.json",
-      "bytes": 1207,
-      "sha256": "daefdd0ec5849c7b0fffff8105253e70829bc8bfd51009956b43de88119a1ebc"
+      "bytes": 2577,
+      "sha256": "1a1bdd04912785d1347131ad8d20a26175422ef75a8d3337ab4a051c40369f02"
     },
     {
       "path": "README.md",
-      "bytes": 2604,
-      "sha256": "1af3533a17af1eb7ee08a5d26ba3cff806b67ca8aeb5826c171329076b673cb6"
+      "bytes": 3313,
+      "sha256": "70d7c48111549773403b76a813de6a6ae3d5d9369f667ca7076469e539bedd5a"
     },
     {
       "path": "source-snapshot-manifest.json",
@@ -120,13 +265,13 @@
     },
     {
       "path": "timeKER-FULL-DOSSIER-2026-10-18.md",
-      "bytes": 547863,
-      "sha256": "30c3584be0d73d33af2130342f06a64d4b91a17d09b8516cfb1a333fc59ecdd5"
+      "bytes": 553462,
+      "sha256": "1d292f3ba6df5a8955f0512e3a54ef27346027dbca4dbf19eda3638209c820df"
     },
     {
       "path": "timeKER-FULL-DOSSIER.md",
-      "bytes": 547863,
-      "sha256": "30c3584be0d73d33af2130342f06a64d4b91a17d09b8516cfb1a333fc59ecdd5"
+      "bytes": 553462,
+      "sha256": "1d292f3ba6df5a8955f0512e3a54ef27346027dbca4dbf19eda3638209c820df"
     },
     {
       "path": "timeKER-START-HERE-2026-10-16.md",

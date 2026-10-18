@@ -11,6 +11,18 @@ provide provenance. This repo contains descriptions/inventories, not the complet
 private application source or business data. If source access or reading is
 incomplete, state that limit and avoid claiming a code audit.
 
+The [complete database reference](database/README.md) includes all 55 reference
+tables and 634 columns, a 90-relationship map, 36 final function bodies, 61 application
+triggers, internal FK triggers, schema-only SQL and catalog JSON. It was verified
+by local empty-schema reconstruction; exact hosted schema names and platform
+objects remain explicitly unverified.
+
+The [code-flow maintenance keystone](code-flow/README.md) adds diagrams and
+explained traces by module, real transaction/error boundaries, troubleshooting
+maps and a complete Python symbol/call-site index. Read its
+[single Markdown copy](code-flow/timeKER-CODE-FLOW-FULL.md) as the foundation for
+future maintenance, whitepaper and SDK work.
+
 ## Review request for ChatGPT and Claude
 
 Assess the current product and help Ed Lopez refresh the PH3 prompts he will

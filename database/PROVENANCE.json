@@ -1,0 +1,209 @@
+{
+  "state": "VERIFIED_LOCAL_STRUCTURE",
+  "source_repository": "edlopezpm-ops/timeker-PH2",
+  "source_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+  "source_branch": "codex/ph3-stage",
+  "migration_head": "ph3_009_read_indexes",
+  "reference_schema": "timeker_reference",
+  "reference_engine": "PostgreSQL18.4",
+  "verified_utc": "2026-10-18T14:24:37.064735+00:00",
+  "counts": {
+    "mapped_application_tables": 54,
+    "physical_tables_in_reference_schema": 55,
+    "columns": 634,
+    "primary_keys": 55,
+    "unique_constraints": 55,
+    "check_constraints": 128,
+    "foreign_keys": 90,
+    "not_null_catalog_constraints_pg18": 537,
+    "constraint_trigger_constraints": 4,
+    "indexes_including_constraint_backing_indexes": 192,
+    "sequences": 8,
+    "application_functions": 36,
+    "application_stored_procedures": 0,
+    "application_triggers": 61,
+    "ordinary_application_triggers": 57,
+    "deferred_constraint_triggers": 4,
+    "internal_fk_triggers_pg18": 360,
+    "views": 0,
+    "materialized_views": 0,
+    "rls_policies": 0,
+    "custom_enum_domain_range_types": 0
+  },
+  "migration_chain": [
+    {
+      "revision": "7e416c6444fe",
+      "parent": null,
+      "source": "alembic/versions/7e416c6444fe_baseline.py"
+    },
+    {
+      "revision": "c46f2f62a011",
+      "parent": "7e416c6444fe",
+      "source": "alembic/versions/c46f2f62a011_immutable_artifacts.py"
+    },
+    {
+      "revision": "e3b42aea781a",
+      "parent": "c46f2f62a011",
+      "source": "alembic/versions/e3b42aea781a_parent_guards_and_sessions.py"
+    },
+    {
+      "revision": "f409a1ac1700",
+      "parent": "e3b42aea781a",
+      "source": "alembic/versions/f409a1ac1700_parent_lock_guards.py"
+    },
+    {
+      "revision": "a10d45de891c",
+      "parent": "f409a1ac1700",
+      "source": "alembic/versions/a10d45de891c_issued_status_guard.py"
+    },
+    {
+      "revision": "b07c9d621a30",
+      "parent": "a10d45de891c",
+      "source": "alembic/versions/b07c9d621a30_pin_guard_schema.py"
+    },
+    {
+      "revision": "d3517d81ce20",
+      "parent": "b07c9d621a30",
+      "source": "alembic/versions/d3517d81ce20_contact_reservations.py"
+    },
+    {
+      "revision": "e672c40fa912",
+      "parent": "d3517d81ce20",
+      "source": "alembic/versions/e672c40fa912_cases_and_allocations.py"
+    },
+    {
+      "revision": "3f3c0f09ecf4",
+      "parent": "e672c40fa912",
+      "source": "alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py"
+    },
+    {
+      "revision": "c41894d13cb7",
+      "parent": "3f3c0f09ecf4",
+      "source": "alembic/versions/c41894d13cb7_project_commercial_metadata.py"
+    },
+    {
+      "revision": "d529b08f14a2",
+      "parent": "c41894d13cb7",
+      "source": "alembic/versions/d529b08f14a2_project_billing.py"
+    },
+    {
+      "revision": "e640ab7230cd",
+      "parent": "d529b08f14a2",
+      "source": "alembic/versions/e640ab7230cd_case_identity_and_types.py"
+    },
+    {
+      "revision": "f710bc319ae2",
+      "parent": "e640ab7230cd",
+      "source": "alembic/versions/f710bc319ae2_mail_attachment_custody.py"
+    },
+    {
+      "revision": "a82d43cf6120",
+      "parent": "f710bc319ae2",
+      "source": "alembic/versions/a82d43cf6120_project_workflow_and_agreements.py"
+    },
+    {
+      "revision": "ph2_001_credit_memos",
+      "parent": "a82d43cf6120",
+      "source": "alembic/versions/ph2_001_credit_memos.py"
+    },
+    {
+      "revision": "ph2_002_time_commands",
+      "parent": "ph2_001_credit_memos",
+      "source": "alembic/versions/ph2_002_time_commands.py"
+    },
+    {
+      "revision": "ph2_003_integrations",
+      "parent": "ph2_002_time_commands",
+      "source": "alembic/versions/ph2_003_integrations.py"
+    },
+    {
+      "revision": "ph3_001_subscriptions",
+      "parent": "ph2_003_integrations",
+      "source": "alembic/versions/ph3_001_subscriptions.py"
+    },
+    {
+      "revision": "ph3_002_sandbox_billing",
+      "parent": "ph3_001_subscriptions",
+      "source": "alembic/versions/ph3_002_sandbox_billing.py"
+    },
+    {
+      "revision": "ph3_003_onboarding_auth",
+      "parent": "ph3_002_sandbox_billing",
+      "source": "alembic/versions/ph3_003_onboarding_auth.py"
+    },
+    {
+      "revision": "ph3_004_sending",
+      "parent": "ph3_003_onboarding_auth",
+      "source": "alembic/versions/ph3_004_sending.py"
+    },
+    {
+      "revision": "ph3_005_public_admission",
+      "parent": "ph3_004_sending",
+      "source": "alembic/versions/ph3_005_public_admission.py"
+    },
+    {
+      "revision": "ph3_006_quoting_library",
+      "parent": "ph3_005_public_admission",
+      "source": "alembic/versions/ph3_006_quoting_library.py"
+    },
+    {
+      "revision": "ph3_007_work_records",
+      "parent": "ph3_006_quoting_library",
+      "source": "alembic/versions/ph3_007_work_records.py"
+    },
+    {
+      "revision": "ph3_008_client_lifecycle",
+      "parent": "ph3_007_work_records",
+      "source": "alembic/versions/ph3_008_client_lifecycle.py"
+    },
+    {
+      "revision": "ph3_009_read_indexes",
+      "parent": "ph3_008_client_lifecycle",
+      "source": "alembic/versions/ph3_009_read_indexes.py"
+    }
+  ],
+  "checks": {
+    "upgrade_from_empty": "PASS",
+    "alembic_metadata_check": "PASS",
+    "mapped_table_set_exact": "PASS",
+    "schema_pinned_search_paths_36": "PASS",
+    "security_invoker_36": "PASS",
+    "application_trigger_functions_resolve": "PASS",
+    "owned_local_server_stopped": "PASS",
+    "business_seed_or_row_read": false,
+    "hosted_connections": 0,
+    "product_tests": 0,
+    "all_55_table_layout_sections": "PASS",
+    "all_634_column_rows": "PASS",
+    "all_36_final_function_definitions": "PASS",
+    "all_61_trigger_definitions": "PASS",
+    "all_90_foreign_key_graph_edges": "PASS",
+    "schema_only_export_55_tables_36_functions_61_triggers": "PASS",
+    "read_only_inventory_sql_runs_on_reference_database": "PASS",
+    "collector_rolls_back_to_idle": "PASS",
+    "published_ddl_replays_empty_55_36_61": "PASS",
+    "collector_actual_database_role_and_read_only_identity": "PASS"
+  },
+  "retained_hosted_evidence": {
+    "refreshed": false,
+    "stage_version": 29,
+    "source": "e282985ea74e89e1665351c22f91706498495e93",
+    "schema_head": "ph3_009_read_indexes",
+    "maintained_schemas": 9,
+    "quarantines_outside_population": 5,
+    "complete_exact_live_names_available": false
+  },
+  "limitations": [
+    "Reference names/ACL owner/internal trigger names are synthetic or installation-specific",
+    "No live Stage/PROD or platform catalog inventory; full names and drift remain unknown",
+    "Role/grant deployment policy is source-described, not installed or freshly verified",
+    "PG18 NOT NULL catalog entries can differ from another engine major version",
+    "No UAT, hosted restore, provider activation or security certification"
+  ],
+  "artifact_sha256": {
+    "catalog.json": "461413c4ba43edf96c08b9916e34ef8821dd2629386d22159b384e35838d8301",
+    "reference-schema.sql": "6c93efc76bc581bcd9f9fd9ff6b5232f3d6d52aaa97e8785466909b96087230b",
+    "relationships.mmd": "e964ff77c6146bf8930f0497991ed6f4b712e0420525ef0c60c96040779c14ec",
+    "inventory-live.sql": "dc3d85538808a91f9df19ffb36145c13884a305f6f7a03c6966e49197e8a5f7f"
+  }
+}
