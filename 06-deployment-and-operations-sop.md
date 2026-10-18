@@ -1,76 +1,60 @@
 # 06 — Deployment and operations SOP
 
-**Snapshot and handoff date: 16 October 2026.** This is a source-backed operational dossier at the HOC pause, not a new active runbook or authorization to operate production. Commands are documentation only; none were run to prepare this chapter. A future operator must re-read the canonical repository, current receipts and the specific approval before using any example.
+Snapshot: **2026-10-18**, PH3 source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. PH2 is administratively closed at `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6`, tag `ph2-closeout-2026-10-18`. PH3 continues the existing Stage and awaits the owner's feature prompts. This chapter documents source and retained receipts; no operational command, provider request, database connection, deployment or customer effect was executed to produce it. Canonical entry: [CONTINUE.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1); current operational record: [HOSTING.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L1).
 
-**Reviewed feature checkout (source snapshot):** `C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2-quoting`, at documentation HEAD `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`. The current Stage branch and canonical continuation are in the parent checkout, `C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2`; its pre-pause source matched this snapshot. The deployed feature bytes are from `dbf73e52ca03726e7903dc74ef27e40339c06936`. All `file:line` references below describe the analyzed snapshot. The original production checkout remained clean at `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`; this delivery did not change production.
+## 1. Current authority and operator entry
 
-## 1. Pause state and operator responsibilities
+Ed Lopez authorized PH2 closeout, reversible archive, consolidation and an independent PH3 clone. The next owner prompt selects bounded PH3 feature work. Administrative preparation does not grant provider, identity, database or production authority. Preserve Stage and production services; the transition does not stop services, revoke accounts, cancel subscriptions or activate schedules. See [continuation and pending work](08-PAUSE-AND-CONTINUE.md).
 
-The requested HOC pause means stop engineering, deployments, migrations, new verification activity and discretionary provider actions until explicit resumption. It **does not** terminate the deployed application, PostgreSQL service, provider webhook traffic, previously configured cron/email routing, or an external subscription. Runtime shutdown, message cancellation or subscription cancellation are separate actions with separate consequences and authority.
+Before a future authorized operation, read current AGENTS, brief, STATUS, operative decisions, design references, privacy/legal documents, HOSTING and relevant operations/deployment sections. Resolve branch, HEAD, dirty state, source/image, target environment, inventory and receipt ownership. Dated historical examples belong to their own run; they do not replace current configuration or authorize replay. Sources: [AGENTS.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/AGENTS.md#L1), [CONTINUE.md:20](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L20), [docs/OPERATIONS.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L1).
 
-Retain the working source, immutable release artifacts, failed receipts, encrypted backup and private operator custody. Do not clean up by deleting databases, schemas, receipts, uploads, roles, container history or customer artifacts. The task-owned disposable PostgreSQL cluster was stopped gracefully at **20:14:47 UTC**, with files retained; temporary Docker registry credentials were logged out after release. These facts do not mean the hosted runtime was stopped. Source: `docs/STATUS.md:113`.
+## 2. Runtime topology and environment separation
 
-On resume, start with `AGENTS.md`, `docs/PROJECT_BRIEF.md`, current sections of `docs/STATUS.md`, `docs/DECISIONS.md`, design references, `HOSTING.md`, `docs/OPERATIONS.md` and the relevant privacy/legal documents. Historical sections remain evidence of earlier states; they are not current configuration. `README.md` and `docs/DEPLOYMENT.md` contain useful local setup material but retained older release identities/test counts must not replace the current STATUS/HOSTING release record.
+One FastAPI/Jinja/HTMX application uses SQLAlchemy/Alembic, PostgreSQL and server-side WeasyPrint. Stage is `https://stage-timeker.aekr.io`. Its Cloudflare Worker routes same-origin requests through one Durable Object/container binding. The profile selects a basic container and `max_instances: 1`, disables workers.dev/preview URLs and platform logs/traces. This supplies no high-availability or autoscaling promise. PostgreSQL persists outside ephemeral container disk. Sources: [deploy/cloudflare/wrangler.jsonc:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/wrangler.jsonc#L1), [Dockerfile:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/Dockerfile#L1), [app/db.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py#L1).
 
-## 2. Runtime topology and boundaries
+The container serves port 8000, sleeps after ten idle minutes and waits up to sixty seconds for port readiness while preserving request cancellation. Active streams retain activity. The adapter strips untrusted forwarding headers, supplies trusted forwarding context and suppresses raw SDK exceptions. Uvicorn access logging is disabled. The Docker process probe uses `/health/live`; `/health/ready` remains the deeper explicit database/schema/role check. A listening port or liveness response alone does not establish readiness. Sources: [deploy/cloudflare/src/index.ts:6](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/index.ts#L6), [deploy/cloudflare/src/proxy.ts:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/proxy.ts#L1), [Dockerfile:22](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/Dockerfile#L22), [app/tenancy.py:481](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L481).
 
-### 2.1 Cloudflare edge and Container
+Stage uses `wrangler.jsonc`; prepared production configuration/adapter are separate source. Keep origins, database projects, registry descriptors, provider keys, sessions/encryption/internal transport, admission slots and billing datasets environment-specific. Do not copy Stage fixtures, synthetic Pro grants or provider sessions into production. Source defaults are not a fresh production override readback. Sources: [docs/OPERATIONS.md:98](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L98), [app/config.py:74](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L74), [HOSTING.md:33](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L33).
 
-The isolated Stage public origin is `https://stage-timeker.aekr.io`. A Cloudflare Worker validates the selected environment and forwards same-origin requests into one named Cloudflare Container through its Durable Object binding. The Stage configuration selects a **basic** instance and `max_instances: 1`, disables workers.dev and preview URLs, and disables platform log/tracing collection in that profile. This is not a high-availability or autoscaling promise. Sources: `deploy/cloudflare/wrangler.jsonc:3`, `deploy/cloudflare/wrangler.jsonc:8`, `deploy/cloudflare/wrangler.jsonc:11`, `deploy/cloudflare/wrangler.jsonc:16`, `deploy/cloudflare/wrangler.jsonc:26`.
+The Stage Worker has a Case-only daily `17 2 * * *` handler, 02:17 UTC. Source/configuration and retained readback establish its presence; actual scheduled execution remains unobserved. It does not dispatch statements. Scheduled Sending remains disabled. Production's archive/mail handlers remain a separate profile. Sources: [deploy/cloudflare/src/index.ts:62](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/index.ts#L62), [deploy/cloudflare/wrangler.jsonc:11](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/wrangler.jsonc#L11), [docs/OPERATIONS.md:30](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L30), [HOSTING.md:49](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L49).
 
-The Container listens on port 8000, sleeps after ten minutes of inactivity, and waits up to sixty seconds for the port with the incoming abort signal preserved. The longer wait was added because tenant readiness can exceed the SDK's old twenty-second default on a cold start. It does not authorize replaying the client's request after an uncertain business mutation. Activity/stream handling preserves the lifetime of active responses. Sources: `deploy/cloudflare/src/index.ts:6`, `deploy/cloudflare/src/index.ts:27`, `deploy/cloudflare/src/index.ts:32`.
+## 3. Last verified Stage release
 
-The proxy strips untrusted forwarding headers and creates its own trusted forwarding context; the Stage origin, database project and provider configuration are pinned by the adapter. Network-derived abuse keys are purpose-separated HMACs rather than raw IP logging. Uvicorn runs without access logs; the image's generic command uses no proxy-header trust. Source: `deploy/cloudflare/src/proxy.ts:210`, `deploy/cloudflare/src/proxy.ts:247`, `deploy/cloudflare/src/proxy.ts:265`, `Dockerfile:23`.
+These are retained dated observations, not continuous monitoring or fresh runtime verification by this dossier.
 
-There is one Python application, not a second backend: FastAPI, SQLAlchemy/Alembic, server-rendered Jinja, HTMX/local JavaScript, and server-side WeasyPrint PDFs. PostgreSQL is outside the Container; sleeping/replacing the Container does not erase database storage. Source: `Dockerfile:1`, `app/main.py`, `app/db.py:1`.
-
-### 2.2 Separate Stage and production profiles
-
-`deploy/cloudflare/wrangler.jsonc` is the active isolated Stage profile. `wrangler.production.jsonc` and the production entrypoint are separate prepared source, not a production cutover performed by this release. Do not use Stage bindings, fake identities, Sandbox catalogs, prepared Stage slots or development login settings in production. Quoting, Library and commercial Sending are unavailable in production through `commercial_documents_available`; production statement Sending additionally needs its own production flag. Sources: `docs/OPERATIONS.md:60`, `app/config.py:202`, `app/config.py:206`.
-
-The production source entrypoint includes archive scheduling and inbound mail capture; Stage's entrypoint does not gain those handlers by sharing application code. Stage contact and mail capture are disabled, business Sending jobs are false, and Paddle is Sandbox. Existing production schedules were not modified by the Stage delivery. Sources: `deploy/cloudflare/src/production.ts:63`, `deploy/cloudflare/src/production.ts:67`, `deploy/cloudflare/src/production.ts:72`, `deploy/cloudflare/wrangler.jsonc:36`, `deploy/cloudflare/wrangler.jsonc:46`, `deploy/cloudflare/wrangler.jsonc:55`.
-
-## 3. Current Stage release identity and proof
-
-| Item | Verified value |
+| Item | Retained value |
 | --- | --- |
-| Public origin | `https://stage-timeker.aekr.io` |
-| Feature source | `dbf73e52ca03726e7903dc74ef27e40339c06936` |
-| Worker version | `9a1cfc5f-73ec-4856-b3bb-ea9a2817168c` |
-| Deployment | `7ad0ff03-c344-4cad-be59-409d3e490813`, 100% |
-| Container application | `a0343dd5-a04b-4e30-b5da-98a373bf4990`, version 20 |
-| Image SHA-256 | `9b04918f1171f93c5e7b6009c114846ba8b7f36390e2e3ad3e27cc879944f426` |
-| Durable Object namespace | `7a44251757ea4f46ada50886133f915f` |
-| Running instance | `18b0a510c32d8f837485fab90f752acf39ed6ec9036c6bf3f9a322144ada81d2`, `timeker-ph2-stage-v1`, version 20, bos03 |
-| Database head | `ph3_006_quoting_library`, all nine retained/prepared runtime schemas |
+| Tested/deployed runtime source | `e282985ea74e89e1665351c22f91706498495e93` |
+| Worker | `retained resource identifier omitted` |
+| Deployment | `retained resource identifier omitted`, 100 percent at readback |
+| Container application | `retained resource identifier omitted`, version/running 29 |
+| Image SHA-256 | `fb3399f00baa2ee9efda0f0dd3e460cc2c706a4ce820133e8af429690948c80c` |
+| Final readback | `2026-10-18T03:42:14.067017+00:00` |
+| HTTP/asset selection | 31 anonymous GET checks; 15 source-matching versioned assets |
+| Health | live 200 in 0.125 s; ready 200 in 4.184 s |
+| Provider metadata | One running instance; no active rollout/provider errors; active 1 / healthy 0 |
+| Schema | Nine runtime schemas last verified at `ph3_009_read_indexes`; five quarantines unchanged |
+| Preserved configuration | 25 plain values, 20 encrypted binding names, existing namespace/resources and Case-only cron |
 
-Canonical record: `HOSTING.md:9`, `docs/STATUS.md:22`, `deploy/cloudflare/STAGE_RELEASE.md:1`. Private readback metadata is retained under `.aekr/work/quoting-library-20261016/`; it contains no credential values in this dossier.
+Source: [HOSTING.md:12](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L12). Preserve healthy 0 as recorded; HTTP 200 does not change that counter. Anonymous GETs do not establish authenticated owner UAT or reverify database persistence. A separate authenticated Clear cache check fetched 22 known public files, preserved an unsaved synthetic value and retained sign-in; it is one feature check. Temporary registry credentials were logged out at `2026-10-18T03:43:23.1891360Z`; that receipt does not describe a future operator session.
 
-The converged application metadata at **20:24:02.928 UTC** had no active rollout or errors. It reported **active 1 / healthy 0**, while the actual instance separately reported running/version 20. Do not normalize that provider counter to healthy 1. Independent HTTP checks establish different facts: `/health/live` and `/health/ready` returned 200, with readiness taking approximately 24.789 seconds. Source: `HOSTING.md:17`.
+The current source includes later documentation at `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. Publishing those commits did not deploy a new image. The original production registry remains unchanged; [chapter 13](13-production-stage-differences.md) compares the two sources.
 
-At **20:24:57.053515 UTC**, nineteen hosted **GET-only** checks passed: public authentication/policy/recovery paths, live/ready, seven source-matching static asset digests, and three anonymous protected routes redirecting 303 to `/`. Binding comparison preserved twenty-five plain values, twenty encrypted binding **names**, and the namespace. A Brave navigation initially saw a transient rollout 503, then the public landing because there was no authenticated session. This is not authenticated hosted Quoting/Library/Sending UAT. No auth POST, OTP/mail read, account creation, agreement acceptance, real send or payment was performed by these checks. Sources: `HOSTING.md:22`, `docs/STATUS.md:22`.
+## 4. PostgreSQL, tenancy and connection budgets
 
-## 4. PostgreSQL, tenant roles and connection budgets
+Verified identity or a scoped opaque integration credential resolves a trusted fixed descriptor server-side. User/model input cannot select schema, DSN or role. Connections verify expected role/schema. Runtime roles remain nonowner and cannot create/migrate objects, bypass isolation or fall back to the default owner's workspace. Admission slots are operator-prepared; runtime DDL is prohibited. Sources: [app/tenancy.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L1), [app/admission_operations.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_operations.py#L1), [scripts/postgres-runtime-grants.sql:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/postgres-runtime-grants.sql#L1).
 
-Stage uses the recorded Supabase **session pooler** endpoint `aws-0-us-east-2.pooler.supabase.com:5432/postgres`, not transaction pooling. The Worker requires `sslmode=verify-full`, the bundled trusted vendor CA, the pinned project/role/database, and only bounded supported connection options. Data API access is disabled; application business schemas are not exposed to anonymous/authenticated API roles. Sources: `HOSTING.md:336`, `deploy/cloudflare/src/proxy.ts:210`, `Dockerfile:18`.
+SQLAlchemy hides parameters, disables echo, uses pre-ping, zero overflow and bounded pool waiting. The generic factory defaults to five connections; registry tenant/slot factories use two. Budget all instances multiplied by potentially active pools plus migration, backup/provider and reserve connections. Fifty local workspaces do not prove hosted capacity. Keep reviewed session-pooler/TLS verification; transaction pooling requires separate identity/search_path/prepared-statement/guard compatibility proof. Sources: [app/db.py:9](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py#L9), [app/tenancy.py:240](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L240), [docs/OPERATIONS.md:711](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L711), [deploy/cloudflare/src/proxy.ts:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/proxy.ts#L1).
 
-The registry contains trusted fixed tenant descriptors. Verified session identity or an authenticated opaque integration credential resolves a descriptor; user/model input cannot name a schema, runtime role or arbitrary connection. Factories use fixed role/schema connections and verify `current_user` and `current_schema()` on connect. SQLAlchemy hides parameters, disables echo, uses pre-ping, zero overflow and a ten-second pool timeout. The generic factory default is five connections; registry tenant/slot factories explicitly use two. Budget all instances × active tenant pools plus migrations, backups, provider headroom and operator connections. Historical fifty-tenant local evidence is not a hosted capacity guarantee. Sources: `app/db.py:9`, `app/tenancy.py:96`, `app/tenancy.py:234`, `app/tenancy.py:276`, `app/tenancy.py:476`, `docs/OPERATIONS.md:673`.
+Deep readiness checks maintained head/tables/role authority and foreign boundaries. Inventory the relevant retained/prepared/allocated schemas freshly before a future operation; the last nine-schema inventory is not a permanent allocation map. Quarantines are not signup slots. Sources: [app/db.py:6](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py#L6), [HOSTING.md:35](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L35).
 
-Runtime roles do not own or migrate objects and have no superuser, CREATEDB, CREATEROLE, bypass-RLS, inherited membership, foreign schema access or own-schema CREATE. Maintained grants distinguish normal mutable tables from append-only snapshots/history and guarded draft deletion. The central admission directory alone permits the required SELECT/INSERT/UPDATE; noncentral shadow directories are denied. Function ownership/search paths and revoked PUBLIC/runtime execution are part of the boundary. Sources: `scripts/postgres-runtime-grants.sql:1`, `app/tenancy.py:355`, `app/admission_operations.py:79`, `app/workspace_operations.py:83`.
+## 5. Disposable local setup and verification
 
-Readiness checks the maintained head, required tables, role authority and foreign boundaries before normal service. A healthy TCP port alone cannot establish correct schema/grants or registration readiness. `/health/live` and `/health/ready` expose status, not secrets or customer data. Sources: `app/db.py:6`, `app/tenancy.py:346`, `app/tenancy.py:355`, `app/main.py:678`.
+PH3 has source/minimal governance, not old operators, environments, databases, credentials, browser sessions, installed dependencies or historical output. Prepare a new authorized local environment. Keep PostgreSQL data/logs outside synchronized storage. Preserve real filesystem/resource failures without inventing a cause; serialize heavy backend/browser/Docker work when measured capacity requires it.
 
-## 5. Safe local setup and test procedure
+The examples below apply only to a new fictional local target. Configure loopback PostgreSQL ending `_test`, synthetic keys and a separate DDL fixture authority. Fixtures migrate/TRUNCATE their own targets. Never point them at Stage, production, valuable existing data or real customer records. Guards reject hosted environment names and non-loopback/non-`_test` targets. Sources: [tests/conftest.py:23](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/conftest.py#L23), [README.md:30](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/README.md#L30).
 
-These examples are for a **new disposable local environment only**, not Stage or production. Do not copy a hosted database or real client artifacts into fixtures. Use a dedicated database ending `_test` on loopback, an explicitly test environment, and a separate administrator for schema/role setup. Test fixtures migrate and TRUNCATE their database; pointing them at valuable data is destructive. The suite refuses hosted environment names and non-loopback/non-`_test` targets. Source: `tests/conftest.py:23`, `tests/conftest.py:38`, `tests/conftest.py:57`.
-
-Keep PGDATA and PostgreSQL logs outside OneDrive or other synchronized folders. The retained auth work encountered a real PostgreSQL file-creation `Invalid argument` error with PGDATA inside OneDrive; a new empty local cluster outside sync storage was the remediation. A large unrelated process also coincided with resource exhaustion/browser closure, but the exact browser/WSL cause was not proven. Do not convert correlation into an established diagnosis. Serialize memory-heavy full backend, browser and Docker activity when capacity is constrained. Prior evidence/history: `docs/STATUS.md:128` and its serial validation record.
-
-The latest task used PostgreSQL 18 on loopback port **55580**, outside OneDrive under the task's LocalAppData custody, restricted test roles, separate backend/browser/migration databases, and synthetic data. It is now stopped. Future work must verify path/port/pins and prepare new disposable databases; do not restart it or reuse a destructive fixture merely because it existed.
-
-Documented setup commands after configuring a new isolated local target and synthetic keys:
-
-```powershell
+```sh
 uv sync --locked
 uv run timeker migrate
 uv run timeker seed --profile fixture
@@ -78,143 +62,92 @@ uv run timeker doctor
 uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
-`doctor` checks database connectivity and a PDF render. `seed --profile fixture` is fictional; never run `seed --profile alco`, copy/restore or reset on a hosted target as release preparation. Development login must remain explicitly nonproduction. Source: `README.md:43`, `app/cli.py:24`, `app/cli.py:50`, `app/cli.py:54`, `app/cli.py:103`.
+`doctor` checks safe readiness/PDF rendering. Fictional seeding is distinct from private real-data import. Development login is explicitly nonproduction. Compose/demo overrides require separate local database/volume custody and are not hosted deployment profiles. Sources: [app/cli.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/cli.py#L1), [compose.yaml:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/compose.yaml#L1), [compose.demo.yaml:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/compose.demo.yaml#L1).
 
-Compose provides local PostgreSQL, a migration job and the application; it is development-only. The separate demo override has its own project/volume and fictional data. It is not a deployment model for hosted credentials. Documented commands, not executed here:
+Use new receipt/log/XML names and source attribution for required checks. Concurrent backend/browser selections require separate targets; downgrade tests require a separate disposable migration database. Browser port 8019 cannot be shared concurrently; external E2E origin is limited to the isolated local demo at `http://127.0.0.1:8029`. Fixtures use synthetic mail/payment data. Install matching Playwright/Pango dependencies only for the selected tests. Sources: [tests/e2e/conftest.py:14](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/conftest.py#L14), [tests/migration_target.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/migration_target.py#L1).
 
-```powershell
-docker compose up --build
-docker compose exec app timeker seed --profile fixture
-```
-
-Sources: `compose.yaml:1`, `compose.demo.yaml:1`, `README.md:64`.
-
-For normal verification, use fresh receipt/log/XML paths and before/after source manifests. Backend and browser must use separate databases if overlapping; migration downgrade tests must use their own empty database. Existing fixture browsers start loopback port 8019 and cannot overlap that port; an external E2E origin is allowed only for the isolated local container at `http://127.0.0.1:8029`. Browser providers are stubbed; no real email or payment is required. Sources: `tests/e2e/conftest.py:14`, `tests/e2e/conftest.py:24`.
-
-```powershell
-uv run pytest tests --ignore=tests/e2e -q --tb=short --junitxml=<new-private-backend.xml>
-uv run ruff check app tests
+```sh
+uv run pytest tests --ignore=tests/e2e -q --tb=short
+uv run ruff check app tests --no-cache
 uv run mypy app
 node --check app/web/static/app.js
-node --check app/web/static/auth_challenge.js
-uv run pytest tests/e2e/test_quoting_library_browser.py tests/e2e/test_quoting_lookup_browser.py tests/e2e/test_proposal_sending_browser.py tests/e2e/test_case_workflow_browser.py tests/e2e/test_lookups_browser.py tests/e2e/test_sending_browser.py -q --tb=short --junitxml=<new-private-browser.xml>
+node --check app/web/static/workspace.js
+node --check app/web/static/settings_cache.js
+uv run pytest tests/e2e -q --tb=short
 ```
 
-Angle-bracket output placeholders must be replaced before use. Matching Playwright Chromium installation is a separate local dependency step; no browser download was performed for this dossier. PDF/render checks also require the local Pango/WeasyPrint runtime. Sources: `README.md:45`, `README.md:82`.
+These commands were not run for the dossier. Include disposable migration/guard, affected browser/accessibility, deterministic PDF totals and logging-redaction evidence when applicable. Keep exact selections, raw failures and role boundaries; do not sum overlapping suites into unique feature coverage. See [quality/evidence](07-security-privacy-quality-and-evidence.md) and [AGENTS.md:174](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/AGENTS.md#L174).
 
-### Current test evidence, without inflated totals
+Retained base source `3e1d564ff56cafbd133533c784afa5e4780e5f53` passed 2,153 backend and 296 browser cases, zero failures/errors/skips in each selection, plus six static checks. Settings source `e282985` separately passed eight backend/four browser cases and seven static checks; this does not create a fresh full-suite claim. Earlier failed attempts remain retained. Administrative closure/clone ran source/Git/document/static checks without rerunning unchanged product suites. Sources: [docs/STATUS.md:72](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L72), [docs/PHASE2_CLOSEOUT.md:77](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L77).
 
-The latest backend gate is **CONSOLIDATED_PASS covering 1,785 distinct cases**, not a fresh all-green full run. Raw r3 is retained as **FAILED: 1,784 PASS / 1 FAIL**, 909.65 seconds, seven upstream warnings. Its only failure was an obsolete navigation order expectation. After a one-line assertion correction, the complete unit suite passed **761 cases**, 9.45 seconds, one warning. Current app/integration/root/migration/grant bytes match r3; the consolidated receipt retains **917 integration + 107 root-level backend** successes and the fresh 761 units with exact disjoint coverage and artifact/diff pins. One collection-time UUID4 parameter label was normalized solely for coverage matching. Do not sum overlapping runs into 2,546 or relabel raw r3 PASS. Source: `docs/STATUS.md:61`.
+## 6. Reviewed build and Stage release procedure
 
-Final r4 affected browser: **32 PASS**, zero failures/errors/skips, 78.98 seconds, one upstream warning. Ruff, mypy **79 modules**, both JavaScript syntax checks and **84 Jinja templates** passed. A fresh disposable base→head→base→head and Alembic check passed with **32 protective functions**. Worker/dependency bytes were unchanged, so their suites were **not rerun** for this feature. Focused counts overlap and are not additional unique coverage. Sources and exact executed commands: `docs/STATUS.md:73`, `docs/STATUS.md:83`.
+The multi-stage image uses locked nondevelopment dependencies, native Pango/fonts and UID 10001. Build inputs are explicit; Git ignore alone does not exclude private files from packaging. Do not include private governance, operators, credentials, real PDFs or databases. Sources: [Dockerfile:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/Dockerfile#L1), [.dockerignore:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/.dockerignore#L1).
 
-## 6. Docker build and guarded Stage release SOP
+For a separately authorized release:
 
-The multi-stage Dockerfile pins uv `0.13.0`, uses Python `3.13-slim`, installs locked non-development Python dependencies, and adds Pango/fonts for WeasyPrint. Runtime UID is 10001. Application, Alembic, grants and the vendor CA are copied into the image; database credentials and real business payloads are not build inputs. The runtime command serves port 8000 and the image probes local readiness. Sources: `Dockerfile:1`, `Dockerfile:8`, `Dockerfile:10`, `Dockerfile:15`, `Dockerfile:20`, `Dockerfile:22`.
+1. Pin branch/HEAD/dirty state, bounded changes, prior runtime identities and exact target resources; preserve unrelated work.
+2. Run source-bound local checks on disposable targets. Retain failures and justified unchanged-coverage attribution.
+3. If schema changes are needed, inventory all applicable workspaces; verify encrypted backup, migration/grants/guards and the database procedure below before an image requiring the new head.
+4. Check binding names, plain configuration, namespace/resources, origin and protected inventory validators. Never print secret values; reject mixed profiles.
+5. Run the reviewed strict full-Docker/Worker dry-run and retain native output/image digest/input seals. A failed build is not deployment.
+6. With current authority, deploy sealed inputs through the fixed Stage profile. The established family uses `wrangler deploy --strict --keep-vars`. Historical private wrappers are not automatically reusable operators.
+7. Wait for actual deployment/container convergence; read version/image/running instance, rollout/errors and binding preservation before matching assets and authorized health/public checks.
+8. Exercise only separately authorized normal authenticated/human/provider flows; attribute them separately from anonymous health.
+9. Record commands, results, failures, compatible recovery boundary and pending acceptance in canonical docs. Close temporary task credentials through selected custody.
 
-The reviewed Stage deployment route is manual, with exact source and receipt seals, a strict build dry-run and `wrangler deploy --strict --keep-vars` against the fixed Stage config. `--keep-vars` is essential to the established binding-preservation discipline; success still requires comparing actual readback. The private wrapper is an immutable record of this release, not a reusable generic production script. The package's plain dry-run shortcut is not equivalent to all private guard checks. Sources: `docs/STATUS.md:97`, `docs/STATUS.md:104`, `deploy/cloudflare/package.json:6`; private `.aekr/work/quoting-library-20261016/release-stage.ps1:1`.
+CLI exit zero, Git push, a visible form or one 403/503 cannot replace convergence/readback or completed human flow. The retained no-Builds/Actions-disabled observation was not refreshed for administrative closure. Sources: [HOSTING.md:57](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L57), [deploy/cloudflare/README.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/README.md#L1), [docs/DEPLOYMENT.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DEPLOYMENT.md#L1).
 
-A future approved Stage release should follow this sequence:
+## 7. Backup, forward migration and restore
 
-1. Resolve current branch/HEAD/dirty state and verify the authorized environment/resource identity. Pin all app/test/migration/static/config/dependency bytes and current prior Worker/application metadata. Review changes and pending gates.
-2. Produce appropriate clean local evidence with disposable targets, exact commands, logs/JUnit and source before/after hashes. Preserve failures explicitly; any consolidated gate needs an independently verified narrow change and disjoint unchanged coverage.
-3. Inventory retained and prepared schemas. Obtain and verify encrypted consistent backup before DDL. Review migration/role/grant/function/slot boundaries. Complete the migration SOP below before deploying an image that requires the new head.
-4. Verify all required binding **names**, plain configuration, protected inventory validators, namespace/resources and selected origin. Never print a binding value. Reject missing/mixed profiles rather than weakening validators.
-5. Run the current reviewed strict Docker/Worker dry-run. Retain image digest and native build output. If download/build fails, retain the failed outcome; do not call it a deployment.
-6. Only with current authority, deploy the sealed source/config/image. Save Worker version and deployment identity. Wait for the deployment percentage and Container rollout to converge; CLI exit zero alone is insufficient.
-7. Read actual application/image/version, running instance, rollout/errors/resources and binding-preservation metadata. Run the specifically authorized hosted checks and match actual asset digests. Keep anonymous/public health results separate from authenticated feature UAT.
-8. Record exact results, failures, pending human proof and rollback boundary in canonical docs. Retain backup/receipts and remove only temporary task credentials through the authorized custody procedure.
+### Inventory and protected backup
 
-Current readback helper/receipt: `.aekr/work/quoting-library-20261016/verify_release_readback.py` and `stage-final-release-readback-receipt.json`. It records the actual healthy counter rather than fabricating one. This dossier does not rerun that helper or any network command.
+Inventory retained/prepared/allocated/quarantined schemas, exact heads/owners/runtime roles/grants/markers. Existing approved schema owners migrate; runtime credentials are not DDL authority. Do not change owner/password/role attributes to pass a migration. Credentials/keys stay in protected custody, absent from public text and shell history.
 
-## 7. Backup, migration and restore SOP
+Use the reviewed consistent snapshot/custom-dump orchestration; encrypt protected payloads and retain independent integrity/TOC metadata. Unrelated dumps do not create one consistent multi-schema snapshot. `pg_dump`, `pg_restore --list` and reviewed `pg_restore --no-owner --exit-on-error` into a new isolated target identify tools, not a selected connection or execution instruction. Sources: [docs/OPERATIONS.md:142](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L142), [docs/OPERATIONS.md:758](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L758).
 
-### 7.1 Inventory and backup before a writer change
+Separate schema 009 custody covered nine schemas/495 snapshot tables. Apply/fresh verify preserved 486 business-table full-column fingerprints, sequence values, definitions/ACLs, runtime grants and five quarantines; 36 guards/schema and 72 reciprocal SQLSTATE 42501 denials before/after passed. Only three additive B-trees and reviewed head/slot markers changed. Stage 29 image-only GET checks do not repeat this proof. Decrypt/TOC checks are not hosted restore. Sources: [HOSTING.md:26](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L26), [alembic/versions/ph3_009_read_indexes.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_009_read_indexes.py#L1), [docs/STATUS.md:102](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L102).
 
-Inventory **all retained, prepared and allocated** workspaces, not only logged-in owners. Current active inventory is four retained schemas (`timeker`, `timeker_eve`, `timeker_stage_ed`, `timeker_stage_cordo`) plus five correctly prepared `timeker_stage_signup_01` through `_05` slots. The five prefix-mismatched `timeker_signup_01` through `_05` are excluded quarantine: empty, NOLOGIN, unchanged head005/markers/structure. Do not allocate, delete or reassign them incidentally. Source: `docs/OPERATIONS.md:8`, `docs/OPERATIONS.md:104`.
+### Apply and independently verify
 
-Use existing schema owners for migration: four named migrators and the existing administrator for five administrator-owned prepared schemas. Runtime roles are never migration credentials. No owner/password/role change is an acceptable shortcut to pass DDL. All database/provider secrets remain in protected operator custody; the source tree/dossier holds only names, pins and safe receipts.
+Rehearse the exact forward migration on a new disposable/restored target with compatible source and reviewed fixture-owner authority. Before hosted DDL, verify source/backup/pins, expected server/database/TLS, original immutable owner identity, actual restricted runtime authority and retained fingerprints/guards. Apply only reviewed migration/grants; journal each schema transaction separately. Verify heads/structures/full retained fingerprints, ownership/search paths, table/sequence grants, no runtime DDL and reciprocal denials under actual restricted roles. Include slot markers and central/noncentral directory boundaries.
 
-The completed release exported a consistent repeatable-read snapshot and custom-format dump for the bounded schemas, encrypted the backup outside Git, and verified archive inventory plus decrypted SHA-256. This proves custody/readability/inventory, **not** a restore rehearsal, RPO, RTO or hosted recovery readiness. Current backup completed its custody verification at **20:17:48 UTC**. Source: `docs/OPERATIONS.md:118`; private carrier review `.aekr/work/quoting-library-20261016/STAGE_CARRIER_REVIEW.md:31`.
+Per-schema commits are not a globally atomic upgrade. On failure/uncertainty, stop and retain outcomes, backup/source/image/pins. Independently inspect actual committed heads/data/grants/markers before bounded forward continuation. Never blindly replay a carrier, reseed/reset, change ownership or downgrade populated history. Guard-only downgrades may retain protections; old writers can still be incompatible with stable IDs/immutable history. Sources: [docs/OPERATIONS.md:142](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L142), [scripts/postgres-runtime-grants.sql:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/postgres-runtime-grants.sql#L1), [alembic/versions/ph3_007_work_records.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L1).
 
-Generic command shapes for a future authorized, protected operator session are shown only to identify tools; they are not executable targets:
+### Restore and external effects
 
-```text
-pg_dump --format=custom --file=<protected-staging-dump> <approved-connection>
-pg_restore --list <verified-dump>
-pg_restore --no-owner --exit-on-error --dbname=<new-isolated-restore-target> <verified-dump>
-```
+Restore/cutover is separately selected. Rehearse in a new isolated database with compatible image, separate key custody and effects disabled. Verify all retained/prepared schemas; roles/grants/search paths/guards; heads; issued bytes/checksums; balances/contributions/import/audit receipts; admission slots; integrations/revocations; Mail attachments; and subscription/delivery uncertainty. Do not revive stale sessions/provider credentials publicly.
 
-Never place an actual password/DSN in shell history or dossier text. A consistent multi-schema snapshot requires the reviewed snapshot/locking orchestration, not merely running several unrelated dumps. Encrypt protected business data promptly using the approved custody mechanism and retain integrity metadata separately. Source: `docs/OPERATIONS.md:760` and the bounded current carrier documentation.
+Restore cannot undo an accepted email, purchase/webhook or refresh rotation. Reconcile post-snapshot provider effects/revocations before writers/retry. A restored Pending row does not authorize resend/recharge. Roll back an image only with compatible schema/immutable-writer semantics; otherwise prepare forward repair. Local rehearsals do not establish a current hosted restore, funded backup service, RPO or RTO. Sources: [docs/OPERATIONS.md:711](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L711), [docs/OPERATIONS.md:758](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L758), [docs/STATUS.md:27](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27).
 
-### 7.2 Apply and verify a forward migration
+Archiving controls visibility/export while retaining references/history. It is neither backup nor storage reclamation. Issued artifacts remain immutable. Do not schedule destructive purges; retention/rights/holds and off-host/key custody remain selected operational decisions. Sources: [docs/OPERATIONS.md:758](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L758), [docs/OPERATIONS.md:8](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L8).
 
-The current head `ph3_006_quoting_library` adds nine tables: `quotes`, `quote_revisions`, `quote_lines`, `quote_artifacts`, `library_documents`, `library_uploads`, `library_document_versions`, `proposal_sending_deliveries`, and `proposal_sending_attempts`. It adds protective guards for frozen artifacts, owned Case binding, publication, immutable attempts and permitted claim/settle transitions. Downgrade refuses while commercial data or Services Cases remain. Sources: `alembic/versions/ph3_006_quoting_library.py:13`, `alembic/versions/ph3_006_quoting_library.py:281`, `alembic/versions/ph3_006_quoting_library.py:528`.
+## 8. Incidents, diagnostics and uncertainty
 
-The completed Stage carrier verified source/pin/backup seals, expected server/database/TLS, existing owner identity, actual runtime password authority, retained fingerprints and function definitions **before any DDL**. Each schema's migration and exact grants executed in its own transaction under its existing owner. It updated compatible preparation markers for the five real slots and rechecked central/noncentral admission grants. UTC/ISO/bytea-hex canonicalization made fingerprints comparable across owner connections. Source: `docs/OPERATIONS.md:104`; private `stage_quoting_carrier.py` and `STAGE_CARRIER_REVIEW.md` under the reviewed task evidence directory.
-
-Final migration/readback completed **20:21:58.954519 UTC**:
-
-- Nine schemas at head006; **396** pre-existing non-Alembic table fingerprints unchanged, forty-four per schema including directory shadows.
-- Nine new tables per schema, **81** total, all empty at migration readback.
-- **32** exact protective functions per schema, pinned owner/search path, no PUBLIC/runtime execution, exact table/sequence grants.
-- Actual nine restricted runtime password connections passed authority checks and produced **72 reciprocal SQLSTATE 42501 denials before DDL** and a separate **72 after**.
-- No account allocation, role attribute, object ownership, credential or retained business data changed; all five quarantined schemas remained unchanged.
-
-Source: `docs/OPERATIONS.md:118`, `docs/STATUS.md:47`. This is not a claim that every future schema or grant will remain correct without revalidation.
-
-**Partial migration rule:** the nine transactions are separate commits, not one cross-schema atomic upgrade. On a failure or uncertain outcome, stop and retain the encrypted backup, expected source/image/pins and per-schema outcome journal. Independently read actual heads, structure, row fingerprints, grants and markers before preparing a bounded forward continuation. Never replay the executed carrier blindly, seed/reset, change schema ownership or downgrade populated history as an operational retry. Source: `docs/OPERATIONS.md:134`.
-
-### 7.3 Restore rehearsal and recovery
-
-A restore is a new separately approved operation. Rehearse into a new isolated database with compatible source/image, private key custody and no network effects. Validate the entire retained/prepared schema inventory, roles/grants/search paths/function guards, migration heads, issued bytes/checksums, financial balances, audit history, integration/token receipts, slot allocation markers, mail artifacts and subscription/delivery uncertainty. Do not expose restored sessions or old machine credentials to the public application. Sources: `docs/OPERATIONS.md:673`, `docs/OPERATIONS.md:708`, `docs/OPERATIONS.md:760`.
-
-Previously committed external effects survive a database restore: a provider may already have accepted an email, a checkout may have charged, a webhook may have been delivered, or a refresh token may have rotated. Reconcile those facts with provider evidence before allowing replay. Restoring an old pending row is not authority to resend or recharge. Roll back an image only when its schema and immutable-writer behavior are compatible; otherwise use a reviewed forward correction. No restore rehearsal was performed on the current Stage backup, and no production recovery or recovery-time guarantee is claimed.
-
-## 8. Incidents, logs and business audit
-
-Diagnostic logs use standard Python logging with an allowlisted event/field boundary: UTC timestamp, severity, safe event, UUID request/execution/entity/actor IDs, registered route template, method, status, duration and terminal outcome. Exception text and unknown fields are redacted. Uvicorn/SQLAlchemy/HTTPX/Authlib/WeasyPrint noisy raw handlers are suppressed. A logging failure cannot alter an already committed business result. Sources: `app/logging.py:10`, `app/logging.py:32`, `app/logging.py:61`, `app/logging.py:81`, `app/logging.py:104`.
-
-Never copy tokens, cookies, query strings, authorization headers, credentials, names, email addresses, correspondence, bank/tax data, line descriptions, contracts or PDF bytes into diagnostic output or incident tickets. Business audit is a separate database record tied to actor, entity, event and request ID in the business transaction; it is not a reason to log payloads externally. Source: `app/audit.py:8`; redaction tests `tests/unit/test_logging.py` and affected integration suites.
+Diagnostics allow sanitized UTC event/request/execution/entity IDs, registered route/method/status, duration and terminal outcome. Business audit belongs in its database transaction. Suppress raw exception/SQL/access/provider output. Logging failure cannot alter a committed result. Never copy tokens, cookies, headers/query strings, addresses, business text, contracts, bank/tax data or PDF bytes into diagnostics/tickets. Sources: [app/logging.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/logging.py#L1), [app/audit.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/audit.py#L1), [tests/unit/test_logging.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_logging.py#L1).
 
 | Symptom | Bounded response |
 | --- | --- |
-| Cold-start/rollout 503 | Preserve status/timing and request identifier; check actual rollout/application/instance/image and readiness. Wait for convergence before declaring a persistent defect. Do not infer provider-auth failure from a generic page. |
-| Ready fails or schema mismatch | Fail closed. Compare all selected schema heads, expected role/schema, guard definitions, prepared inventory and grants. Do not bypass startup validation. |
-| OAuth callback generic error | Trace the sanitized reason and exact callback/recovery path. Require fresh normal provider proof; never copy cookies or infer a specific cause solely from text. |
-| Email or Paddle request times out after claim | Retain uncertain state; reconcile exact provider evidence. Do not press retry or recreate the effect blindly. |
-| Partial DDL/deploy | Stop, retain journal/backups/old and new image pins; inspect actual committed state before bounded continuation. |
-| Local filesystem/resource fault | Preserve logs and failed receipts; isolate test PGDATA outside sync storage, verify free resources and serialize heavy work. Do not kill unrelated user processes or change OneDrive without authority. |
-| Corrupt/NUL source file | Preserve original bytes/hash privately, restore only the owned intended file, verify AST/bytes/source hashes and rerun affected gates. Do not assign an unproven cause. |
+| Rollout/cold-start 503 | Preserve safe timing/request ID; inspect rollout/image/instance/readiness, allow convergence, never replay a mutation. |
+| Readiness/schema/role mismatch | Fail closed; compare inventory/head/grants/guards/expected role. No bypass. |
+| Generic auth/CSRF error | Trace safe typed reason/exact normal flow; require fresh human proof. Generic text alone does not identify a provider cause. |
+| Sending/Paddle timeout after claim | Retain uncertainty; reconcile exact provider acceptance before retry. |
+| Partial DDL/deploy | Retain journal/backup/old and new source/image; inspect committed state before continuation. |
+| Local filesystem/resource fault | Retain failure; isolate owned PostgreSQL storage outside sync, measure resources; do not kill unrelated processes. |
+| Damaged source/artifact | Preserve original bytes/hash privately; restore only owned intended content, verify identity and rerun affected checks. |
 
-The release retained interrupted operation-key/UTC runs, the first browser 30 PASS/2 FAIL, the restored NUL test, an initially denied local helper rehearsal and transient rollout 503 without giving them PASS credit. Current corrected gates do not erase those outcomes. Source: `docs/STATUS.md:107`.
+## 9. One future combined PH2 plus PH3 production release
 
-## 9. Future production release — HOC-gated checklist
+The [original production draft PR3](https://github.com/edlopezpm-ops/timeKER/pull/3) is retained historical preparation. Refresh it from eventual final PH2 plus authorized PH3 source. Do not promote PH2 alone or overwrite later work with an old snapshot. Production remains unchanged. Source: [HOSTING.md:7](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L7).
 
-This list describes prerequisites, not approval. Production remains unchanged at this handoff.
+A future authorized candidate must reconcile actual production overrides/original immutable owner binding before public activation; inventory/back up retained/prepared production schemas; select migrations/grants/compatible repair; retain environment-specific identities/secrets/TLS/CSRF/CAPTCHA/abuse controls; establish hosting/pool/storage/mail budgets and retention/recovery contracts; and complete source-bound checks plus actual owner UAT. No Stage seed, acknowledgment, Sandbox purchase or synthetic grant supplies production authority.
 
-- Obtain explicit production scope covering the target source, origin/resources, migration, provider changes, public registration, intended real effects and cutover/recovery authority. A Stage approval or engineering pause/resume is not production authority.
-- Reconcile the original production workspace, existing owner/provider subjects and historical Google-only login before generic admission. Never assign the retained owner a new empty workspace or merge another tester into it. Complete the existing-owner bootstrap and fresh normal identity proof gates. Source: `docs/DEPLOYMENT.md:50`, `docs/DECISIONS.md:861`.
-- Independently inventory and back up production retained/prepared/allocated schemas. Rehearse migration/restore using compatible images and exact restricted roles. Do not use Stage project, credentials, consent receipts or slot descriptors. Source: `docs/OPERATIONS.md:60`, `docs/OPERATIONS.md:104`.
-- Verify production origin/TLS/trusted proxy policy, no development login, fixed registry/provider identities, CSRF/CAPTCHA/rate controls, pool capacity and all startup/grant/reciprocal-denial checks. Reconcile old production data against the migration chain before selecting any writer.
-- Complete merchant/legal/privacy and customer-processing review. Paddle Live requires a separate merchant setup, mode-safe history, Live flag, keys, catalog, webhook verification and authorized real lifecycle checks. Sandbox success is not Live readiness. Source: `docs/OPERATIONS.md:226`.
-- Decide each email channel separately: managed auth SMTP, public contact, business Sending, inbound capture. Verify domain/config/readiness without exposing secrets. Production statement Sending has its own enablement; commercial Quoting/Library remains production-disabled until separately changed and reviewed. Jobs stay off until explicitly authorized. Source: `app/config.py:202`, `app/config.py:206`, `docs/OPERATIONS.md:238`.
-- Run current source-bound quality gates and reviewed build/deploy/readback procedure. Prove actual convergence and health separately from authenticated owner UAT, real recipient effects and product acceptance. Obtain the specific human proof rather than manufacturing a test session.
-- Retain a compatible rollback/forward-repair plan, encrypted custody, operator escalation and uncertainty reconciliation. State remaining limits and obtain the actual HOC release decision before cutover.
+Paddle Live merchant/catalog/credentials/webhooks and actual lifecycle proof remain separate from Sandbox. Authentication SMTP, contact, inbound capture, statement Sending and commercial Sending are distinct channels. Keep production capability gates; jobs remain off until selected. Quoting/Library/commercial Sending source is production-disabled. Sources: [docs/OPERATIONS.md:197](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L197), [docs/OPERATIONS.md:264](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L264), [app/config.py:199](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L199).
 
-## 10. Evidence index for the handoff
+## 10. Custody and evidence limits
 
-The canonical public-source account is `docs/STATUS.md:3`, `HOSTING.md:9`, `deploy/cloudflare/STAGE_RELEASE.md:1` and `docs/OPERATIONS.md:71`. Private task evidence remains in `.aekr/work/quoting-library-20261016/` and protected backup custody; it is intentionally not copied into this Desktop dossier.
+PH2 archive validation retained **28 batches, 8,149 files and 1,580,224,720 bytes** with raw hashes/inverse restoration mappings. The separate Quoting move retained 823 files, one junction and 61,863,545 file bytes. This is local recoverable custody, not public payload, off-host backup or hosted recovery. Current tests/migrations/contracts/design references remain active. Historical payload requires bounded owner retrieval authority. Source: [docs/PHASE2_CLOSEOUT.md:49](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L49).
 
-| Reviewed evidence | SHA-256 or identity |
-| --- | --- |
-| Input pin JSON | `661d0942340383c7fe0c5ad18df738d1bdadad4138ad4f53a0f073626eabe886` |
-| Backup receipt | `6019aa0aef9aebd44cfff744f15ddb092665effaa4bfed22bedadace313e75eb` |
-| Migration receipt | `e38d488f09ffb577cddd00b84ba12ea59a265b26c89a84a37d02359b137132a9` |
-| Consolidated backend receipt | `d2d0b3a6b983e2215e8023ce78b20b862f5f2cd8ac92b783a2d604d4da1f12e3` |
-| Release readback helper | `9bb7913f3da3660cfc97e3d61d68014e6261b88f580b8adcc6627662bad10e40` |
-| Final release readback receipt | `07778d041b22470ab950979e63d7a9198b3bc768e4ed289856614cb71c5d6787` |
+Independent PH3 preparation checked 503 tracked files. Only CONTINUE, README and STATUS changed for startup; the other 500 raw files match closed PH2. Git storage has no alternates/shared commondir, with independent corresponding object/pack file identities. Markdown and the 32-ID map passed. Generic scaffold validation failed on unchanged mandatory product `AGENTS.md`; preserve product authority and the minor compatibility concern rather than claiming PASS. Sources: [docs/PHASE2_CLOSEOUT.md:77](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L77), [CONTINUE.md:10](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L10).
 
-These hashes are provenance checks, not authorization tokens or a promise that an unexamined future file is safe. On resume, verify the exact current artifacts and source before drawing operational credit from them.
-
-**Handoff boundary:** technical Stage delivery is complete at the stated snapshot. Human owner sign-in and product review, actual addressed commercial sends, signatures, Live payments, production deployment and global acceptance are not claimed. No runtime, database, network, provider, credential or real business-data operation was performed to prepare this chapter.
+Outcome remains `DONE_WITH_CONCERNS`: administrative delivery is closed/prepared; real MCP, human UAT, hosted recovery and Live/production acceptance remain open. The public dossier contains safe source explanations/provenance, without private keys, archived payload or business records.

@@ -1,106 +1,142 @@
 {
   "state": "SEALED",
-  "source_analysis_commit": "48e854ff2107dffb217dfe7c487b1b9d36a7f41d",
-  "pause_documentation_commit": "1a1a735aee40da2ede434f39f2a0775f2dc36ff1",
+  "source_analysis_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+  "closed_ph2_commit": "39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6",
+  "snapshot_date": "2026-10-18",
+  "coverage_exclusions": [
+    "PACKAGE-MANIFEST.json",
+    "SHA256SUMS.txt"
+  ],
   "files": [
     {
+      "path": ".gitattributes",
+      "bytes": 19,
+      "sha256": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c"
+    },
+    {
       "path": "00-START-HERE.md",
-      "bytes": 9006,
-      "sha256": "23f796b3765363019bfe1ba0edb70abc41fdaa4c9b97ebf7abab87da210c1f65"
+      "bytes": 6889,
+      "sha256": "00cd5c45b59e399d33243891b2b4ec5e3e8593568975ce3201d3fe7a9ccfa1b1"
     },
     {
       "path": "01-architecture-and-stack.md",
-      "bytes": 20051,
-      "sha256": "4b9534693e2f9fbf5660e4011b76caee5c0b673ca8fdc30018382032d30f8abe"
+      "bytes": 13220,
+      "sha256": "26de04f220c9c39686116eb68fde5e3501f78d9bfd61dc9f9a72baf38ce59a43"
     },
     {
       "path": "02-data-model-and-transactions.md",
-      "bytes": 40494,
-      "sha256": "0fb6d6e5efa4f3d56420d8315e3d5df084cc8ff19cff81a3aa6d061919ebc31d"
+      "bytes": 15533,
+      "sha256": "923bd42657f037b3748eb36593b0aea8dfb3d1e9e8cf8df8dba95cca2f644e9b"
     },
     {
       "path": "03-product-and-user-workflows.md",
-      "bytes": 79036,
-      "sha256": "ae2072e319327d9f301f00875a532b5cd0a3df9026e544fac62c5513e5cbe54a"
+      "bytes": 17328,
+      "sha256": "05ce6bf65db18180a356a1d4b019fe98c36094b3311789908bcc96f2ec069bfd"
     },
     {
       "path": "04-authentication-registration-and-access.md",
-      "bytes": 66501,
-      "sha256": "c88b08178820870e72e15b740a9afb8f5ef326d433943d46f80bd2ca1dc298d9"
+      "bytes": 17973,
+      "sha256": "9d75ddefd471ab6e3141f3030287ce8ff278202182aa74bc4b9e6c3c16c6a61d"
     },
     {
       "path": "05-integrations-and-external-effects.md",
-      "bytes": 28696,
-      "sha256": "b52c2eac90688b991db4150814f894b0a13036d5f3acaaf08ed8b28efae17f80"
+      "bytes": 17321,
+      "sha256": "c147ea43ae49e2eb4c86dfe782103e845f7fdfe5f53bc0316866865149085a4f"
     },
     {
       "path": "06-deployment-and-operations-sop.md",
-      "bytes": 32605,
-      "sha256": "4b0bb95ceab2da098f1aada7bfba8fa9a9289a2a1ad185e8e0fb169960b26578"
+      "bytes": 28206,
+      "sha256": "0fa5e43d91d2b44312269770c89684849c39e6ae9434215adf4a43c04fc089b7"
     },
     {
       "path": "07-security-privacy-quality-and-evidence.md",
-      "bytes": 17519,
-      "sha256": "d84092e9875922f74969108cf4d25446fa121c6c26f61f1e406f7d9a459fdcc1"
+      "bytes": 20672,
+      "sha256": "f8c991d220c0d2b0795bf531c313057f54b41d84ca6944a4befb222cdef5f5dd"
     },
     {
       "path": "08-PAUSE-AND-CONTINUE.md",
-      "bytes": 11146,
-      "sha256": "380f6ea43aaa36cd24659041cf44d39202cc12eabd342fd37c93c2692b6dd8bb"
+      "bytes": 10701,
+      "sha256": "4676c5b9be6632acd6838e72387637cb8350ab04391002de25fec6dc3c4ea8d7"
     },
     {
       "path": "09-improvement-review-guide-and-open-decisions.md",
-      "bytes": 11347,
-      "sha256": "e5e9ae16d59c7d8ef78771714104761348aa6ae3b9fc7a49db5ed8ca1cfba325"
+      "bytes": 12227,
+      "sha256": "8e2cd0b407101afb272ea50ff90de0f390740cc593c22e591431ae1441d1595c"
     },
     {
       "path": "10-http-routes-and-templates.md",
-      "bytes": 19814,
-      "sha256": "3e72609b407e644a9f59d6977b0b93a3bd21ee7fec56c3755988641955b9f3b1"
+      "bytes": 56450,
+      "sha256": "9c0f5b848a97f7efe4e9d78f2572bfa6ba5cbb617679278181fe90b191e333d0"
     },
     {
       "path": "11-models-configuration-and-dependencies.md",
-      "bytes": 61969,
-      "sha256": "9ea149b3b5a1769f658071a4b344be97adc9f792af7282839feed2e286cd0d3b"
+      "bytes": 66494,
+      "sha256": "4b2d76dfddfa0f2fc7132154a3d576a661b7e0d21e98a10b65014ffc36a729fe"
     },
     {
       "path": "12-source-map-tests-and-manifest.md",
-      "bytes": 64056,
-      "sha256": "24a464bc7c714d9c9a18b6f120254db339ba2c6d547bce1ac95590c01a4fa497"
+      "bytes": 175263,
+      "sha256": "9808161780a65e1579516555d872d74791c606a48b95d0dbfeac45aa1a237a58"
     },
     {
       "path": "13-production-stage-differences.md",
-      "bytes": 20243,
-      "sha256": "7c54e273d768d0aadfc4319a161ef64250c97bee269ecbb529fadfa5216be0af"
+      "bytes": 82362,
+      "sha256": "6ce6ab176d39a5a436e891370ba7e7bdbd50560504d6f7045967756084fe3282"
+    },
+    {
+      "path": "14-phase3-prompt-refresh-brief.md",
+      "bytes": 5099,
+      "sha256": "a8ee5b1a9a474b09031c040a0734bc44c22a1ef2076ad686012f6fd67d86047c"
+    },
+    {
+      "path": "CURRENT-STATE.json",
+      "bytes": 1297,
+      "sha256": "57575ca8808935c7e1763cc0d7c07fa377449f07128087c350f0455171f07af0"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1063,
+      "sha256": "2df4cbc7f2c78998f8838a8457bb8fcc628ffdaa1d7b3a510df1c28f84205c8d"
     },
     {
       "path": "PACKAGE-VERIFICATION.json",
-      "bytes": 2013,
-      "sha256": "c66d1124c919cbc68d207b9576e042339bde30e81da423d419d5a7322bc98ad0"
+      "bytes": 1207,
+      "sha256": "a5498288ac9cd4a7e40ce13d78cefd593a262ae7fd9c28101ed5fb8f0df2df93"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2604,
+      "sha256": "1af3533a17af1eb7ee08a5d26ba3cff806b67ca8aeb5826c171329076b673cb6"
     },
     {
       "path": "source-snapshot-manifest.json",
-      "bytes": 71736,
-      "sha256": "50fe4f61060ef3b44ef9d2523cdf5bfc0305bd29a1ac6c0888c6da227f4a3b5b"
+      "bytes": 118863,
+      "sha256": "68e60c0a6b54d531f717e8d45c3524bab9a45f33a5ab938db6f97ddb435f439b"
+    },
+    {
+      "path": "timeKER-FULL-DOSSIER-2026-10-16.md",
+      "bytes": 372,
+      "sha256": "ada3e2c1230745ca585609b235894784346692a0b732e716a0c6c9e705411f35"
+    },
+    {
+      "path": "timeKER-FULL-DOSSIER-2026-10-18.md",
+      "bytes": 546205,
+      "sha256": "1a67ecee9f9c33d39c79c8777aa34dce04f077ec8e0a5911452772c489309a87"
     },
     {
       "path": "timeKER-FULL-DOSSIER.md",
-      "bytes": 487432,
-      "sha256": "703e609d00d4ee4f59244ea063ae005e55563ac3d8a70c497803389fc3b3be15"
-    }
-  ],
-  "external_desktop_files": [
-    {
-      "path": "C:\\Users\\edlop\\OneDrive\\Desktop\\timeKER-FULL-DOSSIER-2026-10-16.md",
-      "sha256": "e459aa7439f928b65cd6a655bac61ea2103df4af411fafe3819d223cc7060d21",
-      "bytes": 488192
+      "bytes": 546205,
+      "sha256": "1a67ecee9f9c33d39c79c8777aa34dce04f077ec8e0a5911452772c489309a87"
     },
     {
-      "path": "C:\\Users\\edlop\\OneDrive\\Desktop\\timeKER-START-HERE-2026-10-16.md",
-      "sha256": "bdfb97cd9100cd30c297455606199fd431a2c6ccbc6d1e3bf7a25c16806449c6",
-      "bytes": 711
+      "path": "timeKER-START-HERE-2026-10-16.md",
+      "bytes": 316,
+      "sha256": "3c1fd3402768226df599ea5a76d8ab88af2f72802ab65aeab68d6e522f403ed3"
+    },
+    {
+      "path": "timeKER-START-HERE-2026-10-18.md",
+      "bytes": 369,
+      "sha256": "391d162e966d1ae11fcccfb30c4c1e127ecc411b8bd8bfcd50e8dc07fb73046f"
     }
-  ],
-  "self_hash_excluded": true,
-  "sha256sums_hash_excluded": true
+  ]
 }

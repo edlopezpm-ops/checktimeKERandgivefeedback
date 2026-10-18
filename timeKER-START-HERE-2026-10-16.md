@@ -1,9 +1,6 @@
-# timeKER — Desktop dossier
+# Legacy entry filename — current snapshot is 2026-10-18
 
-**Stage improvements PAUSED until direct HOC resume. PROD remains as is.**
-
-- [Read the complete single Markdown dossier](timeKER-FULL-DOSSIER-2026-10-16.md)
-- [Open the chapter index](timeKER-Codebase-Dossier-2026-10-16/00-START-HERE.md)
-- [Read the pause and continuation queue](timeKER-Codebase-Dossier-2026-10-16/08-PAUSE-AND-CONTINUE.md)
-
-The package covers architecture, stack, data/entities, all product workflows, authentication/registration, integrations, deployment/SOP, security/privacy, QA evidence, improvement questions, routes/configuration/dependencies and production–Stage differences. It is a dated source-backed review, not a deployment instruction.
+This path is retained for compatibility. Read the
+[current entry](timeKER-START-HERE-2026-10-18.md) and
+[current chapter index](00-START-HERE.md). The 2026-10-16 dossier is historical
+in Git; its old pause/runtime/test counts are not the current baseline.

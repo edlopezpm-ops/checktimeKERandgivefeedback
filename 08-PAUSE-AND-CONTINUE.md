@@ -1,71 +1,35 @@
-# HOC pause and continuation — 2026-10-16
+# 08 — PH2 closed; PH3 prepared and awaiting owner prompts
 
-**Project lifecycle: PAUSED — explicit HOC resume required.**
+Snapshot: **2026-10-18**, source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. This stable filename is retained for dossier links; the former 2026-10-16 pause text is superseded by the later owner-authorized administrative transition. The active source entry is [CONTINUE.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1). This chapter mirrors it and does not create a competing specification.
 
-HOC: Ed Lopez. This record implements the owner's 2026-10-16 instruction to stop
-here, leave the remaining points in the continuation, keep PROD as it is, and
-pause Stage improvement work until HOC resumes it. Preparing the requested Desktop
-dossier and recording this pause are the final authorized actions of this session.
-This document is the continuation entry, not a new product specification.
+Outcome: DONE_WITH_CONCERNS
 
-## Authority while paused
+Delivery state: PH2 is consolidated/frozen at `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6`, annotated tag `ph2-closeout-2026-10-18`. The independent `timeKER PH3` checkout uses `codex/ph3-stage` and the existing `edlopezpm-ops/timeker-PH2` repository. The original production repository is a read-only baseline with push disabled in PH3.
 
-- Do not start or continue Stage engineering, provider setup, migrations, deployment,
-  automatic test/write rehearsals, customer sends or rollout work by agent inertia.
-- Do not merge, deploy or change PROD, DNS, OAuth consoles, secrets or business data.
-- Retain the current Stage runtime/configuration/data and the existing production
-  service. This is a work pause; no service shutdown, flag change, account revocation,
-  schema deactivation or scheduler activation is requested or performed.
-- No timer, pending list, saved plugin, draft PR, tool availability or previous
-  implementation authorization resumes work. A direct HOC instruction must revoke
-  this pause and define the next scope. Resume of Stage does not authorize PROD.
-- Existing private switchboard rows are unchanged. Capability availability does
-  not override this later owner instruction. No new automation is created.
+Product state: continue using `https://stage-timeker.aekr.io`. Last verified runtime remains Stage 29/source `e282985ea74e89e1665351c22f91706498495e93`/schema `ph3_009_read_indexes`. Administrative preparation changes no running application, database, provider or environment.
 
-## Retained snapshot
+Gate/authority state: Ed Lopez authorized closure/archive/consolidation/clone and will supply PH3 prompts. Await those prompts before feature implementation. Identity proof, UAT, hosted recovery, Live billing and production remain separate. One future reviewed production candidate must combine PH2 and authorized PH3. Do not merge, migrate or deploy old drafts by inference. Sources: [CONTINUE.md:3](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L3), [HOSTING.md:7](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L7).
 
-| Area | Last verified state |
+## Current source and retained runtime
+
+| Boundary | Current documented state |
 | --- | --- |
-| Stage repository | `C:\Users\edlop\OneDrive\Documents\VS Code\timeker-PH2` |
-| Stage branch/source-analysis checkpoint | `codex/ph3-onboarding-auth` / `48e854ff2107dffb217dfe7c487b1b9d36a7f41d` |
-| Isolated feature checkout | `C:\Users\edlop\OneDrive\Documents\VS Code\timeker-PH2-quoting`, retained with private QA/migration evidence |
-| Deployed runtime source | `dbf73e52ca03726e7903dc74ef27e40339c06936` (later checkpoint adds documentation only) |
-| Stage URL | `https://stage-timeker.aekr.io` |
-| Worker / deployment | `9a1cfc5f-73ec-4856-b3bb-ea9a2817168c` / `7ad0ff03-c344-4cad-be59-409d3e490813`, 100% |
-| Container application | `a0343dd5-a04b-4e30-b5da-98a373bf4990`, application and running instance 20 |
-| Image SHA-256 | `9b04918f1171f93c5e7b6009c114846ba8b7f36390e2e3ad3e27cc879944f426` |
-| Database | Nine actual runtime schemas at `ph3_006_quoting_library`; 32 guard functions per schema |
-| Excluded preparation artifacts | Five empty NOLOGIN/head005 schemas unchanged; not routable signup slots |
-| Activation | Stage signup enabled with finite prepared slots; Google/GitHub/managed email configured; Paddle Sandbox; scheduled Sending jobs off |
-| Configuration | 25 plain values and 20 encrypted binding names retained unchanged by last release; secrets remain protected |
-| Stage PR | [timeker-PH2 #3](https://github.com/edlopezpm-ops/timeker-PH2/pull/3), OPEN draft, no production effect |
-| PROD | `https://timeker.aekr.io`; original repo main remains `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`, unchanged by this work |
-| Owner registration | Last read-only Stage proof confirms `elopez@aekr.io` exists with a registration receipt; this does not prove a current browser session or every linked provider |
-| Test infrastructure | Owned PostgreSQL stopped gracefully, files retained; temporary Docker registry credentials logged out |
+| PH3 analysis checkpoint | `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` on `codex/ph3-stage` |
+| Closed PH2 checkpoint | `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6` / `ph2-closeout-2026-10-18` |
+| Last runtime release | Stage 29/source `e282985`; final readback `2026-10-18T03:42:14.067017+00:00` |
+| Database evidence | Nine runtime schemas last verified at head 009; five quarantines unchanged |
+| Human/provider limits | Actual MCP, normal identity/UAT, remaining Sandbox lifecycle and hosted recovery remain pending |
+| Scheduling | Case-only daily 02:17 UTC cron configured; execution not observed; scheduled Sending off |
+| Production baseline | Original main `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`, unchanged; no fresh runtime query |
+| Future production draft | [Original timeKER PR3](https://github.com/edlopezpm-ops/timeKER/pull/3), retained historical preparation requiring final PH2 plus PH3 reconciliation |
 
-These are last verified receipts, not a claim of continuous monitoring. Reconcile
-current local/remote/provider/database state after HOC resumes; do not redeploy or
-repeat a carrier merely because its old command is documented.
+These are source/dated receipt facts, not continuous monitoring. Exact Worker/deployment/image and health metadata are in [chapter 06](06-deployment-and-operations-sop.md) and [HOSTING.md:12](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L12).
 
-## What is implemented
+## Exact carried-forward queue
 
-The original Phase2 core is implemented in Stage: private tenant schemas/roles,
-immutable full cancellation credit memos, strict reviewed Draft JSON/CSV imports,
-retained contributions/corrections, proposed clients, scoped OAuth/API/MCP business
-tools and Settings assistant onboarding. The private connection package exists.
-Real external-client execution/acceptance remains open.
+The canonical residual table is [docs/STATUS.md:27](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27). Its requirements are retained here for prompt preparation.
 
-Later increments include individual Free/Solo/Pro enrollment/capacity and Sandbox
-subscriptions; improved Google/GitHub/email registration/linking and one shared
-authentication CAPTCHA; concise versioned sign-in notice and public policies;
-reviewed statement Sending; and Case-bound Quoting, private Library and independent
-commercial Sending. HLE never requires a SOW/SLA/contract. Working commercial
-records require an owned Case, with native Services Case creation. Timecards follows
-Projects and Quoting precedes Billing. Apple runtime is not implemented.
-
-## Continue queue — original Phase2 closure
-
-| ID | Work after explicit HOC resume | Evidence required to close |
+| ID | Required work in a separately authorized PH3 scope | Evidence required to close |
 | --- | --- | --- |
 | P2-01 | Complete a real assistant/MCP connection through normal human OAuth allow; discover and invoke tools | Actual tool discovery and bounded reads with two separate fictional owners; reciprocal isolation; confirmed idempotent Draft creation/correction; refresh rotation and revocation stop access. Record actual host/client surface; do not infer dot/voice support. |
 | P2-02 | Owner functional UAT on Stage with existing and newly admitted accounts | Sign-in/signup/provider linking and recovery; correct private workspace; import preview/commit/replay/correction; clients/proposals/Cases/timecards; invoice/credit/payment/report/history behavior. Use synthetic business data and fresh normal identity proof. Record defects and accept/reject explicitly. |
@@ -75,7 +39,7 @@ No additional unimplemented module was identified within the documented original
 D052–D058 feature contract. This is not 100% product acceptance: P2-01 and P2-02
 have not been executed end to end. Commercial/operational decisions remain distinct.
 
-## Continue queue — subsequent scope, tracked separately
+## Subsequent scope carried into PH3
 
 | ID | Scope | Current gap |
 | --- | --- | --- |
@@ -85,58 +49,33 @@ have not been executed end to end. Commercial/operational decisions remain disti
 | EXT-04 | Sending operational selection | Manual review/confirmation framework exists. Scheduled statement jobs remain off. Decide/authorize any future job activation and exact addressed test separately; uncertain acceptance is never replayed. |
 | EXT-05 | Future PROD candidate and full rollout | Reconcile current production runtime overrides, verified immutable owner bootstrap, migration/grants/inventory/providers, environment-specific capabilities and accepted data/custody contracts. Prepare a current reviewable candidate only after HOC authorizes that work. Older production draft packages do not automatically include later Stage improvements. |
 
-## Evidence carried forward
 
-- Backend: consolidated coverage of 1,785 distinct cases. Raw full r3 remains
-  FAILED at 1,784 PASS/1 obsolete navigation assertion. Only that test line changed;
-  the full 761-unit suite then passed. Successful 917 integration + 107 root backend
-  cases are retained over unchanged runtime/integration/migration bytes.
-- Final affected browser: 32 PASS. Static Ruff/mypy79/JavaScript checks, 84-template
-  compilation and fresh disposable migration roundtrip/check passed. Worker suites
-  were not rerun over unchanged Worker/dependency bytes.
-- Stage migration: consistent encrypted backup, nine head006 schemas, 396 old table
-  fingerprints unchanged, 32 guards/schema, 72 preflight and 72 final foreign-role
-  denials, five quarantined schemas unchanged. No restore rehearsal of that backup.
-- Hosted: 19 public GET checks, seven matching source assets, live/ready200 and
-  protected commercial routes303. Provider metadata active 1 / healthy 0 is retained
-  exactly, separately from application health 200 and running instance 20.
-- No current authenticated hosted feature execution, external-client MCP acceptance,
-  human UAT, Apple activation, real customer send or production acceptance is implied.
-- Backup receipt SHA-256:
-  `6019aa0aef9aebd44cfff744f15ddb092665effaa4bfed22bedadace313e75eb`.
-- Migration receipt SHA-256:
-  `e38d488f09ffb577cddd00b84ba12ea59a265b26c89a84a37d02359b137132a9`.
-- Consolidated backend receipt SHA-256:
-  `d2d0b3a6b983e2215e8023ce78b20b862f5f2cd8ac92b783a2d604d4da1f12e3`.
-- Final release readback receipt SHA-256:
-  `07778d041b22470ab950979e63d7a9198b3bc768e4ed289856614cb71c5d6787`.
+Additional retained limits: human acceptance of the latest navigation/performance/
+Settings changes remains open. The Case-only 02:17 UTC cron is configured, but an
+actual scheduled execution has not been observed. Sending jobs remain disabled.
+Live merchant/catalog/credentials/webhooks, general-admission/offboarding and
+current production overrides need their own later review. The synthetic Stage
+Pro grant is not a paid-provider event and must not be copied into production.
 
-Private evidence remains in the retained feature checkout under
-`.aekr/work/quoting-library-20261016/`. Protected backups/keys remain in their
-existing custody, not in Git or the Desktop dossier. Preserve failed receipts and
-separate schema commit journals. Do not blindly replay migration/dispatch effects.
+Source: [docs/STATUS.md:27](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27). These rows are not one implementation sprint. A selected PH3 prompt supplies scope/acceptance; authorization for one row does not activate the others.
 
-## Resume procedure
+## What is already delivered
 
-1. Obtain a direct HOC instruction to resume, with the selected queue item(s).
-2. Read this file, `AGENTS.md`, `docs/STATUS.md`, `HOSTING.md`, relevant canonical
-   contracts and current private switchboard/governance. Retain the pause until
-   the resume authority is recorded; no new implementation follows from reading.
-3. Verify branch/HEAD/dirty state and actual relevant environment state. Reuse
-   retained source/evidence rather than replaying closed tasks or archived payload.
-4. Select one bounded item, its human identity/external-effect requirements and
-   actual acceptance criteria. Normal credentials/MFA/OTP/consent stay with HOC.
-5. Execute only that resumed scope; verify it and update the canonical status.
-6. Treat a PROD candidate, merge, migration, deployment and full rollout as distinct
-   later owner decisions. A Stage resume is not a production release instruction.
+Preserve original PH2 credit memos, strict reviewed Draft imports/contributions/corrections, proposed clients, scoped OAuth/API/MCP services and Settings connection guidance. Later Stage source includes individual enrollment/Sandbox subscriptions; Google/GitHub/managed-email admission/linking; shared challenge/versioned sign-in notice; reviewed Sending; Case-bound Quoting/private Library; work-record/lifecycle/search/pagination refinements; Dashboard detail/rhythm behavior; owner-wide weekly Timecards summaries; K/Back navigation; native reference choices; measured read optimizations; and Settings public-file refresh. Apple runtime/offboarding and the acceptance rows above remain separate. Sources: [docs/PROJECT_BRIEF.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PROJECT_BRIEF.md#L1), [docs/DECISIONS.md:945](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L945), [docs/DECISIONS.md:983](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L983), [docs/DECISIONS.md:1060](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1060).
 
-## Desktop review package
+No additional unimplemented module was identified in original D052–D058. Administrative closure transfers unresolved proof and decisions; it does not convert them into completed acceptance or erase failures.
 
-`C:\Users\edlop\OneDrive\Desktop\timeKER-Codebase-Dossier-2026-10-16\`
+## Archive and clone custody
 
-Start at `00-START-HERE.md`; `timeKER-FULL-DOSSIER.md` is the combined reading copy.
-The package explains the full source-backed stack, architecture, entities,
-functional workflows, authentication/admission, integrations, deployment/SOP,
-quality/evidence, known gaps and source/route/configuration inventories. It is a
-dated analysis snapshot, not an alternate active specification or a source/data
-backup. Package verification/hashes are generated after all chapters are complete.
+Reversible local archive covers 28 batches/8,149 files/1,580,224,720 bytes, plus the separate native Quoting move. Current tests, migrations, contracts, design references and operative decisions remain active. Prior payload is not included in this public dossier or PH3 clone. Independent preparation proved all 500 nonstartup tracked files unchanged, independent Git storage and no old runtime/private environment copied. The generic root-AGENTS scaffold-validator incompatibility remains documented; Project Map validation passed. Source: [docs/PHASE2_CLOSEOUT.md:49](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L49).
+
+## Entry procedure for the next PH3 prompt
+
+1. Read canonical CONTINUE, AGENTS, STATUS, PH2_CLOSEOUT, HOSTING, operative decisions/design/contracts and applicable private governance. Historical payload stays outside ordinary context.
+2. Record the owner's bounded prompt, exclusions and acceptance evidence. Missing business/legal/provider decisions remain unknown until supplied.
+3. Verify current branch/HEAD/dirty state and relevant actual environment only within that scope. Preserve unrelated work and failed receipts.
+4. Reuse delivered services/tests/migrations and retained evidence. Do not replay old seeds/imports, migrations, purchases, sends or release carriers.
+5. Keep normal login/MFA/OTP/provider consent and UAT with the owner. Never read mailbox proof, copy sessions or synthesize acceptance.
+6. Execute/verify only the selected PH3 scope and update canonical continuity. Keep a later PROD candidate, merge, migration/configuration and deployment separately authorized.
+
+Source: [CONTINUE.md:20](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L20). No timer, tool availability, pending PR or saved package begins feature work. The next task is the owner's PH3 prompt.

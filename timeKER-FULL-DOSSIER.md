@@ -1,1799 +1,1470 @@
-# timeKER — complete codebase dossier and HOC pause
+# timeKER — full current dossier and PH3 prompt handoff
 
-Prepared on2026-10-16 for Ed Lopez. Stage source analysis is pinned to `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`.
-**Stage improvement work is PAUSED until direct HOC resume. PROD remains unchanged.**
-This combined reading copy contains the full index and every chapter. Commands are documentation only. No product, provider, database or production action is authorized by this file.
+Snapshot2026-10-18; source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. Generated reading copy of the canonical
+index and fourteen chapters below. No product/runtime test or deployment is
+performed by dossier generation. PH2 closed administratively; PH3 awaits owner
+prompts; Stage continues; future PROD combines PH2+PH3.
 
-## Contents
+# timeKER — current codebase dossier and PH3 prompt handoff
 
-- [timeKER — full codebase dossier and HOC pause](#chapter-00)
-- [01 — Architecture and stack](#chapter-01)
-- [02 — Data model and transaction semantics](#chapter-02)
-- [03 — Product and user workflows](#chapter-03)
-- [04 — Authentication, registration and access](#chapter-04)
-- [05 — Integrations and external effects](#chapter-05)
-- [06 — Deployment and operations SOP](#chapter-06)
-- [Security, privacy, quality and evidence](#chapter-07)
-- [HOC pause and continuation — 2026-10-16](#chapter-08)
-- [Improvement review guide and open decisions](#chapter-09)
-- [HTTP route and template inventory](#chapter-10)
-- [Models, configuration, migrations and dependencies](#chapter-11)
-- [Source map, test catalog and snapshot manifest](#chapter-12)
-- [Production baseline and Stage differences](#chapter-13)
+Snapshot **2026-10-18**. PH2 is administratively closed; the independent PH3 source
+checkout is prepared and awaits Ed Lopez's feature prompts. Existing Stage
+continues. One later production candidate must include PH2 plus PH3.
 
----
+This is a descriptive public review snapshot. Canonical contracts remain in the
+application repository. No implementation, provider activation, data mutation,
+human acceptance or production authority follows from this package.
 
-<a id="chapter-00"></a>
+## Exact provenance
 
-<!-- Source chapter: 00-START-HERE.md -->
+| Item | Current snapshot |
+| --- | --- |
+| Analyzed source | `edlopezpm-ops/timeker-PH2`, branch `codex/ph3-stage`, commit `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` |
+| Frozen PH2 baseline | `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6`, tag `ph2-closeout-2026-10-18` |
+| PH3 startup delta | Three entry/continuation Markdown files; all 500 other tracked files match PH2 byte for byte |
+| Last verified Stage source | `e282985ea74e89e1665351c22f91706498495e93`, Stage 29; release readback 2026-10-18T03:42:14.067017+00:00 |
+| Last verified schema | `ph3_009_read_indexes`, nine actual runtime schemas; five quarantines retained |
+| Stage URL | https://stage-timeker.aekr.io |
+| Original production source | `edlopezpm-ops/timeKER`, main `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`, clean and unchanged by this session |
+| Production URL | https://timeker.aekr.io |
+| Inventory | 503 tracked paths; 291 Python files; 180 literal route decorators; 54 mapped class/table declarations; 48 Settings fields; 90 Jinja templates; 1089 declared test functions |
+| Generation | Offline AST/TOML/JSON/Git and maintained source/documentation; no application imports or product tests |
 
-# timeKER — full codebase dossier and HOC pause
+Source pointers are pinned to the analyzed commit and actual one-based lines.
+Private source links can require repository access; the narrative and complete
+inventories here support documentation review without pretending code access.
+Runtime facts are retained dated receipts, not live continuous monitoring.
 
-Prepared for Ed Lopez on 2026-10-16. Language: English, following the project's
-source/documentation convention. This package supports a deep technical/product
-review of the whole codebase and its operating model. It is a dated analysis
-snapshot, not a competing active specification, source/data backup or permission
-to execute the included operational commands.
+## Read the dossier
 
-**Stage improvement work is PAUSED until direct HOC resume. PROD remains as is.**
-The current services/configuration/data are retained; no runtime shutdown or flag
-change is part of the pause. Only documentation and verification of this package
-were performed for this closeout. No database, provider, authentication, customer
-send, payment, migration or deployment was executed to prepare it.
-
-## Read this package
-
-For one continuous Markdown document, open [timeKER-FULL-DOSSIER.md](timeKER-FULL-DOSSIER.md).
-For focused review, use the chapters below. Both formats contain the same substantive
-chapters; the combined file is generated from these files, not independently authored.
+Use [timeKER-FULL-DOSSIER.md](timeKER-FULL-DOSSIER.md) for one continuous reading
+copy, or the chapters below. The dated 2026-10-18 combined copy has identical bytes.
 
 | Chapter | Content |
 | --- | --- |
-| [01 — Architecture and stack](01-architecture-and-stack.md) | System context, monolith, Worker/Container/PostgreSQL topology, layers, request lifecycle, actual stack/versions and runtime boundaries. |
-| [02 — Data model and transactions](02-data-model-and-transactions.md) | Entity relationships, ownership, stored/derived states, constraints/guards, transaction protocols, money/minutes/time zones, history/immutability. |
-| [03 — Product and user workflows](03-product-and-user-workflows.md) | Complete page/domain catalog and ordinary/error workflows: clients, projects/Cases, timecards, imports, reports, billing, credit memos, payments, Mail/archive, settings, plans, Quoting/Library and Sending. |
-| [04 — Authentication, registration and access](04-authentication-registration-and-access.md) | Google/GitHub/managed email, shared Turnstile, identity binding/linking, notices/receipts, signup/admission slots, session/CSRF/roles, failure/recovery and absent Apple/deletion. |
-| [05 — Integrations and external effects](05-integrations-and-external-effects.md) | OAuth/API/MCP tools/scopes, confirmation and token lifecycle, import, separate email channels, Paddle, signed webhooks/internal jobs, retry/uncertainty/idempotency boundaries. |
-| [06 — Deployment and operations SOP](06-deployment-and-operations-sop.md) | Local setup, containers, environment/secret custody, actual Stage hosting, migration/grants, deployment/readback, backup/restore, incident handling and future HOC-gated production release steps. |
-| [07 — Security, privacy, quality and evidence](07-security-privacy-quality-and-evidence.md) | Implemented controls, data/encryption/file limits, diagnostic/business audit distinction, policy/preferences, executed QA and honest pending verification. |
-| [08 — Pause and continue](08-PAUSE-AND-CONTINUE.md) | Owner pause, exact retained snapshot, original Phase2 closure queue, later scope, receipts and resume procedure. This mirrors the canonical repository CONTINUE at closeout. |
-| [09 — Improvement review guide](09-improvement-review-guide-and-open-decisions.md) | Source-backed review questions, measured change criteria, known open work and distinctions between capability, activation, execution and acceptance. No implementation is authorized by these prompts. |
-| [10 — HTTP routes and templates](10-http-routes-and-templates.md) | Offline literal route-decorator catalog and Jinja template inventory, with extraction limits. |
-| [11 — Models, configuration and dependencies](11-models-configuration-and-dependencies.md) | All53 mapped entities/fields,48 Settings fields, migration chain, complete Python lock inventory and Worker package inventory; credential values omitted. |
-| [12 — Source map, tests and manifest](12-source-map-tests-and-manifest.md) | Every app module, static test-file catalog,414 tracked paths with byte/hash identity. Static counts are not executed-test counts. |
-| [13 — PROD/Stage differences](13-production-stage-differences.md) | Exact untouched production baseline versus Stage, dated runtime identities, feature differences, complete tracked source delta and future release implications. |
-
-## Snapshot and provenance
-
-| Item | Snapshot |
-| --- | --- |
-| Primary analyzed codebase | `C:\Users\edlop\OneDrive\Documents\VS Code\timeker-PH2` |
-| Stage source-analysis commit | `48e854ff2107dffb217dfe7c487b1b9d36a7f41d` on `codex/ph3-onboarding-auth` |
-| Deployed Stage application source | `dbf73e52ca03726e7903dc74ef27e40339c06936`; analysis checkpoint adds documentation only |
-| Stage URL | `https://stage-timeker.aekr.io` |
-| Original production repository | `C:\Users\edlop\OneDrive\Documents\VS Code\timeKER`, main `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`, clean and unchanged |
-| Production URL | `https://timeker.aekr.io` |
-| Inventory method | Offline AST/TOML/JSON/Git tree reads, no application imports or live service discovery |
-| Static inventory | 414 tracked paths,227 Python files,173 literal route declarations,53 mapped entities,48 Settings fields,892 declared test functions |
-| Canonical source of product truth | Repository AGENTS, PROJECT_BRIEF, DECISIONS, DESIGN_SPEC, STATUS, HOSTING and relevant maintained contracts |
-| Canonical pause/resume entry | `timeker-PH2/CONTINUE.md`, carried in chapter08 |
-
-Later pause closeout edits are Markdown/continuation only. The exact baseline
-manifest intentionally remains pinned to the analyzed commit rather than silently
-changing source identity when the pause is committed. Source pointers refer to
-that commit; some local documentation line numbers move after the pause prefix is
-added. Application source references remain stable because no app code changed.
-
-The package uses public source and maintained operator/product documents, with
-selected already-recorded release metadata. Runtime identities are last verified
-receipts, not fresh continuous monitoring. No source archive/private historical
-payload was retrieved to generate the technical chapters. Actual uploaded client
-contracts, database contents, private seeds, invoice PDFs and protected credential
-values are excluded. Configuration names, public URLs, source hashes and schema
-structure are included to make analysis precise.
+| [Architecture and stack](01-architecture-and-stack.md) | Monolith, edge/container/database topology, workers, read paths and public-file caching. |
+| [Data model and transactions](02-data-model-and-transactions.md) | Owner/schema boundaries, exact minutes/money, immutable artifacts and transaction protocols. |
+| [Product and workflows](03-product-and-user-workflows.md) | Current complete navigation/business flows, lifecycle, pagination, native choices and cache refresh. |
+| [Authentication and admission](04-authentication-registration-and-access.md) | Existing/new owners, immutable proof, linking, finite slots, session/CSRF/CAPTCHA and actual gaps. |
+| [Integrations and effects](05-integrations-and-external-effects.md) | MCP/scopes, imports, token lifecycle, separate delivery channels, Sandbox and jobs. |
+| [Deployment and operations](06-deployment-and-operations-sop.md) | Current retained Stage 29/schema 009, safe SOP, custody, recovery and one future combined PROD candidate. |
+| [Security, privacy and evidence](07-security-privacy-quality-and-evidence.md) | Controls, exact source-bound test/release attribution, historical failures and unverified acceptance. |
+| [PH2 closure and PH3 continuation](08-PAUSE-AND-CONTINUE.md) | Current continuation; administrative closure and all transferred P2/EXT residuals. |
+| [Improvement review](09-improvement-review-guide-and-open-decisions.md) | Current delivered baseline, remaining decisions and bounded review priorities. |
+| [Routes and templates](10-http-routes-and-templates.md) | Complete offline literal route-decorator and Jinja inventories. |
+| [Models/configuration/dependencies](11-models-configuration-and-dependencies.md) | Complete mapped-class/field, Settings, migration and lockfile appendices. |
+| [Source/test manifest](12-source-map-tests-and-manifest.md) | Every tracked source path with raw-byte hash and complete static test/module catalogs. |
+| [Production/Stage differences](13-production-stage-differences.md) | Exact source-tree comparison and dated environment differences; original production untouched. |
+| [PH3 prompt-refresh brief](14-phase3-prompt-refresh-brief.md) | Instructions and acceptance boundaries for revising the owner-supplied PH3 prompts. |
 
 ## Current delivery truth
 
-- The original Phase2 feature core is implemented in Stage. Real assistant/client
-  OAuth allow, tool discovery/use with two owners, refresh/revocation and owner UAT
-  remain open. A saved private plugin is not evidence of an authenticated connection.
-- Later Stage functionality includes public signup into finite preprepared private
-  workspaces, alternate sign-in, Free/Solo/Pro Sandbox subscriptions, separate
-  statement Sending and Case-bound Quoting/Library/commercial Sending.
-- Apple runtime/account deletion is absent. Remaining actual subscription-provider
-  rehearsals, hosted commercial owner UAT, operational budgets/custody and a current
-  production candidate/full rollout are separately tracked.
-- Last backend gate is consolidated coverage of1,785 distinct cases, not a new
-  all-green full run. The raw full run remains FAILED at1,784 PASS/one obsolete
-  assertion; a complete761-unit rerun passed after the test-only correction.
-  Final affected browser suite32 PASS and19 hosted public GET checks passed.
-- The nine-schema Stage migration retained396 old table fingerprints and verified
-  guards/grants/isolation. Its encrypted backup passed custody/inventory/hash checks;
-  that operation did not perform a restore rehearsal.
-- No human Stage acceptance, actual customer email, Apple activation, Live payment
-  or production rollout is implied by automated checks or this package.
+Original D052–D058 feature modules exist. Remaining P2-01 actual MCP/two-owner/
+token lifecycle, P2-02 human Stage UAT and P2-03 operational/recovery decisions
+are explicitly transferred. Later Apple/offboarding, actual Sandbox lifecycle,
+commercial owner UAT, Sending selection and future PROD gates remain separate.
+Stage follow-ups include work-record/client lifecycle, consistent pagination and
+status, stable visible Project IDs, weekly Timecards summaries, Dashboard
+fixed-five details/rhythm, K navigation, measured read-path performance, native
+reference choices and Settings public-file refresh. Review these existing flows
+before proposing them as new PH3 work.
 
-## Recommended reading sequence
+Retained full base source 3e1d564 passed 2,153 backend/296 browser cases; final
+Settings source e282985 passed 8 backend/4 browser focused cases and 7 static checks.
+These source-bound denominators are not added as one unique-feature count.
+Stage 29 readback passed 31 anonymous GETs/15 matching source assets. Separate schema 009
+proof retained 486 business-table fingerprints across nine schemas. Human UAT,
+hosted restore, actual external MCP and paid-PROD readiness remain unestablished.
 
-1. Read08 for what is paused, retained and allowed to resume.
-2. Read01–02 for system/data/transaction structure.
-3. Read03–05 for exact product, identity and integration behavior.
-4. Read06–07 for SOP, operational limits and actual assurance.
-5. Use10–13 while inspecting source or comparing a proposed change.
-6. Use09 to organize improvement analysis without treating open ideas as approved work.
+Administrative closure verified 28 archive batches/8,149files with raw hashes and
+inverse maps, recoverable Quoting checkout custody, independent PH3 Git storage
+and 500 unchanged tracked raw-file hashes. The generic scaffold validator still
+rejects unchanged mandatory product AGENTS; the Project Map passed. Local
+custody is not off-host recovery. Current tests/migrations/contracts remain active.
 
-## Verification files
+## Integrity and limitations
 
-- [source-snapshot-manifest.json](source-snapshot-manifest.json) pins baseline source paths/bytes/hashes and offline extraction counts.
-- `PACKAGE-MANIFEST.json` and `SHA256SUMS.txt` pin the final delivered Desktop files.
-- `PACKAGE-VERIFICATION.json` records actual offline package checks, limitations and final closeout source identity. These describe documentation validation, not product test execution or a security certification.
+[source-snapshot-manifest.json](source-snapshot-manifest.json) pins all source
+paths/raw bytes/hashes and Git blob IDs. [PACKAGE-MANIFEST.json](PACKAGE-MANIFEST.json)
+and [SHA256SUMS.txt](SHA256SUMS.txt) bind current review-package files.
+[PACKAGE-VERIFICATION.json](PACKAGE-VERIFICATION.json) records actual offline
+checks and limitations. Package integrity is not product correctness, security
+certification, UAT, deployment or recovery proof.
 
-Keep all chapters together so relative links resolve. The combined MD can be read
-alone for narrative/appendices, while its linked chapter files remain useful for
-navigation. No ZIP, vendor upload, sharing permission or external publication is
-required to use the local package.
-
+No private archives, business records, actual uploaded contracts, environment
+credentials, session tokens, invoice PDFs, backup/key material or machine-local
+paths are published. Historical dated entry names are small compatibility pointers;
+the previous dossier remains recoverable in this repository's Git history.
 
 ---
-
-<a id="chapter-01"></a>
-
-<!-- Source chapter: 01-architecture-and-stack.md -->
 
 # 01 — Architecture and stack
 
-## Snapshot and provenance
+## Review baseline
 
-This is a dated technical review snapshot, prepared on 2026-10-16 for the HOC
-pause closeout. It is not an active specification, a deployment instruction or
-authorization to resume Stage improvements. Stage work remains paused until an
-explicit HOC resume. Production is unchanged by this review.
+This chapter describes the source prepared for Phase 3 on 2026-10-18. The
+reviewed source is `edlopezpm-ops/timeker-PH2` commit `9fc9eeb`, branch
+`codex/ph3-stage`, derived from the closed PH2 tag `ph2-closeout-2026-10-18`
+at `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6`. The repository name retains PH2
+for continuity; the active development phase is PH3.
 
-The reviewed repository is
-`C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2`, branch
-`codex/ph3-onboarding-auth`, verified clean at
-`48e854ff2107dffb217dfe7c487b1b9d36a7f41d` before the audit. Source pointers below
-are relative to that repository and use one-based line numbers at this commit.
-The implementation review used tracked Python, TypeScript, templates, migrations,
-lockfiles and canonical documentation. No application modules were imported to
-initialize the app, and no database, provider, credential store, environment file,
-private contract or actual business record was accessed. No test or hosted check
-was run for this dossier.
+The owner chose to keep using Stage. PH3 feature work awaits the owner's prompts.
+The eventual reviewed production candidate must combine PH2 and authorized PH3
+work. Administrative closure does not establish human acceptance, production GO,
+provider readiness or hosted recovery. This dossier is a source review, not an
+instruction to merge, configure a provider, migrate a database or deploy.
 
-Deployment facts are attributed to the existing `docs/STATUS.md:3–59` record,
-rather than a new live verification. That record identifies Stage application
-runtime source `dbf73e52ca03726e7903dc74ef27e40339c06936`, Worker
-`9a1cfc5f-73ec-4856-b3bb-ea9a2817168c`, application version 20, and image SHA-256
-`9b04918f1171f93c5e7b6009c114846ba8b7f36390e2e3ad3e27cc879944f426`.
-The reviewed HEAD also includes subsequent documentation/integration custody.
-The original production checkout is separately recorded at
-`dfb2538ec81d07f1c91fdf2bdc5096d4d0313609` (`docs/STATUS.md:120–126`). Source
-capability in this Stage branch must not be described as deployed production
-behavior.
+Last retained hosted evidence identifies Stage 29, runtime source `e282985`, and
+schema head `ph3_009_read_indexes`. These facts come from canonical records;
+this refresh did not contact Stage or run application tests. Later preparation
+commits change documentation/custody, not the delivered application behavior.
+
+Sources: [continuation boundary](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eeb/CONTINUE.md),
+[closeout](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eeb/docs/PHASE2_CLOSEOUT.md),
+`docs/STATUS.md`, `HOSTING.md`.
 
 ## 1. System shape
 
-timeKER is one deployable Python web application with same-origin server-rendered
-HTML, a small local JavaScript layer and one PostgreSQL database per environment.
-Cloudflare Workers provide the public adapter; a Durable Object identifies and
-manages the application Container. PostgreSQL stores business records, immutable
-artifacts, operation receipts and audit history. The Durable Object's platform
-SQLite declaration is Container control infrastructure; it is not a second
-business datastore. There is no Redis, Celery, Kafka, separate AI backend,
-frontend SPA or independently deployed business microservice in this source.
+timeKER is one deployable application and one PostgreSQL database per
+environment. FastAPI serves same-origin HTML and endpoints; Jinja renders values
+calculated by Python services. HTMX and small local scripts progressively enhance
+native links and forms. It is not a SPA, ERP, payroll system or tax engine.
 
 ```mermaid
 flowchart LR
-  Browser[Browser / delegated API client] --> Worker[Cloudflare Worker\norigin + configuration + ingress checks]
-  Worker --> DO[Container Durable Object\nfixed instance identity / lifecycle]
-  DO --> App[Uvicorn + FastAPI monolith\nJinja / services / SQLAlchemy]
-  App --> Registry[Verified identity to fixed tenant descriptor]
-  Registry --> DB[(One PostgreSQL database\nprivate schema + runtime role per workspace)]
-  App --> Identity[Google / GitHub / managed email proof]
-  App --> Payments[Paddle environment-specific adapter]
-  App --> Email[Separate outbound email adapter]
+  Browser[Owner browser or delegated client] --> Edge[Cloudflare Worker]
+  Edge --> Container[Durable Object / application Container]
+  Container --> App[Uvicorn + FastAPI + Jinja]
+  App --> Registry[Verified identity / fixed tenant descriptor]
+  Registry --> DB[(One PostgreSQL database / private schema and role)]
+  App --> Auth[Google / GitHub / managed email proof]
+  App --> Billing[Paddle environment-specific adapter]
+  App --> Outbound[Explicitly gated outbound transport]
 ```
 
-The currently documented Stage topology contains four retained workspace schemas
-and five prepared signup schemas. The central admission directory lives in the
-default schema in the same database. A new account consumes a preprepared slot;
-request handling does not create schemas, roles or databases. A tenant is
-permanently one owner/user, not a team or a client organization. Clients, Projects
-and Cases are records inside that owner's workspace.
+The Durable Object provides Container identity and lifecycle management. Its
+platform SQLite declaration is not a second business database. There is no
+Redis, Celery, Kafka, independent inference backend or business microservice split.
+New owners consume finite operator-prepared schema/role slots; requests never
+create databases, schemas or roles. One tenant permanently means one owner/user.
+Clients, projects and cases are records inside that owner's workspace.
 
-Sources: `AGENTS.md:68–103`; `app/tenancy.py:96–315`;
-`app/admission.py:142–207`; `deploy/cloudflare/wrangler.jsonc:1`;
-`docs/PROJECT_BRIEF.md:3–11`; `docs/design/EXPANSION_DISCOVERY.md:168–180`.
+Sources: `AGENTS.md`, `app/tenancy.py`, `app/admission.py`,
+`deploy/cloudflare/src/index.ts`, `docs/PROJECT_BRIEF.md`.
 
-## 2. Actual declared and locked stack
+## 2. Declared stack and packaging
 
-The table reports repository declarations and lockfile selections. It does not
-claim the version of a newly inspected running process. `pyproject.toml` declares
-Python `>=3.12`; Docker builds and runs `python:3.13-slim`. The image tags are not
-patch-version or base-image-digest pins. The uv build stage uses `0.13.0`, and
-`uv sync --locked --no-dev` installs the runtime environment.
+| Area | Current source declaration |
+| --- | --- |
+| Python | `>=3.12`; Docker build/runtime use `python:3.13-slim` |
+| Packaging | `uv.lock`, Hatchling; application package `timeker` version `0.1.0` |
+| Application | FastAPI, Uvicorn, Jinja2, vendored HTMX |
+| Persistence | Synchronous SQLAlchemy 2, psycopg 3, PostgreSQL, Alembic |
+| Authentication/security | Authlib, HTTPX, ItsDangerous, cryptography |
+| Documents | WeasyPrint; pypdf for test text inspection |
+| Time/configuration | tzdata, python-dotenv; explicit environment configuration |
+| Verification | pytest, Ruff, mypy, Playwright and vendored axe |
+| Edge | Cloudflare Workers/Containers SDK, TypeScript, Wrangler |
+| Local development | Docker Compose and operator/local CLI commands |
 
-| Component | Selected version / policy | Source |
-| --- | --- | --- |
-| Application package | `timeker 0.1.0`; Hatchling build; `timeker = app.cli:main` | `pyproject.toml:1–19` |
-| Python / package install | `>=3.12`; Docker 3.13 slim; uv 0.13.0 | `pyproject.toml:10`; `Dockerfile:1–9` |
-| FastAPI / Starlette | 0.143.0 / 1.7.0 | `uv.lock:306`; `uv.lock:1327` |
-| Uvicorn | 0.54.0 | `uv.lock:1451` |
-| SQLAlchemy / Alembic | 2.1.4 / 1.20.0 | `uv.lock:1255`; `uv.lock:11` |
-| psycopg / binary wheel | 3.3.6 / 3.3.6 | `uv.lock:949`; `uv.lock:967` |
-| PostgreSQL | Local Compose declares PostgreSQL 18; hosted patch version was not queried | `compose.yaml:1–16` |
-| Jinja2 | 3.1.6 | `uv.lock:518` |
-| HTMX | Vendored 2.0.8 | `app/web/static/htmx.min.js:1` |
-| Authlib | 1.8.0 | `uv.lock:56` |
-| HTTPX | 0.28.1 | `uv.lock:476` |
-| ItsDangerous / cryptography | 2.2.0 / 48.0.1 | `uv.lock:509`; `uv.lock:240` |
-| WeasyPrint | 70.0 | `uv.lock:1464` |
-| Pydantic / multipart parser | 2.14.0 / 0.0.32 | `uv.lock:1027`; `uv.lock:1221` |
-| Time-zone data / dotenv | 2026.5 / 1.2.4 | `uv.lock:1442`; `uv.lock:1212` |
-| pytest / Ruff / mypy | 9.1.1 / 0.17.0 / 1.20.2 | `uv.lock:1196`; `uv.lock:1230`; `uv.lock:768` |
-| Playwright / PDF text inspection | 1.63.0 / pypdf 6.20.0 | `uv.lock:921`; `uv.lock:1178` |
-| Cloudflare Containers SDK | 0.3.7 | `deploy/cloudflare/package.json:11–13`; `deploy/cloudflare/package-lock.json:20` |
-| Wrangler / TypeScript | 4.149.0 / 7.0.2 | `deploy/cloudflare/package.json:14–20` |
-| Workers types | 5.20261011.1 | `deploy/cloudflare/package.json:14–20` |
-| Worker compatibility | 2026-10-13; `nodejs_compat` | `deploy/cloudflare/wrangler.jsonc:6–7` |
+Exact locked versions and configuration declarations belong to chapter 11 and
+the source lockfiles. A declared or locked version is not a live-process query.
+Docker copies uv `0.13.0`, installs with `uv sync --locked --no-dev`, and supplies
+Pango/Harfbuzz/fonts for PDF rendering. The application runs under an
+unprivileged user on port 8000 with Uvicorn access logging disabled.
 
-Docker is a two-stage Python application build after the uv tool stage. Runtime
-native packages provide Pango/Harfbuzz and DejaVu fonts for WeasyPrint. The process
-runs as an unprivileged system user, exposes port 8000 and disables Uvicorn access
-logging. The image does not run a migration automatically on startup. Local
-Compose has an explicit migration service before the app; hosted schema upgrades
-are separately operated and evidenced.
+The image does not migrate the database at startup. Local Compose uses a
+separate migration service; hosted migrations/grants are separately operated.
+The production and Stage Worker profiles are distinct. Build/package inputs
+explicitly select product directories; private governance, environment files,
+browser sessions, generated output and archives are outside release content.
 
-Sources: `Dockerfile:1–23`; `compose.yaml:17–34`; `app/db.py:1–29`.
+Sources: `pyproject.toml`, `uv.lock`, `Dockerfile`, `compose.yaml`,
+`.dockerignore`, `deploy/cloudflare/package.json`.
 
-## 3. Public edge and Container pipeline
+## 3. Edge and Container pipeline
 
-1. The Worker first validates its environment against an explicit Stage policy:
-   canonical origin, database target/TLS shape, registry, provider flags and finite
-   slot inventory. Required values are injected through named bindings; values
-   and credentials are not reproduced here. Invalid configuration fails closed.
-2. Requests must use the canonical HTTPS origin. Upgrade requests are rejected.
-   Public Stage ingress blocks decoded `/internal*` and `/contact*` paths.
-3. The adapter removes caller forwarding/IP/target-port/hop-by-hop headers and
-   caller-supplied timeKER identity headers. It supplies the canonical host and
-   HTTPS forwarding headers. Relevant auth POSTs receive an HMAC-derived network
-   key recomputed from Cloudflare ingress information, rather than trusting a
-   caller-supplied key or passing a raw address into auth logs.
-4. A fixed Durable Object/Container identity receives the request. The Container
-   listens on 8000, sleeps after ten minutes of inactivity, and tracks active
-   requests/streams so activity is renewed during a response.
-5. Startup waits for port 8000 with a 60-second port-ready budget and the request's
-   abort signal. The response body is streamed; a disconnected stream is not
-   replayed. Sanitized failures become 503 with no-store/retry information.
-6. The private Container entrypoint enables Uvicorn proxy-header handling because
-   the adapter has removed and reconstructed those headers. The standalone
-   Docker default disables proxy headers. These are distinct entrypoints.
+The Stage Worker validates environment combinations against its canonical origin,
+database/TLS target, identity registry, provider flags and prepared-slot inventory.
+Missing or incompatible configuration fails closed. Secret values are neither
+needed nor reproduced in this public review package.
 
-Sources: `deploy/cloudflare/src/proxy.ts:241–339`;
-`deploy/cloudflare/src/index.ts:5–66`; `Dockerfile:23`.
+Ingress requires the canonical HTTPS origin, rejects upgrades, and blocks public
+access to decoded internal/contact surfaces in the Stage profile. The proxy
+removes caller forwarding, identity and hop-by-hop headers, then constructs the
+trusted origin/forwarding information itself. Relevant authentication POSTs
+receive a recomputed HMAC-derived network key rather than a caller-selected key.
 
-The Stage Worker declares one basic Container and `max_instances: 1`;
-`workers.dev` and preview URLs are disabled. Worker and Container observability
-are disabled in the checked profile. `logSafely` is deliberately a no-op in the
-Stage adapter; source tests can inject a bounded observer. No statement dispatch
-cron is defined by the Stage `index.ts` handler. Production has its own adapter
-and profile; its handlers must not be inferred from this Stage entrypoint.
+The fixed Container listens on 8000 and sleeps after ten idle minutes. Active
+requests and streams renew activity. Startup waits for the application port with
+a bounded 60-second budget and request cancellation. Responses stream; a dropped
+stream cannot be replayed as a new response. Bounded failures return unavailable
+without exposing provider errors or request/business content.
 
-Sources: `deploy/cloudflare/wrangler.jsonc:1–32`;
-`deploy/cloudflare/src/proxy.ts:27–30`;
-`deploy/cloudflare/src/index.ts:61–66`;
-`deploy/cloudflare/src/production.ts:1`;
-`deploy/cloudflare/wrangler.production.jsonc:1`.
+The Stage adapter enables proxy-header handling only behind this controlled
+ingress. The standalone Docker command disables proxy headers. Stage declares
+one basic Container and a maximum of one instance; deployment scaling is not
+introduced by the performance changes.
 
-## 4. FastAPI request pipeline
+Stage source now includes the Case-only `17 2 * * *` schedule. Its configured
+presence does not prove an actual scheduled run. Scheduled statement Sending
+remains disabled; the Case schedule is not permission to activate it.
 
-`create_app` constructs the immutable base settings, tenant registry,
-request-scoped settings facade, database router, rate limiter, privacy preference
-handler and contact router. It disables public OpenAPI/Swagger/ReDoc routes.
-The lifespan validates tenant readiness when the registry or onboarding requires
-it and disposes all registered engines at shutdown.
+Sources: `deploy/cloudflare/src/proxy.ts`,
+[Stage entrypoint](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eeb/deploy/cloudflare/src/index.ts#L6),
+`deploy/cloudflare/src/stage-archive.ts`, `deploy/cloudflare/wrangler.jsonc`.
 
-Among application-added middleware, the effective incoming order is:
+## 4. Request, authentication and tenant boundaries
+
+`create_app` assembles frozen base settings, the tenant registry, request-scoped
+settings/database/contact facades, public asset fingerprints, authentication,
+privacy handling and routers. Public OpenAPI/Swagger/ReDoc endpoints are disabled.
+Startup readiness runs outside the event loop and engines are disposed at shutdown.
+
+Application-added incoming middleware is effectively:
 
 ```text
-request_context -> SessionMiddleware -> TrustedHostMiddleware -> TenantMiddleware
-  -> framework exception handling / route dependencies -> endpoint -> service
+request_context → SessionMiddleware → TrustedHostMiddleware → TenantMiddleware
+  → framework routing/dependencies → endpoint → services/data access
 ```
 
-`request_context` is registered last and therefore wraps the other user middleware.
-It assigns a request UUID, measures elapsed time, converts unexpected errors to a
-bounded HTML/JSON response, emits a sanitized terminal request event and applies
-response security/cache headers. Starlette's framework error wrapper is outside
-this user-middleware list. Session decoding precedes tenant selection; the tenant
-middleware explicitly refuses to run without session middleware.
+Request context assigns a UUID, records a sanitized terminal outcome/duration,
+and applies security/cache headers. Hosted cookies are Secure, HttpOnly,
+SameSite=Lax signed sessions with a one-hour lifetime. Signing is not encryption;
+sessions carry bounded identity/flow correlation, not passwords/provider tokens.
+Protected requests recheck the active owner, retained immutable provider binding
+and session revision. Enrollment can restrict access until explicit acknowledgment
+and first-plan requirements are satisfied.
 
-Sources: `app/main.py:115–167`; `app/main.py:189–263`;
-`app/tenancy.py:476–516`.
+Tenant selection follows verified server-side mappings. ContextVar state is
+bound and reset per request; connection factories have fixed schema/role identity.
+Default public/auth infrastructure routing grants no default-owner business
+access. Delegated credentials supply only a locator before their digest,
+grant, scope, expiry and revocation are authenticated.
 
-Hosted session cookies use `__Host-timeker-session`, Secure, HttpOnly through
-Starlette SessionMiddleware, SameSite=Lax and a one-hour maximum age. This is a
-signed client-side session, not a server-side session table or general encrypted
-payload store. Session fields include owner/tenant/revision and short-lived flow
-correlation. Principal validation rechecks the retained User and immutable method
-binding on protected requests; a stale session revision is rejected.
+Ordinary owner mutations validate CSRF, bounded forms and applicable origin
+checks, then execute within `sessionmaker.begin()` in a worker. Specialized
+webhooks, upload, OAuth and dispatch routes define their own explicit boundaries.
+Business audit writes share the business transaction; diagnostics are separate.
 
-Sources: `app/main.py:154–167`; `app/auth.py:51–100`.
+Sources: `app/main.py:118`, `app/main.py:196`, `app/main.py:379`,
+`app/auth.py`, `app/tenancy.py:469`, `app/enrollment.py`.
 
-The tenant middleware refreshes retained admission overlays for non-static,
-non-liveness requests. Browser sessions resolve only to registered descriptors.
-Integration credentials contain a tenant locator used for routing, then their
-secret digest, expiry, grant and scope are authenticated before resource access.
-Public paths use the default descriptor for public/authentication infrastructure;
-that is not authorization to access the default owner's business records. An
-anonymous protected path redirects to the public landing. ContextVar binding is
-reset in `finally`, and `DBRouter` always uses the bound tenant factory.
+## 5. Persistence and performance architecture
 
-Sources: `app/tenancy.py:292–344`; `app/tenancy.py:437–453`;
-`app/tenancy.py:480–516`; `app/integration_auth.py:70–102`.
+SQLAlchemy uses synchronous connections with `pool_pre_ping`, bounded pool
+sizes, zero overflow, a ten-second pool timeout, hidden SQL parameters and
+`expire_on_commit=False`. Tenant factories verify actual database role/schema
+on connection. Runtime roles do not own schema objects or migrate them.
 
-Protected application routers depend on `authorized`, which calls `owner` and
-stores the verified User in request state. Enrollment can restrict a signed-in
-owner to registration or subscription/security screens until acknowledgment and
-first-plan requirements are met. Standard mutating forms validate same-origin
-when supplied, a session-bound constant-time CSRF token, bounded body/field counts
-and native no-JavaScript submission. The shared `mutate` helper runs a synchronous
-service inside `sessionmaker.begin()` in a thread pool, then redirects with a
-saved notice; domain/constraint/stale-version errors produce bounded feedback.
-Specialized upload, OAuth, webhook and dispatch routes use their own explicit
-validated transaction boundaries rather than assuming this helper covers them.
+The delivered performance changes reduce repeated work without caching
+authorization, private pages or business decisions:
 
-Sources: `app/main.py:355–392`; `app/main.py:692–697`;
-`app/auth.py:87–126`; `app/main.py:1528–1547`.
+- Billing lists, reports and Dashboard reuse grouped unreversed-payment totals.
+  Mutations still obtain fresh checks under their transaction/locks.
+- Dashboard's enhanced request prepares only its selected detail group. Complete
+  top counts/totals remain full-scope; each displayed group uses five rows.
+- Quoting hydrates page-level revision, line and artifact metadata in batches;
+  binary PDF columns stay deferred until an authorized artifact operation.
+- Timecard history support queries use visible card IDs rather than loading
+  unrelated history relationships.
+- Tenant/admission readiness batches relation, role, privilege and empty-slot
+  checks while retaining current database checks rather than caching decisions.
+- Blocking GET, readiness and admission-directory units run in framework workers
+  with request-local tenant context and Session ownership. A Session is not
+  handed among concurrently executing tasks.
+- Migration 009 adds stable recent-list indexes for invoices, audit events and
+  active Mail. It does not rewrite business records or add a search engine.
 
-## 5. Module and surface map
+`/health/live` is the cheap process probe used by Docker. `/health/ready` performs
+explicit deeper schema/role/admission checks and reports a bounded ready or
+unavailable result. Current expected head is `ph3_009_read_indexes`.
 
-| Boundary | Main implementation and responsibility |
+Sources: `app/db.py`, `app/main.py:739`, `app/billing.py:475`,
+`app/reports.py:108`, `app/quoting.py:404`, `app/tenancy.py:348`,
+`alembic/versions/ph3_009_read_indexes.py`.
+
+## 6. Browser rendering, assets and references
+
+Startup hashes known public assets once. Canonical `?v=<sha256>` GET/HEAD
+responses with successful status use immutable public caching and no Set-Cookie.
+Unversioned known assets revalidate. Incorrect versions, errors and private
+responses remain no-store; owner content is never included in that public cache.
+Dashboard fragments explicitly retain `private, no-store` and the appropriate
+HTMX Vary headers.
+
+Settings' Clear cache refreshes a fixed inventory of 22 versioned same-origin
+public files with omitted credentials, three workers and a 20-second attempt
+timeout. It drains response bodies, verifies public immutable policy, reports
+accessible progress/failure and permits retry. It preserves unsaved forms and
+sign-in; it neither clears all browser/CDN caches nor reloads running scripts.
+
+Country/currency choices come from vendored ISO reference data; IANA timezone
+choices come from local tzdata. Native selects preserve explicit defaults,
+optional blanks, submitted errors and existing legacy values. No remote lookup,
+locale-based country inference or inferred legal/tax fact is introduced.
+
+Sources: `app/static_assets.py`, `app/reference_choices.py`,
+`app/web/templates/components.html`, `app/web/templates/settings.html`,
+`app/web/static/settings_cache.js`, `app/web/static/workspace.js`.
+
+## 7. Domain modules and effects
+
+| Domain | Principal source boundaries under `app/` |
 | --- | --- |
-| App composition, public pages, core owner screens | `app/main.py:115`; router assembly `app/main.py:1528–1547` |
-| Configuration and capability gates | `app/config.py:14`; frozen Settings; validation and environment-specific provider combinations; properties at `app/config.py:193–211` |
-| Fixed tenant/role/session routing | `app/tenancy.py:96`; registry and factories; `app/db.py:9`; fixed-identity connect hook |
-| Owner and external-method authentication | `app/auth.py:19`; `app/social_auth.py:17`; `app/email_auth.py:102`; `app/enrollment_routes.py:1` |
-| Public admission and preparation operations | `app/admission.py:142`; `app/admission_operations.py:15`; `app/workspace_operations.py:241`; no privileged runtime DDL |
-| Canonical acknowledgment and first-plan gates | `app/enrollment.py:90`; notice capture/receipt at `app/enrollment.py:179–245`; `app/subscriptions.py:349` |
-| Clients, Projects, Cases and lookups | `app/clients.py:1`; `app/project_routes.py:1`; `app/cases.py:1`; `app/lookups.py:1`; service validation plus owned association checks |
-| Timecards/import/contribution commands | `app/timecards.py:11`; `app/time_import.py:1`; `app/time_commands.py:203`; source-aware Draft changes and receipts |
-| Billing/payment/credit and project charging | `app/billing.py:117`; time draft at `app/billing.py:200`; issue/pay/void at `app/billing.py:392`, `521`, `607` |
-| Reports and Archive | `app/reports.py:1`; `app/archiving.py:17`; `app/archive_routes.py:1`; bounded reads/exports and retained history |
-| Mail custody and private project files | `app/mail_service.py:66`; `app/mail_routes.py:1`; `app/project_attachments.py:1`; normalized bounded file capture, no inbox sync |
-| Delegated OAuth/API/MCP and proposals | `app/integration_auth.py:24`; `app/integration_routes.py:312`, `515`, `666`, `1042`; `app/client_drafts.py:1` |
-| Tenant plan quota and billing provider | `app/subscriptions.py:52`; `app/subscription_billing.py:400`, `726`; `app/paddle.py:1`; separate SaaS ledger from service invoices |
-| Issued-statement collection sending | `app/sending.py:213`, `544`; `app/sending_transport.py:1`; payment/void/Stop-aware plans and follow-ups |
-| Estimates and private documents | `app/quoting.py:210`, `309`; `app/library.py:190`, `310`; immutable publication, retained originals and revisions |
-| Commercial-document sending | `app/proposal_sending.py:139`, `227`; `app/proposal_sending_transport.py:1`; separate manual outbox |
-| Internal provider/scheduled entrypoints | `app/internal_routes.py:20`, `108`, `129`; protected internal secret/tenant binding; public Stage edge blocks these paths |
-| Privacy/contact/optional usage | `app/privacy.py:18`; `app/contact.py:1`; `app/usage.py:43`; explicit feature/privacy gates |
-| Encrypted settings, audit and diagnostics | `app/settings.py:70`; `app/audit.py:1`; `app/logging.py:32` |
-| PDF | `app/pdf.py:17`; shared escaped, allowlisted templates and denied asset fetching |
-| CLI, demo and seed tooling | `app/cli.py:1`; `app/demo.py:1`; `app/tenant_demo.py:1`; `app/seed.py:1`; operator/local tooling, not anonymous provisioning |
+| Clients/projects/cases | `clients.py`, `client_sources.py`, `cases.py`, `work_lifecycle.py` |
+| Weekly time/import | `timecards.py`, `time_commands.py`, `time_import.py` |
+| Financial statements | `billing.py`, `project_billing_routes.py`, `reports.py`, `pdf.py` |
+| Estimates/private documents | `quoting.py`, `library.py`, their routes/models |
+| Two outbound workflows | `sending.py` and separately `proposal_sending.py` |
+| Individual plans/provider ledger | `subscriptions.py`, `subscription_billing.py`, `paddle.py` |
+| Identity/admission | `auth.py`, `social_auth.py`, `email_auth.py`, `admission.py` |
+| Delegated tools | `integration_auth.py`, `integration_routes.py`, `client_drafts.py` |
+| Retained custody | `archiving.py`, `mail_service.py`, `project_attachments.py` |
+| Shared controls | `settings.py`, `privacy.py`, `contact.py`, `logging.py`, `audit.py` |
 
-The delegated surface exposes OAuth authorization-server/resource metadata,
-`/oauth/authorize`, `/oauth/token`, `/oauth/revoke`, `/mcp`, and scoped REST tool
-calls under `/api/integration/tools/{name}`. Its MCP bridge is implemented in this
-application; the lockfile does not add a separate agent inference runtime. Tool
-schemas are bounded and scope-filtered. Delegated proposed clients are drafts;
-delegation does not issue invoices or grant an assistant unrestricted owner access.
+PDF rendering uses escaped allowlisted templates and denies external/local asset
+fetches. Published artifacts are retrieved from retained bytes with integrity
+checks. Encrypted sensitive settings require tenant-specific key custody.
+Diagnostics allow only bounded operational fields; business audit content,
+identity details, notes, credentials and artifact bytes stay out of logs.
 
-Sources: `app/integration_routes.py:50–257`, `589–647`, `666–1039`;
-`app/integration_auth.py:24–44`; `docs/PROJECT_BRIEF.md:658–669`.
-
-## 6. Persistence, rendering and operational boundaries
-
-SQLAlchemy uses synchronous psycopg connections, `pool_pre_ping`, bounded pools,
-zero overflow, a ten-second pool timeout, hidden SQL parameters and
-`expire_on_commit=False`. Tenant-specific factories use pool size two and verify
-the actual database role and current schema on connect. Tenant routing is
-schema/role isolation, not a retrofitted shared-table RLS tenancy design. Runtime
-roles cannot own/migrate objects; separate schema owners operate migrations.
-
-Sources: `app/db.py:9–29`; `app/tenancy.py:237–238`, `272–277`;
-`app/workspace_operations.py:81–124`; `scripts/postgres-runtime-grants.sql:3–28`.
-
-Jinja templates render complete HTML or lookup fragments. HTMX and local scripts
-enhance existing forms, lookups, the decorative browser-local clock, notices,
-CAPTCHA and Paddle checkout integration. Native mutation routes remain the
-authoritative action path. Money and contract calculations belong in Python
-services rather than templates. PDF rendering permits only four named templates,
-escapes HTML and refuses all resource URLs, including local-file and remote
-fetches. Published financial/commercial artifacts are stored in PostgreSQL and
-retrieved with integrity checks rather than silently regenerated.
-
-Sources: `app/main.py:87–89`, `265–306`; `app/web/templates/base.html:1`;
-`app/pdf.py:13–49`; `app/billing.py:454–467`;
-`app/quoting.py:349–360`; `app/library.py:365–397`.
-
-`/health/live` reports process liveness. `/health/ready` executes registry/schema,
-runtime-role and admission checks and returns only ready/unavailable. It is
-deliberately more expensive than liveness; a warm public page alone is not
-readiness proof. The source pins migration head `ph3_006_quoting_library`.
-
-Sources: `app/main.py:678–690`; `app/tenancy.py:346–430`; `app/db.py:6`.
-
-Diagnostics use an event/field allowlist, internal UUIDs, route templates and
-sanitized outcomes. Unknown fields and exception text are redacted; noisy library
-and access logging is suppressed. Diagnostic failures are swallowed so they do
-not change a committed result. Business audit records are separate database rows
-and may contain protected business evidence; they must not be exported into
-diagnostic logs or a public dossier. Encrypted settings use per-tenant key custody;
-this review did not read the keys or encrypted values.
-
-Sources: `app/logging.py:10–109`; `app/audit.py:1`;
-`app/settings.py:70–135`; `app/models.py:359–373`.
-
-## 7. Stage, production and unfinished designs
-
-The Stage profile enables bounded public signup, managed email, delegated
-integration and Paddle Sandbox while leaving statement jobs, public contact,
-Mail capture and optional usage disabled. Commercial Quoting/Library routes are
-explicitly unavailable in the production environment. Separate production
-capability gates exist in source for future approved provider combinations; their
-existence does not activate them in the original production deployment.
-
-Sources: `deploy/cloudflare/wrangler.jsonc:34–61`;
-`app/config.py:193–211`; `deploy/cloudflare/src/proxy.ts:93–144`;
-`docs/STATUS.md:120–126`.
-
-The current documented Stage release passed anonymous GET/assets/health checks;
-authenticated hosted interaction with the new commercial workflows remains a
-normal owner/UAT step. Existing local suite evidence is attributed in
-`docs/STATUS.md:61–81`; it is not a new execution for this dossier. The original
-Phase2 core is implemented, but real assistant OAuth allow, tool discovery,
-two-tenant platform use and refresh/revocation remain actual-client validation
-gates. Apple has preparation documentation but no runtime adapter/callback or
-complete lifecycle implementation. Teams, memberships and a workspace switcher
-are excluded by the permanent single-owner contract. Off-host recovery promises,
-account lifecycle/retention policy and measured storage/mail budgets remain
-separate open decisions, not hidden implemented services.
-
-Sources: `docs/STATUS.md:35–44`, `120–124`;
-`docs/design/EXPANSION_DISCOVERY.md:1–14`, `150–180`, `324–345`;
-`docs/PROJECT_BRIEF.md:658–669`.
-
+For PH3 proposals, retain these boundaries and identify the exact source path,
+affected tenant/transaction, user-visible behavior and needed evidence. Residual
+assistant proof, human UAT, recovery/custody, provider lifecycle rehearsal and
+future combined PROD readiness remain open in `docs/STATUS.md`.
 
 ---
-
-<a id="chapter-02"></a>
-
-<!-- Source chapter: 02-data-model-and-transactions.md -->
 
 # 02 — Data model and transaction semantics
 
-## Snapshot and provenance
+## Review baseline
 
-This chapter is a dated review snapshot for the 2026-10-16 HOC pause closeout,
-not an active schema specification or permission to execute an operation. Stage
-improvements remain paused until explicit HOC resume; production is unchanged.
+This chapter describes declarations and service behavior at source `9fc9eeb`
+in `edlopezpm-ops/timeker-PH2`, the prepared PH3 branch. PH2 is administratively
+closed at tag `ph2-closeout-2026-10-18` / `39bcde0`; the retained Stage runtime
+is Stage 29 / `e282985`. The expected migration head is
+`ph3_009_read_indexes`. No database, real record, key or provider was queried
+for this dossier refresh.
 
-Source repository:
-`C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2`, branch
-`codex/ph3-onboarding-auth`, reviewed at clean commit
-`48e854ff2107dffb217dfe7c487b1b9d36a7f41d`. All source pointers are relative to
-that repository and use one-based snapshot line numbers. This chapter was
-prepared by reading model declarations, services, migrations, grant scripts and
-canonical documentation. The companion schema/field appendix is derived statically from
-Python AST; it does not import the application or reflect a live database.
-No database, actual business data, environment/credential file or private contract
-was read. No migration, test, external send or network call was performed.
+The entity catalog below is explanatory. Chapter 11 supplies the complete
+declaration index; source models/migrations remain authoritative. Historical
+`ph2_` and `ph3_` migration prefixes are permanent identifiers, not the current
+delivery phase or instructions to rerun migrations.
 
-## 1. Physical and ownership model
+Sources: [models](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eeb/app/models.py),
+`app/db.py`, `docs/PHASE2_CLOSEOUT.md`, `docs/STATUS.md`.
 
-There are **53 mapped domain tables** in the reviewed source, plus Alembic's
-`alembic_version` metadata table per migrated schema. The application uses one
-PostgreSQL database per environment and a private schema/runtime role per owner
-workspace. This is not a shared-table `tenant_id`/RLS design. For example, Clients
-do not carry a universal tenant column: isolation comes from the server-resolved
-fixed descriptor, restricted role, pinned schema and service authorization.
-Some records also carry `owner_id` or `actor_id` for local ownership/audit.
+## 1. Physical tenancy and ownership
 
-The generic `require` repository helper looks up an ID in the bound database
-session; it is not independently an owner-filtering authorization layer. Routes,
-principal validation and domain services must apply their respective owner and
-association checks. PostgreSQL FKs inside the tenant schema are supplemented by
-cross-parent consistency guards; merely proving that two UUIDs exist is not
-enough to associate them.
+One PostgreSQL database holds isolated private schemas and fixed runtime roles.
+The server resolves a verified identity or authenticated delegated grant to a
+registered tenant descriptor. Requests cannot select arbitrary schema names,
+database URLs or roles. Each connection checks its actual role/schema; runtime
+roles cannot create or own application objects or obtain reciprocal tenant access.
 
-Sources: `app/models.py:29–66`; `app/repositories.py:12–19`;
-`app/tenancy.py:237–277`, `328–344`, `445–453`;
-`app/auth.py:51–100`; `scripts/postgres-runtime-grants.sql:3–28`.
+Tenant-local `User` is the active owner. Business entities generally inherit a
+UUID primary key and UTC created/updated timestamps from `Entity`. Human-facing
+object numbers are separate database-generated identifiers. Several parent rows
+have explicit SQLAlchemy optimistic version columns; row locks and database
+constraints additionally protect shared mutations.
 
-`Entity` supplies UUID `id`, timezone-aware UTC `created_at` and `updated_at`.
-Most domain classes inherit it. Exceptions are explicitly declared structures:
-`ContactAttempt`, the entry-keyed invoice `Reservation`, the singleton integer-key
-`WorkspaceSubscription`, and identity-keyed `BillingAccount`. Entity timestamps
-do not mean that every row is mutable; immutable history is enforced separately.
-Optimistic concurrency applies only where the model declares `version_id_col`
-or a service explicitly checks a revision/version, not to every table by magic.
+The central admission directory records retained immutable subjects and prepared
+workspace allocation. It lives in the same database, with separate directory
+semantics; it is not a shared business-record pool. Admission uses an explicitly
+prepared finite inventory and cross-transaction recovery states rather than
+privileged runtime provisioning.
 
-Sources: `app/models.py:33–66`, `330–333`;
-`app/subscription_models.py:13–34`;
-`app/subscription_billing_models.py:24–68`.
+Sources: `app/models.py:47`, `app/tenancy.py`, `app/repositories.py`,
+`app/admission_models.py`, `app/admission_operations.py`,
+`app/workspace_operations.py`, `scripts/postgres-runtime-grants.sql`.
 
-The three admission tables are physically installed in every schema, but their
-authoritative copies are central. Only the default runtime has central
-SELECT/INSERT/UPDATE; noncentral directory shadows are denied. Their tenant-local
-owner/identity UUIDs are logical locators, deliberately not cross-schema FKs.
-Admission performs explicit immutable identity and initialization readback across
-separate transactions.
+## 2. Entity groups and relationships
 
-Sources: `app/admission_models.py:12–61`;
-`app/admission_operations.py:79–90`; `app/admission.py:92–207`.
-
-## 2. Entity and relationship map
-
-```mermaid
-erDiagram
-  CLIENT ||--o{ CONTACT : has
-  CLIENT ||--o{ PROJECT : has
-  PROJECT ||--o{ CASE : contains
-  USER ||--o{ CASE : owns
-  USER ||--o{ TIMECARD : owns
-  CLIENT ||--o{ TIMECARD : scopes
-  TIMECARD ||--o{ TIME_ENTRY : contains
-  PROJECT ||--o{ TIME_ENTRY : classifies
-  TIME_ENTRY ||--o{ CASE_TIME_ALLOCATION : apportions
-  CASE ||--o{ CASE_TIME_ALLOCATION : receives
-  TIME_ENTRY ||--o| INVOICE_TIME_ENTRY : reserves
-  INVOICE ||--o{ INVOICE_TIME_ENTRY : claims
-  INVOICE ||--o{ INVOICE_LINE : contains
-  INVOICE ||--o| INVOICE_ARTIFACT : freezes
-  INVOICE ||--o{ PAYMENT : receives
-  INVOICE ||--o| CREDIT_MEMO : credits
-  CASE ||--o{ QUOTE_REVISION : scopes
-  QUOTE ||--o{ QUOTE_REVISION : retains
-  QUOTE_REVISION ||--o{ QUOTE_LINE : estimates
-  QUOTE_REVISION ||--o| QUOTE_ARTIFACT : publishes
-  LIBRARY_DOCUMENT ||--o{ LIBRARY_UPLOAD : retains
-  LIBRARY_DOCUMENT ||--o{ LIBRARY_DOCUMENT_VERSION : publishes
-```
-
-The diagram omits secondary/audit links for readability; the complete 53-table
-inventory and field-level FK declarations follow below and in the appendix.
-
-### Core owner, client, work and financial records — 17 tables
-
-| Table / class | Main relationships and semantics | Source |
-| --- | --- | --- |
-| `users` / User | Unique email; owner role/active flag, last login and session revision. The workspace contract permits one owner. | `app/models.py:59` |
-| `clients` / Client | Root business record; profile/contract JSON, Decimal rate, currency, IANA zone, weekly cap, status and optimistic version. | `app/models.py:69` |
-| `contacts` / Contact | Client FK; contact methods and explicit request-work/approve-hours metadata. | `app/models.py:95` |
-| `projects` / Project | Client FK; type, active/closed/archive status, rate override, budget/currency pair, agreement reference pair and overbilling choice. | `app/models.py:108` |
-| `project_agreements` / ProjectAgreement | One immutable private file per Project, uploader User FK, bytes/size/checksum. This is a project attachment, separate from Library. | `app/models.py:147` |
-| `timecards` / Timecard | Owner + Client + Monday week uniqueness; entries, persisted exact total, state, archive marker, version and cap-override evidence. | `app/models.py:162` |
-| `time_entries` / TimeEntry | Timecard + Project + work date; positive integer minutes, notes, billability and optional rate override. | `app/models.py:186` |
-| `cases` / Case | Owner, Client and Project FKs; immutable schema-local numeric identity from 10001; type, state, optional description and archive marker. | `app/models.py:202` |
-| `case_time_allocations` / CaseTimeAllocation | Entry-to-Case allocation, unique pair, integer minutes, actor and version. Allocated time cannot exceed parent time. | `app/models.py:233` |
-| `invoices` / Invoice | Client; optional exclusive fixed-fee or manual-extra Project association; business dates, Decimal totals, snapshot and lifecycle/version. | `app/models.py:247` |
-| `invoice_lines` / InvoiceLine | Invoice + optional Project; explicit time/fixed-fee/manual-extra basis, exact quantity/rate/amount and frozen charge metadata. | `app/models.py:306` |
-| `invoice_time_entries` / Reservation | `entry_id` is the PK and FK; one entry can have only one current invoice claim. Invoice FK. | `app/models.py:330` |
-| `invoice_artifacts` / Artifact | One per Invoice; retained filename, exact PDF bytes, SHA-256 and renderer version. | `app/models.py:336` |
-| `payments` / Payment | Invoice and creator User FKs; positive Decimal amount and same currency; reversal timestamp rather than deletion. | `app/models.py:345` |
-| `audit_events` / Audit | Actor, request and entity identifiers plus protected business details; append-only runtime grants. | `app/models.py:359` |
-| `app_settings` / AppSettings | Unique key; JSON value or encrypted bytes, scoped to the current workspace. | `app/models.py:369` |
-| `contact_attempts` / ContactAttempt | Durable abuse/delivery reservation using address/session/network/payload digests, timestamp and state; not a general contact mailbox. | `app/models.py:33` |
-
-### Mail custody and credit artifacts — 4 tables
-
-| Table / class | Main relationships and semantics | Source |
-| --- | --- | --- |
-| `mail_messages` / MailMessage | Owner, Client and optional Project/Case; canonical checksum, normalized bounded headers/plain text, source, receipt/archive basis and archive marker. | `app/mail_models.py:21` |
-| `mail_addresses` / MailAddress | Revocable digest-only capture address bound to one owner and fixed association. | `app/mail_models.py:48` |
-| `mail_attachments` / MailAttachment | Message/position uniqueness; retained inert original attachment bytes, bounded name/type/size/checksum. | `app/mail_models.py:58` |
-| `credit_memos` / CreditMemo | Unique Invoice FK and number; actor, complete frozen original reference, full credit amount, reason and immutable PDF/checksum. | `app/credit_memo_models.py:14` |
-
-### Source-aware time commands and delegated integration — 8 tables
-
-| Table / class | Main relationships and semantics | Source |
-| --- | --- | --- |
-| `time_import_records` / TimeImportRecord | Unique actor/source/source-record identity and canonical payload hash. | `app/time_command_models.py:13` |
-| `time_contributions` / TimeContribution | Actor/source/source-item uniqueness; optional import receipt, Timecard, Project, date, Entry and optional Case; own minutes/version. Zero is a retained tombstone. | `app/time_command_models.py:26` |
-| `time_operations` / TimeOperation | Unique actor/source/idempotency key; immutable payload hash, action and result receipt. | `app/time_command_models.py:49` |
-| `integration_grants` / IntegrationGrant | Owner/tenant/client/resource/scopes, expiry and revocation. | `app/integration_models.py:21` |
-| `integration_codes` / IntegrationCode | Grant FK; digest-only one-use authorization code, redirect URI, S256 challenge, scope and expiry/use timestamp. | `app/integration_models.py:33` |
-| `integration_tokens` / IntegrationToken | Grant FK; digest-only access/refresh credential, scope/client, expiry and use timestamp. | `app/integration_models.py:51` |
-| `integration_operations` / IntegrationOperation | Unique grant/key digest; tool, payload digest and retained result. | `app/integration_models.py:69` |
-| `client_drafts` / ClientDraft | Owner-scoped proposed-client JSON and optimistic version; cannot itself publish an active Client. | `app/integration_models.py:79` |
-
-### Subscription assignment and provider billing — 5 tables
-
-| Table / class | Main relationships and semantics | Source |
-| --- | --- | --- |
-| `workspace_subscriptions` / WorkspaceSubscription | Singleton `id=1`, owner, free/solo/pro assignment, catalog revision, version and optional paid-access expiry. | `app/subscription_models.py:13` |
-| `subscription_operations` / SubscriptionOperation | Unique owner/key digest, payload digest, action and immutable result. | `app/subscription_models.py:37` |
-| `subscription_billing_accounts` / BillingAccount | Integer identity; one current account per owner through a partial unique index. Provider customer/subscription/checkout bindings, proven paid period, pending changes and version. Retired accounts remain. | `app/subscription_billing_models.py:24` |
-| `subscription_billing_operations` / BillingOperation | Unique owner/key digest and optional transaction ID; durable effect intent/result and reserved/confirmed/uncertain/failed state. | `app/subscription_billing_models.py:71` |
-| `subscription_billing_events` / BillingEvent | Unique provider event ID, raw-body digest, event type, outcome and bounded verified facts. | `app/subscription_billing_models.py:89` |
-
-These are timeKER SaaS-access records. They are not the consulting/service Invoice
-and Payment ledger, and provider events cannot silently rewrite an issued service
-artifact. The one current provider-account index and the local singleton plan
-assignment serve different purposes.
-
-### Local authentication, central admission and collections — 10 tables
-
-| Table / class | Main relationships and semantics | Source |
-| --- | --- | --- |
-| `owner_identities` / OwnerIdentity | Owner FK; immutable issuer/subject, verified email metadata and revocation timestamp. | `app/enrollment_models.py:12` |
-| `owner_registrations` / OwnerRegistration | Owner plus exact Terms/Privacy/catalog versions, selected offer and acceptance time; unique versioned receipt. Acceptance method/revision evidence lives in its Audit event. | `app/enrollment_models.py:26`; `app/enrollment.py:196` |
-| `email_auth_challenges` / EmailAuthChallenge | Owner-scoped signed-session digest, signin/signup/link intent, offer, expiry, bounded attempts and retained state. | `app/enrollment_models.py:42` |
-| `workspace_admissions` / WorkspaceAdmission | Central unique slot/owner/email/immutable provider anchor; reserved/active/blocked allocation. | `app/admission_models.py:12` |
-| `admission_identities` / AdmissionIdentity | Central immutable issuer/subject locator to exact tenant/owner/local identity; active/pending/blocked/revoked. | `app/admission_models.py:26` |
-| `public_email_challenges` / PublicEmailChallenge | Central ownerless encrypted destination context plus address/session/network digests; bounded intent/offer/security-return state. | `app/admission_models.py:43` |
-| `sending_preferences` / SendingPreferences | One owner preference row; global pause and editable initial/follow-up templates. | `app/sending_models.py:21` |
-| `sending_plans` / SendingPlan | One per issued Invoice; exact Artifact/checksum, recipient/frozen message and opt-in bounded follow-up policy; retained stop reason/time. | `app/sending_models.py:31` |
-| `sending_deliveries` / SendingDelivery | Unique plan/sequence; original UTC schedule, pending/sent/failed/stopped/uncertain state, bounded attempts. | `app/sending_models.py:55` |
-| `sending_attempts` / SendingAttempt | Unique delivery/attempt number; durable claim/result, bounded provider reference and completion time. | `app/sending_models.py:72` |
-
-### Quoting, Library and commercial sending — 9 tables
-
-| Table / class | Main relationships and semantics | Source |
-| --- | --- | --- |
-| `quotes` / Quote | Owner, generated unique number, owner-scoped create operation key/digest, soft archive and version. | `app/quoting_models.py:30` |
-| `quote_revisions` / QuoteRevision | Quote and optional parent revision; unique numbered lineage, mandatory Case/Project/Client, text/preset/currency/validity and draft/published state. Partial unique index permits one Draft per Quote. | `app/quoting_models.py:45` |
-| `quote_lines` / QuoteLine | Unique revision/position; task/case/project scope label, integer min/max minutes and optional exclusive T&M rate or fixed amount. | `app/quoting_models.py:77` |
-| `quote_artifacts` / QuoteArtifact | One per Revision, owner, snapshot, exact PDF/size/SHA-256/renderer/publication timestamp. | `app/quoting_models.py:103` |
-| `library_documents` / LibraryDocument | Owner and editable root, type/status/revision; a working document has Case/Client/Project, while a reusable template has none. Source-upload UUID is validated as same-document by service/guard. | `app/library_models.py:24` |
-| `library_uploads` / LibraryUpload | Immutable document/uploading-owner original bytes, MIME/name/size/SHA-256. | `app/library_models.py:48` |
-| `library_document_versions` / LibraryDocumentVersion | Unique document/number, owner, immutable snapshot/PDF and optional exact source upload. Snapshot selects PDF or original attachment format. | `app/library_models.py:64` |
-| `proposal_sending_deliveries` / ProposalSendingDelivery | Owner/Case and exactly one frozen QuoteArtifact or Library version; exact generic attachment bytes/type/name/hash, message, create key, version, state and attempt/stop timestamps. | `app/proposal_sending_models.py:22` |
-| `proposal_sending_attempts` / ProposalSendingAttempt | Unique delivery/number; retained claim/outcome/completion, immutable after completion. | `app/proposal_sending_models.py:58` |
-
-## 3. State machines and derived state
-
-Allowed database strings constrain storage. The service and triggers impose the
-valid transitions and proof requirements; membership in an allowed string list
-does not authorize an arbitrary transition.
-
-| Aggregate | Storage states / transition rule |
+| Group | Entities and retained purpose |
 | --- | --- |
-| Client / Project | Client active/archived; Project active/closed/archived. New activation/reactivation must satisfy quota and parent checks; history remains readable. |
-| Case | Open, In progress, Waiting, Resolved, Closed; archive is a separate timestamp. Case numeric identity and referenced commercial association are retained. |
-| Timecard | Draft → Finalized → Invoiced. Eligible unreserved finalized time can reopen to Draft with a reason. Legacy Voided remains readable/reopenable where allowed; creating a new timecard void is refused. |
-| Service Invoice | Draft → Issued → Sent; eligible cancellation → Void. Paid, Partially Paid and Overdue are calculated from unreversed payments/due date. Cancelled draft is represented by Void with no issued artifact/issued timestamp, not an extra database enum. |
-| Payment | Created positive payment; an explicit reason can set `reversed_at` once. Deleting payment history is not the ordinary reversal operation. |
-| Quote | One editable Draft revision → immutable Published; editing afterward creates a higher numbered draft. Root archive is one-way soft retention. |
-| Library | Root draft → frozen (displayed as Published); explicit new draft increments revision. Published versions and uploads never become editable again. |
-| Admission | Central reserved + pending locator → exact tenant initialization/readback → active + active. Conflicts can retain blocked state; there is no implicit reassignment. |
-| Local/public email challenge | Reservation → ready → verifying → consumed or failed, with bounded attempts/expiry. Public delivery ambiguity also has uncertain. No challenge state by itself proves a new owner. |
-| Owner acknowledgment | Immutable receipt for exact current document versions after verified auth and captured notice, or explicit Continue fallback. No acceptance on GET or failed proof; link mode does not auto-accept. |
-| Subscription assignment | free/solo/pro with separate expiry/catalog/version. Expired paid access retains history, while capacity guards reject new growth without verified entitlement. |
-| Provider billing | Account status active/canceled/past_due/paused/trialing; durable operations reserved/confirmed/uncertain/failed; effect only from validated provider evidence. |
-| Delegated grant/code/token | Grant expiry/revocation timestamps, single-use code, rotating refresh credentials. Replay of consumed code/refresh can revoke the grant. |
-| Collections delivery | pending → committed uncertain claim → sent/failed/uncertain, or stopped. Only definitive failure permits explicit bounded retry. Follow-up requires its predecessor sent and payment/void/pause/Stop checks. |
-| Commercial delivery | draft → committed uncertain claim → sent/failed/uncertain. Failed may be explicitly retried, up to four total attempts. Stop is retained; sent/uncertain cannot be blindly replayed. A claimed send cannot be recalled. |
-| Contact delivery | reserved/accepted/uncertain retains abuse/delivery reservation; ambiguous provider outcome is not an excuse to resend automatically. |
+| Owner/configuration | `User`, `AppSettings`, `Audit`; active identity, settings and business history |
+| Client/project | `Client`, `Contact`, `ClientSourceReference`, `Project`, `ProjectAgreement` |
+| Recorded work | `Timecard`, `TimeEntry`, `Case`, `CaseTimeAllocation` |
+| Statements/payments | `Invoice`, `InvoiceLine`, `Reservation`, `Artifact`, `Payment`, `CreditMemo` |
+| Imported/contributed time | `TimeImportRecord`, `TimeContribution`, `TimeOperation` |
+| Delegated integration | `IntegrationGrant`, `IntegrationCode`, `IntegrationToken`, `IntegrationOperation`, `ClientDraft` |
+| Individual subscription | `WorkspaceSubscription`, `SubscriptionOperation` |
+| Provider subscription ledger | `BillingAccount`, `BillingOperation`, `BillingEvent` |
+| Tenant-local enrollment | `OwnerIdentity`, `OwnerRegistration`, `EmailAuthChallenge` |
+| Central admission | `WorkspaceAdmission`, `AdmissionIdentity`, `PublicEmailChallenge` |
+| Statement collections | `SendingPreferences`, `SendingPlan`, `SendingDelivery`, `SendingAttempt` |
+| Estimates | `Quote`, `QuoteRevision`, `QuoteLine`, `QuoteArtifact` |
+| Private documents | `LibraryDocument`, `LibraryUpload`, `LibraryDocumentVersion` |
+| Commercial-document outbox | `ProposalSendingDelivery`, `ProposalSendingAttempt` |
+| Mail custody | `MailMessage`, `MailAddress`, `MailAttachment` |
+| Support abuse admission | `ContactAttempt`; bounded reservation/digests, not support-message storage |
 
-Sources: `app/models.py:88–91`, `125–142`, `178–182`, `222–229`, `297–300`;
-`app/timecards.py:139–179`; `app/billing.py:471–564`, `577–682`;
-`app/admission.py:142–207`; `app/enrollment.py:101–141`, `179–245`;
-`app/integration_auth.py:349–419`; `app/sending.py:544–696`;
-`app/proposal_sending.py:193–200`, `227–274`.
+Relationships retain UUID associations: client → project → case; weekly card →
+entry; entry ↔ case through allocated integer minutes; invoice → lines,
+reservations, artifacts and payments. A case requires its real client and project.
+A quotation revision is bound to its case/client/project context. Library
+documents can optionally reference that context without becoming agreements.
 
-## 4. Money, minutes and business dates
+`ClientSourceReference` retains one owner-provided URL or bounded uploaded file
+per client. It provides evidence custody without automatic URL fetching or
+conversion into authoritative legal/tax facts. Project agreement bytes and
+published commercial/financial artifacts have separate immutable custody.
 
-Time is stored as integer minutes. Ordinary daily duration parsing accepts H:MM
-or decimal-hour text only when it resolves to whole minutes; it rejects fractional
-minutes, invalid minute components and values above 24 hours. Time entries require
-positive minutes; weekly totals are bounded by 10,080 minutes. A Quote line uses a
-separate estimate-specific integer range up to 5,256,000 minutes, not the ordinary
-daily parser's maximum. Empty maximum estimate duration becomes its minimum.
+Sources: `app/models.py`, `app/*_models.py`; chapter 11 lists each concrete
+model source file and declaration.
 
-Money accepts decimal text or `Decimal`, is finite/bounded, and has at most two
-decimal places. Database monetary fields use `NUMERIC(14,2)`. Binary floats are
-not the money representation. T&M billing groups exact minutes by Project, week
-and effective rate before rounding each resulting line with ROUND_HALF_UP; it
-does not round every intervention to one hour. Invoice totals sum those stored
-line amounts. Quote totals accumulate exact Decimal extended values across all
-priced lines before final two-decimal rounding. These are distinct documented
-rounding boundaries, not an assertion that every module rounds identically.
+## 3. Current identity, lifecycle and work invariants
 
-Sources: `app/domain.py:13–60`; `app/models.py:169–197`, `261–263`, `312–314`;
-`app/billing.py:236–279`; `app/quoting.py:82–120`;
-`app/quoting_models.py:90–100`.
+Client states are `draft`, `active`, `archived`; there is no Client Closed
+state. Service validation normalizes new/edited codes to exactly four uppercase
+ASCII letters. Incomplete clients can remain Draft. Activation validates the
+required profile and active-plan capacity; it is not legal verification.
 
-Blank price is not zero: an unpriced HLE remains Not priced with no invented
-currency/rate. Explicit zero is preserved. Mixed priced/unpriced lines expose a
-priced subtotal, excluding unpriced items. Priced work requires an explicit
-currency or the existing selected Client currency. Project fixed fees and manual
-extras use explicit line bases with zero time quantity, never fabricated worked
-hours. A fixed-fee project has at most one nonvoid base-fee claim; separate manual
-extras require the actual overbilling setting, amount, reason and unique reference.
-Budget checks reserve/reject coherent charges rather than truncate eligible time.
+Project states are `draft`, `active`, `closed`, `archived`. Project types are
+`time_and_materials`, `fixed_fee`, `on_call_support`, `on_demand_support_tm`
+and `on_demand_support_ff`. Optional budget/currency and agreement type/reference
+must form valid pairs. Human-facing Project ID is stored `object_id + 9999`,
+so the first displayed value is 10000; UUID and stored identity are unchanged.
 
-Sources: `app/quoting.py:82–137`; `app/billing.py:64–198`, `249–257`;
-`app/models.py:272–325`; `alembic/versions/d529b08f14a2_project_billing.py:86–212`.
+Cases have generated numbers starting at 10001, an optional retained legacy
+number, explicit type and status, bounded description, owner/client/project and
+lifecycle timestamps. Their statuses are Open, In progress, Waiting, Resolved,
+Closed. Flexible fields are JSONB extension values validated by shared services.
 
-Technical timestamps are UTC-aware. Work periods, issue/delivery/due/payment dates
-are business dates, and client IANA zones determine business today/week/archiving
-boundaries. Weekly periods start Monday. No payment operation invents FX; payment
-currency must match the Invoice. Tax, withholding, bank fees or adjustments must
-come from explicit saved data and validated owner input, not an external-rate or
-tax-authority integration implied by the application.
+Timecards store Monday service-week dates, owner, client or internal scope,
+status, total integer minutes and optimistic version. Ordinary and internal
+scopes have separate uniqueness/association rules. Internal work is nonbillable
+and may omit a project; optional internal case links remain validated.
 
-Sources: `app/domain.py:52–67`; `app/billing.py:284–320`, `420`, `521–530`;
-`app/archiving.py:17–56`; `app/models.py:254–258`, `348–350`.
+TimeEntry stores one project/day cell or internal day cell, integer minutes,
+category, description, billable flag and optional Decimal rate override. Case
+allocations reference existing entries; their aggregate cannot exceed recorded
+minutes. Allocation is attribution, not additional billable time or money.
 
-## 5. Critical transaction boundaries
+Parent close/archive transitions disclose consequences and require confirmation.
+Open child projects/cases and linked nonempty Draft timecards block unsafe
+transitions. Work history is retained rather than cascaded away. Reactivation
+can consume active-plan capacity and must revalidate it.
 
-### 5.1 Ordinary owner mutations and concurrency
+Sources: `app/models.py:69`, `app/models.py:112`, `app/models.py:184`,
+`app/models.py:233`, `app/record_references.py`, `app/clients.py`,
+`app/forms.py`, `app/work_lifecycle.py`, `app/flexfields.py`.
 
-The shared route mutation helper opens `sessionmaker.begin()`, invokes the service
-and commits only after the action returns; exceptions roll back the whole action.
-Rendering an immutable PDF inside an issuing/publishing transaction can therefore
-fail without committing a half-issued artifact. Services usually receive the
-Session and do not unconditionally commit it. Specialized external effects have
-separate reserve/claim/result transactions, described below.
+## 4. Money, time and derived financial state
 
-Parent row locks and a consistent acquisition order protect work/financial graphs.
-`lock_card` locks the Client before the Timecard; `lock_invoice` locks the Client,
-associated Timecards in ID order and then the Invoice. Explicit expected versions
-and SQLAlchemy optimistic versions reject stale forms. These controls do not
-claim all commands run at SERIALIZABLE isolation, or that every form is inherently
-idempotent.
+Money uses Python Decimal and PostgreSQL NUMERIC; financial services reject
+binary floats. Billable duration is stored as integer minutes. Accepted decimal
+hour input must resolve to whole minutes; H:MM is supported. A daily entry is
+bounded by 24 hours, and a card by a seven-day week.
 
-Sources: `app/main.py:355–392`; `app/db.py:9–29`;
-`app/repositories.py:22–52`; `app/timecards.py:27–44`.
+Time-based line amounts aggregate exact minutes at the applicable rate before
+rounding the monetary result with decimal half-up rounding. Weekly periods run
+Monday–Sunday in the configured IANA contract timezone. Browser-local decorative
+time is separate from those service dates and business-day calculations.
 
-### 5.2 Manual time, contributions, allocation and import
+The original verified client contract uses a combined 20-hour weekly cap, no
+minimum and America/Santiago service weeks. These are contract data. No tax,
+withholding, bank detail, legal identifier, exchange rate or gross-up value may
+be invented. A commercial statement is not an official Chilean SII tax document.
 
-Manual save builds a whole week only after validating distinct same-client
-Projects, seven days/notes, daily totals and preserved inactive-project history.
-An owner cannot shrink or remove an Entry underneath retained Case allocations
-or delegated/imported contributions. Finalize checks the current aggregate and
-requires both reason and authorization reference for a cap override. Reopening
-requires an unreserved finalized/legacy-voided card and a reason.
+Invoice stored states are Draft, Issued, Sent and Void. Partially Paid, Paid and
+Overdue are derived from dates and unreversed payments. List/report services
+batch exact payment sums for one read set; this does not become a stale Session
+cache or replace current transactional checks during mutation.
 
-Contributions are source-owned portions of an aggregate Entry. Commands acquire
-parent/card locks, apply a delta, preserve manual/other-source minutes and update
-only the caller's contribution. Source deletion retains a zero-minute contribution
-and history rather than erasing its receipt. Preview/commit imports retain
-source-record identities and hashes; exact replay returns the retained operation
-result, while conflicting reuse/stale context fails. Deferred allocation checks
-prove contribution/Case allocation consistency at transaction completion.
+Fixed-fee/manual-extra lines have zero synthetic time and rate. Their amount and
+commercial metadata record an explicit project charge. A partial unique index
+prevents two nonvoid base fixed-fee claims; manual extras retain a distinct
+project/reference claim and explicit overbilling authorization.
 
-Sources: `app/timecards.py:11–173`; `app/time_commands.py:40–75`, `77–169`,
-`203–422`, `424–556`; `app/time_command_models.py:12–61`;
-`alembic/versions/ph2_002_time_commands.py:70–145`.
+Sources: `app/domain.py`, `app/billing.py:118`, `app/billing.py:150`,
+`app/billing.py:475`, `app/models.py:280`, `app/models.py:341`,
+`app/project_terms.py`, `docs/contracts/ALCO_CONTRACT_SOURCE_NOTES.md`.
 
-### 5.3 Draft billing, issuance, payment and credit
+## 5. Transaction boundaries
 
-Draft creation takes a PostgreSQL advisory transaction lock before numbering and
-claiming eligible time. The reservation Entry PK prevents concurrent duplicate
-billing. Effective rate and budget checks precede line insertion. Fixed-fee and
-manual-extra commands use their own explicit charge invariants rather than
-reusing worked-time quantities.
+### Ordinary writes and concurrent work
 
-Issuance revalidates Project currency/type/budget and explicit commercial-source
-confirmation, sets the business issue date, builds a snapshot, renders the PDF,
-stores exact bytes/hash/renderer metadata, marks associated cards Invoiced and
-writes Audit in the caller transaction. The issued snapshot and Artifact are
-retained; downloads verify SHA-256 and return the original bytes. Only drafts
-may be regenerated.
+Ordinary form mutations enter one database transaction in a framework worker.
+Authorization/CSRF precede the service call. Optimistic versions detect stale
+edits; required row locks serialize finalization, allocation, reservation,
+issuance and payments. Numbering/capacity advisory locks apply before relevant
+resource locks. Individual services preserve their documented lock order.
 
-Payments lock the same financial graph, require a positive amount within the
-unpaid balance and the same currency/date bounds, and stop collection sending in
-that transaction. Reversing a payment adds a timestamp/audit reason; it does not
-silently resume a stopped collection plan. Voiding an issued statement requires
-zero unreversed payments, verifies the original PDF, creates one immutable full
-credit memo referencing its original checksum, then releases time reservations
-and stops sending. Draft cancellation releases claims and records Void history
-without issuing a credit memo. Original issued artifacts are never rewritten.
+Weekly saves preserve retained entry identities and source contributions.
+Reduction/removal cannot silently discard allocated or imported work. Finalize
+locks the card, verifies version, contract limits and explicit override evidence.
+Reopen is allowed only when billing reservations and other guards permit it.
+Void is a retained historical state, not deletion.
 
-Sources: `app/billing.py:33–51`, `117–281`, `392–467`, `521–564`, `577–682`;
-`app/models.py:272–304`, `330–356`;
-`alembic/versions/ph2_001_credit_memos.py:40–102`.
+Import preview validates bounded JSON/CSV before explicit commit. Source and
+record identity, canonical payload digests, operation keys, contribution versions
+and retained receipts distinguish replay from changed content. Corrections target
+the contributing source within an editable Draft; they do not overwrite another
+source's minutes or mutate Finalized/Invoiced history.
 
-### 5.4 Admission and method linking are cross-transaction protocols
+Sources: `app/main.py:379`, `app/repositories.py`, `app/timecards.py`,
+`app/time_commands.py`, `app/time_import.py`, `app/time_command_models.py`.
 
-Public admission is not one database transaction spanning all schemas. Under the
-central directory advisory lock it reserves one fixed slot plus stable owner and
-identity UUIDs. A second transaction initializes exactly that empty tenant using
-the slot's restricted runtime connection. Readback verifies the immutable local
-User/OwnerIdentity before a final central activation transaction. Retained pending
-or blocked states are reconciled through the same exact identities; retries do
-not allocate a different owner or merge matching email accounts.
+### Drafts, issuance, payments and cancellation
 
-Existing bound issuer/subject resolves to its owner/workspace for both signin and
-signup. An unknown signin does not allocate. Signup cannot claim a fixed owner's
-email as a shortcut to linking. Explicit linking requires fresh proof of the
-current owner and the new provider method. Revocation preserves the global
-locator/tombstone and refuses removal of the final usable method.
+A time draft reserves eligible unreserved entries from the requested dates.
+Reservations use entry identity as a unique claim, preventing double billing.
+A card already labeled Invoiced may still contain other unreserved eligible
+entries for a different period; the label is not a substitute for reservation
+checks. Project-based drafts use the separate commercial claims described above.
 
-Sources: `app/admission.py:58–207`, `210–307`;
-`app/enrollment.py:30–87`, `157–175`.
+Issuance rechecks project/currency/budget conditions and explicit commercial-term
+confirmation. In one transaction it records issue date, JSON snapshot, stored
+PDF bytes, SHA-256, renderer version, state changes and audit. Later download
+verifies stored bytes; draft preview can render anew. Operational sent/due-date
+changes cannot rewrite frozen content.
 
-The sign-in notice capture accepts only exact current revision/document-version
-fields into the signed flow. Its receipt is recorded only after immutable
-identity authentication succeeds. Missing/stale evidence goes to explicit
-Continue fallback, with strict legacy compatibility. The Audit acceptance method
-distinguishes sign-in notice, Continue and old checkboxes; catalog snapshot
-reference does not mean a price/checkout agreement. Acknowledgment never implicitly
-activates Free or changes a retained paid plan.
+Payments are positive, within the current issued balance, in invoice currency,
+and dated within the allowed business interval. A payment can stop related
+Sending. Reversal retains the original row and requires a reason. Full issued
+cancellation retains an immutable credit memo and original artifact; it requires
+the permitted payment state and releases reservations/claims through guarded
+logic. Draft cancellation is distinct from an issued credit.
 
-Sources: `app/enrollment.py:179–245`; `app/enrollment_routes.py:1`;
-`app/enrollment_models.py:26–40`; `app/subscriptions.py:349`.
+Sources: `app/billing.py:201`, `app/billing.py:396`, `app/billing.py:458`,
+`app/billing.py:572`, `app/billing.py:608`, `app/billing.py:658`,
+`app/credit_memo_models.py`.
 
-### 5.5 Quotas and subscription-provider effects
+### Identity, admission, quotas and provider operations
 
-Quota checks acquire a schema-derived PostgreSQL advisory transaction lock and
-count active Clients/Projects coherently inside the existing mutation. Parent
-reactivation and selected downgraded inventory cannot evade these service checks.
-Free/Solo/Pro limits are explicit catalog data in code; Pro's lack of a commercial
-client/project cap does not imply unlimited storage, attachments or hosting.
+OwnerIdentity binds immutable issuer/subject, never an unverified email merge.
+OwnerRegistration retains explicit terms/privacy/catalog versions and selected
+offer. Challenges retain bounded state, expiry and attempts; no app-owned
+password store is introduced. Public challenge destination custody is encrypted.
 
-Provider operations reserve an owner/key/payload-bound intent before contacting
-Paddle. Checkout return pages or browser events are not payment proof. The
-verified event handler validates environment/account/tenant/price/period and
-reconciles a unique event receipt, provider account and entitlement under locks.
-Uncertain effects are retained for reconciliation rather than blindly reissued.
-Plan-change/retention confirmation binds a saved reviewed quote and rechecks it
-before effects; cancellation/downgrade preserve the paid-period boundary.
+WorkspaceAdmission and AdmissionIdentity coordinate directory reservation,
+tenant-local bootstrap and activation across explicit transactions. Their
+reserved/pending/active/blocked/revoked states allow incomplete work to fail
+closed. Runtime never falls back to another owner's workspace.
 
-Sources: `app/subscriptions.py:52–142`, `177–228`, `306–349`;
-`app/subscription_billing.py:338–440`, `454–511`, `584–958`, `1028–1179`,
-`1419–1504`, `1589`; `app/subscription_payment_routes.py:395–418`.
+Subscription capacity uses a tenant-wide transaction advisory lock. Counts cover
+active clients and active projects under active clients; project limits are
+tenant totals. Operation receipts protect bounded retries. The SaaS provider
+ledger is distinct from service-statement payments and commercial documents.
 
-### 5.6 Publication and original-file custody
+Paddle operations and signed events retain mode-specific identity, digests,
+idempotency and observed outcomes. Database commits cannot atomically guarantee
+an external provider action; uncertain outcomes require reconciliation rather
+than an invented success. Sandbox evidence cannot activate Live.
 
-An HLE create key is scoped to owner and canonical request digest. Exact repeated
-create returns its original first revision; a conflicting payload fails. Updates
-require the expected version and editable Draft. Publish rechecks active owned
-Case context, renders/validates a bounded PDF, inserts and flushes the artifact
-before marking the revision Published. Database guards then see the required
-artifact and freeze the revision/lines. Subsequent numbered drafts copy retained
-published content rather than modifying it.
+Sources: `app/enrollment_models.py`, `app/admission_models.py`,
+`app/admission.py`, `app/subscriptions.py`, `app/subscription_billing.py`,
+`app/subscription_billing_models.py`.
 
-Library keeps editable roots distinct from immutable uploads and numbered
-versions. Publication inserts and flushes version evidence before freezing the root.
-An uploaded PDF stays exact original bytes. Other imported text can generate a
-new PDF, while explicitly publishing an original file preserves that original
-instead of pretending editor changes were applied to it. Frozen resolution checks
-both the PDF and, when selected, same-document original bytes/hash. Templates
-cannot be sent as Case-bound working documents. Case archive is allowed without
-destroying access to frozen history; new working mutations require active context.
+### Publication, sending and retained custody
 
-Sources: `app/quoting.py:210–279`, `294–360`;
-`app/library.py:190–222`, `241–284`, `310–397`;
-`alembic/versions/ph3_006_quoting_library.py:287–439`.
+Quote publication and Library publication freeze snapshots, PDF bytes, hashes
+and version identity. Revisions preserve the prior published record; originals
+remain separate from rendered versions. Binary upload/artifact fields are
+deferred on normal lists. Explicit authorized downloads retrieve and verify
+the requested retained file.
 
-### 5.7 Two deliberately separate sending protocols
+Statement Sending and commercial-document Sending have separate delivery and
+attempt models. Preparation/confirmation, guarded claims, provider calls and
+recorded terminal outcomes are explicit stages. A transport uncertainty is not
+safe permission to resend. Stop, void/payment changes, environment gates and
+immutable artifact identity remain enforceable at dispatch.
 
-Collections sending binds an issued Invoice Artifact and payment-sensitive plan.
-It commits an uncertain claim/attempt before provider I/O. The completing phase
-reacquires the shared Invoice lock, rechecks payment/void/pause/Stop and holds the
-financial serialization while making its one provider attempt and retaining the
-result. Only accepted previous delivery permits the next opt-in follow-up. A
-manual early follow-up additionally binds its exact reviewed digest and retains
-the original schedule. Jobs remain disabled in the documented Stage profile.
+Mail imports retain normalized bounded content and separate immutable files,
+not arbitrary remote HTML execution. Age archive is six calendar months for
+timecards/Mail, with export-only custody and no automatic deletion or normal
+restore. Settings retention fields record operator policy rather than deleting
+history automatically.
 
-Commercial sending snapshots exactly one published HLE or Library attachment
-into a separate delivery row. Before claiming it validates owner/Case/source,
-version-bound review digest, recipient/message, checksum/MIME and encoded email
-budget. It commits uncertain before network I/O, contacts the transport outside
-that claim transaction, then settles delivery/attempt in a new transaction.
-Concurrent Stop remains retained even if an already claimed send subsequently
-settles. It does not use Invoice/Payment rules or schedule automatic retries.
+Sources: `app/quoting.py`, `app/library.py`, `app/sending.py`,
+`app/proposal_sending.py`, `app/mail_service.py`, `app/archiving.py`.
 
-Both protocols cap four total attempts and preserve ambiguous outcomes without
-replay. Sent means transport/provider acceptance, not proof of inbox placement,
-recipient reading, signature, agreement or payment. Implementation/tests do not
-authorize an addressed customer send.
+## 6. Migrations, read behavior and PH3 review
 
-Sources: `app/sending.py:213–285`, `347–367`, `470–544`, `544–696`;
-`app/proposal_sending.py:100–163`, `193–200`, `227–274`;
-`app/proposal_sending_transport.py:1`; `docs/STATUS.md:15–20`, `120–124`.
+Current linear head is 009: work records/source custody/internal work and guards
+arrive in 007, incomplete Client Draft lifecycle in 008, and three stable recent
+list indexes in 009. Downgrade 008 refuses to erase unresolved Draft clients.
+Do not rename or remove historical migrations because PH2 is closed.
 
-### 5.8 Archive and retained files
+The recent indexes order invoice and audit records by creation/UUID and active
+Mail by owner/receipt/UUID. They do not speed every substring filter or remove
+later-offset costs. Pagination preserves complete filtered counts and financial
+aggregates while slicing the displayed rows; list limits never limit exports or
+billing eligibility.
 
-Archive is a six-calendar-month visibility/export policy, not physical erasure.
-Timecard cutoff uses the Client's business zone and the end of its week; Mail uses
-the retained archive basis. Batch marking uses bounded counts, an advisory lock
-and skip-locked parent acquisition. Historical files, financial records and audit
-remain in PostgreSQL. Mail capture/import normalizes reference data and inert
-attachments; original MIME is not a full mailbox backup and no automatic inbox
-synchronization follows from these models.
+Database guards complement services for immutable artifacts, legal parent
+associations, financial reservations, work allocations and role boundaries.
+Their installed state, migration correctness and recovery require explicit
+evidence; source presence alone cannot establish hosted installation.
 
-Sources: `app/archiving.py:13–95`; `app/archive_routes.py:1`;
-`app/mail_service.py:66–165`, `180–279`; `app/mail_models.py:21–74`.
+Canonical closure carries assistant end-to-end proof, owner UAT, operational
+backup/restore/custody choices and later provider rehearsals into PH3. Retained
+migration-preservation evidence is attributed in `docs/STATUS.md`; this dossier
+refresh adds no database, migration, recovery or runtime-test PASS.
 
-## 6. Database guard inventory — 32 functions at head006
-
-These are trigger functions in each tenant schema, not public stored-procedure
-APIs. Their search path is pinned to `pg_catalog`, the installed schema and
-`pg_temp`; PUBLIC execution is revoked, and runtime grants do not give direct
-EXECUTE. Triggers enforce the invariants when runtime writes use permitted DML.
-Some invariants are deferred until transaction completion so an atomic parent/
-artifact or contribution/allocation operation can finish coherently. Privileged
-operators retain a distinct administrative blast radius and are not ordinary
-application writers.
-
-| Group (count) | Exact functions and principal protection | Definition / strengthening source |
-| --- | --- | --- |
-| Financial core (6) | `timeker_invoice_guard`, `timeker_artifact_guard`, `timeker_line_guard`, `timeker_entry_guard`, `timeker_issued_artifact_check`, `timeker_payment_guard`: freeze issued identity/lines/artifacts; protect reserved entries and payment/parent graph; deferred issued-artifact check. | `alembic/versions/c46f2f62a011_immutable_artifacts.py:13–75`; `alembic/versions/e3b42aea781a_parent_guards_and_sessions.py:19–56`; `alembic/versions/f409a1ac1700_parent_lock_guards.py:13–39`; `alembic/versions/a10d45de891c_issued_status_guard.py:1`; `alembic/versions/d529b08f14a2_project_billing.py:116–212` in the same directory |
-| Cases/allocations (4) | `timeker_case_guard`, `timeker_allocation_guard`, `timeker_allocated_entry_guard`, `timeker_allocated_parent_guard`: same owner/client/project, valid day/minutes and protected parent/allocation associations. | `alembic/versions/e672c40fa912_cases_and_allocations.py:56–168`; identity extension `alembic/versions/e640ab7230cd_case_identity_and_types.py:1` |
-| Archive/Mail (2) | `timeker_archive_guard`, `timeker_mail_guard`: retained archive markers and immutable normalized Mail receipt/reference basis. | `alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py:119–174` |
-| Attachment/project terms (3) | `timeker_mail_attachment_guard`, `timeker_project_agreement_guard`, `timeker_project_billing_guard`: immutable same-parent files and protected charge/budget associations. | `alembic/versions/f710bc319ae2_mail_attachment_custody.py:36–65`; `alembic/versions/a82d43cf6120_project_workflow_and_agreements.py:38–63`; `alembic/versions/d529b08f14a2_project_billing.py:86–114` |
-| Full cancellation (3) | `timeker_credit_memo_guard`, `timeker_credit_memo_final_guard`, `timeker_timecard_void_restriction`: one exact full credit for an issued void, deferred consistency, no new timecard void. | `alembic/versions/ph2_001_credit_memos.py:40–110` |
-| Contributions/receipts (5) | `timeker_contribution_guard`, `timeker_entry_contribution_guard`, `timeker_allocation_contribution_guard`, `timeker_contribution_allocation_check`, `timeker_time_operation_guard`: source ownership, aggregate lower bounds, allocation consistency and immutable operation/import receipts. | `alembic/versions/ph2_002_time_commands.py:70–158` |
-| Subscription/auth/delivery/admission (5) | `timeker_subscription_history_guard`, `timeker_subscription_billing_guard`, `timeker_registration_history_guard`, `timeker_sending_guard`, `timeker_admission_history_guard`: retained authority/effect/history transitions, immutable identity and bounded delivery semantics. | `alembic/versions/ph3_001_subscriptions.py:43–63`; `alembic/versions/ph3_002_sandbox_billing.py:97–132`; `alembic/versions/ph3_003_onboarding_auth.py:62–102`; `alembic/versions/ph3_004_sending.py:89–156`; `alembic/versions/ph3_005_public_admission.py:62–99` |
-| Commercial documents (4) | `timeker_quote_guard`, `timeker_library_guard`, `timeker_commercial_case_guard`, `timeker_proposal_sending_guard`: revision/source/Case/attachment immutability and retained bounded sending claims/results. | `alembic/versions/ph3_006_quoting_library.py:287–525` |
-
-Initial financial path pinning is also explicit in
-`alembic/versions/b07c9d621a30_pin_guard_schema.py:13–33`. Later functions pin
-themselves in their creating migration. Runtime grants are positive/limited DML,
-not object ownership: append-only artifacts/receipts/audit get SELECT/INSERT;
-retained roots get the explicitly maintained update permissions; Draft Quote
-lines additionally permit DELETE. The grant file is reapplied with identifier-safe
-schema/role substitution, followed by separate central-directory restrictions.
-
-Sources: `scripts/postgres-runtime-grants.sql:3–28`;
-`app/workspace_operations.py:51–124`, `178–220`;
-`app/admission_operations.py:79–90`.
-
-## 7. Migration, preservation and recovery evidence
-
-The current source head is `ph3_006_quoting_library`. Alembic's environment loads
-all model modules into one metadata registry and supports an explicitly supplied
-connection so an operator can control each schema transaction. Runtime factory
-startup never calls `create_all`. The newest migration contains frozen table DDL
-and trigger definitions, adds Services to the Case type constraint and installs
-nine commercial tables. It refuses downgrade if any commercial row or Services
-Case is retained; this is not a destructive cleanup tool.
-
-Sources: `app/db.py:6–29`; `alembic/env.py:4–47`;
-`alembic/versions/ph3_006_quoting_library.py:15–281`, `528–544`.
-
-Canonical Stage evidence records nine schemas upgraded to head006 in separate
-committed transactions after a consistent encrypted custom-format backup. It
-records 396 unchanged old non-Alembic table fingerprints, nine empty new tables
-per schema, exact 32 guards/grants and 72 actual reciprocal role denials before
-DDL plus 72 afterward. The five excluded prefix-mismatched schemas remain empty,
-NOLOGIN and head005. This is attributed existing evidence, not a fresh database
-inspection for this dossier. The head006 encrypted backup was verified for
-custody/inventory/decrypt/hash, **not restored in a rehearsal**. Earlier synthetic
-50-workspace/local-restore exercises do not convert it into current hosted restore
-or RPO/RTO proof.
-
-Sources: `docs/STATUS.md:47–59`; `docs/OPERATIONS.md:103–139`;
-`docs/STATUS.md:618`; `docs/design/EXPANSION_DISCOVERY.md:809–820`.
-
-Because migrations commit per schema, partial success must STOP rather than
-blindly replay. Reconciliation must establish actual heads, preserved content,
-grants, guard pins, keys/role custody, preparation markers and compatible image
-before a bounded continuation. A production restore, tenant cutover, offboarding,
-deletion/holds policy or new paid storage promise needs its own explicit authority;
-the presence of archive/export models is not that policy.
-
-## 8. Detailed declaration and source indexes
-
-The separate [model, configuration and dependency appendix](11-models-configuration-and-dependencies.md)
-contains the static declaration inventory, including every mapped class/table and
-field. It avoids repeating that mechanically generated catalog in this analytical
-chapter. `Entity` fields are inherited as described in section 1. Python
-`Mapped[T | None]` denotes an optional mapped value; FK/type/default/unique/index/
-deferred options must be read with the model declaration and creating/strengthening
-migration. Trigger semantics in section 6 are not reducible to ORM declarations.
-
-Use the [source map, tests and manifest](12-source-map-tests-and-manifest.md) for
-the migration/module/test-file inventory and snapshot hashes, and the
-[HTTP routes and templates appendix](10-http-routes-and-templates.md) to trace a
-user action into its transaction entrypoint. These indexes describe the same
-dated source snapshot; none executes a database operation or establishes human
-acceptance.
-
+Sources: `alembic/versions/ph3_007_work_records.py`,
+`alembic/versions/ph3_008_client_lifecycle.py`,
+`alembic/versions/ph3_009_read_indexes.py`, `app/pagination.py`,
+`docs/PERFORMANCE_IMPROVEMENTS_2026-10-17.md`, `docs/STATUS.md`.
 
 ---
-
-<a id="chapter-03"></a>
-
-<!-- Source chapter: 03-product-and-user-workflows.md -->
 
 # 03 — Product and user workflows
 
-**Dated codebase dossier — 16 October 2026.** Source checkout: `C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2`; reviewed HEAD: `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`. This is a descriptive snapshot, not an active specification or permission to continue improvements. The dossier was prepared by reading source, tests, templates and canonical documentation. No database, network, authentication, client document, message delivery or payment action was performed for this chapter. The official HOC pause and resumption instructions belong to the dossier index and continuation document.
-
-The current canonical status records a Stage application built from `dbf73e52ca03726e7903dc74ef27e40339c06936`, followed by documentation/test reconciliation in the reviewed HEAD. It records the original production checkout as unchanged. Code present in this checkout, a documented successful Stage release, actual provider configuration, and human product acceptance are separate facts. Source: [docs/STATUS.md:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/STATUS.md:1>), [HOSTING.md:8](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/HOSTING.md:8>), [docs/PROJECT_BRIEF.md:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/PROJECT_BRIEF.md:1>).
-
-## 1. Product model and navigation
-
-timeKER is an owner workspace for managing clients, projects, cases, exact time, commercial statements and manual payment records. It is also a private document preparation space. One admitted account owns one isolated workspace; there is no team membership, shared-owner client portal or public document signing workflow. An assistant connection receives explicitly scoped delegated access rather than becoming another owner. Authentication and admission are detailed in chapter 04. Sources: [AGENTS.md:5](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/AGENTS.md:5>), [AGENTS.md:95](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/AGENTS.md:95>), [app/auth.py:87](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:87>), [app/integration_auth.py:24](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_auth.py:24>).
-
-The current navigation order is Dashboard, Clients, Projects, Timecards, Cases, Mail, Quoting, Billing, Sending, Library, Reports and Archive. Settings and Audit are available to the owner. Quoting, Library and the commercial-document outbox are gated out of the production environment by `commercial_documents_available`; ordinary statement Sending has its own production activation flag. Source: [app/web/templates/base.html:5](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/base.html:5>), [app/config.py:194](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/config.py:194>).
-
-| Screen or entry | Main URL | User purpose | Principal retained state |
-|---|---|---|---|
-| Public landing/About | `/` | Sign in/up, review plans, policies, support and privacy choices | Necessary signed cookies; separate optional preference |
-| Dashboard | `/dashboard` | Review current work, billing and recent operational activity | Reads existing work and billing records |
-| Clients | `/clients` | Maintain client identity, contacts and billing configuration | `clients`, `contacts`, audit |
-| Projects | `/projects` | Maintain work arrangement, budget and optional agreement source | `projects`, `project_agreements` |
-| Timecards | `/timecards` | Enter and finalize exact weekly time | `timecards`, `time_entries` |
-| Cases | `/cases` | Organize a work item and its assigned time/Mail | `cases`, `case_time_allocations` |
-| Mail | `/mail` | Import/read assigned correspondence and retained files | `mail_messages`, `mail_attachments`, `mail_addresses` |
-| Quoting | `/quoting` | Estimate effort or price; start working agreement drafts | `quotes`, `quote_revisions`, `quote_lines`, `quote_artifacts` |
-| Billing | `/billing` | Draft, issue, download and track service statements | `invoices`, lines, reservations, artifacts, payments, credit memos |
-| Sending: collections | `/sending` | Review and dispatch issued statements and bounded follow-ups | Sending preferences/plans/deliveries/attempts |
-| Sending: commercial | `/sending/proposals` | Review and manually dispatch a frozen estimate/agreement | Proposal delivery and attempt history |
-| Library | `/library` | Retain reusable templates, working documents, originals and versions | Library document/upload/version tables |
-| Reports | `/reports` | Review monthly time/estimated billable values and aging | Derived from retained work and billing |
-| Archive | `/archive` | Export aged timecards/Mail and review archived record categories | Retained rows and one-way age markers |
-| Settings | `/settings` | Issuer, print, preferences, lookup limits and operational links | `app_settings`, separate subscription/integration state |
-
-Route implementations: [app/main.py:714](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:714>), [app/main.py:748](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:748>), [app/project_routes.py:138](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_routes.py:138>), [app/main.py:945](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:945>), [app/case_routes.py:86](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/case_routes.py:86>), [app/mail_routes.py:121](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_routes.py:121>), [app/quoting_routes.py:146](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting_routes.py:146>), [app/main.py:1236](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1236>), [app/sending_routes.py:34](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending_routes.py:34>), [app/proposal_sending_routes.py:37](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending_routes.py:37>), [app/library_routes.py:91](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library_routes.py:91>), [app/main.py:1373](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1373>), [app/case_routes.py:402](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/case_routes.py:402>), [app/main.py:1436](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1436>).
-
-### Shared interaction rules
-
-- Pages are server-rendered Jinja, with native forms and minimal JavaScript. Mutations use POST, owner authorization and CSRF checks. Successful writes normally redirect; invalid business inputs render retained input with field errors. Optimistic versions and/or operation keys protect important repeated submissions. Sources: [app/main.py:265](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:265>), [app/main.py:355](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:355>), [app/auth.py:109](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:109>).
-- Searchable record selectors have bounded pages/searches, an explicit selected record and server-side validation. Their JavaScript refresh is progressive enhancement; native lookup submissions remain available. A working estimate/document uses a Case picker across the owner's active clients, then derives Client and Project server-side. It does not accept a user-supplied Client as permission to access another Case. Sources: [app/lookups.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/lookups.py:1>), [app/main.py:1449](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1449>), [app/quoting_routes.py:109](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting_routes.py:109>), [app/library_routes.py:56](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library_routes.py:56>).
-- The warm ivory/teal interface and decorative clock are defined by the supplied design references. The clock is browser-local; it is not the timestamp source for business records. Reduced motion and the static/no-JavaScript clock are separate presentation behavior. Source: [docs/design/DESIGN_SPEC.md:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/design/DESIGN_SPEC.md:1>), [app/web/templates/clock.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/clock.html:1>), [app/web/static/app.js:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/static/app.js:1>).
-- Help, About/plan/policy windows, native links and printable policies are implemented in templates/static code. Keyboard/focus behavior is tested, but this dossier does not assert universal browser or global WCAG certification. Sources: [app/web/templates/help.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/help.html:1>), [app/web/templates/landing_info.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/landing_info.html:1>), [tests/e2e/test_onboarding_browser.py:68](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_onboarding_browser.py:68>).
-
-## 2. Landing, plans, support and privacy choices
-
-An anonymous visitor opens `/`, reviews the product and About content, compares Free/Solo/Pro and selects Sign up or Sign in when onboarding is enabled. Existing signed-in sessions are routed toward the workspace. The separate auth pages display configured methods and the shared security check; the landing is not itself proof that any provider is operational. Sources: [app/main.py:394](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:394>), [app/web/templates/landing.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/landing.html:1>), [app/web/templates/public_plans.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/public_plans.html:1>).
-
-The public support form accepts one reply email and a bounded plain-text message, with CSRF, a honeypot, the separate Turnstile `contact` action, durable admission/rate controls and a fixed operator delivery destination. Its delivery mode can be disabled, local preview or configured Cloudflare transport. A successful transport result is not a permission to send customer statements or to use authentication SMTP credentials. The app retains digests/status for abuse/idempotency rather than persisting the contact message as a business Mail record. Sources: [app/main.py:400](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:400>), [app/contact.py:31](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/contact.py:31>), [app/contact.py:134](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/contact.py:134>), [app/models.py:33](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:33>).
-
-Terms, Privacy and Cookie content is linked from the interface and is also readable/printable/downloadable at `/legal/policies` without sign-in or JavaScript. Viewing the page is not registration acceptance. Optional measurement has a separate, signed 180-day preference. GPC or DNT refusal wins; advertising remains off. Measurement is accepted only when both deployment availability and an explicit preference permit it, and then records bounded page/click categories rather than business contents. Sources: [app/enrollment_routes.py:80](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:80>), [app/web/templates/legal_policy_content.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/legal_policy_content.html:1>), [app/privacy.py:13](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/privacy.py:13>), [app/privacy.py:75](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/privacy.py:75>), [app/usage.py:41](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/usage.py:41>).
-
-## 3. Dashboard
-
-The Dashboard brings together current-week recorded time, active work, finalized unbilled work, drafts, outstanding/overdue statements and recent activity. Detail links lead to the underlying operational lists rather than creating new transactions. It computes from existing tenant records; visiting the page does not finalize time, prepare a bill or send anything. Sources: [app/main.py:714](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:714>), [app/reports.py:90](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/reports.py:90>), [app/reports.py:212](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/reports.py:212>), [app/web/templates/dashboard.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/dashboard.html:1>).
-
-Different notions of time remain explicit: the decorative browser clock, a client's IANA business timezone, technical UTC timestamps, work dates and statement periods are not interchangeable. Source: [app/domain.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/domain.py:1>), [app/archiving.py:31](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/archiving.py:31>), [app/billing.py:392](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:392>).
-
-## 4. Client records and proposed clients
-
-### Active client workflow
-
-The owner searches/filters/sorts/paginates Clients, opens a client and reviews Overview, Contacts, Projects, Contract & Billing, Invoices and Audit. Create/Edit retain distinct display/legal names, country/address/identity information when supplied, billing email, timezone, currency, rate, payment terms, cadence, weekly cap, no-minimum setting, document language and contract metadata. Missing information remains missing; the source does not manufacture legal identities, tax identifiers, bank data or contractual approval. Sources: [app/main.py:748](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:748>), [app/main.py:811](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:811>), [app/main.py:829](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:829>), [app/clients.py:24](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/clients.py:24>), [app/clients.py:278](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/clients.py:278>), [app/web/templates/client_detail.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/client_detail.html:1>).
-
-Contacts are maintained through the client detail, with client association checked in the service. Project creation is also reachable from the client. Active-client creation or reactivation uses the workspace capacity lock and quota; reactivating a client accounts for its active projects as well. Existing history is retained on archive. An explicit desired state, version and operation key support safe repeats instead of interpreting a retry as another toggle. Sources: [app/main.py:904](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:904>), [app/main.py:920](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:920>), [app/clients.py:118](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/clients.py:118>), [app/clients.py:164](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/clients.py:164>), [app/subscriptions.py:107](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscriptions.py:107>).
-
-Contract & Billing has a separate explicit source-reconciliation confirmation with provenance. That confirmation is a prerequisite for issuing a real commercial statement; merely uploading a document, editing client fields or publishing a Library document does not satisfy it. This chapter does not reproduce any real client's contract or source discrepancies. Sources: [app/main.py:935](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:935>), [app/settings.py:135](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/settings.py:135>), [app/billing.py:392](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:392>).
-
-### Assistant-proposed client workflow
-
-Delegated integrations can create a proposed client in `client_drafts`, and the owner can inspect those proposals at `/client-drafts`. That state is distinct from an active client and does not automatically consume/publish an operational client or override the owner's reconciliation. The route inventory contains proposal review, not a general public client-registration portal. Sources: [app/client_drafts.py:23](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/client_drafts.py:23>), [app/client_drafts.py:53](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/client_drafts.py:53>), [app/integration_routes.py:515](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_routes.py:515>), [app/integration_routes.py:1080](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_routes.py:1080>), [app/integration_models.py:79](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_models.py:79>).
-
-## 5. Projects, commercial arrangements and agreement uploads
-
-Each project belongs to one client. The Projects list supports filtering, lifecycle review and navigation into editing/billing. Operating forms use names; the service creates internal project codes. Fields include name/description, billable flag, rate override, active/closed/archived status, project type and optional monetary budget. The five supported arrangements are Time and Materials, Fixed Fee, On Call Support, On Demand Support T&M and On Demand Support FF. A legacy project may remain unclassified until its owner supplies the real arrangement. Sources: [app/project_routes.py:138](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_routes.py:138>), [app/project_routes.py:208](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_routes.py:208>), [app/clients.py:164](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/clients.py:164>), [app/project_terms.py:6](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_terms.py:6>).
-
-Budget semantics are independent of the Billable flag. Blank means no supplied monetary cap; zero is explicit. For the two fixed-fee arrangements the budget supplies the base project fee. Other arrangements use exact-minute hourly billing within the cumulative base budget. Existing billing restricts changing project type, currency or a fee already claimed by a live fixed-fee statement; a budget cannot be lowered below reserved base charges. Sources: [app/project_terms.py:17](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_terms.py:17>), [app/clients.py:196](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/clients.py:196>), [app/billing.py:64](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:64>).
-
-The optional project agreement fields are a paired type/reference. The current legacy enumeration is **Contract, SAL, SOW**; this is not silently renamed to the new Library's SLA. A private original agreement upload is bounded to 5 MiB and retained through the `project_agreements` model. The owner downloads the exact attached agreement through a project/attachment-bound route; it is not a public file URL or client signature. This older one-project attachment workflow is separate from Library's multi-version document workflow. Sources: [app/project_terms.py:14](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_terms.py:14>), [app/project_attachments.py:21](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_attachments.py:21>), [app/project_attachments.py:46](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_attachments.py:46>), [app/project_attachments.py:80](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_attachments.py:80>), [app/project_routes.py:313](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_routes.py:313>), [app/models.py:147](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:147>).
-
-Closed or archived projects leave ordinary new-work selectors. Reopening/reactivation remains explicit and subject to client status and capacity. Historical time, bills and agreement files remain retained. Source: [app/project_routes.py:270](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_routes.py:270>), [app/clients.py:164](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/clients.py:164>).
-
-## 6. Cases and allocation of time
-
-Cases organize a work item under an active client/project. The owner creates/edits a title, optional description, a type and status. Types are Issue, Consulting, Dev Services, Design and Services. Statuses are Open, In progress, Waiting, Resolved and Closed, with technical resolved/closed timestamps recorded by transitions. Case number/reference is tenant-local and stable; search and lists include explicit lifecycle filters. Sources: [app/cases.py:25](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/cases.py:25>), [app/cases.py:47](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/cases.py:47>), [app/case_routes.py:86](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/case_routes.py:86>), [app/case_routes.py:219](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/case_routes.py:219>), [app/models.py:202](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:202>).
-
-The detail combines assigned Mail and time activity. A Case reference such as `CASE-<number>` is a lookup reference, not authorization. Linked Mail counts can include archived records and explain why the active Mail list is smaller. Associations are explicit: a subject line or message text never creates a Case assignment. Sources: [app/case_routes.py:263](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/case_routes.py:263>), [app/cases.py:194](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/cases.py:194>), [app/mail_routes.py:121](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_routes.py:121>), [docs/MAIL.md:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/MAIL.md:1>).
-
-An owner can allocate an entry's minutes to Cases through `/timecards/entries/{entry_id}/cases`. The service checks owner, editable timecard, same client/project and available minutes; allocation is a partition/reference to recorded time, not a second time entry or extra billable duration. A Case with retained allocations, Mail or capture references cannot freely move to another project; the newer commercial-document database guards also retain its canonical association. Sources: [app/case_routes.py:323](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/case_routes.py:323>), [app/cases.py:131](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/cases.py:131>), [app/cases.py:91](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/cases.py:91>), [alembic/versions/ph3_006_quoting_library.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/alembic/versions/ph3_006_quoting_library.py:1>).
-
-Case archive/reactivate toggles `archived_at` with an expected version. It is independent of resolution status and the six-month export-only archive of time/Mail. Quoting's **Create service case** opens this existing form with Services selected, then returns to the selected estimate/SOW/SLA/contract composer using a closed return context rather than an arbitrary redirect. Sources: [app/cases.py:122](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/cases.py:122>), [app/case_routes.py:21](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/case_routes.py:21>), [app/case_routes.py:223](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/case_routes.py:223>), [tests/integration/test_quoting_routes.py:87](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_quoting_routes.py:87>).
-
-## 7. Weekly timecards
-
-1. Select a client and Monday-starting week in Timecards. One owner/client/week has one timecard; rows refer to that client's projects, with work dates Monday–Sunday.
-2. Enter daily time and optional sensitive work notes. H:MM and decimal-hour convenience are converted by domain code; stored duration is an integer number of minutes.
-3. Save the Draft. Versions reject stale competing edits. Existing delegated/imported contributions are accounted for rather than blindly replaced by the manual grid.
-4. Optionally duplicate a prior week's structure; that action does not fabricate a new week's work minutes.
-5. Finalize only an unchanged, nonempty Draft. A configured weekly combined cap is checked; an over-cap finalization requires the explicit reference/reason path.
-6. A finalized unbilled timecard can be reopened by an audited owner action with a reason. Reserved/invoiced work is locked by its financial relationship. New timecard voiding is prohibited; historical Voided rows remain readable.
-
-Sources: [app/main.py:945](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:945>), [app/main.py:1106](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1106>), [app/main.py:1138](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1138>), [app/main.py:1155](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1155>), [app/main.py:1165](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1165>), [app/timecards.py:11](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/timecards.py:11>), [app/timecards.py:139](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/timecards.py:139>), [app/timecards.py:160](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/timecards.py:160>), [app/timecards.py:176](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/timecards.py:176>), [app/timecards.py:182](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/timecards.py:182>), [app/models.py:162](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:162>).
-
-Historical lists retain week, totals, status and invoice relationships. A finalized timecard is not itself a bill, payment or approval to send. Financial reports/billing can use retained finalized unbilled time even after the ordinary timecard UI moves it to aged Archive. Sources: [app/billing.py:200](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:200>), [app/archiving.py:31](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/archiving.py:31>), [app/reports.py:17](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/reports.py:17>).
-
-### Reviewed time import and corrections
-
-`/timecards/import` accepts strictly bounded UTF-8 JSON or CSV, not a workbook or natural-language timesheet. Uploads are limited to 256 KiB/200 rows with a versioned canonical schema, exact CSV header order, consistent batch ID and explicit minute counts/identifiers. Invalid JSON duplicate keys/constants, malformed CSV and unknown formats are rejected. Source: [app/time_import.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_import.py:1>), [app/time_import.py:195](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_import.py:195>).
-
-The first POST parses and previews without committing work. The commit uses the retained/session-bound signed preview, current ownership/versions and an explicit action. Canonical payload hashes and operation receipts make matching retries idempotent while rejecting a changed batch under the same key. The command layer locks the client/project/timecard, checks active parents and merges only the contribution it owns. Sources: [app/time_import_routes.py:29](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_import_routes.py:29>), [app/time_import_routes.py:271](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_import_routes.py:271>), [app/time_import_routes.py:296](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_import_routes.py:296>), [app/time_commands.py:40](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_commands.py:40>), [app/time_commands.py:424](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_commands.py:424>), [app/time_commands.py:556](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_commands.py:556>).
-
-The Contributions list/detail supports explicit correction or removal of an editable draft contribution. Corrections preserve manual minutes, other-source contributions and coherent Case allocations. Imported/delegated records retain provenance and operation history in `time_contributions`, `time_import_records` and `time_operations`; imported text is not authority to issue a bill. Sources: [app/time_import_routes.py:119](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_import_routes.py:119>), [app/time_import_routes.py:206](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_import_routes.py:206>), [app/time_commands.py:304](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_commands.py:304>), [app/time_command_models.py:13](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_command_models.py:13>).
-
-## 8. Billing, PDFs, credit memos and payments
-
-### Time-based draft to issued statement
-
-Billing creates a draft for an active client and selected period, at most one year. Eligible entries are billable, finalized/invoiced-card entries in the period with no existing reservation, excluding fixed-fee project time. A reservation prevents two drafts from claiming the same minutes. Rates resolve from entry override, project override, then client rate; minutes aggregate before monetary rounding. Project/week/rate grouping becomes the stored lines. Sources: [app/main.py:1173](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1173>), [app/main.py:1240](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1240>), [app/billing.py:200](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:200>), [app/models.py:306](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:306>), [app/models.py:330](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:330>).
-
-Draft adjustment accepts explicit gross-up, withholding, tax, bank-fee and other amounts with provenance when nonzero. It does not calculate a tax rate, legal withholding, automatic exchange rate or foreign currency conversion. Additional positive value against capped/project commercial charges must use the authorized extra-charge workflow rather than bypassing a project budget with Other. Sources: [app/billing.py:284](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:284>), [app/domain.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/domain.py:1>).
-
-Issuance rechecks the project's billing arrangement/budget and the client's explicit source reconciliation. It then freezes the JSON snapshot, issue date, issued UTC timestamp, PDF bytes, filename, renderer version and SHA-256. Related timecards become Invoiced. Rendering failure prevents successful issuance; the UI surfaces a renderer-unavailable result. An issued document is never edited in place by changing present-day client/settings fields. Sources: [app/billing.py:322](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:322>), [app/billing.py:392](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:392>), [app/main.py:1300](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1300>), [app/models.py:336](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:336>).
-
-### Project-based charges
-
-`/project-billing/{project_id}` exposes the real budget, reserved base charges and remaining balance. The owner can explicitly create a fixed-fee base statement with service dates, or authorize overbilling and create a positive manual extra with reason and unique reference. A nonvoid fixed-fee base claim prevents repeatedly billing the same project fee across periods. Extras do not manufacture/reallocate time or release time entries from their reservations. Sources: [app/project_billing_routes.py:47](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_billing_routes.py:47>), [app/project_billing_routes.py:51](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/project_billing_routes.py:51>), [app/billing.py:108](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:108>), [app/billing.py:117](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:117>), [app/billing.py:149](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:149>).
-
-### Preview and download
-
-Draft PDFs may be regenerated and carry draft presentation. Issued downloads reuse the immutable stored artifact and verify its checksum. Statement templates support Spanish/English, supplied issuer/client details, exact duration/amount detail and a time appendix. PDF rendering allows selected local templates/resources; no arbitrary remote URL fetching is part of a document. These are commercial service statements, not automatically official tax documents. Sources: [app/main.py:1282](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1282>), [app/billing.py:454](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:454>), [app/pdf.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/pdf.py:1>), [app/web/templates/statement.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/statement.html:1>).
-
-### Complete receipt and due date
-
-**Mark as sent** records the owner's complete-receipt date for an Issued statement, validates it against issue/current client business dates, changes status to Sent and derives the due date from the frozen payment terms. A due-date correction requires a reason and cannot precede delivery. Provider acceptance in Sending is a different event and does not silently perform this financial action. Sources: [app/billing.py:500](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:500>), [app/billing.py:513](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:513>), [app/sending.py:544](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending.py:544>).
-
-### Payments and reversal
-
-Record Payment stores a positive amount within the outstanding issued balance, statement currency, valid business date, method and optional reference/note. It is a manual accounting record, not a bank/card charge. No automatic FX or conversion is offered. A payment, including a partial payment, stops the associated Sending plan. Reversal retains the original record, adds `reversed_at` and an audit reason; it never silently resumes follow-ups. Paid/partial/overdue labels are derived from the unreversed payment balance and due date. Sources: [app/billing.py:471](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:471>), [app/billing.py:485](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:485>), [app/billing.py:521](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:521>), [app/billing.py:557](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:557>), [app/models.py:345](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:345>).
-
-### Cancel, void and full credit
-
-- Cancel Draft requires an active owner and reason, retains the canceled record and releases its reservations without issuing a credit memo.
-- Void Issued/Sent requires a reason and zero unreversed payments. It first freezes one full credit memo referencing the original snapshot and original PDF hash, including its own immutable PDF/checksum/number. It then marks the statement Void, releases claims, returns wholly unreserved timecards to Finalized and stops Sending.
-- Repeating the same completed cancellation intent is handled consistently; changing retained history is rejected. There is no arbitrary partial-credit editor or silent deletion of an issued artifact in these routes.
-
-Sources: [app/billing.py:567](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:567>), [app/billing.py:577](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:577>), [app/billing.py:607](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:607>), [app/billing.py:673](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:673>), [app/billing.py:685](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:685>), [app/main.py:1343](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1343>), [app/credit_memo_models.py:14](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/credit_memo_models.py:14>).
-
-## 9. Quoting: estimates independent of agreements
-
-Quoting is the central entry for Quick HLE, Time & materials, Fixed fee, SOW, SLA and service agreement presets. Every working estimate requires an owned Case; its Client and Project derive from that Case. Creating a Case through the composer returns to the selected preset. No SOW/SLA/contract is required for an HLE. Sources: [app/quoting_routes.py:102](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting_routes.py:102>), [app/quoting_routes.py:146](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting_routes.py:146>), [app/quoting.py:153](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:153>), [tests/integration/test_quoting.py:52](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_quoting.py:52>).
-
-The estimate form accepts a title, scope/assumptions and task/case/project item labels with minimum/maximum effort. The UI accepts hours/H:MM, then stores integer estimated minutes. Estimated time remains separate from actual `time_entries`. Optional pricing uses Decimal amounts and a selected currency; a duration-only estimate is **Not priced**, and a partly priced estimate identifies its priced subtotal rather than treating all unpriced work as a promised zero charge. Sources: [app/quoting_routes.py:21](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting_routes.py:21>), [app/quoting_routes.py:51](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting_routes.py:51>), [app/quoting.py:58](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:58>), [app/quoting.py:82](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:82>), [app/quoting.py:107](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:107>), [app/web/templates/quote_form.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/quote_form.html:1>).
-
-Draft save uses versions and an idempotent create operation. Publishing creates an immutable revision snapshot and PDF/checksum/renderer metadata. A new revision clones the prior content into a numbered editable draft; it does not modify published lines/artifacts. Archive retains published history and download. The PDF serves the selected retained revision, with stored byte-integrity checks. Sources: [app/quoting.py:210](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:210>), [app/quoting.py:237](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:237>), [app/quoting.py:257](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:257>), [app/quoting.py:294](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:294>), [app/quoting.py:309](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:309>), [app/quoting.py:338](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:338>), [app/quoting.py:349](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting.py:349>), [app/quoting_models.py:30](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting_models.py:30>).
-
-Publishing an estimate creates no invoice, payment, contract acceptance, time entry or subscription. The optional Prepare sending link creates a separate reviewed commercial outbox draft only after its own POST. New work rejects inactive context, and source association cannot be reassigned away from retained commercial history. Sources: [tests/integration/test_quoting.py:52](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_quoting.py:52>), [tests/integration/test_quoting.py:192](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_quoting.py:192>), [app/proposal_sending.py:102](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending.py:102>).
-
-## 10. Private Library / document Space
-
-Library is an in-product private repository, not a ChatGPT Page/Space or a public document portal. `/quoting/documents/new` and `/library/new` open the same document composer. Built-in original starters provide editable proposed Contract/MSA, SOW and SLA wording; Custom accepts the owner's wording. Placeholders remain for actual parties, prices, law, service targets and other negotiated facts. The original wording is not copied from a private client contract, and publication never represents an electronic signature. Sources: [app/library.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:1>), [app/library_routes.py:104](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library_routes.py:104>), [app/web/templates/library.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/library.html:1>), [docs/legal/PRIVACY_DISCOVERY.md:3](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/legal/PRIVACY_DISCOVERY.md:3>).
-
-### Working document or reusable template
-
-A working document must have a Case; Client/Project are derived and locked to that association. The owner can instead explicitly choose **Save as a reusable template without a case**. Only that template mode permits all three associations to be absent. A template can be customized, saved and published; **Use template for a case** copies it to a new owned working document and, where present, copies the retained original into that document's own upload row. It does not mutate or reassign the reusable source. Sources: [app/library.py:134](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:134>), [app/library.py:151](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:151>), [app/library.py:178](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:178>), [app/library_models.py:24](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library_models.py:24>), [tests/integration/test_library.py:36](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_library.py:36>), [tests/integration/test_library.py:101](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_library.py:101>).
-
-### Upload and edit a complete owner version
-
-The owner first creates a draft, then uploads a PDF, DOCX, UTF-8 TXT or Markdown file up to 5 MiB. The exact original is retained with safe filename, declared type, size and SHA-256. TXT/Markdown import as editable text. DOCX uses bounded in-memory ZIP/XML paragraph extraction, rejects encrypted/macro/embedded/bomb/entity patterns and never extracts external files or follows document relationships. A PDF is retained unchanged and is not presented as a fake editable text conversion. Text is bounded to 100,000 characters. Sources: [app/library.py:240](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:240>), [app/library.py:286](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:286>), [app/library_models.py:48](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library_models.py:48>), [tests/unit/test_library.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/unit/test_library.py:1>).
-
-Imported DOCX/text can be edited in the saved draft. Publication explicitly selects **PDF of the saved text** or the **Original** source file; an original attachment does not silently acquire editor changes. For a PDF source, the exact PDF remains the source artifact. Source: [app/web/templates/library_document.html:13](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/library_document.html:13>), [app/library.py:310](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:310>).
-
-### Publish, retain and revise
-
-**Publish version** freezes a numbered snapshot with association, saved text, source metadata and chosen attachment format, plus PDF bytes/hash/size/renderer/published instant. The parent becomes Published/frozen; editing requires **Create new draft**, which increments the draft revision while retaining older versions and originals. Published history exposes attachment/PDF download and optional commercial email preparation for working documents. Technical checksum details are collapsed; displayed publication time is converted to UTC. Sources: [app/library.py:310](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:310>), [app/library.py:354](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:354>), [app/library_routes.py:56](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library_routes.py:56>), [app/web/templates/library_document.html:20](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/library_document.html:20>), [app/library_models.py:64](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library_models.py:64>).
-
-Downloads reauthorize the owner and exact source-document/version association and verify stored byte count/SHA-256. Original bytes, versions and published artifacts are immutable; changing a draft does not rewrite an existing publication. Aged/archived parent context blocks new working creates/saves/uploads/publications/new drafts while retaining authorized published reads. Sources: [app/library.py:365](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:365>), [app/library.py:394](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library.py:394>), [app/library_routes.py:153](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library_routes.py:153>), [tests/integration/test_library.py:138](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_library.py:138>), [tests/integration/test_library.py:151](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_library.py:151>), [tests/integration/test_library.py:176](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_library.py:176>).
-
-## 11. Two distinct outbound workflows
-
-### A. Commercial document Sending
-
-Entry is `/sending/proposals`, or **Prepare sending/email** on a published HLE or working Library version. The service resolves and reauthorizes a frozen source: an HLE PDF or explicitly selected Library PDF/DOCX/TXT/Markdown. A reusable case-less template cannot be sent as a working document. Sources: [app/proposal_sending_routes.py:37](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending_routes.py:37>), [app/proposal_sending_routes.py:44](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending_routes.py:44>), [app/proposal_sending.py:102](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending.py:102>).
-
-1. Prepare: enter one recipient, subject and plain-text body; validate the original Case/Project/Client relationship and the selected attachment bytes/hash. A matching operation-key retry reuses the same draft, while changed details under the key are rejected.
-2. Review/Edit: retain exact attachment/revision, permit recipient/message edits only before an attempt and use an expected version. Display attachment metadata/download and provider readiness/encoded size budget.
-3. Confirm: the unchecked explicit confirmation and review digest bind exact recipient, subject/body, attachment, version and attempt count. A GET or preparation POST sends nothing.
-4. Dispatch: commit an Uncertain/claimed durable record and attempt before contacting the separate outbound transport. Concurrency cannot create a second call for the same claim.
-5. Outcome: Sent means provider acceptance, Failed is a definitive rejection, Uncertain means acceptance cannot be determined. Only a definitively failed delivery can be explicitly retried, at most four total attempts. Stop prevents future dispatch; it cannot recall a message already accepted or change an uncertain historical outcome.
-
-Sources: [app/proposal_sending.py:143](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending.py:143>), [app/proposal_sending.py:183](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending.py:183>), [app/proposal_sending.py:206](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending.py:206>), [app/proposal_sending.py:245](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending.py:245>), [app/proposal_sending_routes.py:68](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending_routes.py:68>), [app/proposal_sending_models.py:22](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending_models.py:22>).
-
-The full encoded message must fit the provider's 5 MiB budget, so a 5 MiB file limit is not a promise that every maximum-size attachment can be emailed with metadata/body. Source validation occurs again before dispatch. There are no commercial follow-up jobs, invoice collection effects, charges, client signatures or payment side effects in this outbox. Provider credentials are separate from authentication SMTP. Sources: [app/proposal_sending.py:228](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending.py:228>), [app/proposal_sending_transport.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending_transport.py:1>), [app/proposal_sending_models.py:58](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending_models.py:58>), [docs/PROJECT_BRIEF.md:202](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/PROJECT_BRIEF.md:202>).
-
-### B. Issued statement Sending / collections
-
-`/sending` prepares a single owner's issued unpaid statement PDF with an explicitly reviewed recipient, subject/body and optional bounded follow-up interval/count. Editable initial/follow-up templates accept a closed factual placeholder set. Draft/void/paid/foreign statements are rejected; a recorded partial payment also stops the plan. Sources: [app/sending_routes.py:34](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending_routes.py:34>), [app/sending.py:119](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending.py:119>), [app/sending.py:168](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending.py:168>), [app/sending.py:213](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending.py:213>).
-
-Pending initial delivery can be dispatched by the owner when the transport is configured. An opt-in follow-up can be reviewed and explicitly advanced using a digest bound to the original schedule and PDF; this does not enable scheduled jobs. Individual Stop, Stop all and explicit Resume exist. Resume permits new work but does not silently restart stopped retained plans. Explicit retry is reserved for a definitive failed delivery; uncertain provider acceptance is never replayed. Sources: [app/sending_dispatch_routes.py:26](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending_dispatch_routes.py:26>), [app/sending_dispatch_routes.py:37](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending_dispatch_routes.py:37>), [app/sending_routes.py:153](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending_routes.py:153>), [app/sending_routes.py:160](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending_routes.py:160>), [app/sending_routes.py:167](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending_routes.py:167>), [app/sending_routes.py:174](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending_routes.py:174>), [app/sending.py:544](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending.py:544>).
-
-Preferences, plans, deliveries and attempts remain durable in their own four tables. Provider acceptance, complete client receipt and payment remain distinct. The canonical status records the historical bounded synthetic rehearsal separately from this latest commercial release; the latest release sent no customer message and scheduled statement jobs remain disabled. This dossier grants no new sending authority. Sources: [app/sending_models.py:21](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending_models.py:21>), [app/billing.py:500](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/billing.py:500>), [docs/STATUS.md:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/STATUS.md:1>), [docs/PROJECT_BRIEF.md:202](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/PROJECT_BRIEF.md:202>).
-
-## 12. Mail capture, reading and retained files
-
-Mail is inbound correspondence custody, separate from both outbound Sending flows. Google sign-in does not grant Gmail/inbox access. The owner can import one selected `.eml`, assign a client and optionally matching Project/Case, and supply an explicit past receipt basis for a historical import. The service validates association and size before storing normalized content. Sources: [app/mail_routes.py:242](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_routes.py:242>), [app/mail_service.py:66](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_service.py:66>), [app/mail_service.py:180](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_service.py:180>), [app/mail_service.py:201](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_service.py:201>), [docs/MAIL.md:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/MAIL.md:1>).
-
-The list supports client/project/case/reference and subject filters. Details show escaped/inert text and retained attachment metadata; attachment files download only after exact owner/message/file authorization. Stored content includes normalized subject/sender/recipients/message identifier, untrusted sender Date, trusted received/archive basis, bounded plain text, attachment count and raw-message hash. Original MIME/active HTML/remote content is not retained or rendered; retain an original elsewhere if original MIME is required. Sources: [app/mail_routes.py:121](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_routes.py:121>), [app/mail_routes.py:353](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_routes.py:353>), [app/mail_models.py:21](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_models.py:21>), [app/mail_models.py:58](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_models.py:58>), [docs/MAIL.md:15](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/MAIL.md:15>).
-
-Bounds are 5 MiB source message/combined attachments, 1 MiB decoded text, bounded headers, at most 100 MIME parts and depth 10. Identical raw bytes are idempotent for that owner; trying to reassign that duplicate or change its historical receipt basis fails. Sender Date/identity and message wording are reference material, not identity proof, work approval, payment instructions or automatic time creation. Sources: [app/mail_service.py:23](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_service.py:23>), [app/mail_service.py:66](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_service.py:66>), [app/mail_service.py:201](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_service.py:201>).
-
-When capture is configured, the owner creates a fixed-association capture address at `/mail/addresses`; its secret reference is displayed once and only a token digest is retained. Revocation stops future deposits, not reading rights to the workspace. The scoped receiving route validates the trusted envelope, exact signature/body hash/time, association and limits; committed receipt is required for acknowledgment. Capture addresses are not a public arbitrary-recipient relay. A missing capture configuration leaves manual import available rather than advertising a working address. Sources: [app/mail_routes.py:315](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_routes.py:315>), [app/mail_routes.py:319](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_routes.py:319>), [app/mail_routes.py:344](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_routes.py:344>), [app/mail_service.py:281](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_service.py:281>), [app/internal_routes.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/internal_routes.py:1>), [docs/MAIL.md:33](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/MAIL.md:33>).
-
-## 13. Archive and reports
-
-### Export-only age archive
-
-Timecards older than six calendar months use week end in the client's timezone; Mail uses trusted server receipt UTC or the owner's explicit past historical receipt basis. Sender Date does not control expiry. Effective predicates hide expired content from ordinary detail/list paths even before a maintenance marker runs. Maintenance marks bounded batches of at most 500 timecards and 500 messages using locks; markers are one-way. Sources: [app/archiving.py:13](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/archiving.py:13>), [app/archiving.py:31](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/archiving.py:31>), [app/archiving.py:45](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/archiving.py:45>), [app/archiving.py:60](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/archiving.py:60>).
-
-Archive retains PostgreSQL rows and financial relationships. Date-range CSV exports cover timecards/Mail; attachment manifests point to authorized export-only file downloads. It is not a restore/delete UI, cold storage, backup or a statutory retention policy. Archiving a client/project/Case for lifecycle/quota reasons is a separate operation and can be reactivated subject to its own controls. Sources: [app/archive_routes.py:19](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/archive_routes.py:19>), [app/archive_routes.py:89](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/archive_routes.py:89>), [app/archive_routes.py:162](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/archive_routes.py:162>), [app/archive_routes.py:217](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/archive_routes.py:217>), [app/case_routes.py:402](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/case_routes.py:402>), [docs/MAIL.md:60](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/MAIL.md:60>).
-
-### Reports and CSV
-
-Reports group recorded minutes and hourly estimates by client/month, include finalized unbilled hourly minutes and show outstanding invoice aging buckets. Fixed-fee work remains recorded time but is not reinterpreted as hourly billing revenue. Values stay in their own currency; the report does not convert currencies or equate estimated billable work with received cash. CSV exports integer Minutes and H:MM plus currency/estimated amount/unbilled values, with dangerous spreadsheet prefixes escaped. Sources: [app/reports.py:17](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/reports.py:17>), [app/reports.py:77](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/reports.py:77>), [app/main.py:1373](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1373>), [app/main.py:1379](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1379>).
-
-## 14. Settings, subscriptions and delegated integrations
-
-### Owner settings and audit
-
-Settings stores issuer brand/legal/contact fields, locale (`en`/`es`), IANA timezone, currency, print paper (`Letter`/`A4`), footer copy and retained operational preferences. Payment instructions are separately Fernet-encrypted using the tenant key and are not echoed as a plaintext settings value. A supplied nonblank replacement is bounded; merely opening Settings cannot reveal transport secrets. Lookup limits are independently validated: page size 1–50 and search limit 1–1000. Stored retention preferences are not proof of a running offsite backup/log deletion system. Sources: [app/main.py:1417](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1417>), [app/main.py:1440](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1440>), [app/main.py:1488](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1488>), [app/settings.py:16](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/settings.py:16>), [app/settings.py:51](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/settings.py:51>), [app/settings.py:71](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/settings.py:71>), [app/models.py:369](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:369>).
-
-Audit history is owner-only and separate from sanitized operational logs. It records business events, internal entity/actor/request identifiers and event-specific facts; some authorized business audit details are sensitive. Logging deliberately avoids emitting business text, identities, credentials or PDF bytes. Sources: [app/main.py:1498](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:1498>), [app/audit.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/audit.py:1>), [app/models.py:359](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:359>), [app/logging.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/logging.py:1>).
-
-### Subscription and active capacity
-
-The source catalog is Free (1 active client/1 active project total), Solo (5/10), Pro (no commercial client/project cap). Catalog prices are USD0, USD7 monthly/USD70 annually, and USD12 monthly/USD120 annually. Annual is paid upfront. These are versioned catalog facts, not a tax calculation or proof of live commercial activation. Sources: [app/subscriptions.py:20](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscriptions.py:20>), [app/subscriptions.py:52](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscriptions.py:52>), [app/web/templates/public_plans.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/public_plans.html:1>).
-
-Settings → Subscription reviews the assignment and active usage. Initial Free requires an explicit idempotent action; a copied/unassigned workspace is not silently given a tier. Downgrading or selecting Free reviews exactly which client/project records remain active and which become archived, validates a versioned inventory, preserves history/documents and requires confirmation. Client/project creation/reactivation share the transactional capacity lock, so simultaneous requests cannot independently use the last capacity slot. Sources: [app/subscription_routes.py:50](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_routes.py:50>), [app/subscription_routes.py:110](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_routes.py:110>), [app/subscription_routes.py:114](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_routes.py:114>), [app/subscription_routes.py:133](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_routes.py:133>), [app/subscriptions.py:61](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscriptions.py:61>), [app/subscriptions.py:306](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscriptions.py:306>), [app/subscriptions.py:349](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscriptions.py:349>).
-
-Paid checkout is separately configured Paddle Sandbox in the documented Stage. The owner reviews offer/renewal authorization; durable billing operations bind retries. Catalog verification and signed verified events establish actual entitlements, not the browser's checkout return alone. Portal/reconciliation are explicit actions. Plan-change preview/confirm uses provider calculations; upgrades/proration and end-of-cycle downgrades/cancellation are not locally invented charges. The source includes renewal checks, failure/grace handling and a once-per-owner retention offer with explicit review/confirmation. The full runtime path is not evidence that every such provider scenario was rehearsed live. Sources: [app/subscription_payment_routes.py:92](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_payment_routes.py:92>), [app/subscription_payment_routes.py:128](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_payment_routes.py:128>), [app/subscription_payment_routes.py:153](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_payment_routes.py:153>), [app/subscription_payment_routes.py:164](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_payment_routes.py:164>), [app/subscription_payment_routes.py:199](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_payment_routes.py:199>), [app/subscription_payment_routes.py:219](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_payment_routes.py:219>), [app/subscription_payment_routes.py:276](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_payment_routes.py:276>), [app/subscription_payment_routes.py:293](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_payment_routes.py:293>), [app/subscription_billing.py:726](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_billing.py:726>).
-
-Subscription state is held in workspace assignment/operation rows and billing account/operation/event rows. It is distinct from a client's manual invoice payments. Live Paddle, production Sending and generic onboarding require explicit environment-specific release/activation; the current snapshot is not permission to enable them. Sources: [app/subscription_models.py:13](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_models.py:13>), [app/subscription_billing_models.py:24](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_billing_models.py:24>), [app/config.py:154](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/config.py:154>), [docs/OPERATIONS.md:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/OPERATIONS.md:1>).
-
-### Assistant/integration access
-
-Settings → Integrations lists configured connection clients, scopes and grants; the owner authorizes a registered redirect/resource using OAuth code + S256 PKCE and can revoke a grant. The API/MCP tool layer checks the bearer credential, resource, owner, active grant and each tool's scope. Scope families include client summaries/proposals, Case read/write, draft-time read/write, bill read and Dashboard read. No tool receives authority to supply its own tenant schema or to issue/pay/send a bill merely because it can read one. Sources: [app/integration_auth.py:24](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_auth.py:24>), [app/integration_auth.py:197](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_auth.py:197>), [app/integration_auth.py:254](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_auth.py:254>), [app/integration_routes.py:217](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_routes.py:217>), [app/integration_routes.py:589](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_routes.py:589>), [app/integration_routes.py:1042](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_routes.py:1042>).
-
-Authorization codes, grants, hashed tokens and idempotent delegated operations use their own tables. Owner logout can revoke delegated grants unless the explicit keep-connections option is used. Integration revocation and ordinary sign-in linking are different operations. Sources: [app/integration_models.py:21](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_models.py:21>), [app/integration_auth.py:307](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_auth.py:307>), [app/integration_auth.py:381](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_auth.py:381>), [app/main.py:699](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:699>).
-
-## 15. Data persistence and state boundaries
-
-All business records below live in the authenticated tenant's PostgreSQL schema, not in a browser local-storage business database. Binary payloads are database bytes, loaded on demand where deferred. The central admission directory is a separate authentication-routing exception described in chapter 04. Source: [app/db.py:10](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/db.py:10>), [app/tenancy.py:445](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:445>).
-
-| Record family | Tables / source | What remains durable |
-|---|---|---|
-| Owner and settings | [app/models.py:59](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:59>), [app/models.py:369](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:369>) | User state/session revision; typed settings JSON and encrypted payment instructions |
-| Clients/contacts/projects | [app/models.py:69](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:69>), [app/models.py:95](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:95>), [app/models.py:108](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:108>) | Supplied identities, commercial terms, lifecycle and budgets |
-| Project agreement | [app/models.py:147](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:147>) | Original private bytes, metadata/checksum and project association |
-| Actual work | [app/models.py:162](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:162>), [app/models.py:186](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:186>), [app/models.py:233](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:233>) | Weekly states, exact dated minutes, notes and Case allocations |
-| Imported/delegated work | [app/time_command_models.py:13](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/time_command_models.py:13>) | Canonical import/contribution provenance and retained operation receipts |
-| Cases | [app/models.py:202](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:202>) | Stable number, owner/client/project/type/status/history |
-| Statements and payments | [app/models.py:247](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:247>), [app/models.py:306](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:306>), [app/models.py:330](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:330>), [app/models.py:336](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:336>), [app/models.py:345](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:345>) | Financial snapshots/lines, time reservations, immutable PDFs and manual payment/reversal history |
-| Credit memos | [app/credit_memo_models.py:14](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/credit_memo_models.py:14>) | Full credit snapshot and original-reference hash, immutable PDF |
-| Inbound Mail | [app/mail_models.py:21](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_models.py:21>), [app/mail_models.py:48](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_models.py:48>), [app/mail_models.py:58](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/mail_models.py:58>) | Normalized content, receipt provenance, capture digests, bounded separate attachment bytes |
-| Estimates | [app/quoting_models.py:30](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/quoting_models.py:30>) | Draft/published revisions, estimated integer minutes, Decimal prices, frozen PDF/checksum |
-| Library | [app/library_models.py:24](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library_models.py:24>) | Editable root draft, immutable uploads, numbered snapshots/PDFs and attachment choice |
-| Collections Sending | [app/sending_models.py:21](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/sending_models.py:21>) | Templates/preferences, plans/schedules/stops and delivery attempts |
-| Commercial Sending | [app/proposal_sending_models.py:22](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/proposal_sending_models.py:22>) | Exact single recipient/message/frozen attachment, reviews, claims/stops/outcomes |
-| Subscription | [app/subscription_models.py:13](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_models.py:13>), [app/subscription_billing_models.py:24](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_billing_models.py:24>) | Capacity assignment, provider-safe operations/events and entitlement dates |
-| Business audit | [app/models.py:359](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:359>) | Event identity and authorized business facts independent of diagnostics |
-
-Core distinctions: estimated minutes are not recorded minutes; a published proposal is not a signed agreement; a confirmed commercial source is not a tax authority; a provider-accepted email is not complete receipt; a payment record is not a charge; archive is not deletion; a registration catalog reference is not a subscription purchase. These distinctions are enforced by separate services/states rather than one shared catch-all status.
-
-## 16. Failure and recovery catalog
-
-| Situation | User-visible/retained result | Safe next action already supported |
-|---|---|---|
-| Stale version or changed operation payload | Write rejected; prior state retained | Reload, reconcile and resubmit the intended change |
-| Inactive client/project/Case for new work | Context-specific validation failure | Reactivate the appropriate parent or select another owned active context |
-| Plan capacity reached | Contextual voluntary upgrade/archive choice; no silent checkout | Review retained records/plan; explicitly confirm any archival selection |
-| Imported payload invalid or preview stale | No partial successful commit presented | Correct file or regenerate the preview |
-| Statement has reserved/issued work | Protected immutable/history state | Use supported cancellation/credit/replacement workflow |
-| PDF renderer unavailable | Issue/publish does not count as successful | Retry after operator restoration; existing stored artifacts remain separately retrievable |
-| Artifact bytes/hash inconsistent | Download/send refused | Operator reconciliation; do not substitute a newly rendered document for retained history |
-| Missing outbound provider | Draft review/readiness available, dispatch blocked | Separately authorized provider readiness/activation |
-| Definitive outbound failure | Failed attempt retained | Explicit bounded retry after review |
-| Uncertain acceptance/interrupted provider call | Uncertain claim retained | Reconcile externally under separate authority; never blindly replay |
-| Mail capture unavailable | Capture not advertised; import remains separate | Use explicit `.eml` import |
-| Aged Mail/timecard | Ordinary detail unavailable/export-only | Authorized date-range Archive export |
-| Subscription checkout return without verified event | Pending provider operation/unchanged entitlement | Explicit reconciliation or verified event processing |
-| Invalid/revoked connection | Scope/grant rejection | Owner reauthorization through registered flow |
-
-The tests implement these contracts with fictional data and mocked providers, including actual restricted PostgreSQL tenant roles. Representative executable sources: [tests/integration/test_quoting.py:52](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_quoting.py:52>), [tests/integration/test_quoting.py:163](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_quoting.py:163>), [tests/integration/test_library.py:89](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_library.py:89>), [tests/integration/test_library.py:176](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_library.py:176>), [tests/integration/test_proposal_sending.py:94](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_proposal_sending.py:94>), [tests/integration/test_proposal_sending.py:144](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_proposal_sending.py:144>), [tests/e2e/test_quoting_library_browser.py:87](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_quoting_library_browser.py:87>), [tests/e2e/test_quoting_library_browser.py:146](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_quoting_library_browser.py:146>).
-
-## 17. Validation and scope of this snapshot
-
-Canonical STATUS records consolidated backend coverage across **1,785 distinct cases**, preserving the full-run failure and its narrow corrected-unit evidence rather than calling it a fresh all-green full suite. It records **32 final affected browser cases**, static checks, 84 template parses, disposable migration proof and anonymous hosted GET checks. Exact commands, durations, failures and receipt identities remain in the canonical status/hosting documents. This chapter did not rerun those checks and does not replace their evidence. Sources: [docs/STATUS.md:55](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/STATUS.md:55>), [HOSTING.md:8](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/HOSTING.md:8>).
-
-The latest recorded Stage checks demonstrate deployed assets, public auth/policies/health and anonymous protection. Authenticated hosted feature review still requires normal owner sign-in. No real contract upload, customer commercial send, signature, production deployment or new human acceptance was performed as part of producing this dossier. Account deletion and Apple login remain unimplemented, as detailed in chapter 04. The official HOC pause stops improvement work until the owner resumes it.
-
+## Current review boundary
+
+Source `9fc9eeb` on prepared `codex/ph3-stage` is the 2026-10-18 review baseline.
+PH2 is administratively closed; Stage continues and PH3 awaits owner prompts.
+The eventual production candidate combines PH2 and authorized PH3 work.
+
+Last retained hosted evidence is Stage 29 / runtime source `e282985` /
+schema `ph3_009_read_indexes`. This chapter explains source-delivered behavior;
+it does not report new human UAT, new provider proof or a fresh hosted check.
+Current residuals are in `docs/STATUS.md`, including actual assistant connection,
+owner UAT and operational recovery/custody.
+
+Sources: [canonical product brief](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eeb/docs/PROJECT_BRIEF.md),
+`docs/design/DESIGN_SPEC.md`, `docs/PHASE2_CLOSEOUT.md`, `CONTINUE.md`.
+
+## 1. Product model, navigation and interaction
+
+One private workspace belongs to one individual owner. Clients contain projects;
+cases organize work inside real client/project context. Timecards record actual
+minutes. Estimates describe proposed effort, Library holds private documents,
+and Billing issues commercial service statements. SaaS plan billing is separate
+from manually tracked client-statement payments.
+
+The authenticated rail contains Dashboard, Clients, Projects, Timecards, Cases,
+Mail, Quoting, Billing, Sending, Library, Reports, Archive, Settings and Audit
+history. Environment capability gates control applicable entries and routes.
+Archive remains below Reports; Timecards is below Projects and Quoting above
+Billing. Production visibility must not be inferred from Stage navigation.
+
+The ivory/teal/navy shell retains the exact timeKER wordmark, translucent cards
+and decorative borderless clock. The clock shows browser-local time with a
+continuous seconds hand, reduced-motion handling and static 9:00 fallback.
+Contract weeks and business dates use explicit domain timezones instead.
+
+A fixed topbar offers a centered search icon. Enhanced search opens above the
+current screen, preserves underlying unsaved forms, restores focus and supports
+Escape. Native `/search` remains available. Sections retain empty headings and
+up to five direct links per result category.
+
+Forms retain input/inline errors, accessible save feedback and native GET/POST.
+Opened forms/details use a 44px icon-only named Back control with visible focus.
+Back/forward chevrons reuse the wordmark's navy/teal K-arm geometry.
+
+Sources: `app/web/templates/base.html`, `app/web/templates/navigation_icons.html`,
+`app/web/static/workspace.js`, `app/search_routes.py`,
+`app/workspace_search.py`, `docs/design/DESIGN_SPEC.md`.
+
+## 2. Lists, references and shared status
+
+Lists and histories use ten records by default, configurable from one to fifty
+in Settings. Pagination remains inside the results card with record/page counts.
+Enhanced navigation updates that card while preserving neighboring forms,
+focus and scroll. Native links retain filters and support browser history.
+
+Independent selector defaults are 50 choices per page and 1000 matching results.
+List/selector limits never reduce billing eligibility, aggregates or exports.
+
+The five Dashboard detail groups are a deliberate exception: at most five rows
+each regardless of Settings. Every Status column uses shared labeled badges;
+color supplements readable text. Compact histories retain date/event/detail.
+
+Country, invoice/budget currency and service/default timezone use native
+dropdowns from local reference data. Existing defaults, blank optional values,
+submitted errors and historical values are preserved. The UI does not infer a
+country, tax identity or contractual fact from browser locale.
+
+Sources: `app/pagination.py`, `app/lookups.py`, `app/settings.py`,
+`app/reference_choices.py`, `app/web/templates/components.html`,
+`app/web/static/status.css`, `app/web/static/workspace.js`.
+
+## 3. Landing, plans, registration and privacy
+
+Landing provides separate Sign up/Sign in routes, concise product information,
+legal/privacy panels and About plans. The center has no separate View plans
+shortcut. Google, GitHub and configured managed email are supported source
+methods; configuration alone does not prove successful human enrollment.
+Apple remains design/preparation work.
+
+Registration requires explicit versioned acknowledgment and an activated first
+plan before ordinary workspace use. An existing identity signs in to its own
+workspace; a verified new owner consumes a prepared private slot. Account
+security links/revokes methods through fresh proof, never an email-string merge.
+
+The current source catalog is Free (1 active client/1 active project, USD0),
+Solo (5/10, USD7 monthly or USD70 annually), Pro (no commercial client/project
+cap, USD12 monthly or USD120 annually). Projects are tenant totals. Free has no
+card requirement or trial expiry. Tax/commercial acceptance and Live activation
+remain separate decisions; these are source catalog terms, not a new quotation.
+
+Cookie/privacy choices distinguish essential operation from optional usage.
+Withdrawal and applicable privacy signals remain respected. Support contact,
+where enabled, sends only an explicitly submitted message to the fixed operator
+mailbox with CAPTCHA and durable abuse controls; Stage's public adapter gates it.
+
+Sources: `app/web/templates/landing.html`, `app/enrollment.py`,
+`app/enrollment_routes.py`, `app/subscriptions.py`, `app/privacy.py`,
+`app/contact.py`, `app/web/templates/auth_methods.html`.
+
+## 4. Dashboard
+
+The five actionable summaries are This week hours, Draft statements, Outstanding
+statements, Finalized unbilled time and Overdue statements. Complete counts,
+minutes and financial totals cover their entire eligible scope. Selecting a
+summary opens its own detail group with independent fixed-five paging.
+
+Switching metric/rhythm preserves each group's page. Enhanced Previous/Next
+replaces the selected detail panel only; late inactive responses cannot reopen
+it or steal scroll/focus. Native GET/back/forward remains functional. Responses
+are private/no-store; the optimization is reduced work, not a private-data cache.
+
+The client workload panel shows up to four active clients with recorded hours
+and project/case/timecard context over its documented 28-day period. It opens
+Clients. The rhythm panel switches between fourteen daily bars and fourteen
+Monday-first calendar weeks, including the current UTC week and thirteen prior
+weeks. Its perimeter/heading opens Timecards, separate from chart switching.
+
+The contribution grid retains exact daily minutes, seven weekday initials,
+shared duration bins, legend and blank future padding. Weekdays use green;
+weekends use violet with the same bins. Rounded cells, unequal gutters and an
+opaque canvas address the reported grid illusion without changing recorded
+values. Subjective comfort/visual acceptance remains an owner decision.
+
+Sources: `app/main.py:739`, `app/dashboard.py`, `app/reports.py:108`,
+`app/web/templates/dashboard.html`, `app/web/templates/dashboard_detail.html`,
+`app/web/static/app.js`.
+
+## 5. Clients, projects and cases
+
+Clients can be searched, filtered, sorted, paged and opened for their profile,
+contacts, projects, commercial terms, statements and history. Client Edit is
+the normal status control: Draft, Active, Archived. New clients derive Draft
+or Active from completeness. Codes are four ASCII letters, uppercase on save,
+with inline duplicate feedback.
+
+Draft permits missing activation details. Active requires basic valid profile,
+Tax ID, legal representative name, billing email and contractual email, plus
+available plan capacity. Missing values remain explicit; a Draft does not imply
+a verified legal profile. An optional source URL/upload stays privately retained
+as evidence with explicit edit/download actions, without automatic fact inference.
+
+Projects retain name/description, real client, visible Project ID starting at
+10000, lifecycle, billable/rate metadata and optional additional fields. Project
+type can be Time and Materials, Fixed Fee, On Call Support or the two On Demand
+support variants. Optional budget/currency and Contract/SAL/SOW reference pairs
+record actual owner-provided arrangements. One private agreement upload up to
+5 MiB remains immutable.
+
+Cases retain real client/project, generated case number, type, title, bounded
+description, status and optional flexible fields. Owners can review, edit and
+allocate existing time entries; allocations cannot create extra time. Mass edit
+uses the same validation/ownership boundaries.
+
+Closing/archiving parents requires confirmation and checks open children or
+linked nonempty Draft timecards. Closed/archived records leave normal new-work
+selectors; retained work, files, billing and history remain readable through
+their appropriate surfaces. Reactivation must meet capacity/lifecycle rules.
+
+Sources: `app/clients.py`, `app/client_sources.py`, `app/project_routes.py`,
+`app/project_attachments.py`, `app/record_references.py`, `app/cases.py`,
+`app/case_routes.py`, `app/work_lifecycle.py`.
+
+## 6. Weekly timecards and reviewed imports
+
+A normal card belongs to one owner/client/Monday-start week with project/day
+cells. Internal time can omit client/project, optionally link an owned case and
+is always nonbillable. H:MM and exact-minute decimal-hour input persist integer
+minutes. Notes remain optional sensitive business content.
+
+Load week restores active-project structure. Owners can add/select/remove unused
+Draft rows without deleting projects or protected work. Duplicate copies the
+structure into the next week with empty durations. Save Draft, Finalize and
+audited Reopen retain version/cap/reservation rules. Above-cap finalization needs
+an explicit owner reason and authorization reference. Historical Voided cards
+remain readable; new timecard voiding is prohibited.
+
+The four top tiles now show Ongoing timecards, Ongoing projects, Fill rate and
+the decorative local clock. Counts cover the viewed Monday–Sunday week across
+all owner clients/internal work, excluding voided/archived scope and earlier-week
+carry. Saved empty Drafts count as cards; projects count distinct real IDs with
+entries in the scoped week. Fill rate shows Draft and Finalized counts, not a
+percentage; Invoiced counts as Finalized. Zero is explicit. Current-card status
+and unsaved/read-only feedback stay beside the editor.
+
+JSON/CSV import provides preview before explicit commit. Strict source records,
+payload hashes, idempotency keys and contribution receipts support replay and
+bounded Draft corrections. Imported or allocated time cannot be silently
+overwritten by another source, reduced below protected allocations or changed
+after finalization/invoicing.
+
+Sources: `app/main.py:1030`, `app/timecards.py:20`, `app/timecards.py:55`,
+`app/time_import.py`, `app/time_import_routes.py`, `app/time_commands.py`,
+`app/web/templates/timecards.html`, `app/web/static/timecards.js`.
+
+## 7. Billing, immutable PDFs and manual payments
+
+Owners create a time-based Draft for a client/date period from eligible finalized
+unreserved work, review grouped lines and detailed time, adjust permitted draft
+values, then explicitly issue. Exact minutes aggregate before monetary rounding.
+Contract/source discrepancies require confirmation before issuance.
+
+Fixed-fee and applicable support projects have an explicit base-fee action using
+their stored fee/currency and service dates. A nonvoid base fee cannot be charged
+twice. Manual extras require enabled overbilling, positive amount, reason and
+unique reference; they do not fabricate hours or reserve time.
+
+Draft PDF preview may regenerate. Issue freezes JSON snapshot, bytes, hash and
+renderer identity. Issued downloads return those checked stored bytes; no
+in-place edit is permitted. Spanish/English documents include actual supplied
+details, exact totals and the commercial-statement qualification. Missing legal,
+tax or bank values are never invented.
+
+Mark as sent records delivery and default due date; due corrections require an
+audited reason. Owner-entered payments use statement currency, allowed date and
+current balance. Reversal preserves history. Paid/partial/overdue displays are
+derived. Draft cancellation differs from full issued cancellation, which retains
+an immutable credit memo and original artifact and requires permitted payment
+state before releasing billing claims.
+
+Sources: `app/billing.py`, `app/project_billing_routes.py`, `app/pdf.py`,
+`app/credit_memo_models.py`, `app/web/templates/invoice.html`.
+
+## 8. Quoting, Library and two outbound workflows
+
+Quoting supports effort-only HLEs and optionally priced T&M/fixed estimates.
+A working estimate requires a case, deriving its client/project. Create service
+case opens the existing form with Services selected and returns to the composer.
+Min/max integer-minute ranges, assumptions, exclusions and validity remain
+owner-edited. An estimate creates neither actual work nor an invoice.
+
+Publish retains an immutable revision/snapshot/PDF/checksum. Editing a published
+estimate begins a new revision. Library holds working SOW/SLA/agreement wording,
+reusable templates and complete owner uploads in PDF/DOCX/TXT/Markdown up to
+5 MiB. Working documents require case context; reusable templates may be unbound.
+Editable text, retained originals and published versions remain distinct.
+
+Commercial Sending reviews one published estimate/Library version or explicitly
+selected retained original with recipient, subject, body and exact attachment.
+It has its own manual outbox, durable claim, attempt history, stop and guarded
+retry. It does not schedule collections or record client payments.
+
+Issued-statement Sending separately binds a reviewed unpaid immutable statement,
+recipient and rendered text. Follow-ups are opt-in/bounded and stop on payment,
+void, individual Stop or Stop all. Early follow-up uses a fresh explicit review
+while retaining its original schedule. Partial payment stops the plan; reversal
+does not resume it. Definitive rejection may permit explicit retry; uncertain
+provider acceptance must not replay. Provider acceptance is not recipient reading.
+Scheduled statement jobs remain disabled and actual sends need separate authority.
+
+Sources: `app/quoting.py`, `app/quoting_routes.py`, `app/library.py`,
+`app/library_routes.py`, `app/proposal_sending.py`, `app/sending.py`.
+
+## 9. Mail, archive and reports
+
+Mail imports bounded owner-selected .eml content with explicit client/optional
+project/case association. Normalized text/headers and separate immutable files
+remain private; original MIME is not retained. Sender/Date are unverified
+reference data, not work approval. Capture addresses are revocable and configured;
+the feature is not full inbox synchronization or an outbound mail client.
+
+Timecards/Mail older than six calendar months become export-only Archive records.
+Timecards use service-week end in contract timezone; Mail uses trusted receipt or
+explicit historical receipt, not sender Date. This is retained custody, not
+deletion, backup, statutory policy or a restore-to-normal-screen action.
+Financial relationships and eligible finalized unbilled work remain preserved.
+
+Reports retain monthly client hours, billable work estimates, finalized unbilled
+time, statement aging and CSV. Display pagination does not truncate totals or
+exports. Fixed fees remain separate from hourly estimates.
+
+Sources: `app/mail_service.py`, `app/mail_routes.py`, `app/archiving.py`,
+`app/archive_routes.py`, `app/reports.py`.
+
+## 10. Settings, integrations and next decisions
+
+Settings manages issuer details, encrypted payment instructions, PDF language/
+paper/footer, defaults, independent list/selector limits and recorded retention
+policy. It links Subscription, Assistant connections, Client drafts, readiness
+and audit; secrets are never shown. Clear cache explicitly refreshes 22 known
+versioned public app files, preserving sign-in, data and unsaved forms. It shows
+progress/retry and native help; it does not automatically reload the page.
+
+Subscription exposes current individual plan/capacity and explicit Sandbox
+checkout/change/portal actions. Contextual upgrade controls do not block unrelated
+work. First Solo-monthly Sandbox purchase has retained provider evidence; annual,
+3DS, changes, cancellation/retention and renewal failure/grace need rehearsal.
+A synthetic Stage Pro grant is not paid-provider evidence or a PROD entitlement.
+
+Assistant connections use scoped OAuth/MCP/API access and operator-registered
+clients. Proposed clients remain owner-reviewed drafts. Actual platform/tool
+discovery, reciprocal owner isolation and refresh/revocation remain carried
+residuals; source implementation does not prove a human assistant session.
+
+PH3 prompts should build from these delivered workflows, name genuine gaps and
+retain acceptance boundaries. Human UAT, grid comfort, latest performance/Settings
+acceptance, Apple/offboarding, operational recovery and future combined PH2+PH3
+PROD readiness remain open. No new implementation or rollout follows from this
+review package.
+
+Sources: `app/settings.py`, `app/web/templates/settings.html`,
+`app/web/static/settings_cache.js`, `app/subscription_routes.py`,
+`app/integration_routes.py`, `app/client_drafts.py`, `docs/STATUS.md`.
 
 ---
-
-<a id="chapter-04"></a>
-
-<!-- Source chapter: 04-authentication-registration-and-access.md -->
 
 # 04 — Authentication, registration and access
 
-**Dated codebase dossier — 16 October 2026.** Reviewed checkout: `C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2`, HEAD `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`. This document describes the current source and the operational state recorded in its canonical documentation. It is not a new authentication specification, production activation, permission to read an inbox/code, or permission to accept terms for anyone. Preparation used no database, network, provider, credential or authentication operation. The dossier's root documents carry the official HOC pause/resumption instruction.
-
-## 1. Capability, deployment and production are different states
-
-The source contains three authentication methods: direct Google OAuth/OIDC, direct GitHub OAuth plus fresh API identity proof, and managed Supabase email verification. Public signup is controlled separately from method configuration. Apple appears only as deferred preparation; it has no runtime provider start/callback implementation or exposed sign-in button. Sources: [app/main.py:166](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:166>), [app/main.py:455](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:455>), [app/social_auth.py:9](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/social_auth.py:9>), [app/email_auth.py:101](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:101>), [docs/OPERATIONS.md:44](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/OPERATIONS.md:44>).
-
-Canonical STATUS/HOSTING record the isolated Stage release from `dbf73e52ca03726e7903dc74ef27e40339c06936`, public auth pages with one shared Turnstile, native callback recovery, healthy HTTP responses and source-matching assets. They separately record bounded public admission/provider signup activation and a finite operator-prepared slot inventory. Those records do not mean a new OTP was sent, each provider was exercised live during this dossier pass, or a human accepted a plan/policy. Sources: [docs/STATUS.md:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/STATUS.md:1>), [HOSTING.md:8](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/HOSTING.md:8>), [docs/OPERATIONS.md:8](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/OPERATIONS.md:8>).
-
-The original production application remains on its separate historical release and Google/allowlist access; this Stage delivery does not update it. The reviewed source can describe future explicitly configured generic production onboarding, but source presence is not live production behavior. `stage_onboarding_enabled` is prohibited in production; alternate methods require generic onboarding there, and commercial document screens remain unavailable in production. Sources: [app/config.py:142](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/config.py:142>), [app/config.py:194](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/config.py:194>), [docs/STATUS.md:128](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/STATUS.md:128>), [docs/OPERATIONS.md:53](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/OPERATIONS.md:53>).
-
-| Control or method | Source default/readiness | Runtime significance |
-|---|---|---|
-| Google | Client ID/secret plus hosted HTTPS/Turnstile requirements | Direct identity provider, always the historical hosted requirement |
-| GitHub | Complete ID/secret and enrollment required | Displayed only when configured; no repository scope required |
-| Email | `email_auth_provider` defaults disabled; pinned Supabase URL/publishable-key validation | Method unavailable unless explicitly configured |
-| Generic onboarding | `onboarding_enabled=false` by default | Enables central immutable identity/admission directory behavior |
-| Public signup | `public_signup_enabled=false` by default | New owner allocation allowed only with explicit signup and prepared inventory |
-| Public provider email signup | `email_public_signup_enabled=false` by default | Allows Supabase account creation only with local public-admission prerequisites |
-| Stage enrollment compatibility | `stage_onboarding_enabled=false` by default | Fixed-owner Stage path, separate from generic public admission |
-| Local development login | Explicit setting, non-hosted only | Test/development convenience; fails closed in hosted environments |
-| Apple | No runtime method | No Apple-ready or Apple compliance claim |
-
-Configuration definitions and validation: [app/config.py:14](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/config.py:14>), [app/config.py:64](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/config.py:64>), [app/config.py:124](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/config.py:124>), [app/config.py:194](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/config.py:194>); method visibility: [app/social_auth.py:17](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/social_auth.py:17>), [app/enrollment_routes.py:94](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:94>).
-
-## 2. The account/workspace invariant
-
-An account is one owner in one private workspace. Its canonical authentication key is an immutable provider **issuer + subject**, not an email string. A verified email is a claim attached to that proof and a canonical owner/contact attribute; matching it is not sufficient to merge accounts or link a new method. Google uses its OIDC subject, GitHub its numeric user ID rendered as the subject, and Supabase its verified UUID user ID under the pinned `/auth/v1` issuer. Sources: [app/enrollment.py:30](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:30>), [app/enrollment.py:46](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:46>), [app/enrollment.py:57](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:57>), [app/social_auth.py:28](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/social_auth.py:28>), [app/email_auth.py:152](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:152>).
-
-Local `owner_identities` enforces unique issuer/subject and one issuer binding per owner, retains the verified-email claim and supports a revoked timestamp. Generic admission also maintains a central directory of exact tenant/owner/identity IDs. The global locator only chooses a possible tenant: successful authentication still requires the exact active local binding and active local owner. No runtime flow can say “same email, therefore use the original owner's workspace.” Sources: [app/enrollment_models.py:12](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_models.py:12>), [app/admission_models.py:26](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission_models.py:26>), [app/admission.py:64](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:64>), [app/admission.py:77](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:77>), [app/auth.py:36](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:36>).
-
-This also means a person with an existing email-only account cannot simply press Google on Sign up and expect automatic linking. The supported path is sign in with an already linked method, satisfy the current registration/plan gates, open Account security, obtain fresh owner proof and explicitly authenticate the new method. Sources: [app/admission.py:142](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:142>), [app/admission.py:225](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:225>), [app/web/templates/error.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/error.html:1>), [app/web/templates/account_security.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/account_security.html:1>).
-
-## 3. Public entry pages and intent
-
-`/sign-in` and `/sign-up` render distinct native forms. Each method start explicitly supplies its `intent` (`signin` or `signup`), selected offer, the closed return enum and current notice fields. A query-string view is not an allocation or registration acknowledgment. Ordinary entry-page refresh/prefetch does not replace a pending emailed challenge or inherit a different hidden legacy destination. CSRF initialization may establish the necessary pre-auth cookie; that is not acceptance of an agreement. Sources: [app/enrollment_routes.py:20](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:20>), [app/enrollment_routes.py:26](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:26>), [app/enrollment_routes.py:94](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:94>), [app/enrollment_routes.py:128](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:128>), [tests/integration/test_auth_get_sessions.py:54](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_auth_get_sessions.py:54>).
-
-Allowed account offers are Free/Solo monthly/Solo annual/Pro monthly/Pro annual. Choosing one in the pre-auth UI is a requested/catalog context, not proof of a paid purchase. Arbitrary redirect URLs are rejected. The only special auth return value is `security`, mapped internally to `/settings/security`; the browser does not control a general destination URL. Sources: [app/enrollment.py:24](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:24>), [app/enrollment_routes.py:20](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:20>), [app/main.py:462](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:462>).
-
-### Existing account vs new account
-
-| User action | Result after valid provider proof |
-|---|---|
-| Existing bound identity chooses Sign in | Reuse its exact owner/workspace; apply current acknowledgment/plan checks |
-| Existing bound identity chooses Sign up | Reuse that same owner/workspace; do not allocate or reassign another slot |
-| Unknown identity chooses Sign in | No owner/workspace allocation; generic recovery with a safe Create account route |
-| New identity chooses Sign up, all admission flags/inventory ready | Reserve one finite prepared slot, initialize exact IDs, then authenticate that owner |
-| Email matches an existing owner but provider subject is not linked | Refuse implicit linking/merge; sign in using a linked method and link explicitly |
-| Slot pool exhausted | Temporary registration-unavailable response; no default-workspace fallback |
-| Revoked/conflicting global identity | Refuse; retain tombstone/history rather than rebind |
-
-Sources: [app/admission.py:142](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:142>), [tests/integration/test_email_start_retries.py:99](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:99>), [tests/integration/test_email_start_retries.py:122](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:122>), [tests/integration/test_email_start_retries.py:193](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:193>), [tests/integration/test_public_admission.py:271](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_public_admission.py:271>), [tests/integration/test_public_admission.py:342](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_public_admission.py:342>).
-
-These outcomes deliberately avoid a pre-auth address-existence oracle. Submitted-address confirmation is feedback about this browser's own input, not a statement that the address is registered or that delivery occurred. Sources: [app/email_auth.py:34](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:34>), [app/email_auth.py:52](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:52>), [app/enrollment_routes.py:359](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:359>).
-
-## 4. One shared Cloudflare Turnstile per authentication page
-
-The auth layout loads the public Turnstile API as a deferred script, followed by the local deferred `auth_challenge.js`. The local integration directly renders one plain `data-auth-challenge` container with action `login` and `response-field=false`; it does not nest a separate widget in each Google/GitHub/email form. Each marked start form has one hidden response field. The support/contact check remains a separate widget/action. Sources: [app/web/templates/auth_layout.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/auth_layout.html:1>), [app/web/templates/auth_challenge.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/auth_challenge.html:1>), [app/web/templates/auth_methods.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/auth_methods.html:1>), [app/web/static/auth_challenge.js:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/static/auth_challenge.js:1>).
-
-On a native submit, JavaScript reads the specific widget's response and expiry, refuses an absent/expired/oversized token, clears all method fields and injects the token only into the selected form. A submitted flag blocks duplicate starts. It leaves the clicked submit button enabled so its named email delivery action is serialized correctly. Expiry/error clears tokens, and browser back/forward cache restoration resets only that widget before another start. Tokens are not persisted in local storage or copied across methods. Sources: [app/web/static/auth_challenge.js:9](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/static/auth_challenge.js:9>), [app/web/static/auth_challenge.js:23](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/static/auth_challenge.js:23>), [app/web/static/auth_challenge.js:49](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/static/auth_challenge.js:49>), [app/web/static/auth_challenge.js:59](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/static/auth_challenge.js:59>).
-
-**Verification ownership is intentionally different:**
-
-- Social start: timeKER calls Cloudflare Siteverify server-side before OAuth. It requires success, exact expected hostname and action `login`; missing proof is 403, verifier/network unavailability is 503. Hosted environments cannot bypass a missing configuration.
-- Managed email start: timeKER passes the one token to Supabase's security metadata; **Supabase owns that verification**. Calling Siteverify locally first would consume the same single-use token and break the provider request. Code verification is a later challenge-bound action and does not ask for a second start CAPTCHA.
-- Contact: timeKER verifies action `contact` through its separate bounded support flow.
-
-Sources: [app/bot_check.py:13](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/bot_check.py:13>), [app/main.py:462](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:462>), [app/email_auth.py:128](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:128>), [app/contact.py:134](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/contact.py:134>). Tests: [tests/e2e/test_shared_auth_challenge.py:173](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_shared_auth_challenge.py:173>), [tests/e2e/test_shared_auth_challenge.py:223](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_shared_auth_challenge.py:223>), [tests/e2e/test_shared_auth_challenge.py:238](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_shared_auth_challenge.py:238>), [tests/e2e/test_shared_auth_challenge.py:253](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_shared_auth_challenge.py:253>).
-
-Where a real security widget is configured, JavaScript is required to complete that widget. Native/no-JavaScript fallbacks elsewhere in the product are not a CAPTCHA bypass. A non-hosted configuration without CAPTCHA retains native method forms for local testing. Sources: [app/web/templates/auth_challenge.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/auth_challenge.html:1>), [app/bot_check.py:13](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/bot_check.py:13>), [tests/e2e/test_shared_auth_challenge.py:266](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_shared_auth_challenge.py:266>).
-
-## 5. Direct Google and GitHub flow
-
-### Start
-
-The user selects Google/GitHub through a POST `/auth/google` or `/auth/github`. GETs to these entry endpoints return to the landing rather than starting an OAuth side effect. The POST rate-limits, parses a bounded form, checks CSRF/Origin, rejects duplicate/unknown account fields, validates the closed return destination and verifies Turnstile. A method lacking complete configured readiness returns unavailable rather than fabricating a provider redirect. Sources: [app/main.py:455](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:455>), [app/main.py:460](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:460>), [app/auth.py:109](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:109>), [app/social_auth.py:17](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/social_auth.py:17>).
-
-The selected mode/offer/return and exact captured notice are stored as the signed `account_flow`. Explicit linking also stores an owner-bound fresh proof. Existing pre-auth CSRF is retained across the provider start so an already rendered alternate form in another tab is not invalidated merely by starting OAuth; successful authentication still rotates CSRF. Authlib builds the exact same-origin callback, state/nonce and PKCE transaction. Sources: [app/main.py:482](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:482>), [app/main.py:505](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:505>), [tests/integration/test_social_auth.py:303](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_social_auth.py:303>).
-
-Google requests `openid email profile`; it does not ask for inbox/Drive/calendar access. Enrollment mode enables S256 PKCE. GitHub requests `user:email` with S256 PKCE and its own OAuth endpoints/client credentials; there is no repository-read permission in this login implementation. Source: [app/main.py:166](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:166>).
-
-### Callback and immutable proof
-
-Both callback paths pass through the same handler but select the actual provider. Authlib exchanges/verifies the transaction, with Google requiring both an ID token and userinfo. Generic Google admission requires boolean `email_verified is True` and the exact expected Google issuer. GitHub does not trust an arbitrary OAuth token's user object: it fetches `/user` and `/user/emails?per_page=100`, bounds responses/no pagination, requires a positive numeric user ID and exactly one eligible verified email (verified primary for unadmitted generic admission). Sources: [app/main.py:527](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:527>), [app/main.py:542](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:542>), [app/social_auth.py:28](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/social_auth.py:28>), [tests/integration/test_public_admission.py:849](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_public_admission.py:849>).
-
-Generic non-link callbacks resolve or admit through the central directory; link callbacks use the captured independent proof and exact owner/tenant. The chosen tenant transaction authenticates the active immutable local identity, increments the session revision and records the current captured notice only when eligible. Callback failure clears unsafe flow/session state, emits a fixed sanitized diagnostic outcome and renders native recovery. Provider tokens remain transient for verification; the application does not retain Google/GitHub access/refresh tokens as business identity credentials. Sources: [app/main.py:542](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:542>), [app/auth.py:36](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:36>), [app/enrollment.py:237](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:237>), [app/main.py:529](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:529>).
-
-### Result and recovery
-
-Ready accounts go to Dashboard, resumed delegated authorization, or the closed Account security return. Missing acknowledgment goes to registration; missing first plan remains gated. Linking returns to Account security. Generic capacity failure is 503 with temporary-unavailable copy; other identity failures are generic 403 with instructions to use an already linked method and then Account security. Source: [app/main.py:638](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:638>).
-
-The native callback error screen has a stable **Sign in** recovery link to `/sign-in?return_to=security`; **Create a new account** appears only when public signup is available. Recovery does not require JavaScript history. A generic “Identity verification failed” does not prove a particular Google cause: missing state, rejected proof, unlinked identity, provider errors and other rejected callback conditions can share it. Sources: [app/web/templates/error.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/error.html:1>), [app/main.py:309](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:309>), [tests/integration/test_social_auth.py:121](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_social_auth.py:121>), [tests/e2e/test_onboarding_browser.py:538](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_onboarding_browser.py:538>).
-
-## 6. Managed Supabase email verification
-
-### Start and delivery choice
-
-The auth page offers **Continue with email** (`delivery=otp`) and **First email sign-in? Send verification code** (`delivery=confirmation`). Only the selected native submitter's value is sent. The route normalizes the submitted email, validates mode/offer/return, uses a bounded form and checks CSRF before reserving/sending. Account-security linking uses the authenticated canonical owner address, not an arbitrary submitted destination. Sources: [app/web/templates/auth_methods.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/auth_methods.html:1>), [app/enrollment_routes.py:359](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:359>), [tests/e2e/test_onboarding_browser.py:305](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_onboarding_browser.py:305>).
-
-Supabase transport is pinned to the configured project `/auth/v1`, uses its publishable API key, 10-second requests, no redirects/environment proxy, bounded JSON responses and no admin credential. Ordinary OTP is `/otp` with explicit `create_user` control. In the closed invited-owner compatibility path, confirmation uses `/resend` with type signup; the public-signup path uses the permitted OTP creation request. This is an email-code flow, not a local password store or an unverified magic-link redirect. Sources: [app/email_auth.py:101](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:101>), [app/email_auth.py:110](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:110>), [app/email_auth.py:128](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:128>).
-
-### Public challenge storage and states
-
-Before a generic unauthenticated request can be verified, the central `public_email_challenges` row retains:
-
-- encrypted destination (Fernet, purpose-bound);
-- keyed HMAC digests of normalized address, browser nonce and request network;
-- exact signin/signup intent, offer and closed return destination;
-- state, attempt count, timestamps and 10-minute expiry.
-
-The cookie holds opaque challenge/session context, not a code. Address-preview text is itself fixed-shape encrypted submitted-input context tied to that challenge UUID and nonce. It expires after ten minutes and is not proof of an account or delivery. Sources: [app/admission_models.py:43](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission_models.py:43>), [app/admission.py:316](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:316>), [app/admission.py:322](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:322>), [app/email_auth.py:34](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:34>), [app/email_auth.py:52](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:52>).
-
-The public challenge state machine is `reserved → ready/uncertain/failed → verifying → consumed` or a retryable `ready`/terminal `failed` after a bad proof. The uncertain delivery state supports ambiguity about a send response without assuming success. Durable throttling serializes reservations and bounds an hour to 1,000 total, 12 matching address/session reservations and 30 matching network reservations, plus a 60-second address/session cooldown. Verification allows at most six claimed attempts and validates expiry/session digest under a lock before provider verification. Sources: [app/admission.py:322](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:322>), [app/admission.py:351](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:351>), [app/admission.py:378](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:378>), [app/admission.py:401](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:401>).
-
-The older fixed-owner/link path uses tenant-local `email_auth_challenges`, retaining owner ID, session digest, mode, offer, state, attempts and ten-minute expiry. It also serializes the owner and enforces reservation cooldown and bounded attempts. Pre-auth routing is encrypted/opaque so known and unknown submitted emails do not acquire different plaintext cookie shapes. Sources: [app/enrollment_models.py:42](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_models.py:42>), [app/email_auth.py:80](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:80>), [app/email_auth.py:180](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:180>), [app/email_auth.py:211](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:211>).
-
-### Duplicate starts and replacement
-
-A same-flow start during the cooldown preserves the still-usable original challenge/nonce/preview rather than replacing it with a phantom challenge. It neither sends another email nor consumes the same CAPTCHA again. Preservation requires the exact destination/session/flow and a usable unexpired, non-consumed, non-verifying, non-exhausted challenge. The compatibility path also derives a uniform integer-age cooldown from the encrypted preview timestamp. Changed delivery/intent/offer/destination does not authorize restoring unrelated proof. After the cooldown a new explicit start can replace the old flow. Sources: [app/enrollment_routes.py:386](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:386>), [app/admission.py:361](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:361>), [app/email_auth.py:69](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:69>); regressions: [tests/integration/test_email_start_retries.py:43](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:43>), [tests/integration/test_email_start_retries.py:146](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:146>), [tests/integration/test_email_start_retries.py:204](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:204>), [tests/integration/test_email_start_retries.py:256](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:256>), [tests/integration/test_email_start_retries.py:280](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:280>).
-
-### Enter and verify the code
-
-The verification form accepts/pastes a whole 6–10 digit code, hidden challenge ID and CSRF. It does not send the email start fields/Turnstile token again. The route requires the session's exact challenge, atomically claims a verification attempt, then asks Supabase `/verify` with type email. It refuses a token lacking the required shape, fetches a fresh `/user`, and requires confirmed email, nonanonymous account, matching email and a valid UUID subject. It deliberately does not trust only the user object returned by `/verify`. Sources: [app/web/templates/auth_methods.html:10](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/auth_methods.html:10>), [app/enrollment_routes.py:520](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:520>), [app/email_auth.py:152](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:152>).
-
-The provider access token exists only long enough to fetch this fresh proof and is not put in the local cookie/database/log. A successful public code consumes the challenge before admission; an unknown signin still cannot allocate an owner. A successful bound identity is authenticated in its exact tenant, current captured notice may be recorded, session/CSRF rotate and the readiness/return routing applies. Bad codes increment durable attempts; six, expiry, wrong session/route/cipher or consumed proof require a fresh normal flow. Sources: [app/enrollment_routes.py:520](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:520>), [app/admission.py:378](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:378>), [app/admission.py:401](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:401>), [app/email_auth.py:152](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:152>).
-
-The UI shows the submitted destination only from the encrypted browser-bound preview, offers Start again and uses uniform code/delivery errors. Neither an opaque challenge page nor “Check your email” proves provider delivery. Mailbox receipt and the human's entry of a real OTP remain outside local mock evidence. Sources: [app/enrollment_routes.py:94](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:94>), [app/web/templates/auth_methods.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/auth_methods.html:1>), [tests/integration/test_public_admission.py:617](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_public_admission.py:617>), [tests/integration/test_email_start_retries.py:122](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:122>).
-
-## 7. Registration notice, current versions and first plan
-
-### Current notice contract
-
-The source versions are Terms `2026-10-15.v2`, Privacy `2026-10-15.v2`, catalog `2026-10-15.v1` and notice revision `2026-10-16.v1`. The pre-auth page displays one visible notice beside all methods: signing in or creating an account agrees to Terms and acknowledges Privacy/Cookie policy. Each signin/signup native start includes the four exact hidden values. Link-only forms exclude this notice evidence. Sources: [app/enrollment.py:16](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:16>), [app/enrollment.py:179](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:179>), [app/web/templates/auth_notice.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/auth_notice.html:1>), [app/web/templates/auth_notice_fields.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/auth_notice_fields.html:1>), [app/web/templates/auth_provider_forms.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/auth_provider_forms.html:1>).
-
-Only an exact current set becomes `flow.notice` inside the signed auth transaction. No receipt is written at start. After successful verified immutable authentication in the selected tenant, `accept_sign_in_notice` rechecks mode, captured versions and preexisting bound identity, then records the versioned owner registration idempotently. A failed code, unknown/unlinked signin, provider rejection, link-only transaction, ordinary GET or old session is not a substitute. Sources: [app/enrollment.py:188](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:188>), [app/enrollment.py:196](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:196>), [app/enrollment.py:237](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:237>), [tests/integration/test_auth_notice.py:115](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_auth_notice.py:115>), [tests/integration/test_auth_notice.py:207](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_auth_notice.py:207>), [tests/integration/test_auth_notice.py:229](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_auth_notice.py:229>).
-
-The receipt table stores owner, Terms/Privacy/catalog versions, chosen offer and accepted UTC instant; the unique version tuple retains historical receipts. The audit records `registration.acknowledged`, acceptance method, notice revision and exact versions/offer. `sign_in_notice_v1` marks the catalog as **reference only**, so receipt creation cannot purchase a plan or authorize recurring payment. Sources: [app/enrollment_models.py:26](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_models.py:26>), [app/enrollment.py:196](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:196>).
-
-### Legacy/missing notice fallback
-
-An old, stale or partial start can authenticate a valid identity but cannot infer new acceptance. If the required current receipt is absent, `/registration` says **Email verified** and displays one **Continue** action with conspicuous Terms/Privacy/Cookie links, shown plan details and exact version fields. This replaced the three UI checkboxes. The POST requires `registration_action=continue`, current notice/versions, no mixed legacy checkbox fields and fresh verified proof. A bounded legacy all-three-yes contract is retained only when both new fields are absent; the current UI does not render it. Sources: [app/enrollment_routes.py:136](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:136>), [app/enrollment_routes.py:189](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:189>), [app/enrollment.py:218](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:218>), [app/web/templates/registration.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/registration.html:1>), [tests/integration/test_auth_notice.py:192](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_auth_notice.py:192>), [tests/integration/test_auth_notice.py:277](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_auth_notice.py:277>).
-
-Policies can be saved/printed/downloaded through the public canonical-content page. The repository's legal discovery records the design research and unresolved operator/controller/commercial matters; this interface does not establish global legal compliance, blanket processing consent, optional measurement permission or marketing consent. Sources: [app/enrollment_routes.py:80](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:80>), [docs/legal/PRIVACY_DISCOVERY.md:37](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/legal/PRIVACY_DISCOVERY.md:37>), [app/privacy.py:75](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/privacy.py:75>).
-
-### Readiness and plan separation
-
-`workspace_ready` requires the current immutable identity/registration and valid plan assignment/capacity state. A registration receipt alone does not open the workspace. A new Free owner must separately press **Activate Free**, using a session-bound operation key and an unchanged empty-record inventory. Existing owners with clients/projects or an existing plan cannot be silently reset by that path; they must review Subscription. Paid access starts after verified provider payment, not a selected offer or callback/checkout return. Sources: [app/enrollment.py:90](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:90>), [app/enrollment.py:111](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:111>), [app/enrollment.py:126](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:126>), [app/enrollment_routes.py:231](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:231>), [app/subscriptions.py:349](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscriptions.py:349>).
-
-An existing paid account that needs current terms keeps the exact owner/plan/records. A closed `security` return survives only inside the freshly authenticated owner's pending registration session and is consumed when the workspace is ready. It survives a failed acknowledgment and, for a new Free owner, waits through explicit Free activation. Fresh auth start/logout/binding replacement clears unrelated pending return state; no arbitrary path is carried. Sources: [app/enrollment_routes.py:36](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:36>), [app/enrollment_routes.py:58](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:58>), [app/enrollment_routes.py:189](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:189>), [tests/integration/test_email_start_retries.py:325](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:325>), [tests/integration/test_email_start_retries.py:386](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:386>), [tests/integration/test_email_start_retries.py:414](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:414>).
-
-## 8. Account security and explicit linking
-
-`/settings/security` is owner-only and enrollment-gated. It displays Google/GitHub readiness/link state and Email verification link state. Available unlinked configured methods can be added with a fresh authenticated identity; the fresh window is ten minutes and the proof binds owner ID, tenant ID, current session revision, issuer/subject and timestamp. Generic onboarding supports independent fresh-method proof; the older Stage compatibility path requires email before linking social, or Google before linking email. Sources: [app/enrollment_routes.py:64](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:64>), [app/enrollment_routes.py:263](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:263>), [app/main.py:488](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:488>), [app/admission.py:210](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:210>), [app/web/templates/account_security.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/account_security.html:1>).
-
-Social link uses a new OAuth proof and the captured prior-owner proof; managed email link uses the canonical owner email and new code proof. Generic directory linking reserves the exact global identity first, rechecks the owner again locally, binds only that immutable identity, reads it back and activates the locator. Conflicts, stale/revoked proof or already-owned methods are refused. Verified provider email can differ under this explicit dual-proof flow; that does not rewrite the original canonical owner/tenant by a mere matching email. Sources: [app/admission.py:225](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:225>), [app/main.py:542](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:542>), [app/enrollment_routes.py:516](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:516>), [app/enrollment_routes.py:520](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:520>), [tests/integration/test_public_admission.py:299](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_public_admission.py:299>), [tests/integration/test_public_admission.py:322](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_public_admission.py:322>).
-
-If proof is stale, the screen offers **Sign in again** with the closed security return. The normal recovery for an email-only owner is therefore email sign-in → current registration gate if needed → retained plan readiness → Account security → explicit Google/GitHub link, not using Google signup to merge an address. Sources: [app/web/templates/account_security.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/account_security.html:1>), [tests/e2e/test_onboarding_browser.py:277](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_onboarding_browser.py:277>), [tests/e2e/test_onboarding_browser.py:538](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_onboarding_browser.py:538>).
-
-The owner requested removal of **Remove email sign-in** from the UI. The compatibility POST `/settings/security/email/revoke` remains in source, requires fresh explicit confirmation, prevents removal without a surviving globally active alternative, retains revocation history and invalidates sessions. It is not an account-deletion endpoint or a currently advertised user control. There is no implemented self-service account/workspace deletion flow. Sources: [app/enrollment_routes.py:310](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:310>), [app/enrollment.py:157](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:157>), [app/admission.py:266](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:266>), [app/web/templates/account_security.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/account_security.html:1>), [tests/e2e/test_onboarding_browser.py:254](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_onboarding_browser.py:254>).
-
-## 9. Session, CSRF, authorization and logout
-
-### Browser session storage
-
-Starlette `SessionMiddleware` uses a **signed cookie**, not an encrypted server-side session database. Hosted name is `__Host-timeker-session`, path `/`, Secure, HttpOnly and SameSite=Lax, with a one-hour maximum age. Local/demo cookie names are distinct. The signature prevents accepted tampering, but signed data is not a confidentiality envelope; this matters because authenticated session data includes the canonical owner email and internal IDs. Provider access/refresh tokens, OTPs, business notes, PDF bytes and service credentials are not persisted as application cookie fields. Sources: [app/main.py:151](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:151>), [app/enrollment_routes.py:36](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:36>).
-
-Successful enrollment-aware authentication clears old session context and sets owner or pending-owner ID, tenant ID, canonical email, current user revision, fresh CSRF token, immutable identity issuer/subject and authenticated UTC epoch. It selectively preserves a valid pending integration authorization and the closed registration-return value. Authlib's temporary OAuth transaction state/nonce/PKCE context and the email nonce/opaque flow context exist during pre-authentication; they are not permanent provider credentials. Sources: [app/enrollment_routes.py:36](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:36>), [app/main.py:505](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:505>), [app/main.py:650](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:650>).
-
-Every protected owner request validates user ID, registered session tenant, active owner role/email mapping, user/session revision and current immutable identity binding. Pending users are diverted into registration; unacknowledged owners are similarly gated; missing valid plan readiness diverts ordinary workspace access to Subscription. A new sign-in increments the user revision, so an older browser session cannot ignore a later authentication/revocation change. Sources: [app/auth.py:51](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:51>), [app/auth.py:87](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:87>), [app/auth.py:36](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:36>).
-
-### Mutating form protection
-
-CSRF compares the form token to the signed session using constant-time comparison. If Origin is supplied, it must equal the configured canonical origin. General forms are bounded before parsing; account forms reject unknown and repeated fields, and upload routes apply their own bounded streaming parser. The selected object is still authorized server-side; a CSRF token is not ownership authority. Sources: [app/auth.py:103](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:103>), [app/auth.py:109](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:109>), [app/auth.py:120](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:120>), [app/enrollment_routes.py:69](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:69>), [app/library_routes.py:19](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/library_routes.py:19>).
-
-Security headers include no-store, nosniff, frame denial, strict-origin referrer policy and a restrictive same-origin CSP with narrowly required provider/challenge/checkout origins on relevant routes. Camera/microphone/geolocation are disabled by policy. These reduce browser exposure; they do not prove a provider call succeeded. Source: [app/main.py:190](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:190>).
-
-### Logout and delegated grants
-
-Logout is POST `/auth/logout` with checked form/CSRF. It clears the browser session; the source can also revoke owner delegated grants unless the owner explicitly keeps connections. It does not delete business data, cancel a subscription, revoke the external Google/GitHub account or remove an identity binding. Sources: [app/main.py:699](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:699>), [app/integration_models.py:21](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_models.py:21>).
-
-## 10. Tenant routing and prepared-slot admission
-
-### Fixed connections and runtime isolation
-
-The registry builds one immutable descriptor per workspace with its own schema, runtime role, restricted connection and encryption key. It rejects duplicate IDs/schemas/roles/keys/emails and mismatched database targets. Prepared slots must point to the same approved database transport with their own fixed role/schema and hosted TLS validation. Runtime tenant selection is a server `ContextVar` and exact registry binding; route parameters or an assistant's `tenant_id` cannot select an arbitrary schema. Sources: [app/tenancy.py:96](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:96>), [app/tenancy.py:244](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:244>), [app/tenancy.py:337](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:337>), [app/tenancy.py:437](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:437>), [app/tenancy.py:445](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:445>).
-
-Each connection verifies `current_user` and `current_schema`. Readiness checks the expected migration head, required tables, restricted runtime role, no table ownership/schema CREATE, no superuser/role-creation/database-creation/bypass privileges, no inherited membership and no cross-tenant schema/role access. It includes retained fixed and prepared runtime slots, not just the current owner. Sources: [app/db.py:10](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/db.py:10>), [app/tenancy.py:346](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:346>), [app/tenancy.py:355](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:355>), [app/admission_operations.py:90](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission_operations.py:90>).
-
-Anonymous requests can access only the public route set/static files. Protected anonymous routes redirect 303 to `/`, whose public UI provides Sign in. Invalid session routing clears the session and returns there. Delegated integration routes have their separate bearer/resource validator; they are not an anonymous business-data exception. Sources: [app/tenancy.py:22](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:22>), [app/tenancy.py:476](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:476>), [app/integration_auth.py:86](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/integration_auth.py:86>).
-
-### Finite public admission
-
-Public registration does **not** create database roles/schemas dynamically. An operator prepares a finite empty inventory in advance. The source stores central `workspace_admissions` and `admission_identities` in the default directory, then initializes the selected slot using its preexisting restricted connection. It creates only the exact user and identity rows for the reserved IDs and refuses unexpected nonempty business state. There is no runtime admin credential/DDL, copied owner workspace or fallback to the default owner's schema. Sources: [app/admission_models.py:12](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission_models.py:12>), [app/admission.py:92](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:92>), [app/admission.py:142](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:142>), [app/tenancy.py:244](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:244>).
-
-Admission progression is:
-
-1. Verify allowed issuer/subject/email proof; return an existing active exact binding if present.
-2. Under a global advisory lock, reject conflicts, unknown signin, known-email implicit merge or missing signup authority; reserve one unused prepared slot and permanent owner/identity/allocation IDs.
-3. In the selected slot transaction, require empty/compatible state and initialize those exact user/identity IDs.
-4. Read back exact local state before activating the central allocation/locator.
-5. Refresh registry mappings and resolve the exact active local binding before authentication continues.
-
-Crash boundaries retain reserved IDs for recovery rather than allocating another owner. Conflicting/nonempty slots are blocked and not recycled. Occupied slots cannot be reassigned by editing registry mappings. Sources: [app/admission.py:142](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:142>), [app/admission.py:131](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:131>), [app/tenancy.py:292](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/tenancy.py:292>), [tests/integration/test_public_admission.py:229](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_public_admission.py:229>), [tests/integration/test_public_admission.py:250](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_public_admission.py:250>), [tests/integration/test_public_admission.py:283](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_public_admission.py:283>).
-
-Canonical Stage documentation records five correctly prepared new-owner slots and a separate unused prefix-mismatched inventory retained NOLOGIN/excluded. The latest migration/readiness evidence covers nine actual retained/runtime schemas; the excluded schemas are not available admission capacity and must not be casually reused. These are recorded dated facts, not a new read of provider/database state in this dossier. Sources: [docs/OPERATIONS.md:8](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/OPERATIONS.md:8>), [docs/STATUS.md:40](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/STATUS.md:40>), [HOSTING.md:30](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/HOSTING.md:30>).
-
-### Directory and local mutation history
-
-Central identity states are pending/active/blocked/revoked; allocation states reserved/active/blocked. Local revoked bindings remain retained. Revocation blocks global routing before local revocation, checks a globally surviving alternative under lock, then finishes the tombstone; interrupted work cannot silently re-enable an identity. Explicit operator identity synchronization/readiness functions exist; they are not called here. Sources: [app/admission_models.py:12](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission_models.py:12>), [app/admission_models.py:26](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission_models.py:26>), [app/admission.py:266](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:266>), [app/admission_operations.py:15](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission_operations.py:15>).
-
-## 11. What is stored, where, and what is not
-
-| Location | Retained information | Protection / role |
-|---|---|---|
-| Browser signed auth cookie | Pre-auth flow/state/CSRF; opaque email context; authenticated owner/tenant/email/revision/identity/fresh timestamp | Signed, HttpOnly, Secure hosted, SameSite=Lax, one-hour age; not encryption |
-| Browser separate preference cookie | Versioned optional-measurement choice | Signed, HttpOnly/Secure hosted, 180 days; not registration acceptance |
-| Tenant `users` | Canonical owner email/display name, active/role, session revision, last login | Tenant restricted DB role and per-request owner validation |
-| Tenant `owner_identities` | Immutable issuer/subject, verified-email claim, owner, revoke history | Unique constraints and service/database guards |
-| Tenant `owner_registrations` | Exact Terms/Privacy/catalog versions, offer, accepted timestamp | Historical unique version tuple; no inferred paid entitlement |
-| Tenant business audit | Registration method/notice versions, identity/owner events and internal references | Authorized tenant audit; separate sanitized diagnostics |
-| Tenant `email_auth_challenges` | Owner/session digest, intent/offer/state/attempt/expiry | Locked durable single-use challenge, six-attempt limit |
-| Default central `public_email_challenges` | Encrypted destination, HMAC address/session/network digests, exact flow/state/attempt/expiry | Purpose encryption, session binding, durable throttles |
-| Default central `workspace_admissions` | Exact slot/owner/email/issuer/subject/state | Unique allocation and immutable history; no privileged connection |
-| Default central `admission_identities` | Global issuer/subject → exact tenant/owner/local identity plus verified claim/state | Locator only; local binding still required |
-| Tenant subscription/billing tables | Assignment/catalog/payment entitlement operations/events | Separate plan verification; auth receipt alone cannot charge/activate paid plan |
-| External identity provider | Provider account, its own credentials/code delivery state | Outside the app's local user-password storage; provider setup separately controlled |
-
-Model sources: [app/models.py:59](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/models.py:59>), [app/enrollment_models.py:12](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_models.py:12>), [app/enrollment_models.py:26](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_models.py:26>), [app/enrollment_models.py:42](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_models.py:42>), [app/admission_models.py:12](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission_models.py:12>), [app/admission_models.py:26](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission_models.py:26>), [app/admission_models.py:43](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission_models.py:43>), [app/subscription_models.py:13](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_models.py:13>), [app/subscription_billing_models.py:24](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_billing_models.py:24>).
-
-The application's credential configuration remains protected environment/operator custody, not these documents. The application uses a Supabase publishable key for this flow, not a service-role/admin account. Authentication SMTP is owned by the provider and is not extracted/reused by Sending. The code avoids persisting provider access tokens, refresh tokens, OTP values or passwords in these models. No secret/env/credential file was read for this dossier. Sources: [app/email_auth.py:101](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:101>), [app/email_auth.py:152](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:152>), [docs/OPERATIONS.md:337](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/OPERATIONS.md:337>).
-
-Logs emit internal request/entity IDs and fixed rejection reasons rather than OAuth tokens, codes, cookies, emails, submitted form text, provider bodies or raw exceptions. An `AUTH_PROVIDER_NOT_LINKED` diagnostic requires that actual categorized path; generic UI failure alone cannot establish it. Source: [app/main.py:529](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:529>), [app/main.py:638](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/main.py:638>), [app/logging.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/logging.py:1>), [tests/integration/test_social_auth.py:256](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_social_auth.py:256>).
-
-## 12. Failure and recovery map
-
-| Condition | Current behavior | Recovery without weakening proof |
-|---|---|---|
-| Missing/expired/error Turnstile | Native start blocked with visible status; server rejects invalid proof | Complete a fresh widget/reload; no token replay/bypass |
-| Missing social configuration | Method omitted or unavailable start | Use another configured linked method; operator setup is separate |
-| OAuth missing state/provider proof rejection | Generic native 403 recovery, unsafe session cleared | Sign in with linked method; restart normal provider transaction |
-| Same email but unlinked social identity | No merge/new workspace takeover | Existing-method login, then explicit fresh Account security link |
-| Unknown Sign in | No local owner/slot creation | Use Create account and normal signup proof |
-| Existing account uses Sign up | Exact bound owner/workspace reused | Continue existing gates; no duplicate registration workspace |
-| Email send response rejected/uncertain | Uniform challenge feedback; state retained as appropriate | Preserve usable same-flow proof or wait and explicitly start again |
-| Duplicate start within minute | Usable original challenge retained; no second CAPTCHA/send | Enter original code; request a fresh replacement after cooldown |
-| Bad/expired/wrong-session/exhausted code | Durable failed attempt/generic rejection | Fresh normal flow; maximum six claims remains enforced |
-| Pool capacity reached | Temporary unavailable, no default fallback | Operator-approved replenishment after HOC resume; no reassignment |
-| Stale or absent notice proof | Valid auth can succeed; no invented current receipt | Single linked Continue fallback if owner agrees |
-| Valid receipt but no first plan | Registration/Subscription gate | Explicit Free or separately verified paid checkout |
-| Existing paid owner needs current notice | Preserve owner/plan/history and closed security return | Acknowledge current notice; no second purchase/reset |
-| Stale link proof/session revision | Link refused | Sign in again and obtain independent fresh provider proof |
-| Tampered/unknown tenant or overprivileged connection | Session rejected/readiness fails closed | Operator reconciliation, not client-selected tenant routing |
-| Uncertain multi-transaction admission/link boundary | Exact IDs/history retained; possible blocked/pending state | Reviewed idempotent reconciliation, not blind new allocation |
-
-Representative executable regressions are [tests/integration/test_auth_get_sessions.py:127](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_auth_get_sessions.py:127>), [tests/integration/test_auth_get_sessions.py:216](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_auth_get_sessions.py:216>), [tests/integration/test_email_start_retries.py:174](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_email_start_retries.py:174>), [tests/integration/test_auth_notice.py:250](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_auth_notice.py:250>), [tests/integration/test_public_admission.py:564](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/integration/test_public_admission.py:564>), [tests/e2e/test_onboarding_browser.py:538](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/tests/e2e/test_onboarding_browser.py:538>). They demonstrate intended contracts with controlled fixtures; they are not real inbox or provider-delivery evidence.
-
-## 13. Explicitly absent or pending capabilities
-
-- **Apple sign-in is unimplemented.** There is no runtime Apple provider, button or callback. Developer eligibility/keys, OIDC POST callback handling, revocation/deletion, notifications and relay behavior remain documented preparation. Do not describe Apple as merely disabled-but-complete. Source: [docs/OPERATIONS.md:44](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/OPERATIONS.md:44>), [app/social_auth.py:9](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/social_auth.py:9>).
-- **Account/workspace deletion is unimplemented.** Email method revocation, grant revocation, client/project archive, aged Archive and logout are different retained-state operations. No deletion button/endpoint in this account UI provides data-erasure completion. Source: [app/web/templates/account_security.html:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/web/templates/account_security.html:1>), [app/enrollment_routes.py:310](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment_routes.py:310>), [docs/STATUS.md:148](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/STATUS.md:148>).
-- **No local password/reset flow.** Managed email code verification and linked social methods are the implemented identity methods; the app is not a password vault or support-controlled OTP bypass. Source: [app/email_auth.py:101](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/email_auth.py:101>), [app/auth.py:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/auth.py:1>).
-- **No automatic email merge, team sharing or client login portal.** Registered independent owners remain isolated; an email address is not authorization to attach another person's subject or schema. Source: [app/admission.py:142](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:142>), [app/admission.py:225](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/admission.py:225>).
-- **No automatic legal/payment inference.** Sign-in notice acknowledgment does not authorize optional measurement, marketing, a paid checkout or a subscription change. Source: [app/enrollment.py:196](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/enrollment.py:196>), [app/privacy.py:75](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/privacy.py:75>), [app/subscription_payment_routes.py:128](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/app/subscription_payment_routes.py:128>).
-- **Production activation, human UAT and real provider proof remain separate.** The canonical release's anonymous hosted checks do not authenticate a feature user. Dossier creation makes none of those actions. Source: [docs/STATUS.md:1](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/docs/STATUS.md:1>), [HOSTING.md:8](<C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2/HOSTING.md:8>).
-
-## 14. Evidence boundary for the HOC pause
-
-This chapter records the current paths, persisted states and supported recovery, including the earlier authentication fixes for duplicate challenge starts, mixed signin/signup intent, native callback recovery, explicit linking, current notice capture and retained security return. It does not reopen those implementations, run additional tests or providers, accept an agreement, retrieve an OTP or modify any source. The HOC pause remains in force until the owner resumes work through the dossier's continuation instructions.
-
+Source snapshot: **2026-10-18**, PH3 commit
+`9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` on `codex/ph3-stage`.
+PH2 is administratively closed at tag `ph2-closeout-2026-10-18`
+(commit `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6`). PH3 is prepared and
+awaits the owner's feature prompts. The existing Stage continues; one future
+reviewed production candidate must combine PH2 and authorized PH3 changes.
+
+This chapter describes source and retained evidence. Preparing this public
+reference did not authenticate, send a code, accept an agreement, query a database,
+change a provider or deploy. Source readiness is separate from human acceptance.
+[Current continuation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1) and
+[residuals](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27) govern the handoff.
+
+## 1. Current authentication surface
+
+Google, GitHub and managed Supabase email are implemented sign-in methods.
+Their configuration and visibility do not prove that every real owner/provider
+combination has completed sign-in, linking and recovery. Apple remains deferred:
+there is no implemented Apple runtime adapter/callback or exposed method.
+
+| Capability | Source boundary | Retained Stage state |
+| --- | --- | --- |
+| Google | OIDC proof through Authlib, configured client and hosted checks | Configured; normal human proof remains required |
+| GitHub | OAuth code/state/S256 plus fresh verified API identity | Configured; no repository permission is requested |
+| Managed email | Explicit Supabase provider and pinned service configuration | Configured; OTP remains owner-controlled |
+| Generic onboarding | Explicit capability; default off | Stage admission uses its retained directory |
+| Public signup | Separate flag and finite prepared inventory | Stage only, subject to readiness and available slots |
+| Email public signup | Separate capability layered over local admission | Does not follow merely from email sign-in configuration |
+| Local login | Explicit development option | Rejected in hosted profiles |
+| Apple | Design/deferred work | Unimplemented/unverified |
+
+Definitions: [configuration](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L41),
+[provider visibility](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/social_auth.py#L17),
+[provider registration](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L174).
+No current PROD override query accompanies this snapshot; checked-in profiles
+and last verified Stage facts must not be presented as fresh production facts.
+
+## 2. Identity and workspace invariants
+
+The product uses one owner/user per private workspace. Clients, Projects and
+Cases are business records within it, not additional SaaS members. There is no
+implemented team membership, shared-owner account, arbitrary workspace switch or
+owner-transfer product.
+
+The authentication key is immutable **issuer + subject**. A verified email is
+an identity claim and contact attribute; it is not sufficient authority to merge
+accounts or link a different provider. Google uses its OIDC subject, GitHub its
+numeric account ID, and managed email the verified provider UUID and fixed issuer.
+
+The central identity directory locates a candidate tenant. Authentication then
+rechecks the exact active local identity and active owner. A directory locator
+alone cannot authorize a workspace; no unmatched identity falls back to the
+default owner's schema.
+[Local authentication](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/auth.py#L36),
+[directory resolution](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L64) and
+[identity validation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment.py#L30) enforce these boundaries.
+
+The legacy generic-off Google compatibility path still checks its configured
+allowlist and existing owner row. It is separate from generic admission. A future
+production activation requires independently verified immutable-owner coverage;
+email matching must not silently bootstrap the new directory.
+[Legacy owner check](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/auth.py#L19),
+[bootstrap gate](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L197).
+
+## 3. Existing owner, new owner and linking are separate flows
+
+| User intent | Required behavior | Evidence still needed |
+| --- | --- | --- |
+| Existing owner | Sign in through an already linked immutable identity | Human sign-in/recovery on the correct private workspace |
+| New owner | Explicit signup, verified proof, available prepared slot, acknowledgment and first-plan activation | Fresh end-to-end admission with a separate fictional owner |
+| Add a method | Authenticate existing owner freshly, then prove the new method through Account security | Real dual-proof linking and subsequent sign-in/revocation |
+| Recover access | Use a retained linked method or separately authorized operator procedure | Human recovery exercise; no automatic email merge |
+
+An email-only account is not automatically linked when someone later presses
+Google on Sign up. The safe supported route is an already linked sign-in, then
+Account security and fresh independent proof of the additional provider.
+[Admission](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L142) and
+[explicit linking](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L225) retain that distinction.
+
+## 4. Entry pages, CSRF and the shared challenge
+
+`/sign-in` and `/sign-up` render distinct native forms. The selected method start
+supplies an explicit intent, offer, closed return value and notice versions.
+A query-string page view does not allocate a workspace, accept terms or select a
+paid subscription. GET provider-start URLs return to the entry flow; POST starts
+perform CSRF, origin, form-shape and anti-bot checks.
+[Flow selection](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L20) and
+[provider start](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L484) are the source boundaries.
+
+One shared Cloudflare Turnstile widget serves the independent method forms.
+Only the chosen form receives its current solved token. Expiration or consumption
+requires a new token. The direct social flow verifies success, expected action
+and exact canonical hostname server-side; provider errors fail closed.
+[Server verification](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/bot_check.py#L13) and
+[shared controller](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/auth_challenge.js#L1).
+
+Managed email deliberately passes the token to Supabase, which owns that CAPTCHA
+verification. Consuming the same token locally first would replay it at the
+provider. A shared widget is not permission to reuse one token across attempts.
+[Email send boundary](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/email_auth.py#L128).
+
+The pre-authentication CSRF value survives a provider-start session reset so a
+retained form in another open tab does not lose that token prematurely. Successful
+authentication still replaces session state and rotates CSRF. This correction is
+source-backed; it does not prove the precise sequence behind an earlier report.
+[Pre-auth preservation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L533),
+[session issuance](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L36).
+
+## 5. Google and GitHub proof
+
+Google uses Authlib OIDC discovery and validation, an ID token and verified claims.
+GitHub uses code/state/S256 and fixed token/API endpoints; fresh `/user` and
+verified email API responses establish its numeric identity. `user:email` is the
+requested GitHub scope, without repository access. Provider tokens are transient
+backend proof and are not persisted as the app's session or account password.
+[Google/GitHub setup](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L174),
+[GitHub proof](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/social_auth.py#L28).
+
+The callback validates the exact issuer, routes immutable identities, rechecks
+local binding and owner, records only eligible notice evidence, then chooses a
+registration, subscription, Account security or Dashboard destination.
+[Callback implementation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L566).
+
+The visible recovery message is deliberately broad. Its catch-all covers proof,
+linking, routing and operational failures. It cannot by itself prove a particular
+OAuth-console error or `AUTH_PROVIDER_NOT_LINKED`. Capacity exhaustion separately
+returns bounded temporary-unavailability feedback. Diagnose only with fresh
+normal reproduction and sanitized request/event evidence.
+[Failure classification](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L662).
+
+## 6. Managed email challenge lifecycle
+
+The app delegates sending and verification to the configured Supabase service.
+Existing invited-user confirmation resend and ordinary OTP are explicit delivery
+choices. Public provider-account creation requires the separate enabled signup
+capability; an existing-account action must not quietly create a new owner.
+[Delivery modes](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/email_auth.py#L24).
+
+An OTP verification response is not trusted solely for its embedded user object.
+The backend fetches fresh provider `/user` proof, checks confirmed matching email,
+rejects anonymous identities and normalizes the provider UUID subject.
+[Verification](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/email_auth.py#L152).
+
+Challenges bind purpose, intent/offer, session nonce, expiry and attempt count.
+The public-admission path retains encrypted submitted address and keyed session/
+network digests in its directory challenge. Fixed-owner challenges remain scoped
+to that owner. The stored state is not an OTP vault. The local challenge window
+is ten minutes and verification attempts are bounded; stale or consumed proof
+must be replaced through a normal new flow.
+[Owner challenge](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/email_auth.py#L180),
+[public challenge](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L322).
+
+The challenge view exposes only its session's escaped submitted destination.
+Repeated start handling preserves a valid pending challenge when appropriate;
+ordinary entry-page refresh is not a resend instruction. The user personally
+reads and enters codes. Neither this dossier nor an assistant may retrieve an
+inbox, extract OTPs or bypass identity proof to complete acceptance.
+[Email flow controller](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L359).
+
+## 7. Versioned acknowledgment and first plan
+
+The entry flow captures exact current notice/Terms/Privacy/catalog versions.
+After successful immutable identity proof, the eligible sign-in/signup notice
+can create the retained registration acknowledgment. A failed provider flow,
+ordinary page view or link-only action does not create that acknowledgment.
+[Notice capture and recording](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment.py#L179).
+
+Flows missing the current notice use the explicit Continue registration fallback;
+legacy acknowledgment compatibility remains validated by the service. No agent
+accepts the notice for a person. Referencing the catalog does not itself buy a
+plan, authorize a charge or assert commercial/legal eligibility.
+[Registration acceptance](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment.py#L218).
+
+Workspace use requires both acknowledgment and a usable first plan. Free
+activation has its own operation key, capacity lock and state checks. Paid plans
+use the separate subscription flow. Pending registration may expose the bounded
+registration/security/subscription recovery surfaces without granting ordinary
+business access.
+[Free activation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L231),
+[workspace gate](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/auth.py#L87).
+
+## 8. Account security and revocation
+
+Sensitive linking requires fresh existing-owner context, normally within ten
+minutes, plus independent new-method proof. Generic admission reserves the global
+subject and checks the local binding. The older fixed-owner compatibility path
+has its additional managed-email proof restriction. Email text is never enough.
+[Freshness](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L64),
+[social link proof](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L514).
+
+Revocation is explicit and cannot remove the final usable sign-in method through
+an ordinary convenience action. Local identity history and directory state are
+retained. Reauthentication/session revision and method revocation are separate
+from deleting an account, legal offboarding or removing retained financial data.
+[Identity revocation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L266),
+[local invariant](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment.py#L157).
+
+## 9. Sessions and owner authorization
+
+Hosted sessions use a signed `__Host-timeker-session` cookie, one-hour lifetime,
+Secure/HttpOnly/SameSite=Lax, host-only scope and Path `/`. Signing provides
+integrity, not secrecy. The session contains bounded identity/routing state;
+provider tokens, OTPs and private business documents do not belong in it.
+[Session middleware](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L160).
+
+Each protected request checks the actual active owner, selected tenant, canonical
+email association, current session revision and retained provider binding where
+enrollment is active. Logout is a CSRF-protected POST. Browser business mutations
+require session CSRF and same-origin validation; signed machine routes and OAuth
+callbacks have their distinct correlation/authentication contracts.
+[Principal checks](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/auth.py#L51),
+[form validation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/auth.py#L109).
+
+## 10. Finite tenant allocation and readiness
+
+Each workspace has an operator-prepared private PostgreSQL schema and restricted
+runtime role. New-owner admission reserves an exact finite slot through the
+central directory, initializes that identity in the selected workspace, reads it
+back, and activates the retained mapping. Partial failure preserves reservation
+identity; retries reconcile it rather than reallocating another owner's slot.
+[Reserve/initialize/activate](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L142).
+
+There is no runtime DDL, admin-credential path, schema creation on demand, default
+workspace fallback or email-based account merge. Readiness checks actual configured
+relations, privileges, role boundaries and prepared inventory. Quarantined schemas
+are not routable slots. Nine actual schemas at migration 009 is a historical
+verified inventory, not a claim of nine currently free signup slots.
+[Registry](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L1),
+[retained environment](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L36).
+
+## 11. Required PH3 evidence
+
+P2-02 remains normal human Stage sign-in/signup/link/recovery UAT with existing and
+newly admitted fictional owners and explicit private-workspace checks. P2-01 adds
+actual assistant OAuth/tool discovery and token lifecycle; source/unit tests do
+not close those external-client gates. Apple/account deletion/offboarding remain
+EXT-01, with real-provider prerequisites and acceptance still open.
+[Transferred residuals](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27).
+
+Record the exact client surface, fresh proof, expected destination, durable
+readback and accept/reject result. A public page, HTTP 200/303, installed plugin,
+expired OTP, generic callback message or prior source receipt is insufficient.
+PH3 feature prompts and future production authorization remain separate decisions.
 
 ---
-
-<a id="chapter-05"></a>
-
-<!-- Source chapter: 05-integrations-and-external-effects.md -->
 
 # 05 — Integrations and external effects
 
-**Dated engineering snapshot: 16 October 2026.** This chapter describes the implementation and evidence available at the HOC pause. It is not a new specification, a provider setup instruction, or permission to perform external actions.
+Source snapshot: **2026-10-18**, PH3 commit
+`9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`.
+PH2 is administratively closed; PH3 is prepared on `codex/ph3-stage` and awaits
+owner prompts. Existing Stage continues. One future reviewed production candidate
+must include PH2 and authorized PH3 work. This documentation refresh performed no
+provider call, send, charge, database operation, authentication or deployment.
+[Continuation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1).
 
-**Source baseline:** `C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2-quoting`, documentation HEAD `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`; deployed feature source `dbf73e52ca03726e7903dc74ef27e40339c06936`. References below use repository-relative `file:line` pointers at this snapshot. Canonical decisions and current sections take precedence over historical sections of the same files.
+## 1. Distinct integration authorities
 
-**Current environment:** isolated Stage at `https://stage-timeker.aekr.io`; Worker `9a1cfc5f-73ec-4856-b3bb-ea9a2817168c`, Container application version 20, database head `ph3_006_quoting_library`. Production was not changed. The HOC pause stops engineering work; it does not stop deployed runtimes, provider webhooks, existing schedules, or third-party processing. Operational shutdown would require a separate explicit action and authority.
-
-## 1. Integration map and authority boundaries
-
-| Surface | Purpose and effect | Current boundary | Primary source |
-| --- | --- | --- | --- |
-| Google/GitHub OAuth and managed email authentication | Establish a verified human identity; resolve or allocate the permitted workspace | Stage has the bounded public admission profile. Production remains the existing separate Google-only deployment. Linking requires proof of the current account and the provider identity. | `app/enrollment_routes.py:513`, `app/email_auth.py:101`, `app/social_auth.py`; `docs/DECISIONS.md:877` and `docs/DECISIONS.md:914` |
-| Delegated OAuth + MCP/HTTP tools | Give an explicitly approved client a narrow grant to actual workspace records | Fixed registered clients, explicit owner consent, scoped tokens; no assistant-selected tenant | `app/integration_auth.py:24`, `app/integration_routes.py:61`, `docs/DECISIONS.md:487` |
-| Time import | Turn a bounded JSON/CSV file into reviewed Draft contributions | Native owner preview and confirmation; no automatic finalization or invoice issuance | `app/time_import.py:15`, `app/time_import_routes.py:271`, `app/time_commands.py:424` |
-| Authentication email | Deliver OTP/confirmation through the managed identity provider | Supabase Auth owns its CAPTCHA verification and separate SMTP configuration | `app/email_auth.py:101`, `docs/OPERATIONS.md:337` |
-| Public support contact | Deliver one user-submitted support message to the fixed operator destination | Stage delivery is disabled; durable abuse controls and a private Worker path | `app/contact.py:25`, `deploy/cloudflare/wrangler.jsonc:36` |
-| Business Sending | Deliver an owner-reviewed immutable attachment | Cloudflare REST transport; collections and commercial proposals have separate business models | `app/sending.py:213`, `app/proposal_sending.py:139` |
-| Inbound Mail | Retain an imported or routed correspondence record and attachments | Not an inbox-reading connector; Stage capture is disabled | `app/mail_service.py:201`, `app/internal_routes.py:129`, `deploy/cloudflare/wrangler.jsonc:37` |
-| Paddle | Sell a timeKER SaaS subscription and reconcile verified provider events | Sandbox on Stage. Live merchant launch remains separately gated. | `app/paddle.py:17`, `app/subscription_billing.py:726`, `docs/OPERATIONS.md:226` |
-
-These are different authorities. An authenticated session does not authorize an email. A connected assistant does not receive unrestricted owner powers. A saved draft does not authorize dispatch. A successful provider request is not agreement acceptance, invoice payment, delivery into a recipient's inbox, or human UAT.
-
-## 2. Delegated OAuth and the MCP/API implementation
-
-### 2.1 Surfaces and actual protocol subset
-
-The same tool service is exposed through `POST /mcp` and `POST /api/integration/tools/{name}`. OAuth metadata is available through the authorization-server and protected-resource discovery routes. The owner manages grants at `/settings/integrations`; grant revocation is an owner/CSRF-protected POST. Sources: `app/integration_routes.py:669`, `app/integration_routes.py:692`, `app/integration_routes.py:842`, `app/integration_routes.py:862`, `app/integration_routes.py:889`, `app/integration_routes.py:1045`, `app/integration_routes.py:1066`.
-
-The MCP implementation is a **finite, stateless JSON Streamable HTTP subset**, rather than a general streaming server. It accepts protocol versions `2025-03-26`, `2025-06-18`, and `2025-11-25`. The request must use JSON and advertise both `application/json` and `text/event-stream` in Accept; the implementation returns finite JSON. Authenticated GET/DELETE on `/mcp` return 405. There is no SSE/session stream, dynamic registration, resources/prompts catalog, hosted inference engine, or arbitrary remote execution. Supported methods are `initialize`, `ping`, `tools/list`, and `tools/call`; initialized/cancelled notifications return 202. The initialized capabilities advertise tools only. The body limit is 32 KiB, and unknown/invalid JSON-RPC shapes are rejected. Sources: `app/integration_routes.py:45`, `app/integration_routes.py:607`, `app/integration_routes.py:842`, `app/integration_routes.py:889`, `app/integration_routes.py:933`, `app/integration_routes.py:944`; decision `docs/DECISIONS.md:487`.
-
-The server explicitly labels business text as untrusted data. Client names, case descriptions, notes and tool output cannot grant permission or instruct the service to bypass a check. The initial server instruction requires explicit dates, exact minutes and selection; writes remain Draft. This is a service boundary, not a claim that every model or client will interpret text safely. Sources: `app/integration_routes.py:47`, `app/integration_routes.py:958`.
-
-### 2.2 Eight scopes and fifteen tools
-
-The catalog is filtered by the granted scopes. Schema validation rejects extra arguments and requires the documented types, UUIDs, dates, limits and optimistic versions. Tool annotations identify read-only/destructive/idempotent behavior and declare a closed world. Sources: `app/integration_auth.py:24`, `app/integration_routes.py:61`, `app/integration_routes.py:217`, `app/integration_routes.py:257`.
-
-| Scope | Tools | Permitted result and limits |
+| Surface | Implemented boundary | Current acceptance/activation limit |
 | --- | --- | --- |
-| `clients:read` | `search_clients` | Search actual client records and their project identities. |
-| `clients:draft` | `create_client_draft` | Create a proposed client for native review; does not publish an active client. |
-| `cases:read` | `list_open_cases`, `get_case` | Read actual owned cases and their current versions; a case is not evidence of hours worked. |
-| `cases:write` | `create_case`, `edit_case`, `close_case` | Explicitly create/change/close a case linked to real owned client/project records. Closing a case creates no time or bill. |
-| `time:read` | `list_time_entries` | Read actual entries for an explicit client and week, including contribution/version information. |
-| `time:write` | `create_time_entry`, `edit_time_entry`, `delete_time_entry` | Create or correct only this connection's Draft contribution with explicit minutes, confirmation and versions. It cannot finalize the timecard or remove another source's minutes. |
-| `bills:read` | `list_bills`, `get_bill`, `list_credit_memos` | Read retained statement/credit summaries and lines. Issuer bank settings are excluded; no issue, void, payment or send tool exists. |
-| `dashboard:read` | `get_week_summary` | Summarize actual owner records for the explicitly supplied week. |
+| Google/GitHub/email | User authentication and explicit linking | Normal human proof/UAT remains open |
+| OAuth/MCP/API | Delegated, scoped owner business tools | Actual external-client acceptance remains P2-01 |
+| Time import | Reviewed bounded JSON/CSV Draft contributions | Does not finalize cards or bill automatically |
+| Managed auth email | Supabase-controlled verification delivery | Authentication SMTP is a separate custody domain |
+| Support contact | Fixed operator destination and durable abuse controls | Separate environment-specific enablement |
+| Statement Sending | Reviewed issued-statement delivery and bounded follow-ups | Scheduled Sending remains disabled |
+| Commercial Sending | Explicit selected published quote/document version | Separate ledger/review; no automatic collections |
+| Inbound mail | Bounded import or signed capture into an owned context | Capture activation remains separately controlled |
+| Paddle | The owner's software subscription | Sandbox proof is not Live merchant readiness |
+| Case retention | Signed Stage-only Case archive job | Configured schedule; actual invocation unobserved |
 
-There are no Quoting/Library publishing tools, commercial dispatch tools, subscription purchase tools, credentials tools, mailbox-reading tools or autonomous collection tools in this catalog. Their absence is relevant when reviewing any client capability claim.
+Configuration is not a blanket permission to perform an external effect. Business
+intent, current owner authority, immutable artifact/version, provider readiness
+and environment-specific gates remain independent.
+[Capabilities](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L35).
 
-### 2.3 Consent, token lifecycle and workspace selection
+## 2. Delegated OAuth and the actual MCP subset
 
-Registered clients are operator-controlled JSON descriptors, not caller-created clients. Public clients use authorization code with mandatory PKCE S256 and token endpoint authentication `none`. Redirects must be fixed HTTPS URLs without wildcards, fragments, user information or an injected issuer query. Resources are the canonical same-origin `/mcp` or `/api/integration` audiences. Authorization validates response type, client, redirect, requested scopes, state, challenge and resource before displaying the validated callback host and selected scope consent. A normal owner session is required to allow the native consent POST. Sources: `app/integration_auth.py:106`, `app/integration_auth.py:147`, `app/integration_auth.py:192`, `app/integration_auth.py:197`, `app/integration_auth.py:299`, `app/integration_routes.py:710`, `app/integration_routes.py:746`.
+The existing application exposes authorization-server/protected-resource metadata,
+`/oauth/authorize`, `/oauth/token`, `/oauth/revoke`, `/mcp` and the same bounded
+business tools through `/api/integration/tools/{name}`. The bridge reuses the
+application's services, ownership checks and transactions; it is not a second
+backend or an inference proxy.
+[OAuth public router](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L668),
+[API transport](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L864).
 
-Authorization codes expire after five minutes; access tokens last ten minutes; grants and refresh authority are bounded to thirty days. Credentials are opaque values whose digests are retained in tenant-local tables. Their tenant component is only a routing selector: the trusted registry resolves it, and the service verifies the digest, active owner, grant, client, resource, scope, expiry and revoked/used state before accessing business data. The client cannot supply a free-form schema or obtain another workspace by editing a token selector. Sources: `app/integration_auth.py:34`, `app/integration_auth.py:70`, `app/integration_auth.py:86`, `app/integration_auth.py:231`, `app/integration_auth.py:254`, `app/integration_auth.py:313`, `app/integration_auth.py:323`, `app/integration_auth.py:336`, `app/integration_auth.py:497`.
+MCP is a finite stateless JSON Streamable HTTP subset. Supported protocol strings
+are `2025-03-26`, `2025-06-18` and `2025-11-25`. The route validates media type,
+Accept headers, Origin, protocol, JSON-RPC shape and a 32 KiB body limit. It accepts
+bounded initialization, ping, tool discovery/calls and specific notifications.
+There is no implemented SSE/session-stream service or automatic client registration.
+[MCP constants](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L45),
+[request validation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L891).
 
-Code replay revokes the associated grant. Refresh credentials rotate, and reuse is handled as replay rather than silently extending authority. Revocation is available through the OAuth endpoint and the owner's settings. The implementation keeps revocation/replay effects committed when returning the relevant OAuth error. The authorization response also carries issuer identity for the shared callback use case. Sources: `app/integration_auth.py:349`, `app/integration_auth.py:410`, `app/integration_auth.py:447`, `app/integration_auth.py:484`, `app/integration_routes.py:774`, `app/integration_routes.py:809`; `docs/DECISIONS.md:519`.
+### Scopes and tools
 
-Writes require `confirmed: true` and a bounded `idempotency_key`. A durable receipt is bound to the source/grant and command content; a conflicting reuse returns a conflict. Optimistic versions and the same domain services used by native UI protect concurrent changes. A server accepting `confirmed: true` proves only that the request supplied that assertion; client UI must still obtain the human confirmation required by its product contract. Sources: `app/integration_routes.py:55`, `app/integration_routes.py:515`, `app/integration_routes.py:589`; `app/time_commands.py:28`.
+| Scope | Exposed tools | Mutation boundary |
+| --- | --- | --- |
+| `clients:read` | `search_clients` | Read actual owned client/project identities |
+| `clients:draft` | `create_client_draft` | Proposed client only; no active publication |
+| `cases:read` | `list_open_cases`, `get_case` | Read actual owned Cases |
+| `cases:write` | `create_case`, `edit_case`, `close_case` | Confirmed, versioned Case changes |
+| `time:read` | `list_time_entries` | Explicit week and actual contribution versions |
+| `time:write` | `create_time_entry`, `edit_time_entry`, `delete_time_entry` | This connection's Draft contributions only |
+| `bills:read` | `list_bills`, `get_bill`, `list_credit_memos` | Read bounded statements/memos; no issuer-bank settings |
+| `dashboard:read` | `get_week_summary` | Recorded data for an explicit week |
 
-### 2.4 Evidence and pending client work
+These are eight scopes and fifteen tools, not an unrestricted CRUD interface.
+No tool finalizes a timecard, issues/voids a statement, records/refunds a payment,
+purchases a plan, sends email or grants another owner access.
+[Scope definitions](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L24),
+[tool catalog](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L61).
 
-The portable private connection package and scoped server are implemented. Local authorization, tool, isolation, import and replay tests exist, and hosted denial/issuer compatibility checks were retained. **Normal human OAuth Allow, actual client tool discovery, actual two-tenant platform reads, and refresh/revocation through the real client remain pending.** OpenAI is the preferred first client, not a claim of a completed connection; no Dot, voice or general platform support is claimed. Sources: `docs/STATUS.md:601`, `docs/DECISIONS.md:519`; tests `tests/integration/test_delegated_integration.py` and `tests/unit/test_integration_contracts.py`.
+### Consent, routing and token lifecycle
 
-Resume work should use the normal owner-controlled OAuth consent flow. Do not extract cookies/tokens, copy a session across environments, or replace client E2E with a synthetic bearer request and call it an actual connection.
+Clients are operator-registered with exact fixed HTTPS callbacks; wildcards,
+credential-bearing redirects and dynamic public registration are rejected.
+Authorization uses code flow with mandatory PKCE S256, bounded state, exact
+requested scopes and resource audience. The consent page identifies the selected
+client/callback. RFC9207 issuer identification supports the registered shared
+callback without weakening redirect matching.
+[Client validation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L147),
+[authorization contract](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L197).
 
-## 3. Time import and source-bound contributions
+Credentials are opaque; database records hold hashes. Their selector can locate
+only a fixed trusted tenant descriptor. It does not make a submitted tenant ID,
+email or assistant argument authoritative. Each use rechecks the credential hash,
+expiry, owner activity, registered client, resource and current grant/scopes.
+[Access authentication](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L231).
 
-The import schema is `timeker.daily-time-import.v1`. Uploads accept strict UTF-8 JSON or CSV, bounded to 256 KiB and 200 entries. Records identify actual client/project UUIDs, work date, integer minutes, description and a stable source record ID; optional case allocations are bounded and must sum within the parent entry. JSON permits an explicit IANA timezone and otherwise uses the schema's UTC default; this is not an invitation to infer a user's timezone from prose. Duplicate JSON fields, excessive depth, non-finite values, duplicate source IDs and ambiguous headers/cells are rejected. Sources: `app/time_import.py:15`, `app/time_import.py:139`, `app/time_import.py:164`, `app/time_import.py:220`.
+Access tokens last 600 seconds. Authorization codes last five minutes; grants and
+refresh lifetime are bounded to 30 days. Refresh credentials rotate; replay of used
+code/refresh material revokes the relevant grant rather than silently renewing it.
+Owner revocation is retained and subsequent access fails closed.
+[Grant/code lifecycle](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L323),
+[refresh replay](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L385),
+[token persistence](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L484).
 
-The native workflow is upload → server preview → explicit commit. The signed confirmation binds owner, tenant and session revision, expires after fifteen minutes, and is revalidated against current records/versions. The commit is atomic and replay-aware. Existing/manual/other-connection contributions remain distinguishable; correcting or deleting one contribution must not erase another source's work. Draft imports do not finalize a card, infer unrecorded time, issue an invoice or change a payment. Sources: `app/time_import_routes.py:29`, `app/time_import_routes.py:35`, `app/time_import_routes.py:271`, `app/time_import_routes.py:296`, `app/time_import_routes.py:301`, `app/time_commands.py:424`, `app/time_commands.py:556`; decision `docs/DECISIONS.md:471`.
+### Confirmed writes and replay
 
-## 4. Email is three outbound channels, not one shared capability
+Write calls require `confirmed=true`, stable idempotency identity and relevant
+optimistic versions. Time commands preserve source-owned contributions and manual/
+other-source minutes. Case/proposed-client operations retain a grant-local key and
+canonical payload digest: an exact replay returns the result; a conflicting reuse
+fails. A tool result's business text is explicitly untrusted data, not an
+instruction or new authorization.
+[Write implementation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L515),
+[shared call boundary](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L591).
 
-### 4.1 Managed authentication email
+### Actual client evidence still missing
 
-`SupabaseEmail` calls the configured provider's `/auth/v1/otp`, `/resend`, `/verify`, and `/user` endpoints. The app uses its Auth publishable key, not the provider's service-role database authority. OTP sends carry the provider CAPTCHA token; Supabase consumes/verifies that token, so the application must not consume it first in a duplicate verification. Public account creation is separately gated. After verification, the code fetches fresh `/user` proof, requires a confirmed, non-anonymous matching email and a valid subject UUID, and only then constructs the identity proof. Requests use bounded timeouts/responses and do not follow redirects or inherit proxy configuration. Sources: `app/email_auth.py:101`, `app/email_auth.py:110`, `app/email_auth.py:128`, `app/email_auth.py:152`.
+The private connection package and Settings onboarding exist. Source/local tests
+cover protocol, scope, isolation and replay behavior. They do not establish a
+completed real ChatGPT/Claude/client connection. OpenAI is the selected first
+client in the documented contract; Dot/voice support is not inferred.
+[Connection decision](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L519).
 
-The managed provider's SMTP setup is separate from business Sending. The reviewed Stage configuration uses Cloudflare SMTP over implicit TLS on port 465; the application is not a generic SMTP client and does not carry that SMTP credential. Authentication messages establish proof of address, not an account's entitlement to a workspace. Durable admission, existing-identity matching, bounded slot allocation and current notice handling remain application checks. Sources: `docs/OPERATIONS.md:337`, `docs/OPERATIONS.md:357`, `HOSTING.md:372`.
+P2-01 requires normal human OAuth Allow, actual tool discovery, bounded reads by
+two fictional owners, reciprocal isolation, confirmed idempotent Draft correction,
+refresh rotation and revocation stopping the real client's access. Record the
+actual host/client surface. Installing a plugin or making a synthetic bearer
+request cannot substitute for this evidence.
+[Residual P2-01](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L31).
 
-Owner-controlled OTP retrieval, normal authentication and fresh Google/GitHub linking remain human gates. This dossier contains no codes, mailbox contents, credentials, session cookies or approval of those actions.
+## 3. Reviewed imports and contribution provenance
 
-### 4.2 Public support contact
+The canonical import format is `timeker.daily-time-import.v1`, with strict UTF-8
+JSON or exact CSV columns, a 256 KiB payload ceiling and 200-entry limit. Stable batch
+and source-record IDs bind replay. Entries use actual owned client/project IDs,
+explicit work dates, integer minutes and bounded Case allocation; services enforce
+timezone, project and weekly-cap rules.
+[Import parser](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import.py#L1).
 
-Support delivery is a separate channel to the fixed operator mailbox. It cannot choose an arbitrary business recipient or attach an issued statement. The form is bounded, validates CSRF and the contact CAPTCHA action, uses a honeypot, and reserves a durable attempt before external delivery. Session/address/network digests, cooldowns and day/hour limits are abuse controls rather than analytics. The private `timeker-mail.internal/send` outbound path is implemented by the production Worker; a request exception after reservation becomes uncertain rather than causing an automatic duplicate send. Sources: `app/contact.py:25`, `app/contact.py` admission/delivery methods; `deploy/cloudflare/src/production.ts:63`.
+Preview exposes labels, totals, conflicts and versions before an atomic Draft-only
+commit. Populated-cell conflicts do not silently merge/overwrite manual work.
+Contribution corrections retain source provenance and versions. No import infers
+authorization, reopens finalized history, overrides contract caps, finalizes a
+card, creates an invoice or starts an external send.
+[Import contract D054](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L471).
 
-Stage currently has `TIMEKER_CONTACT_DELIVERY=disabled` and does not gain the production contact binding merely because business Sending is configured. A contact preview or a successful CAPTCHA is not delivery evidence. Source: `deploy/cloudflare/wrangler.jsonc:36`.
+## 4. Email channels have separate custody
 
-### 4.3 Business outbound: Collections
+Authentication email belongs to the managed provider. The app requests the
+configured verification action; the owner enters the code. Supabase authentication
+SMTP credentials must not be extracted or repurposed for outbound business email.
+[Managed email](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/email_auth.py#L101).
 
-The retained Collections workflow starts from an owned **issued immutable invoice PDF**, freezes the attachment identity/checksum, and renders editable recipient/subject/body templates for owner review. Optional follow-ups require explicit opt-in and bounded intervals/counts. Payment, void, plan stop and stop-all state block future sends; resume enables future eligible plans rather than reviving stopped history. Failed delivery retry is explicit and bounded; uncertain acceptance is not a retryable failure. Sources: `app/sending.py:145`, `app/sending.py:193`, `app/sending.py:213`, `app/sending.py:287`, `app/sending.py:314`, `app/sending.py:328`, `app/sending.py:340`, `app/sending.py:347`, `app/sending_routes.py:97`.
+Support contact is a separate fixed-operator channel, with bounded user-submitted
+content, CSRF, contact-action CAPTCHA, durable quotas and duplicate/uncertain-send
+protection. It is not an arbitrary relay or a statement distribution endpoint.
+[Contact controller](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/contact.py#L1).
 
-Every provider attempt has a durable claim committed before network I/O. An interrupted request therefore leaves uncertainty instead of pretending nothing happened. The provider adapter validates a pinned Cloudflare endpoint, immutable PDF hash, recipient and bounded request/response sizes. A generic HTTP 2xx is insufficient: the response must prove the exact requested recipient in its supported result classification. Diagnostic logs exclude message content, addresses, PDFs, tokens and raw provider replies. Sources: `app/sending.py:544`, `app/sending_transport.py:18`; tests `tests/integration/test_sending_dispatch.py`, `tests/integration/test_sending_isolation.py`, `tests/unit/test_sending_transport.py`.
+### Statement Sending
 
-The internal batch endpoint is machine-authenticated, checks both availability and jobs enablement, selects actual eligible owners server-side, and caps a batch at twenty deliveries. It does not expose a caller-selected owner or recipient. **Stage jobs are false and the Stage entrypoint configures no Sending cron.** The historical two-message Stage rehearsal authorized those two messages only; it authorizes no further messages. Sources: `app/internal_routes.py:20`, `app/internal_routes.py:42`, `deploy/cloudflare/wrangler.jsonc:55`, `docs/OPERATIONS.md:252`.
+Statement Sending selects an eligible issued statement and its retained PDF/hash,
+uses reviewed editable templates and recipient, and stores a delivery plan/history.
+It does not regenerate or alter issued PDFs, invoice dates/terms, payment records
+or receipt dates. Provider acceptance is not client receipt, inbox placement or
+payment. Client payment tracking remains manual.
+[Statement service](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending.py#L1).
 
-### 4.4 Business outbound: Quoting and agreements
+A durable uncertain claim is committed before provider I/O. If a result is
+ambiguous, the system retains uncertainty instead of automatically trying again.
+Known retryable failures have bounded explicit retry; owner Stop, payment and
+void eligibility stop applicable follow-ups. Rechecks and locks protect current
+eligibility near the effect boundary.
+[Stop/retry](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending.py#L288),
+[dispatch](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending.py#L513).
 
-The new `/sending/proposals` framework is independent of Collections/payment rules. It selects an owned published HLE artifact or a published working Library version; every working source is Case-bound, with Project/Client derived from that Case. Reusable case-less templates cannot be sent as working documents. A duration-only HLE does not require a contract. Prepare and Review save a draft; they do not send email. The exact immutable attachment, revision, filename, MIME type, SHA-256 and Case/source identity are frozen with the draft. Library publication explicitly selects the saved-text PDF or the original uploaded PDF/DOCX/TXT/Markdown bytes. Sources: `app/proposal_sending.py:100`, `app/proposal_sending.py:139`, `app/library.py` frozen-artifact resolver; `docs/OPERATIONS.md:71`.
+The transport uses separate configured outbound credentials. No undocumented
+provider idempotency guarantee is assumed. A scheduled internal endpoint exists,
+but `sending_jobs_enabled` remains false in retained Stage configuration. Manual
+reviewed dispatch and future scheduled activation are different decisions.
+[Transport](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_transport.py#L1),
+[job gate](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L20).
 
-The recipient, subject and message remain editable before claim. Confirm and send requires a fresh review digest and explicit confirmation. A double click cannot create a second accepted claim. States retain draft/sent/failed/uncertain/stopped history; there are at most four total attempts. Only a definitive failed result can be explicitly retried. An uncertain or already sent delivery is blocked from dispatch. Stop is sticky for future claims and cannot recall a message already handed to the provider. No recurring commercial chase, invoice issuance, payment recording, signature or acceptance inference is added. Sources: `app/proposal_sending.py:25`, `app/proposal_sending.py:173`, `app/proposal_sending.py:181`, `app/proposal_sending.py:193`, `app/proposal_sending.py:227`, `app/proposal_sending_routes.py:80`.
+### Quoting, Library and commercial Sending
 
-The email budget is **5 MiB after encoding**, not a promise that any 5 MiB upload is sendable. Preflight measures serialized REST bytes and a conservative MIME estimate including base64 line folding, text/HTML and 64 KiB header/boundary reserve. Oversize delivery is rejected before a durable attempt is consumed. The provider response must be HTTP 200, `success: true`, and contain exactly the requested recipient once across delivered/queued/bounce/suppression classes. A queue result means accepted for delivery, not that a human read or signed anything; bounces/suppression are failed, malformed/ambiguous responses are uncertain. Sources: `app/proposal_sending_transport.py:17`, `app/proposal_sending_transport.py:38`, `app/proposal_sending_transport.py:65`.
+Commercial Sending selects an immutable published quote or Library artifact and
+its exact attachment/hash, reviews the addressed content and uses a separate
+commercial outbox. HLE publication does not require inventing a contract; working
+commercial documents retain their owned Case/project association.
+[Commercial service](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending.py#L100).
 
-This feature is unavailable in production through `commercial_documents_available`. Actual dispatch additionally requires Sending availability and a configured enabled provider. Draft review works with transport disabled. Current tests use fake adapters; this delivery performed **no real commercial email send**. Sources: `app/config.py:202`, `app/config.py:206`, `app/proposal_sending_transport.py:60`; `tests/integration/test_proposal_sending.py`, `tests/e2e/test_proposal_sending_browser.py`.
+This path has its own review digest, explicit confirmation, attempt history,
+uncertain claim and stop/retry rules. Publishing an estimate/document never
+sends it automatically, creates time, invoices a client or starts collections.
+Authenticated hosted creation/edit/upload/publication/send-review UAT remains
+EXT-03; no real customer send is implied by simulated Sent fixture history.
+[Commercial dispatch](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending.py#L230),
+[transport](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_transport.py#L1).
 
 ## 5. Inbound correspondence and archive
 
-Manual `.eml` import and optional routed capture retain correspondence; they are not outgoing email and do not connect a user's existing mailbox. The parser bounds raw/decoded files to 5 MiB, body to 1 MiB, MIME parts to 100 and recursion to ten; header/filename handling is bounded and HTML becomes safe plain text rather than executed content. Attachments are authenticated downloads, not executable previews or remote fetches. Source: `app/mail_service.py:23`, `app/mail_service.py:29`, `app/mail_service.py:58`, `app/mail_service.py:66`; owner routes `app/mail_routes.py:214`, `app/mail_routes.py:402`.
+Manual EML import is owner-only and bounded before parsing. Conservative MIME
+size/depth/part limits, escaped text, immutable attachments, sanitized forced
+attachment downloads and owner-scoped raw-hash deduplication protect retained
+correspondence. Sender, Message-ID and Date are untrusted content, not identity,
+work authorization or archive-clock authority.
+[Mail parsing/ingestion](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_service.py#L23).
 
-Capture uses an opaque tagged recipient and HMAC-authenticated private ingress. Signatures bind timestamp, exact route, recipient and raw-body digest with a five-minute window. The service resolves an active owned capture address instead of trusting a caller-selected tenant. The production entrypoint has `email` and archive `scheduled` handlers; the Stage entrypoint does not. Capture is currently disabled in Stage. Sources: `app/internal_routes.py:82`, `app/internal_routes.py:129`, `deploy/cloudflare/src/internal.ts:19`, `deploy/cloudflare/src/production.ts:67`, `deploy/cloudflare/wrangler.jsonc:37`.
+Optional capture uses a separate signed edge-to-container transport. Timestamp,
+route, recipient and body hash are HMAC-bound; input is bounded and expired
+signatures fail. Public proxy paths do not expose an open internal relay. A
+committed response is different from a redirect or public login page.
+[Internal authentication](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L82).
 
-Six-month archiving is a visibility/retention policy, not a backup or physical storage reduction. It retains rows and attachment manifests; protected correspondence remains part of encrypted database/backup custody. A future restore must reconcile mail/address and external-event state rather than assume that hiding old screens deleted the data. Source: `docs/OPERATIONS.md:720`; `app/archiving.py`.
+Archive is retained export-only state, not deletion. The existing Stage schedule
+is **02:17 UTC daily**, invoking only Case retention for Cases closed at least
+90 days. The signed Case endpoint leaves mail/timecard archive scope untouched.
+An actual scheduled invocation has not been observed; configured cron is not
+execution evidence. Scheduled Sending remains disabled.
+[Stage scheduler](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/index.ts#L63),
+[Case-only job](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L108),
+[retention predicate](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archiving.py#L120).
 
-## 6. Paddle subscription lifecycle and external payment effects
+## 6. Paddle subscription effects
 
-### 6.1 What Paddle bills
+Paddle bills the owner's timeKER subscription. It does not charge that owner's
+clients or collect issued service statements. Checkout/portal readiness, signed
+webhooks, retained event identity, mode-specific provider records and service
+state determine entitlement; a browser success redirect alone is insufficient.
+[Provider/webhook boundary](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/paddle.py#L183),
+[billing service](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing.py#L1).
 
-Paddle bills the owner's **timeKER SaaS subscription**, not the owner's clients. Client invoices, manual payment tracking, credits and immutable statement PDFs remain application business records. Stage uses the separate Sandbox origin, catalog, API key, public token and signing secret. The Free/Solo/Pro entitlement catalog and archived-over-limit selection are application rules; an arbitrary browser checkout event cannot grant paid access. Sources: `app/paddle.py:17`, `app/subscriptions.py`, `app/subscription_billing.py:99`, `docs/DECISIONS.md:636`.
+The retained real-provider rehearsal covers a first Solo-monthly **Sandbox**
+test-card purchase, signed paid event and portal Paid readback. Annual/3DS,
+confirmed plan changes, cancellation/retention and failed-renewal/grace still need
+bounded real-provider rehearsal. Synthetic Stage capacity and simulated manual
+payments are not provider payment evidence.
+[Current provider limits](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L63).
 
-Live mode exists as an explicitly gated production capability: canonical production origin, onboarding prerequisites, Live enablement, independent Live keys, four price mappings, verified catalog and mode-compatible retained history are required. Missing historical mode markers mean Sandbox; changing credentials cannot convert those records into Live history. Demo tenants cannot perform Live billing. Merchant launch and production activation remain pending. Sources: `app/paddle.py:242`, `app/paddle.py:660`, `app/subscription_billing.py:184`, `docs/OPERATIONS.md:226`, `docs/DECISIONS.md:836`.
+Live requires independently configured Live merchant/catalog/credentials/webhooks
+and explicit production capabilities. Changing environment name cannot promote
+Sandbox credentials/history into Live. Mixed/foreign mode history fails closed;
+Live merchant eligibility and general PROD admission remain open gates.
+[Mode/capability validation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L171).
 
-### 6.2 Checkout, webhook and entitlement proof
+## 7. PH3 external-effect acceptance
 
-Checkout starts with an owned durable operation key and explicit renewal authority. The service prevents overlapping reserved/uncertain monetary effects. Closing an overlay is not cancellation; a pending checkout is resumed/reconciled rather than duplicated. Checkout return GETs and SDK success messages do not grant entitlement. The app fetches provider transaction/subscription proof, validates tenant/checkout custom binding, customer/subscription IDs, exact price mapping, completed status and credible paid period, and only then updates the entitlement. Sources: `app/subscription_billing.py:99`, `app/subscription_billing.py:201`, `app/subscription_billing.py:338`, `app/subscription_billing.py:400`, `app/subscription_billing.py:454`, `app/subscription_billing.py:584`; `app/subscription_payment_routes.py:92`.
-
-Webhook verification uses the unchanged raw body, bounded to 100 KiB. It validates the Paddle `ts`/`h1` format, a five-second timestamp tolerance and HMAC before decoding/applying an event. Signed receipt IDs and content digests make replay explicit; contradictory duplicate payloads are not treated as a fresh event. The service independently fetches current provider evidence, validates deployment/mode/tenant binding and handles stale/out-of-order events before changing local state. Sources: `app/paddle.py:183`, `app/subscription_payment_routes.py:395`, `app/subscription_billing.py:630`, `app/subscription_billing.py:726`.
-
-Signature timing requires a correct host clock. A delivery retry has a new valid provider signature; the durable event identity, rather than accepting an old signature indefinitely, provides idempotency.
-
-### 6.3 Changes, cancellation, grace and uncertainty
-
-Plan change uses a current provider preview, retained review binding, explicit confirmation and idempotent operation reservation. Downgrade includes an owner-selected retained client/project inventory rather than silent data destruction. Optional retention uses a configured, validated fixed discount with bounded eligibility and one retained claim; cancellation remains available when the offer is unavailable. Cancellation is explicitly at the paid-period end. Read-only renewal reconciliation remains possible while another mutation is uncertain. Sources: `app/subscription_billing.py:536`, `app/subscription_billing.py:1028`, `app/subscription_billing.py:1085`, `app/subscription_billing.py:1214`, `app/subscription_billing.py:1294`, `app/subscription_billing.py:1419`, `app/subscription_billing.py:1589`; `app/paddle.py:544`.
-
-Failed renewal grace is seven days from the earliest verified failure for the unpaid period; repeated events cannot keep extending it. Network/malformed-provider ambiguity is recorded as uncertain and blocks another monetary effect until reconciliation. There is no automatic blind replay merely because a request timed out. Sources: `app/subscription_billing.py:43`, `app/subscription_billing.py:388`, `app/subscription_billing.py:908`, `app/subscription_billing.py:921`.
-
-Actual retained evidence covers the first Sandbox Solo-monthly test-card purchase, signed completed event, paid-period entitlement and authenticated portal; Solo-to-Pro proration was previewed. Annual checkout, 3DS, confirmed plan changes, retention, cancellation and failed-renewal grace have synthetic coverage, not completed real provider journeys. Source: `docs/STATUS.md:595`. No Live charge or merchant production readiness is claimed.
-
-## 7. Review and resume checklist for external effects
-
-Before resuming any integration work, resolve the current source/receipt baseline and the specific HOC authority. Then distinguish read-only provider metadata, normal human proof, reversible native drafts and irreversible external effects. Require fresh review for sending, billing mutations, OAuth grants or provider-console changes. Use fake adapters and disposable databases for engineering checks; keep real provider messages, signed callbacks and user-controlled identity steps in their separately authorized lanes.
-
-Retain uncertainty rather than manufacture success. Provider acceptance is not inbox delivery; read-only metadata is not a completed human flow; a local isolation test is not a real-client cross-tenant test; a Stage deployment is not a production release or product acceptance. Canonical pending gates and privacy boundaries remain in `docs/STATUS.md:634`, `docs/OPERATIONS.md:226`, `docs/legal/PRIVACY_DISCOVERY.md:143`, and `docs/legal/PRIVACY_DISCOVERY.md:182`.
-
-**Pause result:** no command in this chapter has been executed as part of dossier preparation. No mailbox, token, secret value, live contract payload, provider configuration, database or external recipient was accessed or changed for this chapter.
-
+Use exact owner-selected scope, actual client/provider mode, fresh human proof,
+confirmed recipient/artifact/version and durable readback. Preserve uncertain
+results; reconcile before retrying. Do not copy sessions, authentication SMTP,
+Sandbox history or synthetic entitlements into production. P2-01/P2-02/P2-03 and
+EXT-01 through EXT-05 remain explicit work, not approval-only bookkeeping.
+[Current queue](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27).
 
 ---
 
-<a id="chapter-06"></a>
-
-<!-- Source chapter: 06-deployment-and-operations-sop.md -->
-
 # 06 — Deployment and operations SOP
 
-**Snapshot and handoff date: 16 October 2026.** This is a source-backed operational dossier at the HOC pause, not a new active runbook or authorization to operate production. Commands are documentation only; none were run to prepare this chapter. A future operator must re-read the canonical repository, current receipts and the specific approval before using any example.
+Snapshot: **2026-10-18**, PH3 source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. PH2 is administratively closed at `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6`, tag `ph2-closeout-2026-10-18`. PH3 continues the existing Stage and awaits the owner's feature prompts. This chapter documents source and retained receipts; no operational command, provider request, database connection, deployment or customer effect was executed to produce it. Canonical entry: [CONTINUE.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1); current operational record: [HOSTING.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L1).
 
-**Reviewed feature checkout (source snapshot):** `C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2-quoting`, at documentation HEAD `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`. The current Stage branch and canonical continuation are in the parent checkout, `C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2`; its pre-pause source matched this snapshot. The deployed feature bytes are from `dbf73e52ca03726e7903dc74ef27e40339c06936`. All `file:line` references below describe the analyzed snapshot. The original production checkout remained clean at `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`; this delivery did not change production.
+## 1. Current authority and operator entry
 
-## 1. Pause state and operator responsibilities
+Ed Lopez authorized PH2 closeout, reversible archive, consolidation and an independent PH3 clone. The next owner prompt selects bounded PH3 feature work. Administrative preparation does not grant provider, identity, database or production authority. Preserve Stage and production services; the transition does not stop services, revoke accounts, cancel subscriptions or activate schedules. See [continuation and pending work](08-PAUSE-AND-CONTINUE.md).
 
-The requested HOC pause means stop engineering, deployments, migrations, new verification activity and discretionary provider actions until explicit resumption. It **does not** terminate the deployed application, PostgreSQL service, provider webhook traffic, previously configured cron/email routing, or an external subscription. Runtime shutdown, message cancellation or subscription cancellation are separate actions with separate consequences and authority.
+Before a future authorized operation, read current AGENTS, brief, STATUS, operative decisions, design references, privacy/legal documents, HOSTING and relevant operations/deployment sections. Resolve branch, HEAD, dirty state, source/image, target environment, inventory and receipt ownership. Dated historical examples belong to their own run; they do not replace current configuration or authorize replay. Sources: [AGENTS.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/AGENTS.md#L1), [CONTINUE.md:20](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L20), [docs/OPERATIONS.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L1).
 
-Retain the working source, immutable release artifacts, failed receipts, encrypted backup and private operator custody. Do not clean up by deleting databases, schemas, receipts, uploads, roles, container history or customer artifacts. The task-owned disposable PostgreSQL cluster was stopped gracefully at **20:14:47 UTC**, with files retained; temporary Docker registry credentials were logged out after release. These facts do not mean the hosted runtime was stopped. Source: `docs/STATUS.md:113`.
+## 2. Runtime topology and environment separation
 
-On resume, start with `AGENTS.md`, `docs/PROJECT_BRIEF.md`, current sections of `docs/STATUS.md`, `docs/DECISIONS.md`, design references, `HOSTING.md`, `docs/OPERATIONS.md` and the relevant privacy/legal documents. Historical sections remain evidence of earlier states; they are not current configuration. `README.md` and `docs/DEPLOYMENT.md` contain useful local setup material but retained older release identities/test counts must not replace the current STATUS/HOSTING release record.
+One FastAPI/Jinja/HTMX application uses SQLAlchemy/Alembic, PostgreSQL and server-side WeasyPrint. Stage is `https://stage-timeker.aekr.io`. Its Cloudflare Worker routes same-origin requests through one Durable Object/container binding. The profile selects a basic container and `max_instances: 1`, disables workers.dev/preview URLs and platform logs/traces. This supplies no high-availability or autoscaling promise. PostgreSQL persists outside ephemeral container disk. Sources: [deploy/cloudflare/wrangler.jsonc:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/wrangler.jsonc#L1), [Dockerfile:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/Dockerfile#L1), [app/db.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py#L1).
 
-## 2. Runtime topology and boundaries
+The container serves port 8000, sleeps after ten idle minutes and waits up to sixty seconds for port readiness while preserving request cancellation. Active streams retain activity. The adapter strips untrusted forwarding headers, supplies trusted forwarding context and suppresses raw SDK exceptions. Uvicorn access logging is disabled. The Docker process probe uses `/health/live`; `/health/ready` remains the deeper explicit database/schema/role check. A listening port or liveness response alone does not establish readiness. Sources: [deploy/cloudflare/src/index.ts:6](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/index.ts#L6), [deploy/cloudflare/src/proxy.ts:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/proxy.ts#L1), [Dockerfile:22](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/Dockerfile#L22), [app/tenancy.py:481](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L481).
 
-### 2.1 Cloudflare edge and Container
+Stage uses `wrangler.jsonc`; prepared production configuration/adapter are separate source. Keep origins, database projects, registry descriptors, provider keys, sessions/encryption/internal transport, admission slots and billing datasets environment-specific. Do not copy Stage fixtures, synthetic Pro grants or provider sessions into production. Source defaults are not a fresh production override readback. Sources: [docs/OPERATIONS.md:98](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L98), [app/config.py:74](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L74), [HOSTING.md:33](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L33).
 
-The isolated Stage public origin is `https://stage-timeker.aekr.io`. A Cloudflare Worker validates the selected environment and forwards same-origin requests into one named Cloudflare Container through its Durable Object binding. The Stage configuration selects a **basic** instance and `max_instances: 1`, disables workers.dev and preview URLs, and disables platform log/tracing collection in that profile. This is not a high-availability or autoscaling promise. Sources: `deploy/cloudflare/wrangler.jsonc:3`, `deploy/cloudflare/wrangler.jsonc:8`, `deploy/cloudflare/wrangler.jsonc:11`, `deploy/cloudflare/wrangler.jsonc:16`, `deploy/cloudflare/wrangler.jsonc:26`.
+The Stage Worker has a Case-only daily `17 2 * * *` handler, 02:17 UTC. Source/configuration and retained readback establish its presence; actual scheduled execution remains unobserved. It does not dispatch statements. Scheduled Sending remains disabled. Production's archive/mail handlers remain a separate profile. Sources: [deploy/cloudflare/src/index.ts:62](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/index.ts#L62), [deploy/cloudflare/wrangler.jsonc:11](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/wrangler.jsonc#L11), [docs/OPERATIONS.md:30](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L30), [HOSTING.md:49](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L49).
 
-The Container listens on port 8000, sleeps after ten minutes of inactivity, and waits up to sixty seconds for the port with the incoming abort signal preserved. The longer wait was added because tenant readiness can exceed the SDK's old twenty-second default on a cold start. It does not authorize replaying the client's request after an uncertain business mutation. Activity/stream handling preserves the lifetime of active responses. Sources: `deploy/cloudflare/src/index.ts:6`, `deploy/cloudflare/src/index.ts:27`, `deploy/cloudflare/src/index.ts:32`.
+## 3. Last verified Stage release
 
-The proxy strips untrusted forwarding headers and creates its own trusted forwarding context; the Stage origin, database project and provider configuration are pinned by the adapter. Network-derived abuse keys are purpose-separated HMACs rather than raw IP logging. Uvicorn runs without access logs; the image's generic command uses no proxy-header trust. Source: `deploy/cloudflare/src/proxy.ts:210`, `deploy/cloudflare/src/proxy.ts:247`, `deploy/cloudflare/src/proxy.ts:265`, `Dockerfile:23`.
+These are retained dated observations, not continuous monitoring or fresh runtime verification by this dossier.
 
-There is one Python application, not a second backend: FastAPI, SQLAlchemy/Alembic, server-rendered Jinja, HTMX/local JavaScript, and server-side WeasyPrint PDFs. PostgreSQL is outside the Container; sleeping/replacing the Container does not erase database storage. Source: `Dockerfile:1`, `app/main.py`, `app/db.py:1`.
-
-### 2.2 Separate Stage and production profiles
-
-`deploy/cloudflare/wrangler.jsonc` is the active isolated Stage profile. `wrangler.production.jsonc` and the production entrypoint are separate prepared source, not a production cutover performed by this release. Do not use Stage bindings, fake identities, Sandbox catalogs, prepared Stage slots or development login settings in production. Quoting, Library and commercial Sending are unavailable in production through `commercial_documents_available`; production statement Sending additionally needs its own production flag. Sources: `docs/OPERATIONS.md:60`, `app/config.py:202`, `app/config.py:206`.
-
-The production source entrypoint includes archive scheduling and inbound mail capture; Stage's entrypoint does not gain those handlers by sharing application code. Stage contact and mail capture are disabled, business Sending jobs are false, and Paddle is Sandbox. Existing production schedules were not modified by the Stage delivery. Sources: `deploy/cloudflare/src/production.ts:63`, `deploy/cloudflare/src/production.ts:67`, `deploy/cloudflare/src/production.ts:72`, `deploy/cloudflare/wrangler.jsonc:36`, `deploy/cloudflare/wrangler.jsonc:46`, `deploy/cloudflare/wrangler.jsonc:55`.
-
-## 3. Current Stage release identity and proof
-
-| Item | Verified value |
+| Item | Retained value |
 | --- | --- |
-| Public origin | `https://stage-timeker.aekr.io` |
-| Feature source | `dbf73e52ca03726e7903dc74ef27e40339c06936` |
-| Worker version | `9a1cfc5f-73ec-4856-b3bb-ea9a2817168c` |
-| Deployment | `7ad0ff03-c344-4cad-be59-409d3e490813`, 100% |
-| Container application | `a0343dd5-a04b-4e30-b5da-98a373bf4990`, version 20 |
-| Image SHA-256 | `9b04918f1171f93c5e7b6009c114846ba8b7f36390e2e3ad3e27cc879944f426` |
-| Durable Object namespace | `7a44251757ea4f46ada50886133f915f` |
-| Running instance | `18b0a510c32d8f837485fab90f752acf39ed6ec9036c6bf3f9a322144ada81d2`, `timeker-ph2-stage-v1`, version 20, bos03 |
-| Database head | `ph3_006_quoting_library`, all nine retained/prepared runtime schemas |
+| Tested/deployed runtime source | `e282985ea74e89e1665351c22f91706498495e93` |
+| Worker | `retained resource identifier omitted` |
+| Deployment | `retained resource identifier omitted`, 100 percent at readback |
+| Container application | `retained resource identifier omitted`, version/running 29 |
+| Image SHA-256 | `fb3399f00baa2ee9efda0f0dd3e460cc2c706a4ce820133e8af429690948c80c` |
+| Final readback | `2026-10-18T03:42:14.067017+00:00` |
+| HTTP/asset selection | 31 anonymous GET checks; 15 source-matching versioned assets |
+| Health | live 200 in 0.125 s; ready 200 in 4.184 s |
+| Provider metadata | One running instance; no active rollout/provider errors; active 1 / healthy 0 |
+| Schema | Nine runtime schemas last verified at `ph3_009_read_indexes`; five quarantines unchanged |
+| Preserved configuration | 25 plain values, 20 encrypted binding names, existing namespace/resources and Case-only cron |
 
-Canonical record: `HOSTING.md:9`, `docs/STATUS.md:22`, `deploy/cloudflare/STAGE_RELEASE.md:1`. Private readback metadata is retained under `.aekr/work/quoting-library-20261016/`; it contains no credential values in this dossier.
+Source: [HOSTING.md:12](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L12). Preserve healthy 0 as recorded; HTTP 200 does not change that counter. Anonymous GETs do not establish authenticated owner UAT or reverify database persistence. A separate authenticated Clear cache check fetched 22 known public files, preserved an unsaved synthetic value and retained sign-in; it is one feature check. Temporary registry credentials were logged out at `2026-10-18T03:43:23.1891360Z`; that receipt does not describe a future operator session.
 
-The converged application metadata at **20:24:02.928 UTC** had no active rollout or errors. It reported **active 1 / healthy 0**, while the actual instance separately reported running/version 20. Do not normalize that provider counter to healthy 1. Independent HTTP checks establish different facts: `/health/live` and `/health/ready` returned 200, with readiness taking approximately 24.789 seconds. Source: `HOSTING.md:17`.
+The current source includes later documentation at `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. Publishing those commits did not deploy a new image. The original production registry remains unchanged; [chapter 13](13-production-stage-differences.md) compares the two sources.
 
-At **20:24:57.053515 UTC**, nineteen hosted **GET-only** checks passed: public authentication/policy/recovery paths, live/ready, seven source-matching static asset digests, and three anonymous protected routes redirecting 303 to `/`. Binding comparison preserved twenty-five plain values, twenty encrypted binding **names**, and the namespace. A Brave navigation initially saw a transient rollout 503, then the public landing because there was no authenticated session. This is not authenticated hosted Quoting/Library/Sending UAT. No auth POST, OTP/mail read, account creation, agreement acceptance, real send or payment was performed by these checks. Sources: `HOSTING.md:22`, `docs/STATUS.md:22`.
+## 4. PostgreSQL, tenancy and connection budgets
 
-## 4. PostgreSQL, tenant roles and connection budgets
+Verified identity or a scoped opaque integration credential resolves a trusted fixed descriptor server-side. User/model input cannot select schema, DSN or role. Connections verify expected role/schema. Runtime roles remain nonowner and cannot create/migrate objects, bypass isolation or fall back to the default owner's workspace. Admission slots are operator-prepared; runtime DDL is prohibited. Sources: [app/tenancy.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L1), [app/admission_operations.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_operations.py#L1), [scripts/postgres-runtime-grants.sql:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/postgres-runtime-grants.sql#L1).
 
-Stage uses the recorded Supabase **session pooler** endpoint `aws-0-us-east-2.pooler.supabase.com:5432/postgres`, not transaction pooling. The Worker requires `sslmode=verify-full`, the bundled trusted vendor CA, the pinned project/role/database, and only bounded supported connection options. Data API access is disabled; application business schemas are not exposed to anonymous/authenticated API roles. Sources: `HOSTING.md:336`, `deploy/cloudflare/src/proxy.ts:210`, `Dockerfile:18`.
+SQLAlchemy hides parameters, disables echo, uses pre-ping, zero overflow and bounded pool waiting. The generic factory defaults to five connections; registry tenant/slot factories use two. Budget all instances multiplied by potentially active pools plus migration, backup/provider and reserve connections. Fifty local workspaces do not prove hosted capacity. Keep reviewed session-pooler/TLS verification; transaction pooling requires separate identity/search_path/prepared-statement/guard compatibility proof. Sources: [app/db.py:9](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py#L9), [app/tenancy.py:240](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L240), [docs/OPERATIONS.md:711](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L711), [deploy/cloudflare/src/proxy.ts:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/proxy.ts#L1).
 
-The registry contains trusted fixed tenant descriptors. Verified session identity or an authenticated opaque integration credential resolves a descriptor; user/model input cannot name a schema, runtime role or arbitrary connection. Factories use fixed role/schema connections and verify `current_user` and `current_schema()` on connect. SQLAlchemy hides parameters, disables echo, uses pre-ping, zero overflow and a ten-second pool timeout. The generic factory default is five connections; registry tenant/slot factories explicitly use two. Budget all instances × active tenant pools plus migrations, backups, provider headroom and operator connections. Historical fifty-tenant local evidence is not a hosted capacity guarantee. Sources: `app/db.py:9`, `app/tenancy.py:96`, `app/tenancy.py:234`, `app/tenancy.py:276`, `app/tenancy.py:476`, `docs/OPERATIONS.md:673`.
+Deep readiness checks maintained head/tables/role authority and foreign boundaries. Inventory the relevant retained/prepared/allocated schemas freshly before a future operation; the last nine-schema inventory is not a permanent allocation map. Quarantines are not signup slots. Sources: [app/db.py:6](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py#L6), [HOSTING.md:35](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L35).
 
-Runtime roles do not own or migrate objects and have no superuser, CREATEDB, CREATEROLE, bypass-RLS, inherited membership, foreign schema access or own-schema CREATE. Maintained grants distinguish normal mutable tables from append-only snapshots/history and guarded draft deletion. The central admission directory alone permits the required SELECT/INSERT/UPDATE; noncentral shadow directories are denied. Function ownership/search paths and revoked PUBLIC/runtime execution are part of the boundary. Sources: `scripts/postgres-runtime-grants.sql:1`, `app/tenancy.py:355`, `app/admission_operations.py:79`, `app/workspace_operations.py:83`.
+## 5. Disposable local setup and verification
 
-Readiness checks the maintained head, required tables, role authority and foreign boundaries before normal service. A healthy TCP port alone cannot establish correct schema/grants or registration readiness. `/health/live` and `/health/ready` expose status, not secrets or customer data. Sources: `app/db.py:6`, `app/tenancy.py:346`, `app/tenancy.py:355`, `app/main.py:678`.
+PH3 has source/minimal governance, not old operators, environments, databases, credentials, browser sessions, installed dependencies or historical output. Prepare a new authorized local environment. Keep PostgreSQL data/logs outside synchronized storage. Preserve real filesystem/resource failures without inventing a cause; serialize heavy backend/browser/Docker work when measured capacity requires it.
 
-## 5. Safe local setup and test procedure
+The examples below apply only to a new fictional local target. Configure loopback PostgreSQL ending `_test`, synthetic keys and a separate DDL fixture authority. Fixtures migrate/TRUNCATE their own targets. Never point them at Stage, production, valuable existing data or real customer records. Guards reject hosted environment names and non-loopback/non-`_test` targets. Sources: [tests/conftest.py:23](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/conftest.py#L23), [README.md:30](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/README.md#L30).
 
-These examples are for a **new disposable local environment only**, not Stage or production. Do not copy a hosted database or real client artifacts into fixtures. Use a dedicated database ending `_test` on loopback, an explicitly test environment, and a separate administrator for schema/role setup. Test fixtures migrate and TRUNCATE their database; pointing them at valuable data is destructive. The suite refuses hosted environment names and non-loopback/non-`_test` targets. Source: `tests/conftest.py:23`, `tests/conftest.py:38`, `tests/conftest.py:57`.
-
-Keep PGDATA and PostgreSQL logs outside OneDrive or other synchronized folders. The retained auth work encountered a real PostgreSQL file-creation `Invalid argument` error with PGDATA inside OneDrive; a new empty local cluster outside sync storage was the remediation. A large unrelated process also coincided with resource exhaustion/browser closure, but the exact browser/WSL cause was not proven. Do not convert correlation into an established diagnosis. Serialize memory-heavy full backend, browser and Docker activity when capacity is constrained. Prior evidence/history: `docs/STATUS.md:128` and its serial validation record.
-
-The latest task used PostgreSQL 18 on loopback port **55580**, outside OneDrive under the task's LocalAppData custody, restricted test roles, separate backend/browser/migration databases, and synthetic data. It is now stopped. Future work must verify path/port/pins and prepare new disposable databases; do not restart it or reuse a destructive fixture merely because it existed.
-
-Documented setup commands after configuring a new isolated local target and synthetic keys:
-
-```powershell
+```sh
 uv sync --locked
 uv run timeker migrate
 uv run timeker seed --profile fixture
@@ -1801,348 +1472,395 @@ uv run timeker doctor
 uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
-`doctor` checks database connectivity and a PDF render. `seed --profile fixture` is fictional; never run `seed --profile alco`, copy/restore or reset on a hosted target as release preparation. Development login must remain explicitly nonproduction. Source: `README.md:43`, `app/cli.py:24`, `app/cli.py:50`, `app/cli.py:54`, `app/cli.py:103`.
+`doctor` checks safe readiness/PDF rendering. Fictional seeding is distinct from private real-data import. Development login is explicitly nonproduction. Compose/demo overrides require separate local database/volume custody and are not hosted deployment profiles. Sources: [app/cli.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/cli.py#L1), [compose.yaml:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/compose.yaml#L1), [compose.demo.yaml:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/compose.demo.yaml#L1).
 
-Compose provides local PostgreSQL, a migration job and the application; it is development-only. The separate demo override has its own project/volume and fictional data. It is not a deployment model for hosted credentials. Documented commands, not executed here:
+Use new receipt/log/XML names and source attribution for required checks. Concurrent backend/browser selections require separate targets; downgrade tests require a separate disposable migration database. Browser port 8019 cannot be shared concurrently; external E2E origin is limited to the isolated local demo at `http://127.0.0.1:8029`. Fixtures use synthetic mail/payment data. Install matching Playwright/Pango dependencies only for the selected tests. Sources: [tests/e2e/conftest.py:14](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/conftest.py#L14), [tests/migration_target.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/migration_target.py#L1).
 
-```powershell
-docker compose up --build
-docker compose exec app timeker seed --profile fixture
-```
-
-Sources: `compose.yaml:1`, `compose.demo.yaml:1`, `README.md:64`.
-
-For normal verification, use fresh receipt/log/XML paths and before/after source manifests. Backend and browser must use separate databases if overlapping; migration downgrade tests must use their own empty database. Existing fixture browsers start loopback port 8019 and cannot overlap that port; an external E2E origin is allowed only for the isolated local container at `http://127.0.0.1:8029`. Browser providers are stubbed; no real email or payment is required. Sources: `tests/e2e/conftest.py:14`, `tests/e2e/conftest.py:24`.
-
-```powershell
-uv run pytest tests --ignore=tests/e2e -q --tb=short --junitxml=<new-private-backend.xml>
-uv run ruff check app tests
+```sh
+uv run pytest tests --ignore=tests/e2e -q --tb=short
+uv run ruff check app tests --no-cache
 uv run mypy app
 node --check app/web/static/app.js
-node --check app/web/static/auth_challenge.js
-uv run pytest tests/e2e/test_quoting_library_browser.py tests/e2e/test_quoting_lookup_browser.py tests/e2e/test_proposal_sending_browser.py tests/e2e/test_case_workflow_browser.py tests/e2e/test_lookups_browser.py tests/e2e/test_sending_browser.py -q --tb=short --junitxml=<new-private-browser.xml>
+node --check app/web/static/workspace.js
+node --check app/web/static/settings_cache.js
+uv run pytest tests/e2e -q --tb=short
 ```
 
-Angle-bracket output placeholders must be replaced before use. Matching Playwright Chromium installation is a separate local dependency step; no browser download was performed for this dossier. PDF/render checks also require the local Pango/WeasyPrint runtime. Sources: `README.md:45`, `README.md:82`.
+These commands were not run for the dossier. Include disposable migration/guard, affected browser/accessibility, deterministic PDF totals and logging-redaction evidence when applicable. Keep exact selections, raw failures and role boundaries; do not sum overlapping suites into unique feature coverage. See [quality/evidence](07-security-privacy-quality-and-evidence.md) and [AGENTS.md:174](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/AGENTS.md#L174).
 
-### Current test evidence, without inflated totals
+Retained base source `3e1d564ff56cafbd133533c784afa5e4780e5f53` passed 2,153 backend and 296 browser cases, zero failures/errors/skips in each selection, plus six static checks. Settings source `e282985` separately passed eight backend/four browser cases and seven static checks; this does not create a fresh full-suite claim. Earlier failed attempts remain retained. Administrative closure/clone ran source/Git/document/static checks without rerunning unchanged product suites. Sources: [docs/STATUS.md:72](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L72), [docs/PHASE2_CLOSEOUT.md:77](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L77).
 
-The latest backend gate is **CONSOLIDATED_PASS covering 1,785 distinct cases**, not a fresh all-green full run. Raw r3 is retained as **FAILED: 1,784 PASS / 1 FAIL**, 909.65 seconds, seven upstream warnings. Its only failure was an obsolete navigation order expectation. After a one-line assertion correction, the complete unit suite passed **761 cases**, 9.45 seconds, one warning. Current app/integration/root/migration/grant bytes match r3; the consolidated receipt retains **917 integration + 107 root-level backend** successes and the fresh 761 units with exact disjoint coverage and artifact/diff pins. One collection-time UUID4 parameter label was normalized solely for coverage matching. Do not sum overlapping runs into 2,546 or relabel raw r3 PASS. Source: `docs/STATUS.md:61`.
+## 6. Reviewed build and Stage release procedure
 
-Final r4 affected browser: **32 PASS**, zero failures/errors/skips, 78.98 seconds, one upstream warning. Ruff, mypy **79 modules**, both JavaScript syntax checks and **84 Jinja templates** passed. A fresh disposable base→head→base→head and Alembic check passed with **32 protective functions**. Worker/dependency bytes were unchanged, so their suites were **not rerun** for this feature. Focused counts overlap and are not additional unique coverage. Sources and exact executed commands: `docs/STATUS.md:73`, `docs/STATUS.md:83`.
+The multi-stage image uses locked nondevelopment dependencies, native Pango/fonts and UID 10001. Build inputs are explicit; Git ignore alone does not exclude private files from packaging. Do not include private governance, operators, credentials, real PDFs or databases. Sources: [Dockerfile:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/Dockerfile#L1), [.dockerignore:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/.dockerignore#L1).
 
-## 6. Docker build and guarded Stage release SOP
+For a separately authorized release:
 
-The multi-stage Dockerfile pins uv `0.13.0`, uses Python `3.13-slim`, installs locked non-development Python dependencies, and adds Pango/fonts for WeasyPrint. Runtime UID is 10001. Application, Alembic, grants and the vendor CA are copied into the image; database credentials and real business payloads are not build inputs. The runtime command serves port 8000 and the image probes local readiness. Sources: `Dockerfile:1`, `Dockerfile:8`, `Dockerfile:10`, `Dockerfile:15`, `Dockerfile:20`, `Dockerfile:22`.
+1. Pin branch/HEAD/dirty state, bounded changes, prior runtime identities and exact target resources; preserve unrelated work.
+2. Run source-bound local checks on disposable targets. Retain failures and justified unchanged-coverage attribution.
+3. If schema changes are needed, inventory all applicable workspaces; verify encrypted backup, migration/grants/guards and the database procedure below before an image requiring the new head.
+4. Check binding names, plain configuration, namespace/resources, origin and protected inventory validators. Never print secret values; reject mixed profiles.
+5. Run the reviewed strict full-Docker/Worker dry-run and retain native output/image digest/input seals. A failed build is not deployment.
+6. With current authority, deploy sealed inputs through the fixed Stage profile. The established family uses `wrangler deploy --strict --keep-vars`. Historical private wrappers are not automatically reusable operators.
+7. Wait for actual deployment/container convergence; read version/image/running instance, rollout/errors and binding preservation before matching assets and authorized health/public checks.
+8. Exercise only separately authorized normal authenticated/human/provider flows; attribute them separately from anonymous health.
+9. Record commands, results, failures, compatible recovery boundary and pending acceptance in canonical docs. Close temporary task credentials through selected custody.
 
-The reviewed Stage deployment route is manual, with exact source and receipt seals, a strict build dry-run and `wrangler deploy --strict --keep-vars` against the fixed Stage config. `--keep-vars` is essential to the established binding-preservation discipline; success still requires comparing actual readback. The private wrapper is an immutable record of this release, not a reusable generic production script. The package's plain dry-run shortcut is not equivalent to all private guard checks. Sources: `docs/STATUS.md:97`, `docs/STATUS.md:104`, `deploy/cloudflare/package.json:6`; private `.aekr/work/quoting-library-20261016/release-stage.ps1:1`.
+CLI exit zero, Git push, a visible form or one 403/503 cannot replace convergence/readback or completed human flow. The retained no-Builds/Actions-disabled observation was not refreshed for administrative closure. Sources: [HOSTING.md:57](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L57), [deploy/cloudflare/README.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/README.md#L1), [docs/DEPLOYMENT.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DEPLOYMENT.md#L1).
 
-A future approved Stage release should follow this sequence:
+## 7. Backup, forward migration and restore
 
-1. Resolve current branch/HEAD/dirty state and verify the authorized environment/resource identity. Pin all app/test/migration/static/config/dependency bytes and current prior Worker/application metadata. Review changes and pending gates.
-2. Produce appropriate clean local evidence with disposable targets, exact commands, logs/JUnit and source before/after hashes. Preserve failures explicitly; any consolidated gate needs an independently verified narrow change and disjoint unchanged coverage.
-3. Inventory retained and prepared schemas. Obtain and verify encrypted consistent backup before DDL. Review migration/role/grant/function/slot boundaries. Complete the migration SOP below before deploying an image that requires the new head.
-4. Verify all required binding **names**, plain configuration, protected inventory validators, namespace/resources and selected origin. Never print a binding value. Reject missing/mixed profiles rather than weakening validators.
-5. Run the current reviewed strict Docker/Worker dry-run. Retain image digest and native build output. If download/build fails, retain the failed outcome; do not call it a deployment.
-6. Only with current authority, deploy the sealed source/config/image. Save Worker version and deployment identity. Wait for the deployment percentage and Container rollout to converge; CLI exit zero alone is insufficient.
-7. Read actual application/image/version, running instance, rollout/errors/resources and binding-preservation metadata. Run the specifically authorized hosted checks and match actual asset digests. Keep anonymous/public health results separate from authenticated feature UAT.
-8. Record exact results, failures, pending human proof and rollback boundary in canonical docs. Retain backup/receipts and remove only temporary task credentials through the authorized custody procedure.
+### Inventory and protected backup
 
-Current readback helper/receipt: `.aekr/work/quoting-library-20261016/verify_release_readback.py` and `stage-final-release-readback-receipt.json`. It records the actual healthy counter rather than fabricating one. This dossier does not rerun that helper or any network command.
+Inventory retained/prepared/allocated/quarantined schemas, exact heads/owners/runtime roles/grants/markers. Existing approved schema owners migrate; runtime credentials are not DDL authority. Do not change owner/password/role attributes to pass a migration. Credentials/keys stay in protected custody, absent from public text and shell history.
 
-## 7. Backup, migration and restore SOP
+Use the reviewed consistent snapshot/custom-dump orchestration; encrypt protected payloads and retain independent integrity/TOC metadata. Unrelated dumps do not create one consistent multi-schema snapshot. `pg_dump`, `pg_restore --list` and reviewed `pg_restore --no-owner --exit-on-error` into a new isolated target identify tools, not a selected connection or execution instruction. Sources: [docs/OPERATIONS.md:142](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L142), [docs/OPERATIONS.md:758](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L758).
 
-### 7.1 Inventory and backup before a writer change
+Separate schema 009 custody covered nine schemas/495 snapshot tables. Apply/fresh verify preserved 486 business-table full-column fingerprints, sequence values, definitions/ACLs, runtime grants and five quarantines; 36 guards/schema and 72 reciprocal SQLSTATE 42501 denials before/after passed. Only three additive B-trees and reviewed head/slot markers changed. Stage 29 image-only GET checks do not repeat this proof. Decrypt/TOC checks are not hosted restore. Sources: [HOSTING.md:26](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L26), [alembic/versions/ph3_009_read_indexes.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_009_read_indexes.py#L1), [docs/STATUS.md:102](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L102).
 
-Inventory **all retained, prepared and allocated** workspaces, not only logged-in owners. Current active inventory is four retained schemas (`timeker`, `timeker_eve`, `timeker_stage_ed`, `timeker_stage_cordo`) plus five correctly prepared `timeker_stage_signup_01` through `_05` slots. The five prefix-mismatched `timeker_signup_01` through `_05` are excluded quarantine: empty, NOLOGIN, unchanged head005/markers/structure. Do not allocate, delete or reassign them incidentally. Source: `docs/OPERATIONS.md:8`, `docs/OPERATIONS.md:104`.
+### Apply and independently verify
 
-Use existing schema owners for migration: four named migrators and the existing administrator for five administrator-owned prepared schemas. Runtime roles are never migration credentials. No owner/password/role change is an acceptable shortcut to pass DDL. All database/provider secrets remain in protected operator custody; the source tree/dossier holds only names, pins and safe receipts.
+Rehearse the exact forward migration on a new disposable/restored target with compatible source and reviewed fixture-owner authority. Before hosted DDL, verify source/backup/pins, expected server/database/TLS, original immutable owner identity, actual restricted runtime authority and retained fingerprints/guards. Apply only reviewed migration/grants; journal each schema transaction separately. Verify heads/structures/full retained fingerprints, ownership/search paths, table/sequence grants, no runtime DDL and reciprocal denials under actual restricted roles. Include slot markers and central/noncentral directory boundaries.
 
-The completed release exported a consistent repeatable-read snapshot and custom-format dump for the bounded schemas, encrypted the backup outside Git, and verified archive inventory plus decrypted SHA-256. This proves custody/readability/inventory, **not** a restore rehearsal, RPO, RTO or hosted recovery readiness. Current backup completed its custody verification at **20:17:48 UTC**. Source: `docs/OPERATIONS.md:118`; private carrier review `.aekr/work/quoting-library-20261016/STAGE_CARRIER_REVIEW.md:31`.
+Per-schema commits are not a globally atomic upgrade. On failure/uncertainty, stop and retain outcomes, backup/source/image/pins. Independently inspect actual committed heads/data/grants/markers before bounded forward continuation. Never blindly replay a carrier, reseed/reset, change ownership or downgrade populated history. Guard-only downgrades may retain protections; old writers can still be incompatible with stable IDs/immutable history. Sources: [docs/OPERATIONS.md:142](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L142), [scripts/postgres-runtime-grants.sql:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/postgres-runtime-grants.sql#L1), [alembic/versions/ph3_007_work_records.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L1).
 
-Generic command shapes for a future authorized, protected operator session are shown only to identify tools; they are not executable targets:
+### Restore and external effects
 
-```text
-pg_dump --format=custom --file=<protected-staging-dump> <approved-connection>
-pg_restore --list <verified-dump>
-pg_restore --no-owner --exit-on-error --dbname=<new-isolated-restore-target> <verified-dump>
-```
+Restore/cutover is separately selected. Rehearse in a new isolated database with compatible image, separate key custody and effects disabled. Verify all retained/prepared schemas; roles/grants/search paths/guards; heads; issued bytes/checksums; balances/contributions/import/audit receipts; admission slots; integrations/revocations; Mail attachments; and subscription/delivery uncertainty. Do not revive stale sessions/provider credentials publicly.
 
-Never place an actual password/DSN in shell history or dossier text. A consistent multi-schema snapshot requires the reviewed snapshot/locking orchestration, not merely running several unrelated dumps. Encrypt protected business data promptly using the approved custody mechanism and retain integrity metadata separately. Source: `docs/OPERATIONS.md:760` and the bounded current carrier documentation.
+Restore cannot undo an accepted email, purchase/webhook or refresh rotation. Reconcile post-snapshot provider effects/revocations before writers/retry. A restored Pending row does not authorize resend/recharge. Roll back an image only with compatible schema/immutable-writer semantics; otherwise prepare forward repair. Local rehearsals do not establish a current hosted restore, funded backup service, RPO or RTO. Sources: [docs/OPERATIONS.md:711](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L711), [docs/OPERATIONS.md:758](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L758), [docs/STATUS.md:27](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27).
 
-### 7.2 Apply and verify a forward migration
+Archiving controls visibility/export while retaining references/history. It is neither backup nor storage reclamation. Issued artifacts remain immutable. Do not schedule destructive purges; retention/rights/holds and off-host/key custody remain selected operational decisions. Sources: [docs/OPERATIONS.md:758](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L758), [docs/OPERATIONS.md:8](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L8).
 
-The current head `ph3_006_quoting_library` adds nine tables: `quotes`, `quote_revisions`, `quote_lines`, `quote_artifacts`, `library_documents`, `library_uploads`, `library_document_versions`, `proposal_sending_deliveries`, and `proposal_sending_attempts`. It adds protective guards for frozen artifacts, owned Case binding, publication, immutable attempts and permitted claim/settle transitions. Downgrade refuses while commercial data or Services Cases remain. Sources: `alembic/versions/ph3_006_quoting_library.py:13`, `alembic/versions/ph3_006_quoting_library.py:281`, `alembic/versions/ph3_006_quoting_library.py:528`.
+## 8. Incidents, diagnostics and uncertainty
 
-The completed Stage carrier verified source/pin/backup seals, expected server/database/TLS, existing owner identity, actual runtime password authority, retained fingerprints and function definitions **before any DDL**. Each schema's migration and exact grants executed in its own transaction under its existing owner. It updated compatible preparation markers for the five real slots and rechecked central/noncentral admission grants. UTC/ISO/bytea-hex canonicalization made fingerprints comparable across owner connections. Source: `docs/OPERATIONS.md:104`; private `stage_quoting_carrier.py` and `STAGE_CARRIER_REVIEW.md` under the reviewed task evidence directory.
-
-Final migration/readback completed **20:21:58.954519 UTC**:
-
-- Nine schemas at head006; **396** pre-existing non-Alembic table fingerprints unchanged, forty-four per schema including directory shadows.
-- Nine new tables per schema, **81** total, all empty at migration readback.
-- **32** exact protective functions per schema, pinned owner/search path, no PUBLIC/runtime execution, exact table/sequence grants.
-- Actual nine restricted runtime password connections passed authority checks and produced **72 reciprocal SQLSTATE 42501 denials before DDL** and a separate **72 after**.
-- No account allocation, role attribute, object ownership, credential or retained business data changed; all five quarantined schemas remained unchanged.
-
-Source: `docs/OPERATIONS.md:118`, `docs/STATUS.md:47`. This is not a claim that every future schema or grant will remain correct without revalidation.
-
-**Partial migration rule:** the nine transactions are separate commits, not one cross-schema atomic upgrade. On a failure or uncertain outcome, stop and retain the encrypted backup, expected source/image/pins and per-schema outcome journal. Independently read actual heads, structure, row fingerprints, grants and markers before preparing a bounded forward continuation. Never replay the executed carrier blindly, seed/reset, change schema ownership or downgrade populated history as an operational retry. Source: `docs/OPERATIONS.md:134`.
-
-### 7.3 Restore rehearsal and recovery
-
-A restore is a new separately approved operation. Rehearse into a new isolated database with compatible source/image, private key custody and no network effects. Validate the entire retained/prepared schema inventory, roles/grants/search paths/function guards, migration heads, issued bytes/checksums, financial balances, audit history, integration/token receipts, slot allocation markers, mail artifacts and subscription/delivery uncertainty. Do not expose restored sessions or old machine credentials to the public application. Sources: `docs/OPERATIONS.md:673`, `docs/OPERATIONS.md:708`, `docs/OPERATIONS.md:760`.
-
-Previously committed external effects survive a database restore: a provider may already have accepted an email, a checkout may have charged, a webhook may have been delivered, or a refresh token may have rotated. Reconcile those facts with provider evidence before allowing replay. Restoring an old pending row is not authority to resend or recharge. Roll back an image only when its schema and immutable-writer behavior are compatible; otherwise use a reviewed forward correction. No restore rehearsal was performed on the current Stage backup, and no production recovery or recovery-time guarantee is claimed.
-
-## 8. Incidents, logs and business audit
-
-Diagnostic logs use standard Python logging with an allowlisted event/field boundary: UTC timestamp, severity, safe event, UUID request/execution/entity/actor IDs, registered route template, method, status, duration and terminal outcome. Exception text and unknown fields are redacted. Uvicorn/SQLAlchemy/HTTPX/Authlib/WeasyPrint noisy raw handlers are suppressed. A logging failure cannot alter an already committed business result. Sources: `app/logging.py:10`, `app/logging.py:32`, `app/logging.py:61`, `app/logging.py:81`, `app/logging.py:104`.
-
-Never copy tokens, cookies, query strings, authorization headers, credentials, names, email addresses, correspondence, bank/tax data, line descriptions, contracts or PDF bytes into diagnostic output or incident tickets. Business audit is a separate database record tied to actor, entity, event and request ID in the business transaction; it is not a reason to log payloads externally. Source: `app/audit.py:8`; redaction tests `tests/unit/test_logging.py` and affected integration suites.
+Diagnostics allow sanitized UTC event/request/execution/entity IDs, registered route/method/status, duration and terminal outcome. Business audit belongs in its database transaction. Suppress raw exception/SQL/access/provider output. Logging failure cannot alter a committed result. Never copy tokens, cookies, headers/query strings, addresses, business text, contracts, bank/tax data or PDF bytes into diagnostics/tickets. Sources: [app/logging.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/logging.py#L1), [app/audit.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/audit.py#L1), [tests/unit/test_logging.py:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_logging.py#L1).
 
 | Symptom | Bounded response |
 | --- | --- |
-| Cold-start/rollout 503 | Preserve status/timing and request identifier; check actual rollout/application/instance/image and readiness. Wait for convergence before declaring a persistent defect. Do not infer provider-auth failure from a generic page. |
-| Ready fails or schema mismatch | Fail closed. Compare all selected schema heads, expected role/schema, guard definitions, prepared inventory and grants. Do not bypass startup validation. |
-| OAuth callback generic error | Trace the sanitized reason and exact callback/recovery path. Require fresh normal provider proof; never copy cookies or infer a specific cause solely from text. |
-| Email or Paddle request times out after claim | Retain uncertain state; reconcile exact provider evidence. Do not press retry or recreate the effect blindly. |
-| Partial DDL/deploy | Stop, retain journal/backups/old and new image pins; inspect actual committed state before bounded continuation. |
-| Local filesystem/resource fault | Preserve logs and failed receipts; isolate test PGDATA outside sync storage, verify free resources and serialize heavy work. Do not kill unrelated user processes or change OneDrive without authority. |
-| Corrupt/NUL source file | Preserve original bytes/hash privately, restore only the owned intended file, verify AST/bytes/source hashes and rerun affected gates. Do not assign an unproven cause. |
+| Rollout/cold-start 503 | Preserve safe timing/request ID; inspect rollout/image/instance/readiness, allow convergence, never replay a mutation. |
+| Readiness/schema/role mismatch | Fail closed; compare inventory/head/grants/guards/expected role. No bypass. |
+| Generic auth/CSRF error | Trace safe typed reason/exact normal flow; require fresh human proof. Generic text alone does not identify a provider cause. |
+| Sending/Paddle timeout after claim | Retain uncertainty; reconcile exact provider acceptance before retry. |
+| Partial DDL/deploy | Retain journal/backup/old and new source/image; inspect committed state before continuation. |
+| Local filesystem/resource fault | Retain failure; isolate owned PostgreSQL storage outside sync, measure resources; do not kill unrelated processes. |
+| Damaged source/artifact | Preserve original bytes/hash privately; restore only owned intended content, verify identity and rerun affected checks. |
 
-The release retained interrupted operation-key/UTC runs, the first browser 30 PASS/2 FAIL, the restored NUL test, an initially denied local helper rehearsal and transient rollout 503 without giving them PASS credit. Current corrected gates do not erase those outcomes. Source: `docs/STATUS.md:107`.
+## 9. One future combined PH2 plus PH3 production release
 
-## 9. Future production release — HOC-gated checklist
+The [original production draft PR3](https://github.com/edlopezpm-ops/timeKER/pull/3) is retained historical preparation. Refresh it from eventual final PH2 plus authorized PH3 source. Do not promote PH2 alone or overwrite later work with an old snapshot. Production remains unchanged. Source: [HOSTING.md:7](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L7).
 
-This list describes prerequisites, not approval. Production remains unchanged at this handoff.
+A future authorized candidate must reconcile actual production overrides/original immutable owner binding before public activation; inventory/back up retained/prepared production schemas; select migrations/grants/compatible repair; retain environment-specific identities/secrets/TLS/CSRF/CAPTCHA/abuse controls; establish hosting/pool/storage/mail budgets and retention/recovery contracts; and complete source-bound checks plus actual owner UAT. No Stage seed, acknowledgment, Sandbox purchase or synthetic grant supplies production authority.
 
-- Obtain explicit production scope covering the target source, origin/resources, migration, provider changes, public registration, intended real effects and cutover/recovery authority. A Stage approval or engineering pause/resume is not production authority.
-- Reconcile the original production workspace, existing owner/provider subjects and historical Google-only login before generic admission. Never assign the retained owner a new empty workspace or merge another tester into it. Complete the existing-owner bootstrap and fresh normal identity proof gates. Source: `docs/DEPLOYMENT.md:50`, `docs/DECISIONS.md:861`.
-- Independently inventory and back up production retained/prepared/allocated schemas. Rehearse migration/restore using compatible images and exact restricted roles. Do not use Stage project, credentials, consent receipts or slot descriptors. Source: `docs/OPERATIONS.md:60`, `docs/OPERATIONS.md:104`.
-- Verify production origin/TLS/trusted proxy policy, no development login, fixed registry/provider identities, CSRF/CAPTCHA/rate controls, pool capacity and all startup/grant/reciprocal-denial checks. Reconcile old production data against the migration chain before selecting any writer.
-- Complete merchant/legal/privacy and customer-processing review. Paddle Live requires a separate merchant setup, mode-safe history, Live flag, keys, catalog, webhook verification and authorized real lifecycle checks. Sandbox success is not Live readiness. Source: `docs/OPERATIONS.md:226`.
-- Decide each email channel separately: managed auth SMTP, public contact, business Sending, inbound capture. Verify domain/config/readiness without exposing secrets. Production statement Sending has its own enablement; commercial Quoting/Library remains production-disabled until separately changed and reviewed. Jobs stay off until explicitly authorized. Source: `app/config.py:202`, `app/config.py:206`, `docs/OPERATIONS.md:238`.
-- Run current source-bound quality gates and reviewed build/deploy/readback procedure. Prove actual convergence and health separately from authenticated owner UAT, real recipient effects and product acceptance. Obtain the specific human proof rather than manufacturing a test session.
-- Retain a compatible rollback/forward-repair plan, encrypted custody, operator escalation and uncertainty reconciliation. State remaining limits and obtain the actual HOC release decision before cutover.
+Paddle Live merchant/catalog/credentials/webhooks and actual lifecycle proof remain separate from Sandbox. Authentication SMTP, contact, inbound capture, statement Sending and commercial Sending are distinct channels. Keep production capability gates; jobs remain off until selected. Quoting/Library/commercial Sending source is production-disabled. Sources: [docs/OPERATIONS.md:197](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L197), [docs/OPERATIONS.md:264](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L264), [app/config.py:199](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L199).
 
-## 10. Evidence index for the handoff
+## 10. Custody and evidence limits
 
-The canonical public-source account is `docs/STATUS.md:3`, `HOSTING.md:9`, `deploy/cloudflare/STAGE_RELEASE.md:1` and `docs/OPERATIONS.md:71`. Private task evidence remains in `.aekr/work/quoting-library-20261016/` and protected backup custody; it is intentionally not copied into this Desktop dossier.
+PH2 archive validation retained **28 batches, 8,149 files and 1,580,224,720 bytes** with raw hashes/inverse restoration mappings. The separate Quoting move retained 823 files, one junction and 61,863,545 file bytes. This is local recoverable custody, not public payload, off-host backup or hosted recovery. Current tests/migrations/contracts/design references remain active. Historical payload requires bounded owner retrieval authority. Source: [docs/PHASE2_CLOSEOUT.md:49](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L49).
 
-| Reviewed evidence | SHA-256 or identity |
-| --- | --- |
-| Input pin JSON | `661d0942340383c7fe0c5ad18df738d1bdadad4138ad4f53a0f073626eabe886` |
-| Backup receipt | `6019aa0aef9aebd44cfff744f15ddb092665effaa4bfed22bedadace313e75eb` |
-| Migration receipt | `e38d488f09ffb577cddd00b84ba12ea59a265b26c89a84a37d02359b137132a9` |
-| Consolidated backend receipt | `d2d0b3a6b983e2215e8023ce78b20b862f5f2cd8ac92b783a2d604d4da1f12e3` |
-| Release readback helper | `9bb7913f3da3660cfc97e3d61d68014e6261b88f580b8adcc6627662bad10e40` |
-| Final release readback receipt | `07778d041b22470ab950979e63d7a9198b3bc768e4ed289856614cb71c5d6787` |
+Independent PH3 preparation checked 503 tracked files. Only CONTINUE, README and STATUS changed for startup; the other 500 raw files match closed PH2. Git storage has no alternates/shared commondir, with independent corresponding object/pack file identities. Markdown and the 32-ID map passed. Generic scaffold validation failed on unchanged mandatory product `AGENTS.md`; preserve product authority and the minor compatibility concern rather than claiming PASS. Sources: [docs/PHASE2_CLOSEOUT.md:77](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L77), [CONTINUE.md:10](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L10).
 
-These hashes are provenance checks, not authorization tokens or a promise that an unexamined future file is safe. On resume, verify the exact current artifacts and source before drawing operational credit from them.
-
-**Handoff boundary:** technical Stage delivery is complete at the stated snapshot. Human owner sign-in and product review, actual addressed commercial sends, signatures, Live payments, production deployment and global acceptance are not claimed. No runtime, database, network, provider, credential or real business-data operation was performed to prepare this chapter.
-
+Outcome remains `DONE_WITH_CONCERNS`: administrative delivery is closed/prepared; real MCP, human UAT, hosted recovery and Live/production acceptance remain open. The public dossier contains safe source explanations/provenance, without private keys, archived payload or business records.
 
 ---
 
-<a id="chapter-07"></a>
+# 07 — Security, privacy, quality and evidence
 
-<!-- Source chapter: 07-security-privacy-quality-and-evidence.md -->
+Source snapshot: **2026-10-18**, PH3 commit
+`9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`.
+PH2 is administratively closed and PH3 source is prepared. Await the owner's
+feature prompts; continue the existing Stage. One future reviewed production
+candidate must contain PH2 plus authorized PH3 changes.
+[Current continuation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1).
 
-# Security, privacy, quality and evidence
-
-Snapshot date: 2026-10-16. Source-analysis commit: `48e854ff2107dffb217dfe7c487b1b9d36a7f41d` in `timeker-PH2`. This is a dated codebase review chapter. It records implemented controls and observed evidence, not a new security audit or a worldwide compliance finding. Repository-relative source pointers refer to that commit. No tests, authentication, database queries or provider actions were executed to prepare this chapter.
+This chapter separates implemented controls, retained source-bound engineering
+results and open acceptance/operational gates. The public documentation refresh
+ran no product test, security scan, database/provider operation, authentication,
+restore or deployment. It provides no new security certification or legal opinion.
+[Closure and limits](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L1).
 
 ## 1. Trust boundaries
 
-The browser, OAuth provider, managed email authentication service, Cloudflare edge, Python application, database runtime role, database migration/operator role, assistant client and outbound email/payment providers are different actors. Passing one boundary does not grant authority at another. CAPTCHA proves a bounded anti-bot check; OAuth/OTP proves an identity; the identity registry selects a workspace; the active-owner/session revision checks authorize application access; CSRF/origin checks protect browser mutations; business services enforce state and money rules; database roles and guards enforce persisted invariants.
+The browser, direct identity providers, managed email provider, Cloudflare edge,
+application, tenant runtime role, operator/migrator, assistant client, outbound
+provider and subscription provider are distinct actors. CAPTCHA is a bounded
+anti-bot check; identity proof, tenant selection, authorization, business intent
+and permission for an external effect remain separate decisions.
 
-The Stage product permanently uses one owner/user per private workspace. A Client or Project is a business record inside that workspace, not another SaaS member. Team collaboration, member invitations, owner transfer and arbitrary workspace switching are not implemented products. The server resolves the fixed tenant descriptor from the authenticated identity; it does not accept a model- or browser-supplied tenant ID as authority.
+One owner/user belongs to one private workspace. Browser/model-supplied UUIDs,
+email addresses, forwarded headers or tool text cannot choose a trusted tenant.
+The server selects a retained descriptor from immutable identity/token proof,
+then checks local owner/binding state. No default-workspace fallback, runtime DDL,
+email-based merge or shared-owner/team model is implemented.
+[Principal boundary](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/auth.py#L51),
+[tenant registry](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L1),
+[admission](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L142).
 
-Sources: `app/auth.py:50`, `app/tenancy.py:328`, `app/tenancy.py:476`, `docs/DECISIONS.md` D052/D055/D059/D063/D065/D066.
+## 2. Browser sessions and request policy
 
-## 2. Browser/session controls
-
-| Control | Implemented behavior | Important interpretation |
+| Control | Implemented behavior | Interpretation |
 | --- | --- | --- |
-| Signed session | Starlette signed cookie with one-hour lifetime; hosted name `__Host-timeker-session`, Secure, HttpOnly, SameSite=Lax, Path=/, no Domain | Signed cookies provide integrity, not confidentiality. Do not place tokens, keys or sensitive business content in them. |
-| Active identity | Active owner, canonical account identity, tenant descriptor, session revision and current nonrevoked identity are checked | A previously valid cookie cannot override revocation or tenant admission checks. |
-| Fresh proof | Sensitive provider linking and relevant enrollment actions require fresh authentication context | Matching email strings alone never link providers or merge workspaces. |
-| CSRF/origin | Browser mutation forms require session CSRF plus same-origin validation | Provider callbacks and machine transports have their own correlation/signature contracts. |
-| Host validation | Explicit trusted hosts; canonical HTTPS origin on hosted profiles | Development login and permissive test hosts are rejected by hosted settings. |
-| Response policy | CSP, frame denial, nosniff, no-store, strict-origin referrer policy, disabled camera/microphone/geolocation, hosted HSTS | Provider/Paddle origins are added only to the routes and modes that need them. |
-| Failure responses | Native HTML recovery for browser errors and bounded JSON errors for integration paths | Generic UI errors do not prove a precise internal provider rejection cause. |
+| Signed session | Hosted host-only `__Host-timeker-session`, one-hour lifetime, Secure/HttpOnly/SameSite=Lax | Signature protects integrity; cookie content is not encrypted storage |
+| Session validity | Current active owner, selected tenant, canonical association, session revision and provider binding | Old session state cannot override revocation or admission |
+| Browser mutation | CSRF token, same-origin checks and bounded form parsing | Valid identity does not authorize an unconfirmed business change |
+| Callback correlation | Provider state/nonce/proof and exact flow intent | Callback GET is not an ordinary CSRF-exempt business writer |
+| Host/origin | Explicit trusted hosts and canonical hosted HTTPS | Development login is rejected on hosted profiles |
+| Response protection | CSP, frame denial, nosniff, referrer/permission policy and hosted HSTS | Required provider origins remain narrowly scoped |
+| Native recovery | Bounded browser HTML or machine JSON errors | Generic feedback does not prove the precise internal cause |
 
-Sources: `app/config.py:63`, `app/main.py:139`, `app/main.py:152`, `app/main.py:190`, `app/main.py:257`, `app/auth.py:50`, `app/auth.py:104`.
+[Session construction](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L160),
+[response middleware](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L195),
+[form/CSRF validation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/auth.py#L109).
+Provider tokens, OTPs, private records and financial documents do not belong in
+signed cookies. Do not copy a PROD session into Stage or a separate assistant.
 
-Local preview uses a different cookie name; demonstration preview has its own cookie namespace. Session cookies or provider tokens must never be copied from PROD into Stage or from one host/client to another. The application does not provide a password vault or password login.
+Private owner HTML, PDFs, JSON and sensitive responses remain private/no-store.
+The performance increment deliberately adds caching only for successful known
+public static GET/HEAD files with exact startup content versions; those responses
+do not renew a session cookie. Unversioned public files revalidate. Unknown/wrong
+versions and errors do not inherit immutable public policy.
+[Static classifier](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/static_assets.py#L15),
+[response policy](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L255).
 
-## 3. CAPTCHA and authentication details
+Settings Clear cache explicitly refetches 22 known public app files with reload/
+omit semantics, bounded concurrency and timeout. It preserves sign-in, settings,
+records and unsaved forms; it does not erase all browser/site caches or reload
+unsaved work. This is separate from private-data cache policy.
+[Retained feature evidence](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L82).
 
-One Cloudflare Turnstile widget is shared by the sign-in screen's independent Google, GitHub and email-start forms. Only the selected form receives the solved token. A fresh token is needed after consumption/expiration; a reusable widget does not mean a token can be reused across unrelated actions. The support contact form has a different action/boundary.
+## 3. Authentication and anti-abuse
 
-`app/bot_check.py:13` sends the secret and submitted token to Cloudflare Siteverify with a ten-second timeout, requires `success is True`, exact action and canonical hostname, and fails closed on unavailable or invalid responses. Hosted settings require real keys and reject testing keys. Neither the token nor the provider response is logged.
+Direct Google/GitHub starts require CSRF and the shared authentication CAPTCHA.
+Social verification checks provider success, expected action and canonical
+hostname; unavailable/invalid proof fails closed. Email passes its CAPTCHA to
+Supabase for provider-side consumption, avoiding a local-then-provider replay.
+[Social CAPTCHA](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/bot_check.py#L13),
+[email CAPTCHA](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/email_auth.py#L128).
 
-Successful immutable provider proof binds to the account registry or reserves a preprepared isolated Stage slot; it cannot fall back into the original owner's workspace. Managed email authentication uses the separate Supabase authentication provider, not the commercial Sending token. The application does not read the user's mailbox or retrieve OTPs. Notice receipt, identity proof, plan activation and purchase remain separate state transitions. Chapter04 explains the complete flows.
+Immutable issuer/subject binding, exact local owner checks and explicit dual-proof
+linking prevent an unverified email match from merging accounts. Registration
+notice capture, fresh authentication, retained acknowledgment and first-plan
+activation remain distinct. Codes/consent are supplied by the human owner.
+[Linking](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L225),
+[notice acceptance](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment.py#L237).
 
-Apple currently has design/preparation documentation only. There is no Apple callback/provider adapter, key lifecycle, notification/revocation implementation or complete Settings account-deletion workflow. Removing the email-sign-in control did not implement account deletion. These are concrete absent capabilities, not passed checks.
+The social callback has a broad failure boundary. Historical CSRF/CSP corrections
+and `AUTH_PROVIDER_NOT_LINKED` source branches do not identify every reported
+rejection. Diagnosis needs fresh normal reproduction plus sanitized correlation,
+not token dumps, copied sessions or guessed OAuth-console causes.
+[Callback failures](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L662).
 
-## 4. Database and transaction protection
+Public admission uses finite operator-prepared slots. Reservations retain exact
+identity/slot IDs through partial failures; conflicted/nonempty/quarantined slots
+fail closed and are not recycled by an ordinary request. Directory readiness is
+fresh, server-side metadata verification, not a model-selected workspace or an
+unbounded auto-provisioning promise.
+[Reservation lifecycle](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L142),
+[negative/isolation test source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_public_admission.py#L186).
 
-One PostgreSQL database per environment hosts private schemas and fixed restricted runtime roles. A separate operator/migrator applies schema changes and exact grants. Runtime code performs no tenant DDL and receives no migration administrator credential. `app/db.py:9` uses bounded pools, zero overflow, pre-ping, ten-second pool timeout, hidden SQL parameters and fixed role/schema verification on connections. Additional tenant pools are deliberately bounded; pool count multiplied by active descriptors and application instances must fit the hosting budget.
+## 4. Database and financial invariants
 
-The current head is `ph3_006_quoting_library`. Each migrated Stage schema has 32 pinned protective functions and maintained table/sequence ACLs. Central directory tables have a special central-only read/insert/update contract; noncentral shadow tables remain denied. Triggers, immutable columns, foreign-key relationships and service-level locks complement authorization. Runtime SELECT permission on a table is not permission for an owner to view another owner's rows; services still scope business records to the active owner.
+PostgreSQL runtime roles remain nonowner and restricted to their own schema.
+Operator/migrator authority is separate from runtime and disposable-test DDL
+ownership. Row locks, version checks, audit records and database guard functions
+preserve state transitions and immutable artifacts. Tenant selection alone is
+not a replacement for real role/grant and reciprocal-isolation checks.
+[Runtime role tests](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_public_admission.py#L216).
 
-Exact minutes are integers. Money uses Python Decimal and PostgreSQL NUMERIC. Technical timestamps are UTC; contract dates/time zones are explicit business inputs. Browser clock decoration has no billing authority. Issued financial snapshots/PDF/checksums cannot be edited; full cancellation produces a retained full credit memo rather than replacing historical bytes. Partial refunds, invented tax/FX and inferred client contract facts are outside the implemented contract.
+Durations use integer minutes and money uses Decimal/PostgreSQL NUMERIC. Weekly
+contract dates/timezones are explicit business data. Templates do not calculate
+money or invent taxes, rates or identifiers. Unknown commercial/legal fields stay
+unknown until the owner supplies an approved factual source.
+[Models](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L83),
+[product rules](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/AGENTS.md#L1).
 
-Sources: `app/domain.py:13`, `app/domain.py:34`, `app/domain.py:48`, `app/db.py:6`, `app/billing.py`, `app/credit_memo_models.py`, `scripts/postgres-runtime-grants.sql`, Alembic revisions through ph3_006. Chapter02 details tables, relationships and state transitions.
+Issuance freezes a JSON snapshot, PDF bytes and checksum. An issued document is
+not edited in place. Full cancellation creates its retained immutable credit
+memo while preserving the original artifact; it does not execute a client refund.
+Payment tracking is explicit and separate from provider subscription billing.
+[Issue](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/billing.py#L396),
+[cancellation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/billing.py#L658).
 
-## 5. Encryption and retained data
+Statement/commercial Sending claim uncertainty durably before provider I/O.
+Interrupted or ambiguous acceptance is not blindly replayed. Owner Stop, current
+eligibility, payment/void rules and versioned review remain effect boundaries.
+No transport guarantee is invented to make a test or status appear successful.
+[Statement dispatch](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending.py#L513),
+[commercial dispatch](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending.py#L230).
 
-Fernet protects configured sensitive settings and selected encrypted operational payloads under deployment-provided keys. This is not blanket per-column encryption of the database. Issuance intentionally freezes the then-current payment instructions into the owner's private invoice snapshot and PDF. Those immutable artifacts are not individually Fernet-encrypted by that settings mechanism. Database/host/backup custody and access controls must therefore protect the artifacts as well as encryption keys.
+## 5. Encryption and retained content
 
-The password/secret fields and DSNs are deployment custody, not application diagnostic content. The assistant connector uses opaque token digests with expiry/scopes/rotation/revocation; raw access/refresh values are not public documentation. Admission descriptors contain DSNs/keys and remain protected. Backups of encrypted data without the separately retained keys may be unusable; keys without backups do not provide recovery.
+Live sensitive payment settings use a deployment-provided Fernet key, kept out of
+source and diagnostic output. At issuance, payment instructions may be frozen in
+private JSON/PDF artifacts; those individual immutable artifacts are not all
+Fernet-wrapped. Restricted access, environment/database/backup custody and actual
+operational encryption must be assessed separately.
+[Payment-setting encryption](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/settings.py#L138),
+[issued snapshot construction](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/billing.py#L325).
 
-This dossier contains source structure, configuration names, schema and public deployment identity. It does not contain deployment credential values, OTPs, session cookies, provider tokens, production data, real customer PDFs, actual uploaded contracts or database dumps. It is not a source-code backup or a recovery image.
+A successful encrypted snapshot/decrypt/hash/TOC check is not a hosted restore.
+Off-host custody, key custody, backup cadence, tenant recovery, retention/rights/
+holds, RPO/RTO and selected budgets remain P2-03. Local evidence retention is not
+an off-host backup or an accepted recovery service level.
+[Operational residual](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L33).
 
-## 6. Imports, binary files and PDF rendering
+## 6. Imports, uploads and PDF rendering
 
-| Surface | Bounded behavior | Remaining limit |
+| Input/artifact | Bounded behavior | Remaining limit |
 | --- | --- | --- |
-| Time JSON/CSV | Strict schema/columns; 256 KiB, 200 rows; preview and atomic Draft-only commit; retained source IDs/idempotency | No implicit overwrite, finalization, historical reopening, arbitrary XML or FTP. |
-| Mail .eml | 5 MiB raw; bounded headers/MIME nesting/parts/text; owner assignment; exact hash deduplication | No active mail HTML, remote content loading, mailbox synchronization or implied sender authentication. |
-| Mail attachments | Deferred immutable bytes; explicit private attachment downloads | No malware-scanning guarantee or inline execution. |
-| Project agreement | One retained bounded immutable file, owner and parent checks | Existing single-file behavior is distinct from versioned Library documents. |
-| Library | 5 MiB originals/PDF, 100k text limit; safe bounded DOCX parsing; PDF/DOCX/TXT/Markdown originals retained | A PDF is not converted into editable text; MIME/extensions are not a malware verdict. |
-| Commercial email | Exact chosen published attachment; preflight accounts for encoded provider budget | A valid upload may still exceed the 5 MiB encoded email budget. |
-| PDF renderer | Maintained templates, escaped text and restricted asset loading | Do not relax fetching into arbitrary URLs/local files to fix a rendering problem. |
+| Time JSON/CSV | Strict UTF-8/shape, 256 KiB/200 rows, source IDs, versions, reviewed Draft commit | No automatic authorization/finalization/billing |
+| EML | 5 MiB raw, bounded headers/body/MIME depth/parts, escaped retained text | Untrusted correspondence; sender fields are not authentication |
+| Mail/project attachments | Bounded immutable bytes, safe download name, forced attachment/no-store | No malware-scanning or active-content safety guarantee |
+| Private Library | Bounded original files/text and versioned immutable publication | PDF is not falsely presented as editable converted text |
+| Generated PDFs | Controlled templates and URL fetch denial | Valid output still needs totals/text/layout evidence when affected |
 
-Source pointers: `app/time_import.py`, `app/time_import_routes.py`, `app/mail_service.py`, `app/mail_routes.py`, `app/project_attachments.py:18`, `app/library.py`, `app/library_routes.py`, `app/proposal_sending_transport.py`, `app/pdf.py:13`.
+[Import bounds](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import.py#L14),
+[mail parser](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_service.py#L23),
+[project files](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_attachments.py#L18),
+[Library bounds](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library.py#L24),
+[PDF asset denial](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/pdf.py#L13).
 
-Archiving is export-only visibility handling after the selected six-calendar-month boundary for relevant timecards/Mail. It does not delete rows, reclaim binary storage, resolve legal holds or establish a right-to-erasure implementation. Archived/direct/export paths retain their own guards. CSV exports neutralize formula prefixes. Published commercial history remains retained.
+Downloads recheck owner, tenant and parent association. Binary content is not
+rendered inline as trusted active material or emitted to diagnostics. CSV exports
+neutralize spreadsheet formula prefixes. Retained issued/published bytes and
+archive markers continue to constrain direct and indirect access paths.
 
-## 7. Logs, audit and observability
+Archive is one-way retained/export-only state, not disposal. The Case-only daily
+02:17 UTC Stage job is configured for 90-day closed Cases, with no observed scheduled
+execution. It does not activate scheduled Sending or a new timecard/mail schedule.
+[Archive service](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archiving.py#L60),
+[Stage scheduler](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/index.ts#L63).
 
-`app/logging.py:12` defines a finite diagnostic event vocabulary. `safe_fields` accepts UUIDs, known outcomes/reason/provider labels, registered route templates, finite methods and nonnegative integer status/duration/count fields; other values become `[REDACTED]`. Hosted logging is structured JSON with UTC time. The formatter redacts exception information. Application event emission catches logging failures so they cannot alter an already committed business result.
+## 7. Diagnostic logs versus business audit
 
-Root, access, SQL and third-party output are suppressed or replaced with the safe application logger. Worker proxy/lifecycle output is separately sanitized. Do not enable raw access/body/query/header/provider debug logging during authentication diagnosis. Collect path template, UTC time and request ID, not OAuth query strings/state or tokens. A catch-all authentication recovery screen alone cannot identify the exact failure.
+Python standard logging produces structured production JSON and readable local
+output. Fixed event names and a strict typed safe-field allowlist retain UTC,
+severity, request/execution UUID, route template, method, status, duration/count
+and terminal outcome. Unsupported values and exception details are redacted.
+[Safe fields/format](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/logging.py#L32).
 
-Business audit events are persisted in the database transaction and may contain the authorized business metadata needed for accountability. They are not the diagnostic stream. The audit UI is owner-only. Financial issue/cancel/payment/import/publication/Sending/provider changes retain business provenance. The distinction matters: diagnostic redaction does not imply that all private business records contain no personal information.
+Do not log OAuth/OTP material, cookies, authorization headers, raw URLs/query
+strings, credentials, client/contact names, email/IP addresses, tax/bank details,
+time descriptions, line text, contract notes or PDF bytes. Root/access/SQL and
+third-party log streams are suppressed or replaced; raw provider debug logging
+would bypass the intended boundary. Logging failure cannot change a committed
+business result.
+[Logger configuration](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/logging.py#L81),
+[failure isolation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/logging.py#L104).
 
-Sources: `app/logging.py:34`, `app/logging.py:61`, `app/logging.py:81`, `app/logging.py:104`, `app/audit.py`, `app/main.py:190`, `deploy/cloudflare/src/proxy.ts`.
+Business audit is a separate private transactional database record with owner-only
+history. Its authorized business metadata can include personal/business data;
+diagnostic redaction does not imply that the business database contains no PII.
+Review both custody domains when changing data handling.
+[Audit service](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/audit.py#L1).
 
-## 8. Privacy and legal UI
+## 8. Privacy, policy acknowledgment and legal limits
 
-The maintained notice links the Terms, Privacy and Cookie policy and captures its revision at the sign-in/signup start. After verified immutable authentication, a versioned acknowledgment is recorded; ordinary page views, a failed proof and link-only actions do not accept a new version. Retained older flows without the current notice use an explicit Continue fallback. Public policies can be viewed/downloaded/printed without JavaScript or sign-in.
+Terms/Privacy/catalog notice versions bind to an eligible successful identity
+flow or explicit registration Continue action. Page views, failed proof and
+link-only actions do not accept a new policy for someone. Optional tracking
+preferences remain separate from required functional authentication/security.
+[Notice contract](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment.py#L179).
 
-Privacy preferences use a separately signed host-only cookie, with a 180-day preference lifetime. Optional usage and marketing are distinct from authentication acknowledgment. GPC/DNT refusal takes priority. Optional usage collection is disabled by current configuration; no active marketing vendor is claimed. Withdrawal and “reject nonessential” behavior do not revoke required functional session security.
+Privacy choices use a separately signed host-only preference cookie with 180-day
+lifetime. GPC/DNT refusal takes priority. Optional measurement remains disabled;
+no active marketing vendor or global regulatory compliance is asserted. Withdrawal
+of nonessential choices does not remove required session protection.
+[Preferences](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/privacy.py#L13),
+[optional measurement](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/usage.py#L1).
 
-Sources: `app/privacy.py:12`, `app/privacy.py:18`, `app/privacy.py:75`, `app/usage.py:43`, `app/enrollment.py`, `app/web/templates/auth_notice.html`, `app/web/templates/legal_policy_content.html`, `docs/DECISIONS.md` D066, `docs/legal/PRIVACY_DISCOVERY.md`.
+Owner/controller/entity facts, legal retention/rights/holds/disposal, transfer
+assessments and commercial launch facts remain decisions for the appropriate
+release boundary. A support form, privacy page, Sandbox payment or versioned
+acknowledgment is not a worldwide compliance conclusion. Older canonical prose
+must be interpreted with its stated environment/date and current STATUS/source;
+legacy production-only descriptions do not erase later delivered Stage features.
+[Discovery record](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/legal/PRIVACY_DISCOVERY.md#L1).
 
-Chile/USA design sources are documented; worldwide customer intent is not evidence of global legal compliance. Controller/entity, launch-specific policies, processing/retention and commercial facts must be confirmed by the owner at the appropriate release decision. This chapter does not issue a fresh legal opinion. Optional choices must not be silently folded into a generic contractual acknowledgment.
+## 9. Current retained quality evidence
 
-## 9. Actual QA attribution at the pause
-
-| Evidence scope | Recorded result | Freshness and limitation |
+| Evidence | Recorded result | Exact scope/limit |
 | --- | --- | --- |
-| Last full backend r3 | 1,784 passed / 1 failed, 0 errors/skips, 909.65s, 7 upstream warnings | Raw receipt remains FAILED. Only failure was an obsolete navigation expectation. |
-| Complete subsequent unit run | 761 passed, 9.45s, 1 warning | One assertion-only change; no runtime/integration/migration bytes changed. |
-| Consolidated backend gate | 1,785 distinct cases: 917 integration + 107 root backend retained, plus 761 fresh complete units | Disjoint coverage/source/artifact proof verified independently. Not a new all-green full run. |
-| Final affected E2E r4 | 32 passed, 0 failures/errors/skips, 78.98s, 1 warning | Synthetic desktop/mobile, keyboard/axe, CSP, no-JS, Case/lookup/publication/email-review coverage. No real mail. |
-| Static/template | Ruff PASS; mypy 79 modules PASS; both JS syntax checks PASS; 84 Jinja templates compile | Worker/dependencies unchanged; their suites were not rerun for Quoting. |
-| Disposable migrations | base → head → base → head plus Alembic check PASS; 32 guards | Disposable restricted-role PostgreSQL, not hosted data. |
-| Stage migration | 9 runtime schemas at006; 396 old table fingerprints unchanged; 81 new tables initially empty; 32 guards/schema; 72 preflight +72 final isolation denials | Separate schema transactions; encrypted backup inventory/hash check, no restore rehearsal. |
-| Hosted public proof | 19 GET checks PASS, live/ready200, 7 served source digests match, protected routes303 | No authenticated Quoting/Library/business flow, OTP, consent or email submitted. |
-| Browser hosted observation | Transient503 during rollout, then public landing for protected Quoting without session | No completed owner UAT or precise social-provider proof result inferred. |
-| Earlier core capacity/recovery | 50 synthetic schemas, 4,900 actual42501 denials; separate actual local restore rehearsal | Historical bounded engineering evidence; not hosted capacity or operational RPO/RTO. |
+| Base performance source `3e1d564ff56cafbd133533c784afa5e4780e5f53` | 2,153 backend and 296 browser cases; six static checks | Full r2 selections on that source; separate denominators, not an additive feature count |
+| Settings source `e282985ea74e89e1665351c22f91706498495e93` | Eight backend/four browser cases; seven static checks | Fresh focused follow-up; unchanged core inherits base evidence only |
+| Migration 009 | Nine schemas, 495 snapshot tables, 486 unchanged business-table fingerprints | Three reviewed indexes; retained roles/grants/guards/sequences/quarantines; not a restore |
+| Isolation at that migration | 72 reciprocal 42501 denials before/after; 36 guards/schema | Source/role/schema-bound engineering proof, not human workspace UAT |
+| Last Stage 29 release | Strict Docker release/readback, 31 GETs/15 matching assets, live/ready 200 | Dated public/asset proof; not continuous monitoring or current authenticated feature acceptance |
+| Administrative closure | Archive/Git/document/clone checks; bounded Full Audit with observations | Documentation/custody assurance, with inherited/reduced review context |
+| Generic scaffold validator | F1-A FAIL on unchanged required root `AGENTS.md` | Minor compatibility concern retained; no scaffold PASS claimed |
 
-Canonical evidence: `docs/STATUS.md:3`, `HOSTING.md:9`, `deploy/cloudflare/STAGE_RELEASE.md:1`, `docs/OPERATIONS.md`. Raw private receipts are retained in the operator workspace; they were not copied wholesale to Desktop. Important hashes are included in chapter08.
+[Source-bound results](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L80),
+[migration preservation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L102),
+[release registry](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L12),
+[closure verification and scaffold concern](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L77).
 
-Earlier failed/aborted runs are retained without PASS credit: absent rendered HLE operation key, UTC display defect, initial mobile focus failure and local sign-in test budgeting, an all-NUL new test restored with original bytes retained and unproven cause, and a denied local carrier rehearsal. These are corrected/attributed histories; they are not a claim that all conceivable bugs are absent.
+Backend evidence includes migration, immutable PDF/payment and logging/redaction
+cases; browser selections use synthetic records and affected accessibility/native
+flows. The base run retained seven backend/two browser warnings. Earlier failed
+runs, fixture-authority problems, the corrected missed-await defect and the
+Settings no-JavaScript fallback failure remain attributed without PASS credit.
+Later successful attempts do not erase those source-specific failures.
+[Retained failures](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L112).
 
-The task-owned local PostgreSQL cluster is stopped with data retained; temporary Docker registry login was removed after release. No broad backend/browser rerun was justified for this documentation-only pause task. Document verification is a separate offline activity.
+The backend's disposable DDL-owner fixture is explicitly bounded, with elevated
+role flags false. Browser and separate isolation fixtures preserve nonowner
+boundaries. Test authority is not hosted runtime authority. Earlier local
+restore/capacity exercises do not establish hosted RPO/RTO or sustained capacity.
+[Fixture limits](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L98),
+[local restore test source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_recovery_rehearsal.py#L401).
 
-## 10. How to assess improvements after HOC resumes
+## 10. What PH3 must still establish
 
-Start with the measurable user failure or operational limit, locate its service/transaction/provider boundary, reproduce against synthetic data, and preserve the current money/isolation/immutability contracts. A route or model inventory proves breadth, not correctness. A passing mock does not prove provider interoperability. A saved plugin does not prove a live authenticated MCP connection. A provider email acceptance does not prove inbox placement. A successful backup check does not prove restore readiness. A Stage deploy does not approve production.
+P2-01 requires actual external-client OAuth/discovery/two-owner isolation/token
+lifecycle. P2-02 requires human Stage authentication and business UAT. P2-03
+requires adopted and verified operations/recovery. EXT-01 through EXT-05 retain
+Apple/offboarding, remaining Sandbox lifecycle, commercial UAT, Sending decisions
+and the final combined production candidate. Latest feature/perceptual acceptance
+and actual scheduled Case execution remain open.
+[Single residual queue](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27).
 
-Prioritize the real MCP connection and bounded owner UAT before proposing speculative platform replacement. Any later recommendation should distinguish observed defect, measurable capacity issue, maintainability finding and optional product idea. The pause continuation document defines what may resume and what requires separate PROD authority.
-
+No fresh full product suite, repository security scan, human UAT, hosted restore,
+Live merchant proof or production readiness is created by this dossier update.
+Future prompts should name a bounded measurable gap, expected actor/credential,
+synthetic data, meaningful negative cases and evidence required for acceptance.
+Do not treat a source inventory, mock, public 200, provider acceptance or backup
+hash as proof of an unrelated gate. Preserve current money/isolation/immutability
+contracts and one future separately authorized PH2+PH3 production release.
 
 ---
 
-<a id="chapter-08"></a>
+# 08 — PH2 closed; PH3 prepared and awaiting owner prompts
 
-<!-- Source chapter: 08-PAUSE-AND-CONTINUE.md -->
+Snapshot: **2026-10-18**, source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. This stable filename is retained for dossier links; the former 2026-10-16 pause text is superseded by the later owner-authorized administrative transition. The active source entry is [CONTINUE.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1). This chapter mirrors it and does not create a competing specification.
 
-# HOC pause and continuation — 2026-10-16
+Outcome: DONE_WITH_CONCERNS
 
-**Project lifecycle: PAUSED — explicit HOC resume required.**
+Delivery state: PH2 is consolidated/frozen at `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6`, annotated tag `ph2-closeout-2026-10-18`. The independent `timeKER PH3` checkout uses `codex/ph3-stage` and the existing `edlopezpm-ops/timeker-PH2` repository. The original production repository is a read-only baseline with push disabled in PH3.
 
-HOC: Ed Lopez. This record implements the owner's 2026-10-16 instruction to stop
-here, leave the remaining points in the continuation, keep PROD as it is, and
-pause Stage improvement work until HOC resumes it. Preparing the requested Desktop
-dossier and recording this pause are the final authorized actions of this session.
-This document is the continuation entry, not a new product specification.
+Product state: continue using `https://stage-timeker.aekr.io`. Last verified runtime remains Stage 29/source `e282985ea74e89e1665351c22f91706498495e93`/schema `ph3_009_read_indexes`. Administrative preparation changes no running application, database, provider or environment.
 
-## Authority while paused
+Gate/authority state: Ed Lopez authorized closure/archive/consolidation/clone and will supply PH3 prompts. Await those prompts before feature implementation. Identity proof, UAT, hosted recovery, Live billing and production remain separate. One future reviewed production candidate must combine PH2 and authorized PH3. Do not merge, migrate or deploy old drafts by inference. Sources: [CONTINUE.md:3](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L3), [HOSTING.md:7](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L7).
 
-- Do not start or continue Stage engineering, provider setup, migrations, deployment,
-  automatic test/write rehearsals, customer sends or rollout work by agent inertia.
-- Do not merge, deploy or change PROD, DNS, OAuth consoles, secrets or business data.
-- Retain the current Stage runtime/configuration/data and the existing production
-  service. This is a work pause; no service shutdown, flag change, account revocation,
-  schema deactivation or scheduler activation is requested or performed.
-- No timer, pending list, saved plugin, draft PR, tool availability or previous
-  implementation authorization resumes work. A direct HOC instruction must revoke
-  this pause and define the next scope. Resume of Stage does not authorize PROD.
-- Existing private switchboard rows are unchanged. Capability availability does
-  not override this later owner instruction. No new automation is created.
+## Current source and retained runtime
 
-## Retained snapshot
-
-| Area | Last verified state |
+| Boundary | Current documented state |
 | --- | --- |
-| Stage repository | `C:\Users\edlop\OneDrive\Documents\VS Code\timeker-PH2` |
-| Stage branch/source-analysis checkpoint | `codex/ph3-onboarding-auth` / `48e854ff2107dffb217dfe7c487b1b9d36a7f41d` |
-| Isolated feature checkout | `C:\Users\edlop\OneDrive\Documents\VS Code\timeker-PH2-quoting`, retained with private QA/migration evidence |
-| Deployed runtime source | `dbf73e52ca03726e7903dc74ef27e40339c06936` (later checkpoint adds documentation only) |
-| Stage URL | `https://stage-timeker.aekr.io` |
-| Worker / deployment | `9a1cfc5f-73ec-4856-b3bb-ea9a2817168c` / `7ad0ff03-c344-4cad-be59-409d3e490813`, 100% |
-| Container application | `a0343dd5-a04b-4e30-b5da-98a373bf4990`, application and running instance 20 |
-| Image SHA-256 | `9b04918f1171f93c5e7b6009c114846ba8b7f36390e2e3ad3e27cc879944f426` |
-| Database | Nine actual runtime schemas at `ph3_006_quoting_library`; 32 guard functions per schema |
-| Excluded preparation artifacts | Five empty NOLOGIN/head005 schemas unchanged; not routable signup slots |
-| Activation | Stage signup enabled with finite prepared slots; Google/GitHub/managed email configured; Paddle Sandbox; scheduled Sending jobs off |
-| Configuration | 25 plain values and 20 encrypted binding names retained unchanged by last release; secrets remain protected |
-| Stage PR | [timeker-PH2 #3](https://github.com/edlopezpm-ops/timeker-PH2/pull/3), OPEN draft, no production effect |
-| PROD | `https://timeker.aekr.io`; original repo main remains `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`, unchanged by this work |
-| Owner registration | Last read-only Stage proof confirms `elopez@aekr.io` exists with a registration receipt; this does not prove a current browser session or every linked provider |
-| Test infrastructure | Owned PostgreSQL stopped gracefully, files retained; temporary Docker registry credentials logged out |
+| PH3 analysis checkpoint | `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` on `codex/ph3-stage` |
+| Closed PH2 checkpoint | `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6` / `ph2-closeout-2026-10-18` |
+| Last runtime release | Stage 29/source `e282985`; final readback `2026-10-18T03:42:14.067017+00:00` |
+| Database evidence | Nine runtime schemas last verified at head 009; five quarantines unchanged |
+| Human/provider limits | Actual MCP, normal identity/UAT, remaining Sandbox lifecycle and hosted recovery remain pending |
+| Scheduling | Case-only daily 02:17 UTC cron configured; execution not observed; scheduled Sending off |
+| Production baseline | Original main `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`, unchanged; no fresh runtime query |
+| Future production draft | [Original timeKER PR3](https://github.com/edlopezpm-ops/timeKER/pull/3), retained historical preparation requiring final PH2 plus PH3 reconciliation |
 
-These are last verified receipts, not a claim of continuous monitoring. Reconcile
-current local/remote/provider/database state after HOC resumes; do not redeploy or
-repeat a carrier merely because its old command is documented.
+These are source/dated receipt facts, not continuous monitoring. Exact Worker/deployment/image and health metadata are in [chapter 06](06-deployment-and-operations-sop.md) and [HOSTING.md:12](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L12).
 
-## What is implemented
+## Exact carried-forward queue
 
-The original Phase2 core is implemented in Stage: private tenant schemas/roles,
-immutable full cancellation credit memos, strict reviewed Draft JSON/CSV imports,
-retained contributions/corrections, proposed clients, scoped OAuth/API/MCP business
-tools and Settings assistant onboarding. The private connection package exists.
-Real external-client execution/acceptance remains open.
+The canonical residual table is [docs/STATUS.md:27](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27). Its requirements are retained here for prompt preparation.
 
-Later increments include individual Free/Solo/Pro enrollment/capacity and Sandbox
-subscriptions; improved Google/GitHub/email registration/linking and one shared
-authentication CAPTCHA; concise versioned sign-in notice and public policies;
-reviewed statement Sending; and Case-bound Quoting, private Library and independent
-commercial Sending. HLE never requires a SOW/SLA/contract. Working commercial
-records require an owned Case, with native Services Case creation. Timecards follows
-Projects and Quoting precedes Billing. Apple runtime is not implemented.
-
-## Continue queue — original Phase2 closure
-
-| ID | Work after explicit HOC resume | Evidence required to close |
+| ID | Required work in a separately authorized PH3 scope | Evidence required to close |
 | --- | --- | --- |
 | P2-01 | Complete a real assistant/MCP connection through normal human OAuth allow; discover and invoke tools | Actual tool discovery and bounded reads with two separate fictional owners; reciprocal isolation; confirmed idempotent Draft creation/correction; refresh rotation and revocation stop access. Record actual host/client surface; do not infer dot/voice support. |
 | P2-02 | Owner functional UAT on Stage with existing and newly admitted accounts | Sign-in/signup/provider linking and recovery; correct private workspace; import preview/commit/replay/correction; clients/proposals/Cases/timecards; invoice/credit/payment/report/history behavior. Use synthetic business data and fresh normal identity proof. Record defects and accept/reject explicitly. |
@@ -2152,7 +1870,7 @@ No additional unimplemented module was identified within the documented original
 D052–D058 feature contract. This is not 100% product acceptance: P2-01 and P2-02
 have not been executed end to end. Commercial/operational decisions remain distinct.
 
-## Continue queue — subsequent scope, tracked separately
+## Subsequent scope carried into PH3
 
 | ID | Scope | Current gap |
 | --- | --- | --- |
@@ -2162,482 +1880,445 @@ have not been executed end to end. Commercial/operational decisions remain disti
 | EXT-04 | Sending operational selection | Manual review/confirmation framework exists. Scheduled statement jobs remain off. Decide/authorize any future job activation and exact addressed test separately; uncertain acceptance is never replayed. |
 | EXT-05 | Future PROD candidate and full rollout | Reconcile current production runtime overrides, verified immutable owner bootstrap, migration/grants/inventory/providers, environment-specific capabilities and accepted data/custody contracts. Prepare a current reviewable candidate only after HOC authorizes that work. Older production draft packages do not automatically include later Stage improvements. |
 
-## Evidence carried forward
 
-- Backend: consolidated coverage of 1,785 distinct cases. Raw full r3 remains
-  FAILED at 1,784 PASS/1 obsolete navigation assertion. Only that test line changed;
-  the full 761-unit suite then passed. Successful 917 integration + 107 root backend
-  cases are retained over unchanged runtime/integration/migration bytes.
-- Final affected browser: 32 PASS. Static Ruff/mypy79/JavaScript checks, 84-template
-  compilation and fresh disposable migration roundtrip/check passed. Worker suites
-  were not rerun over unchanged Worker/dependency bytes.
-- Stage migration: consistent encrypted backup, nine head006 schemas, 396 old table
-  fingerprints unchanged, 32 guards/schema, 72 preflight and 72 final foreign-role
-  denials, five quarantined schemas unchanged. No restore rehearsal of that backup.
-- Hosted: 19 public GET checks, seven matching source assets, live/ready200 and
-  protected commercial routes303. Provider metadata active 1 / healthy 0 is retained
-  exactly, separately from application health 200 and running instance 20.
-- No current authenticated hosted feature execution, external-client MCP acceptance,
-  human UAT, Apple activation, real customer send or production acceptance is implied.
-- Backup receipt SHA-256:
-  `6019aa0aef9aebd44cfff744f15ddb092665effaa4bfed22bedadace313e75eb`.
-- Migration receipt SHA-256:
-  `e38d488f09ffb577cddd00b84ba12ea59a265b26c89a84a37d02359b137132a9`.
-- Consolidated backend receipt SHA-256:
-  `d2d0b3a6b983e2215e8023ce78b20b862f5f2cd8ac92b783a2d604d4da1f12e3`.
-- Final release readback receipt SHA-256:
-  `07778d041b22470ab950979e63d7a9198b3bc768e4ed289856614cb71c5d6787`.
+Additional retained limits: human acceptance of the latest navigation/performance/
+Settings changes remains open. The Case-only 02:17 UTC cron is configured, but an
+actual scheduled execution has not been observed. Sending jobs remain disabled.
+Live merchant/catalog/credentials/webhooks, general-admission/offboarding and
+current production overrides need their own later review. The synthetic Stage
+Pro grant is not a paid-provider event and must not be copied into production.
 
-Private evidence remains in the retained feature checkout under
-`.aekr/work/quoting-library-20261016/`. Protected backups/keys remain in their
-existing custody, not in Git or the Desktop dossier. Preserve failed receipts and
-separate schema commit journals. Do not blindly replay migration/dispatch effects.
+Source: [docs/STATUS.md:27](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27). These rows are not one implementation sprint. A selected PH3 prompt supplies scope/acceptance; authorization for one row does not activate the others.
 
-## Resume procedure
+## What is already delivered
 
-1. Obtain a direct HOC instruction to resume, with the selected queue item(s).
-2. Read this file, `AGENTS.md`, `docs/STATUS.md`, `HOSTING.md`, relevant canonical
-   contracts and current private switchboard/governance. Retain the pause until
-   the resume authority is recorded; no new implementation follows from reading.
-3. Verify branch/HEAD/dirty state and actual relevant environment state. Reuse
-   retained source/evidence rather than replaying closed tasks or archived payload.
-4. Select one bounded item, its human identity/external-effect requirements and
-   actual acceptance criteria. Normal credentials/MFA/OTP/consent stay with HOC.
-5. Execute only that resumed scope; verify it and update the canonical status.
-6. Treat a PROD candidate, merge, migration, deployment and full rollout as distinct
-   later owner decisions. A Stage resume is not a production release instruction.
+Preserve original PH2 credit memos, strict reviewed Draft imports/contributions/corrections, proposed clients, scoped OAuth/API/MCP services and Settings connection guidance. Later Stage source includes individual enrollment/Sandbox subscriptions; Google/GitHub/managed-email admission/linking; shared challenge/versioned sign-in notice; reviewed Sending; Case-bound Quoting/private Library; work-record/lifecycle/search/pagination refinements; Dashboard detail/rhythm behavior; owner-wide weekly Timecards summaries; K/Back navigation; native reference choices; measured read optimizations; and Settings public-file refresh. Apple runtime/offboarding and the acceptance rows above remain separate. Sources: [docs/PROJECT_BRIEF.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PROJECT_BRIEF.md#L1), [docs/DECISIONS.md:945](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L945), [docs/DECISIONS.md:983](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L983), [docs/DECISIONS.md:1060](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1060).
 
-## Desktop review package
+No additional unimplemented module was identified in original D052–D058. Administrative closure transfers unresolved proof and decisions; it does not convert them into completed acceptance or erase failures.
 
-`C:\Users\edlop\OneDrive\Desktop\timeKER-Codebase-Dossier-2026-10-16\`
+## Archive and clone custody
 
-Start at `00-START-HERE.md`; `timeKER-FULL-DOSSIER.md` is the combined reading copy.
-The package explains the full source-backed stack, architecture, entities,
-functional workflows, authentication/admission, integrations, deployment/SOP,
-quality/evidence, known gaps and source/route/configuration inventories. It is a
-dated analysis snapshot, not an alternate active specification or a source/data
-backup. Package verification/hashes are generated after all chapters are complete.
+Reversible local archive covers 28 batches/8,149 files/1,580,224,720 bytes, plus the separate native Quoting move. Current tests, migrations, contracts, design references and operative decisions remain active. Prior payload is not included in this public dossier or PH3 clone. Independent preparation proved all 500 nonstartup tracked files unchanged, independent Git storage and no old runtime/private environment copied. The generic root-AGENTS scaffold-validator incompatibility remains documented; Project Map validation passed. Source: [docs/PHASE2_CLOSEOUT.md:49](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L49).
 
+## Entry procedure for the next PH3 prompt
+
+1. Read canonical CONTINUE, AGENTS, STATUS, PH2_CLOSEOUT, HOSTING, operative decisions/design/contracts and applicable private governance. Historical payload stays outside ordinary context.
+2. Record the owner's bounded prompt, exclusions and acceptance evidence. Missing business/legal/provider decisions remain unknown until supplied.
+3. Verify current branch/HEAD/dirty state and relevant actual environment only within that scope. Preserve unrelated work and failed receipts.
+4. Reuse delivered services/tests/migrations and retained evidence. Do not replay old seeds/imports, migrations, purchases, sends or release carriers.
+5. Keep normal login/MFA/OTP/provider consent and UAT with the owner. Never read mailbox proof, copy sessions or synthesize acceptance.
+6. Execute/verify only the selected PH3 scope and update canonical continuity. Keep a later PROD candidate, merge, migration/configuration and deployment separately authorized.
+
+Source: [CONTINUE.md:20](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L20). No timer, tool availability, pending PR or saved package begins feature work. The next task is the owner's PH3 prompt.
 
 ---
 
-<a id="chapter-09"></a>
+# 09 — PH3 prompt preparation and open decisions
 
-<!-- Source chapter: 09-improvement-review-guide-and-open-decisions.md -->
+Snapshot: **2026-10-18**, source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. PH2 bookkeeping is closed, PH3 is prepared, and the owner will provide feature prompts. Use this chapter to review the product and formulate bounded work. It starts no implementation and creates no competing specification. Read [canonical CONTINUE][continue] and the [exact queue](08-PAUSE-AND-CONTINUE.md).
 
-# Improvement review guide and open decisions
+## 1. Keep four evidence questions separate
 
-Snapshot: 2026-10-16, source-analysis commit `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`.
-This chapter organizes the owner's requested deep analysis. It neither implements
-improvements nor authorizes work while paused. The dated dossier explains the
-current product; canonical `CONTINUE.md` controls any later resume.
+1. **Capability:** Which service, route, model, migration and maintained test implements the behavior?
+2. **Activation:** Is it configured in the selected environment? Source defaults/packages do not establish runtime state.
+3. **Execution:** Did the actual actor/client/provider flow run, or a local/synthetic selection? Retain target, source, date, role and result.
+4. **Acceptance:** Has the owner accepted the behavior or approved the specific release? Tests/readback and administrative closeout do not supply this decision.
 
-## 1. Scope and evidence language
+A single completion percentage cannot answer all four. Outcome, delivery, product and gate/authority remain distinct. PH2 closure transfers P2-01/P2-02/P2-03 and EXT-01 through EXT-05 explicitly. Source: [STATUS][status].
 
-Use four separate questions for every proposal:
+## 2. Inspect delivered work before proposing replacements
 
-1. **Capability:** Does source code implement the behavior? Which service, route,
-   model, migration and test owns it?
-2. **Activation:** Is the capability actually configured in the selected environment?
-   A source default, manifest or installed package is not a provider readback.
-3. **Execution:** Has the real actor/client/provider flow been exercised, or only a
-   synthetic/local test? Preserve exact dates, target and result.
-4. **Acceptance:** Has HOC accepted the behavior for Stage or approved the exact
-   production release? Engineering evidence does not make that decision.
+| Area | Existing behavior to reuse | Review question |
+| --- | --- | --- |
+| Navigation | Branded server-rendered pages, wordmark K/chevrons, icon-only Back, enhanced/native destinations | Which concrete journey loses context? Preserve keyboard/no-JS accessibility. |
+| Records/search | Owner-scoped search/lookups, stable references, mass editing, Settings page size and independent card paging | What reproducible missing-result/state defect remains? Avoid rebuilding delivered search/paging. |
+| Dashboard | Complete aggregates, independent detail/rhythm state, fixed-five Outstanding paging and selective detail preparation | Are totals, period meaning and native/HTMX transitions understandable? |
+| Timecards | Integer minutes, contract weeks, retained correction/history and owner-wide selected-week metrics | Which week/filter/save/finalize case fails expectations? Preserve cohort semantics and IDs. |
+| Performance | Grouped exact payment totals, batched metadata, blocking reads/readiness in workers, three indexes and versioned public assets | Does matched measurement identify a remaining bottleneck? Preserve freshness and tenant authority. |
+| Public-file refresh | Settings reloads 22 known public files with bounded concurrency/timeouts and unsaved-state preservation | Is progress/retry clear? It does not clear all browser/CDN caches or replace running scripts. |
+| Identity | Immutable issuer/subject, explicit linking, prepared slots, acknowledgment/first plan and shared challenge/notice | Do normal existing/new owners reach the correct private workspace? Human proof remains required. |
+| Assistant/import | Idempotent reviewed Draft import, scoped OAuth/PKCE/API/MCP and connection guidance | Can the actual host discover/use tools for two isolated owners and honor rotation/revocation? |
+| Commercial | Case-bound Quoting/HLE, private Library/templates/uploads/publications and independent Sending | Can the owner complete synthetic creation/edit/upload/publication/review without undocumented prerequisites? |
+| Subscriptions | Individual Free/Solo/Pro capacity and durable Paddle Sandbox lifecycle/receipts | Which remaining real-provider scenarios need evidence before Live is considered? |
+| Money/delivery | Exact-minute/Decimal totals, immutable issuance/full cancellation memos, manual payments, Sending/Stop/retry | Are uncertainty, confirmation and manual/scheduled effects clear? Preserve no-blind-replay behavior. |
 
-Do not use a single completion percentage to hide these distinctions. The original
-Phase2 feature core is implemented; real MCP connection/platform validation and
-owner UAT remain open. Phase3 subscriptions, later authentication/public admission,
-Quoting/Library/commercial Sending and Apple have separate histories and gaps.
+Sources: [commercial contract][commercial], [work records][work], [dense workspace decisions][dense], [weekly metrics][weekly], [performance decisions][performance], [measured results][measure].
 
-## 2. Review map
+The base cohort and Settings spot check serve different purposes. Retained medians do not prove field Core Web Vitals, capacity, individual-change causation or human acceptance. Do not duplicate delivered optimizations without identifying a remaining defect.
 
-| Review area | Existing implementation to preserve | Questions to investigate after resume | Evidence that would justify a change |
-| --- | --- | --- | --- |
-| Product navigation and discovery | Branded server-rendered pages; Timecards after Projects, Quoting before Billing; contextual help | Can a new owner understand Case, Project, HLE, working document, template and publication without assistance? Are missing prerequisites recoverable from the originating screen? | Bounded recorded owner walkthrough and concrete friction, not a preference for another UI framework. |
-| Authentication and admission | Fresh immutable proof, explicit linking, finite prepared schemas, one shared widget, clear recovery | Do existing/new identities reliably enter the correct workspace? Are failure messages actionable without disclosing account existence or misidentifying provider causes? | Normal provider flows with actual registered/new test identities, request IDs and no token capture. |
-| Account lifecycle | Revoked identities/session revisions and retained admission records exist | What exactly does account deletion, export, cancellation, held financial history, owner offboarding and Apple revocation mean for this product? | Owner-approved bounded lifecycle contract before a new UI/writer or destructive path. |
-| MCP client compatibility | Scoped OAuth/PKCE, issuer metadata, tools and private package | Does the intended actual client authenticate, discover, read two isolated owners, write confirmed Draft contributions and honor refresh/revocation? What is actually supported for voice/dot surfaces? | Real-client receipts, reciprocal denials and idempotent Draft evidence; a saved package alone is insufficient. |
-| Domain boundaries | Services separate from handlers/templates; Decimal and integer minutes | Are responsibilities duplicated among direct browser actions, imports, MCP and new commercial workflows? Are unrelated state machines coupled? | A specific drift or maintenance defect with caller/transaction mapping; preserve all entry-point contracts. |
-| Money/time correctness | Exact-minute aggregation, explicit zones, frozen issuance, full cancellation memos | Are date-boundary, range/mixed pricing and plan-capacity transitions understandable? Is optional zero pricing distinguished from unknown pricing? | Synthetic counterexamples and deterministic expected totals before refactoring. |
-| Persistence and concurrency | Fixed-role pools, row locks, retained idempotency, guard triggers | Do concurrent operations wait or conflict predictably? Is history protected by both services and database ACL/guards? | Real restricted-role race/negative tests tied to the changed resource. |
-| Database capacity | One database/environment, tenant schemas, bounded per-tenant pools | At the desired admitted-owner count, what are connection, schema, disk, archive/binary, query and backup costs? | Actual selected-host measurements; local 50-schema evidence is not a hosted promise. |
-| Synchronous work | One deployable app; bounded parsing/PDF generation; no extra queue/backend | At realistic concurrency, do PDF/DOCX/MIME operations or synchronous DB paths materially delay requests? | Reproducible synthetic timings/resource traces. Do not add Redis/Celery/microservices to solve a hypothetical issue. |
-| Documents and uploads | Immutable originals and numbered publications, bounded safe parsing/download | Is selecting edited text versus original attachment unambiguous? Can owners reuse their own wording without silently modifying earlier versions? | Normal UI/document download checks and unchanged artifact hashes. |
-| Commercial and collection Sending | Separate models/history, durable claim-before-network, exact attachment, manual review/Stop | Are retries, uncertainty and scheduled/manual actions clear? What constitutes operator reconciliation of an uncertain provider result? | Mock fault/race tests plus separately authorized addressed rehearsal, preserving no-replay behavior. |
-| Subscription lifecycle | Free/Solo/Pro entitlement/capacity and Paddle Sandbox receipts | Do annual/3DS, immediate upgrade, deferred downgrade/cancel, retention and failed-renewal/grace behave as specified on the real provider? | Exact provider/tenant/cycle readbacks and signed webhook evidence. Live eligibility is a separate HOC decision. |
-| Privacy and optional processing | Public maintained policies, versioned notice receipts, signed preferences, GPC/DNT precedence, optional usage disabled | Do disclosure and data inventory match each actual provider and retention purpose? What must be separately optional? | Source/provider data-flow inventory and appropriate owner/legal review; no speculative UI warnings or blanket worldwide compliance claim. |
-| Support/contact | Fixed destination, dedicated CAPTCHA action, committed abuse/idempotency reservations | Are support failures understandable without leaking message/address/IP data? Are limits appropriate for observed abuse/load? | Bounded normal/error tests; no raw mailbox/message capture in diagnostics. |
-| Audit and diagnostics | Business audit in DB; finite sanitized diagnostics; request IDs | Can an operator distinguish proof, binding, routing, storage and provider failure using safe metadata? | A concrete troubleshooting gap; expand typed reason vocabulary rather than raw exception logging. |
-| Recovery | Migrations/grants, encrypted backup custody, actual local restore rehearsal | What are off-host schedule, key custody, tenant restore verification, recovery objectives and restore decision authority? | A selected operational runbook and bounded rehearsal. Do not treat archive inventory or decryption alone as restore proof. |
-| Delivery/source custody | Separate PROD/Stage profiles, manual guarded releases, immutable runtime identities | Does the candidate include all later Stage changes? Have old runtime overrides and original immutable owner bootstrap been reconciled? | Fresh candidate diff, required QA/review/UAT and exact HOC release decision; never merge an old package by assumption. |
-| Accessibility and browser coverage | Native/no-JS behavior, CSP, keyboard/axe/mobile synthetic tests, reduced motion | Are physical-device/browser/assistive-technology flows usable where mocked tests cannot establish behavior? | Targeted user/device evidence, with automation and human observations attributed separately. |
+## 3. Existing required proof and decisions
 
-## 3. Concrete open work versus optional ideas
+| ID | Current gap | Suitable bounded result |
+| --- | --- | --- |
+| P2-01 | Actual assistant OAuth/tool discovery, reciprocal isolation, idempotent Draft correction and token lifecycle | Real-client receipts for two fictional owners, exact supported surface and refresh/revocation outcomes |
+| P2-02 | Human Stage UAT for identity and business workflows | Owner walkthrough with explicit accept/reject and reproducible defects |
+| P2-03 | Selected backup/key/off-host custody, restore, retention/holds, budgets and recovery objectives | Owner-adopted operating contract and separately authorized proof |
+| EXT-01 | Apple and complete lifecycle/offboarding | Approved identity/data lifecycle contract before adapters, notifications/revocation or deletion writers |
+| EXT-02 | Actual Sandbox annual/3DS/change/cancellation/retention/failed-renewal/grace rehearsal | Provider/tenant/cycle/signed-event evidence; Live activation separate |
+| EXT-03 | Hosted Quoting/Library/commercial Sending UAT | Normal authenticated synthetic creation/edit/upload/publication/review |
+| EXT-04 | Sending operating selection | Decision on manual/jobs/recipient scope and bounded authorized rehearsal; jobs off |
+| EXT-05 | Combined PH2 plus PH3 production candidate | Current diff, owner/bootstrap/override reconciliation, required QA/UAT and release authority |
 
-The following are documented current gaps, not newly invented improvement tickets:
+Source: [canonical residuals][residuals]. Latest navigation/performance/Settings acceptance and actual Case-cron execution remain explicit limits. Configured cron is not observed execution; a synthetic Pro grant is not a paid-provider event.
 
-- Real assistant OAuth allow/tool discovery/execution with two tenants, refresh and
-  revocation; intended voice/dot surface compatibility is unproven.
-- Owner end-to-end Stage UAT for the selected core and later commercial screens.
-- Apple entitlement/configuration, provider adapter/callback, relay, notifications,
-  revocation and complete account-deletion/offboarding implementation.
-- Remaining real Sandbox subscription rehearsals; Live merchant setup/activation.
-- Selected off-host backup/key custody/cadence, hosted capacity budgets and recovery
-  objectives/restore verification.
-- A current owner-reviewed production candidate, immutable owner bootstrap and
-  runtime override reconciliation before any separately authorized release.
+## 4. Review dimensions
 
-Scheduled statement Sending is deliberately off. Inbox synchronization, broad team
-membership, a tenant switcher, arbitrary AI financial mutations, full/partial tax
-authority, automatic FX and public plugin distribution are not missing features
-within the contracted Phase2 core. They are unselected or separately scoped ideas.
-
-Quoting is an effort/proposal workflow, not legal signature or subscription purchase.
-An HLE does not need a SOW/SLA. A commercial contract template is editable starting
-wording, not an adopted real customer contract or a universally applicable legal
-form. Cases are mandatory for working commercial records because they bind the
-owned Project/Client context. Reusable templates alone may be unassigned.
-
-## 4. Documentation observations from this dossier task
-
-The source-analysis commit has older checkpoint prose in README, PROJECT_MAP,
-legacy security/deployment sections and private governance. STATUS/HOSTING plus
-later ADRs carry the newest runtime behavior. The pause closeout updates the
-entry documents and records the current continuation; older historical receipts
-remain dated and are not rewritten into new PASS results.
-
-The appendices pin source bytes at the analysis commit, before pause-only Markdown
-edits. This intentionally makes a document line reference reproducible. The
-Desktop pause chapter and package verification describe the later closeout state.
-No business application file, migration, dependency, runtime configuration or
-production checkout is changed by producing this dossier.
-
-## 5. Questions for the owner's deep review
-
-1. Which first-time user journey should define the next acceptance boundary: pure
-   manual tracking, assistant-assisted Draft import, consulting quoting, or paid SaaS?
-2. Which actual assistant host and browser/device combinations must be supported
-   before rollout, and which remain explicitly outside the first release?
-3. Which account/data lifecycle promises will the service make, and who operates
-   exports, retention/holds and deletion when immutable financial records exist?
-4. What initial admitted-owner volume, storage/mail budget and incident/recovery
-   service target will be funded and verified?
-5. Which real subscription and delivery scenarios must pass before activating
-   Live payments or automated follow-ups?
-6. What precise product/UAT and release evidence will HOC accept for the final
-   Stage-to-PROD candidate?
-
-These are review prompts. They do not ask the owner to answer during the pause and
-they do not authorize agents to start implementation. Retain the current architecture
-until an evidenced requirement justifies a bounded change.
-
-
----
-
-<a id="chapter-10"></a>
-
-<!-- Source chapter: 10-http-routes-and-templates.md -->
-
-# HTTP route and template inventory
-
-Snapshot: 2026-10-16; Stage source-analysis commit `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`.
-Generated offline from tracked source. No application import, database connection, provider request, credential read or test execution occurred.
-This is a dated review appendix, not a replacement for canonical contracts. Source pointers below refer to this commit.
-
-## Extraction limits
-
-This lists literal Python route decorators and local APIRouter prefixes. It is not a live OpenAPI export: environment gates, mounted static files, generated MCP tools and middleware protection must be read with the narrative chapters. Multiple declarations can be conditional; a route row does not prove production activation.
-
-Literal decorated declarations: **173**.
-
-| Methods | Declared path | Handler | Source |
-| --- | --- | --- | --- |
-| GET | `/` | `landing` | `app/main.py:395` |
-| GET | `/.well-known/oauth-authorization-server` | `server_metadata` | `app/integration_routes.py:670` |
-| GET | `/.well-known/oauth-protected-resource` | `resource_metadata` | `app/integration_routes.py:694` |
-| GET | `/.well-known/oauth-protected-resource/api/integration` | `resource_metadata` | `app/integration_routes.py:694` |
-| GET | `/.well-known/oauth-protected-resource/mcp` | `resource_metadata` | `app/integration_routes.py:694` |
-| POST | `/api/integration/tools/{name}` | `api_tool` | `app/integration_routes.py:863` |
-| GET | `/archive` | `archive` | `app/case_routes.py:403` |
-| GET | `/archive/export/mail-attachments.csv` | `attachment_manifest` | `app/mail_routes.py:411` |
-| GET | `/archive/export/mail.csv` | `export_mail` | `app/archive_routes.py:163` |
-| GET | `/archive/export/mail/{message_id}/attachments/{attachment_id}` | `archived_attachment` | `app/mail_routes.py:407` |
-| GET | `/archive/export/timecards.csv` | `export_timecards` | `app/archive_routes.py:90` |
-| GET | `/audit` | `audit_page` | `app/main.py:1499` |
-| POST | `/auth/email/start` | `email_start` | `app/enrollment_routes.py:513` |
-| POST | `/auth/email/verify` | `email_verify` | `app/enrollment_routes.py:691` |
-| GET | `/auth/github` | `google_entry` | `app/main.py:457` |
-| POST | `/auth/github` | `google_login` | `app/main.py:462` |
-| GET | `/auth/github/callback` | `google_callback` | `app/main.py:529` |
-| GET | `/auth/google` | `google_entry` | `app/main.py:457` |
-| POST | `/auth/google` | `google_login` | `app/main.py:462` |
-| GET | `/auth/google/callback` | `google_callback` | `app/main.py:529` |
-| POST | `/auth/local` | `local_login` | `app/main.py:434` |
-| POST | `/auth/logout` | `logout` | `app/main.py:700` |
-| GET | `/billing` | `invoice_list` | `app/main.py:1237` |
-| POST | `/billing/create` | `invoice_create` | `app/main.py:1241` |
-| GET | `/billing/{invoice_id}` | `invoice_detail` | `app/main.py:1261` |
-| GET | `/billing/{invoice_id}/pdf` | `invoice_pdf` | `app/main.py:1283` |
-| POST | `/billing/{invoice_id}/{operation}` | `invoice_action` | `app/main.py:1301` |
-| GET | `/cases` | `case_list` | `app/case_routes.py:87` |
-| GET | `/cases/new` | `new_case` | `app/case_routes.py:220` |
-| POST | `/cases/new` | `create_case` | `app/case_routes.py:224` |
-| GET | `/cases/{case_id}` | `case_detail` | `app/case_routes.py:264` |
-| POST | `/cases/{case_id}/archive` | `archive_case` | `app/case_routes.py:314` |
-| GET | `/cases/{case_id}/edit` | `edit_case` | `app/case_routes.py:292` |
-| POST | `/cases/{case_id}/edit` | `update_case` | `app/case_routes.py:296` |
-| GET | `/client-drafts` | `drafts` | `app/integration_routes.py:1081` |
-| GET | `/clients` | `client_list` | `app/main.py:749` |
-| GET | `/clients/new` | `new_client` | `app/main.py:812` |
-| POST | `/clients/new` | `create_client` | `app/main.py:818` |
-| GET | `/clients/{client_id}` | `client_detail` | `app/main.py:830` |
-| POST | `/clients/{client_id}/archive` | `client_archive` | `app/main.py:887` |
-| POST | `/clients/{client_id}/contacts` | `contact_save` | `app/main.py:921` |
-| POST | `/clients/{client_id}/contract` | `contract_confirm` | `app/main.py:936` |
-| GET | `/clients/{client_id}/edit` | `edit_client` | `app/main.py:869` |
-| POST | `/clients/{client_id}/edit` | `client_save` | `app/main.py:875` |
-| POST | `/clients/{client_id}/projects` | `project_save` | `app/main.py:905` |
-| POST | `/contact` | `contact_submit` | `app/main.py:401` |
-| GET | `/credit-memos/{memo_id}` | `credit_memo_detail` | `app/main.py:1344` |
-| GET | `/credit-memos/{memo_id}/pdf` | `credit_memo_pdf` | `app/main.py:1350` |
-| GET | `/dashboard` | `dashboard` | `app/main.py:715` |
-| GET | `/health/live` | `live` | `app/main.py:679` |
-| GET | `/health/ready` | `ready` | `app/main.py:683` |
-| POST | `/internal/archive` | `archive_job` | `app/internal_routes.py:109` |
-| POST | `/internal/mail` | `receive_mail` | `app/internal_routes.py:130` |
-| POST | `/internal/sending` | `sending_job` | `app/internal_routes.py:21` |
-| GET | `/legal/policies` | `legal_policies` | `app/enrollment_routes.py:81` |
-| GET | `/library` | `library_list` | `app/library_routes.py:92` |
-| POST | `/library` | `create_document` | `app/library_routes.py:110` |
-| GET | `/library/new` | `new_document` | `app/library_routes.py:106` |
-| GET | `/library/versions/{version_id}/attachment` | `attachment_download` | `app/library_routes.py:171` |
-| GET | `/library/versions/{version_id}/pdf` | `pdf_download` | `app/library_routes.py:165` |
-| GET | `/library/{document_id}` | `document_detail` | `app/library_routes.py:118` |
-| POST | `/library/{document_id}/new-draft` | `create_draft` | `app/library_routes.py:148` |
-| POST | `/library/{document_id}/publish` | `publish_document` | `app/library_routes.py:141` |
-| POST | `/library/{document_id}/save` | `save_document` | `app/library_routes.py:122` |
-| POST | `/library/{document_id}/upload` | `upload_document` | `app/library_routes.py:129` |
-| GET | `/library/{document_id}/uploads/{upload_id}` | `original_download` | `app/library_routes.py:154` |
-| GET | `/lookups/{kind}` | `lookup_page` | `app/main.py:1450` |
-| GET | `/mail` | `mail_list` | `app/mail_routes.py:108` |
-| GET | `/mail/addresses` | `address_list` | `app/mail_routes.py:277` |
-| POST | `/mail/addresses` | `address_create` | `app/mail_routes.py:281` |
-| POST | `/mail/addresses/{address_id}/revoke` | `address_revoke` | `app/mail_routes.py:306` |
-| GET | `/mail/import` | `mail_import_form` | `app/mail_routes.py:215` |
-| POST | `/mail/import` | `mail_import` | `app/mail_routes.py:219` |
-| GET | `/mail/{message_id}` | `mail_detail` | `app/mail_routes.py:315` |
-| GET | `/mail/{message_id}/attachments/{attachment_id}` | `active_attachment` | `app/mail_routes.py:403` |
-| DELETE | `/mcp` | `no_stream` | `app/integration_routes.py:844` |
-| GET | `/mcp` | `no_stream` | `app/integration_routes.py:844` |
-| POST | `/mcp` | `mcp` | `app/integration_routes.py:890` |
-| GET | `/oauth/authorize` | `authorization_page` | `app/integration_routes.py:711` |
-| POST | `/oauth/authorize` | `authorize` | `app/integration_routes.py:747` |
-| POST | `/oauth/revoke` | `revoke_token` | `app/integration_routes.py:810` |
-| POST | `/oauth/token` | `token` | `app/integration_routes.py:775` |
-| POST | `/payments/{payment_id}/reverse` | `payment_reverse` | `app/main.py:1364` |
-| POST | `/privacy/preferences` | `save_preferences` | `app/privacy.py:75` |
-| POST | `/privacy/usage` | `collect_usage` | `app/usage.py:43` |
-| GET | `/project-billing/{project_id}` | `detail` | `app/project_billing_routes.py:48` |
-| POST | `/project-billing/{project_id}/{operation}` | `action` | `app/project_billing_routes.py:52` |
-| GET | `/projects` | `project_list` | `app/project_routes.py:139` |
-| POST | `/projects` | `project_create` | `app/project_routes.py:263` |
-| GET | `/projects/new` | `project_new` | `app/project_routes.py:209` |
-| POST | `/projects/{project_id}` | `project_update` | `app/project_routes.py:267` |
-| GET | `/projects/{project_id}/agreements/{agreement_id}` | `agreement_download` | `app/project_routes.py:314` |
-| POST | `/projects/{project_id}/archive` | `project_archive` | `app/project_routes.py:271` |
-| GET | `/projects/{project_id}/edit` | `project_edit` | `app/project_routes.py:213` |
-| GET | `/quoting` | `index` | `app/quoting_routes.py:147` |
-| GET | `/quoting/documents/new` | `new_document` | `app/library_routes.py:106` |
-| GET | `/quoting/new` | `new` | `app/quoting_routes.py:161` |
-| POST | `/quoting/new` | `create` | `app/quoting_routes.py:190` |
-| GET | `/quoting/{quote_id}` | `detail` | `app/quoting_routes.py:194` |
-| POST | `/quoting/{quote_id}/archive` | `archive` | `app/quoting_routes.py:230` |
-| GET | `/quoting/{quote_id}/edit` | `edit` | `app/quoting_routes.py:202` |
-| POST | `/quoting/{quote_id}/edit` | `update` | `app/quoting_routes.py:206` |
-| GET | `/quoting/{quote_id}/pdf` | `download` | `app/quoting_routes.py:235` |
-| POST | `/quoting/{quote_id}/publish` | `publish` | `app/quoting_routes.py:213` |
-| POST | `/quoting/{quote_id}/revise` | `revise` | `app/quoting_routes.py:222` |
-| GET | `/registration` | `registration` | `app/enrollment_routes.py:186` |
-| POST | `/registration/ack` | `acknowledge` | `app/enrollment_routes.py:190` |
-| POST | `/registration/free` | `activate_free` | `app/enrollment_routes.py:232` |
-| GET | `/reports` | `reports_page` | `app/main.py:1374` |
-| GET | `/reports/export.csv` | `csv_export` | `app/main.py:1380` |
-| GET | `/sending` | `index` | `app/sending_routes.py:98` |
-| POST | `/sending/deliveries/{delivery_id}/dispatch` | `dispatch` | `app/sending_dispatch_routes.py:60` |
-| POST | `/sending/deliveries/{delivery_id}/follow-up/dispatch` | `followup_dispatch` | `app/sending_dispatch_routes.py:34` |
-| GET | `/sending/deliveries/{delivery_id}/follow-up/review` | `followup_review` | `app/sending_dispatch_routes.py:23` |
-| POST | `/sending/deliveries/{delivery_id}/retry` | `retry` | `app/sending_routes.py:175` |
-| POST | `/sending/plans/{plan_id}/stop` | `stop` | `app/sending_routes.py:154` |
-| GET | `/sending/prepare/{invoice_id}` | `prepare_form` | `app/sending_routes.py:102` |
-| POST | `/sending/prepare/{invoice_id}` | `prepare` | `app/sending_routes.py:119` |
-| POST | `/sending/prepare/{invoice_id}/edit` | `edit` | `app/sending_routes.py:115` |
-| POST | `/sending/prepare/{invoice_id}/review` | `review` | `app/sending_routes.py:106` |
-| GET | `/sending/proposals` | `index` | `app/proposal_sending_routes.py:38` |
-| GET | `/sending/proposals/prepare/{source}/{artifact_id}` | `prepare_form` | `app/proposal_sending_routes.py:45` |
-| POST | `/sending/proposals/prepare/{source}/{artifact_id}/review` | `prepare` | `app/proposal_sending_routes.py:49` |
-| GET | `/sending/proposals/{delivery_id}` | `review_form` | `app/proposal_sending_routes.py:69` |
-| GET | `/sending/proposals/{delivery_id}/attachment` | `attachment` | `app/proposal_sending_routes.py:105` |
-| POST | `/sending/proposals/{delivery_id}/dispatch` | `dispatch` | `app/proposal_sending_routes.py:81` |
-| POST | `/sending/proposals/{delivery_id}/edit` | `edit` | `app/proposal_sending_routes.py:73` |
-| POST | `/sending/proposals/{delivery_id}/stop` | `stop` | `app/proposal_sending_routes.py:99` |
-| POST | `/sending/resume` | `resume` | `app/sending_routes.py:168` |
-| POST | `/sending/stop-all` | `stop_all` | `app/sending_routes.py:161` |
-| POST | `/sending/templates` | `templates` | `app/sending_routes.py:138` |
-| GET | `/settings` | `settings_page` | `app/main.py:1437` |
-| POST | `/settings` | `save_settings` | `app/main.py:1489` |
-| POST | `/settings/archiving/run` | `archive_now_action` | `app/archive_routes.py:218` |
-| GET | `/settings/integrations` | `integrations` | `app/integration_routes.py:1046` |
-| POST | `/settings/integrations/{grant_id}/revoke` | `revoke` | `app/integration_routes.py:1067` |
-| POST | `/settings/limits` | `save_limits` | `app/main.py:1441` |
-| GET | `/settings/security` | `security` | `app/enrollment_routes.py:307` |
-| POST | `/settings/security/email/revoke` | `revoke_email` | `app/enrollment_routes.py:311` |
-| POST | `/settings/security/email/start` | `email_link_start` | `app/enrollment_routes.py:517` |
-| POST | `/settings/security/email/verify` | `email_link_verify` | `app/enrollment_routes.py:695` |
-| GET | `/settings/subscription` | `subscription` | `app/subscription_routes.py:111` |
-| POST | `/settings/subscription/cancel` | `cancel` | `app/subscription_payment_routes.py:200` |
-| POST | `/settings/subscription/change/confirm` | `change_confirm` | `app/subscription_payment_routes.py:369` |
-| POST | `/settings/subscription/change/preview` | `change_preview` | `app/subscription_payment_routes.py:220` |
-| GET | `/settings/subscription/checkout` | `checkout_return` | `app/subscription_payment_routes.py:93` |
-| POST | `/settings/subscription/checkout` | `checkout` | `app/subscription_payment_routes.py:129` |
-| POST | `/settings/subscription/checkout/reconcile` | `reconcile_checkout` | `app/subscription_payment_routes.py:181` |
-| GET | `/settings/subscription/checkout/{operation_id}` | `checkout_page` | `app/subscription_payment_routes.py:107` |
-| POST | `/settings/subscription/free` | `enroll` | `app/subscription_routes.py:134` |
-| POST | `/settings/subscription/portal` | `portal` | `app/subscription_payment_routes.py:165` |
-| POST | `/settings/subscription/preview` | `preview` | `app/subscription_routes.py:115` |
-| POST | `/settings/subscription/provider/verify` | `catalog` | `app/subscription_payment_routes.py:154` |
-| POST | `/settings/subscription/renewal/check` | `renewal_check` | `app/subscription_payment_routes.py:277` |
-| POST | `/settings/subscription/retention/confirm` | `retention_confirm` | `app/subscription_payment_routes.py:329` |
-| POST | `/settings/subscription/retention/preview` | `retention_preview` | `app/subscription_payment_routes.py:294` |
-| POST | `/settings/subscription/retention/reconcile` | `retention_reconcile` | `app/subscription_payment_routes.py:350` |
-| GET | `/sign-in` | `sign_in` | `app/enrollment_routes.py:129` |
-| GET | `/sign-up` | `sign_up` | `app/enrollment_routes.py:133` |
-| POST | `/subscriptions/paddle/webhook` | `webhook` | `app/subscription_payment_routes.py:396` |
-| GET | `/timecards` | `timecard_list` | `app/main.py:946` |
-| GET | `/timecards/contributions` | `contribution_list` | `app/time_import_routes.py:120` |
-| GET | `/timecards/contributions/{contribution_id}` | `contribution_form` | `app/time_import_routes.py:207` |
-| POST | `/timecards/contributions/{contribution_id}` | `correct_contribution` | `app/time_import_routes.py:214` |
-| GET | `/timecards/entries/{entry_id}/cases` | `allocations` | `app/case_routes.py:368` |
-| POST | `/timecards/entries/{entry_id}/cases` | `allocation_save` | `app/case_routes.py:372` |
-| GET | `/timecards/import` | `import_form` | `app/time_import_routes.py:116` |
-| POST | `/timecards/import` | `preview_file` | `app/time_import_routes.py:272` |
-| POST | `/timecards/import/commit` | `commit_file` | `app/time_import_routes.py:297` |
-| POST | `/timecards/save` | `timecard_save` | `app/main.py:1107` |
-| POST | `/timecards/{card_id}/duplicate` | `duplicate` | `app/main.py:1166` |
-| POST | `/timecards/{card_id}/finalize` | `timecard_finalize` | `app/main.py:1139` |
-| POST | `/timecards/{card_id}/reopen` | `timecard_reopen` | `app/main.py:1156` |
-
-## Jinja templates
-
-| Template | Bytes |
+| Dimension | Questions and evidence |
 | --- | --- |
-| `app/web/templates/account_security.html` | 4533 |
-| `app/web/templates/archive.html` | 4509 |
-| `app/web/templates/archived_timecard.html` | 377 |
-| `app/web/templates/assistant_connection_guide.html` | 6974 |
-| `app/web/templates/audit.html` | 854 |
-| `app/web/templates/auth_challenge.html` | 537 |
-| `app/web/templates/auth_layout.html` | 1137 |
-| `app/web/templates/auth_methods.html` | 3145 |
-| `app/web/templates/auth_notice.html` | 458 |
-| `app/web/templates/auth_notice_fields.html` | 129 |
-| `app/web/templates/auth_provider_button.html` | 371 |
-| `app/web/templates/auth_provider_forms.html` | 892 |
-| `app/web/templates/base.html` | 4470 |
-| `app/web/templates/billing.html` | 4478 |
-| `app/web/templates/capacity_prompt.html` | 2143 |
-| `app/web/templates/case_allocations.html` | 2264 |
-| `app/web/templates/case_detail.html` | 3137 |
-| `app/web/templates/case_form.html` | 3475 |
-| `app/web/templates/cases.html` | 3591 |
-| `app/web/templates/client_detail.html` | 5428 |
-| `app/web/templates/client_drafts.html` | 844 |
-| `app/web/templates/client_form.html` | 2582 |
-| `app/web/templates/clients.html` | 2346 |
-| `app/web/templates/clock.html` | 905 |
-| `app/web/templates/components.html` | 4833 |
-| `app/web/templates/contact_form.html` | 1765 |
-| `app/web/templates/cookie_preferences.html` | 3044 |
-| `app/web/templates/credit_memo.html` | 1069 |
-| `app/web/templates/credit_memo_pdf.html` | 3187 |
-| `app/web/templates/dashboard.html` | 2936 |
-| `app/web/templates/email/invitation.html` | 3800 |
-| `app/web/templates/error.html` | 875 |
-| `app/web/templates/help.html` | 19170 |
-| `app/web/templates/invoice.html` | 7156 |
-| `app/web/templates/landing.html` | 2655 |
-| `app/web/templates/landing_info.html` | 5242 |
-| `app/web/templates/legal_policies.html` | 997 |
-| `app/web/templates/legal_policy_content.html` | 10609 |
-| `app/web/templates/library.html` | 2011 |
-| `app/web/templates/library_document.html` | 6007 |
-| `app/web/templates/library_document_pdf.html` | 1015 |
-| `app/web/templates/lookup.html` | 2950 |
-| `app/web/templates/lookup_fragment.html` | 131 |
-| `app/web/templates/mail.html` | 2334 |
-| `app/web/templates/mail_addresses.html` | 1583 |
-| `app/web/templates/mail_assignment.html` | 346 |
-| `app/web/templates/mail_detail.html` | 2443 |
-| `app/web/templates/mail_import.html` | 1638 |
-| `app/web/templates/navigation_icons.html` | 2458 |
-| `app/web/templates/privacy_controls.html` | 192 |
-| `app/web/templates/project_billing.html` | 4846 |
-| `app/web/templates/project_form.html` | 6396 |
-| `app/web/templates/projects.html` | 2712 |
-| `app/web/templates/proposal_sending.html` | 1231 |
-| `app/web/templates/proposal_sending_prepare.html` | 1614 |
-| `app/web/templates/proposal_sending_readiness.html` | 237 |
-| `app/web/templates/proposal_sending_review.html` | 4003 |
-| `app/web/templates/public_plans.html` | 3190 |
-| `app/web/templates/quote_detail.html` | 4402 |
-| `app/web/templates/quote_form.html` | 4454 |
-| `app/web/templates/quote_pdf.html` | 2513 |
-| `app/web/templates/quoting.html` | 3954 |
-| `app/web/templates/registration.html` | 4060 |
-| `app/web/templates/reports.html` | 1617 |
-| `app/web/templates/sending.html` | 7751 |
-| `app/web/templates/sending_followup_review.html` | 1840 |
-| `app/web/templates/sending_prepare.html` | 3035 |
-| `app/web/templates/sending_readiness.html` | 562 |
-| `app/web/templates/sending_review.html` | 2320 |
-| `app/web/templates/settings.html` | 6017 |
-| `app/web/templates/settings_integrations.html` | 2748 |
-| `app/web/templates/sign_in.html` | 571 |
-| `app/web/templates/sign_up.html` | 721 |
-| `app/web/templates/statement.html` | 4509 |
-| `app/web/templates/subscription.html` | 6736 |
-| `app/web/templates/subscription_account.html` | 11437 |
-| `app/web/templates/subscription_change_review.html` | 3620 |
-| `app/web/templates/subscription_checkout.html` | 3563 |
-| `app/web/templates/subscription_command.html` | 419 |
-| `app/web/templates/subscription_payment_controls.html` | 3096 |
-| `app/web/templates/subscription_portal.html` | 1282 |
-| `app/web/templates/subscription_retention_review.html` | 3588 |
-| `app/web/templates/time_import.html` | 7397 |
-| `app/web/templates/timecards.html` | 7001 |
+| Product/domain | What observed need is unmet? Reuse the owning service/caller. Preserve ownership, HLE without mandatory SOW/SLA, immutable issuance, integer minutes and Decimal totals. |
+| Concurrency | Which locks/idempotency/guards protect the transition? Verify races/negative paths with actual restricted roles and unchanged foreign data. |
+| Capacity | What admitted-owner/concurrency/storage/mail workload is funded? Measure the selected host/request mix; fifty local schemas do not prove hosted capacity. |
+| Documents | Keep original attachment, edited text, template and numbered publication distinct; preserve ownership, bounded parsing and prior hashes. |
+| Privacy/lifecycle | Which export/deletion/offboarding/retention/hold promises are adopted, by whom and for which purpose/provider? Preserve financial history and unknown legal/controller facts. |
+| Diagnostics/security | Prefer safe typed reasons; keep audit separate. Do not add raw exceptions, payload telemetry or enumeration detail. |
+| Recovery | Define key/backup/off-host/cutover custody and required hosted RPO/RTO/provider reconciliation. Archive/decrypt/TOC checks are insufficient. |
+| Accessibility | Identify keyboard/no-JS/reduced-motion/physical-device/assistive-technology evidence; attribute automated and human observations separately. |
+| Delivery | Include later Stage changes, compatible writers/schema/history, actual overrides and exact authority. |
 
+Retain one deployable app and one PostgreSQL database per environment. Reuse approved capabilities. New dependencies, Redis/Celery, SPA or microservice split require demonstrated need and a canonical decision. Preserve mandatory durability, authorization, financial/provider and acceptance boundaries. Sources: [stack/boundaries][agents], [operating limits][operations].
+
+## 5. Decisions a prompt must not invent
+
+Unknown tax/legal identifiers, contract clauses, bank facts, exchange rates, controller/retention obligations, merchant eligibility, backup objectives and actual client facts stay pending until an approved source is supplied. Template wording is not an adopted agreement; Quoting does not imply signature/purchase/charge. Scheduled Sending, public plugin distribution, teams/shared owners, tenant switching, mailbox synchronization and arbitrary assistant financial writers are not missing original PH2 modules.
+
+Apple is design-only. Actual ChatGPT/Claude host behavior, voice/dot support and distribution cannot be inferred from a package. Authentication SMTP remains separate from Sending. Fresh normal owner identity proof remains required; existing sessions do not supply UAT. Sources: [brief][brief], [remaining scope][extensions].
+
+## 6. Shape of the next prompt
+
+Specify the journey and before/after behavior; bounded scope/exclusions; canonical sources and reused capability; unresolved decisions; actor/tenant/provider/effect limits; deterministic acceptance; disposable/negative tests; evidence attribution; and compatible repair boundary. Identify required human proof and authorized external effects. Preserve unrelated pending rows.
+
+A useful review request identifies one selected journey, a reproducible issue, its authorized environment and acceptance evidence, then asks for the smallest coherent correction at the existing boundary. It preserves provider/legal/production/destructive-action authority. This prepares a prompt; it does not authorize execution.
+
+The owner selects the next journey, actual assistant host/device scope, lifecycle promises, funded operating targets and final acceptance evidence. Await that PH3 prompt. Sources: [CONTINUE][continue], [D075 closure][closure].
+
+## 7. Source and custody
+
+This analysis follows PH2 consolidation and three PH3 startup-document changes. Tests/migrations/contracts/design references remain active. Superseded operators/test output have local recoverable custody: 28 batches/8,149 files, outside this public package. It does not supply off-host recovery. Independent PH3 bytes/object/link/map checks passed; generic root-AGENTS scaffold compatibility remains an explicit concern. Sources: [custody][custody], [verification limits][verification].
+
+Approved behavior changes belong in canonical source documents when the owner provides the next scope.
+
+[continue]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1
+[status]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L7
+[commercial]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L945
+[work]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L983
+[dense]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1011
+[weekly]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1036
+[performance]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1060
+[measure]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PERFORMANCE_IMPROVEMENTS_2026-10-17.md#L1
+[residuals]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27
+[agents]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/AGENTS.md#L49
+[operations]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L711
+[brief]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PROJECT_BRIEF.md#L1
+[extensions]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L39
+[closure]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1079
+[custody]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L49
+[verification]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L77
 
 ---
 
-<a id="chapter-11"></a>
+# HTTP routes and Jinja templates
 
-<!-- Source chapter: 11-models-configuration-and-dependencies.md -->
+Snapshot: 2026-10-18. Source commit `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` on `codex/ph3-stage`.
+Generated offline from tracked source only. No app import, product-test execution, database query, provider/identity action or deployment. Static counts do not describe executed tests or live routing/database state.
+
+## 180 literal route decorators
+
+Router/include/mount prefixes and runtime registration are not evaluated. `API_ROUTE` retains its literal decorator kind rather than inventing methods. Authorization and feature flags must be reviewed in the named handlers/dependencies; presence is not activation.
+
+| Method kind | Literal path | Handler | Source |
+| --- | --- | --- | --- |
+| GET | `/archive/export/timecards.csv` | `router.export_timecards` | [`app/archive_routes.py:89`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archive_routes.py#L89) |
+| GET | `/archive/export/mail.csv` | `router.export_mail` | [`app/archive_routes.py:168`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archive_routes.py#L168) |
+| POST | `/settings/archiving/run` | `router.archive_now_action` | [`app/archive_routes.py:223`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archive_routes.py#L223) |
+| GET | `/cases` | `router.case_list` | [`app/case_routes.py:124`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L124) |
+| GET | `/cases/mass-edit` | `router.case_mass_edit` | [`app/case_routes.py:245`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L245) |
+| POST | `/cases/mass-edit` | `router.case_mass_save` | [`app/case_routes.py:249`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L249) |
+| GET | `/cases/new` | `router.new_case` | [`app/case_routes.py:282`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L282) |
+| POST | `/cases/new` | `router.create_case` | [`app/case_routes.py:286`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L286) |
+| GET | `/cases/{case_id}` | `router.case_detail` | [`app/case_routes.py:326`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L326) |
+| GET | `/cases/{case_id}/edit` | `router.edit_case` | [`app/case_routes.py:356`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L356) |
+| POST | `/cases/{case_id}/edit` | `router.update_case` | [`app/case_routes.py:360`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L360) |
+| POST | `/cases/{case_id}/archive` | `router.archive_case` | [`app/case_routes.py:378`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L378) |
+| GET | `/timecards/entries/{entry_id}/cases` | `router.allocations` | [`app/case_routes.py:434`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L434) |
+| POST | `/timecards/entries/{entry_id}/cases` | `router.allocation_save` | [`app/case_routes.py:438`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L438) |
+| GET | `/archive` | `router.archive` | [`app/case_routes.py:469`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L469) |
+| GET | `/legal/policies` | `routes.legal_policies` | [`app/enrollment_routes.py:80`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L80) |
+| GET | `/sign-in` | `routes.sign_in` | [`app/enrollment_routes.py:128`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L128) |
+| GET | `/sign-up` | `routes.sign_up` | [`app/enrollment_routes.py:132`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L132) |
+| GET | `/registration` | `routes.registration` | [`app/enrollment_routes.py:185`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L185) |
+| POST | `/registration/ack` | `routes.acknowledge` | [`app/enrollment_routes.py:189`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L189) |
+| POST | `/registration/free` | `routes.activate_free` | [`app/enrollment_routes.py:231`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L231) |
+| GET | `/settings/security` | `routes.security` | [`app/enrollment_routes.py:306`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L306) |
+| POST | `/settings/security/email/revoke` | `routes.revoke_email` | [`app/enrollment_routes.py:310`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L310) |
+| POST | `/auth/email/start` | `routes.email_start` | [`app/enrollment_routes.py:512`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L512) |
+| POST | `/settings/security/email/start` | `routes.email_link_start` | [`app/enrollment_routes.py:516`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L516) |
+| POST | `/auth/email/verify` | `routes.email_verify` | [`app/enrollment_routes.py:690`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L690) |
+| POST | `/settings/security/email/verify` | `routes.email_link_verify` | [`app/enrollment_routes.py:694`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L694) |
+| GET | `/.well-known/oauth-authorization-server` | `router.server_metadata` | [`app/integration_routes.py:671`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L671) |
+| GET | `/.well-known/oauth-protected-resource` | `router.resource_metadata` | [`app/integration_routes.py:693`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L693) |
+| GET | `/.well-known/oauth-protected-resource/mcp` | `router.resource_metadata` | [`app/integration_routes.py:694`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L694) |
+| GET | `/.well-known/oauth-protected-resource/api/integration` | `router.resource_metadata` | [`app/integration_routes.py:695`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L695) |
+| GET | `/oauth/authorize` | `router.authorization_page` | [`app/integration_routes.py:712`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L712) |
+| POST | `/oauth/authorize` | `router.authorize` | [`app/integration_routes.py:748`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L748) |
+| POST | `/oauth/token` | `router.token` | [`app/integration_routes.py:776`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L776) |
+| POST | `/oauth/revoke` | `router.revoke_token` | [`app/integration_routes.py:811`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L811) |
+| GET | `/mcp` | `router.no_stream` | [`app/integration_routes.py:844`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L844) |
+| DELETE | `/mcp` | `router.no_stream` | [`app/integration_routes.py:845`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L845) |
+| POST | `/api/integration/tools/{name}` | `router.api_tool` | [`app/integration_routes.py:864`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L864) |
+| POST | `/mcp` | `router.mcp` | [`app/integration_routes.py:891`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L891) |
+| GET | `/settings/integrations` | `router.integrations` | [`app/integration_routes.py:1047`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L1047) |
+| POST | `/settings/integrations/{grant_id}/revoke` | `router.revoke` | [`app/integration_routes.py:1068`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L1068) |
+| GET | `/client-drafts` | `router.drafts` | [`app/integration_routes.py:1082`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L1082) |
+| POST | `/internal/sending` | `router.sending_job` | [`app/internal_routes.py:20`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L20) |
+| POST | `/internal/archive/cases` | `router.archive_job` | [`app/internal_routes.py:108`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L108) |
+| POST | `/internal/archive` | `router.archive_job` | [`app/internal_routes.py:109`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L109) |
+| POST | `/internal/mail` | `router.receive_mail` | [`app/internal_routes.py:133`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L133) |
+| GET | `/library` | `router.library_list` | [`app/library_routes.py:92`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L92) |
+| GET | `/library/new` | `router.new_document` | [`app/library_routes.py:106`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L106) |
+| GET | `/quoting/documents/new` | `router.new_document` | [`app/library_routes.py:107`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L107) |
+| POST | `/library` | `router.create_document` | [`app/library_routes.py:111`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L111) |
+| GET | `/library/{document_id}` | `router.document_detail` | [`app/library_routes.py:119`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L119) |
+| POST | `/library/{document_id}/save` | `router.save_document` | [`app/library_routes.py:123`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L123) |
+| POST | `/library/{document_id}/upload` | `router.upload_document` | [`app/library_routes.py:130`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L130) |
+| POST | `/library/{document_id}/publish` | `router.publish_document` | [`app/library_routes.py:142`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L142) |
+| POST | `/library/{document_id}/new-draft` | `router.create_draft` | [`app/library_routes.py:149`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L149) |
+| GET | `/library/{document_id}/uploads/{upload_id}` | `router.original_download` | [`app/library_routes.py:155`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L155) |
+| GET | `/library/versions/{version_id}/pdf` | `router.pdf_download` | [`app/library_routes.py:166`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L166) |
+| GET | `/library/versions/{version_id}/attachment` | `router.attachment_download` | [`app/library_routes.py:172`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L172) |
+| GET | `/mail` | `router.mail_list` | [`app/mail_routes.py:108`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L108) |
+| GET | `/mail/import` | `router.mail_import_form` | [`app/mail_routes.py:206`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L206) |
+| POST | `/mail/import` | `router.mail_import` | [`app/mail_routes.py:210`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L210) |
+| GET | `/mail/addresses` | `router.address_list` | [`app/mail_routes.py:268`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L268) |
+| POST | `/mail/addresses` | `router.address_create` | [`app/mail_routes.py:272`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L272) |
+| POST | `/mail/addresses/{address_id}/revoke` | `router.address_revoke` | [`app/mail_routes.py:297`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L297) |
+| GET | `/mail/{message_id}` | `router.mail_detail` | [`app/mail_routes.py:306`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L306) |
+| GET | `/mail/{message_id}/attachments/{attachment_id}` | `router.active_attachment` | [`app/mail_routes.py:394`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L394) |
+| GET | `/archive/export/mail/{message_id}/attachments/{attachment_id}` | `router.archived_attachment` | [`app/mail_routes.py:398`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L398) |
+| GET | `/archive/export/mail-attachments.csv` | `router.attachment_manifest` | [`app/mail_routes.py:402`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L402) |
+| GET | `/` | `app.landing` | [`app/main.py:418`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L418) |
+| POST | `/contact` | `app.contact_submit` | [`app/main.py:424`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L424) |
+| POST | `/auth/local` | `app.local_login` | [`app/main.py:457`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L457) |
+| GET | `/auth/google` | `app.google_entry` | [`app/main.py:479`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L479) |
+| GET | `/auth/github` | `app.google_entry` | [`app/main.py:480`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L480) |
+| POST | `/auth/google` | `app.google_login` | [`app/main.py:484`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L484) |
+| POST | `/auth/github` | `app.google_login` | [`app/main.py:485`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L485) |
+| GET | `/auth/google/callback` | `app.google_callback` | [`app/main.py:551`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L551) |
+| GET | `/auth/github/callback` | `app.google_callback` | [`app/main.py:552`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L552) |
+| GET | `/health/live` | `app.live` | [`app/main.py:702`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L702) |
+| GET | `/health/ready` | `app.ready` | [`app/main.py:706`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L706) |
+| POST | `/auth/logout` | `app.logout` | [`app/main.py:723`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L723) |
+| GET | `/dashboard` | `protected.dashboard` | [`app/main.py:738`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L738) |
+| GET | `/clients` | `protected.client_list` | [`app/main.py:820`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L820) |
+| GET | `/clients/new` | `protected.new_client` | [`app/main.py:887`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L887) |
+| POST | `/clients/new` | `protected.create_client` | [`app/main.py:893`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L893) |
+| GET | `/clients/{client_id}` | `protected.client_detail` | [`app/main.py:943`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L943) |
+| GET | `/clients/{client_id}/edit` | `protected.edit_client` | [`app/main.py:947`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L947) |
+| POST | `/clients/{client_id}/edit` | `protected.client_save` | [`app/main.py:953`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L953) |
+| POST | `/clients/{client_id}/projects` | `protected.project_save` | [`app/main.py:965`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L965) |
+| POST | `/clients/{client_id}/contacts` | `protected.contact_save` | [`app/main.py:981`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L981) |
+| POST | `/clients/{client_id}/contract` | `protected.contract_confirm` | [`app/main.py:996`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L996) |
+| GET | `/clients/{client_id}/sources/{reference_id}` | `protected.client_source_download` | [`app/main.py:1022`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1022) |
+| GET | `/timecards` | `protected.timecard_list` | [`app/main.py:1029`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1029) |
+| POST | `/timecards/save` | `protected.timecard_save` | [`app/main.py:1252`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1252) |
+| POST | `/timecards/remove-drafts` | `protected.remove_timecard_drafts` | [`app/main.py:1286`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1286) |
+| POST | `/timecards/add-project` | `protected.add_timecard_project` | [`app/main.py:1309`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1309) |
+| POST | `/timecards/{card_id}/finalize` | `protected.timecard_finalize` | [`app/main.py:1327`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1327) |
+| POST | `/timecards/{card_id}/reopen` | `protected.timecard_reopen` | [`app/main.py:1344`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1344) |
+| POST | `/timecards/{card_id}/duplicate` | `protected.duplicate` | [`app/main.py:1354`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1354) |
+| GET | `/billing` | `protected.invoice_list` | [`app/main.py:1415`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1415) |
+| POST | `/billing/create` | `protected.invoice_create` | [`app/main.py:1419`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1419) |
+| GET | `/billing/{invoice_id}` | `protected.invoice_detail` | [`app/main.py:1439`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1439) |
+| GET | `/billing/{invoice_id}/pdf` | `protected.invoice_pdf` | [`app/main.py:1461`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1461) |
+| POST | `/billing/{invoice_id}/{operation}` | `protected.invoice_action` | [`app/main.py:1479`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1479) |
+| GET | `/credit-memos/{memo_id}` | `protected.credit_memo_detail` | [`app/main.py:1522`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1522) |
+| GET | `/credit-memos/{memo_id}/pdf` | `protected.credit_memo_pdf` | [`app/main.py:1528`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1528) |
+| POST | `/payments/{payment_id}/reverse` | `protected.payment_reverse` | [`app/main.py:1542`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1542) |
+| GET | `/reports` | `protected.reports_page` | [`app/main.py:1552`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1552) |
+| GET | `/reports/export.csv` | `protected.csv_export` | [`app/main.py:1561`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1561) |
+| GET | `/settings` | `protected.settings_page` | [`app/main.py:1620`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1620) |
+| POST | `/settings/limits` | `protected.save_limits` | [`app/main.py:1624`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1624) |
+| POST | `/settings/records` | `protected.save_record_limits` | [`app/main.py:1633`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1633) |
+| GET | `/lookups/{kind}` | `protected.lookup_page` | [`app/main.py:1638`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1638) |
+| POST | `/settings` | `protected.save_settings` | [`app/main.py:1679`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1679) |
+| GET | `/audit` | `protected.audit_page` | [`app/main.py:1689`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1689) |
+| POST | `/privacy/preferences` | `router.save_preferences` | [`app/privacy.py:74`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/privacy.py#L74) |
+| GET | `/project-billing/{project_id}` | `router.detail` | [`app/project_billing_routes.py:55`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_billing_routes.py#L55) |
+| POST | `/project-billing/{project_id}/{operation}` | `router.action` | [`app/project_billing_routes.py:59`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_billing_routes.py#L59) |
+| GET | `/projects` | `router.project_list` | [`app/project_routes.py:146`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_routes.py#L146) |
+| GET | `/projects/new` | `router.project_new` | [`app/project_routes.py:220`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_routes.py#L220) |
+| GET | `/projects/{project_id}/edit` | `router.project_edit` | [`app/project_routes.py:224`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_routes.py#L224) |
+| POST | `/projects` | `router.project_create` | [`app/project_routes.py:274`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_routes.py#L274) |
+| POST | `/projects/{project_id}` | `router.project_update` | [`app/project_routes.py:278`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_routes.py#L278) |
+| POST | `/projects/{project_id}/archive` | `router.project_archive` | [`app/project_routes.py:282`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_routes.py#L282) |
+| GET | `/projects/{project_id}/agreements/{agreement_id}` | `router.agreement_download` | [`app/project_routes.py:326`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_routes.py#L326) |
+| GET | `/sending/proposals` | `router.index` | [`app/proposal_sending_routes.py:37`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py#L37) |
+| GET | `/sending/proposals/prepare/{source}/{artifact_id}` | `router.prepare_form` | [`app/proposal_sending_routes.py:45`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py#L45) |
+| POST | `/sending/proposals/prepare/{source}/{artifact_id}/review` | `router.prepare` | [`app/proposal_sending_routes.py:49`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py#L49) |
+| GET | `/sending/proposals/{delivery_id}` | `router.review_form` | [`app/proposal_sending_routes.py:69`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py#L69) |
+| POST | `/sending/proposals/{delivery_id}/edit` | `router.edit` | [`app/proposal_sending_routes.py:73`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py#L73) |
+| POST | `/sending/proposals/{delivery_id}/dispatch` | `router.dispatch` | [`app/proposal_sending_routes.py:81`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py#L81) |
+| POST | `/sending/proposals/{delivery_id}/stop` | `router.stop` | [`app/proposal_sending_routes.py:99`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py#L99) |
+| GET | `/sending/proposals/{delivery_id}/attachment` | `router.attachment` | [`app/proposal_sending_routes.py:105`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py#L105) |
+| GET | `/quoting` | `router.index` | [`app/quoting_routes.py:147`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L147) |
+| GET | `/quoting/new` | `router.new` | [`app/quoting_routes.py:162`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L162) |
+| POST | `/quoting/new` | `router.create` | [`app/quoting_routes.py:191`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L191) |
+| GET | `/quoting/{quote_id}` | `router.detail` | [`app/quoting_routes.py:195`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L195) |
+| GET | `/quoting/{quote_id}/edit` | `router.edit` | [`app/quoting_routes.py:203`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L203) |
+| POST | `/quoting/{quote_id}/edit` | `router.update` | [`app/quoting_routes.py:207`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L207) |
+| POST | `/quoting/{quote_id}/publish` | `router.publish` | [`app/quoting_routes.py:214`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L214) |
+| POST | `/quoting/{quote_id}/revise` | `router.revise` | [`app/quoting_routes.py:223`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L223) |
+| POST | `/quoting/{quote_id}/archive` | `router.archive` | [`app/quoting_routes.py:231`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L231) |
+| GET | `/quoting/{quote_id}/pdf` | `router.download` | [`app/quoting_routes.py:236`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L236) |
+| GET | `/search` | `routes.workspace_search` | [`app/search_routes.py:12`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/search_routes.py#L12) |
+| GET | `/sending/deliveries/{delivery_id}/follow-up/review` | `router.followup_review` | [`app/sending_dispatch_routes.py:22`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_dispatch_routes.py#L22) |
+| POST | `/sending/deliveries/{delivery_id}/follow-up/dispatch` | `router.followup_dispatch` | [`app/sending_dispatch_routes.py:33`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_dispatch_routes.py#L33) |
+| POST | `/sending/deliveries/{delivery_id}/dispatch` | `router.dispatch` | [`app/sending_dispatch_routes.py:59`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_dispatch_routes.py#L59) |
+| GET | `/sending` | `router.index` | [`app/sending_routes.py:99`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L99) |
+| GET | `/sending/prepare/{invoice_id}` | `router.prepare_form` | [`app/sending_routes.py:103`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L103) |
+| POST | `/sending/prepare/{invoice_id}/review` | `router.review` | [`app/sending_routes.py:107`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L107) |
+| POST | `/sending/prepare/{invoice_id}/edit` | `router.edit` | [`app/sending_routes.py:116`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L116) |
+| POST | `/sending/prepare/{invoice_id}` | `router.prepare` | [`app/sending_routes.py:120`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L120) |
+| POST | `/sending/templates` | `router.templates` | [`app/sending_routes.py:139`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L139) |
+| POST | `/sending/plans/{plan_id}/stop` | `router.stop` | [`app/sending_routes.py:155`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L155) |
+| POST | `/sending/stop-all` | `router.stop_all` | [`app/sending_routes.py:162`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L162) |
+| POST | `/sending/resume` | `router.resume` | [`app/sending_routes.py:169`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L169) |
+| POST | `/sending/deliveries/{delivery_id}/retry` | `router.retry` | [`app/sending_routes.py:176`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L176) |
+| GET | `/settings/subscription/checkout` | `routes.checkout_return` | [`app/subscription_payment_routes.py:92`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L92) |
+| GET | `/settings/subscription/checkout/{operation_id}` | `routes.checkout_page` | [`app/subscription_payment_routes.py:106`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L106) |
+| POST | `/settings/subscription/checkout` | `routes.checkout` | [`app/subscription_payment_routes.py:128`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L128) |
+| POST | `/settings/subscription/provider/verify` | `routes.catalog` | [`app/subscription_payment_routes.py:153`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L153) |
+| POST | `/settings/subscription/portal` | `routes.portal` | [`app/subscription_payment_routes.py:164`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L164) |
+| POST | `/settings/subscription/checkout/reconcile` | `routes.reconcile_checkout` | [`app/subscription_payment_routes.py:180`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L180) |
+| POST | `/settings/subscription/cancel` | `routes.cancel` | [`app/subscription_payment_routes.py:199`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L199) |
+| POST | `/settings/subscription/change/preview` | `routes.change_preview` | [`app/subscription_payment_routes.py:219`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L219) |
+| POST | `/settings/subscription/renewal/check` | `routes.renewal_check` | [`app/subscription_payment_routes.py:276`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L276) |
+| POST | `/settings/subscription/retention/preview` | `routes.retention_preview` | [`app/subscription_payment_routes.py:293`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L293) |
+| POST | `/settings/subscription/retention/confirm` | `routes.retention_confirm` | [`app/subscription_payment_routes.py:328`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L328) |
+| POST | `/settings/subscription/retention/reconcile` | `routes.retention_reconcile` | [`app/subscription_payment_routes.py:349`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L349) |
+| POST | `/settings/subscription/change/confirm` | `routes.change_confirm` | [`app/subscription_payment_routes.py:368`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L368) |
+| POST | `/subscriptions/paddle/webhook` | `routes.webhook` | [`app/subscription_payment_routes.py:395`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L395) |
+| GET | `/settings/subscription` | `routes.subscription` | [`app/subscription_routes.py:110`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_routes.py#L110) |
+| POST | `/settings/subscription/preview` | `routes.preview` | [`app/subscription_routes.py:114`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_routes.py#L114) |
+| POST | `/settings/subscription/free` | `routes.enroll` | [`app/subscription_routes.py:133`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_routes.py#L133) |
+| GET | `/timecards/import` | `router.import_form` | [`app/time_import_routes.py:115`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import_routes.py#L115) |
+| GET | `/timecards/contributions` | `router.contribution_list` | [`app/time_import_routes.py:119`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import_routes.py#L119) |
+| GET | `/timecards/contributions/{contribution_id}` | `router.contribution_form` | [`app/time_import_routes.py:206`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import_routes.py#L206) |
+| POST | `/timecards/contributions/{contribution_id}` | `router.correct_contribution` | [`app/time_import_routes.py:213`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import_routes.py#L213) |
+| POST | `/timecards/import` | `router.preview_file` | [`app/time_import_routes.py:271`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import_routes.py#L271) |
+| POST | `/timecards/import/commit` | `router.commit_file` | [`app/time_import_routes.py:296`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import_routes.py#L296) |
+| POST | `/privacy/usage` | `router.collect_usage` | [`app/usage.py:42`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/usage.py#L42) |
+
+## 90 Jinja HTML templates
+
+| Template | Source |
+| --- | --- |
+| account_security.html | [`app/web/templates/account_security.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/account_security.html) |
+| archive.html | [`app/web/templates/archive.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/archive.html) |
+| archived_timecard.html | [`app/web/templates/archived_timecard.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/archived_timecard.html) |
+| assistant_connection_guide.html | [`app/web/templates/assistant_connection_guide.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/assistant_connection_guide.html) |
+| audit.html | [`app/web/templates/audit.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/audit.html) |
+| auth_challenge.html | [`app/web/templates/auth_challenge.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_challenge.html) |
+| auth_layout.html | [`app/web/templates/auth_layout.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_layout.html) |
+| auth_methods.html | [`app/web/templates/auth_methods.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_methods.html) |
+| auth_notice.html | [`app/web/templates/auth_notice.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_notice.html) |
+| auth_notice_fields.html | [`app/web/templates/auth_notice_fields.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_notice_fields.html) |
+| auth_provider_button.html | [`app/web/templates/auth_provider_button.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_provider_button.html) |
+| auth_provider_forms.html | [`app/web/templates/auth_provider_forms.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_provider_forms.html) |
+| base.html | [`app/web/templates/base.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/base.html) |
+| billing.html | [`app/web/templates/billing.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/billing.html) |
+| capacity_prompt.html | [`app/web/templates/capacity_prompt.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/capacity_prompt.html) |
+| case_allocations.html | [`app/web/templates/case_allocations.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_allocations.html) |
+| case_detail.html | [`app/web/templates/case_detail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_detail.html) |
+| case_form.html | [`app/web/templates/case_form.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_form.html) |
+| case_mass_edit.html | [`app/web/templates/case_mass_edit.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_mass_edit.html) |
+| case_mass_edit_content.html | [`app/web/templates/case_mass_edit_content.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_mass_edit_content.html) |
+| cases.html | [`app/web/templates/cases.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/cases.html) |
+| client_detail.html | [`app/web/templates/client_detail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/client_detail.html) |
+| client_drafts.html | [`app/web/templates/client_drafts.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/client_drafts.html) |
+| client_form.html | [`app/web/templates/client_form.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/client_form.html) |
+| clients.html | [`app/web/templates/clients.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/clients.html) |
+| clock.html | [`app/web/templates/clock.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/clock.html) |
+| components.html | [`app/web/templates/components.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/components.html) |
+| contact_form.html | [`app/web/templates/contact_form.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/contact_form.html) |
+| cookie_preferences.html | [`app/web/templates/cookie_preferences.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/cookie_preferences.html) |
+| credit_memo.html | [`app/web/templates/credit_memo.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/credit_memo.html) |
+| credit_memo_pdf.html | [`app/web/templates/credit_memo_pdf.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/credit_memo_pdf.html) |
+| dashboard.html | [`app/web/templates/dashboard.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/dashboard.html) |
+| dashboard_detail.html | [`app/web/templates/dashboard_detail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/dashboard_detail.html) |
+| email/invitation.html | [`app/web/templates/email/invitation.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/email/invitation.html) |
+| error.html | [`app/web/templates/error.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/error.html) |
+| flexfields.html | [`app/web/templates/flexfields.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/flexfields.html) |
+| help.html | [`app/web/templates/help.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/help.html) |
+| invoice.html | [`app/web/templates/invoice.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/invoice.html) |
+| landing.html | [`app/web/templates/landing.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/landing.html) |
+| landing_info.html | [`app/web/templates/landing_info.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/landing_info.html) |
+| legal_policies.html | [`app/web/templates/legal_policies.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/legal_policies.html) |
+| legal_policy_content.html | [`app/web/templates/legal_policy_content.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/legal_policy_content.html) |
+| library.html | [`app/web/templates/library.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/library.html) |
+| library_document.html | [`app/web/templates/library_document.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/library_document.html) |
+| library_document_pdf.html | [`app/web/templates/library_document_pdf.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/library_document_pdf.html) |
+| lookup.html | [`app/web/templates/lookup.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/lookup.html) |
+| lookup_fragment.html | [`app/web/templates/lookup_fragment.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/lookup_fragment.html) |
+| mail.html | [`app/web/templates/mail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail.html) |
+| mail_addresses.html | [`app/web/templates/mail_addresses.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_addresses.html) |
+| mail_assignment.html | [`app/web/templates/mail_assignment.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_assignment.html) |
+| mail_detail.html | [`app/web/templates/mail_detail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_detail.html) |
+| mail_import.html | [`app/web/templates/mail_import.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_import.html) |
+| navigation_icons.html | [`app/web/templates/navigation_icons.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/navigation_icons.html) |
+| privacy_controls.html | [`app/web/templates/privacy_controls.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/privacy_controls.html) |
+| project_billing.html | [`app/web/templates/project_billing.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/project_billing.html) |
+| project_form.html | [`app/web/templates/project_form.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/project_form.html) |
+| projects.html | [`app/web/templates/projects.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/projects.html) |
+| proposal_sending.html | [`app/web/templates/proposal_sending.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending.html) |
+| proposal_sending_prepare.html | [`app/web/templates/proposal_sending_prepare.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending_prepare.html) |
+| proposal_sending_readiness.html | [`app/web/templates/proposal_sending_readiness.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending_readiness.html) |
+| proposal_sending_review.html | [`app/web/templates/proposal_sending_review.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending_review.html) |
+| public_plans.html | [`app/web/templates/public_plans.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/public_plans.html) |
+| quote_detail.html | [`app/web/templates/quote_detail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quote_detail.html) |
+| quote_form.html | [`app/web/templates/quote_form.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quote_form.html) |
+| quote_pdf.html | [`app/web/templates/quote_pdf.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quote_pdf.html) |
+| quoting.html | [`app/web/templates/quoting.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quoting.html) |
+| registration.html | [`app/web/templates/registration.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/registration.html) |
+| reports.html | [`app/web/templates/reports.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/reports.html) |
+| search.html | [`app/web/templates/search.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/search.html) |
+| sending.html | [`app/web/templates/sending.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending.html) |
+| sending_followup_review.html | [`app/web/templates/sending_followup_review.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_followup_review.html) |
+| sending_prepare.html | [`app/web/templates/sending_prepare.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_prepare.html) |
+| sending_readiness.html | [`app/web/templates/sending_readiness.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_readiness.html) |
+| sending_review.html | [`app/web/templates/sending_review.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_review.html) |
+| settings.html | [`app/web/templates/settings.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/settings.html) |
+| settings_integrations.html | [`app/web/templates/settings_integrations.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/settings_integrations.html) |
+| sign_in.html | [`app/web/templates/sign_in.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sign_in.html) |
+| sign_up.html | [`app/web/templates/sign_up.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sign_up.html) |
+| statement.html | [`app/web/templates/statement.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/statement.html) |
+| subscription.html | [`app/web/templates/subscription.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription.html) |
+| subscription_account.html | [`app/web/templates/subscription_account.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_account.html) |
+| subscription_change_review.html | [`app/web/templates/subscription_change_review.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_change_review.html) |
+| subscription_checkout.html | [`app/web/templates/subscription_checkout.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_checkout.html) |
+| subscription_command.html | [`app/web/templates/subscription_command.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_command.html) |
+| subscription_payment_controls.html | [`app/web/templates/subscription_payment_controls.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_payment_controls.html) |
+| subscription_portal.html | [`app/web/templates/subscription_portal.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_portal.html) |
+| subscription_retention_review.html | [`app/web/templates/subscription_retention_review.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_retention_review.html) |
+| time_import.html | [`app/web/templates/time_import.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/time_import.html) |
+| timecards.html | [`app/web/templates/timecards.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/timecards.html) |
+| workspace_search_dialog.html | [`app/web/templates/workspace_search_dialog.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/workspace_search_dialog.html) |
+
+---
 
 # Models, configuration, migrations and dependencies
 
-Snapshot: 2026-10-16; Stage source-analysis commit `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`.
-Generated offline from tracked source. No application import, database connection, provider request, credential read or test execution occurred.
-This is a dated review appendix, not a replacement for canonical contracts. Source pointers below refer to this commit.
+Snapshot: 2026-10-18. Source commit `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` on `codex/ph3-stage`.
+Generated offline from tracked source only. No app import, product-test execution, database query, provider/identity action or deployment. Static counts do not describe executed tests or live routing/database state.
 
-## Mapped entities and declared fields
+## 54 mapped class/table declarations
 
-Static SQLAlchemy declarations are listed, including central directory models. Actual tenant membership, row values, runtime ownership, active allocations and ACLs are not inferred from these declarations. Constraint/trigger behavior is explained in chapter02 and maintained by migrations.
+Fields below are directly declared annotated attributes, including relationships; common Base/mixin fields are inherited separately. This is not a database reflection or proof of deployed grants/indexes. No row values or secrets are included.
 
 ### `workspace_admissions` — `WorkspaceAdmission`
 
-`app/admission_models.py:12`
+[`app/admission_models.py:12`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L12); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `slot_id` | `Mapped[UUID]` | `mapped_column(unique=True)` |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(unique=True)` |
@@ -2645,11 +2326,12 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `issuer` | `Mapped[str]` | `mapped_column(String(255))` |
 | `subject` | `Mapped[str]` | `mapped_column(String(255))` |
 | `state` | `Mapped[str]` | `mapped_column(String(12), default='reserved')` |
+
 ### `admission_identities` — `AdmissionIdentity`
 
-`app/admission_models.py:26`
+[`app/admission_models.py:26`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L26); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `tenant_id` | `Mapped[UUID]` | `mapped_column()` |
 | `owner_id` | `Mapped[UUID]` | `mapped_column()` |
@@ -2658,11 +2340,12 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `subject` | `Mapped[str]` | `mapped_column(String(255))` |
 | `verified_email` | `Mapped[str]` | `mapped_column(String(254))` |
 | `state` | `Mapped[str]` | `mapped_column(String(12), default='pending')` |
+
 ### `public_email_challenges` — `PublicEmailChallenge`
 
-`app/admission_models.py:43`
+[`app/admission_models.py:43`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L43); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `destination` | `Mapped[str]` | `mapped_column(Text)` |
 | `address_digest` | `Mapped[str]` | `mapped_column(String(64), index=True)` |
@@ -2674,11 +2357,12 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `state` | `Mapped[str]` | `mapped_column(String(12), default='reserved')` |
 | `attempts` | `Mapped[int]` | `mapped_column(Integer, default=0)` |
 | `expires_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True), index=True)` |
+
 ### `credit_memos` — `CreditMemo`
 
-`app/credit_memo_models.py:14`
+[`app/credit_memo_models.py:14`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/credit_memo_models.py#L14); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `invoice_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('invoices.id'), unique=True)` |
 | `number` | `Mapped[str]` | `mapped_column(String(60), unique=True)` |
@@ -2692,22 +2376,24 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `pdf_bytes` | `Mapped[bytes]` | `mapped_column(LargeBinary, deferred=True, deferred_raiseload=True)` |
 | `sha256` | `Mapped[str]` | `mapped_column(String(64))` |
 | `renderer_version` | `Mapped[str]` | `mapped_column(String(40))` |
+
 ### `owner_identities` — `OwnerIdentity`
 
-`app/enrollment_models.py:12`
+[`app/enrollment_models.py:12`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py#L12); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
 | `issuer` | `Mapped[str]` | `mapped_column(String(255))` |
 | `subject` | `Mapped[str]` | `mapped_column(String(255))` |
 | `verified_email` | `Mapped[str]` | `mapped_column(String(254))` |
-| `revoked_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `revoked_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `owner_registrations` — `OwnerRegistration`
 
-`app/enrollment_models.py:26`
+[`app/enrollment_models.py:26`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py#L26); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
 | `terms_version` | `Mapped[str]` | `mapped_column(String(60))` |
@@ -2715,11 +2401,12 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `catalog_version` | `Mapped[str]` | `mapped_column(String(60))` |
 | `offer` | `Mapped[str]` | `mapped_column(String(20))` |
 | `accepted_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `email_auth_challenges` — `EmailAuthChallenge`
 
-`app/enrollment_models.py:42`
+[`app/enrollment_models.py:42`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py#L42); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
 | `session_digest` | `Mapped[str]` | `mapped_column(String(64))` |
@@ -2728,11 +2415,12 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `state` | `Mapped[str]` | `mapped_column(String(12))` |
 | `attempts` | `Mapped[int]` | `mapped_column(Integer, default=0)` |
 | `expires_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `integration_grants` — `IntegrationGrant`
 
-`app/integration_models.py:21`
+[`app/integration_models.py:21`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L21); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `tenant_id` | `Mapped[UUID]` | `mapped_column(Uuid)` |
@@ -2741,12 +2429,13 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `scopes` | `Mapped[list]` | `mapped_column(JSONB)` |
 | `resource` | `Mapped[str]` | `mapped_column(String(300))` |
 | `expires_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True))` |
-| `revoked_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `revoked_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `integration_codes` — `IntegrationCode`
 
-`app/integration_models.py:33`
+[`app/integration_models.py:33`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L33); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `grant_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('integration_grants.id'), index=True)` |
 | `digest` | `Mapped[str]` | `mapped_column(String(64), unique=True)` |
@@ -2755,12 +2444,13 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `code_challenge_method` | `Mapped[str]` | `mapped_column(String(10), default='S256')` |
 | `scope` | `Mapped[str]` | `mapped_column(String(500))` |
 | `expires_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True))` |
-| `used_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `used_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `integration_tokens` — `IntegrationToken`
 
-`app/integration_models.py:51`
+[`app/integration_models.py:51`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L51); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `grant_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('integration_grants.id'), index=True)` |
 | `digest` | `Mapped[str]` | `mapped_column(String(64), unique=True)` |
@@ -2768,50 +2458,56 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `scope` | `Mapped[str]` | `mapped_column(String(500))` |
 | `client_id` | `Mapped[str]` | `mapped_column(String(120))` |
 | `expires_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True), index=True)` |
-| `used_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `used_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `integration_operations` — `IntegrationOperation`
 
-`app/integration_models.py:69`
+[`app/integration_models.py:69`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L69); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `grant_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('integration_grants.id'), index=True)` |
 | `key_digest` | `Mapped[str]` | `mapped_column(String(64))` |
 | `payload_digest` | `Mapped[str]` | `mapped_column(String(64))` |
 | `tool` | `Mapped[str]` | `mapped_column(String(60))` |
 | `result` | `Mapped[dict]` | `mapped_column(JSONB)` |
+
 ### `client_drafts` — `ClientDraft`
 
-`app/integration_models.py:79`
+[`app/integration_models.py:79`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L79); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `payload` | `Mapped[dict]` | `mapped_column(JSONB)` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
+
 ### `library_documents` — `LibraryDocument`
 
-`app/library_models.py:24`
+[`app/library_models.py:26`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py#L26); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
+| `object_id` | `Mapped[int]` | `mapped_column(BigInteger, Identity(always=True), unique=True)` |
+| `flexfields` | `Mapped[dict]` | `mapped_column(JSONB, default=dict, server_default='{}')` |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `title` | `Mapped[str]` | `mapped_column(String(180))` |
 | `kind` | `Mapped[str]` | `mapped_column(String(16))` |
 | `status` | `Mapped[str]` | `mapped_column(String(12), default='draft')` |
 | `content` | `Mapped[str]` | `mapped_column(Text, default='')` |
 | `is_template` | `Mapped[bool]` | `mapped_column(Boolean, default=False)` |
-| `case_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('cases.id'), index=True)` |
-| `client_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
-| `project_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('projects.id'), index=True)` |
-| `source_template` | `Mapped[str \| None]` | `mapped_column(String(40))` |
-| `source_upload_id` | `Mapped[UUID \| None]` | `mapped_column(Uuid)` |
+| `case_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('cases.id'), index=True)` |
+| `client_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
+| `project_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('projects.id'), index=True)` |
+| `source_template` | `Mapped[str &#124; None]` | `mapped_column(String(40))` |
+| `source_upload_id` | `Mapped[UUID &#124; None]` | `mapped_column(Uuid)` |
 | `revision` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
+
 ### `library_uploads` — `LibraryUpload`
 
-`app/library_models.py:48`
+[`app/library_models.py:52`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py#L52); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `document_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('library_documents.id'), index=True)` |
 | `uploaded_by` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
@@ -2820,63 +2516,67 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `size` | `Mapped[int]` | `mapped_column(Integer)` |
 | `sha256` | `Mapped[str]` | `mapped_column(String(64))` |
 | `payload` | `Mapped[bytes]` | `mapped_column(LargeBinary, deferred=True, deferred_raiseload=True)` |
+
 ### `library_document_versions` — `LibraryDocumentVersion`
 
-`app/library_models.py:64`
+[`app/library_models.py:68`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py#L68); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `document_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('library_documents.id'), index=True)` |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `number` | `Mapped[int]` | `mapped_column(Integer)` |
 | `snapshot` | `Mapped[dict]` | `mapped_column(JSONB)` |
-| `source_upload_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('library_uploads.id'))` |
+| `source_upload_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('library_uploads.id'))` |
 | `pdf_bytes` | `Mapped[bytes]` | `mapped_column(LargeBinary, deferred=True, deferred_raiseload=True)` |
 | `pdf_size` | `Mapped[int]` | `mapped_column(Integer)` |
 | `pdf_sha256` | `Mapped[str]` | `mapped_column(String(64))` |
 | `filename` | `Mapped[str]` | `mapped_column(String(180))` |
 | `renderer_version` | `Mapped[str]` | `mapped_column(String(80))` |
 | `published_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `mail_messages` — `MailMessage`
 
-`app/mail_models.py:21`
+[`app/mail_models.py:22`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py#L22); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `client_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
-| `project_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('projects.id'), index=True)` |
-| `case_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('cases.id'), index=True)` |
-| `message_id` | `Mapped[str \| None]` | `mapped_column(String(998))` |
+| `project_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('projects.id'), index=True)` |
+| `case_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('cases.id'), index=True)` |
+| `message_id` | `Mapped[str &#124; None]` | `mapped_column(String(998))` |
 | `sha256` | `Mapped[str]` | `mapped_column(String(64))` |
 | `subject` | `Mapped[str]` | `mapped_column(String(998))` |
 | `sender` | `Mapped[str]` | `mapped_column(String(2000))` |
 | `recipients` | `Mapped[str]` | `mapped_column(String(4000))` |
 | `body` | `Mapped[str]` | `mapped_column(Text)` |
-| `message_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `message_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
 | `received_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True))` |
 | `archived_basis_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True), index=True)` |
 | `archive_basis_source` | `Mapped[str]` | `mapped_column(String(20))` |
-| `archived_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True), index=True)` |
+| `archived_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True), index=True)` |
 | `source` | `Mapped[str]` | `mapped_column(String(10))` |
 | `attachment_count` | `Mapped[int]` | `mapped_column(Integer)` |
+
 ### `mail_addresses` — `MailAddress`
 
-`app/mail_models.py:48`
+[`app/mail_models.py:49`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py#L49); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `client_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
-| `project_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('projects.id'), index=True)` |
-| `case_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('cases.id'), index=True)` |
+| `project_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('projects.id'), index=True)` |
+| `case_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('cases.id'), index=True)` |
 | `token_digest` | `Mapped[str]` | `mapped_column(String(64), unique=True)` |
-| `revoked_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `revoked_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `mail_attachments` — `MailAttachment`
 
-`app/mail_models.py:58`
+[`app/mail_models.py:64`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py#L64); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `message_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('mail_messages.id'), index=True)` |
 | `position` | `Mapped[int]` | `mapped_column(Integer)` |
@@ -2885,11 +2585,12 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `size` | `Mapped[int]` | `mapped_column(Integer)` |
 | `sha256` | `Mapped[str]` | `mapped_column(String(64))` |
 | `payload` | `Mapped[bytes]` | `mapped_column(LargeBinary, deferred=True, deferred_raiseload=True)` |
+
 ### `contact_attempts` — `ContactAttempt`
 
-`app/models.py:33`
+[`app/models.py:33`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L33); bases: `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `id` | `Mapped[UUID]` | `mapped_column(Uuid, primary_key=True)` |
 | `created_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True), index=True)` |
@@ -2898,78 +2599,101 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `network_digest` | `Mapped[str]` | `mapped_column(String(64))` |
 | `payload_digest` | `Mapped[str]` | `mapped_column(String(64))` |
 | `status` | `Mapped[str]` | `mapped_column(String(12))` |
+
 ### `users` — `User`
 
-`app/models.py:59`
+[`app/models.py:59`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L59); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `email` | `Mapped[str]` | `mapped_column(String(254), unique=True)` |
 | `display_name` | `Mapped[str]` | `mapped_column(String(100))` |
 | `role` | `Mapped[str]` | `mapped_column(String(20), default='owner')` |
 | `active` | `Mapped[bool]` | `mapped_column(Boolean, default=True)` |
-| `last_login_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `last_login_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
 | `session_revision` | `Mapped[int]` | `mapped_column(Integer, default=0)` |
+
 ### `clients` — `Client`
 
-`app/models.py:69`
+[`app/models.py:69`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L69); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
+| `object_id` | `Mapped[int]` | `mapped_column(BigInteger, Identity(always=True), unique=True)` |
+| `flexfields` | `Mapped[dict]` | `mapped_column(JSONB, default=dict, server_default='{}')` |
 | `code` | `Mapped[str]` | `mapped_column(String(30), unique=True)` |
 | `legal_name` | `Mapped[str]` | `mapped_column(String(200))` |
 | `display_name` | `Mapped[str]` | `mapped_column(String(120), index=True)` |
 | `country_code` | `Mapped[str]` | `mapped_column(String(2))` |
-| `status` | `Mapped[str]` | `mapped_column(String(20), default='active', index=True)` |
+| `status` | `Mapped[str]` | `mapped_column(String(20), default='draft', server_default='draft', index=True)` |
 | `timezone` | `Mapped[str]` | `mapped_column(String(80), default='UTC')` |
 | `language` | `Mapped[str]` | `mapped_column(String(2), default='en')` |
 | `currency` | `Mapped[str]` | `mapped_column(String(3), default='USD')` |
 | `rate` | `Mapped[Decimal]` | `mapped_column(Numeric(14, 2))` |
-| `weekly_limit_minutes` | `Mapped[int \| None]` | `mapped_column(Integer)` |
+| `weekly_limit_minutes` | `Mapped[int &#124; None]` | `mapped_column(Integer)` |
 | `payment_terms_days` | `Mapped[int]` | `mapped_column(Integer, default=15)` |
 | `profile` | `Mapped[dict]` | `mapped_column(JSONB, default=dict)` |
 | `contract` | `Mapped[dict]` | `mapped_column(JSONB, default=dict)` |
-| `archived_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `archived_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
+
 ### `contacts` — `Contact`
 
-`app/models.py:95`
+[`app/models.py:99`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L99); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `client_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
 | `name` | `Mapped[str]` | `mapped_column(String(100))` |
-| `title` | `Mapped[str \| None]` | `mapped_column(String(100))` |
-| `email` | `Mapped[str \| None]` | `mapped_column(String(254))` |
-| `phone` | `Mapped[str \| None]` | `mapped_column(String(50))` |
+| `title` | `Mapped[str &#124; None]` | `mapped_column(String(100))` |
+| `email` | `Mapped[str &#124; None]` | `mapped_column(String(254))` |
+| `phone` | `Mapped[str &#124; None]` | `mapped_column(String(50))` |
 | `contact_type` | `Mapped[str]` | `mapped_column(String(40), default='general')` |
 | `may_request_work` | `Mapped[bool]` | `mapped_column(Boolean, default=False)` |
 | `may_approve_hours` | `Mapped[bool]` | `mapped_column(Boolean, default=False)` |
 | `active` | `Mapped[bool]` | `mapped_column(Boolean, default=True)` |
+
 ### `projects` — `Project`
 
-`app/models.py:108`
+[`app/models.py:112`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L112); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
+| `object_id` | `Mapped[int]` | `mapped_column(BigInteger, Identity(always=True), unique=True)` |
+| `flexfields` | `Mapped[dict]` | `mapped_column(JSONB, default=dict, server_default='{}')` |
 | `client_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
 | `code` | `Mapped[str]` | `mapped_column(String(30))` |
 | `name` | `Mapped[str]` | `mapped_column(String(150))` |
-| `description` | `Mapped[str \| None]` | `mapped_column(Text)` |
-| `status` | `Mapped[str]` | `mapped_column(String(20), default='active')` |
+| `description` | `Mapped[str &#124; None]` | `mapped_column(Text)` |
+| `status` | `Mapped[str]` | `mapped_column(String(20), default='draft')` |
 | `billable` | `Mapped[bool]` | `mapped_column(Boolean, default=True)` |
-| `rate_override` | `Mapped[Decimal \| None]` | `mapped_column(Numeric(14, 2))` |
-| `project_type` | `Mapped[str \| None]` | `mapped_column(String(40))` |
-| `budget_amount` | `Mapped[Decimal \| None]` | `mapped_column(Numeric(14, 2))` |
-| `budget_currency` | `Mapped[str \| None]` | `mapped_column(String(3))` |
-| `agreement_type` | `Mapped[str \| None]` | `mapped_column(String(10))` |
-| `agreement_reference` | `Mapped[str \| None]` | `mapped_column(String(200))` |
+| `rate_override` | `Mapped[Decimal &#124; None]` | `mapped_column(Numeric(14, 2))` |
+| `project_type` | `Mapped[str &#124; None]` | `mapped_column(String(40))` |
+| `budget_amount` | `Mapped[Decimal &#124; None]` | `mapped_column(Numeric(14, 2))` |
+| `budget_currency` | `Mapped[str &#124; None]` | `mapped_column(String(3))` |
+| `agreement_type` | `Mapped[str &#124; None]` | `mapped_column(String(10))` |
+| `agreement_reference` | `Mapped[str &#124; None]` | `mapped_column(String(200))` |
 | `allow_overbilling` | `Mapped[bool]` | `mapped_column(Boolean, default=False, server_default='false')` |
+
+### `client_source_references` — `ClientSourceReference`
+
+[`app/models.py:153`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L153); bases: `Entity`, `Base`.
+
+| Attribute | Annotation | Persistence/relationship declaration |
+| --- | --- | --- |
+| `client_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('clients.id'), unique=True)` |
+| `uploaded_by` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
+| `filename` | `Mapped[str]` | `mapped_column(String(180))` |
+| `media_type` | `Mapped[str]` | `mapped_column(String(80))` |
+| `content` | `Mapped[bytes &#124; None]` | `mapped_column(LargeBinary, deferred=True, deferred_raiseload=True)` |
+| `url` | `Mapped[str &#124; None]` | `mapped_column(Text)` |
+| `sha256` | `Mapped[str &#124; None]` | `mapped_column(String(64))` |
+
 ### `project_agreements` — `ProjectAgreement`
 
-`app/models.py:147`
+[`app/models.py:169`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L169); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `project_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('projects.id'), unique=True)` |
 | `uploaded_by` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
@@ -2977,100 +2701,114 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `size` | `Mapped[int]` | `mapped_column(Integer)` |
 | `sha256` | `Mapped[str]` | `mapped_column(String(64))` |
 | `payload` | `Mapped[bytes]` | `mapped_column(LargeBinary, deferred=True, deferred_raiseload=True)` |
+
 ### `timecards` — `Timecard`
 
-`app/models.py:162`
+[`app/models.py:184`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L184); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
-| `archived_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True), index=True)` |
+| `object_id` | `Mapped[int]` | `mapped_column(BigInteger, Identity(always=True), unique=True)` |
+| `flexfields` | `Mapped[dict]` | `mapped_column(JSONB, default=dict, server_default='{}')` |
+| `is_internal` | `Mapped[bool]` | `mapped_column(Boolean, default=False, server_default='false')` |
+| `internal_case_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('cases.id'))` |
+| `archived_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True), index=True)` |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
-| `client_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
+| `client_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
 | `week_start` | `Mapped[date]` | `mapped_column(Date, index=True)` |
 | `status` | `Mapped[str]` | `mapped_column(String(20), default='Draft', index=True)` |
 | `total_minutes` | `Mapped[int]` | `mapped_column(Integer, default=0)` |
-| `finalized_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `cap_override_reason` | `Mapped[str \| None]` | `mapped_column(Text)` |
-| `cap_override_reference` | `Mapped[str \| None]` | `mapped_column(String(200))` |
+| `finalized_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `cap_override_reason` | `Mapped[str &#124; None]` | `mapped_column(Text)` |
+| `cap_override_reference` | `Mapped[str &#124; None]` | `mapped_column(String(200))` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
 | `entries` | `Mapped[list['TimeEntry']]` | `relationship(cascade='all, delete-orphan', order_by='TimeEntry.work_date')` |
+
 ### `time_entries` — `TimeEntry`
 
-`app/models.py:186`
+[`app/models.py:215`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L215); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `timecard_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('timecards.id'), index=True)` |
-| `project_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('projects.id'))` |
+| `project_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('projects.id'))` |
 | `work_date` | `Mapped[date]` | `mapped_column(Date, index=True)` |
 | `minutes` | `Mapped[int]` | `mapped_column(Integer)` |
 | `category` | `Mapped[str]` | `mapped_column(String(40), default='consulting')` |
-| `description` | `Mapped[str \| None]` | `mapped_column(Text)` |
+| `description` | `Mapped[str &#124; None]` | `mapped_column(Text)` |
 | `billable` | `Mapped[bool]` | `mapped_column(Boolean, default=True)` |
-| `rate_override` | `Mapped[Decimal \| None]` | `mapped_column(Numeric(14, 2))` |
+| `rate_override` | `Mapped[Decimal &#124; None]` | `mapped_column(Numeric(14, 2))` |
+
 ### `cases` — `Case`
 
-`app/models.py:202`
+[`app/models.py:233`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L233); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
+| `flexfields` | `Mapped[dict]` | `mapped_column(JSONB, default=dict, server_default='{}')` |
 | `client_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
 | `project_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('projects.id'), index=True)` |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `number` | `Mapped[int]` | `mapped_column(BigInteger, Identity(always=True, start=10001), unique=True)` |
-| `legacy_number` | `Mapped[str \| None]` | `mapped_column(String(30))` |
+| `object_id` | `Mapped[int]` | `synonym('number')` |
+| `legacy_number` | `Mapped[str &#124; None]` | `mapped_column(String(30))` |
 | `case_type` | `Mapped[str]` | `mapped_column(String(20))` |
 | `title` | `Mapped[str]` | `mapped_column(String(200))` |
-| `description` | `Mapped[str \| None]` | `mapped_column(Text)` |
+| `description` | `Mapped[str &#124; None]` | `mapped_column(Text)` |
 | `status` | `Mapped[str]` | `mapped_column(String(20), default='Open', index=True)` |
 | `opened_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True), default=lambda: datetime.now(UTC))` |
-| `resolved_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `closed_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `archived_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True), index=True)` |
+| `resolved_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `closed_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `archived_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True), index=True)` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
+
 ### `case_time_allocations` — `CaseTimeAllocation`
 
-`app/models.py:233`
+[`app/models.py:266`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L266); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `entry_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('time_entries.id'), index=True)` |
 | `case_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('cases.id'), index=True)` |
 | `minutes` | `Mapped[int]` | `mapped_column(Integer)` |
 | `actor_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
+
 ### `invoices` — `Invoice`
 
-`app/models.py:247`
+[`app/models.py:280`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L280); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
+| `object_id` | `Mapped[int]` | `mapped_column(BigInteger, Identity(always=True), unique=True)` |
+| `flexfields` | `Mapped[dict]` | `mapped_column(JSONB, default=dict, server_default='{}')` |
 | `client_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
-| `fixed_fee_project_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('projects.id'))` |
-| `manual_extra_project_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('projects.id'))` |
-| `manual_extra_reference` | `Mapped[str \| None]` | `mapped_column(String(200))` |
+| `fixed_fee_project_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('projects.id'))` |
+| `manual_extra_project_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('projects.id'))` |
+| `manual_extra_reference` | `Mapped[str &#124; None]` | `mapped_column(String(200))` |
 | `number` | `Mapped[str]` | `mapped_column(String(60), unique=True)` |
 | `period_start` | `Mapped[date]` | `mapped_column(Date)` |
 | `period_end` | `Mapped[date]` | `mapped_column(Date)` |
-| `issue_date` | `Mapped[date \| None]` | `mapped_column(Date)` |
-| `delivered_at` | `Mapped[date \| None]` | `mapped_column(Date)` |
-| `due_date` | `Mapped[date \| None]` | `mapped_column(Date, index=True)` |
+| `issue_date` | `Mapped[date &#124; None]` | `mapped_column(Date)` |
+| `delivered_at` | `Mapped[date &#124; None]` | `mapped_column(Date)` |
+| `due_date` | `Mapped[date &#124; None]` | `mapped_column(Date, index=True)` |
 | `status` | `Mapped[str]` | `mapped_column(String(20), default='Draft', index=True)` |
 | `currency` | `Mapped[str]` | `mapped_column(String(3))` |
 | `subtotal` | `Mapped[Decimal]` | `mapped_column(Numeric(14, 2))` |
 | `adjustments` | `Mapped[dict]` | `mapped_column(JSONB, default=dict)` |
 | `total` | `Mapped[Decimal]` | `mapped_column(Numeric(14, 2))` |
-| `snapshot` | `Mapped[dict \| None]` | `mapped_column(JSONB)` |
-| `issued_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `voided_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `void_reason` | `Mapped[str \| None]` | `mapped_column(Text)` |
+| `snapshot` | `Mapped[dict &#124; None]` | `mapped_column(JSONB)` |
+| `issued_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `voided_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `void_reason` | `Mapped[str &#124; None]` | `mapped_column(Text)` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
 | `lines` | `Mapped[list['InvoiceLine']]` | `relationship(cascade='all, delete-orphan', order_by='InvoiceLine.sort_order')` |
+
 ### `invoice_lines` — `InvoiceLine`
 
-`app/models.py:306`
+[`app/models.py:341`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L341); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `invoice_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('invoices.id'), index=True)` |
 | `project_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('projects.id'))` |
@@ -3082,71 +2820,77 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `basis` | `Mapped[str]` | `mapped_column(String(20), default='time', server_default='time')` |
 | `charge_metadata` | `Mapped[dict]` | `mapped_column(JSONB, default=dict, server_default=text("'{}'::jsonb"))` |
 | `sort_order` | `Mapped[int]` | `mapped_column(Integer)` |
+
 ### `invoice_time_entries` — `Reservation`
 
-`app/models.py:330`
+[`app/models.py:365`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L365); bases: `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `entry_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('time_entries.id'), primary_key=True)` |
 | `invoice_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('invoices.id'), index=True)` |
+
 ### `invoice_artifacts` — `Artifact`
 
-`app/models.py:336`
+[`app/models.py:371`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L371); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `invoice_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('invoices.id'), unique=True)` |
 | `filename` | `Mapped[str]` | `mapped_column(String(150))` |
 | `pdf_bytes` | `Mapped[bytes]` | `mapped_column(LargeBinary)` |
 | `sha256` | `Mapped[str]` | `mapped_column(String(64))` |
 | `renderer_version` | `Mapped[str]` | `mapped_column(String(40))` |
+
 ### `payments` — `Payment`
 
-`app/models.py:345`
+[`app/models.py:380`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L380); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `invoice_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('invoices.id'), index=True)` |
 | `paid_at` | `Mapped[date]` | `mapped_column(Date)` |
 | `amount` | `Mapped[Decimal]` | `mapped_column(Numeric(14, 2))` |
 | `currency` | `Mapped[str]` | `mapped_column(String(3))` |
 | `method` | `Mapped[str]` | `mapped_column(String(40))` |
-| `reference` | `Mapped[str \| None]` | `mapped_column(String(200))` |
-| `note` | `Mapped[str \| None]` | `mapped_column(Text)` |
+| `reference` | `Mapped[str &#124; None]` | `mapped_column(String(200))` |
+| `note` | `Mapped[str &#124; None]` | `mapped_column(Text)` |
 | `created_by` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
-| `reversed_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `reversed_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `audit_events` — `Audit`
 
-`app/models.py:359`
+[`app/models.py:394`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L394); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
-| `actor_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('users.id'))` |
+| `actor_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('users.id'))` |
 | `request_id` | `Mapped[UUID]` | `mapped_column(Uuid)` |
 | `event_type` | `Mapped[str]` | `mapped_column(String(60))` |
 | `entity_type` | `Mapped[str]` | `mapped_column(String(30))` |
 | `entity_id` | `Mapped[UUID]` | `mapped_column(Uuid, index=True)` |
 | `details` | `Mapped[dict]` | `mapped_column(JSONB, default=dict)` |
+
 ### `app_settings` — `AppSettings`
 
-`app/models.py:369`
+[`app/models.py:404`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L404); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `key` | `Mapped[str]` | `mapped_column(String(30), unique=True)` |
 | `value` | `Mapped[dict]` | `mapped_column(JSONB, default=dict)` |
-| `encrypted_value` | `Mapped[bytes \| None]` | `mapped_column(LargeBinary)` |
+| `encrypted_value` | `Mapped[bytes &#124; None]` | `mapped_column(LargeBinary)` |
+
 ### `proposal_sending_deliveries` — `ProposalSendingDelivery`
 
-`app/proposal_sending_models.py:22`
+[`app/proposal_sending_models.py:22`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_models.py#L22); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `case_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('cases.id'), index=True)` |
-| `quote_artifact_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('quote_artifacts.id'))` |
-| `library_version_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('library_document_versions.id'))` |
+| `quote_artifact_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('quote_artifacts.id'))` |
+| `library_version_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('library_document_versions.id'))` |
 | `artifact_revision_id` | `Mapped[UUID]` | `mapped_column(Uuid)` |
 | `revision_number` | `Mapped[int]` | `mapped_column(Integer)` |
 | `document_kind` | `Mapped[str]` | `mapped_column(String(12))` |
@@ -3161,59 +2905,65 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
 | `state` | `Mapped[str]` | `mapped_column(String(12), default='draft', index=True)` |
 | `attempt_count` | `Mapped[int]` | `mapped_column(Integer, default=0)` |
-| `last_code` | `Mapped[str \| None]` | `mapped_column(String(40))` |
-| `confirmed_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `sent_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `stopped_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `last_code` | `Mapped[str &#124; None]` | `mapped_column(String(40))` |
+| `confirmed_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `sent_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `stopped_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `proposal_sending_attempts` — `ProposalSendingAttempt`
 
-`app/proposal_sending_models.py:58`
+[`app/proposal_sending_models.py:58`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_models.py#L58); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `delivery_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('proposal_sending_deliveries.id'), index=True)` |
 | `number` | `Mapped[int]` | `mapped_column(Integer)` |
 | `state` | `Mapped[str]` | `mapped_column(String(12))` |
 | `code` | `Mapped[str]` | `mapped_column(String(40))` |
-| `completed_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `completed_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `quotes` — `Quote`
 
-`app/quoting_models.py:30`
+[`app/quoting_models.py:30`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L30); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `number` | `Mapped[int]` | `mapped_column(BigInteger, Identity(always=True), unique=True)` |
+| `object_id` | `Mapped[int]` | `synonym('number')` |
 | `operation_key` | `Mapped[UUID]` | `mapped_column(Uuid, default=uuid4)` |
 | `create_digest` | `Mapped[str]` | `mapped_column(String(64))` |
-| `archived_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True), index=True)` |
+| `archived_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True), index=True)` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
+
 ### `quote_revisions` — `QuoteRevision`
 
-`app/quoting_models.py:45`
+[`app/quoting_models.py:46`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L46); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
+| `flexfields` | `Mapped[dict]` | `mapped_column(JSONB, default=dict, server_default='{}')` |
 | `quote_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('quotes.id'), index=True)` |
-| `parent_revision_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('quote_revisions.id'))` |
+| `parent_revision_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('quote_revisions.id'))` |
 | `number` | `Mapped[int]` | `mapped_column(Integer)` |
 | `status` | `Mapped[str]` | `mapped_column(String(12), default='draft')` |
 | `title` | `Mapped[str]` | `mapped_column(String(200))` |
-| `prepared_for` | `Mapped[str \| None]` | `mapped_column(String(200))` |
+| `prepared_for` | `Mapped[str &#124; None]` | `mapped_column(String(200))` |
 | `case_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('cases.id'), index=True)` |
 | `client_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('clients.id'), index=True)` |
 | `project_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('projects.id'), index=True)` |
 | `preset` | `Mapped[str]` | `mapped_column(String(30), default='quick_effort')` |
-| `currency` | `Mapped[str \| None]` | `mapped_column(String(3))` |
-| `assumptions` | `Mapped[str \| None]` | `mapped_column(Text)` |
-| `exclusions` | `Mapped[str \| None]` | `mapped_column(Text)` |
-| `valid_until` | `Mapped[date \| None]` | `mapped_column(Date)` |
+| `currency` | `Mapped[str &#124; None]` | `mapped_column(String(3))` |
+| `assumptions` | `Mapped[str &#124; None]` | `mapped_column(Text)` |
+| `exclusions` | `Mapped[str &#124; None]` | `mapped_column(Text)` |
+| `valid_until` | `Mapped[date &#124; None]` | `mapped_column(Date)` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
+
 ### `quote_lines` — `QuoteLine`
 
-`app/quoting_models.py:77`
+[`app/quoting_models.py:79`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L79); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `revision_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('quote_revisions.id'), index=True)` |
 | `position` | `Mapped[int]` | `mapped_column(Integer)` |
@@ -3221,14 +2971,15 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `scope_type` | `Mapped[str]` | `mapped_column(String(12), default='task')` |
 | `min_minutes` | `Mapped[int]` | `mapped_column(Integer)` |
 | `max_minutes` | `Mapped[int]` | `mapped_column(Integer)` |
-| `pricing_model` | `Mapped[str \| None]` | `mapped_column(String(30))` |
-| `unit_rate` | `Mapped[Decimal \| None]` | `mapped_column(Numeric(14, 2))` |
-| `fixed_amount` | `Mapped[Decimal \| None]` | `mapped_column(Numeric(14, 2))` |
+| `pricing_model` | `Mapped[str &#124; None]` | `mapped_column(String(30))` |
+| `unit_rate` | `Mapped[Decimal &#124; None]` | `mapped_column(Numeric(14, 2))` |
+| `fixed_amount` | `Mapped[Decimal &#124; None]` | `mapped_column(Numeric(14, 2))` |
+
 ### `quote_artifacts` — `QuoteArtifact`
 
-`app/quoting_models.py:103`
+[`app/quoting_models.py:105`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L105); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `revision_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('quote_revisions.id'), unique=True)` |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
@@ -3239,11 +2990,12 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `sha256` | `Mapped[str]` | `mapped_column(String(64))` |
 | `renderer_version` | `Mapped[str]` | `mapped_column(String(80))` |
 | `published_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `sending_preferences` — `SendingPreferences`
 
-`app/sending_models.py:21`
+[`app/sending_models.py:21`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L21); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), unique=True)` |
 | `paused` | `Mapped[bool]` | `mapped_column(Boolean, default=False)` |
@@ -3251,11 +3003,12 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `initial_body` | `Mapped[str]` | `mapped_column(Text)` |
 | `followup_subject` | `Mapped[str]` | `mapped_column(String(200))` |
 | `followup_body` | `Mapped[str]` | `mapped_column(Text)` |
+
 ### `sending_plans` — `SendingPlan`
 
-`app/sending_models.py:31`
+[`app/sending_models.py:31`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L31); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `invoice_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('invoices.id'), unique=True)` |
@@ -3268,39 +3021,42 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `followup_body` | `Mapped[str]` | `mapped_column(Text)` |
 | `followup_interval_days` | `Mapped[int]` | `mapped_column(Integer)` |
 | `followup_max` | `Mapped[int]` | `mapped_column(Integer)` |
-| `stopped_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `stop_reason` | `Mapped[str \| None]` | `mapped_column(String(30))` |
+| `stopped_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `stop_reason` | `Mapped[str &#124; None]` | `mapped_column(String(30))` |
+
 ### `sending_deliveries` — `SendingDelivery`
 
-`app/sending_models.py:55`
+[`app/sending_models.py:55`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L55); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'), index=True)` |
 | `plan_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('sending_plans.id'), index=True)` |
 | `sequence` | `Mapped[int]` | `mapped_column(Integer)` |
 | `state` | `Mapped[str]` | `mapped_column(String(12), default='pending', index=True)` |
 | `scheduled_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True), index=True)` |
-| `sent_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `failure_code` | `Mapped[str \| None]` | `mapped_column(String(40))` |
+| `sent_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `failure_code` | `Mapped[str &#124; None]` | `mapped_column(String(40))` |
 | `attempt_count` | `Mapped[int]` | `mapped_column(Integer, default=0)` |
+
 ### `sending_attempts` — `SendingAttempt`
 
-`app/sending_models.py:72`
+[`app/sending_models.py:72`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L72); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `delivery_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('sending_deliveries.id'), index=True)` |
 | `number` | `Mapped[int]` | `mapped_column(Integer)` |
 | `state` | `Mapped[str]` | `mapped_column(String(12))` |
 | `code` | `Mapped[str]` | `mapped_column(String(40))` |
-| `provider_reference` | `Mapped[str \| None]` | `mapped_column(String(200))` |
-| `completed_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `provider_reference` | `Mapped[str &#124; None]` | `mapped_column(String(200))` |
+| `completed_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+
 ### `subscription_billing_accounts` — `BillingAccount`
 
-`app/subscription_billing_models.py:24`
+[`app/subscription_billing_models.py:24`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py#L24); bases: `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `id` | `Mapped[int]` | `mapped_column(Integer, Identity(), primary_key=True)` |
 | `current` | `Mapped[bool]` | `mapped_column(Boolean, default=True)` |
@@ -3313,22 +3069,23 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `entitlement_offer` | `Mapped[str]` | `mapped_column(String(20))` |
 | `paid_through` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True))` |
 | `proven_period_start` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True))` |
-| `past_due_since` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `failed_period_start` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `failed_transaction_id` | `Mapped[str \| None]` | `mapped_column(String(30))` |
+| `past_due_since` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `failed_period_start` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `failed_transaction_id` | `Mapped[str &#124; None]` | `mapped_column(String(30))` |
 | `provider_updated_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True))` |
-| `pending_offer` | `Mapped[str \| None]` | `mapped_column(String(20))` |
-| `pending_effective_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
-| `pending_selection` | `Mapped[dict \| None]` | `mapped_column(JSONB)` |
+| `pending_offer` | `Mapped[str &#124; None]` | `mapped_column(String(20))` |
+| `pending_effective_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
+| `pending_selection` | `Mapped[dict &#124; None]` | `mapped_column(JSONB)` |
 | `requires_selection` | `Mapped[bool]` | `mapped_column(Boolean, default=False)` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
 | `created_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True), default=lambda: datetime.now(UTC))` |
 | `updated_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True), default=lambda: datetime.now(UTC), onupdate=lambda: datetime.now(UTC))` |
+
 ### `subscription_billing_operations` — `BillingOperation`
 
-`app/subscription_billing_models.py:71`
+[`app/subscription_billing_models.py:71`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py#L71); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
 | `key_digest` | `Mapped[str]` | `mapped_column(String(64))` |
@@ -3336,78 +3093,84 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `action` | `Mapped[str]` | `mapped_column(String(30))` |
 | `state` | `Mapped[str]` | `mapped_column(String(12), default='reserved')` |
 | `intent` | `Mapped[dict]` | `mapped_column(JSONB)` |
-| `transaction_id` | `Mapped[str \| None]` | `mapped_column(String(30), unique=True)` |
+| `transaction_id` | `Mapped[str &#124; None]` | `mapped_column(String(30), unique=True)` |
 | `result` | `Mapped[dict]` | `mapped_column(JSONB, default=dict)` |
+
 ### `subscription_billing_events` — `BillingEvent`
 
-`app/subscription_billing_models.py:89`
+[`app/subscription_billing_models.py:89`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py#L89); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `provider_event_id` | `Mapped[str]` | `mapped_column(String(30), unique=True)` |
 | `raw_digest` | `Mapped[str]` | `mapped_column(String(64))` |
 | `event_type` | `Mapped[str]` | `mapped_column(String(80))` |
 | `outcome` | `Mapped[str]` | `mapped_column(String(24))` |
 | `facts` | `Mapped[dict]` | `mapped_column(JSONB)` |
+
 ### `workspace_subscriptions` — `WorkspaceSubscription`
 
-`app/subscription_models.py:13`
+[`app/subscription_models.py:13`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_models.py#L13); bases: `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `id` | `Mapped[int]` | `mapped_column(Integer, primary_key=True, default=1, autoincrement=False)` |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
 | `plan_code` | `Mapped[str]` | `mapped_column(String(12))` |
 | `catalog_revision` | `Mapped[str]` | `mapped_column(String(60))` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
-| `access_expires_at` | `Mapped[datetime \| None]` | `mapped_column(DateTime(timezone=True))` |
+| `access_expires_at` | `Mapped[datetime &#124; None]` | `mapped_column(DateTime(timezone=True))` |
 | `created_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True), default=lambda: datetime.now(UTC))` |
 | `updated_at` | `Mapped[datetime]` | `mapped_column(DateTime(timezone=True), default=lambda: datetime.now(UTC), onupdate=lambda: datetime.now(UTC))` |
+
 ### `subscription_operations` — `SubscriptionOperation`
 
-`app/subscription_models.py:37`
+[`app/subscription_models.py:37`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_models.py#L37); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `owner_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
 | `key_digest` | `Mapped[str]` | `mapped_column(String(64))` |
 | `payload_digest` | `Mapped[str]` | `mapped_column(String(64))` |
 | `action` | `Mapped[str]` | `mapped_column(String(80))` |
 | `result` | `Mapped[dict]` | `mapped_column(JSONB)` |
+
 ### `time_import_records` — `TimeImportRecord`
 
-`app/time_command_models.py:13`
+[`app/time_command_models.py:13`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py#L13); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `actor_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
 | `source` | `Mapped[str]` | `mapped_column(String(100))` |
 | `source_record_id` | `Mapped[str]` | `mapped_column(String(128))` |
 | `batch_id` | `Mapped[str]` | `mapped_column(String(128))` |
 | `payload_hash` | `Mapped[str]` | `mapped_column(String(64))` |
+
 ### `time_contributions` — `TimeContribution`
 
-`app/time_command_models.py:26`
+[`app/time_command_models.py:26`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py#L26); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `actor_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
 | `source` | `Mapped[str]` | `mapped_column(String(100))` |
 | `source_item_id` | `Mapped[str]` | `mapped_column(String(128))` |
-| `import_record_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('time_import_records.id'))` |
+| `import_record_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('time_import_records.id'))` |
 | `timecard_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('timecards.id'), index=True)` |
 | `project_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('projects.id'))` |
 | `work_date` | `Mapped[date]` | `mapped_column(Date)` |
-| `entry_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('time_entries.id'), index=True)` |
-| `case_id` | `Mapped[UUID \| None]` | `mapped_column(ForeignKey('cases.id'))` |
+| `entry_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('time_entries.id'), index=True)` |
+| `case_id` | `Mapped[UUID &#124; None]` | `mapped_column(ForeignKey('cases.id'))` |
 | `minutes` | `Mapped[int]` | `mapped_column(Integer)` |
 | `description` | `Mapped[str]` | `mapped_column(Text, default='')` |
 | `version` | `Mapped[int]` | `mapped_column(Integer, default=1)` |
+
 ### `time_operations` — `TimeOperation`
 
-`app/time_command_models.py:49`
+[`app/time_command_models.py:49`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py#L49); bases: `Entity`, `Base`.
 
-| Attribute | Annotation | Persistence declaration |
+| Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
 | `actor_id` | `Mapped[UUID]` | `mapped_column(ForeignKey('users.id'))` |
 | `source` | `Mapped[str]` | `mapped_column(String(100))` |
@@ -3416,1299 +3179,1530 @@ Static SQLAlchemy declarations are listed, including central directory models. A
 | `operation` | `Mapped[str]` | `mapped_column(String(20))` |
 | `result` | `Mapped[dict]` | `mapped_column(JSONB)` |
 
-## Environment configuration contract
+## 48 Settings fields
 
-Names derive from Settings dataclass fields; environment loader uses `TIMEKER_` plus uppercase field name. Defaults are source defaults, not a hosted configuration readback. Credential-bearing and identity/configuration payload defaults are deliberately not reproduced. See chapter06 for the recorded Stage profile.
+[`app/config.py:14`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L14). Names and types are source metadata; string/provider/identity/connection values are deliberately omitted. Properties and environment loaders are behavior, not extra dataclass fields.
 
-| Environment name | Type | Source default classification | Source |
-| --- | --- | --- | --- |
-| `TIMEKER_ENVIRONMENT` | `str` | 'development' | `app/config.py:15` |
-| `TIMEKER_DATABASE_URL` | `str` | Deployment-provided / omitted from dossier | `app/config.py:16` |
-| `TIMEKER_DATABASE_ROLE` | `str` | 'timeker_app' | `app/config.py:17` |
-| `TIMEKER_DATABASE_SCHEMA` | `str` | '' | `app/config.py:18` |
-| `TIMEKER_TENANT_REGISTRY_JSON` | `str` | Deployment-provided / omitted from dossier | `app/config.py:19` |
-| `TIMEKER_TENANT_SLOTS_JSON` | `str` | Deployment-provided / omitted from dossier | `app/config.py:20` |
-| `TIMEKER_TENANT_DEMO` | `bool` | False | `app/config.py:21` |
-| `TIMEKER_BASE_URL` | `str` | 'http://127.0.0.1:8000' | `app/config.py:22` |
-| `TIMEKER_SESSION_SECRET` | `str` | Deployment-provided / omitted from dossier | `app/config.py:23` |
-| `TIMEKER_ENCRYPTION_KEY` | `str` | Deployment-provided / omitted from dossier | `app/config.py:24` |
-| `TIMEKER_GOOGLE_CLIENT_ID` | `str` | '' | `app/config.py:25` |
-| `TIMEKER_GOOGLE_CLIENT_SECRET` | `str` | Deployment-provided / omitted from dossier | `app/config.py:26` |
-| `TIMEKER_GITHUB_CLIENT_ID` | `str` | '' | `app/config.py:27` |
-| `TIMEKER_GITHUB_CLIENT_SECRET` | `str` | Deployment-provided / omitted from dossier | `app/config.py:28` |
-| `TIMEKER_TURNSTILE_SITE_KEY` | `str` | Deployment-provided / omitted from dossier | `app/config.py:29` |
-| `TIMEKER_TURNSTILE_SECRET_KEY` | `str` | Deployment-provided / omitted from dossier | `app/config.py:30` |
-| `TIMEKER_DEV_LOGIN` | `bool` | False | `app/config.py:31` |
-| `TIMEKER_ALLOWLIST` | `tuple[str, ...]` | Deployment-provided / omitted from dossier | `app/config.py:32` |
-| `TIMEKER_TRUSTED_HOSTS` | `tuple[str, ...]` | ('127.0.0.1', 'localhost', 'testserver') | `app/config.py:33` |
-| `TIMEKER_INVOICE_PREFIX` | `str` | 'AEKR' | `app/config.py:34` |
-| `TIMEKER_CONTACT_DELIVERY` | `str` | 'disabled' | `app/config.py:35` |
-| `TIMEKER_MAIL_DOMAIN` | `str` | '' | `app/config.py:36` |
-| `TIMEKER_MAIL_ADDRESS_DOMAIN` | `str` | '' | `app/config.py:37` |
-| `TIMEKER_OPTIONAL_USAGE_ENABLED` | `bool` | False | `app/config.py:38` |
-| `TIMEKER_MAIL_CAPTURE_ENABLED` | `bool` | False | `app/config.py:39` |
-| `TIMEKER_INTERNAL_SECRET` | `str` | Deployment-provided / omitted from dossier | `app/config.py:40` |
-| `TIMEKER_INTEGRATION_ENABLED` | `bool` | False | `app/config.py:41` |
-| `TIMEKER_INTEGRATION_CLIENTS_JSON` | `str` | Deployment-provided / omitted from dossier | `app/config.py:42` |
-| `TIMEKER_SUBSCRIPTION_PROVIDER` | `str` | 'disabled' | `app/config.py:43` |
-| `TIMEKER_PADDLE_LIVE_ENABLED` | `bool` | False | `app/config.py:44` |
-| `TIMEKER_PADDLE_API_KEY` | `str` | Deployment-provided / omitted from dossier | `app/config.py:45` |
-| `TIMEKER_PADDLE_CLIENT_TOKEN` | `str` | Deployment-provided / omitted from dossier | `app/config.py:46` |
-| `TIMEKER_PADDLE_WEBHOOK_SECRET` | `str` | Deployment-provided / omitted from dossier | `app/config.py:47` |
-| `TIMEKER_PADDLE_PRICE_IDS_JSON` | `str` | Deployment-provided / omitted from dossier | `app/config.py:48` |
-| `TIMEKER_PADDLE_RETENTION_DISCOUNT_ID` | `str` | '' | `app/config.py:49` |
-| `TIMEKER_STAGE_ONBOARDING_ENABLED` | `bool` | False | `app/config.py:50` |
-| `TIMEKER_ONBOARDING_ENABLED` | `bool` | False | `app/config.py:51` |
-| `TIMEKER_PUBLIC_SIGNUP_ENABLED` | `bool` | False | `app/config.py:52` |
-| `TIMEKER_EMAIL_PUBLIC_SIGNUP_ENABLED` | `bool` | False | `app/config.py:53` |
-| `TIMEKER_EMAIL_AUTH_PROVIDER` | `str` | 'disabled' | `app/config.py:54` |
-| `TIMEKER_EMAIL_AUTH_URL` | `str` | '' | `app/config.py:55` |
-| `TIMEKER_EMAIL_AUTH_PUBLISHABLE_KEY` | `str` | Deployment-provided / omitted from dossier | `app/config.py:56` |
-| `TIMEKER_SENDING_PROVIDER` | `str` | 'disabled' | `app/config.py:57` |
-| `TIMEKER_SENDING_SENDER` | `str` | 'timeker@aekr.io' | `app/config.py:58` |
-| `TIMEKER_SENDING_ACCOUNT_ID` | `str` | '' | `app/config.py:59` |
-| `TIMEKER_SENDING_API_TOKEN` | `str` | Deployment-provided / omitted from dossier | `app/config.py:60` |
-| `TIMEKER_SENDING_JOBS_ENABLED` | `bool` | False | `app/config.py:61` |
-| `TIMEKER_SENDING_PRODUCTION_ENABLED` | `bool` | False | `app/config.py:62` |
+| Name | Type | Declared default category |
+| --- | --- | --- |
+| `environment` | `str` | development |
+| `database_url` | `str` | Declared; value omitted |
+| `database_role` | `str` | Declared; value omitted |
+| `database_schema` | `str` | Empty string |
+| `tenant_registry_json` | `str` | Declared; value omitted |
+| `tenant_slots_json` | `str` | Declared; value omitted |
+| `tenant_demo` | `bool` | False |
+| `base_url` | `str` | Declared; value omitted |
+| `session_secret` | `str` | Empty string |
+| `encryption_key` | `str` | Empty string |
+| `google_client_id` | `str` | Empty string |
+| `google_client_secret` | `str` | Empty string |
+| `github_client_id` | `str` | Empty string |
+| `github_client_secret` | `str` | Declared; value omitted |
+| `turnstile_site_key` | `str` | Empty string |
+| `turnstile_secret_key` | `str` | Empty string |
+| `dev_login` | `bool` | False |
+| `allowlist` | `tuple[str, ...]` | Declared; value omitted |
+| `trusted_hosts` | `tuple[str, ...]` | Declared; value omitted |
+| `invoice_prefix` | `str` | Declared; value omitted |
+| `contact_delivery` | `str` | disabled |
+| `mail_domain` | `str` | Empty string |
+| `mail_address_domain` | `str` | Empty string |
+| `optional_usage_enabled` | `bool` | False |
+| `mail_capture_enabled` | `bool` | False |
+| `internal_secret` | `str` | Empty string |
+| `integration_enabled` | `bool` | False |
+| `integration_clients_json` | `str` | Declared; value omitted |
+| `subscription_provider` | `str` | disabled |
+| `paddle_live_enabled` | `bool` | False |
+| `paddle_api_key` | `str` | Declared; value omitted |
+| `paddle_client_token` | `str` | Declared; value omitted |
+| `paddle_webhook_secret` | `str` | Declared; value omitted |
+| `paddle_price_ids_json` | `str` | Declared; value omitted |
+| `paddle_retention_discount_id` | `str` | Empty string |
+| `stage_onboarding_enabled` | `bool` | False |
+| `onboarding_enabled` | `bool` | False |
+| `public_signup_enabled` | `bool` | False |
+| `email_public_signup_enabled` | `bool` | False |
+| `email_auth_provider` | `str` | disabled |
+| `email_auth_url` | `str` | Empty string |
+| `email_auth_publishable_key` | `str` | Declared; value omitted |
+| `sending_provider` | `str` | disabled |
+| `sending_sender` | `str` | Declared; value omitted |
+| `sending_account_id` | `str` | Empty string |
+| `sending_api_token` | `str` | Declared; value omitted |
+| `sending_jobs_enabled` | `bool` | False |
+| `sending_production_enabled` | `bool` | False |
 
-## Alembic revision chain
+## Migration declarations
 
-| File | Revision | Down revision | Purpose |
-| --- | --- | --- | --- |
-| `alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py` | `3f3c0f09ecf4` | `e672c40fa912` | mail custody and six-month archive |
-| `alembic/versions/7e416c6444fe_baseline.py` | `7e416c6444fe` | `None` | baseline |
-| `alembic/versions/a10d45de891c_issued_status_guard.py` | `a10d45de891c` | `f409a1ac1700` | Keep financial immutability independent of operational status. |
-| `alembic/versions/a82d43cf6120_project_workflow_and_agreements.py` | `a82d43cf6120` | `f710bc319ae2` | Closed project status and bounded immutable private project agreement. |
-| `alembic/versions/b07c9d621a30_pin_guard_schema.py` | `b07c9d621a30` | `a10d45de891c` | Pin immutable-record guards to their installation schema. |
-| `alembic/versions/c41894d13cb7_project_commercial_metadata.py` | `c41894d13cb7` | `3f3c0f09ecf4` | Add nullable descriptive project terms without changing invoice calculations. |
-| `alembic/versions/c46f2f62a011_immutable_artifacts.py` | `c46f2f62a011` | `7e416c6444fe` | Database immutability and cross-client/period integrity guards. |
-| `alembic/versions/d3517d81ce20_contact_reservations.py` | `d3517d81ce20` | `b07c9d621a30` | Durable short-lived contact abuse reservations. |
-| `alembic/versions/d529b08f14a2_project_billing.py` | `d529b08f14a2` | `c41894d13cb7` | Explicit project fees, authorized additional charges, and budget reservations. |
-| `alembic/versions/e3b42aea781a_parent_guards_and_sessions.py` | `e3b42aea781a` | `c46f2f62a011` | Guard both parents of immutable records; add revocable owner sessions. |
-| `alembic/versions/e640ab7230cd_case_identity_and_types.py` | `e640ab7230cd` | `d529b08f14a2` | Automatic global case identity and mandatory project/type validation. |
-| `alembic/versions/e672c40fa912_cases_and_allocations.py` | `e672c40fa912` | `d3517d81ce20` | Retained work cases and guarded exact-minute attribution. |
-| `alembic/versions/f409a1ac1700_parent_lock_guards.py` | `f409a1ac1700` | `e3b42aea781a` | Serialize database parent guards with concurrent issuance/finalization. |
-| `alembic/versions/f710bc319ae2_mail_attachment_custody.py` | `f710bc319ae2` | `e640ab7230cd` | Bounded immutable extracted mail attachments, separate from normalized text. |
-| `alembic/versions/ph2_001_credit_memos.py` | `ph2_001_credit_memos` | `a82d43cf6120` | Immutable full credit memos; prohibit new timecard voids, retain history. |
-| `alembic/versions/ph2_002_time_commands.py` | `ph2_002_time_commands` | `ph2_001_credit_memos` | Source-owned time contributions, import/command receipts and aggregate guards. |
-| `alembic/versions/ph2_003_integrations.py` | `ph2_003_integrations` | `ph2_002_time_commands` | Tenant-local delegated grants, hashed credentials and unpublished client proposals. |
-| `alembic/versions/ph3_001_subscriptions.py` | `ph3_001_subscriptions` | `ph2_003_integrations` | Explicit tenant assignment and immutable capacity-operation receipts. |
-| `alembic/versions/ph3_002_sandbox_billing.py` | `ph3_002_sandbox_billing` | `ph3_001_subscriptions` | Verified sandbox subscription bindings, durable intents and expiring access. |
-| `alembic/versions/ph3_003_onboarding_auth.py` | `ph3_003_onboarding_auth` | `ph3_002_sandbox_billing` | Explicit registration, provider identities and bounded one-time email challenges. |
-| `alembic/versions/ph3_004_sending.py` | `ph3_004_sending` | `ph3_003_onboarding_auth` | Retained, owner-confirmed statement sending and conservative dispatch history. |
-| `alembic/versions/ph3_005_public_admission.py` | `ph3_005_public_admission` | `ph3_004_sending` | Central prepared-slot admission, immutable identity routing and public challenges. |
-| `alembic/versions/ph3_006_quoting_library.py` | `ph3_006_quoting_library` | `ph3_005_public_admission` | Case-bound estimates, Library documents and separate retained commercial delivery. |
+Historical revision names containing `ph2` or `ph3` are retained identifiers; administrative phase naming never renumbers migration history. The last verified Stage head is `ph3_009_read_indexes` across nine actual schemas. A source chain is not a fresh hosted inventory.
 
-## Declared Python requirements
+| Revision | Parent | Source |
+| --- | --- | --- |
+| 3f3c0f09ecf4 | e672c40fa912 | [`alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py) |
+| 7e416c6444fe | None | [`alembic/versions/7e416c6444fe_baseline.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/7e416c6444fe_baseline.py) |
+| a10d45de891c | f409a1ac1700 | [`alembic/versions/a10d45de891c_issued_status_guard.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/a10d45de891c_issued_status_guard.py) |
+| a82d43cf6120 | f710bc319ae2 | [`alembic/versions/a82d43cf6120_project_workflow_and_agreements.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/a82d43cf6120_project_workflow_and_agreements.py) |
+| b07c9d621a30 | a10d45de891c | [`alembic/versions/b07c9d621a30_pin_guard_schema.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/b07c9d621a30_pin_guard_schema.py) |
+| c41894d13cb7 | 3f3c0f09ecf4 | [`alembic/versions/c41894d13cb7_project_commercial_metadata.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/c41894d13cb7_project_commercial_metadata.py) |
+| c46f2f62a011 | 7e416c6444fe | [`alembic/versions/c46f2f62a011_immutable_artifacts.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/c46f2f62a011_immutable_artifacts.py) |
+| d3517d81ce20 | b07c9d621a30 | [`alembic/versions/d3517d81ce20_contact_reservations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/d3517d81ce20_contact_reservations.py) |
+| d529b08f14a2 | c41894d13cb7 | [`alembic/versions/d529b08f14a2_project_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/d529b08f14a2_project_billing.py) |
+| e3b42aea781a | c46f2f62a011 | [`alembic/versions/e3b42aea781a_parent_guards_and_sessions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e3b42aea781a_parent_guards_and_sessions.py) |
+| e640ab7230cd | d529b08f14a2 | [`alembic/versions/e640ab7230cd_case_identity_and_types.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e640ab7230cd_case_identity_and_types.py) |
+| e672c40fa912 | d3517d81ce20 | [`alembic/versions/e672c40fa912_cases_and_allocations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e672c40fa912_cases_and_allocations.py) |
+| f409a1ac1700 | e3b42aea781a | [`alembic/versions/f409a1ac1700_parent_lock_guards.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/f409a1ac1700_parent_lock_guards.py) |
+| f710bc319ae2 | e640ab7230cd | [`alembic/versions/f710bc319ae2_mail_attachment_custody.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/f710bc319ae2_mail_attachment_custody.py) |
+| ph2_001_credit_memos | a82d43cf6120 | [`alembic/versions/ph2_001_credit_memos.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_001_credit_memos.py) |
+| ph2_002_time_commands | ph2_001_credit_memos | [`alembic/versions/ph2_002_time_commands.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_002_time_commands.py) |
+| ph2_003_integrations | ph2_002_time_commands | [`alembic/versions/ph2_003_integrations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_003_integrations.py) |
+| ph3_001_subscriptions | ph2_003_integrations | [`alembic/versions/ph3_001_subscriptions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_001_subscriptions.py) |
+| ph3_002_sandbox_billing | ph3_001_subscriptions | [`alembic/versions/ph3_002_sandbox_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_002_sandbox_billing.py) |
+| ph3_003_onboarding_auth | ph3_002_sandbox_billing | [`alembic/versions/ph3_003_onboarding_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_003_onboarding_auth.py) |
+| ph3_004_sending | ph3_003_onboarding_auth | [`alembic/versions/ph3_004_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_004_sending.py) |
+| ph3_005_public_admission | ph3_004_sending | [`alembic/versions/ph3_005_public_admission.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_005_public_admission.py) |
+| ph3_006_quoting_library | ph3_005_public_admission | [`alembic/versions/ph3_006_quoting_library.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_006_quoting_library.py) |
+| ph3_007_work_records | ph3_006_quoting_library | [`alembic/versions/ph3_007_work_records.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py) |
+| ph3_008_client_lifecycle | ph3_007_work_records | [`alembic/versions/ph3_008_client_lifecycle.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_008_client_lifecycle.py) |
+| ph3_009_read_indexes | ph3_008_client_lifecycle | [`alembic/versions/ph3_009_read_indexes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_009_read_indexes.py) |
 
-- `fastapi>=0.115,<1`
-- `uvicorn>=0.34,<1`
-- `sqlalchemy>=2.0,<3`
-- `alembic>=1.15,<2`
-- `psycopg[binary]>=3.2,<4`
-- `jinja2>=3.1,<4`
-- `python-multipart>=0.0.20,<1`
-- `authlib>=1.6,<2`
-- `httpx>=0.28,<1`
-- `itsdangerous>=2.2,<3`
-- `cryptography>=45,<49`
-- `weasyprint>=66,<71`
-- `tzdata>=2025.2`
-- `python-dotenv>=1.1,<2`
-- `pytest>=8,<10`
-- `ruff>=0.12,<1`
-- `mypy>=1.16,<2`
-- `pypdf>=5,<7`
-- `playwright>=1.55,<2`
+## Python project declarations
 
-## Complete Python lock inventory
+Python requirement `>=3.12`; project version `0.1.0`.
 
-Versions below are locked source versions, not a claim that every optional/transitive package is imported in production. Platform markers and wheel availability remain in uv.lock.
-
-| Package | Locked version |
+| Group | Requirement |
 | --- | --- |
-| `alembic` | `1.20.0` |
-| `annotated-doc` | `0.0.5` |
-| `annotated-types` | `0.8.0` |
-| `anyio` | `4.15.1` |
-| `authlib` | `1.8.0` |
-| `brotli` | `1.2.0` |
-| `brotlicffi` | `1.2.0.2` |
-| `certifi` | `2026.7.22` |
-| `cffi` | `2.1.1` |
-| `click` | `8.5.0` |
-| `colorama` | `0.4.6` |
-| `cryptography` | `48.0.1` |
-| `cssselect2` | `0.10.1` |
-| `fastapi` | `0.143.0` |
-| `fonttools` | `4.66.1` |
-| `greenlet` | `3.5.6` |
-| `h11` | `0.16.0` |
-| `httpcore` | `1.0.9` |
-| `httpx` | `0.28.1` |
-| `idna` | `3.20` |
-| `iniconfig` | `2.3.1` |
-| `itsdangerous` | `2.2.0` |
-| `jinja2` | `3.1.6` |
-| `joserfc` | `1.7.5` |
-| `librt` | `0.16.0` |
-| `mako` | `1.4.3` |
-| `markupsafe` | `3.0.4` |
-| `mypy` | `1.20.2` |
-| `mypy-extensions` | `1.1.0` |
-| `opentelemetry-api` | `1.45.1` |
-| `packaging` | `26.3` |
-| `pathspec` | `1.1.1` |
-| `pillow` | `12.3.0` |
-| `playwright` | `1.63.0` |
-| `pluggy` | `1.6.0` |
-| `psycopg` | `3.3.6` |
-| `psycopg-binary` | `3.3.6` |
-| `pycparser` | `3.11` |
-| `pydantic` | `2.14.0` |
-| `pydantic-core` | `2.50.0` |
-| `pydyf` | `0.12.1` |
-| `pyee` | `13.0.1` |
-| `pygments` | `2.21.0` |
-| `pypdf` | `6.20.0` |
-| `pyphen` | `0.18.1` |
-| `pytest` | `9.1.1` |
-| `python-dotenv` | `1.2.4` |
-| `python-multipart` | `0.0.32` |
-| `ruff` | `0.17.0` |
-| `sqlalchemy` | `2.1.4` |
-| `starlette` | `1.7.0` |
-| `timeker` | `0.1.0` |
-| `tinycss2` | `1.5.1` |
-| `tinyhtml5` | `2.1.0` |
-| `typing-extensions` | `4.16.0` |
-| `typing-inspection` | `0.4.4` |
-| `tzdata` | `2026.5` |
-| `uvicorn` | `0.54.0` |
-| `weasyprint` | `70.0` |
-| `webencodings` | `0.6.1` |
-| `zopfli` | `0.4.3` |
+| runtime | fastapi>=0.115,<1 |
+| runtime | uvicorn>=0.34,<1 |
+| runtime | sqlalchemy>=2.0,<3 |
+| runtime | alembic>=1.15,<2 |
+| runtime | psycopg[binary]>=3.2,<4 |
+| runtime | jinja2>=3.1,<4 |
+| runtime | python-multipart>=0.0.20,<1 |
+| runtime | authlib>=1.6,<2 |
+| runtime | httpx>=0.28,<1 |
+| runtime | itsdangerous>=2.2,<3 |
+| runtime | cryptography>=45,<49 |
+| runtime | weasyprint>=66,<71 |
+| runtime | tzdata>=2025.2 |
+| runtime | python-dotenv>=1.1,<2 |
 
-## `deploy/cloudflare/package.json`
-
-### scripts
-
-```json
-{
-  "types": "wrangler types",
-  "typecheck": "tsc --noEmit",
-  "test": "node --test test/*.test.mjs",
-  "dry-run": "wrangler deploy --dry-run --outdir .wrangler/dry-run"
-}
-```
-
-### dependencies
-
-```json
-{
-  "@cloudflare/containers": "0.3.7"
-}
-```
-
-### devDependencies
-
-```json
-{
-  "@cloudflare/workers-types": "5.20261011.1",
-  "@types/node": "26.6.5",
-  "typescript": "7.0.2",
-  "wrangler": "4.149.0"
-}
-```
-
-
-## `deploy/cloudflare/package-lock.json`
-
-| Package path | Version |
+| Group | Requirement |
 | --- | --- |
-| `node_modules/@cloudflare/containers` | `0.3.7` |
-| `node_modules/@cloudflare/kv-asset-handler` | `0.5.0` |
-| `node_modules/@cloudflare/unenv-preset` | `2.16.2` |
-| `node_modules/@cloudflare/workerd-darwin-64` | `1.20261006.1` |
-| `node_modules/@cloudflare/workerd-darwin-arm64` | `1.20261006.1` |
-| `node_modules/@cloudflare/workerd-linux-64` | `1.20261006.1` |
-| `node_modules/@cloudflare/workerd-linux-arm64` | `1.20261006.1` |
-| `node_modules/@cloudflare/workerd-windows-64` | `1.20261006.1` |
-| `node_modules/@cloudflare/workers-types` | `5.20261011.1` |
-| `node_modules/@cspotcode/source-map-support` | `0.8.1` |
-| `node_modules/@emnapi/runtime` | `1.11.3` |
-| `node_modules/@esbuild/aix-ppc64` | `0.28.2` |
-| `node_modules/@esbuild/android-arm` | `0.28.2` |
-| `node_modules/@esbuild/android-arm64` | `0.28.2` |
-| `node_modules/@esbuild/android-x64` | `0.28.2` |
-| `node_modules/@esbuild/darwin-arm64` | `0.28.2` |
-| `node_modules/@esbuild/darwin-x64` | `0.28.2` |
-| `node_modules/@esbuild/freebsd-arm64` | `0.28.2` |
-| `node_modules/@esbuild/freebsd-x64` | `0.28.2` |
-| `node_modules/@esbuild/linux-arm` | `0.28.2` |
-| `node_modules/@esbuild/linux-arm64` | `0.28.2` |
-| `node_modules/@esbuild/linux-ia32` | `0.28.2` |
-| `node_modules/@esbuild/linux-loong64` | `0.28.2` |
-| `node_modules/@esbuild/linux-mips64el` | `0.28.2` |
-| `node_modules/@esbuild/linux-ppc64` | `0.28.2` |
-| `node_modules/@esbuild/linux-riscv64` | `0.28.2` |
-| `node_modules/@esbuild/linux-s390x` | `0.28.2` |
-| `node_modules/@esbuild/linux-x64` | `0.28.2` |
-| `node_modules/@esbuild/netbsd-arm64` | `0.28.2` |
-| `node_modules/@esbuild/netbsd-x64` | `0.28.2` |
-| `node_modules/@esbuild/openbsd-arm64` | `0.28.2` |
-| `node_modules/@esbuild/openbsd-x64` | `0.28.2` |
-| `node_modules/@esbuild/openharmony-arm64` | `0.28.2` |
-| `node_modules/@esbuild/sunos-x64` | `0.28.2` |
-| `node_modules/@esbuild/win32-arm64` | `0.28.2` |
-| `node_modules/@esbuild/win32-ia32` | `0.28.2` |
-| `node_modules/@esbuild/win32-x64` | `0.28.2` |
-| `node_modules/@img/colour` | `1.1.0` |
-| `node_modules/@img/sharp-darwin-arm64` | `0.35.5` |
-| `node_modules/@img/sharp-darwin-x64` | `0.35.5` |
-| `node_modules/@img/sharp-freebsd-wasm32` | `0.35.5` |
-| `node_modules/@img/sharp-libvips-darwin-arm64` | `1.3.4` |
-| `node_modules/@img/sharp-libvips-darwin-x64` | `1.3.4` |
-| `node_modules/@img/sharp-libvips-linux-arm` | `1.3.4` |
-| `node_modules/@img/sharp-libvips-linux-arm64` | `1.3.4` |
-| `node_modules/@img/sharp-libvips-linux-ppc64` | `1.3.4` |
-| `node_modules/@img/sharp-libvips-linux-riscv64` | `1.3.4` |
-| `node_modules/@img/sharp-libvips-linux-s390x` | `1.3.4` |
-| `node_modules/@img/sharp-libvips-linux-x64` | `1.3.4` |
-| `node_modules/@img/sharp-libvips-linuxmusl-arm64` | `1.3.4` |
-| `node_modules/@img/sharp-libvips-linuxmusl-x64` | `1.3.4` |
-| `node_modules/@img/sharp-linux-arm` | `0.35.5` |
-| `node_modules/@img/sharp-linux-arm64` | `0.35.5` |
-| `node_modules/@img/sharp-linux-ppc64` | `0.35.5` |
-| `node_modules/@img/sharp-linux-riscv64` | `0.35.5` |
-| `node_modules/@img/sharp-linux-s390x` | `0.35.5` |
-| `node_modules/@img/sharp-linux-x64` | `0.35.5` |
-| `node_modules/@img/sharp-linuxmusl-arm64` | `0.35.5` |
-| `node_modules/@img/sharp-linuxmusl-x64` | `0.35.5` |
-| `node_modules/@img/sharp-wasm32` | `0.35.5` |
-| `node_modules/@img/sharp-webcontainers-wasm32` | `0.35.5` |
-| `node_modules/@img/sharp-win32-arm64` | `0.35.5` |
-| `node_modules/@img/sharp-win32-ia32` | `0.35.5` |
-| `node_modules/@img/sharp-win32-x64` | `0.35.5` |
-| `node_modules/@jridgewell/resolve-uri` | `3.1.2` |
-| `node_modules/@jridgewell/sourcemap-codec` | `1.6.0` |
-| `node_modules/@jridgewell/trace-mapping` | `0.3.9` |
-| `node_modules/@poppinss/colors` | `4.1.6` |
-| `node_modules/@poppinss/dumper` | `0.6.5` |
-| `node_modules/@poppinss/exception` | `1.2.3` |
-| `node_modules/@sindresorhus/is` | `7.2.0` |
-| `node_modules/@speed-highlight/core` | `1.2.24` |
-| `node_modules/@types/node` | `26.6.5` |
-| `node_modules/@typescript/typescript-aix-ppc64` | `7.0.2` |
-| `node_modules/@typescript/typescript-darwin-arm64` | `7.0.2` |
-| `node_modules/@typescript/typescript-darwin-x64` | `7.0.2` |
-| `node_modules/@typescript/typescript-freebsd-arm64` | `7.0.2` |
-| `node_modules/@typescript/typescript-freebsd-x64` | `7.0.2` |
-| `node_modules/@typescript/typescript-linux-arm` | `7.0.2` |
-| `node_modules/@typescript/typescript-linux-arm64` | `7.0.2` |
-| `node_modules/@typescript/typescript-linux-loong64` | `7.0.2` |
-| `node_modules/@typescript/typescript-linux-mips64el` | `7.0.2` |
-| `node_modules/@typescript/typescript-linux-ppc64` | `7.0.2` |
-| `node_modules/@typescript/typescript-linux-riscv64` | `7.0.2` |
-| `node_modules/@typescript/typescript-linux-s390x` | `7.0.2` |
-| `node_modules/@typescript/typescript-linux-x64` | `7.0.2` |
-| `node_modules/@typescript/typescript-netbsd-arm64` | `7.0.2` |
-| `node_modules/@typescript/typescript-netbsd-x64` | `7.0.2` |
-| `node_modules/@typescript/typescript-openbsd-arm64` | `7.0.2` |
-| `node_modules/@typescript/typescript-openbsd-x64` | `7.0.2` |
-| `node_modules/@typescript/typescript-sunos-x64` | `7.0.2` |
-| `node_modules/@typescript/typescript-win32-arm64` | `7.0.2` |
-| `node_modules/@typescript/typescript-win32-x64` | `7.0.2` |
-| `node_modules/blake3-wasm` | `2.1.5` |
-| `node_modules/cookie` | `1.1.1` |
-| `node_modules/detect-libc` | `2.1.2` |
-| `node_modules/error-stack-parser-es` | `1.0.5` |
-| `node_modules/esbuild` | `0.28.2` |
-| `node_modules/fsevents` | `2.3.3` |
-| `node_modules/kleur` | `4.1.5` |
-| `node_modules/miniflare` | `5.20261006.1-alpha` |
-| `node_modules/path-to-regexp` | `6.3.0` |
-| `node_modules/pathe` | `2.0.3` |
-| `node_modules/semver` | `7.8.5` |
-| `node_modules/sharp` | `0.35.5` |
-| `node_modules/supports-color` | `10.2.2` |
-| `node_modules/tslib` | `2.8.1` |
-| `node_modules/typescript` | `7.0.2` |
-| `node_modules/undici` | `7.29.1` |
-| `node_modules/undici-types` | `8.9.0` |
-| `node_modules/unenv` | `2.0.0-rc.24` |
-| `node_modules/workerd` | `1.20261006.1` |
-| `node_modules/wrangler` | `4.149.0` |
-| `node_modules/ws` | `8.21.0` |
-| `node_modules/youch` | `4.1.0-beta.10` |
-| `node_modules/youch-core` | `0.3.3` |
+| development | pytest>=8,<10 |
+| development | ruff>=0.12,<1 |
+| development | mypy>=1.16,<2 |
+| development | pypdf>=5,<7 |
+| development | playwright>=1.55,<2 |
 
+## Complete uv.lock package inventory (61)
+
+Locked versions are snapshot facts, not recommendations or a current vulnerability assessment.
+
+| Package | Version |
+| --- | --- |
+| alembic | 1.20.0 |
+| annotated-doc | 0.0.5 |
+| annotated-types | 0.8.0 |
+| anyio | 4.15.1 |
+| authlib | 1.8.0 |
+| brotli | 1.2.0 |
+| brotlicffi | 1.2.0.2 |
+| certifi | 2026.7.22 |
+| cffi | 2.1.1 |
+| click | 8.5.0 |
+| colorama | 0.4.6 |
+| cryptography | 48.0.1 |
+| cssselect2 | 0.10.1 |
+| fastapi | 0.143.0 |
+| fonttools | 4.66.1 |
+| greenlet | 3.5.6 |
+| h11 | 0.16.0 |
+| httpcore | 1.0.9 |
+| httpx | 0.28.1 |
+| idna | 3.20 |
+| iniconfig | 2.3.1 |
+| itsdangerous | 2.2.0 |
+| jinja2 | 3.1.6 |
+| joserfc | 1.7.5 |
+| librt | 0.16.0 |
+| mako | 1.4.3 |
+| markupsafe | 3.0.4 |
+| mypy | 1.20.2 |
+| mypy-extensions | 1.1.0 |
+| opentelemetry-api | 1.45.1 |
+| packaging | 26.3 |
+| pathspec | 1.1.1 |
+| pillow | 12.3.0 |
+| playwright | 1.63.0 |
+| pluggy | 1.6.0 |
+| psycopg | 3.3.6 |
+| psycopg-binary | 3.3.6 |
+| pycparser | 3.11 |
+| pydantic | 2.14.0 |
+| pydantic-core | 2.50.0 |
+| pydyf | 0.12.1 |
+| pyee | 13.0.1 |
+| pygments | 2.21.0 |
+| pypdf | 6.20.0 |
+| pyphen | 0.18.1 |
+| pytest | 9.1.1 |
+| python-dotenv | 1.2.4 |
+| python-multipart | 0.0.32 |
+| ruff | 0.17.0 |
+| sqlalchemy | 2.1.4 |
+| starlette | 1.7.0 |
+| timeker | 0.1.0 |
+| tinycss2 | 1.5.1 |
+| tinyhtml5 | 2.1.0 |
+| typing-extensions | 4.16.0 |
+| typing-inspection | 0.4.4 |
+| tzdata | 2026.5 |
+| uvicorn | 0.54.0 |
+| weasyprint | 70.0 |
+| webencodings | 0.6.1 |
+| zopfli | 0.4.3 |
+
+## Worker package declarations
+
+[`deploy/cloudflare/package.json`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/package.json)
+
+| Group | Package | Version |
+| --- | --- | --- |
+| dependencies | @cloudflare/containers | 0.3.7 |
+| devDependencies | @cloudflare/workers-types | 5.20261011.1 |
+| devDependencies | @types/node | 26.6.5 |
+| devDependencies | typescript | 7.0.2 |
+| devDependencies | wrangler | 4.149.0 |
 
 ---
 
-<a id="chapter-12"></a>
+# Source map, tests and complete snapshot manifest
 
-<!-- Source chapter: 12-source-map-tests-and-manifest.md -->
-
-# Source map, test catalog and snapshot manifest
-
-Snapshot: 2026-10-16; Stage source-analysis commit `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`.
-Generated offline from tracked source. No application import, database connection, provider request, credential read or test execution occurred.
-This is a dated review appendix, not a replacement for canonical contracts. Source pointers below refer to this commit.
+Snapshot: 2026-10-18. Source commit `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` on `codex/ph3-stage`.
+Generated offline from tracked source only. No app import, product-test execution, database query, provider/identity action or deployment. Static counts do not describe executed tests or live routing/database state.
 
 ## Product Python modules
 
-| File | Module responsibility / docstring | Functions (all scopes) | Classes |
+| File | Module responsibility / docstring | Functions at all scopes | Classes |
 | --- | --- | --- | --- |
-| `app/__init__.py` | See narrative chapters and source | 0 | 0 |
-| `app/admission.py` | Durable admission across the central directory and fixed private-role factories. | 20 | 1 |
-| `app/admission_models.py` | Central admission records; never owned by an unverified or invented user. | 0 | 3 |
-| `app/admission_operations.py` | Explicit directory reconciliation and read-only admission readiness. | 3 | 0 |
-| `app/archive_routes.py` | Owner-only, bounded CSV exports; archived records never hydrate normal screens. | 8 | 0 |
-| `app/archiving.py` | One-way, export-only archive markers; financial records remain in PostgreSQL. | 7 | 0 |
-| `app/audit.py` | See narrative chapters and source | 1 | 0 |
-| `app/auth.py` | Canonical owner authentication with immutable identity and fixed tenant boundaries. | 8 | 1 |
-| `app/billing.py` | Transactional invoice reservation, issuance and exact payment accounting. | 25 | 0 |
-| `app/bot_check.py` | Verify the sign-in challenge before OAuth. Never log tokens or provider bodies. | 1 | 0 |
-| `app/case_routes.py` | Owner-only case and retained-archive screens. | 19 | 0 |
-| `app/cases.py` | Owner-scoped work cases and exact-minute attribution, without separate billing. | 6 | 0 |
-| `app/cli.py` | Management commands with safe terminal events and no credential output. | 1 | 0 |
-| `app/client_drafts.py` | Assistant proposals remain separate from active, billable client records. | 2 | 0 |
-| `app/clients.py` | See narrative chapters and source | 6 | 0 |
-| `app/config.py` | Explicit environment configuration, validated before serving requests. | 7 | 1 |
-| `app/contact.py` | Public support contact: bounded inputs, durable admission and private delivery. | 10 | 1 |
-| `app/credit_memo_models.py` | Immutable full-cancellation artifacts, separate from original invoice PDFs. | 0 | 1 |
-| `app/db.py` | Database/session boundaries; production never creates tables implicitly. | 2 | 0 |
-| `app/demo.py` | Fictional local review dataset; never merge it into an operational database. | 1 | 0 |
-| `app/domain.py` | Exact duration, business-week and currency functions. | 6 | 1 |
-| `app/email_auth.py` | Fixed Supabase email OTP transport; provider credentials remain transient server memory. | 14 | 2 |
-| `app/enrollment.py` | Explicit individual registration; verified identity never assigns a paid tier. | 15 | 0 |
-| `app/enrollment_models.py` | Tenant-local explicit registration and immutable external identity bindings. | 0 | 3 |
-| `app/enrollment_routes.py` | Explicit same-origin registration and managed email authentication forms. | 25 | 0 |
-| `app/forms.py` | Field validation shared by server-rendered editing flows. | 3 | 1 |
-| `app/integration_auth.py` | Authlib OAuth code/PKCE adapter and tenant-local revocable delegated credentials. | 48 | 9 |
-| `app/integration_models.py` | Tenant-local delegated authority, hashed credentials and retained operation receipts. | 4 | 5 |
-| `app/integration_routes.py` | Bounded same-origin OAuth, JSON API and stateless Streamable HTTP MCP adapters. | 29 | 0 |
-| `app/internal_routes.py` | Authenticated, bounded edge-to-container jobs; never a public mail relay. | 5 | 0 |
-| `app/library.py` | Owner-only document drafts, bounded imports and frozen publication versions. | 14 | 0 |
-| `app/library_models.py` | Private editable documents and retained, immutable publication artifacts. | 0 | 3 |
-| `app/library_routes.py` | Native owner forms for the private Library and document composer. | 18 | 0 |
-| `app/logging.py` | kommiBo-style JSON events with a stricter typed safe-field boundary. | 5 | 1 |
-| `app/lookups.py` | Bounded, scoped choices shared by native forms and progressive enhancement. | 6 | 0 |
-| `app/mail_models.py` | Private normalized mail and separately loaded extracted attachments. | 0 | 3 |
-| `app/mail_routes.py` | Owner mail import, private reading and revocable capture-address management. | 19 | 0 |
-| `app/mail_service.py` | Bounded MIME normalization, explicit assignment and idempotent mail custody. | 13 | 1 |
-| `app/main.py` | Application factory, security middleware and same-origin route composition. | 59 | 1 |
-| `app/models.py` | PostgreSQL domain entities with integer time and fixed precision money. | 0 | 19 |
-| `app/paddle.py` | Pinned Paddle environment transports; persisted authority and reconciliation live elsewhere. | 40 | 5 |
-| `app/pdf.py` | On-demand escaped PDF generation; no asset URL is allowed. | 2 | 0 |
-| `app/privacy.py` | Product-local privacy preferences; optional usage requires a fresh explicit choice. | 6 | 1 |
-| `app/project_attachments.py` | One bounded, immutable private agreement per project; download-only custody. | 4 | 0 |
-| `app/project_billing_routes.py` | Owner billing controls for an explicitly selected client project. | 6 | 0 |
-| `app/project_routes.py` | Owner project screens sharing the existing audited project service. | 14 | 0 |
-| `app/project_terms.py` | Project commercial terms shared by editing and explicit billing workflows. | 1 | 0 |
-| `app/proposal_sending.py` | Manual commercial document outbox, independent of invoices and collections. | 15 | 2 |
-| `app/proposal_sending_models.py` | Separate, retained owner-confirmed commercial document delivery records. | 0 | 2 |
-| `app/proposal_sending_routes.py` | Owner-only commercial review and manual delivery; no collection actions. | 13 | 0 |
-| `app/proposal_sending_transport.py` | Typed commercial attachments over the existing separately configured sender. | 9 | 2 |
-| `app/quoting.py` | Exact-minute estimates; publication never creates time, invoices or agreement acceptance. | 26 | 0 |
-| `app/quoting_models.py` | Case-bound estimates and immutable, privately published PDF revisions. | 0 | 4 |
-| `app/quoting_routes.py` | Case-bound estimate workbench and native, versioned editing flows. | 21 | 0 |
-| `app/reports.py` | Small operational reports, values prepared before template rendering. | 4 | 0 |
-| `app/repositories.py` | Shared persistence queries and lock acquisition, never template logic. | 3 | 0 |
-| `app/seed.py` | Idempotent supplied private seed and separate deterministic synthetic profile. | 1 | 0 |
-| `app/sending.py` | Explicit statement sending with durable claims and conservative delivery uncertainty. | 24 | 2 |
-| `app/sending_dispatch_routes.py` | Owner-requested dispatch, with the same tenant and CSRF boundary as Billing. | 5 | 0 |
-| `app/sending_models.py` | Retained owner-approved outbound statement plans and delivery history. | 0 | 4 |
-| `app/sending_routes.py` | Owner review and controls for explicitly enabled immutable statement delivery. | 18 | 0 |
-| `app/sending_transport.py` | Separate outbound transport; never reads authentication SMTP settings. | 3 | 1 |
-| `app/settings.py` | See narrative chapters and source | 7 | 0 |
-| `app/social_auth.py` | Direct Google and GitHub provider proof and readiness. | 3 | 1 |
-| `app/subscription_billing.py` | Verified Paddle Sandbox capacity; browser returns never confer entitlement. | 48 | 0 |
-| `app/subscription_billing_models.py` | Sandbox merchant bindings, durable effect intents and verified event receipts. | 0 | 3 |
-| `app/subscription_models.py` | Tenant-local capacity assignment and immutable owner operation receipts. | 0 | 2 |
-| `app/subscription_payment_routes.py` | Owner-only subscription commands and authenticated environment-pinned event ingress. | 19 | 0 |
-| `app/subscription_routes.py` | Single-owner subscription review and explicit, history-preserving Free enrollment. | 7 | 0 |
-| `app/subscriptions.py` | Approved catalog and one transactional tenant-wide active-capacity boundary. | 17 | 2 |
-| `app/tenancy.py` | Deployment-selected tenants; immutable fixed-role factories and request-local context. | 20 | 7 |
-| `app/tenant_demo.py` | Explicit, idempotent fictional dataset for a registered isolated demo tenant. | 1 | 0 |
-| `app/time_command_models.py` | Tenant-local source contributions and durable time-operation receipts. | 0 | 3 |
-| `app/time_commands.py` | Atomic source-owned Draft time commands shared by imports and integrations. | 17 | 0 |
-| `app/time_import.py` | Closed, bounded JSON and CSV time import with a shared canonical schema. | 11 | 0 |
-| `app/time_import_routes.py` | Bounded owner upload, exact preview and signed atomic import confirmation. | 14 | 0 |
-| `app/timecards.py` | See narrative chapters and source | 5 | 0 |
-| `app/usage.py` | Bounded optional category counts in existing sanitized logs, never business data. | 4 | 1 |
-| `app/workspace_operations.py` | Explicit, transactional preparation of the protected admission slot inventory. | 14 | 1 |
+| [`app/__init__.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/__init__.py) | See narrative chapters and source | 0 | 0 |
+| [`app/admission.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py) | Durable admission across the central directory and fixed private-role factories. | 20 | 1 |
+| [`app/admission_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py) | Central admission records; never owned by an unverified or invented user. | 0 | 3 |
+| [`app/admission_operations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_operations.py) | Explicit directory reconciliation and read-only admission readiness. | 3 | 0 |
+| [`app/archive_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archive_routes.py) | Owner-only, bounded CSV exports; archived records never hydrate normal screens. | 8 | 0 |
+| [`app/archiving.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archiving.py) | One-way, export-only archive markers; financial records remain in PostgreSQL. | 7 | 0 |
+| [`app/audit.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/audit.py) | See narrative chapters and source | 1 | 0 |
+| [`app/auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/auth.py) | Canonical owner authentication with immutable identity and fixed tenant boundaries. | 8 | 1 |
+| [`app/billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/billing.py) | Transactional invoice reservation, issuance and exact payment accounting. | 28 | 0 |
+| [`app/bot_check.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/bot_check.py) | Verify the sign-in challenge before OAuth. Never log tokens or provider bodies. | 1 | 0 |
+| [`app/case_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py) | Owner-only case and retained-archive screens. | 23 | 0 |
+| [`app/cases.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/cases.py) | Owner-scoped work cases and exact-minute attribution, without separate billing. | 7 | 0 |
+| [`app/cli.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/cli.py) | Management commands with safe terminal events and no credential output. | 1 | 0 |
+| [`app/client_drafts.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/client_drafts.py) | Assistant proposals remain separate from active, billable client records. | 2 | 0 |
+| [`app/client_sources.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/client_sources.py) | Bounded private client source documents or owner-provided HTTPS references. | 6 | 0 |
+| [`app/clients.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/clients.py) | See narrative chapters and source | 7 | 0 |
+| [`app/config.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py) | Explicit environment configuration, validated before serving requests. | 7 | 1 |
+| [`app/contact.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/contact.py) | Public support contact: bounded inputs, durable admission and private delivery. | 10 | 1 |
+| [`app/credit_memo_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/credit_memo_models.py) | Immutable full-cancellation artifacts, separate from original invoice PDFs. | 0 | 1 |
+| [`app/dashboard.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/dashboard.py) | Owner-scoped dashboard summaries from recorded work, without activity telemetry. | 2 | 0 |
+| [`app/db.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py) | Database/session boundaries; production never creates tables implicitly. | 2 | 0 |
+| [`app/demo.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/demo.py) | Fictional local review dataset; never merge it into an operational database. | 1 | 0 |
+| [`app/domain.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/domain.py) | Exact duration, business-week and currency functions. | 6 | 1 |
+| [`app/email_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/email_auth.py) | Fixed Supabase email OTP transport; provider credentials remain transient server memory. | 14 | 2 |
+| [`app/enrollment.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment.py) | Explicit individual registration; verified identity never assigns a paid tier. | 15 | 0 |
+| [`app/enrollment_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py) | Tenant-local explicit registration and immutable external identity bindings. | 0 | 3 |
+| [`app/enrollment_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py) | Explicit same-origin registration and managed email authentication forms. | 25 | 0 |
+| [`app/flexfields.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/flexfields.py) | Eight optional owner fields, matching the bounded Leudani slot contract. | 2 | 0 |
+| [`app/forms.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/forms.py) | Field validation shared by server-rendered editing flows. | 5 | 1 |
+| [`app/integration_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py) | Authlib OAuth code/PKCE adapter and tenant-local revocable delegated credentials. | 48 | 9 |
+| [`app/integration_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py) | Tenant-local delegated authority, hashed credentials and retained operation receipts. | 4 | 5 |
+| [`app/integration_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py) | Bounded same-origin OAuth, JSON API and stateless Streamable HTTP MCP adapters. | 29 | 0 |
+| [`app/internal_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py) | Authenticated, bounded edge-to-container jobs; never a public mail relay. | 5 | 0 |
+| [`app/library.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library.py) | Owner-only document drafts, bounded imports and frozen publication versions. | 14 | 0 |
+| [`app/library_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py) | Private editable documents and retained, immutable publication artifacts. | 0 | 3 |
+| [`app/library_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py) | Native owner forms for the private Library and document composer. | 18 | 0 |
+| [`app/logging.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/logging.py) | kommiBo-style JSON events with a stricter typed safe-field boundary. | 5 | 1 |
+| [`app/lookups.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/lookups.py) | Bounded, scoped choices shared by native forms and progressive enhancement. | 6 | 0 |
+| [`app/mail_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py) | Private normalized mail and separately loaded extracted attachments. | 0 | 3 |
+| [`app/mail_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py) | Owner mail import, private reading and revocable capture-address management. | 19 | 0 |
+| [`app/mail_service.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_service.py) | Bounded MIME normalization, explicit assignment and idempotent mail custody. | 13 | 1 |
+| [`app/main.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py) | Application factory, security middleware and same-origin route composition. | 68 | 1 |
+| [`app/models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py) | PostgreSQL domain entities with integer time and fixed precision money. | 0 | 20 |
+| [`app/paddle.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/paddle.py) | Pinned Paddle environment transports; persisted authority and reconciliation live elsewhere. | 40 | 5 |
+| [`app/pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/pagination.py) | Owner-configured, server-side pages with stable native navigation URLs. | 6 | 1 |
+| [`app/pdf.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/pdf.py) | On-demand escaped PDF generation; no asset URL is allowed. | 2 | 0 |
+| [`app/privacy.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/privacy.py) | Product-local privacy preferences; optional usage requires a fresh explicit choice. | 6 | 1 |
+| [`app/project_attachments.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_attachments.py) | One bounded, immutable private agreement per project; download-only custody. | 4 | 0 |
+| [`app/project_billing_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_billing_routes.py) | Owner billing controls for an explicitly selected client project. | 6 | 0 |
+| [`app/project_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_routes.py) | Owner project screens sharing the existing audited project service. | 14 | 0 |
+| [`app/project_terms.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_terms.py) | Project commercial terms shared by editing and explicit billing workflows. | 1 | 0 |
+| [`app/proposal_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending.py) | Manual commercial document outbox, independent of invoices and collections.  A committed uncertain claim precedes every provider call. An interrupted call is never automatically replayed. Callers supply the authenticated tenant factory, never a schema, provider credential, recipient from a URL, or payment state. | 15 | 2 |
+| [`app/proposal_sending_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_models.py) | Separate, retained owner-confirmed commercial document delivery records. | 0 | 2 |
+| [`app/proposal_sending_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py) | Owner-only commercial review and manual delivery; no collection actions. | 13 | 0 |
+| [`app/proposal_sending_transport.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_transport.py) | Typed commercial attachments over the existing separately configured sender.  Provider contract: https://developers.cloudflare.com/api/resources/email_sending/methods/send/ No idempotency guarantee is inferred. Durable manual claims belong to the outbox. | 9 | 2 |
+| [`app/quoting.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting.py) | Exact-minute estimates; publication never creates time, invoices or agreement acceptance. | 28 | 0 |
+| [`app/quoting_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py) | Case-bound estimates and immutable, privately published PDF revisions. | 0 | 4 |
+| [`app/quoting_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py) | Case-bound estimate workbench and native, versioned editing flows. | 21 | 0 |
+| [`app/record_references.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/record_references.py) | Stable human-facing project references without changing persisted identities. | 2 | 0 |
+| [`app/reference_choices.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/reference_choices.py) | Cached, local reference choices; stored legacy values remain a form concern. | 4 | 0 |
+| [`app/reports.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/reports.py) | Small operational reports, values prepared before template rendering. | 5 | 0 |
+| [`app/repositories.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/repositories.py) | Shared persistence queries and lock acquisition, never template logic. | 3 | 0 |
+| [`app/search_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/search_routes.py) | Owner-only global search with a native page and progressive modal response. | 2 | 0 |
+| [`app/seed.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/seed.py) | Idempotent supplied private seed and separate deterministic synthetic profile. | 1 | 0 |
+| [`app/sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending.py) | Explicit statement sending with durable claims and conservative delivery uncertainty.  Provider acceptance is not client receipt or payment. No function changes invoice receipt dates, payment terms, PDF bytes, or payment records. Tenant routing belongs to the existing fixed-schema session factory; callers never supply a schema. | 24 | 2 |
+| [`app/sending_dispatch_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_dispatch_routes.py) | Owner-requested dispatch, with the same tenant and CSRF boundary as Billing. | 5 | 0 |
+| [`app/sending_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py) | Retained owner-approved outbound statement plans and delivery history. | 0 | 4 |
+| [`app/sending_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py) | Owner review and controls for explicitly enabled immutable statement delivery. | 18 | 0 |
+| [`app/sending_transport.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_transport.py) | Separate outbound transport; never reads authentication SMTP settings.  Cloudflare has no documented send idempotency contract. The durable outbox owns duplicate prevention. Ambiguous replies must never cause an automatic replay. | 3 | 1 |
+| [`app/settings.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/settings.py) | See narrative chapters and source | 8 | 0 |
+| [`app/social_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/social_auth.py) | Direct Google and GitHub provider proof and readiness. | 3 | 1 |
+| [`app/static_assets.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/static_assets.py) | Startup asset fingerprints and cache policy for public static files only. | 3 | 1 |
+| [`app/subscription_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing.py) | Verified Paddle Sandbox capacity; browser returns never confer entitlement. | 48 | 0 |
+| [`app/subscription_billing_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py) | Sandbox merchant bindings, durable effect intents and verified event receipts. | 0 | 3 |
+| [`app/subscription_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_models.py) | Tenant-local capacity assignment and immutable owner operation receipts. | 0 | 2 |
+| [`app/subscription_payment_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py) | Owner-only subscription commands and authenticated environment-pinned event ingress. | 19 | 0 |
+| [`app/subscription_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_routes.py) | Single-owner subscription review and explicit, history-preserving Free enrollment. | 7 | 0 |
+| [`app/subscriptions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscriptions.py) | Approved catalog and one transactional tenant-wide active-capacity boundary. | 17 | 2 |
+| [`app/tenancy.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py) | Deployment-selected tenants; immutable fixed-role factories and request-local context. | 20 | 7 |
+| [`app/tenant_demo.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenant_demo.py) | Explicit, idempotent fictional dataset for a registered isolated demo tenant. | 1 | 0 |
+| [`app/time_command_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py) | Tenant-local source contributions and durable time-operation receipts. | 0 | 3 |
+| [`app/time_commands.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_commands.py) | Atomic source-owned Draft time commands shared by imports and integrations. | 17 | 0 |
+| [`app/time_import.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import.py) | Closed, bounded JSON and CSV time import with a shared canonical schema. | 11 | 0 |
+| [`app/time_import_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import_routes.py) | Bounded owner upload, exact preview and signed atomic import confirmation. | 14 | 0 |
+| [`app/timecards.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/timecards.py) | See narrative chapters and source | 7 | 0 |
+| [`app/usage.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/usage.py) | Bounded optional category counts in existing sanitized logs, never business data. | 4 | 1 |
+| [`app/work_history.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/work_history.py) | A short owner-readable timeline over the retained business audit trail. | 3 | 0 |
+| [`app/work_lifecycle.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/work_lifecycle.py) | Guard retained work before an owner closes or archives its parent. | 6 | 0 |
+| [`app/workspace_operations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/workspace_operations.py) | Explicit, transactional preparation of the protected admission slot inventory. | 14 | 1 |
+| [`app/workspace_search.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/workspace_search.py) | Bounded literal search within the server-selected private workspace. | 3 | 0 |
 
-## Test source catalog
+## Declared test functions (1089)
 
-Function counts are static declarations, not executed-case counts. Parametrization expands tests; fixtures/markers/collection affect execution. Refer to chapter07 for actual receipts and failure attribution. No tests were run to generate this appendix.
+These are AST function declarations, not collected/parameterized pytest cases and not execution results. Names do not prove assertions or coverage.
 
-| Test file | Declared test functions |
+| File | Declared test functions |
 | --- | --- |
-| `tests/e2e/test_archive_browser.py` | 1 |
-| `tests/e2e/test_browser.py` | 4 |
-| `tests/e2e/test_case_workflow_browser.py` | 2 |
-| `tests/e2e/test_clock.py` | 3 |
-| `tests/e2e/test_contact_browser.py` | 2 |
-| `tests/e2e/test_cookie_flow_browser.py` | 1 |
-| `tests/e2e/test_cookie_preferences_browser.py` | 3 |
-| `tests/e2e/test_credit_memos_browser.py` | 2 |
-| `tests/e2e/test_delegated_oauth_browser.py` | 4 |
-| `tests/e2e/test_live_checkout_browser.py` | 4 |
-| `tests/e2e/test_lookups_browser.py` | 2 |
-| `tests/e2e/test_mail_attachments_browser.py` | 1 |
-| `tests/e2e/test_mail_browser.py` | 1 |
-| `tests/e2e/test_oauth_csp_browser.py` | 2 |
-| `tests/e2e/test_onboarding_browser.py` | 14 |
-| `tests/e2e/test_paddle_overlay_browser.py` | 1 |
-| `tests/e2e/test_project_billing_browser.py` | 1 |
-| `tests/e2e/test_projects_browser.py` | 2 |
-| `tests/e2e/test_proposal_sending_browser.py` | 1 |
-| `tests/e2e/test_quoting_library_browser.py` | 3 |
-| `tests/e2e/test_quoting_lookup_browser.py` | 1 |
-| `tests/e2e/test_sending_browser.py` | 3 |
-| `tests/e2e/test_sending_manual_followup_browser.py` | 1 |
-| `tests/e2e/test_session_recovery_browser.py` | 1 |
-| `tests/e2e/test_shared_auth_challenge.py` | 5 |
-| `tests/e2e/test_subscription_browser.py` | 2 |
-| `tests/e2e/test_time_import_browser.py` | 1 |
-| `tests/e2e/test_timecard_local_clock.py` | 1 |
-| `tests/e2e/test_timecard_selection.py` | 4 |
-| `tests/e2e/test_ui_refresh_browser.py` | 6 |
-| `tests/e2e/test_work_management.py` | 3 |
-| `tests/e2e/test_workflow_feedback_browser.py` | 4 |
-| `tests/integration/test_archiving.py` | 13 |
-| `tests/integration/test_auth_get_sessions.py` | 6 |
-| `tests/integration/test_auth_notice.py` | 9 |
-| `tests/integration/test_case_lists.py` | 5 |
-| `tests/integration/test_case_workflow.py` | 5 |
-| `tests/integration/test_cases.py` | 18 |
-| `tests/integration/test_cases_migration.py` | 2 |
-| `tests/integration/test_contact.py` | 12 |
-| `tests/integration/test_credit_memos.py` | 16 |
-| `tests/integration/test_delegated_integration.py` | 7 |
-| `tests/integration/test_email_start_retries.py` | 16 |
-| `tests/integration/test_hardening.py` | 17 |
-| `tests/integration/test_internal_jobs.py` | 2 |
-| `tests/integration/test_library.py` | 9 |
-| `tests/integration/test_live_billing.py` | 4 |
-| `tests/integration/test_lookups.py` | 10 |
-| `tests/integration/test_mail.py` | 15 |
-| `tests/integration/test_mail_attachments.py` | 12 |
-| `tests/integration/test_mail_case_reference.py` | 3 |
-| `tests/integration/test_migrations.py` | 3 |
-| `tests/integration/test_oauth.py` | 1 |
-| `tests/integration/test_onboarding_auth.py` | 27 |
-| `tests/integration/test_optional_usage.py` | 4 |
-| `tests/integration/test_privacy_preferences.py` | 10 |
-| `tests/integration/test_project_attachments.py` | 7 |
-| `tests/integration/test_project_attachments_migration.py` | 2 |
-| `tests/integration/test_project_billing_routes.py` | 1 |
-| `tests/integration/test_project_lifecycle_work.py` | 1 |
-| `tests/integration/test_projects.py` | 12 |
-| `tests/integration/test_proposal_sending.py` | 14 |
-| `tests/integration/test_public_admission.py` | 31 |
-| `tests/integration/test_quoting.py` | 15 |
-| `tests/integration/test_quoting_routes.py` | 10 |
-| `tests/integration/test_recovery_rehearsal.py` | 2 |
-| `tests/integration/test_routes.py` | 6 |
-| `tests/integration/test_save_feedback.py` | 5 |
-| `tests/integration/test_sending_dispatch.py` | 12 |
-| `tests/integration/test_sending_isolation.py` | 7 |
-| `tests/integration/test_sending_manual_followup.py` | 5 |
-| `tests/integration/test_sending_routes.py` | 6 |
-| `tests/integration/test_session_recovery.py` | 1 |
-| `tests/integration/test_social_auth.py` | 9 |
-| `tests/integration/test_subscription_billing.py` | 25 |
-| `tests/integration/test_subscription_capacity.py` | 15 |
-| `tests/integration/test_subscription_domain.py` | 12 |
-| `tests/integration/test_subscription_http.py` | 9 |
-| `tests/integration/test_subscription_payments_http.py` | 10 |
-| `tests/integration/test_subscription_retention.py` | 17 |
-| `tests/integration/test_tenancy.py` | 8 |
-| `tests/integration/test_tenancy_capacity.py` | 3 |
-| `tests/integration/test_tenant_demo.py` | 1 |
-| `tests/integration/test_time_commands.py` | 13 |
-| `tests/integration/test_time_import_http.py` | 4 |
-| `tests/integration/test_ui_refresh.py` | 6 |
-| `tests/integration/test_usage_browser_flow.py` | 1 |
-| `tests/integration/test_work_forms.py` | 2 |
-| `tests/integration/test_workflow.py` | 8 |
-| `tests/integration/test_workspace_operations.py` | 14 |
-| `tests/test_project_billing.py` | 14 |
-| `tests/test_project_billing_reports.py` | 2 |
-| `tests/test_sending.py` | 21 |
-| `tests/test_tenancy_config.py` | 8 |
-| `tests/unit/test_archive_dates.py` | 8 |
-| `tests/unit/test_bot_check.py` | 4 |
-| `tests/unit/test_domain.py` | 8 |
-| `tests/unit/test_email_auth.py` | 12 |
-| `tests/unit/test_integration_contracts.py` | 10 |
-| `tests/unit/test_invitation_template.py` | 3 |
-| `tests/unit/test_library.py` | 9 |
-| `tests/unit/test_live_templates.py` | 11 |
-| `tests/unit/test_logging.py` | 4 |
-| `tests/unit/test_onboarding_templates.py` | 25 |
-| `tests/unit/test_paddle.py` | 30 |
-| `tests/unit/test_paddle_templates.py` | 8 |
-| `tests/unit/test_production_capabilities.py` | 11 |
-| `tests/unit/test_proposal_sending.py` | 6 |
-| `tests/unit/test_proposal_sending_transport.py` | 8 |
-| `tests/unit/test_public_admission_proof.py` | 6 |
-| `tests/unit/test_quoting.py` | 8 |
-| `tests/unit/test_quoting_routes.py` | 7 |
-| `tests/unit/test_retention.py` | 11 |
-| `tests/unit/test_sending_templates.py` | 9 |
-| `tests/unit/test_sending_transport.py` | 9 |
-| `tests/unit/test_social_auth_proof.py` | 8 |
-| `tests/unit/test_subscription_templates.py` | 8 |
-| `tests/unit/test_subscriptions.py` | 7 |
-| `tests/unit/test_templates.py` | 7 |
-| `tests/unit/test_time_import.py` | 4 |
+| [`tests/e2e/test_archive_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_archive_browser.py) | 1 |
+| [`tests/e2e/test_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_browser.py) | 4 |
+| [`tests/e2e/test_case_mass_edit_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_case_mass_edit_browser.py) | 1 |
+| [`tests/e2e/test_case_workflow_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_case_workflow_browser.py) | 2 |
+| [`tests/e2e/test_clock.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_clock.py) | 3 |
+| [`tests/e2e/test_contact_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_contact_browser.py) | 2 |
+| [`tests/e2e/test_cookie_flow_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_cookie_flow_browser.py) | 1 |
+| [`tests/e2e/test_cookie_preferences_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_cookie_preferences_browser.py) | 3 |
+| [`tests/e2e/test_credit_memos_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_credit_memos_browser.py) | 2 |
+| [`tests/e2e/test_dashboard_detail_pagination_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_dashboard_detail_pagination_browser.py) | 1 |
+| [`tests/e2e/test_dashboard_outstanding_pagination_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_dashboard_outstanding_pagination_browser.py) | 1 |
+| [`tests/e2e/test_delegated_oauth_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_delegated_oauth_browser.py) | 4 |
+| [`tests/e2e/test_ker_navigation_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_ker_navigation_browser.py) | 1 |
+| [`tests/e2e/test_live_checkout_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_live_checkout_browser.py) | 4 |
+| [`tests/e2e/test_lookups_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_lookups_browser.py) | 2 |
+| [`tests/e2e/test_mail_attachments_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_mail_attachments_browser.py) | 1 |
+| [`tests/e2e/test_mail_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_mail_browser.py) | 1 |
+| [`tests/e2e/test_oauth_csp_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_oauth_csp_browser.py) | 2 |
+| [`tests/e2e/test_onboarding_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_onboarding_browser.py) | 14 |
+| [`tests/e2e/test_owner_work_refinements_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_owner_work_refinements_browser.py) | 1 |
+| [`tests/e2e/test_paddle_overlay_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_paddle_overlay_browser.py) | 1 |
+| [`tests/e2e/test_project_billing_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_project_billing_browser.py) | 1 |
+| [`tests/e2e/test_projects_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_projects_browser.py) | 2 |
+| [`tests/e2e/test_proposal_sending_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_proposal_sending_browser.py) | 1 |
+| [`tests/e2e/test_quoting_library_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_quoting_library_browser.py) | 3 |
+| [`tests/e2e/test_quoting_lookup_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_quoting_lookup_browser.py) | 1 |
+| [`tests/e2e/test_record_pagination_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_record_pagination_browser.py) | 4 |
+| [`tests/e2e/test_reference_fields_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_reference_fields_browser.py) | 1 |
+| [`tests/e2e/test_sending_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_sending_browser.py) | 3 |
+| [`tests/e2e/test_sending_manual_followup_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_sending_manual_followup_browser.py) | 1 |
+| [`tests/e2e/test_session_recovery_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_session_recovery_browser.py) | 1 |
+| [`tests/e2e/test_settings_cache_refresh_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_settings_cache_refresh_browser.py) | 2 |
+| [`tests/e2e/test_shared_auth_challenge.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_shared_auth_challenge.py) | 5 |
+| [`tests/e2e/test_stage_refinements.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_stage_refinements.py) | 3 |
+| [`tests/e2e/test_subscription_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_subscription_browser.py) | 2 |
+| [`tests/e2e/test_time_import_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_time_import_browser.py) | 1 |
+| [`tests/e2e/test_timecard_local_clock.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_local_clock.py) | 1 |
+| [`tests/e2e/test_timecard_productivity_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_productivity_browser.py) | 4 |
+| [`tests/e2e/test_timecard_selection.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_selection.py) | 4 |
+| [`tests/e2e/test_timecard_week_metrics_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_week_metrics_browser.py) | 1 |
+| [`tests/e2e/test_ui_refresh_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_ui_refresh_browser.py) | 6 |
+| [`tests/e2e/test_work_management.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_work_management.py) | 3 |
+| [`tests/e2e/test_workflow_feedback_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_workflow_feedback_browser.py) | 4 |
+| [`tests/e2e/test_workspace_search_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_workspace_search_browser.py) | 4 |
+| [`tests/integration/test_archiving.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_archiving.py) | 13 |
+| [`tests/integration/test_auth_get_sessions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_auth_get_sessions.py) | 6 |
+| [`tests/integration/test_auth_notice.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_auth_notice.py) | 9 |
+| [`tests/integration/test_case_lists.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_lists.py) | 5 |
+| [`tests/integration/test_case_mass_edit.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_mass_edit.py) | 6 |
+| [`tests/integration/test_case_retention.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_retention.py) | 4 |
+| [`tests/integration/test_case_workflow.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_workflow.py) | 5 |
+| [`tests/integration/test_cases.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_cases.py) | 18 |
+| [`tests/integration/test_cases_migration.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_cases_migration.py) | 2 |
+| [`tests/integration/test_client_codes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_client_codes.py) | 12 |
+| [`tests/integration/test_contact.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_contact.py) | 12 |
+| [`tests/integration/test_credit_memos.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_credit_memos.py) | 16 |
+| [`tests/integration/test_dashboard_contribution_scope.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_contribution_scope.py) | 3 |
+| [`tests/integration/test_dashboard_detail_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_detail_pagination.py) | 4 |
+| [`tests/integration/test_dashboard_outstanding_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_outstanding_pagination.py) | 4 |
+| [`tests/integration/test_dashboard_performance.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_performance.py) | 5 |
+| [`tests/integration/test_delegated_integration.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_delegated_integration.py) | 7 |
+| [`tests/integration/test_email_start_retries.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_email_start_retries.py) | 16 |
+| [`tests/integration/test_financial_query_growth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_financial_query_growth.py) | 7 |
+| [`tests/integration/test_hardening.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_hardening.py) | 17 |
+| [`tests/integration/test_internal_jobs.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_internal_jobs.py) | 2 |
+| [`tests/integration/test_ker_navigation.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_ker_navigation.py) | 3 |
+| [`tests/integration/test_library.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_library.py) | 9 |
+| [`tests/integration/test_live_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_live_billing.py) | 4 |
+| [`tests/integration/test_lookups.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_lookups.py) | 10 |
+| [`tests/integration/test_mail.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_mail.py) | 15 |
+| [`tests/integration/test_mail_attachments.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_mail_attachments.py) | 12 |
+| [`tests/integration/test_mail_case_reference.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_mail_case_reference.py) | 3 |
+| [`tests/integration/test_migrations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_migrations.py) | 3 |
+| [`tests/integration/test_oauth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_oauth.py) | 1 |
+| [`tests/integration/test_onboarding_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_onboarding_auth.py) | 27 |
+| [`tests/integration/test_optional_usage.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_optional_usage.py) | 4 |
+| [`tests/integration/test_owner_work_refinements.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_owner_work_refinements.py) | 11 |
+| [`tests/integration/test_privacy_preferences.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_privacy_preferences.py) | 10 |
+| [`tests/integration/test_project_attachments.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_attachments.py) | 7 |
+| [`tests/integration/test_project_attachments_migration.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_attachments_migration.py) | 2 |
+| [`tests/integration/test_project_billing_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_billing_routes.py) | 1 |
+| [`tests/integration/test_project_lifecycle_work.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_lifecycle_work.py) | 1 |
+| [`tests/integration/test_projects.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_projects.py) | 13 |
+| [`tests/integration/test_proposal_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_proposal_sending.py) | 14 |
+| [`tests/integration/test_public_admission.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_public_admission.py) | 31 |
+| [`tests/integration/test_quoting.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_quoting.py) | 15 |
+| [`tests/integration/test_quoting_list_performance.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_quoting_list_performance.py) | 3 |
+| [`tests/integration/test_quoting_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_quoting_routes.py) | 10 |
+| [`tests/integration/test_record_fields.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_record_fields.py) | 4 |
+| [`tests/integration/test_record_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_record_pagination.py) | 9 |
+| [`tests/integration/test_recovery_rehearsal.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_recovery_rehearsal.py) | 2 |
+| [`tests/integration/test_reference_fields.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_reference_fields.py) | 3 |
+| [`tests/integration/test_report_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_report_pagination.py) | 1 |
+| [`tests/integration/test_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_routes.py) | 6 |
+| [`tests/integration/test_save_feedback.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_save_feedback.py) | 5 |
+| [`tests/integration/test_sending_dispatch.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_dispatch.py) | 12 |
+| [`tests/integration/test_sending_isolation.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_isolation.py) | 7 |
+| [`tests/integration/test_sending_manual_followup.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_manual_followup.py) | 5 |
+| [`tests/integration/test_sending_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_routes.py) | 6 |
+| [`tests/integration/test_session_recovery.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_session_recovery.py) | 1 |
+| [`tests/integration/test_settings_cache_refresh.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_settings_cache_refresh.py) | 1 |
+| [`tests/integration/test_social_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_social_auth.py) | 9 |
+| [`tests/integration/test_static_asset_cache.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_static_asset_cache.py) | 6 |
+| [`tests/integration/test_subscription_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_billing.py) | 26 |
+| [`tests/integration/test_subscription_capacity.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_capacity.py) | 15 |
+| [`tests/integration/test_subscription_domain.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_domain.py) | 12 |
+| [`tests/integration/test_subscription_http.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_http.py) | 9 |
+| [`tests/integration/test_subscription_payments_http.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_payments_http.py) | 10 |
+| [`tests/integration/test_subscription_retention.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_retention.py) | 17 |
+| [`tests/integration/test_tenancy.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_tenancy.py) | 11 |
+| [`tests/integration/test_tenancy_capacity.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_tenancy_capacity.py) | 3 |
+| [`tests/integration/test_tenant_demo.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_tenant_demo.py) | 1 |
+| [`tests/integration/test_time_commands.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_time_commands.py) | 13 |
+| [`tests/integration/test_time_import_http.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_time_import_http.py) | 4 |
+| [`tests/integration/test_timecard_cross_module.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_timecard_cross_module.py) | 6 |
+| [`tests/integration/test_timecard_productivity.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_timecard_productivity.py) | 13 |
+| [`tests/integration/test_timecard_week_metrics.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_timecard_week_metrics.py) | 7 |
+| [`tests/integration/test_ui_refresh.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_ui_refresh.py) | 6 |
+| [`tests/integration/test_usage_browser_flow.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_usage_browser_flow.py) | 1 |
+| [`tests/integration/test_work_forms.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_work_forms.py) | 2 |
+| [`tests/integration/test_workflow.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_workflow.py) | 8 |
+| [`tests/integration/test_workspace_operations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_workspace_operations.py) | 14 |
+| [`tests/integration/test_workspace_overview_search.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_workspace_overview_search.py) | 7 |
+| [`tests/test_project_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_project_billing.py) | 14 |
+| [`tests/test_project_billing_reports.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_project_billing_reports.py) | 2 |
+| [`tests/test_record_references.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_record_references.py) | 3 |
+| [`tests/test_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_sending.py) | 21 |
+| [`tests/test_tenancy_config.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_tenancy_config.py) | 11 |
+| [`tests/unit/test_archive_dates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_archive_dates.py) | 8 |
+| [`tests/unit/test_bot_check.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_bot_check.py) | 4 |
+| [`tests/unit/test_client_code_validation.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_client_code_validation.py) | 2 |
+| [`tests/unit/test_dashboard_calendar.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_dashboard_calendar.py) | 2 |
+| [`tests/unit/test_domain.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_domain.py) | 8 |
+| [`tests/unit/test_email_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_email_auth.py) | 12 |
+| [`tests/unit/test_financial_values.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_financial_values.py) | 3 |
+| [`tests/unit/test_flexfields.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_flexfields.py) | 4 |
+| [`tests/unit/test_integration_contracts.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_integration_contracts.py) | 10 |
+| [`tests/unit/test_invitation_template.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_invitation_template.py) | 3 |
+| [`tests/unit/test_ker_navigation.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_ker_navigation.py) | 3 |
+| [`tests/unit/test_library.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_library.py) | 9 |
+| [`tests/unit/test_live_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_live_templates.py) | 11 |
+| [`tests/unit/test_logging.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_logging.py) | 4 |
+| [`tests/unit/test_migration_target.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_migration_target.py) | 4 |
+| [`tests/unit/test_onboarding_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_onboarding_templates.py) | 25 |
+| [`tests/unit/test_paddle.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_paddle.py) | 30 |
+| [`tests/unit/test_paddle_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_paddle_templates.py) | 8 |
+| [`tests/unit/test_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_pagination.py) | 5 |
+| [`tests/unit/test_production_capabilities.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_production_capabilities.py) | 11 |
+| [`tests/unit/test_proposal_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_proposal_sending.py) | 6 |
+| [`tests/unit/test_proposal_sending_transport.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_proposal_sending_transport.py) | 8 |
+| [`tests/unit/test_public_admission_proof.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_public_admission_proof.py) | 6 |
+| [`tests/unit/test_quote_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_quote_pagination.py) | 1 |
+| [`tests/unit/test_quoting.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_quoting.py) | 8 |
+| [`tests/unit/test_quoting_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_quoting_routes.py) | 7 |
+| [`tests/unit/test_readiness_worker.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_readiness_worker.py) | 1 |
+| [`tests/unit/test_reference_choices.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_reference_choices.py) | 8 |
+| [`tests/unit/test_retention.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_retention.py) | 11 |
+| [`tests/unit/test_sending_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_sending_templates.py) | 9 |
+| [`tests/unit/test_sending_transport.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_sending_transport.py) | 9 |
+| [`tests/unit/test_settings_cache_refresh.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_settings_cache_refresh.py) | 1 |
+| [`tests/unit/test_social_auth_proof.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_social_auth_proof.py) | 8 |
+| [`tests/unit/test_static_assets.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_static_assets.py) | 6 |
+| [`tests/unit/test_status_palette.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_status_palette.py) | 3 |
+| [`tests/unit/test_subscription_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_subscription_templates.py) | 8 |
+| [`tests/unit/test_subscriptions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_subscriptions.py) | 7 |
+| [`tests/unit/test_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_templates.py) | 7 |
+| [`tests/unit/test_time_import.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_time_import.py) | 4 |
 
-## All tracked source paths at snapshot
+## Complete tracked source manifest (503 files)
 
-This manifest includes source/configuration/example/documentation assets tracked in Git only. It excludes ignored private governance, .env files, credentials, local databases, retained receipts, uploaded files and private artifacts. A file hash identifies source bytes; it is not a security verdict or an authorization.
+Raw-byte SHA-256 values pin the actual clean PH3 checkout, including its preserved LF/CRLF mix. `source-snapshot-manifest.json` also records each Git blob ID so normalized repository content is reproducible across platforms. No application source body, private payload, credential value or business record is included.
 
-| Path | Bytes | SHA-256 |
+| Source path | Raw bytes | Raw SHA-256 |
 | --- | --- | --- |
-| `.dockerignore` | 265 | `b77bc6e9de7081e00e50649ffa90084fe9f11e679cf00a31fa6aa3f25342b616` |
-| `.env.example` | 2318 | `3bee36cc2391658fa7e58ec694cd1a42d0f72c17db65656c05e86ba9e255c7bb` |
-| `.gitignore` | 355 | `4d1eb50795b2ae91bf132e52e3e4c3a154e65aa36025d824669f8cd791ffd59e` |
-| `AGENTS.md` | 10083 | `1d7a72077e3bd5d7fe6b06ff25ef724c50ca799533bc3a236ee213dbc785dd8e` |
-| `DESIGN_SPEC.md` | 105 | `1dcdc793794f85b6e1eb25da093bf34a2ef05f3a956f75b6f1f9abcf970a2d7e` |
-| `Dockerfile` | 1110 | `3cf83750c019082d042b90c966e33b6c90676342c53fcdca8e557a55cfc5d18a` |
-| `HOSTING.md` | 32981 | `5c7294ac001e5132c2d984dbdfeb9fcfa4f67867641b30edc476dad38fe8be0c` |
-| `PROJECT_BRIEF.md` | 88 | `84c2261f536d103ccb66abee3170dc2dbd22c491de1fa89798f936bc2dc6e1bc` |
-| `PROJECT_MAP.md` | 6075 | `76300940165d12405697f842f551bff902b8bf280c7fbef91d6194b98d7ec0d0` |
-| `README.md` | 6397 | `24ac340a1e05de9fccdf19f85c69c4f52f707967ecfaad7825b41b9900121f65` |
-| `alembic.ini` | 81 | `3b3710b419fc9ad123bed2f66c2339ef6950d80f19be4ea349da7252a65d6109` |
-| `alembic/env.py` | 1389 | `77776dbcf4097173c6ffac8af501b6ef1fd69fed77dd1f217815c4eb564e7334` |
-| `alembic/script.py.mako` | 336 | `8f879277ac6deaf82170914242d03b74088910182807ba3657fa746fc4e5f36d` |
-| `alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py` | 9512 | `5546dbd4d323183823febd3ca212dd74e83b7d2081710cd2f5056d1648c72c88` |
-| `alembic/versions/7e416c6444fe_baseline.py` | 17724 | `8570667b383600a021ec36cdab00f2a3851c50dc5aad8ec5d742fad45b91d0c7` |
-| `alembic/versions/a10d45de891c_issued_status_guard.py` | 2317 | `96a89b00f181fbed439d78cce295958bf6be88033b39b9f40f1b26f9653bfcf2` |
-| `alembic/versions/a82d43cf6120_project_workflow_and_agreements.py` | 3908 | `73649633d2736af6891f91024d3f61491b40d5e285ba16ba326f7c00efc4a0a9` |
-| `alembic/versions/b07c9d621a30_pin_guard_schema.py` | 930 | `3d3412bd0df933a257df60ba61d1c0458a7d0dd8f21441aeb108414ed2eff7ab` |
-| `alembic/versions/c41894d13cb7_project_commercial_metadata.py` | 2028 | `335cd2864120a186f11cbbce4e2906f2e1ab22f71edfb2013d0f354aa9f29bce` |
-| `alembic/versions/c46f2f62a011_immutable_artifacts.py` | 4504 | `e101d2922ca2f5d842055548cf57ae49539763eb1433bb35af6a22a1f3645f55` |
-| `alembic/versions/d3517d81ce20_contact_reservations.py` | 990 | `7642340c9545f651c410f986d11e93d973c0f71faded34a590ce0e5bbaf422d7` |
-| `alembic/versions/d529b08f14a2_project_billing.py` | 14083 | `8cde2a842be37f6e2edeb2388398e5772b94335b2bc251a2d7e40a64799a54ad` |
-| `alembic/versions/e3b42aea781a_parent_guards_and_sessions.py` | 3204 | `2514f05093a597f52a618b2141526e137755c5c728e32704b749ebfce97eedc4` |
-| `alembic/versions/e640ab7230cd_case_identity_and_types.py` | 8560 | `6a50cd2b360207042a7f5c31c9326d89cb4318e20efdbd7f5cda78c19c5163fd` |
-| `alembic/versions/e672c40fa912_cases_and_allocations.py` | 9693 | `c342d896866a8bf90e98f8c432050cb5979550ed3181137970fc326e223037a9` |
-| `alembic/versions/f409a1ac1700_parent_lock_guards.py` | 2346 | `4cee6118c21cb895b9c1a183739ac1837e4ece5331af376c59255a68911c340a` |
-| `alembic/versions/f710bc319ae2_mail_attachment_custody.py` | 3847 | `bac187ef38a608d5c794e8495e383c42dfb69ea8d6ea8645dd4a4f52baea2a7a` |
-| `alembic/versions/ph2_001_credit_memos.py` | 6674 | `c8d79b29322e46bb5d68a04bfa6953e32fdb7526ca3aac4c6fc6db45c502dbf7` |
-| `alembic/versions/ph2_002_time_commands.py` | 10349 | `2760dd9b1efc7a4bba705468d8915204bae2068c1a49ac681c60ff3b800b986c` |
-| `alembic/versions/ph2_003_integrations.py` | 4445 | `aaca02a6e9db2e2515393e1ba12264574f305a1cbd332f8527f956958451360c` |
-| `alembic/versions/ph3_001_subscriptions.py` | 3849 | `8a671d6355bd80b43239596e94fa94dc8f7ede7835e52d168a8a429498096d8a` |
-| `alembic/versions/ph3_002_sandbox_billing.py` | 7851 | `ad8af64c3f14f8143d02dc9efe767ce68402639399166a22e916fa341e4cef09` |
-| `alembic/versions/ph3_003_onboarding_auth.py` | 5521 | `8b4d28cf64781e7cd198f5769733f143ffe12d21186d08737d3962d92138a0d2` |
-| `alembic/versions/ph3_004_sending.py` | 9470 | `e269d73e8a835f46987e4ea304a25f6b5bdb89bfa3eba0541a1ebb765debc24e` |
-| `alembic/versions/ph3_005_public_admission.py` | 6258 | `59036e375d5875b42d8de8d134b71d5ed8ed7056df122b4f2ac6df4d272ea2bc` |
-| `alembic/versions/ph3_006_quoting_library.py` | 30675 | `8a851a397894f99dedb11fa3a322346327ca22407f209ee3f6647d371b58bd38` |
-| `app/__init__.py` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
-| `app/admission.py` | 21225 | `0c1b63f9debbed17322fc79f529014f2cdd3834044949b6c0e7ecec3706a78b8` |
-| `app/admission_models.py` | 2817 | `dc8149b178ca17241e5617b149a7e759618f4501b4f4fa3f37ac9ae929fa6d82` |
-| `app/admission_operations.py` | 7687 | `c4656667849b9207031c31fcfd6108bed83e1ffcf820227dd60dda7f293fe01a` |
-| `app/archive_routes.py` | 8196 | `decc12b7b9fe1b4f32d6de94e25765eea710bc274565e750674b930077055e43` |
-| `app/archiving.py` | 5283 | `0619d8426e1a0cb5704f7bf4a3f90d9e29e6d3878fa724135ed2ed6c667a2819` |
-| `app/audit.py` | 481 | `a46e464b8db010fd3ef47b7d931b99744ced06a6c15e356d074a77eb9806d5a8` |
-| `app/auth.py` | 5267 | `580faa0592f9be8133db78a3e18eb7227838a3e99813b8f55a88eec2c498941b` |
-| `app/billing.py` | 29106 | `c70adb6b9f4fd6061c71cd4c071fba90ca043e11a61f86f11718de9b22e0de3b` |
-| `app/bot_check.py` | 1494 | `2863beef71e5ac4791e71a3561aa8380acee689150a41c12f87a3a7765a45b2f` |
-| `app/case_routes.py` | 19310 | `3482e058e94860334c1338845114e00ccb41f97f87d00ac3ca6ebf48923d27af` |
-| `app/cases.py` | 8803 | `ed993cf946754b859f2c0205f8de5a81e92181538b966ba130601e0b8c0df0ec` |
-| `app/cli.py` | 6216 | `120e5b1dddb256335bb8eb2336ce6bc45e4ed9855aac0de14c36c65366556db9` |
-| `app/client_drafts.py` | 2356 | `c25a759c44732499616f26187c931b3e76af2831f8630a3474af979eb6ce900d` |
-| `app/clients.py` | 11871 | `15febee8177eaaa372577dabfbe40efefdf44e8408406537f0b1a12a8487b4b7` |
-| `app/config.py` | 13393 | `988fb2cc23e55bc4e9f310992a86d496dfa5f9a543609780591085e63a50446e` |
-| `app/contact.py` | 9641 | `1a643a8dc3f1be76778d16d29fa4f8544072d2e111f423550dfd528d99b357f3` |
-| `app/credit_memo_models.py` | 1447 | `19971f8d366cdab98e7ccd0fd44926c5b7b89b6061eda5d65a13eae88f1dddfe` |
-| `app/db.py` | 1095 | `702d7da59da3394f4a61faadfe15bd37669d9f190768f476deb038b9e0a3529c` |
-| `app/demo.py` | 5701 | `023bd11c1405d8918d5df51371ba1cf3c0de8dc5db65eea32d500d86043fca53` |
-| `app/domain.py` | 2396 | `d63afdf63d9fd40f45426f2c88482f74185efc361225ad6ea195d8ae21dddb70` |
-| `app/email_auth.py` | 8909 | `db24f443e5512f013277a3b075dd66d846cf1cf6988e4aa6b96f5b91ce642067` |
-| `app/enrollment.py` | 9966 | `9e42373a0670371700bcc8b3d772b434406ff0cee01ac5145343f6b0529b9661` |
-| `app/enrollment_models.py` | 2402 | `cc28a549353c52c5c0abbdbceb0db19c88bf4774ba2fddc5c20dd6f37a2a1c0d` |
-| `app/enrollment_routes.py` | 36027 | `a3998de8ce63ad635412b853fc8667d8dae65947706ef076d81d5bd3d00cf0ff` |
-| `app/forms.py` | 3413 | `291dbf5e2ef8b85f60614f3e45b5aa076d67f742155d0170e016b026accac56a` |
-| `app/integration_auth.py` | 19111 | `954d534e609376db32270c4592e3da28824515e7104a12b719912effad2456c6` |
-| `app/integration_models.py` | 3303 | `b34fd0f5ae069977ba78b800f18b7329b9a86ce420592d0a4bc17c4efff9766b` |
-| `app/integration_routes.py` | 43426 | `9afdb5af1c39f8918a8300f8af045aedda74adc578ca712fa317cf563c75f9a4` |
-| `app/internal_routes.py` | 7640 | `0026cb220069551bc71de14f20cd77931c7ae08443a7223c4efa4c196950eb05` |
-| `app/library.py` | 25087 | `d1ca87bbf72daf0535463ae5beb9f0708edbfd4fd9471a22bc64da4ecd0598d7` |
-| `app/library_models.py` | 3881 | `4bcdc8b03f8a55377a2faf305239ad5915c6ea863279b4adfac8a0fedb404fde` |
-| `app/library_routes.py` | 10355 | `3735e5d4afda5f8543e67c35938308a05133f357f9781afe157e0bc54807d202` |
-| `app/logging.py` | 3667 | `3d18cb7338c745f175a95901a58b0f7f329b8857dfc26d3f74e10665f4e9d676` |
-| `app/lookups.py` | 5631 | `8c6e37c4b3f9b9e85ad695eac6ec8cdd0c6c088c9d98c6299bb4812eafeb43b6` |
-| `app/mail_models.py` | 3468 | `4d340cebd629583f7992cf27588528bada1dbf452b661bfdef8980d800d70836` |
-| `app/mail_routes.py` | 18773 | `f8cff75111ba75c739736fe3eb259f7cb40ea94c9a1a7bc1a51727edea8c2dbd` |
-| `app/mail_service.py` | 12998 | `29f109c355d2e985a2e1ac97819b23e98443c2cd969cfcba73b9737bbbac71f1` |
-| `app/main.py` | 69353 | `8bdc0362dc1ce6adfcf98c7001d210ce1f9ad012881bd44f0bdeba32957542a7` |
-| `app/models.py` | 17814 | `4052bee0bbf4d8bc3acf6460692292b65f86636115f2b3418d70dc17bf83d0c5` |
-| `app/paddle.py` | 26862 | `81d60d45b1b7a172ced8b663c67f1968f2129ad749610024603ec63d42d8ab48` |
-| `app/pdf.py` | 1722 | `daff94ba6dd182472ecc7f37277cef2042d3433e0922cebc7cc7dcc74c25fda9` |
-| `app/privacy.py` | 5073 | `11d50b154251250dd54a601713c34ccd86a9ea235aba38738989b5c232ade569` |
-| `app/project_attachments.py` | 4084 | `ba5e96917ba2bed7b6dd84dc2791405ba26d18faf411f1db211ce34135b045bc` |
-| `app/project_billing_routes.py` | 3899 | `92d5f010816c34addaaad86861267c93760b515686e4bb1a14f1871d4d661bcb` |
-| `app/project_routes.py` | 12834 | `66e25893df3b2fba748a89c1eeb837d68fc88aa408f43b54c9d468a9a7dfd978` |
-| `app/project_terms.py` | 2507 | `afca055671b6d0459ecfd931b078fb5eddb78efe10568d0bf2d15d5a270df107` |
-| `app/proposal_sending.py` | 14038 | `94ac19640ae6be7c51150ccd3d09714f54ae75b05019dc428f1b7a935b0de672` |
-| `app/proposal_sending_models.py` | 3364 | `78a724d0ecfc1db0ce5ad8b333680ae0bdbe5ad64c1b38e5b5df74bbd82c0d41` |
-| `app/proposal_sending_routes.py` | 6821 | `155ee75729c94af2fb5e31aeeb1e3e76e48c5796dadf9fae9ff3cbb8a6b9f862` |
-| `app/proposal_sending_transport.py` | 6006 | `46bb13a7e8d59a19ced5ac8c95b032449b070125f783d339a3339085be55d89b` |
-| `app/quoting.py` | 19866 | `861d71c6ffe1a5cc79f27a0411d76a43460ee6fba15cc683c721919547cc7a50` |
-| `app/quoting_models.py` | 5789 | `75d77ee63007a0b1af95016b40567c97761ab2aeccc8ceff4ce46698b52d754f` |
-| `app/quoting_routes.py` | 13196 | `1b26db9b39d146092c3be1fd4611d379a561c7aa53601b91bf9fa925234faede` |
-| `app/reports.py` | 9474 | `46e8831f7fe5735887400671f306c603d716eb144f3100d4e4ec24634b470de8` |
-| `app/repositories.py` | 1852 | `0e05eb29a0a02eadf00026a8722d7a92fa520c6963b73c5f2f1bc9bcb4b9f643` |
-| `app/seed.py` | 3909 | `d053ae7e8fcf45c815697ecd63df72e9e5a824f33b093890709158e155f43ff3` |
-| `app/sending.py` | 26196 | `ae9806a2c8bdbfab15ab705e10f2335f246e56234084abfa4f6d4510bd981c43` |
-| `app/sending_dispatch_routes.py` | 3214 | `10e6ca799e17cb6f3acc8fe474f21159c262e3987664cdb18fe13ac5a3a544aa` |
-| `app/sending_models.py` | 3659 | `5e2540ac381f7f85016700bab1639187f86609a342f4c3ba62d8f519a7f738b7` |
-| `app/sending_routes.py` | 8340 | `e8ef353638514116996be292bbf61ce47b48d5cd4f675d4b3849122381b308a3` |
-| `app/sending_transport.py` | 5223 | `87566951cfe2a1a38bf78650b4322281a9d3fc579293264fa276c8815bc6a74f` |
-| `app/settings.py` | 5802 | `dfa56091411ade3994148274614b7ae06b13d47cf07dfbef85a85f9bd95d0f54` |
-| `app/social_auth.py` | 3159 | `16ca8368511d60857cd3ca928b469d996f52fa0a1a28fea463df1794a1dbbbc9` |
-| `app/subscription_billing.py` | 70020 | `f43f87e256c4beca57a47334a910c5af64903495dc07204d5a9cc1bb3265670b` |
-| `app/subscription_billing_models.py` | 4422 | `6d7e872cb2c38646c8eaea8859c0da4412a6bed26ea20d96ab91d6f1e6cbce58` |
-| `app/subscription_models.py` | 2089 | `3a04dfbdcaf1922272d72ac788ef2179160156962dfb64402a40fdcac9501743` |
-| `app/subscription_payment_routes.py` | 20001 | `a66dd4e3f88a242d7c85a8e2cb9e110f99cd1f43ade1f2cb00dc50029dbef3c0` |
-| `app/subscription_routes.py` | 6450 | `122a1bdd40a236c8fbea7d52732291e1f51a895e8f1d4fe6afe29dcffb89920f` |
-| `app/subscriptions.py` | 16038 | `59ea3a0bedfe2b4994ccad8d23f18a7259ee964e8b1ab227cf1fd0aa866a31c8` |
-| `app/tenancy.py` | 23367 | `9a6a3b04135dc157fb035336ba9fc561aaee58b3a9611c1e425e5bc45c7eaa1d` |
-| `app/tenant_demo.py` | 8889 | `8069d1a8f9d5e594e6bb897e9308414930201a2b9fc6f546e64d471347024601` |
-| `app/time_command_models.py` | 2777 | `5d19880baee473007d13ac2b7e26f390be645bb532efe82adca7310a598a8ddb` |
-| `app/time_commands.py` | 25927 | `7fc1e2862a8395717e4455f8d62e891350716e2af2b6d330de0440b8f2b9a8f3` |
-| `app/time_import.py` | 9214 | `b995c8dfdce546fb1a8a245bbdbf3646e823b88dde9c66d8613cdf0e9dbc2ece` |
-| `app/time_import_routes.py` | 13642 | `7007db8a0a654b83b3b45c028e70c80d0acb9dec557173f538a3f9d0bf7c16c7` |
-| `app/timecards.py` | 8685 | `cf87dd236436ba548f447a8cf4800afe0120e88e8678496662c1a8c6bf8ec2c8` |
-| `app/usage.py` | 2862 | `22d85b100c90de845ea1ed37dcf76209c1899d62836e0458030c5d2a3483eae0` |
-| `app/web/static/AEKR-BANNER-LICENSE.txt` | 1377 | `b249deb3a468f304b956702f1b850666a08d5b883eb53b536cf15adae3af5703` |
-| `app/web/static/AEKR-FOOTER-LICENSE.txt` | 745 | `6c0984d9a671a761730ad8157b5f9072053963f904feb4807c9e5e17d944f506` |
-| `app/web/static/HTMX_LICENSE` | 655 | `126cfb5670a927207a43f0387ce4cb5f853337116c39a18b02cb8198403d471e` |
-| `app/web/static/aekr-banner.png` | 1006315 | `81a60d8e3d28b2e0934cecd22c703af20e2bddd164f68a0888193647c1b816fc` |
-| `app/web/static/aekr-mark.svg` | 1139 | `e6adbcafa4a1ad203c41303876588da23bf1c3e54a5e9b841088fbc9b2727b74` |
-| `app/web/static/app.css` | 39857 | `8b4fe0ed0ddd46e3809f2afa2a3b926abd78c6c76cf9610a58ce2fbebb4ecb81` |
-| `app/web/static/app.js` | 25674 | `bd408e2898d1d3ad7d06446c5564f19f90e814659168d80d4c4791e6aab85578` |
-| `app/web/static/auth_challenge.js` | 2650 | `b0ee593f195a693d19c57bfd2df99d579e13103980e13994d50ca3e40ba3bcf1` |
-| `app/web/static/contact.js` | 2551 | `419e8c8bdd2159cc76f44752c64a0d90f2a9ea7a8f6066eb33b323e514b1ad69` |
-| `app/web/static/favicon.svg` | 264 | `dbfbdd7496e12575e50310ae8aea14eca03e51884da18d66a45125b5527bb895` |
-| `app/web/static/github-invertocat.svg` | 1313 | `b5e2f4b3f953f075de7016faa952d6ce3ec7492aa7b32408505ec25857962d89` |
-| `app/web/static/google-g.png` | 33661 | `d1ce9c2af0b10a7333abc99bc706f9a6a199e5b65bf3e3009624f076b8638e6a` |
-| `app/web/static/google-sans-OFL.txt` | 4396 | `0d6194f5ba9661c627db09279762e664e78d3970f8c2c1dc7696257e542f62c5` |
-| `app/web/static/google-sans-medium.ttf` | 4632 | `8ed4ae383dd28799a8b141eebaa16277e9c3b174fbf93728437b87bd15b25dbd` |
-| `app/web/static/htmx.min.js` | 51250 | `22283ef68cb7545914f0a88a1bdedc7256a703d1d580c1d255217d0a50d31313` |
-| `app/web/static/paddle_checkout.css` | 859 | `72400de6d05511eee436436f8603f44d925ee84c4beca409e76c858afee74a40` |
-| `app/web/static/paddle_checkout.js` | 2746 | `af409ab0d037a4a6f1b82655abcc0c82389f12b9050218eab11857ef9e6904bb` |
-| `app/web/static/usage.js` | 2970 | `63bf9cd2e1016b15f318ebc7441165b537f0805e9023fbcdb788670eb5e1a6da` |
-| `app/web/static/wordmark-monochrome.svg` | 547 | `f1f20a3add773a417e96950435c02eae8c35ae671e60b5d00aa1e7cef86d9277` |
-| `app/web/static/wordmark.svg` | 547 | `559cac515e74f6091efb06a3bd4bd145a0d1c87bdf2f33c8ce651a69419d9698` |
-| `app/web/templates/account_security.html` | 4533 | `86a32b0ab95ec874a96540361a5c0ce9b98ad1889e4aa1e576cbd50774a5ae50` |
-| `app/web/templates/archive.html` | 4509 | `2eaf043d4eed487514b22c70872ca0ddc3626724fe9cd89eadc4be03be086526` |
-| `app/web/templates/archived_timecard.html` | 377 | `655930e567de82515af47091b07092b2e62ee4247d5b054f0a24a865fd8aec49` |
-| `app/web/templates/assistant_connection_guide.html` | 6974 | `701bc842f26c37c71520e73f32f218cc4dbd3facf6af9667643213745a7403d6` |
-| `app/web/templates/audit.html` | 854 | `deb11215a78e2e85dd6c42e906555a623f11831239b0de6f33d3a6db4d23ce96` |
-| `app/web/templates/auth_challenge.html` | 537 | `b6e66d0d3683fd4f2a40a5f0418b9debbfc79cd298044a84d36f67a43b3e277d` |
-| `app/web/templates/auth_layout.html` | 1137 | `deb965364532a74fa8c2bea8a5eb86cf5108924666746b78d877e8a12821d15d` |
-| `app/web/templates/auth_methods.html` | 3145 | `0828303ecd09586d388d5f7d3ac7f6b056598cd049c7316e6d7a459caa426020` |
-| `app/web/templates/auth_notice.html` | 458 | `b7c324fe8fe015c376ae0cedde72dc2bc012b10a9602cdb233cc96963990d695` |
-| `app/web/templates/auth_notice_fields.html` | 129 | `6b1e0c063294e046adcbde8be9f85ad19421cbbd21e812c33b3656a96eb7e405` |
-| `app/web/templates/auth_provider_button.html` | 371 | `641ee52c2665e25ac3684f80e789497cdba0806ad27ad4ed63da5c8f3bd9d2cf` |
-| `app/web/templates/auth_provider_forms.html` | 892 | `02e49bd36fe0b3211ed50eacb0adeace049f40a19d74fa904f55dda509557d1a` |
-| `app/web/templates/base.html` | 4470 | `32eb2a32c0b265676bc8b1c6ae0ea49499e7ef91551860ceac72e4bd3dc8039d` |
-| `app/web/templates/billing.html` | 4478 | `ffda712f70e6cd91263a8f5d98a5ad62d4838c381b0dac43435565907a234c7a` |
-| `app/web/templates/capacity_prompt.html` | 2143 | `7045f8dff4e889993bf1bd4a7683090e8c937562492a8bb3180c7e022f078f29` |
-| `app/web/templates/case_allocations.html` | 2264 | `f2f76dfae3bd913f75cf3c8ef0f5cb9fe95c7e9d9ad1a7d5d2803788a6e05ab9` |
-| `app/web/templates/case_detail.html` | 3137 | `b03bbd82ea9fd0c8c50a707fa61fa9f10295eaacdfab46df12fa1d9a746fff71` |
-| `app/web/templates/case_form.html` | 3475 | `a68d72af97821dd725e9d28bf233ce0e12d1d5bf680b50f3d8541cc0486653f4` |
-| `app/web/templates/cases.html` | 3591 | `4cfdd82ab30e97f8bc4c76ac6d8baf9d9692c4f74b9cf2b7d470a8c23b38047e` |
-| `app/web/templates/client_detail.html` | 5428 | `63f2fa9daca8de23f7eb100e28b177553a435c95279117967f82715c30555642` |
-| `app/web/templates/client_drafts.html` | 844 | `231fcb25ed16f59ce3e60ab4243f4fcac6005a2d177c7666aa44670059ebd6f3` |
-| `app/web/templates/client_form.html` | 2582 | `a0e4f0dac7b68e3a27f6ec45b2ffed0985c7621a78ef24b7c072151fc5f56b1b` |
-| `app/web/templates/clients.html` | 2346 | `dcc5ab2d98da9d0b2b03cda61c228d6ba1d4171a0ce9fa1e98b667042be26c67` |
-| `app/web/templates/clock.html` | 905 | `39a5bec237e823308d4f494a6c9157005b09021cd71aea79e83584e3f1d69061` |
-| `app/web/templates/components.html` | 4833 | `e2962591f9b0c6da18042453477703b6d4ca7f8625c0723f3b777b0f1aa5c9b4` |
-| `app/web/templates/contact_form.html` | 1765 | `8e4c4a5a5b83eaa02191cbe9a21a4eae5f4c92da762be6e0f3e7713e28566791` |
-| `app/web/templates/cookie_preferences.html` | 3044 | `3bf524b03c5c49e8e73e0b69220ac720b9bc22aa4862777dca744ebf53618f4a` |
-| `app/web/templates/credit_memo.html` | 1069 | `8a3096495b6d972dc7a53a6714807bdda3cb5a04df39663960e5d5474347932c` |
-| `app/web/templates/credit_memo_pdf.html` | 3187 | `89fbf822508336ac9bfa52fefcf35a0c0d9f0825e2d526f53a10f31f60bfd157` |
-| `app/web/templates/dashboard.html` | 2936 | `fbb69dd64b800ab2df4f6ac9e22ff780dec1dfb2efdd968b0f9fa07eb33c827f` |
-| `app/web/templates/email/invitation.html` | 3800 | `34aa22cec3c776c9840b25f945c47f981d7450e6c294b6fd0984c5a7814dafd6` |
-| `app/web/templates/error.html` | 875 | `e33ab1435d3ec52a6a48f6dd982d6032c46c9c87381fe9b1dac151e1f1aaeae7` |
-| `app/web/templates/help.html` | 19170 | `228da1265fe69444f2bb5e1bb685fcfbc833f47ed4774c78b0aa03ceb6cfe043` |
-| `app/web/templates/invoice.html` | 7156 | `5ec7e0b41bf074cd1890f7beae9cdf94c904e863298e46b302745870f0745723` |
-| `app/web/templates/landing.html` | 2655 | `75e26d07275e01bb3722acc28cea2d00d0c8566495f8c2ed6e81b2f99e7d3f4f` |
-| `app/web/templates/landing_info.html` | 5242 | `7253492892d685bae97387a149b02572e88848974f76721a6354bd1314f4a005` |
-| `app/web/templates/legal_policies.html` | 997 | `1edaa0dca643b7465b656eb0c154684ae0e2b8c00fcf0bc10033a189f00e66d4` |
-| `app/web/templates/legal_policy_content.html` | 10609 | `cbb2833cef3159a63bb0864cedf864db55ab4c83ebc086c682d59d1dfc37a741` |
-| `app/web/templates/library.html` | 2011 | `2cc4f7afbb13e1335c579c1e329f6b849f7c651cf70d2891f17ce965d6e48586` |
-| `app/web/templates/library_document.html` | 6007 | `6507ff507ac22519c269b68f0492b337f1132b3a56bc2aad9311196d088194af` |
-| `app/web/templates/library_document_pdf.html` | 1015 | `78f467d030c2647d19c846ea5d688ae467208eb743be4657c94ee39eeb55c934` |
-| `app/web/templates/lookup.html` | 2950 | `913f862759903257929a9d3137dbaab9091a15ebb8c50946d260a27b4627f6de` |
-| `app/web/templates/lookup_fragment.html` | 131 | `9293bc58c28ad53221b7d0df5dc06027936b6e2c51e68e713a30e1e73997adcb` |
-| `app/web/templates/mail.html` | 2334 | `d74a6fbe24e5f9e9cec15cc8aa38b87b9926429c2c715fd7633a770bc0a1aff1` |
-| `app/web/templates/mail_addresses.html` | 1583 | `01dfcada03278fa140617a66a47a58de0548ec7f981d91e3b862f05691346bdc` |
-| `app/web/templates/mail_assignment.html` | 346 | `b4e78b1aa4ed02faad317533f03bd9a2ebf4e7c2af087e7e2143415d1ba1fbb3` |
-| `app/web/templates/mail_detail.html` | 2443 | `156ab1c1a388b71999dd91ec3a3bee5d097f220bb843fdd72071106035cbe7e1` |
-| `app/web/templates/mail_import.html` | 1638 | `1e3edee1a5a2a3602bd1e3550f8bde882431092aa89a54a8a629e13afd97c267` |
-| `app/web/templates/navigation_icons.html` | 2458 | `443d2d9a727045f6a4a1b7ca4f779bde53006b02fa3fcb7076a81b1da2fff2c7` |
-| `app/web/templates/privacy_controls.html` | 192 | `4a4007a01f0ef8bee3851d8dda5d8fe5a43f358b3e77dda83347af8be96bb44f` |
-| `app/web/templates/project_billing.html` | 4846 | `9aa9e033f8b93181d2661ab176b0ffdb3d92f64839dfbe31a64a65708e051010` |
-| `app/web/templates/project_form.html` | 6396 | `78555db7306f017648a2d89c5be7bd219658c77bf9d5341363475a7088b522e2` |
-| `app/web/templates/projects.html` | 2712 | `c619b96b3169bb3ea676e37b14b568a733d31b84ed416d4c612d0c5c7275ad02` |
-| `app/web/templates/proposal_sending.html` | 1231 | `0197288db2beeb47e5c13c01cfe73505d662e765c2db579af6f91d14cb52a489` |
-| `app/web/templates/proposal_sending_prepare.html` | 1614 | `d5014fb114a3845d7553426adfef5eebac2eab34b747f0025528643f18867d7c` |
-| `app/web/templates/proposal_sending_readiness.html` | 237 | `ff66bd0775aad025b04c9b9265b6dca8e3cf9e0e1b04ac86e80f8447aabb7318` |
-| `app/web/templates/proposal_sending_review.html` | 4003 | `b5a0f98cfdef236e7479b04ab0e10bad5957fce2b4b43f452f3ffe5494208ef9` |
-| `app/web/templates/public_plans.html` | 3190 | `34bfd06dd5bcaef0f590416eb0ecb16f904bba5344ca58ccd208045510b31fe3` |
-| `app/web/templates/quote_detail.html` | 4402 | `993f3f2cf9b45e6e56ab77f6e8ad0db9cefefe6dcb021569314c577653994953` |
-| `app/web/templates/quote_form.html` | 4454 | `8f36b94b9e7d35085448f5515f4231f3e25a419edace223987d6ea56300d0a54` |
-| `app/web/templates/quote_pdf.html` | 2513 | `b60782825fc9747bf8140db565388599277dafb7718eaa4dd20660142d53974d` |
-| `app/web/templates/quoting.html` | 3954 | `b3e4f587cb354827787361bef68a17a11a5125fac473e12c8fd8859c02b66392` |
-| `app/web/templates/registration.html` | 4060 | `376ee84d4ce4f3163d5ca88303a3fae3669bab04d4365541a60c6e7753331629` |
-| `app/web/templates/reports.html` | 1617 | `8fbc93e8cbfea2851dc1208189694dc08808d9b9da3249e7fd24b1ee4c83f197` |
-| `app/web/templates/sending.html` | 7751 | `b04bcb544265f431c29d908212779d724c62ae7e31679503c5f344d32d528ed2` |
-| `app/web/templates/sending_followup_review.html` | 1840 | `da065e3a93e84443cd2cc7f51a63f3f5eb67b8f27a7a061535e6b2d67f69bfa5` |
-| `app/web/templates/sending_prepare.html` | 3035 | `4ba65b52f6357e9509ddbcc774079188174161fff007e846a469c28a524e7ba1` |
-| `app/web/templates/sending_readiness.html` | 562 | `aa7c4bf4a69c9eb27c077352e6ec9dffdacc543a55145f7f3e29fb366e9241d3` |
-| `app/web/templates/sending_review.html` | 2320 | `4649d87acc649b12b7cd8c1cfaef81a925f1ce2a12c74c278657a3671822b74c` |
-| `app/web/templates/settings.html` | 6017 | `e83b3b59a61f98ceac1c71107258d19d1024d72358a848e19781ee9d604efacc` |
-| `app/web/templates/settings_integrations.html` | 2748 | `b25f804dc0e128dc02509f689ab363ea6fa2fd339a682f1b0a1554926fe0a167` |
-| `app/web/templates/sign_in.html` | 571 | `2ecf58d8e8b8e8d1a3442c5ac668279fc9b72babe86651de7bce51cbeb482cf7` |
-| `app/web/templates/sign_up.html` | 721 | `6e8319bf937c48fb665f430d0453d4dd4053231e4efbbd4c02bb3f35b0fd45f7` |
-| `app/web/templates/statement.html` | 4509 | `29f3c2d0726f07b0726df89d704f4b7f15aa3a519c6053dc7c9eac79025d3c8d` |
-| `app/web/templates/subscription.html` | 6736 | `06f9b3e1e16c0ebb72642e64bc0177a1df7148c3d1b218fcd8cc742ac707d09b` |
-| `app/web/templates/subscription_account.html` | 11437 | `8b4f127fac864a1881ea76f85a86260d6918f1bc6e73f3f9efcdd6288e42ae57` |
-| `app/web/templates/subscription_change_review.html` | 3620 | `c7ddacc6a8276dff8a8be395dc7f7a5bcff72883e63ee95bee8c88f915c1e218` |
-| `app/web/templates/subscription_checkout.html` | 3563 | `c18718d308e2dfe11e81c10790830976057ad006b76ec6e5075a1741dfa1872a` |
-| `app/web/templates/subscription_command.html` | 419 | `9d1c310eb60635c31c0f224d91324f0e06c42237b31bbac6c639195f479955dc` |
-| `app/web/templates/subscription_payment_controls.html` | 3096 | `92ebbd82d0385822d2b5db34eaf030b3076b99a7aba76670cd571d716767170f` |
-| `app/web/templates/subscription_portal.html` | 1282 | `63d0a47c1ed9315b8751fa0b02d3ad40d37080a5accfc6cc5f6bf738f72514ad` |
-| `app/web/templates/subscription_retention_review.html` | 3588 | `da6c4b2e1d7b70093b21a0111e0c868c075edab22bcb0e7d729343e941d384eb` |
-| `app/web/templates/time_import.html` | 7397 | `8185dc0259321855d5b264cacf19229568364e6b70ff68874697c423c974a4f3` |
-| `app/web/templates/timecards.html` | 7001 | `bf4d00f117d28955653c7adc254ac6b11330449ff239da08e11e539d61ea3f4c` |
-| `app/workspace_operations.py` | 20129 | `9e6c6030e5ca6a366b8f04d4f30d23b1fe5382df0a80073181c69767191defc2` |
-| `assets/AEKR-BANNER-LICENSE.txt` | 1377 | `b249deb3a468f304b956702f1b850666a08d5b883eb53b536cf15adae3af5703` |
-| `assets/aekr-banner.png` | 1006315 | `81a60d8e3d28b2e0934cecd22c703af20e2bddd164f68a0888193647c1b816fc` |
-| `compose.demo.yaml` | 1141 | `5928622b2129b37659b3b5a92e0063453afc9efae6653c6a0cb14d65910cf3ff` |
-| `compose.yaml` | 1104 | `3e1999404ed732dc821badd87aee1cbebd0826ac4abc71bc7e93dbd004b1a22a` |
-| `deploy/cloudflare/FOOTER_RELEASE.md` | 1523 | `eea548b12b7e397b83e48c41b684d1ffbd3688fe511edafd005b8f26b5f66887` |
-| `deploy/cloudflare/README.md` | 6227 | `3e897947cde72f2a23a95b374ee21e35db0246f3d9abe37ab1d83f750a26a2ce` |
-| `deploy/cloudflare/STAGE_RELEASE.md` | 26089 | `17e281a62fe2da1f092015363a2c878fb9337c770f1175725bb34af8c3f3e95c` |
-| `deploy/cloudflare/VERIFICATION.md` | 1468 | `b2b54576c703b4fd1778a7c8f019bfb46486e65a833682fcff2c7208746e546d` |
-| `deploy/cloudflare/package-lock.json` | 65950 | `d38f58d45749157bda291534887be349f0de563497d1746f3973475eee9604f9` |
-| `deploy/cloudflare/package.json` | 543 | `a7f3c84c1b3459c76546be02ea683c7f60d034615ae77db97d83a9bba18e692d` |
-| `deploy/cloudflare/src/contact.ts` | 3599 | `2ec19fa5f750418b04b0d4823d51dc99dabc87274285dc45a51e0d9ce8a30eba` |
-| `deploy/cloudflare/src/index.ts` | 2906 | `a301331be5a7b6a7a6bf7302908f4ebe5f77fb62aeb25b608936387516910014` |
-| `deploy/cloudflare/src/internal.ts` | 2868 | `3daceccc63d698d19fa847998384ddae9ee6465b4bb656d238794a1497f15ad2` |
-| `deploy/cloudflare/src/production-proxy.ts` | 6166 | `e80a529a383c6c56ac468c67c81fd4ab3aefe274d20f458e68ad46c9476943fa` |
-| `deploy/cloudflare/src/production.ts` | 3592 | `1b92a1024b3111fd9f0c1da3d5c5facf7a3551154cfdd54d981e5dcab1992d81` |
-| `deploy/cloudflare/src/proxy.ts` | 21248 | `6347729be81eea2ad256ac6869a2a0a054f42fd6dab8828c5b41aea4b5b6ee98` |
-| `deploy/cloudflare/test/contact.test.mjs` | 4161 | `431a092817e2f291b4fd9138b8bfe8d4fc05cc8392a15a18c03061ceb8de32a2` |
-| `deploy/cloudflare/test/internal.test.mjs` | 2079 | `5c69d1a045a368c32918600d108ba5f4a1c9c33a20a831c9979b6475d75b4112` |
-| `deploy/cloudflare/test/paddle.test.mjs` | 9277 | `d68625342cede433525eb4faf54b2e2ae4dbea2c6059539bc4923e2a2f4300fd` |
-| `deploy/cloudflare/test/production.test.mjs` | 10011 | `4fdf2dd51f69cf0c67034968e6dccf03440166b97eb4af2566ffd73619231d37` |
-| `deploy/cloudflare/test/proxy.test.mjs` | 23350 | `f18f8671a5495b36594f5518954ab3f8e3e9f880bfe8a79cf86b87d26eeb654c` |
-| `deploy/cloudflare/test/sending.test.mjs` | 1470 | `9c22661bd0cb7525faa6f26fd3d3b649a7cd4bdb93475aa3f3c8f049dbc5afb7` |
-| `deploy/cloudflare/tsconfig.json` | 372 | `35be468245d9e9ad995b8dccc54e347a0b416673dfbc21a3a75c0c8487d0e89a` |
-| `deploy/cloudflare/worker-configuration.d.ts` | 627843 | `a5e3eadefbbc50d2504265f7ac55095c4a9ed658e1a1776de4bab973ce065518` |
-| `deploy/cloudflare/worker-production-configuration.d.ts` | 3569 | `fe5d0731a189cc12ab29b443429eb21e2572e86cbece2705bf159e3863811e31` |
-| `deploy/cloudflare/wrangler.jsonc` | 3156 | `774c46056dab973c7999d6625538d1e4091b26cf41549f1cd09f0ccbc6eead92` |
-| `deploy/cloudflare/wrangler.production.jsonc` | 2988 | `ac82ed503a760144ae841b54a7e53d2880af1e82faa2f28f8c2e2dba28c0c674` |
-| `deploy/postgres/README.md` | 7591 | `72f54bbd99ebd3ae9a61c455fd38bbcef3a435cd31aece8d09df1c62e86b3350` |
-| `deploy/postgres/supabase-ca.crt` | 1390 | `1dcaafbf6fda7f21e34ff35825c1a1354408ea11e5839157e690af851c73453a` |
-| `deploy/supabase/stage-auth-code.html` | 1635 | `3f89a005f7cd35516541bcc14d3f736e50b2155705b6ecd5adc131a68f1937f9` |
-| `deploy/supabase/stage-auth-invitation.html` | 2047 | `75c6274020fa2744f4f62977b53db875473d53dde4e266bcd77ae1e911bd0d6b` |
-| `docs/ARCHITECTURE.md` | 7550 | `00559e74bd63e0f52b05ecef4b0c7d03a6eb698b5d4ebba9c191f09fdbd38ee7` |
-| `docs/CONTACT.md` | 4831 | `91f2658bacea8e2ab0005ef8a6aaa39f0e75bafaf3b6be27bf0d0ea76a23b5d6` |
-| `docs/DECISIONS.md` | 71275 | `dd96123890dcb5bc8579e11b6a21a7b7c530f67ebdeb7de6ac1da38ef6fdf75a` |
-| `docs/DEPLOYMENT.md` | 28306 | `be36487a2d5286947bf99eb7320a32481f8e02fcfebc211c0927f90a6109114a` |
-| `docs/MAIL.md` | 5612 | `d863a3116bca8105a034399daf305eeb0e471f31cab7069357191f7dea1e196f` |
-| `docs/OPERATIONS.md` | 56423 | `c332782cf6499981471236c8d92e2829827e903f2ef1719c70ee246c5ff23c8f` |
-| `docs/PROJECT_BRIEF.md` | 27004 | `15747868c8fb9e36e7a98d21e9d82052428c8bc1d13de623822345d77b34d13c` |
-| `docs/SECURITY.md` | 6206 | `d17593256bfb616ef3f7d0b7b40cfb57b8bf8accbc3bfb8509513e90f87686a0` |
-| `docs/STATUS.md` | 51724 | `bcf460e32dbe761518a0ef4fccf8aaaa05f3711ae142b6549e023b73fa29a416` |
-| `docs/contracts/ALCO_CONTRACT_SOURCE_NOTES.md` | 3769 | `e186d9c2ba0396096560b29bdde3d703d35c88eedfe43da6c304a7f32bca4cfe` |
-| `docs/design/DESIGN_SPEC.md` | 25797 | `f66c28019d1258b5f3e023067d20c1d72987d6f5731e1e0a1f29bba1085fb8ea` |
-| `docs/design/EXPANSION_DISCOVERY.md` | 64042 | `0ddf620a9c419beae34090c1fb279785aab0379bf7f7e7724be6b3354faf84df` |
-| `docs/design/reference/01_landing.png` | 1257131 | `f978f5cf3bcd3ef3303d7c48f7ba191c11cd079115953d850071e97d94ba39f5` |
-| `docs/design/reference/02_clients.png` | 1551563 | `ea102adb3a0761627c5e6a960c479a59b2167b2de478267cfcdbf4f1be9d2cb8` |
-| `docs/design/reference/03_timecards.png` | 1548579 | `24756269e8054f18bbe81630b42b7abd90886fd7183ae07e7353768c4e70f305` |
-| `docs/design/reference/04_billing.png` | 1614190 | `1f84f651021f95149163afd31462954b62e008bfa907f0ec482731d0cad6615e` |
-| `docs/design/reference/05_navigation.png` | 1206417 | `c947880b166e5af61fd0c5c78c6a7ba5b0c8db11037ffd1e0ed9871d4388cb08` |
-| `docs/email/assets/timeker-wordmark.png` | 10064 | `e88115d67ba119e71f36ded17fae0ccbdcc8ba348210c4388afe7276c24b9f2f` |
-| `docs/email/invitation-preview.html` | 16817 | `6eecffbeff2f8367dbd0a686fbcdedadc202722d6cc17491d12f29b991760d1c` |
-| `docs/legal/AEKR_PRIVACY_BASELINE.md` | 17663 | `bf321eb4ac83a5bf7551a39a5281f46ec83365b5044fbc35ea405d512cb86e0c` |
-| `docs/legal/COOKIE_PREFERENCES.md` | 11053 | `3e114829341c5e1899f6ddd7b15e00b082c711c70dce49390e7d0eab19927119` |
-| `docs/legal/LANDING_COPY.md` | 15884 | `e2454d152d471c8b0c9c31d9f73b99be24a25174423136591fdc0f66dd620c26` |
-| `docs/legal/PRIVACY_DISCOVERY.md` | 26511 | `c6a242bf83d4cd67ad82be398c4dd2bc5d4b1addcb3ff4a72829827f70873631` |
-| `docs/optional-usage-implementation.md` | 9749 | `fbee22bba70be58010101396aa061382c00c15200c5500dd3466da6dc44e92f8` |
-| `integrations/README.md` | 3922 | `4e64f12f43d9aa42ea28430d180b8b68c07803a51ecdcd14bbba97e1d5a0f61e` |
-| `integrations/timeker-stage/assets/logo.svg` | 264 | `dbfbdd7496e12575e50310ae8aea14eca03e51884da18d66a45125b5527bb895` |
-| `integrations/timeker-stage/mcp.json` | 755 | `740350da2c2e4907e30982c7ad7a0cd2f78bfe36533614c608a673e80da082c4` |
-| `integrations/timeker-stage/plugin.json` | 1360 | `538b59b1149071a97e5139869191c37634634126065c525fbd330b4a8932e882` |
-| `integrations/timeker-stage/skills/timeker/SKILL.md` | 3377 | `35474bc1f387264a5803cf92c1d08baeab0131d09e7074b5d292c8f81edda814` |
-| `pyproject.toml` | 1494 | `c506d200c701e09d9222f9f545a3f3065cc68e12f3044ebde59b1c3b6561ca7e` |
-| `scripts/dev.ps1` | 846 | `5f7e427d8938fbd93c878397235ffb1d93da90b538ebd3981c6a1c9715d5d5cb` |
-| `scripts/mailbox-credential.ps1` | 1022 | `8ea369a6437147c3234623ed5979755ad6ddc51c3c9083ee331b81c77e43ff4e` |
-| `scripts/postgres-demo-init.sql` | 227 | `5d6899892a69e7143c05e3160dea3dd37304e9e47dd85cef33160d3e1fcb2c05` |
-| `scripts/postgres-init.sql` | 222 | `8935807978bc8a134f4d3217c9331b5e8f12dc9c8cf8bb9f0d89a507cfaaeda2` |
-| `scripts/postgres-runtime-grants.sql` | 2589 | `72f56a3de4b95ef02f116645a6d88fed0df2a10df170e41cf4a3b55ff4d18f24` |
-| `scripts/render_invitation.py` | 2702 | `a40e18aa97da3ea53566d4db18ab8ee6768beb35dd6f762a7aa6f8ffa35fab70` |
-| `tests/conftest.py` | 3284 | `42ccdc44fd65f3897f16db611046713d8636dc828b4b168ed6d94b38dbf8df47` |
-| `tests/e2e/AXE_LICENSE` | 16283 | `daccd6f5b8e0fd07c0992116280fcddc77c2a612c4ebeb64d8b114ed9da1a10b` |
-| `tests/e2e/README.md` | 637 | `e0147846ca2bca614850837327ea876beb0049a9cabfd331e393bee72032252f` |
-| `tests/e2e/axe.min.js` | 652151 | `ba9c5edf12647a66301ff4174e4f154fd9aadea4fc4871815f22be9b61922438` |
-| `tests/e2e/conftest.py` | 3290 | `9b351cd7e133b0603f0ffd31421f7cf025e547fd7293c5cd903603e0dc628891` |
-| `tests/e2e/test_archive_browser.py` | 5936 | `1ca811a00c90e07f6faa80c205d87709d3eeacdfd9ef598c95d5576f1f8a529c` |
-| `tests/e2e/test_browser.py` | 8486 | `75b06faa68541fc1d116b9029f7a86c1c16ac85c5c3b3416509794b330277147` |
-| `tests/e2e/test_case_workflow_browser.py` | 5106 | `8881e4d98d4fa058090470988ff56446834535c2c3767cbde347f982373423cc` |
-| `tests/e2e/test_clock.py` | 3621 | `c9953115f70defbb624384a9fa8bcf65d7d97714ccf4caef7205cdbe35f14f4a` |
-| `tests/e2e/test_contact_browser.py` | 2996 | `9c2521fd49c0f260718850719d0faf226e1c2cf341266b33efbefb40ab8cadca` |
-| `tests/e2e/test_cookie_flow_browser.py` | 2132 | `3f213966d09694013db6cd7cd14e2776b21021b234b556709c9a04cf710f823e` |
-| `tests/e2e/test_cookie_preferences_browser.py` | 8850 | `74a0310386553d2ae1c579392f44c58e6d409f68adac20b65542466ae79a0f2f` |
-| `tests/e2e/test_credit_memos_browser.py` | 3322 | `c8a8455dfa12039a7b7e3943454409f134b063d145b2e77db3e2eea4e4758804` |
-| `tests/e2e/test_delegated_oauth_browser.py` | 13641 | `5276cb565f53b498a5022f8930195d9064d893bb45bee3bb65aac8961ffa1590` |
-| `tests/e2e/test_live_checkout_browser.py` | 18924 | `2e9000be66ecdebb32b45906d41d2f61643ed31078bc5fece4c90a1f0f66aae7` |
-| `tests/e2e/test_lookups_browser.py` | 3937 | `fd1a9f23ba1011d6b97356fad3467ae6d8abcbbf0514377d0aeefcf4ece22a5e` |
-| `tests/e2e/test_mail_attachments_browser.py` | 2422 | `c9a937b4b1d2ae473ac2c3fa2c105747ced5bead2dfa31971767e3f514c41d13` |
-| `tests/e2e/test_mail_browser.py` | 3679 | `da0b918b3ce78bba64e03b29ee59c39808b97bcff5a7bc23453f91d316a416bc` |
-| `tests/e2e/test_oauth_csp_browser.py` | 7400 | `45ebbf4a9f1ce8f8995543c5f7dbb77beeb80e8e3a8cbfe4797a52bc06d652bd` |
-| `tests/e2e/test_onboarding_browser.py` | 39414 | `475d7386296161db45fbfca77b74d7f4f5d44d348633ab8f4dd70ddc9be33c72` |
-| `tests/e2e/test_paddle_overlay_browser.py` | 7167 | `5bab02f45836c03be23da99d8d83843ce45b53c1a96e219d17a5c27c5c69c678` |
-| `tests/e2e/test_project_billing_browser.py` | 3996 | `dc93b71a704b3e047802426b9e6e2986a2e1b2de24ec3fc3fa79516eab626cbe` |
-| `tests/e2e/test_projects_browser.py` | 5665 | `178d72bf3f5832ac15c3797e9c932511f0431087566f5e62c87dc53b629fadee` |
-| `tests/e2e/test_proposal_sending_browser.py` | 6963 | `410739046fb1f78072ee66b7b973e5ee535630aae7d6592c72e1668dab690c2f` |
-| `tests/e2e/test_quoting_library_browser.py` | 13054 | `6f4c0914014fc5d508374794595e2816fc825ae5ceb0dafb82aa2ec76e82c517` |
-| `tests/e2e/test_quoting_lookup_browser.py` | 1764 | `e9873ac5642c0dc1ab1dd4d0aeba6a255a16f76e01519ab4d6e3ada00d200afc` |
-| `tests/e2e/test_sending_browser.py` | 7444 | `5d8886cba4f372c59d8dfd84ee58a6e56361918b2895f2749cb3f82f9efc5c8b` |
-| `tests/e2e/test_sending_manual_followup_browser.py` | 3625 | `2ec4eb2f58a0fc12398373db2c41208a53eb188f65e4f51666ba65ebfd4ad4dc` |
-| `tests/e2e/test_session_recovery_browser.py` | 732 | `ea3a8a56007fbe3990ce61b9e5e339cf006fd88edf2cf3fc45d6408b2b986239` |
-| `tests/e2e/test_shared_auth_challenge.py` | 13821 | `3070337009d58af35cfd6dc9cdc0cdfd40bfcceebc780c889797a070bc589715` |
-| `tests/e2e/test_subscription_browser.py` | 7282 | `535ae43d4fd473950707bff37ac68312cf371666503a334417da5216390cfd83` |
-| `tests/e2e/test_time_import_browser.py` | 4991 | `081a5710effa4d7fc7a82c41a0f3a1ffb05428dea6624b9375696b3d479b1a11` |
-| `tests/e2e/test_timecard_local_clock.py` | 3547 | `b91e3b9265827f02a32dbbaa732175b8e4fac01de38a72035910f0156a673566` |
-| `tests/e2e/test_timecard_selection.py` | 5947 | `360f1bc53a19bbd972d0092ca098f2beff1d01cd6700de3b2f5291a005b9a35a` |
-| `tests/e2e/test_ui_refresh_browser.py` | 11130 | `45e99de77319cfd414f45ea5a2179196aa1e31fd73be2fc078be1b015bd38f74` |
-| `tests/e2e/test_work_management.py` | 8262 | `f060fe019cdeb665e86bd902b2a1a49d1fb0c4ad5bf37e6f2c552c8a991dd6d0` |
-| `tests/e2e/test_workflow_feedback_browser.py` | 4468 | `17fafbb61d641622bd100ccbddb003a007e339ce264fcb7af2607bbdb3f290a7` |
-| `tests/integration/test_archiving.py` | 15429 | `5cb854eddcce24a33906739911361e6fe6f0840488ff2aca5a6daef2fff12861` |
-| `tests/integration/test_auth_get_sessions.py` | 12843 | `395010bd9eb7342aedbc89db6ba1522e7200a619ece322c881aa3e9cf0c43ead` |
-| `tests/integration/test_auth_notice.py` | 17888 | `4a34d5b7e0e90a29bf9ee5f79faa2a010366c400c830de5b61244e19b1a20d43` |
-| `tests/integration/test_case_lists.py` | 6997 | `af239a5c34fd570ba03b3982726801022a75147c93cf8e014ca673c4a5f379cf` |
-| `tests/integration/test_case_workflow.py` | 5342 | `5a968e5a0c09e4294076837f910453bdc8e6ff3f22d564f19e1dc2668e073a6a` |
-| `tests/integration/test_cases.py` | 24887 | `fddac8301cfe5ae42afe0ebb7f2a541167196ef0f4c39042397ee55727a536eb` |
-| `tests/integration/test_cases_migration.py` | 4889 | `9d0a63aabeb9ca3f557f71f9f6f02a181cf666849244dd8ce6fc0001a0812d7d` |
-| `tests/integration/test_contact.py` | 10687 | `35c3270e36d185c7d1021bb13434ab97f0fc13d92957fadfc13ef2c71e419e79` |
-| `tests/integration/test_credit_memos.py` | 14892 | `e7a911fabbbfb2451364493b389689c1f00e82e67c168330075cfac0d7ba6953` |
-| `tests/integration/test_delegated_integration.py` | 17144 | `3ad274718d52821f0ed1b537b1bed8207b81a47f5b5d45b72097ca7c010c1016` |
-| `tests/integration/test_email_start_retries.py` | 25293 | `04ab05b32d03071a14ffb57fb7aae08cca0ef49b894c97955c36df54abd101a9` |
-| `tests/integration/test_hardening.py` | 16574 | `7ce0cce909e3a1b306e5d45c5828ef2fc4f86609c3d440fd77f308504fa68869` |
-| `tests/integration/test_internal_jobs.py` | 3242 | `6cf3c2b29a906c4986df0ea976dc7e95f7a9c792fe1d16c22a730a9176757114` |
-| `tests/integration/test_library.py` | 12647 | `7528315ac96a5f5db58f3cacf83bcf1f97967a7b20c60256b5e10969bae9c238` |
-| `tests/integration/test_live_billing.py` | 9601 | `5baf8d645dee9ba97261d10f4a265f0b257ac4239ab56beb365afcd0ae630e3d` |
-| `tests/integration/test_lookups.py` | 7818 | `6e686aa452ac4766708accf489e36969a8acba9d87d299b73caea5dfa46f17a2` |
-| `tests/integration/test_mail.py` | 16656 | `97fbeeec5db782d24b2fd42ca571ddb229cc5e60f95cca54d195fda6e1c0f399` |
-| `tests/integration/test_mail_attachments.py` | 13364 | `32a1e7f347def64930d9cadf9031bad5c3dec07388f0427cc38e7dba839ea242` |
-| `tests/integration/test_mail_case_reference.py` | 3197 | `eaf45678909da7347d6d77e766d478666778b7a7ef33abb1becd58bfce491f5b` |
-| `tests/integration/test_migrations.py` | 5618 | `89eda570923fd87372e71271161752748712e9ef702fce89879c7b8be0b326fb` |
-| `tests/integration/test_oauth.py` | 4321 | `22087f743f6a3f4465c16f39192159ed4b32c0283484a5c452e0c5228e6aa741` |
-| `tests/integration/test_onboarding_auth.py` | 45831 | `20efab7f299b47c81b1150b45fb5719a4f885709ba5a90d34aba2f7cd0f04ed8` |
-| `tests/integration/test_optional_usage.py` | 3696 | `ec25c09fcd87ad5e8cec45797b675c36161ae5a4a4436810687ad6a36475ee81` |
-| `tests/integration/test_privacy_preferences.py` | 8397 | `f30bcfbc1469363d261cd0128d453c5809e1a71067c2e6a1543b0ad75bc93499` |
-| `tests/integration/test_project_attachments.py` | 8757 | `54537e747fba8616d23f2b2cf0c3542b812b3599cc4effcb26940fb15f49eb41` |
-| `tests/integration/test_project_attachments_migration.py` | 2332 | `678a70f9825c9408ae99898b02371de1665f39e77998e0c2cb695c56f9da4296` |
-| `tests/integration/test_project_billing_routes.py` | 2324 | `3443c9caf81bf93e9c1b02886825971bcea463be88d6ba8b04603fdf018f190b` |
-| `tests/integration/test_project_lifecycle_work.py` | 1704 | `610ec0e64995fb10d21da6783081d33e7bbe3c042f01ed59eeda184c9e881576` |
-| `tests/integration/test_projects.py` | 13851 | `ef049ff40bdad16f44d145848a8e4c8f6f01078d93ada14c09f2784763ff55a3` |
-| `tests/integration/test_proposal_sending.py` | 19303 | `fdee4c06178dc0957fab19816c6a3f4dcecd00ebe9f967f7bdd988522e128b43` |
-| `tests/integration/test_public_admission.py` | 57063 | `a9555818900f38cb8c318673d75dcf2cdcac2d4485c5d61d37de9f04599ae5a6` |
-| `tests/integration/test_quoting.py` | 14757 | `cfb9191fa9c1942a68f9479e93843889092aaf7b417b4195c3ca6fdc24990530` |
-| `tests/integration/test_quoting_routes.py` | 8867 | `d4b671c30a8a6eaa8fd491fc39ac99728cc0024254f093639a652b5348b11253` |
-| `tests/integration/test_recovery_rehearsal.py` | 22477 | `f1c4fc1d366183914a522664ccedd5b05d8af95e1c9e02f97c6a6e3911c2fa0e` |
-| `tests/integration/test_routes.py` | 4283 | `f4ff8f9a60e3e2c1250083c5ad09d234c8f5be3c60f0f357a2dea12a27a53b59` |
-| `tests/integration/test_save_feedback.py` | 5174 | `e74cf8d6cfbb5825515695537f33f85469947b3931c5f1d2698a10eb7d572568` |
-| `tests/integration/test_sending_dispatch.py` | 18247 | `1075d4ddb8dfd5712381f1609f3619834eb6e521ea5feccbc6bd9f42a0eb1591` |
-| `tests/integration/test_sending_isolation.py` | 14390 | `10aa24af85d504c00b3bf0cc622b42e04923b88635a506dc3d7dcb34cb24935d` |
-| `tests/integration/test_sending_manual_followup.py` | 9365 | `193d82cebb3a6d7c18e5740ee686daf56cd029cededfb2684bc29619dbbcaa58` |
-| `tests/integration/test_sending_routes.py` | 6869 | `108ece3b0295f7488d7b3b2e295eb66c0d1f6342b4142abfdd726c959d6874e3` |
-| `tests/integration/test_session_recovery.py` | 856 | `fffe7ea2851bf157ab016cc2a6292a1e688d7413fd77f9d7eea92c46b5ec75df` |
-| `tests/integration/test_social_auth.py` | 16440 | `0c44e8117be5e3f5c6c67e8a1600f8f1260199ec5398a62891640b1633d6f29e` |
-| `tests/integration/test_subscription_billing.py` | 45553 | `f98817b452744f4b606fcece8ea36ffde49c46bcd9665114094771bdf7d00218` |
-| `tests/integration/test_subscription_capacity.py` | 16978 | `27a3b828e6cea51ab1db28398ac26102b8380d7a766f3a83e62e255cf118999b` |
-| `tests/integration/test_subscription_domain.py` | 12523 | `c9e60da17bba247bcb9fdfa35faf3fe9c55e5e9199a7e5d71b054af32101d0c0` |
-| `tests/integration/test_subscription_http.py` | 11593 | `e3967f1561a7378c0c2256b4720abfd412a6b0cc16506f108189b28cc8883856` |
-| `tests/integration/test_subscription_payments_http.py` | 16127 | `ccb3fe20de185e1af25c62cc1e45e795a6a4374725bb5043dae34c2bd40872ed` |
-| `tests/integration/test_subscription_retention.py` | 27434 | `8623c85e0f78408791b1afe7678cbdf920f72b77de55d2afcbfc7f7c2d0514d6` |
-| `tests/integration/test_tenancy.py` | 15686 | `a54e95d8a838044a30bcd05cf28134497dc5f1b1d78f0bb4e4ce4febbf0c1b69` |
-| `tests/integration/test_tenancy_capacity.py` | 15157 | `fabc34d50cd1669ec4e6fe55012687ea9a82e84430fbd9dc93b0b54921182249` |
-| `tests/integration/test_tenant_demo.py` | 4464 | `9bae9cd8b075719b09d926580e58382d43fe80ec91ca50aa1d2ff6886f4217d8` |
-| `tests/integration/test_time_commands.py` | 19304 | `65fd5474b2b87fdbde27205d39e49bfe94b319d541306a8f0886e52a2a0e6ab2` |
-| `tests/integration/test_time_import_http.py` | 8067 | `05d3c89df2f9e298705595862eaf52693cea2490618e53c65a747413209c52c2` |
-| `tests/integration/test_ui_refresh.py` | 4778 | `c0618229b2c1b294bffa9a8b792f1f8fe89299361927d6b347cb09ea8706256f` |
-| `tests/integration/test_usage_browser_flow.py` | 5972 | `9d7a68769cd78f6cd18ebe8ec690051a10f3a91209e3eb16f54a56aa270b1ab7` |
-| `tests/integration/test_work_forms.py` | 2594 | `fac37c617ed10e1c29d5b71b965dfa1a86067c5cae76b067adbebca246d5c362` |
-| `tests/integration/test_workflow.py` | 9533 | `e577487063642bc25f6f768dd5735c7cf7cb676e34812f8f8bdf5c66749e537d` |
-| `tests/integration/test_workspace_operations.py` | 20053 | `6e3d83272a06ce20b8c9421999ce1070f14c297b4c671cc45e503eca076f9d21` |
-| `tests/test_project_billing.py` | 14729 | `853494215915853ff887354e39ec047b911f1c12459c16b1a503ceb9c7e3ca4b` |
-| `tests/test_project_billing_reports.py` | 4685 | `2938dab5146349adea0a7f4856f186c9c8d583a52e9fc82b86631109f61ffb4b` |
-| `tests/test_sending.py` | 19831 | `a598938bf5f576bb63df2b6e5e07cef176e9a5f87ee0f65a620310898f38c77b` |
-| `tests/test_tenancy_config.py` | 6597 | `76db624cba72396c2a781bd6783338abfe9f0a2a58b9eecd2c02fea6f1146f7e` |
-| `tests/unit/__init__.py` | 82 | `92dcce4dd9d428604e749a05163c1c3489e7ed4319edea19067c0dc47b30987a` |
-| `tests/unit/test_archive_dates.py` | 3078 | `66199f0b712e16dfefb8b96a3fec17e7c2fb227f97d915c623c67b3cc8f27a2f` |
-| `tests/unit/test_bot_check.py` | 2865 | `2d183fe6ea2bc275e1ca569f8c9ca9565f16ac9ccdb9abdde2cd223345211dc7` |
-| `tests/unit/test_domain.py` | 2082 | `8c6aa3ba05b8d990b26315964686138bf85479751f7aef4bc712075fb22fdb59` |
-| `tests/unit/test_email_auth.py` | 9066 | `d83dbc98b3e589b68d2fb764e083613490a512a43a9a61f50d5a1ffc0061b197` |
-| `tests/unit/test_integration_contracts.py` | 9359 | `a2e8d62d722802961ef7d12bbeb621f2c57070b8b3efa657038a6c18c5794ae0` |
-| `tests/unit/test_invitation_template.py` | 1780 | `7229845a77abec602a822d638012e1a4c7bcb59c640ed58b321dae372a2fb684` |
-| `tests/unit/test_library.py` | 5908 | `e1bc3606f6d179f0003e5bfca3a27bb65abf58c64f188228e28b76700fd1fd2e` |
-| `tests/unit/test_live_templates.py` | 10786 | `8d443a9276cc626d3cf1e6a119f1e9d5e905e7362adafb18aa60449278d41c25` |
-| `tests/unit/test_logging.py` | 2940 | `dfc10aa7f71812c3a819004c25db2308e9b42f3b752f679d1ce699245aba1f7d` |
-| `tests/unit/test_onboarding_templates.py` | 27454 | `c8280132c261f99eb6d7d0262a4cecb669345e5df821a9ae9007c98dcfaa38f4` |
-| `tests/unit/test_paddle.py` | 28481 | `e3d2ea3c03f67a84b8b305d7e7be3036b2985a67d9fae11c08a39841166ccad2` |
-| `tests/unit/test_paddle_templates.py` | 10263 | `4772215f080857b4a74dce1b909e050611d4ef90561a84bd4e5e252d82a5dadb` |
-| `tests/unit/test_production_capabilities.py` | 13802 | `36226071e7a5e8a36b19246e95350713e7563b6b3011bb6790e5c89650e1ed2b` |
-| `tests/unit/test_proposal_sending.py` | 3718 | `16b06392ea4d854fc0842b6e15cb833573e312795d46c73a9e3cc1d4a9638b85` |
-| `tests/unit/test_proposal_sending_transport.py` | 5818 | `292100edb54eead33012321dfba9a4dae98abf3ebb5976a4bea041ccae5650c7` |
-| `tests/unit/test_public_admission_proof.py` | 3605 | `edf627e722d137b0298167f7a9584e78dd431805dc22dad026e7c4c7566c9124` |
-| `tests/unit/test_quoting.py` | 4597 | `d88e22fdfcf7b8ef62d8c88bd5c4d8b137437e8e2bb67e6f1810b85e3a5d8d78` |
-| `tests/unit/test_quoting_routes.py` | 2341 | `d355df7d268c71d6a88e3bfd876af4f0f8eee31723685cddc265ee1ffec2b0da` |
-| `tests/unit/test_retention.py` | 13175 | `5fb40d6befed04ff8fc6098a9b0b163f0839b391a3f1fb5d36cd4d8097b1705b` |
-| `tests/unit/test_sending_templates.py` | 7878 | `e4b87352f41ca8e22865d816ab418e3919b7eda0f8e5bae7ea47bceefcefe65a` |
-| `tests/unit/test_sending_transport.py` | 7008 | `6ef6b22da8b697b86b4c42ceeca483eb7efd937029003798fc4f528c0e552e54` |
-| `tests/unit/test_social_auth_proof.py` | 4612 | `5ad376191d1554e5a6c4c234d52a39f376573793eea450abd2ebd6b139a28fd6` |
-| `tests/unit/test_subscription_templates.py` | 8704 | `052e9e07bbc8c406953b05014d75b95469d9c8172f9fd2df32eccdb8c9fa8345` |
-| `tests/unit/test_subscriptions.py` | 3823 | `a7fffb8d85d4c207a7e2fed9229985193c65ce2e85082cf7112dd51bbe0b47a2` |
-| `tests/unit/test_templates.py` | 7025 | `a566419f55fe27a9ccc354092b0fec509d26dc07b5bba17dfd67de28c634ec2c` |
-| `tests/unit/test_time_import.py` | 4146 | `c56578aae99ac65c6291543d6f0a3f3a1ecf6c5919cbe9da217b79f1e27bc511` |
-| `tests/usage-browser.mjs` | 6677 | `8c36561ff9b58bbd1371d0857e58cf478bd593b12d05172958e8944926f30ba9` |
-| `uv.lock` | 297750 | `048be1b352509730adba10fe9e07e7d45a2128fbc055195afc122e02b4b20e8c` |
-
+| [`.dockerignore`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/.dockerignore) | 265 | `b77bc6e9de7081e00e50649ffa90084fe9f11e679cf00a31fa6aa3f25342b616` |
+| [`.env.example`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/.env.example) | 2318 | `3bee36cc2391658fa7e58ec694cd1a42d0f72c17db65656c05e86ba9e255c7bb` |
+| [`.gitignore`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/.gitignore) | 355 | `4d1eb50795b2ae91bf132e52e3e4c3a154e65aa36025d824669f8cd791ffd59e` |
+| [`AGENTS.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/AGENTS.md) | 10083 | `1d7a72077e3bd5d7fe6b06ff25ef724c50ca799533bc3a236ee213dbc785dd8e` |
+| [`CONTINUE.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md) | 1757 | `11cab9b7e0a5f3bc02c3237d74a273ce852020d74a657f0775c78302430078b9` |
+| [`DESIGN_SPEC.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/DESIGN_SPEC.md) | 105 | `1dcdc793794f85b6e1eb25da093bf34a2ef05f3a956f75b6f1f9abcf970a2d7e` |
+| [`Dockerfile`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/Dockerfile) | 1109 | `b7bf17cab8bdf129bc9057052be378a29188ea22b86950c3c960e421e462be2e` |
+| [`HOSTING.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md) | 7842 | `758d9f0d818db410bca97084d3283784837e37283b43cb591d6057ffcd81a227` |
+| [`PROJECT_BRIEF.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/PROJECT_BRIEF.md) | 88 | `84c2261f536d103ccb66abee3170dc2dbd22c491de1fa89798f936bc2dc6e1bc` |
+| [`PROJECT_MAP.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/PROJECT_MAP.md) | 4708 | `1978459d51f4eb0a80e5f3c938432606b1902f528c1a14fdda0cc6c201fd9ff3` |
+| [`README.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/README.md) | 5315 | `ab409fefc1877030e20232f1fb5a3386e57de67820a6913fd498334b0be74764` |
+| [`alembic.ini`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic.ini) | 81 | `3b3710b419fc9ad123bed2f66c2339ef6950d80f19be4ea349da7252a65d6109` |
+| [`alembic/env.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/env.py) | 1389 | `77776dbcf4097173c6ffac8af501b6ef1fd69fed77dd1f217815c4eb564e7334` |
+| [`alembic/script.py.mako`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/script.py.mako) | 336 | `8f879277ac6deaf82170914242d03b74088910182807ba3657fa746fc4e5f36d` |
+| [`alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py) | 9512 | `5546dbd4d323183823febd3ca212dd74e83b7d2081710cd2f5056d1648c72c88` |
+| [`alembic/versions/7e416c6444fe_baseline.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/7e416c6444fe_baseline.py) | 17724 | `8570667b383600a021ec36cdab00f2a3851c50dc5aad8ec5d742fad45b91d0c7` |
+| [`alembic/versions/a10d45de891c_issued_status_guard.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/a10d45de891c_issued_status_guard.py) | 2317 | `96a89b00f181fbed439d78cce295958bf6be88033b39b9f40f1b26f9653bfcf2` |
+| [`alembic/versions/a82d43cf6120_project_workflow_and_agreements.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/a82d43cf6120_project_workflow_and_agreements.py) | 3908 | `73649633d2736af6891f91024d3f61491b40d5e285ba16ba326f7c00efc4a0a9` |
+| [`alembic/versions/b07c9d621a30_pin_guard_schema.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/b07c9d621a30_pin_guard_schema.py) | 930 | `3d3412bd0df933a257df60ba61d1c0458a7d0dd8f21441aeb108414ed2eff7ab` |
+| [`alembic/versions/c41894d13cb7_project_commercial_metadata.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/c41894d13cb7_project_commercial_metadata.py) | 2028 | `335cd2864120a186f11cbbce4e2906f2e1ab22f71edfb2013d0f354aa9f29bce` |
+| [`alembic/versions/c46f2f62a011_immutable_artifacts.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/c46f2f62a011_immutable_artifacts.py) | 4504 | `e101d2922ca2f5d842055548cf57ae49539763eb1433bb35af6a22a1f3645f55` |
+| [`alembic/versions/d3517d81ce20_contact_reservations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/d3517d81ce20_contact_reservations.py) | 990 | `7642340c9545f651c410f986d11e93d973c0f71faded34a590ce0e5bbaf422d7` |
+| [`alembic/versions/d529b08f14a2_project_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/d529b08f14a2_project_billing.py) | 14083 | `8cde2a842be37f6e2edeb2388398e5772b94335b2bc251a2d7e40a64799a54ad` |
+| [`alembic/versions/e3b42aea781a_parent_guards_and_sessions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e3b42aea781a_parent_guards_and_sessions.py) | 3204 | `2514f05093a597f52a618b2141526e137755c5c728e32704b749ebfce97eedc4` |
+| [`alembic/versions/e640ab7230cd_case_identity_and_types.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e640ab7230cd_case_identity_and_types.py) | 8560 | `6a50cd2b360207042a7f5c31c9326d89cb4318e20efdbd7f5cda78c19c5163fd` |
+| [`alembic/versions/e672c40fa912_cases_and_allocations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e672c40fa912_cases_and_allocations.py) | 9693 | `c342d896866a8bf90e98f8c432050cb5979550ed3181137970fc326e223037a9` |
+| [`alembic/versions/f409a1ac1700_parent_lock_guards.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/f409a1ac1700_parent_lock_guards.py) | 2346 | `4cee6118c21cb895b9c1a183739ac1837e4ece5331af376c59255a68911c340a` |
+| [`alembic/versions/f710bc319ae2_mail_attachment_custody.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/f710bc319ae2_mail_attachment_custody.py) | 3847 | `bac187ef38a608d5c794e8495e383c42dfb69ea8d6ea8645dd4a4f52baea2a7a` |
+| [`alembic/versions/ph2_001_credit_memos.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_001_credit_memos.py) | 6674 | `c8d79b29322e46bb5d68a04bfa6953e32fdb7526ca3aac4c6fc6db45c502dbf7` |
+| [`alembic/versions/ph2_002_time_commands.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_002_time_commands.py) | 10349 | `2760dd9b1efc7a4bba705468d8915204bae2068c1a49ac681c60ff3b800b986c` |
+| [`alembic/versions/ph2_003_integrations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_003_integrations.py) | 4445 | `aaca02a6e9db2e2515393e1ba12264574f305a1cbd332f8527f956958451360c` |
+| [`alembic/versions/ph3_001_subscriptions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_001_subscriptions.py) | 3849 | `8a671d6355bd80b43239596e94fa94dc8f7ede7835e52d168a8a429498096d8a` |
+| [`alembic/versions/ph3_002_sandbox_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_002_sandbox_billing.py) | 7851 | `ad8af64c3f14f8143d02dc9efe767ce68402639399166a22e916fa341e4cef09` |
+| [`alembic/versions/ph3_003_onboarding_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_003_onboarding_auth.py) | 5521 | `8b4d28cf64781e7cd198f5769733f143ffe12d21186d08737d3962d92138a0d2` |
+| [`alembic/versions/ph3_004_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_004_sending.py) | 9470 | `e269d73e8a835f46987e4ea304a25f6b5bdb89bfa3eba0541a1ebb765debc24e` |
+| [`alembic/versions/ph3_005_public_admission.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_005_public_admission.py) | 6258 | `59036e375d5875b42d8de8d134b71d5ed8ed7056df122b4f2ac6df4d272ea2bc` |
+| [`alembic/versions/ph3_006_quoting_library.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_006_quoting_library.py) | 30675 | `8a851a397894f99dedb11fa3a322346327ca22407f209ee3f6647d371b58bd38` |
+| [`alembic/versions/ph3_007_work_records.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py) | 24767 | `5de9f8aee0166f1eed32abdec3000f9633d41dd6aecb0256057d6a46638c41b3` |
+| [`alembic/versions/ph3_008_client_lifecycle.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_008_client_lifecycle.py) | 1320 | `9f2e5027dabe0256522c224b412453d79d64df9fee7f9ff570f3bd7f4ceac1d8` |
+| [`alembic/versions/ph3_009_read_indexes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_009_read_indexes.py) | 989 | `95e6579d5993aa015445e91f56a073125f227e2728f0f11451ef46bceff5355b` |
+| [`app/__init__.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/__init__.py) | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| [`app/admission.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py) | 21225 | `0c1b63f9debbed17322fc79f529014f2cdd3834044949b6c0e7ecec3706a78b8` |
+| [`app/admission_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py) | 2817 | `dc8149b178ca17241e5617b149a7e759618f4501b4f4fa3f37ac9ae929fa6d82` |
+| [`app/admission_operations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_operations.py) | 8002 | `fac6b66ace9f8ed864c1d5e51ed619308e9c5619ffe0dde61d93e6b060443dd5` |
+| [`app/archive_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archive_routes.py) | 8654 | `e7593836df627b8b0d79783de66434ae99d242e5ed8fc3872b45b3dc7b5020bf` |
+| [`app/archiving.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archiving.py) | 8087 | `7be273c2ef6b70b70443949756e8110d705453433b3e7b47b4d7d072ed968430` |
+| [`app/audit.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/audit.py) | 481 | `a46e464b8db010fd3ef47b7d931b99744ced06a6c15e356d074a77eb9806d5a8` |
+| [`app/auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/auth.py) | 5267 | `580faa0592f9be8133db78a3e18eb7227838a3e99813b8f55a88eec2c498941b` |
+| [`app/billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/billing.py) | 31538 | `26c868e306e9dc9c1e7129b17680d73cc18313d9594bda01e90ec68181e616e9` |
+| [`app/bot_check.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/bot_check.py) | 1494 | `2863beef71e5ac4791e71a3561aa8380acee689150a41c12f87a3a7765a45b2f` |
+| [`app/case_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py) | 22743 | `2dcabe45643897df4b3088b3bf5454de0ccb375be775c42281ef3299a60532f0` |
+| [`app/cases.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/cases.py) | 13081 | `ae33205efa12b46fd85037f8c0479f1788786059c84eb782a0c6843412cbe8fa` |
+| [`app/cli.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/cli.py) | 6216 | `120e5b1dddb256335bb8eb2336ce6bc45e4ed9855aac0de14c36c65366556db9` |
+| [`app/client_drafts.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/client_drafts.py) | 2356 | `c25a759c44732499616f26187c931b3e76af2831f8630a3474af979eb6ce900d` |
+| [`app/client_sources.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/client_sources.py) | 5592 | `08efd63c7b78a3bdd3a14eaab8d93d8abe69185fc4bfb2556f06811ad27825e3` |
+| [`app/clients.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/clients.py) | 15980 | `c66d4e32e0fd354150af5717ac1d952464ff2688d5596c55767f7e691fdcfddf` |
+| [`app/config.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py) | 13393 | `988fb2cc23e55bc4e9f310992a86d496dfa5f9a543609780591085e63a50446e` |
+| [`app/contact.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/contact.py) | 9641 | `1a643a8dc3f1be76778d16d29fa4f8544072d2e111f423550dfd528d99b357f3` |
+| [`app/credit_memo_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/credit_memo_models.py) | 1447 | `19971f8d366cdab98e7ccd0fd44926c5b7b89b6061eda5d65a13eae88f1dddfe` |
+| [`app/dashboard.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/dashboard.py) | 4714 | `f243a01ee9e431b11365c6b3cac7a1acdfbffb6a081de90df0f374cdb23526c4` |
+| [`app/data/COPYRIGHT.pycountry.txt`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/data/COPYRIGHT.pycountry.txt) | 2054 | `f4b01617064bcd9e9fe3db62ec9c6ef8d0afcc388dda58d9b2935a551d7960e4` |
+| [`app/data/LICENSE.pycountry.txt`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/data/LICENSE.pycountry.txt) | 24463 | `3fa39c6e18a3a4411082b64c164deae1d8f47b03a4d45304c1f0ae478626e382` |
+| [`app/data/README.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/data/README.md) | 1932 | `4760f982facbddd9f61b477fc4d8b9563b2a4d500f1c65aac6d07f93ce81fee4` |
+| [`app/data/iso_3166-1.json`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/data/iso_3166-1.json) | 43284 | `f01b812b57fba9f31ff621bf33e7c7570a01964dbeb5be2167e94decf538c89f` |
+| [`app/data/iso_4217.json`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/data/iso_4217.json) | 16319 | `a84a5b83c38591e87569b2e0ba184ed867386e00f2b5a93349a0cd1ded6b6ccf` |
+| [`app/db.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py) | 1092 | `fd7fef0f3511e94d740eb2878349e0a02f0fb2c0382b1eae9a06007bd44adf50` |
+| [`app/demo.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/demo.py) | 6170 | `0d6001f34d760b3c9bff4e60d72ab73da21405adfadf82d45d216f25eb846aeb` |
+| [`app/domain.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/domain.py) | 2396 | `d63afdf63d9fd40f45426f2c88482f74185efc361225ad6ea195d8ae21dddb70` |
+| [`app/email_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/email_auth.py) | 8909 | `db24f443e5512f013277a3b075dd66d846cf1cf6988e4aa6b96f5b91ce642067` |
+| [`app/enrollment.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment.py) | 9966 | `9e42373a0670371700bcc8b3d772b434406ff0cee01ac5145343f6b0529b9661` |
+| [`app/enrollment_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py) | 2402 | `cc28a549353c52c5c0abbdbceb0db19c88bf4774ba2fddc5c20dd6f37a2a1c0d` |
+| [`app/enrollment_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py) | 36027 | `a3998de8ce63ad635412b853fc8667d8dae65947706ef076d81d5bd3d00cf0ff` |
+| [`app/flexfields.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/flexfields.py) | 2434 | `1882b10eb980459912e06a76ef747209b799f60d9ab59987b6ecd8c74cc511b0` |
+| [`app/forms.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/forms.py) | 4373 | `0853ec143e8042173756d54f0a4ae23ee12e208c6a3ce6cf8a53021498c263d3` |
+| [`app/integration_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py) | 19111 | `954d534e609376db32270c4592e3da28824515e7104a12b719912effad2456c6` |
+| [`app/integration_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py) | 3303 | `b34fd0f5ae069977ba78b800f18b7329b9a86ce420592d0a4bc17c4efff9766b` |
+| [`app/integration_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py) | 43510 | `a6c558527b3dc3030bd885c78027008a3670520d35383f3305ab9b57056a2996` |
+| [`app/internal_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py) | 7913 | `ab16a622f5f44b9a211d020a3f8d1e0ce5919cddfef8e1c7a36755d3178fcc6f` |
+| [`app/library.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library.py) | 25286 | `65aa0bbabbafcf7aa8aaac5dd431ec5928e033cb81906c982d559e954bfddc81` |
+| [`app/library_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py) | 4093 | `31cf9525e21fa7e711b6dfd0ace11a7a06752f63f6339e6be77a1feb3cbec7dc` |
+| [`app/library_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py) | 10437 | `0e47b3b14946e5353d186abb908661db1e47d0c0613ba4aa44cf23e0782f3c69` |
+| [`app/logging.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/logging.py) | 3667 | `3d18cb7338c745f175a95901a58b0f7f329b8857dfc26d3f74e10665f4e9d676` |
+| [`app/lookups.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/lookups.py) | 5805 | `b433ba638ec9a5cf88f904492c54725ed33dc8e8fb3bcbb0b33154c124988c43` |
+| [`app/mail_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py) | 3671 | `de5d6203acc78fd54236b653bc379b2c0a1950844aca06abe872799d7d5104ed` |
+| [`app/mail_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py) | 18616 | `15720d79d8dceb63a7e459db75ed8d0645aeba528f42e7c926012505ddbff942` |
+| [`app/mail_service.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_service.py) | 12998 | `29f109c355d2e985a2e1ac97819b23e98443c2cd969cfcba73b9737bbbac71f1` |
+| [`app/main.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py) | 81559 | `e919301265bf35ab18507a49ff4953a16ffae9958d2843b65f94c4af21e4ed23` |
+| [`app/models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py) | 20583 | `4dc6233d743ffd43bea41585e6423c5b80a89a96b497155f88774182f88b8b70` |
+| [`app/paddle.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/paddle.py) | 26862 | `81d60d45b1b7a172ced8b663c67f1968f2129ad749610024603ec63d42d8ab48` |
+| [`app/pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/pagination.py) | 2330 | `517df621a3f89da8a75e231315773fed84e74f94532106b7035759972eb1040e` |
+| [`app/pdf.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/pdf.py) | 1722 | `daff94ba6dd182472ecc7f37277cef2042d3433e0922cebc7cc7dcc74c25fda9` |
+| [`app/privacy.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/privacy.py) | 5073 | `11d50b154251250dd54a601713c34ccd86a9ea235aba38738989b5c232ade569` |
+| [`app/project_attachments.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_attachments.py) | 4084 | `ba5e96917ba2bed7b6dd84dc2791405ba26d18faf411f1db211ce34135b045bc` |
+| [`app/project_billing_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_billing_routes.py) | 4380 | `62692b3b21d2fb75a27266b9219877b15a69f8be4041bc8aaa05a46c99b41f02` |
+| [`app/project_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_routes.py) | 13699 | `4d11b4729383c7bd67cbbcf30cf0c9d4a006966dd2eb319adb9def82e4018411` |
+| [`app/project_terms.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_terms.py) | 2507 | `afca055671b6d0459ecfd931b078fb5eddb78efe10568d0bf2d15d5a270df107` |
+| [`app/proposal_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending.py) | 14224 | `29362e637a348ac241d3c1af6ad70e785fcb94a3a5949e2b9ae1b280f67bfac8` |
+| [`app/proposal_sending_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_models.py) | 3364 | `78a724d0ecfc1db0ce5ad8b333680ae0bdbe5ad64c1b38e5b5df74bbd82c0d41` |
+| [`app/proposal_sending_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py) | 6951 | `c66cdb170dfbfb3ea3b417e340b691d5091c52d5d9353f8ca13ef7980f60c5d0` |
+| [`app/proposal_sending_transport.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_transport.py) | 6006 | `46bb13a7e8d59a19ced5ac8c95b032449b070125f783d339a3339085be55d89b` |
+| [`app/quoting.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting.py) | 22859 | `6f5cc3ee39a9056a3485b0d4f5c3bb2a10b409548aaf6680ff770db64eb2627e` |
+| [`app/quoting_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py) | 5934 | `24910fd16be91df9e117f6ead470e3e9dde084045d257ba7061f4b1e6a888991` |
+| [`app/quoting_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py) | 13343 | `ab8760856e4958cf91b9ebe47b2a2a844c11f26dd63503f1045a07db9da6c37a` |
+| [`app/record_references.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/record_references.py) | 792 | `e7ab56e18f6a30fe9f29f795e200e670017f8480b31d829ef5b7cd73217a10b5` |
+| [`app/reference_choices.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/reference_choices.py) | 1321 | `ba1637bfe2df15d46350e8593e7e9e5119404585c3c5ead2fbec0a7ba57e1529` |
+| [`app/reports.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/reports.py) | 12635 | `1e1509b7c6e1df4cb059bbe0845c91a5e409188c4a09b3f295ba654bd75cd87f` |
+| [`app/repositories.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/repositories.py) | 1860 | `561396ae7d6ee6728b19a86baeb88d8f591ce819e289062c41b89adc90fe7cd8` |
+| [`app/search_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/search_routes.py) | 942 | `3374521b6ac5d6e26c55f176d2ce1e3bf735e90286960e49681bf2d74674c541` |
+| [`app/seed.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/seed.py) | 3965 | `4009105e059783c2584b5d0e8fe3cd8b67f91847615c01d111690bb659503bde` |
+| [`app/sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending.py) | 27096 | `54109ad28c289bbfcb415fd556c002c4cdb651a292a09e737fa18dace0ad547b` |
+| [`app/sending_dispatch_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_dispatch_routes.py) | 3214 | `10e6ca799e17cb6f3acc8fe474f21159c262e3987664cdb18fe13ac5a3a544aa` |
+| [`app/sending_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py) | 3659 | `5e2540ac381f7f85016700bab1639187f86609a342f4c3ba62d8f519a7f738b7` |
+| [`app/sending_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py) | 8665 | `96d134fa87766a80ef46a7df7f0eee545cf4d75114e4251dfbfcd1de525f5392` |
+| [`app/sending_transport.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_transport.py) | 5223 | `87566951cfe2a1a38bf78650b4322281a9d3fc579293264fa276c8815bc6a74f` |
+| [`app/settings.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/settings.py) | 6519 | `7653208aa42c2d40c40485f6b6b86c7a9ae574d9a11ec85a2118d843d4ba30f3` |
+| [`app/social_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/social_auth.py) | 3159 | `16ca8368511d60857cd3ca928b469d996f52fa0a1a28fea463df1794a1dbbbc9` |
+| [`app/static_assets.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/static_assets.py) | 2170 | `be5f61745af96e9a730b826367c3d94db0db62bb070e5bca7f1d9b98adf58d46` |
+| [`app/subscription_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing.py) | 70626 | `53936d4dbf846483aafecf2fe7daa91e9807f3f0e3ad697fd7f345619178fbd7` |
+| [`app/subscription_billing_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py) | 4422 | `6d7e872cb2c38646c8eaea8859c0da4412a6bed26ea20d96ab91d6f1e6cbce58` |
+| [`app/subscription_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_models.py) | 2089 | `3a04dfbdcaf1922272d72ac788ef2179160156962dfb64402a40fdcac9501743` |
+| [`app/subscription_payment_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py) | 20001 | `a66dd4e3f88a242d7c85a8e2cb9e110f99cd1f43ade1f2cb00dc50029dbef3c0` |
+| [`app/subscription_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_routes.py) | 6450 | `122a1bdd40a236c8fbea7d52732291e1f51a895e8f1d4fe6afe29dcffb89920f` |
+| [`app/subscriptions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscriptions.py) | 16240 | `e9cce91ef4287afd5f7cc0931681f9b1359795ca42b036e47c1adcfe4ac5d9fd` |
+| [`app/tenancy.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py) | 23607 | `93211d39a9a73ac7ff964eec909be76f25f44dd8c3ff139770cb47b8e7f04beb` |
+| [`app/tenant_demo.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenant_demo.py) | 9444 | `b0d5609aba928c7ecaef018aeb677521af22dd0648165fd63a7c5b85f577a7be` |
+| [`app/time_command_models.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py) | 2777 | `5d19880baee473007d13ac2b7e26f390be645bb532efe82adca7310a598a8ddb` |
+| [`app/time_commands.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_commands.py) | 26021 | `0953e5f22da94c48e9f8717c2dd88ecd47223705cd9fd169ebc8fc1fca2435f0` |
+| [`app/time_import.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import.py) | 9214 | `b995c8dfdce546fb1a8a245bbdbf3646e823b88dde9c66d8613cdf0e9dbc2ece` |
+| [`app/time_import_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import_routes.py) | 13642 | `7007db8a0a654b83b3b45c028e70c80d0acb9dec557173f538a3f9d0bf7c16c7` |
+| [`app/timecards.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/timecards.py) | 15733 | `49d6767b097e3e09ab2aaa32d1b847f6d5c6f63ed4d5fd0cf98c8362af64fa8a` |
+| [`app/usage.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/usage.py) | 2862 | `22d85b100c90de845ea1ed37dcf76209c1899d62836e0458030c5d2a3483eae0` |
+| [`app/web/static/AEKR-BANNER-LICENSE.txt`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/AEKR-BANNER-LICENSE.txt) | 1377 | `b249deb3a468f304b956702f1b850666a08d5b883eb53b536cf15adae3af5703` |
+| [`app/web/static/AEKR-FOOTER-LICENSE.txt`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/AEKR-FOOTER-LICENSE.txt) | 745 | `6c0984d9a671a761730ad8157b5f9072053963f904feb4807c9e5e17d944f506` |
+| [`app/web/static/HTMX_LICENSE`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/HTMX_LICENSE) | 655 | `126cfb5670a927207a43f0387ce4cb5f853337116c39a18b02cb8198403d471e` |
+| [`app/web/static/aekr-banner.png`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/aekr-banner.png) | 1006315 | `81a60d8e3d28b2e0934cecd22c703af20e2bddd164f68a0888193647c1b816fc` |
+| [`app/web/static/aekr-mark.svg`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/aekr-mark.svg) | 1139 | `e6adbcafa4a1ad203c41303876588da23bf1c3e54a5e9b841088fbc9b2727b74` |
+| [`app/web/static/app.css`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/app.css) | 42367 | `5cb13866587d46967c13795b263298d53c109ef30f6f5e447066833bf964012e` |
+| [`app/web/static/app.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/app.js) | 28318 | `02145151005cc31ffe8e40a8782719805a17a5bfd3ed66f15ad08cc0afd9cf9c` |
+| [`app/web/static/auth_challenge.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/auth_challenge.js) | 2674 | `1cfd12c6e544bc9c1cfbc04cbec5437ad874a9fd1cee5acb3fe3d9b0a589b81d` |
+| [`app/web/static/cases.css`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/cases.css) | 919 | `24e56bcd6edbae0f99d252a90d52c73126b8903853577c67af4745e8af522a53` |
+| [`app/web/static/cases.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/cases.js) | 2953 | `1ca6885ab8018d88667f0e6b3718d77be29da397c097f73c92474c2e59f4b329` |
+| [`app/web/static/contact.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/contact.js) | 2551 | `419e8c8bdd2159cc76f44752c64a0d90f2a9ea7a8f6066eb33b323e514b1ad69` |
+| [`app/web/static/favicon.svg`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/favicon.svg) | 264 | `dbfbdd7496e12575e50310ae8aea14eca03e51884da18d66a45125b5527bb895` |
+| [`app/web/static/github-invertocat.svg`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/github-invertocat.svg) | 1313 | `b5e2f4b3f953f075de7016faa952d6ce3ec7492aa7b32408505ec25857962d89` |
+| [`app/web/static/google-g.png`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/google-g.png) | 33661 | `d1ce9c2af0b10a7333abc99bc706f9a6a199e5b65bf3e3009624f076b8638e6a` |
+| [`app/web/static/google-sans-OFL.txt`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/google-sans-OFL.txt) | 4396 | `0d6194f5ba9661c627db09279762e664e78d3970f8c2c1dc7696257e542f62c5` |
+| [`app/web/static/google-sans-medium.ttf`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/google-sans-medium.ttf) | 4632 | `8ed4ae383dd28799a8b141eebaa16277e9c3b174fbf93728437b87bd15b25dbd` |
+| [`app/web/static/htmx.min.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/htmx.min.js) | 51250 | `22283ef68cb7545914f0a88a1bdedc7256a703d1d580c1d255217d0a50d31313` |
+| [`app/web/static/paddle_checkout.css`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/paddle_checkout.css) | 859 | `72400de6d05511eee436436f8603f44d925ee84c4beca409e76c858afee74a40` |
+| [`app/web/static/paddle_checkout.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/paddle_checkout.js) | 2746 | `af409ab0d037a4a6f1b82655abcc0c82389f12b9050218eab11857ef9e6904bb` |
+| [`app/web/static/settings_cache.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/settings_cache.js) | 3483 | `802f55b9c0fed4d2390f3c7f4f0e82a9e0254cec831d826d50c0c43bfc8f4e7b` |
+| [`app/web/static/status.css`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/status.css) | 2095 | `33b0f501dea53a76da7674f9cf70df19cb3c4bd39f2dc4cc57de199a7456f257` |
+| [`app/web/static/timecards.css`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/timecards.css) | 2064 | `db53816559104bebb2cec5f9e9086e81879109dd474053f4618499e235f0fd5f` |
+| [`app/web/static/timecards.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/timecards.js) | 1439 | `cd94d9801eba2ea9774db286d626ce260d0715c888c1346e0c4005b44346f68f` |
+| [`app/web/static/usage.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/usage.js) | 2970 | `63bf9cd2e1016b15f318ebc7441165b537f0805e9023fbcdb788670eb5e1a6da` |
+| [`app/web/static/wordmark-monochrome.svg`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/wordmark-monochrome.svg) | 547 | `f1f20a3add773a417e96950435c02eae8c35ae671e60b5d00aa1e7cef86d9277` |
+| [`app/web/static/wordmark.svg`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/wordmark.svg) | 547 | `559cac515e74f6091efb06a3bd4bd145a0d1c87bdf2f33c8ce651a69419d9698` |
+| [`app/web/static/workspace.css`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/workspace.css) | 10135 | `888fdadde2f685587c57881b8a58941f3e1d8e6536744864532a26693edb44cb` |
+| [`app/web/static/workspace.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/workspace.js) | 8394 | `a9e21b349f54e7684624bb09029658d3fcf005a3b5e15b2af2c05253f8440771` |
+| [`app/web/templates/account_security.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/account_security.html) | 4598 | `e1bc042d8a8b4f27c0a7f7a0baf5a984b40df4e0994ca766389e67209ac154fe` |
+| [`app/web/templates/archive.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/archive.html) | 4509 | `2eaf043d4eed487514b22c70872ca0ddc3626724fe9cd89eadc4be03be086526` |
+| [`app/web/templates/archived_timecard.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/archived_timecard.html) | 402 | `36dcea0f13c3397862bb30f4acfbba6e28f4f76b133507e1b5dc775682e84d52` |
+| [`app/web/templates/assistant_connection_guide.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/assistant_connection_guide.html) | 6986 | `8a2c07bf743eeeb1cdc9696fcdf43cd516e9322dd63fc39fe7c2a0aa17e2fe58` |
+| [`app/web/templates/audit.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/audit.html) | 736 | `0d67c1940da37236916f479ec4c08aaa35ccc1e03bb53e8f5e68d03cf26721a6` |
+| [`app/web/templates/auth_challenge.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_challenge.html) | 537 | `b6e66d0d3683fd4f2a40a5f0418b9debbfc79cd298044a84d36f67a43b3e277d` |
+| [`app/web/templates/auth_layout.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_layout.html) | 1173 | `aed83bb655c693e3f7d4d3aea74de8fffcbbff96332c4da6e52da3eb21adc9ae` |
+| [`app/web/templates/auth_methods.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_methods.html) | 3145 | `0828303ecd09586d388d5f7d3ac7f6b056598cd049c7316e6d7a459caa426020` |
+| [`app/web/templates/auth_notice.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_notice.html) | 458 | `b7c324fe8fe015c376ae0cedde72dc2bc012b10a9602cdb233cc96963990d695` |
+| [`app/web/templates/auth_notice_fields.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_notice_fields.html) | 129 | `6b1e0c063294e046adcbde8be9f85ad19421cbbd21e812c33b3656a96eb7e405` |
+| [`app/web/templates/auth_provider_button.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_provider_button.html) | 395 | `5b2becd69bce9a6f66eade79c6dc81ed1eb16b456568a5aa91f74d84060b842a` |
+| [`app/web/templates/auth_provider_forms.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_provider_forms.html) | 892 | `02e49bd36fe0b3211ed50eacb0adeace049f40a19d74fa904f55dda509557d1a` |
+| [`app/web/templates/base.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/base.html) | 5074 | `8224c72032fdc1a3d1774e2a67b8b87b90703518cf7fcb5503732741d637c6e8` |
+| [`app/web/templates/billing.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/billing.html) | 4955 | `4cd1807eed7b886728a7c6f4f905e4d6545466bd451634d9e26330fd71ccbc2e` |
+| [`app/web/templates/capacity_prompt.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/capacity_prompt.html) | 2143 | `7045f8dff4e889993bf1bd4a7683090e8c937562492a8bb3180c7e022f078f29` |
+| [`app/web/templates/case_allocations.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_allocations.html) | 2233 | `932817d670fdbe238b326df99092061a3679210edd4e57189232066b3e5fad55` |
+| [`app/web/templates/case_detail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_detail.html) | 4137 | `d113d33eb6871aa98e503e6cc1494a950c5727b0eb85b6e064fbb53f98abf2a9` |
+| [`app/web/templates/case_form.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_form.html) | 3517 | `344b9e1f0fcd61557edf4cd2b4bf42e0dafe0aa953c113c4b2ba4381e47d0867` |
+| [`app/web/templates/case_mass_edit.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_mass_edit.html) | 334 | `a107c4ee64a1decb9590920d555d1aba0158737ae9f88fa89894514fcaf03f10` |
+| [`app/web/templates/case_mass_edit_content.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_mass_edit_content.html) | 3257 | `12ce11ff9b53b8d86591530fb1b42f52d2f8178be85c5321f361134a9a5f6beb` |
+| [`app/web/templates/cases.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/cases.html) | 4517 | `8e2a66d545d0971df3c7f303d06300bca70bd7836be3c7fb21838bd08e1c3272` |
+| [`app/web/templates/client_detail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/client_detail.html) | 7057 | `31e63d763df4d256c821f3e0939682a81a706530714066dc68e91846b8c20ad9` |
+| [`app/web/templates/client_drafts.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/client_drafts.html) | 866 | `47f75f39f6ce8820bd006064be60dc4355f64744bd6d53a9474a4764295bd6d5` |
+| [`app/web/templates/client_form.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/client_form.html) | 4301 | `77a22825b0b7f9206f370efd2980f820589578aa55bfa239d9215346d24ccafd` |
+| [`app/web/templates/clients.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/clients.html) | 2513 | `590159c8458a3c6dc1391b3efe2999c65f521a89a8e7034e36c565531116aa18` |
+| [`app/web/templates/clock.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/clock.html) | 905 | `39a5bec237e823308d4f494a6c9157005b09021cd71aea79e83584e3f1d69061` |
+| [`app/web/templates/components.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/components.html) | 8616 | `00fdf0bb813e24b30bf5aafd016d63a1812e39c1e3f9b49a439824682324533e` |
+| [`app/web/templates/contact_form.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/contact_form.html) | 1765 | `8e4c4a5a5b83eaa02191cbe9a21a4eae5f4c92da762be6e0f3e7713e28566791` |
+| [`app/web/templates/cookie_preferences.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/cookie_preferences.html) | 3044 | `3bf524b03c5c49e8e73e0b69220ac720b9bc22aa4862777dca744ebf53618f4a` |
+| [`app/web/templates/credit_memo.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/credit_memo.html) | 1140 | `bb693567112b90f6d4f347e472fd464d3ef73723d7953e6ecc2c66784da4553a` |
+| [`app/web/templates/credit_memo_pdf.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/credit_memo_pdf.html) | 3187 | `89fbf822508336ac9bfa52fefcf35a0c0d9f0825e2d526f53a10f31f60bfd157` |
+| [`app/web/templates/dashboard.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/dashboard.html) | 10571 | `9c23611ac5acd71b2455fd1f7424597dd9469e86d6f6bbd94ba94f8ae27218a5` |
+| [`app/web/templates/dashboard_detail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/dashboard_detail.html) | 1203 | `6142b2776a6cae8c44b2cdd1934a416f114207ae0f04b843d7c6fb49e9f04456` |
+| [`app/web/templates/email/invitation.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/email/invitation.html) | 3800 | `34aa22cec3c776c9840b25f945c47f981d7450e6c294b6fd0984c5a7814dafd6` |
+| [`app/web/templates/error.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/error.html) | 831 | `c851a3056f9b18367c89977d053440ff77a9220228964795947f398b212483bc` |
+| [`app/web/templates/flexfields.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/flexfields.html) | 1003 | `465eaca2851c2097e2f43fd8f92f281f9598dbc6c6fd8e18492daed95ecd6b1f` |
+| [`app/web/templates/help.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/help.html) | 19172 | `f3ed6ace9e46a0afcc44d3362a0309b343dc4bccc50f9035df16ebb403d9940c` |
+| [`app/web/templates/invoice.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/invoice.html) | 7294 | `512a6d280ecd19bdafdf06145019ac66aaa5a7032b99e442619057d4f3ae03d6` |
+| [`app/web/templates/landing.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/landing.html) | 2520 | `4c3724a5766640f463bfabb5f1cc643cb625638ec3347261c04b141b4ca1f3a6` |
+| [`app/web/templates/landing_info.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/landing_info.html) | 5363 | `a35130850abea52f87f6343785e6b67049b7a6f79d9365457c68d2d1e97d464e` |
+| [`app/web/templates/legal_policies.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/legal_policies.html) | 1009 | `4c981453094e807c3894fdb046cfc427765e809faa88853a9a521244b2a190f0` |
+| [`app/web/templates/legal_policy_content.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/legal_policy_content.html) | 10609 | `cbb2833cef3159a63bb0864cedf864db55ab4c83ebc086c682d59d1dfc37a741` |
+| [`app/web/templates/library.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/library.html) | 1876 | `abeab02a607ea235592486430d81753ed77f02aba4ab26cbaa2875abe268b7d6` |
+| [`app/web/templates/library_document.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/library_document.html) | 6043 | `d7b209dbaa5b61629100d1aca4b64e24b39ac7ef181d64629e46822218a025ac` |
+| [`app/web/templates/library_document_pdf.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/library_document_pdf.html) | 1015 | `78f467d030c2647d19c846ea5d688ae467208eb743be4657c94ee39eeb55c934` |
+| [`app/web/templates/lookup.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/lookup.html) | 3023 | `8ddce4062ddca92e263fa0226d61cecd41a9ef2f1708fb6ec198b38cf2548048` |
+| [`app/web/templates/lookup_fragment.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/lookup_fragment.html) | 131 | `9293bc58c28ad53221b7d0df5dc06027936b6e2c51e68e713a30e1e73997adcb` |
+| [`app/web/templates/mail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail.html) | 2389 | `f17eb67f459aab9ee7ace95fe110534843012c0bce7e368aa5a128ad43741c35` |
+| [`app/web/templates/mail_addresses.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_addresses.html) | 1632 | `9dd2bdeb2551d3da7e8065e61a5ca9a77490eb207ac4ab738d7f9502dbd9aee5` |
+| [`app/web/templates/mail_assignment.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_assignment.html) | 346 | `b4e78b1aa4ed02faad317533f03bd9a2ebf4e7c2af087e7e2143415d1ba1fbb3` |
+| [`app/web/templates/mail_detail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_detail.html) | 2492 | `7556cc3db89fcebc2e4b1f0633469483ce158661471f503dc45ecfcf063afa5e` |
+| [`app/web/templates/mail_import.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_import.html) | 1687 | `42e8bc430ca4d8e1252d09851c2af178049cd0eb01fee0bc19ab90c65da0b22d` |
+| [`app/web/templates/navigation_icons.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/navigation_icons.html) | 2458 | `443d2d9a727045f6a4a1b7ca4f779bde53006b02fa3fcb7076a81b1da2fff2c7` |
+| [`app/web/templates/privacy_controls.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/privacy_controls.html) | 192 | `4a4007a01f0ef8bee3851d8dda5d8fe5a43f358b3e77dda83347af8be96bb44f` |
+| [`app/web/templates/project_billing.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/project_billing.html) | 5195 | `abe0ae70677c56eaeb1657350618e5de1e9f05b12e2738319a5ca5c9a59695cb` |
+| [`app/web/templates/project_form.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/project_form.html) | 7667 | `91d36b3dd9ffb253c29b25cfd45b3fbeba6dee13eca96b371a9803448cea1055` |
+| [`app/web/templates/projects.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/projects.html) | 2865 | `f8d7acf25dac4076da0f569399856ab1a5c7065e4e09ba162528900dcf9dca29` |
+| [`app/web/templates/proposal_sending.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending.html) | 1453 | `19a223b0bf38b5b4f73a5d821585331ca4e801f041cb02cb8f345b43d33c0102` |
+| [`app/web/templates/proposal_sending_prepare.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending_prepare.html) | 1676 | `49b7366dcac7cb07ea457b37c04d11247a1dad30438472160b0392eb41e63c77` |
+| [`app/web/templates/proposal_sending_readiness.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending_readiness.html) | 237 | `ff66bd0775aad025b04c9b9265b6dca8e3cf9e0e1b04ac86e80f8447aabb7318` |
+| [`app/web/templates/proposal_sending_review.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending_review.html) | 4159 | `2091d95fcc8d82fb832e4d34038cd0ae8047317e0516d7d144af283c010c1001` |
+| [`app/web/templates/public_plans.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/public_plans.html) | 2933 | `937f1c13e6909a26c9eba218b9c7c7a6ed62c51d11ccbc5e5203a2aaf04001ae` |
+| [`app/web/templates/quote_detail.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quote_detail.html) | 4463 | `6e47f193b15bca4166f03ae7461ca92616e0ce103d56cff075c910d0b0c89abc` |
+| [`app/web/templates/quote_form.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quote_form.html) | 4616 | `f2823ce10da3e6bde1213326bba0539248a9301d9a794d07eec2fb971f2d1176` |
+| [`app/web/templates/quote_pdf.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quote_pdf.html) | 2513 | `b60782825fc9747bf8140db565388599277dafb7718eaa4dd20660142d53974d` |
+| [`app/web/templates/quoting.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quoting.html) | 3687 | `c205b4d8cc816a53657e32fca68a8df916f3c63dd55c1f340a0149519cc6eecc` |
+| [`app/web/templates/registration.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/registration.html) | 4060 | `376ee84d4ce4f3163d5ca88303a3fae3669bab04d4365541a60c6e7753331629` |
+| [`app/web/templates/reports.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/reports.html) | 1948 | `6ee03de756647484a578bef8989b5524fb31b1bfdeeb0b4ae08da6d5f5b57ca5` |
+| [`app/web/templates/search.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/search.html) | 987 | `9f6c9b8def05bcce09bfff57859bb5a593510d497b1b1c1297dca43b86c12eb3` |
+| [`app/web/templates/sending.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending.html) | 8190 | `090a5a9a1c6647092fb44eb857c28ed5df3440f1a3e38d4be88e7c265631e2a6` |
+| [`app/web/templates/sending_followup_review.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_followup_review.html) | 1802 | `dc766434820f9932e51f72f6e6b339c089a24f4fe30da56eddd8643585c2a974` |
+| [`app/web/templates/sending_prepare.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_prepare.html) | 2997 | `c7fedfa82eaa1b839712b78faebeaf2a39807ed2f397842b1a72804799093850` |
+| [`app/web/templates/sending_readiness.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_readiness.html) | 562 | `aa7c4bf4a69c9eb27c077352e6ec9dffdacc543a55145f7f3e29fb366e9241d3` |
+| [`app/web/templates/sending_review.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_review.html) | 2282 | `f91cf419fab58e91f086b2be0ef62defdbff0775211115256422c1ccc6953e1a` |
+| [`app/web/templates/settings.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/settings.html) | 8592 | `687b0daccdc2aec9128787d14241458be74e25ebbf5d54fbc435d363a741b213` |
+| [`app/web/templates/settings_integrations.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/settings_integrations.html) | 2801 | `47bdc142f1465565970189879c30d4de2047786a8cb8288f15835fadc8f23529` |
+| [`app/web/templates/sign_in.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sign_in.html) | 571 | `2ecf58d8e8b8e8d1a3442c5ac668279fc9b72babe86651de7bce51cbeb482cf7` |
+| [`app/web/templates/sign_up.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sign_up.html) | 721 | `6e8319bf937c48fb665f430d0453d4dd4053231e4efbbd4c02bb3f35b0fd45f7` |
+| [`app/web/templates/statement.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/statement.html) | 4509 | `29f3c2d0726f07b0726df89d704f4b7f15aa3a519c6053dc7c9eac79025d3c8d` |
+| [`app/web/templates/subscription.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription.html) | 6789 | `a1ab0b007a235a2447aca43e3416c6554cd37d05ee9908ac3cd7ec9004aa5638` |
+| [`app/web/templates/subscription_account.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_account.html) | 11446 | `d3b56d688fa54ec159ecb931bcbab1ce9db2bc8f02b5ab24c24ea5e30060db70` |
+| [`app/web/templates/subscription_change_review.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_change_review.html) | 3686 | `bd8f4ddb15b7eec24b56366220ddb23da0d3619631efd24465eb6d8dd06d84b4` |
+| [`app/web/templates/subscription_checkout.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_checkout.html) | 3629 | `aa6dd07bae31bbd40d4b845f8cf70290bffc427d8292ab9f365fd9987d782d8d` |
+| [`app/web/templates/subscription_command.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_command.html) | 458 | `f6c360a10b5f3b47e4c7f216ec4cd0585e5a058aa5dd977101ca4d2558c89433` |
+| [`app/web/templates/subscription_payment_controls.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_payment_controls.html) | 3096 | `92ebbd82d0385822d2b5db34eaf030b3076b99a7aba76670cd571d716767170f` |
+| [`app/web/templates/subscription_portal.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_portal.html) | 1348 | `02d911f97877ad5a826bf0df5be66150edf85f0e5d0fa15c37525d019589b535` |
+| [`app/web/templates/subscription_retention_review.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_retention_review.html) | 3654 | `1fcc1a791bc217ab2087dcbb0286cf3671069b63789b77d14188184bcb99b80e` |
+| [`app/web/templates/time_import.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/time_import.html) | 7483 | `77b5ff2ed5985dfe58cd8a832eef5d1d9704974e203d22d65390d544d967f7ba` |
+| [`app/web/templates/timecards.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/timecards.html) | 11729 | `c312e502d3e484a433993d261d88e4235db8d02235a9a0da25f4bf569a24a8e0` |
+| [`app/web/templates/workspace_search_dialog.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/workspace_search_dialog.html) | 1126 | `2b1eb04b0501ba8a8d369c6bd74c41c81ea22bd08aa05de89b70a4ceefca260d` |
+| [`app/work_history.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/work_history.py) | 4540 | `9260dd6c87e1754209db9c9e9c1a5c64403489ca6c237d3dd494cb31903c3b24` |
+| [`app/work_lifecycle.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/work_lifecycle.py) | 3627 | `6df2ab2139991026bbe154bb354bdcc4e3f92b2dc0597538df8acf700189477f` |
+| [`app/workspace_operations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/workspace_operations.py) | 20129 | `9e6c6030e5ca6a366b8f04d4f30d23b1fe5382df0a80073181c69767191defc2` |
+| [`app/workspace_search.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/workspace_search.py) | 5037 | `4a524b6e2f04f2a310cadf18fdf2a2723dc036bd5ba6c2a8401ec13d4122d096` |
+| [`assets/AEKR-BANNER-LICENSE.txt`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/assets/AEKR-BANNER-LICENSE.txt) | 1377 | `b249deb3a468f304b956702f1b850666a08d5b883eb53b536cf15adae3af5703` |
+| [`assets/aekr-banner.png`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/assets/aekr-banner.png) | 1006315 | `81a60d8e3d28b2e0934cecd22c703af20e2bddd164f68a0888193647c1b816fc` |
+| [`compose.demo.yaml`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/compose.demo.yaml) | 1141 | `5928622b2129b37659b3b5a92e0063453afc9efae6653c6a0cb14d65910cf3ff` |
+| [`compose.yaml`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/compose.yaml) | 1104 | `3e1999404ed732dc821badd87aee1cbebd0826ac4abc71bc7e93dbd004b1a22a` |
+| [`deploy/cloudflare/FOOTER_RELEASE.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/FOOTER_RELEASE.md) | 1523 | `eea548b12b7e397b83e48c41b684d1ffbd3688fe511edafd005b8f26b5f66887` |
+| [`deploy/cloudflare/README.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/README.md) | 6227 | `3e897947cde72f2a23a95b374ee21e35db0246f3d9abe37ab1d83f750a26a2ce` |
+| [`deploy/cloudflare/STAGE_RELEASE.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/STAGE_RELEASE.md) | 49148 | `aea0fe66ef937ee67b47f80745e73511cac23da7845e47a2ebe69251fd1c7d4e` |
+| [`deploy/cloudflare/VERIFICATION.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/VERIFICATION.md) | 1468 | `b2b54576c703b4fd1778a7c8f019bfb46486e65a833682fcff2c7208746e546d` |
+| [`deploy/cloudflare/package-lock.json`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/package-lock.json) | 65950 | `d38f58d45749157bda291534887be349f0de563497d1746f3973475eee9604f9` |
+| [`deploy/cloudflare/package.json`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/package.json) | 543 | `a7f3c84c1b3459c76546be02ea683c7f60d034615ae77db97d83a9bba18e692d` |
+| [`deploy/cloudflare/src/contact.ts`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/contact.ts) | 3599 | `2ec19fa5f750418b04b0d4823d51dc99dabc87274285dc45a51e0d9ce8a30eba` |
+| [`deploy/cloudflare/src/index.ts`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/index.ts) | 3230 | `9b5fc1377c7aa3a6924e4f41ccc657d6fa438af459da3449e17465c14cf0af56` |
+| [`deploy/cloudflare/src/internal.ts`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/internal.ts) | 2868 | `3daceccc63d698d19fa847998384ddae9ee6465b4bb656d238794a1497f15ad2` |
+| [`deploy/cloudflare/src/production-proxy.ts`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/production-proxy.ts) | 6166 | `e80a529a383c6c56ac468c67c81fd4ab3aefe274d20f458e68ad46c9476943fa` |
+| [`deploy/cloudflare/src/production.ts`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/production.ts) | 3592 | `1b92a1024b3111fd9f0c1da3d5c5facf7a3551154cfdd54d981e5dcab1992d81` |
+| [`deploy/cloudflare/src/proxy.ts`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/proxy.ts) | 21248 | `6347729be81eea2ad256ac6869a2a0a054f42fd6dab8828c5b41aea4b5b6ee98` |
+| [`deploy/cloudflare/src/stage-archive.ts`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/stage-archive.ts) | 876 | `2ed5e25bdc37a12599e87b6af64bbf6cd925df7b137e7f2f69dd312e62e71966` |
+| [`deploy/cloudflare/test/contact.test.mjs`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/contact.test.mjs) | 4161 | `431a092817e2f291b4fd9138b8bfe8d4fc05cc8392a15a18c03061ceb8de32a2` |
+| [`deploy/cloudflare/test/internal.test.mjs`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/internal.test.mjs) | 2079 | `5c69d1a045a368c32918600d108ba5f4a1c9c33a20a831c9979b6475d75b4112` |
+| [`deploy/cloudflare/test/paddle.test.mjs`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/paddle.test.mjs) | 9277 | `d68625342cede433525eb4faf54b2e2ae4dbea2c6059539bc4923e2a2f4300fd` |
+| [`deploy/cloudflare/test/production.test.mjs`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/production.test.mjs) | 10011 | `4fdf2dd51f69cf0c67034968e6dccf03440166b97eb4af2566ffd73619231d37` |
+| [`deploy/cloudflare/test/proxy.test.mjs`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/proxy.test.mjs) | 23415 | `aaa86796e39d7dca1b9424c563d2b55f6b705e40bc552752ce257f1dbbbb3c8d` |
+| [`deploy/cloudflare/test/sending.test.mjs`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/sending.test.mjs) | 1470 | `9c22661bd0cb7525faa6f26fd3d3b649a7cd4bdb93475aa3f3c8f049dbc5afb7` |
+| [`deploy/cloudflare/test/stage-archive.test.mjs`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/stage-archive.test.mjs) | 3538 | `a736a2420bcaff74f47ca6315e02b309fed9135e50b851680ea6bdd45a445439` |
+| [`deploy/cloudflare/tsconfig.json`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/tsconfig.json) | 372 | `35be468245d9e9ad995b8dccc54e347a0b416673dfbc21a3a75c0c8487d0e89a` |
+| [`deploy/cloudflare/worker-configuration.d.ts`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/worker-configuration.d.ts) | 627843 | `a5e3eadefbbc50d2504265f7ac55095c4a9ed658e1a1776de4bab973ce065518` |
+| [`deploy/cloudflare/worker-production-configuration.d.ts`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/worker-production-configuration.d.ts) | 3569 | `fe5d0731a189cc12ab29b443429eb21e2572e86cbece2705bf159e3863811e31` |
+| [`deploy/cloudflare/wrangler.jsonc`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/wrangler.jsonc) | 3198 | `8b5b984f0746816faa2ecd49625398b7637f9bab5d1883a2e737ce222d804cad` |
+| [`deploy/cloudflare/wrangler.production.jsonc`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/wrangler.production.jsonc) | 2988 | `ac82ed503a760144ae841b54a7e53d2880af1e82faa2f28f8c2e2dba28c0c674` |
+| [`deploy/postgres/README.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/postgres/README.md) | 7591 | `72f54bbd99ebd3ae9a61c455fd38bbcef3a435cd31aece8d09df1c62e86b3350` |
+| [`deploy/postgres/supabase-ca.crt`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/postgres/supabase-ca.crt) | 1390 | `1dcaafbf6fda7f21e34ff35825c1a1354408ea11e5839157e690af851c73453a` |
+| [`deploy/supabase/stage-auth-code.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/supabase/stage-auth-code.html) | 1635 | `3f89a005f7cd35516541bcc14d3f736e50b2155705b6ecd5adc131a68f1937f9` |
+| [`deploy/supabase/stage-auth-invitation.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/supabase/stage-auth-invitation.html) | 2047 | `75c6274020fa2744f4f62977b53db875473d53dde4e266bcd77ae1e911bd0d6b` |
+| [`docs/ARCHITECTURE.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/ARCHITECTURE.md) | 7550 | `00559e74bd63e0f52b05ecef4b0c7d03a6eb698b5d4ebba9c191f09fdbd38ee7` |
+| [`docs/CONTACT.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/CONTACT.md) | 4831 | `91f2658bacea8e2ab0005ef8a6aaa39f0e75bafaf3b6be27bf0d0ea76a23b5d6` |
+| [`docs/DECISIONS.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md) | 95340 | `ed235bf374ed261f5df0ef02d1866e21a18437461719cecb1fcb9c00935c0be2` |
+| [`docs/DEPLOYMENT.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DEPLOYMENT.md) | 28306 | `be36487a2d5286947bf99eb7320a32481f8e02fcfebc211c0927f90a6109114a` |
+| [`docs/MAIL.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/MAIL.md) | 5612 | `d863a3116bca8105a034399daf305eeb0e471f31cab7069357191f7dea1e196f` |
+| [`docs/OPERATIONS.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md) | 58985 | `6ed4feedf93a0c5813f630a83ef0220f8ef8253c0b32a342e2c93b8e8337e4cc` |
+| [`docs/PERFORMANCE_ANALYSIS_2026-10-17.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PERFORMANCE_ANALYSIS_2026-10-17.md) | 25332 | `4c36993df2c10b496a1a10f7d5be1f411f6ebcc7549bcd3f74beb7ea1b6a7768` |
+| [`docs/PERFORMANCE_IMPROVEMENTS_2026-10-17.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PERFORMANCE_IMPROVEMENTS_2026-10-17.md) | 11474 | `248454437e055f27aa377983b21e12492f06b50d8608d5952ea1ccf6c58442c3` |
+| [`docs/PHASE2_CLOSEOUT.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md) | 7678 | `bd4ff556e8fef5effa40ff287d0f9909decd5facc8d0bd94eb7a176167993b5c` |
+| [`docs/PROJECT_BRIEF.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PROJECT_BRIEF.md) | 27439 | `6997f881306afa76ce74bf3c8a1eee3b4f4b28600cae2ca973633e78a96aa807` |
+| [`docs/SECURITY.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/SECURITY.md) | 6206 | `d17593256bfb616ef3f7d0b7b40cfb57b8bf8accbc3bfb8509513e90f87686a0` |
+| [`docs/STATUS.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md) | 22319 | `93d901e2f652299dfe9d7681a7ace79702ab3eef37893488d41e45ee2e2ebd07` |
+| [`docs/contracts/ALCO_CONTRACT_SOURCE_NOTES.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/contracts/ALCO_CONTRACT_SOURCE_NOTES.md) | 3769 | `e186d9c2ba0396096560b29bdde3d703d35c88eedfe43da6c304a7f32bca4cfe` |
+| [`docs/design/DESIGN_SPEC.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/design/DESIGN_SPEC.md) | 35217 | `f2116d2b5d034eb47a767aa9ee8854ac3df83b63834115023bffbafb17c79bd4` |
+| [`docs/design/EXPANSION_DISCOVERY.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/design/EXPANSION_DISCOVERY.md) | 64042 | `0ddf620a9c419beae34090c1fb279785aab0379bf7f7e7724be6b3354faf84df` |
+| [`docs/design/reference/01_landing.png`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/design/reference/01_landing.png) | 1257131 | `f978f5cf3bcd3ef3303d7c48f7ba191c11cd079115953d850071e97d94ba39f5` |
+| [`docs/design/reference/02_clients.png`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/design/reference/02_clients.png) | 1551563 | `ea102adb3a0761627c5e6a960c479a59b2167b2de478267cfcdbf4f1be9d2cb8` |
+| [`docs/design/reference/03_timecards.png`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/design/reference/03_timecards.png) | 1548579 | `24756269e8054f18bbe81630b42b7abd90886fd7183ae07e7353768c4e70f305` |
+| [`docs/design/reference/04_billing.png`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/design/reference/04_billing.png) | 1614190 | `1f84f651021f95149163afd31462954b62e008bfa907f0ec482731d0cad6615e` |
+| [`docs/design/reference/05_navigation.png`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/design/reference/05_navigation.png) | 1206417 | `c947880b166e5af61fd0c5c78c6a7ba5b0c8db11037ffd1e0ed9871d4388cb08` |
+| [`docs/email/assets/timeker-wordmark.png`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/email/assets/timeker-wordmark.png) | 10064 | `e88115d67ba119e71f36ded17fae0ccbdcc8ba348210c4388afe7276c24b9f2f` |
+| [`docs/email/invitation-preview.html`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/email/invitation-preview.html) | 16817 | `6eecffbeff2f8367dbd0a686fbcdedadc202722d6cc17491d12f29b991760d1c` |
+| [`docs/legal/AEKR_PRIVACY_BASELINE.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/legal/AEKR_PRIVACY_BASELINE.md) | 17663 | `bf321eb4ac83a5bf7551a39a5281f46ec83365b5044fbc35ea405d512cb86e0c` |
+| [`docs/legal/COOKIE_PREFERENCES.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/legal/COOKIE_PREFERENCES.md) | 11053 | `3e114829341c5e1899f6ddd7b15e00b082c711c70dce49390e7d0eab19927119` |
+| [`docs/legal/LANDING_COPY.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/legal/LANDING_COPY.md) | 16128 | `22242debe36f407b4f35a099880ce02fe15de977fb8d8c72c82307af150004e6` |
+| [`docs/legal/PRIVACY_DISCOVERY.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/legal/PRIVACY_DISCOVERY.md) | 27170 | `3ff4daca4ef10d544b7e72bccf49d747aaa8aefad27278c15183925ede8a8fe3` |
+| [`docs/optional-usage-implementation.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/optional-usage-implementation.md) | 9749 | `fbee22bba70be58010101396aa061382c00c15200c5500dd3466da6dc44e92f8` |
+| [`integrations/README.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/integrations/README.md) | 3922 | `4e64f12f43d9aa42ea28430d180b8b68c07803a51ecdcd14bbba97e1d5a0f61e` |
+| [`integrations/timeker-stage/assets/logo.svg`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/integrations/timeker-stage/assets/logo.svg) | 264 | `dbfbdd7496e12575e50310ae8aea14eca03e51884da18d66a45125b5527bb895` |
+| [`integrations/timeker-stage/mcp.json`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/integrations/timeker-stage/mcp.json) | 755 | `740350da2c2e4907e30982c7ad7a0cd2f78bfe36533614c608a673e80da082c4` |
+| [`integrations/timeker-stage/plugin.json`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/integrations/timeker-stage/plugin.json) | 1360 | `538b59b1149071a97e5139869191c37634634126065c525fbd330b4a8932e882` |
+| [`integrations/timeker-stage/skills/timeker/SKILL.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/integrations/timeker-stage/skills/timeker/SKILL.md) | 3377 | `35474bc1f387264a5803cf92c1d08baeab0131d09e7074b5d292c8f81edda814` |
+| [`pyproject.toml`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/pyproject.toml) | 1494 | `c506d200c701e09d9222f9f545a3f3065cc68e12f3044ebde59b1c3b6561ca7e` |
+| [`scripts/dev.ps1`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/dev.ps1) | 846 | `5f7e427d8938fbd93c878397235ffb1d93da90b538ebd3981c6a1c9715d5d5cb` |
+| [`scripts/mailbox-credential.ps1`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/mailbox-credential.ps1) | 1022 | `8ea369a6437147c3234623ed5979755ad6ddc51c3c9083ee331b81c77e43ff4e` |
+| [`scripts/postgres-demo-init.sql`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/postgres-demo-init.sql) | 227 | `5d6899892a69e7143c05e3160dea3dd37304e9e47dd85cef33160d3e1fcb2c05` |
+| [`scripts/postgres-init.sql`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/postgres-init.sql) | 222 | `8935807978bc8a134f4d3217c9331b5e8f12dc9c8cf8bb9f0d89a507cfaaeda2` |
+| [`scripts/postgres-runtime-grants.sql`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/postgres-runtime-grants.sql) | 2679 | `2afeed86df2753685931fd012a1194269c926faafd7c70652572e55f4cc0226c` |
+| [`scripts/render_invitation.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/render_invitation.py) | 2702 | `a40e18aa97da3ea53566d4db18ab8ee6768beb35dd6f762a7aa6f8ffa35fab70` |
+| [`tests/conftest.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/conftest.py) | 3284 | `42ccdc44fd65f3897f16db611046713d8636dc828b4b168ed6d94b38dbf8df47` |
+| [`tests/e2e/AXE_LICENSE`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/AXE_LICENSE) | 16283 | `daccd6f5b8e0fd07c0992116280fcddc77c2a612c4ebeb64d8b114ed9da1a10b` |
+| [`tests/e2e/README.md`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/README.md) | 637 | `e0147846ca2bca614850837327ea876beb0049a9cabfd331e393bee72032252f` |
+| [`tests/e2e/axe.min.js`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/axe.min.js) | 652151 | `ba9c5edf12647a66301ff4174e4f154fd9aadea4fc4871815f22be9b61922438` |
+| [`tests/e2e/conftest.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/conftest.py) | 3290 | `9b351cd7e133b0603f0ffd31421f7cf025e547fd7293c5cd903603e0dc628891` |
+| [`tests/e2e/test_archive_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_archive_browser.py) | 5936 | `1ca811a00c90e07f6faa80c205d87709d3eeacdfd9ef598c95d5576f1f8a529c` |
+| [`tests/e2e/test_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_browser.py) | 8486 | `75b06faa68541fc1d116b9029f7a86c1c16ac85c5c3b3416509794b330277147` |
+| [`tests/e2e/test_case_mass_edit_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_case_mass_edit_browser.py) | 3691 | `298ea501d3d1347266c8a11ee5a921e8a4ae8cbcf7972eaed69a2e7c8ed95b6e` |
+| [`tests/e2e/test_case_workflow_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_case_workflow_browser.py) | 5106 | `8881e4d98d4fa058090470988ff56446834535c2c3767cbde347f982373423cc` |
+| [`tests/e2e/test_clock.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_clock.py) | 3621 | `c9953115f70defbb624384a9fa8bcf65d7d97714ccf4caef7205cdbe35f14f4a` |
+| [`tests/e2e/test_contact_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_contact_browser.py) | 2996 | `9c2521fd49c0f260718850719d0faf226e1c2cf341266b33efbefb40ab8cadca` |
+| [`tests/e2e/test_cookie_flow_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_cookie_flow_browser.py) | 2132 | `3f213966d09694013db6cd7cd14e2776b21021b234b556709c9a04cf710f823e` |
+| [`tests/e2e/test_cookie_preferences_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_cookie_preferences_browser.py) | 8850 | `74a0310386553d2ae1c579392f44c58e6d409f68adac20b65542466ae79a0f2f` |
+| [`tests/e2e/test_credit_memos_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_credit_memos_browser.py) | 3322 | `c8a8455dfa12039a7b7e3943454409f134b063d145b2e77db3e2eea4e4758804` |
+| [`tests/e2e/test_dashboard_detail_pagination_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_dashboard_detail_pagination_browser.py) | 10264 | `4be745b122d9bbf9fdd1fb76bca526ce1057348c53abd5fc49ad746d64307ff5` |
+| [`tests/e2e/test_dashboard_outstanding_pagination_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_dashboard_outstanding_pagination_browser.py) | 6033 | `154bfa43ae670c58729abf34787a5983b4a8811fdd4d5cd4cc1de7a0a87e8371` |
+| [`tests/e2e/test_delegated_oauth_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_delegated_oauth_browser.py) | 13641 | `5276cb565f53b498a5022f8930195d9064d893bb45bee3bb65aac8961ffa1590` |
+| [`tests/e2e/test_ker_navigation_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_ker_navigation_browser.py) | 6865 | `a8fb6eb90695433490f9606d9ca2ee695eeb0d59958648e0820c66d7a8d0d2cd` |
+| [`tests/e2e/test_live_checkout_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_live_checkout_browser.py) | 18964 | `1ca111ecf91a475d0141f100f1dee51a0294e65b964afe5c75387b5896fb8dbc` |
+| [`tests/e2e/test_lookups_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_lookups_browser.py) | 3937 | `fd1a9f23ba1011d6b97356fad3467ae6d8abcbbf0514377d0aeefcf4ece22a5e` |
+| [`tests/e2e/test_mail_attachments_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_mail_attachments_browser.py) | 2422 | `c9a937b4b1d2ae473ac2c3fa2c105747ced5bead2dfa31971767e3f514c41d13` |
+| [`tests/e2e/test_mail_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_mail_browser.py) | 3679 | `da0b918b3ce78bba64e03b29ee59c39808b97bcff5a7bc23453f91d316a416bc` |
+| [`tests/e2e/test_oauth_csp_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_oauth_csp_browser.py) | 7535 | `88954281485f634c0612e06526b81966187922e98869054879c4153792e03e01` |
+| [`tests/e2e/test_onboarding_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_onboarding_browser.py) | 39414 | `475d7386296161db45fbfca77b74d7f4f5d44d348633ab8f4dd70ddc9be33c72` |
+| [`tests/e2e/test_owner_work_refinements_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_owner_work_refinements_browser.py) | 3586 | `2116b925a7f7c160fdf684d3b7b8bc76f4c486fc3380f01d9f16b6b6ba24719d` |
+| [`tests/e2e/test_paddle_overlay_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_paddle_overlay_browser.py) | 7167 | `5bab02f45836c03be23da99d8d83843ce45b53c1a96e219d17a5c27c5c69c678` |
+| [`tests/e2e/test_project_billing_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_project_billing_browser.py) | 3996 | `dc93b71a704b3e047802426b9e6e2986a2e1b2de24ec3fc3fa79516eab626cbe` |
+| [`tests/e2e/test_projects_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_projects_browser.py) | 6526 | `3e19820a16c842a17b35e537c8bb78accfe66d64a68ff88c201e0868ec43b601` |
+| [`tests/e2e/test_proposal_sending_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_proposal_sending_browser.py) | 6963 | `410739046fb1f78072ee66b7b973e5ee535630aae7d6592c72e1668dab690c2f` |
+| [`tests/e2e/test_quoting_library_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_quoting_library_browser.py) | 12825 | `0b4020a9812ac71d0b7918f22f883bfc22dd8631e79f20385e6498b91a18185c` |
+| [`tests/e2e/test_quoting_lookup_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_quoting_lookup_browser.py) | 1764 | `e9873ac5642c0dc1ab1dd4d0aeba6a255a16f76e01519ab4d6e3ada00d200afc` |
+| [`tests/e2e/test_record_pagination_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_record_pagination_browser.py) | 9100 | `0be25e892a00c84f7f665349309c8de2ba87a7fd332a7643220df7dbfe6b4474` |
+| [`tests/e2e/test_reference_fields_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_reference_fields_browser.py) | 3491 | `241908079710929209be5c7558bfeebfc89e66b2782c8aff6c1fc7e5ce12a1d6` |
+| [`tests/e2e/test_sending_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_sending_browser.py) | 7444 | `5d8886cba4f372c59d8dfd84ee58a6e56361918b2895f2749cb3f82f9efc5c8b` |
+| [`tests/e2e/test_sending_manual_followup_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_sending_manual_followup_browser.py) | 3625 | `2ec4eb2f58a0fc12398373db2c41208a53eb188f65e4f51666ba65ebfd4ad4dc` |
+| [`tests/e2e/test_session_recovery_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_session_recovery_browser.py) | 732 | `ea3a8a56007fbe3990ce61b9e5e339cf006fd88edf2cf3fc45d6408b2b986239` |
+| [`tests/e2e/test_settings_cache_refresh_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_settings_cache_refresh_browser.py) | 6405 | `7f01a468635b087a9f24305eb7c7b39b01ea3846af4ef09e1c5ff2060998f1d4` |
+| [`tests/e2e/test_shared_auth_challenge.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_shared_auth_challenge.py) | 14078 | `89a2f86c8703e40c897229316eb56c6f8b78be7abb6e8c19c69cfdadcd3559de` |
+| [`tests/e2e/test_stage_refinements.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_stage_refinements.py) | 9718 | `9448829889e993dbb57d5d1c9ae9847de038baae877d34de48f8bbc0f4224af8` |
+| [`tests/e2e/test_subscription_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_subscription_browser.py) | 7282 | `535ae43d4fd473950707bff37ac68312cf371666503a334417da5216390cfd83` |
+| [`tests/e2e/test_time_import_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_time_import_browser.py) | 4991 | `081a5710effa4d7fc7a82c41a0f3a1ffb05428dea6624b9375696b3d479b1a11` |
+| [`tests/e2e/test_timecard_local_clock.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_local_clock.py) | 3354 | `2eee58768f1ebdeef33020f536c47735de5532225b01861cbf890a15f0ddf15d` |
+| [`tests/e2e/test_timecard_productivity_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_productivity_browser.py) | 4933 | `114059820b817e5641b599c8353cd02b4779b702e8ccabbd386fbb6cea98cb02` |
+| [`tests/e2e/test_timecard_selection.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_selection.py) | 5713 | `7e38b5664b0189ee0c58d1ccd04741382b667562992f5d7a03e094287845522b` |
+| [`tests/e2e/test_timecard_week_metrics_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_week_metrics_browser.py) | 10620 | `c6fe03a207184a8c466744b0892bd1f5250de94035416578962e21b53f7cadf0` |
+| [`tests/e2e/test_ui_refresh_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_ui_refresh_browser.py) | 11130 | `02143d2951bb1e33bc06f76b21531e47257501750bedda9a410ee214fa41074e` |
+| [`tests/e2e/test_work_management.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_work_management.py) | 8950 | `9c8194949d7ed4d926fe2cd3659bdcfce800255cfe00900988154483c0b04fd0` |
+| [`tests/e2e/test_workflow_feedback_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_workflow_feedback_browser.py) | 4775 | `ca1431cf0a5ba17d6edbb01e1185a6a28cc3ba250e3e654def5860ebb1920f40` |
+| [`tests/e2e/test_workspace_search_browser.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_workspace_search_browser.py) | 15618 | `5530764dcfea4816703c18aff4fc4ee7bcc31d5a0d4e8bcb0c30a5f95937d697` |
+| [`tests/integration/test_archiving.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_archiving.py) | 15513 | `956f2e8378d26cd0174942a07984cf735ae2570248ab7a65583fff7e952cb04b` |
+| [`tests/integration/test_auth_get_sessions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_auth_get_sessions.py) | 12843 | `395010bd9eb7342aedbc89db6ba1522e7200a619ece322c881aa3e9cf0c43ead` |
+| [`tests/integration/test_auth_notice.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_auth_notice.py) | 17888 | `4a34d5b7e0e90a29bf9ee5f79faa2a010366c400c830de5b61244e19b1a20d43` |
+| [`tests/integration/test_case_lists.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_lists.py) | 7172 | `8abf9953436e848241dc1afae5e8e11f6f0445eb6675d15966cd8da8d591c728` |
+| [`tests/integration/test_case_mass_edit.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_mass_edit.py) | 7292 | `85ebd62425d08216681207d5ea78f3170be0b1687041f3bfec415f5191620412` |
+| [`tests/integration/test_case_retention.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_retention.py) | 4541 | `a16ca949660539c7ea91836fb6a25336897a049d70c888ed5ac3bde105700b68` |
+| [`tests/integration/test_case_workflow.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_workflow.py) | 5241 | `104051ea91da393e3487ed5fab69054bdf93a91ffca8da1c32b7d1e1b10810ce` |
+| [`tests/integration/test_cases.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_cases.py) | 25242 | `30106700ebaf725e2a8f7158901c39989ad15540c886503a692bb2477c79a205` |
+| [`tests/integration/test_cases_migration.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_cases_migration.py) | 5368 | `d9dce9e038cf3776eefe484d821e0ffa7eeaafe93ed60aa93694c3b9ca9db334` |
+| [`tests/integration/test_client_codes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_client_codes.py) | 9557 | `cabcc34f1c5cbb39c18ca2274ed5c16f12dade77a007e199eae5417f9c9deeae` |
+| [`tests/integration/test_contact.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_contact.py) | 10687 | `35c3270e36d185c7d1021bb13434ab97f0fc13d92957fadfc13ef2c71e419e79` |
+| [`tests/integration/test_credit_memos.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_credit_memos.py) | 14892 | `e7a911fabbbfb2451364493b389689c1f00e82e67c168330075cfac0d7ba6953` |
+| [`tests/integration/test_dashboard_contribution_scope.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_contribution_scope.py) | 7053 | `7a163f65b83f74e86771c0b0e36e461b5041611014f44d6509d8c2ef6ec5bc8e` |
+| [`tests/integration/test_dashboard_detail_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_detail_pagination.py) | 10563 | `af86f3d8a1277f087ef0701e60ba388e65ef1e7b16365fdaf5addd4487b73d17` |
+| [`tests/integration/test_dashboard_outstanding_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_outstanding_pagination.py) | 5489 | `c7ae4db4cb9ec7a0b1784d4db428184721f325b6c70693ce64862900433fc0e4` |
+| [`tests/integration/test_dashboard_performance.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_performance.py) | 8961 | `c1ea30e898b1b01cbc6ec1c255c5ef0f95243a2fb4838e3bd8554348ccec3d59` |
+| [`tests/integration/test_delegated_integration.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_delegated_integration.py) | 18124 | `01f824d22dce256e52010afa6205a0f4d8f7096e9c8aaefbf71ec9e2e3319e29` |
+| [`tests/integration/test_email_start_retries.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_email_start_retries.py) | 25293 | `04ab05b32d03071a14ffb57fb7aae08cca0ef49b894c97955c36df54abd101a9` |
+| [`tests/integration/test_financial_query_growth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_financial_query_growth.py) | 9930 | `fca2e3aed3d2adf0e9269d64097f3a66bb0a35154454559a9bb855ae22ab2f00` |
+| [`tests/integration/test_hardening.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_hardening.py) | 16867 | `899a39653e4f36f7f041db3fdd31114cbda889ab5f003e6fb49133dc82d22743` |
+| [`tests/integration/test_internal_jobs.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_internal_jobs.py) | 3242 | `6cf3c2b29a906c4986df0ea976dc7e95f7a9c792fe1d16c22a730a9176757114` |
+| [`tests/integration/test_ker_navigation.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_ker_navigation.py) | 4612 | `336ffe00abbd2ace8627acf5515962ce3c8ff9fed2634c6f1a9f04a914e51c7f` |
+| [`tests/integration/test_library.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_library.py) | 12756 | `7428fae6c2e443e5600f0ed8c1a1d4442cb49a54270638c05ce7d27f6b4bd001` |
+| [`tests/integration/test_live_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_live_billing.py) | 9601 | `5baf8d645dee9ba97261d10f4a265f0b257ac4239ab56beb365afcd0ae630e3d` |
+| [`tests/integration/test_lookups.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_lookups.py) | 7665 | `0a0519b318d7a83c648b779e78377cf2878bb9368a422f369986a103e5109e72` |
+| [`tests/integration/test_mail.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_mail.py) | 16277 | `4b279c134f29c3a04871551dd8cf90045490dfad974f859d92f493eca56d1bff` |
+| [`tests/integration/test_mail_attachments.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_mail_attachments.py) | 13364 | `32a1e7f347def64930d9cadf9031bad5c3dec07388f0427cc38e7dba839ea242` |
+| [`tests/integration/test_mail_case_reference.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_mail_case_reference.py) | 3197 | `eaf45678909da7347d6d77e766d478666778b7a7ef33abb1becd58bfce491f5b` |
+| [`tests/integration/test_migrations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_migrations.py) | 7042 | `d90e011a31a6f616b1051cf9e8a5970943398808d50db8f58126e15afcc6fc39` |
+| [`tests/integration/test_oauth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_oauth.py) | 4321 | `22087f743f6a3f4465c16f39192159ed4b32c0283484a5c452e0c5228e6aa741` |
+| [`tests/integration/test_onboarding_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_onboarding_auth.py) | 47259 | `57d98a68e9f41c5d03c3afa73673c778dcb934a133730771433d2ac845cf5066` |
+| [`tests/integration/test_optional_usage.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_optional_usage.py) | 3696 | `ec25c09fcd87ad5e8cec45797b675c36161ae5a4a4436810687ad6a36475ee81` |
+| [`tests/integration/test_owner_work_refinements.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_owner_work_refinements.py) | 11977 | `8973831b8a8488cb18a2600b3b545d7748055cf31a04df4a097ab9200de73463` |
+| [`tests/integration/test_privacy_preferences.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_privacy_preferences.py) | 8397 | `f30bcfbc1469363d261cd0128d453c5809e1a71067c2e6a1543b0ad75bc93499` |
+| [`tests/integration/test_project_attachments.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_attachments.py) | 8800 | `21b965c67c54c4bad2ade0274736c4e2371bdb6ed25fe668cca29299fddd3090` |
+| [`tests/integration/test_project_attachments_migration.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_attachments_migration.py) | 2377 | `c7b3fd1be177bb5c90ebe487e6fab9fb6e34db97204b173729858cceabca9eea` |
+| [`tests/integration/test_project_billing_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_billing_routes.py) | 2324 | `3443c9caf81bf93e9c1b02886825971bcea463be88d6ba8b04603fdf018f190b` |
+| [`tests/integration/test_project_lifecycle_work.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_lifecycle_work.py) | 1672 | `0688daa199bf7dd930ab2a20e741651ee06c80eee79fb3e401b0bdb3012f91f4` |
+| [`tests/integration/test_projects.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_projects.py) | 15276 | `e24786156d31c055f9df6594adc3e7bed6f5790b3cfc8883050dcc4b2e0e6c71` |
+| [`tests/integration/test_proposal_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_proposal_sending.py) | 19303 | `fdee4c06178dc0957fab19816c6a3f4dcecd00ebe9f967f7bdd988522e128b43` |
+| [`tests/integration/test_public_admission.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_public_admission.py) | 57720 | `bdd911f694925fd27187e050cb321be1d36315c947546de181345b01add7a228` |
+| [`tests/integration/test_quoting.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_quoting.py) | 14860 | `9ddfd67455c2592af0acbdce3672edd3a5e96810bc00965854131474b6b6c4b5` |
+| [`tests/integration/test_quoting_list_performance.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_quoting_list_performance.py) | 6115 | `4ccc442aae7f1d9203b72c65a4cd5768638f83b3e352f50a013893eb0eb0bf00` |
+| [`tests/integration/test_quoting_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_quoting_routes.py) | 8867 | `d4b671c30a8a6eaa8fd491fc39ac99728cc0024254f093639a652b5348b11253` |
+| [`tests/integration/test_record_fields.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_record_fields.py) | 2434 | `3b32d8f948f199c2fcc65bf935f612d961bfb7ca01c8e41478d8c4a311cab4bf` |
+| [`tests/integration/test_record_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_record_pagination.py) | 9702 | `2bdf00e5b08285ed726bc8fedbfc016b77af51d6ce737dfe6c85eba423b59fe5` |
+| [`tests/integration/test_recovery_rehearsal.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_recovery_rehearsal.py) | 22477 | `f1c4fc1d366183914a522664ccedd5b05d8af95e1c9e02f97c6a6e3911c2fa0e` |
+| [`tests/integration/test_reference_fields.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_reference_fields.py) | 3381 | `318f4ace61a9b3af98cbf98db5ab1399870ccd949d6a0307b976c68468cf1aa1` |
+| [`tests/integration/test_report_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_report_pagination.py) | 2268 | `47ff647dc1ea1a10f0c1378a4ec5d4c246bba1c39788370c9f1ae086c73c1fef` |
+| [`tests/integration/test_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_routes.py) | 5577 | `becf98a21866855272ec27a90341590d8f7a12d34feacea143b5355ff236e4b7` |
+| [`tests/integration/test_save_feedback.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_save_feedback.py) | 5379 | `8f36afccd7c3d4fe835495ea15468928abfcb96317322ef3af5c9fca4366959a` |
+| [`tests/integration/test_sending_dispatch.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_dispatch.py) | 18247 | `1075d4ddb8dfd5712381f1609f3619834eb6e521ea5feccbc6bd9f42a0eb1591` |
+| [`tests/integration/test_sending_isolation.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_isolation.py) | 14406 | `e33a02ffe0d73ccf17e7237e0c2d1819d12ce60305456dced8ce6511965e523e` |
+| [`tests/integration/test_sending_manual_followup.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_manual_followup.py) | 9365 | `193d82cebb3a6d7c18e5740ee686daf56cd029cededfb2684bc29619dbbcaa58` |
+| [`tests/integration/test_sending_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_routes.py) | 6869 | `108ece3b0295f7488d7b3b2e295eb66c0d1f6342b4142abfdd726c959d6874e3` |
+| [`tests/integration/test_session_recovery.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_session_recovery.py) | 856 | `fffe7ea2851bf157ab016cc2a6292a1e688d7413fd77f9d7eea92c46b5ec75df` |
+| [`tests/integration/test_settings_cache_refresh.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_settings_cache_refresh.py) | 1940 | `5daa7b3e0e89bd7f7a753a5d83315e4f3b6543019f30e73e5c2839cf4a266b6e` |
+| [`tests/integration/test_social_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_social_auth.py) | 16440 | `0c44e8117be5e3f5c6c67e8a1600f8f1260199ec5398a62891640b1633d6f29e` |
+| [`tests/integration/test_static_asset_cache.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_static_asset_cache.py) | 6060 | `3f528fd34b0d4f955b2376c666217e3538aae6c7d330250e893171be724e0f50` |
+| [`tests/integration/test_subscription_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_billing.py) | 49654 | `5a4a2e4fe01d52f53b6e2db4bd1e971a6fddc40427b6554eb66c1ad2037cf67f` |
+| [`tests/integration/test_subscription_capacity.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_capacity.py) | 20009 | `8800a02cf97bddbc4523378dd5ba490a3e06bb2f6f9b7d995e85855be36328ee` |
+| [`tests/integration/test_subscription_domain.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_domain.py) | 12685 | `9c177e5346993e3bf8bfb4b0169834473b86a2d2cceb0d357e7d11b9300844d3` |
+| [`tests/integration/test_subscription_http.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_http.py) | 11593 | `e3967f1561a7378c0c2256b4720abfd412a6b0cc16506f108189b28cc8883856` |
+| [`tests/integration/test_subscription_payments_http.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_payments_http.py) | 16127 | `ccb3fe20de185e1af25c62cc1e45e795a6a4374725bb5043dae34c2bd40872ed` |
+| [`tests/integration/test_subscription_retention.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_retention.py) | 27432 | `dbe343ebfdb86465797bdd9214d211cc66d3041cd85faee45abe99ca79489e6a` |
+| [`tests/integration/test_tenancy.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_tenancy.py) | 18872 | `a8b647d7883fb5e42ad17fcaf70f821a9a04fcb352604c11a941cc9f50f8029d` |
+| [`tests/integration/test_tenancy_capacity.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_tenancy_capacity.py) | 15157 | `fabc34d50cd1669ec4e6fe55012687ea9a82e84430fbd9dc93b0b54921182249` |
+| [`tests/integration/test_tenant_demo.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_tenant_demo.py) | 5002 | `a38d9de159cd7135829e10d8de2244c2142c114ce69e27e7e6e765796845e520` |
+| [`tests/integration/test_time_commands.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_time_commands.py) | 19304 | `65fd5474b2b87fdbde27205d39e49bfe94b319d541306a8f0886e52a2a0e6ab2` |
+| [`tests/integration/test_time_import_http.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_time_import_http.py) | 8067 | `05d3c89df2f9e298705595862eaf52693cea2490618e53c65a747413209c52c2` |
+| [`tests/integration/test_timecard_cross_module.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_timecard_cross_module.py) | 8656 | `84d8e175ad02caefe1759a52cc131ca2e2403dba6ac5d06cc995cab06f0dac82` |
+| [`tests/integration/test_timecard_productivity.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_timecard_productivity.py) | 15512 | `8a35cd139edd7bac6ddf21528a0f68f83fdd536892438ad03c281bc0e3345000` |
+| [`tests/integration/test_timecard_week_metrics.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_timecard_week_metrics.py) | 7894 | `5a3ca86fc185cc8b9c797cfcd60bc7b87ec8b8e6d2d4d5a19126c24139b62496` |
+| [`tests/integration/test_ui_refresh.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_ui_refresh.py) | 4778 | `c0618229b2c1b294bffa9a8b792f1f8fe89299361927d6b347cb09ea8706256f` |
+| [`tests/integration/test_usage_browser_flow.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_usage_browser_flow.py) | 5893 | `9917592dbb17cd8cff2d7462cb3637533afcbd8a581234dc85f627273cd5917f` |
+| [`tests/integration/test_work_forms.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_work_forms.py) | 2594 | `fac37c617ed10e1c29d5b71b965dfa1a86067c5cae76b067adbebca246d5c362` |
+| [`tests/integration/test_workflow.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_workflow.py) | 9533 | `e577487063642bc25f6f768dd5735c7cf7cb676e34812f8f8bdf5c66749e537d` |
+| [`tests/integration/test_workspace_operations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_workspace_operations.py) | 20053 | `6e3d83272a06ce20b8c9421999ce1070f14c297b4c671cc45e503eca076f9d21` |
+| [`tests/integration/test_workspace_overview_search.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_workspace_overview_search.py) | 9191 | `33ae9904710c155a6763c79e301b077b69441d2b41b4419970c2020051465e31` |
+| [`tests/migration_target.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/migration_target.py) | 631 | `5cc41c5267364228c60012de371c2d36b0f62bdea058249c098f6989fe706635` |
+| [`tests/template_assets.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/template_assets.py) | 557 | `d871a4b3254ddcf61c7e261074350c9dfffce954e1b9d0ba8b4f6ef12d6a4171` |
+| [`tests/test_project_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_project_billing.py) | 14435 | `f6fc09e76ac50463deecfbdb0a058ac0dae43e01970d195d41026f8406eb9d59` |
+| [`tests/test_project_billing_reports.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_project_billing_reports.py) | 4587 | `2a900833603b5cbd43af57f152c29c0ff6358bf3aa9bc07bdea14bbb04c420cb` |
+| [`tests/test_record_references.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_record_references.py) | 861 | `5639bd279634888ed1db963c2d0210c421bbad1004245d92d540c3ef11241922` |
+| [`tests/test_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_sending.py) | 19831 | `a598938bf5f576bb63df2b6e5e07cef176e9a5f87ee0f65a620310898f38c77b` |
+| [`tests/test_tenancy_config.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_tenancy_config.py) | 10765 | `0435c597922fea7cb8ed3293c67ab10b89df8fc1faa4dfd8b74fc4304d60d804` |
+| [`tests/timecard_history.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/timecard_history.py) | 2418 | `a7f109b6971b3862a6b9136f34e31b041233eaeebd18f59b1b746fa377809618` |
+| [`tests/unit/__init__.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/__init__.py) | 82 | `92dcce4dd9d428604e749a05163c1c3489e7ed4319edea19067c0dc47b30987a` |
+| [`tests/unit/test_archive_dates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_archive_dates.py) | 3078 | `66199f0b712e16dfefb8b96a3fec17e7c2fb227f97d915c623c67b3cc8f27a2f` |
+| [`tests/unit/test_bot_check.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_bot_check.py) | 2865 | `2d183fe6ea2bc275e1ca569f8c9ca9565f16ac9ccdb9abdde2cd223345211dc7` |
+| [`tests/unit/test_client_code_validation.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_client_code_validation.py) | 625 | `547cb4ed936b3010a6429ce3c2315affe718b53dae345997ac895b3284406679` |
+| [`tests/unit/test_dashboard_calendar.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_dashboard_calendar.py) | 1528 | `b8bedb40e3846afdeb9d267526760a359c2662727f28adf1c7ce5b633067e976` |
+| [`tests/unit/test_domain.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_domain.py) | 2082 | `8c6aa3ba05b8d990b26315964686138bf85479751f7aef4bc712075fb22fdb59` |
+| [`tests/unit/test_email_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_email_auth.py) | 9066 | `d83dbc98b3e589b68d2fb764e083613490a512a43a9a61f50d5a1ffc0061b197` |
+| [`tests/unit/test_financial_values.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_financial_values.py) | 3199 | `69ebc8651a6a7139103f575310c167cfaf4b2bfc4ed471840251bbc4df69424f` |
+| [`tests/unit/test_flexfields.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_flexfields.py) | 1411 | `71052ed925cf2ded2c6e6fc7ffe06921898230bad3e1a12017116a61cfb372ff` |
+| [`tests/unit/test_integration_contracts.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_integration_contracts.py) | 9359 | `a2e8d62d722802961ef7d12bbeb621f2c57070b8b3efa657038a6c18c5794ae0` |
+| [`tests/unit/test_invitation_template.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_invitation_template.py) | 1780 | `7229845a77abec602a822d638012e1a4c7bcb59c640ed58b321dae372a2fb684` |
+| [`tests/unit/test_ker_navigation.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_ker_navigation.py) | 7097 | `64a8031b9fee8257d7f314b056247e691615a07c86977626777861461de3ee59` |
+| [`tests/unit/test_library.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_library.py) | 5908 | `e1bc3606f6d179f0003e5bfca3a27bb65abf58c64f188228e28b76700fd1fd2e` |
+| [`tests/unit/test_live_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_live_templates.py) | 10819 | `abcc106d9407ce7450f824c4019e639fac6a19eede309ce9041a06f4c548b401` |
+| [`tests/unit/test_logging.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_logging.py) | 2940 | `dfc10aa7f71812c3a819004c25db2308e9b42f3b752f679d1ce699245aba1f7d` |
+| [`tests/unit/test_migration_target.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_migration_target.py) | 1818 | `acb8144c9fe2d5a12d606c91843a23bfa1ea85d8f937fd9cac0b2a7d12cc44e5` |
+| [`tests/unit/test_onboarding_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_onboarding_templates.py) | 27575 | `259c6a91425d7b29a98c8193a7f0bf8f76807164386fe3c747e47efa39f8b64c` |
+| [`tests/unit/test_paddle.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_paddle.py) | 28481 | `e3d2ea3c03f67a84b8b305d7e7be3036b2985a67d9fae11c08a39841166ccad2` |
+| [`tests/unit/test_paddle_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_paddle_templates.py) | 10340 | `ad89c393ca1d4381913876e83ab4faea42911e4a14cb1335133c39d4d3b642e2` |
+| [`tests/unit/test_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_pagination.py) | 5363 | `0280a1334c0ebdf3a33639e215265584a52f5f26b5319422c97e1591172572e2` |
+| [`tests/unit/test_production_capabilities.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_production_capabilities.py) | 13802 | `36226071e7a5e8a36b19246e95350713e7563b6b3011bb6790e5c89650e1ed2b` |
+| [`tests/unit/test_proposal_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_proposal_sending.py) | 3718 | `16b06392ea4d854fc0842b6e15cb833573e312795d46c73a9e3cc1d4a9638b85` |
+| [`tests/unit/test_proposal_sending_transport.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_proposal_sending_transport.py) | 5818 | `292100edb54eead33012321dfba9a4dae98abf3ebb5976a4bea041ccae5650c7` |
+| [`tests/unit/test_public_admission_proof.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_public_admission_proof.py) | 3605 | `edf627e722d137b0298167f7a9584e78dd431805dc22dad026e7c4c7566c9124` |
+| [`tests/unit/test_quote_pagination.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_quote_pagination.py) | 2118 | `675cc29009907ec3aabd460651dfadce58be07754ac7494bee94ffd908d62294` |
+| [`tests/unit/test_quoting.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_quoting.py) | 4597 | `d88e22fdfcf7b8ef62d8c88bd5c4d8b137437e8e2bb67e6f1810b85e3a5d8d78` |
+| [`tests/unit/test_quoting_routes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_quoting_routes.py) | 2341 | `d355df7d268c71d6a88e3bfd876af4f0f8eee31723685cddc265ee1ffec2b0da` |
+| [`tests/unit/test_readiness_worker.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_readiness_worker.py) | 1496 | `1f823858faa9408d4e73b934c133853dac58de2eb1815586bdc8b6b2481bba1f` |
+| [`tests/unit/test_reference_choices.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_reference_choices.py) | 4919 | `dd2ffd1964122f930aa91e698228434b489e4e2cb6b5595d7be46124f0662f96` |
+| [`tests/unit/test_retention.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_retention.py) | 13226 | `ba5fde46dc2d3b7c52e044ae0574267fceb592692065f923dd714283cc5e832e` |
+| [`tests/unit/test_sending_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_sending_templates.py) | 8030 | `835bbd530fc5752637d973a423836542ae40628596af33e2aa4a8c4b184430ba` |
+| [`tests/unit/test_sending_transport.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_sending_transport.py) | 7008 | `6ef6b22da8b697b86b4c42ceeca483eb7efd937029003798fc4f528c0e552e54` |
+| [`tests/unit/test_settings_cache_refresh.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_settings_cache_refresh.py) | 5927 | `6acf6c740622957dcdd84dbb84434d69f9bdf3fa3953edeea834548de892b382` |
+| [`tests/unit/test_social_auth_proof.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_social_auth_proof.py) | 4612 | `5ad376191d1554e5a6c4c234d52a39f376573793eea450abd2ebd6b139a28fd6` |
+| [`tests/unit/test_static_assets.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_static_assets.py) | 3287 | `059b4a6e703dcf250903b3703b2c39678b394163801cfb46aeca2ea2dc773e1e` |
+| [`tests/unit/test_status_palette.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_status_palette.py) | 2768 | `1e01893cccd156072b544190c13f0168a04944341ec6c3a223b398150ad00999` |
+| [`tests/unit/test_subscription_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_subscription_templates.py) | 8755 | `34ab6aab82af228ad3ef1fccd7f2996ac5f61b8ad2bfae09123809b0a797b822` |
+| [`tests/unit/test_subscriptions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_subscriptions.py) | 3823 | `a7fffb8d85d4c207a7e2fed9229985193c65ce2e85082cf7112dd51bbe0b47a2` |
+| [`tests/unit/test_templates.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_templates.py) | 7256 | `b68e91d7650b3250a2cc5d260d53a1a960813f96a6a4c0456f91c83353c2b1b6` |
+| [`tests/unit/test_time_import.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_time_import.py) | 4146 | `c56578aae99ac65c6291543d6f0a3f3a1ecf6c5919cbe9da217b79f1e27bc511` |
+| [`tests/usage-browser.mjs`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/usage-browser.mjs) | 6677 | `8c36561ff9b58bbd1371d0857e58cf478bd593b12d05172958e8944926f30ba9` |
+| [`uv.lock`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/uv.lock) | 297750 | `048be1b352509730adba10fe9e07e7d45a2128fbc055195afc122e02b4b20e8c` |
 
 ---
 
-<a id="chapter-13"></a>
+# 13 — Original production baseline and current PH3/Stage differences
 
-<!-- Source chapter: 13-production-stage-differences.md -->
+Snapshot: **2026-10-18**. Original production repository main is `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`. PH3 analysis checkpoint is `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` on `codex/ph3-stage`, independently cloned from closed PH2 `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6` / tag `ph2-closeout-2026-10-18` in the existing `edlopezpm-ops/timeker-PH2` repository.
 
-# Production baseline and Stage differences
+This comparison reads committed Git tree metadata and maintained source documents. It performs no HTTP/provider/database query, deployment or production operation. Git source is distinct from the last verified deployed image. Sources: [CONTINUE.md:1](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1), [docs/PHASE2_CLOSEOUT.md:10](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L10), [HOSTING.md:8](https://github.com/edlopezpm-ops/timeKER/blob/dfb2538ec81d07f1c91fdf2bdc5096d4d0313609/HOSTING.md#L8).
 
-Snapshot: 2026-10-16. Stage analysis commit `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`; original production repository main `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`.
-This comparison reads Git tree metadata and public repository documentation only. It performs no HTTP, database, deploy or provider action. It is not a production runtime re-verification.
+## Environment distinction and dated runtime attribution
 
-## Exact environment distinction
-
-| Area | Original production | Isolated Stage |
+| Area | Original production | Existing Stage continued by PH3 |
 | --- | --- | --- |
 | Origin | `https://timeker.aekr.io` | `https://stage-timeker.aekr.io` |
-| Repository | `edlopezpm-ops/timeKER` | `edlopezpm-ops/timeker-PH2` |
-| Source branch | main baseline above; unchanged | codex/ph3-onboarding-auth; later pause edits are documentation only |
-| Last documented runtime source | a672c8f95bb54c61b6fdb7686f96161cd3491e8c, verified2026-10-12 | dbf73e52ca03726e7903dc74ef27e40339c06936, verified2026-10-16 |
-| Worker | 01c92dfa-5632-4a33-b2ab-5ffba2c0ce32 | 9a1cfc5f-73ec-4856-b3bb-ea9a2817168c |
-| Deployment | 3d2ab253-130c-4601-a1ad-73f98942b605 | 7ad0ff03-c344-4cad-be59-409d3e490813 |
-| Container application | a0301688-9b57-483e-9d50-5d2eb9ceedd7, configuration12 | a0343dd5-a04b-4e30-b5da-98a373bf4990, application/running instance20 |
-| Last image SHA-256 | a5445f4403161b0d81804db3ad0ac9afac55ac44a591389f3fd83af778ef008a | 9b04918f1171f93c5e7b6009c114846ba8b7f36390e2e3ad3e27cc879944f426 |
-| PostgreSQL | Dedicated production project; two retained fixed schemas documented at a82d43cf6120 | Separate Stage project; nine actual runtime schemas at ph3_006_quoting_library |
-| Authentication | Original Google-only allowlisted owner admission | Google/GitHub/managed email plus immutable identities, finite public signup and reviewed linking |
-| Core v1 features | Clients, Projects/Cases, weekly timecards, statements/PDF, manual payments, reports, private Mail/archive/agreement custody | Preserved and extended through the later increments |
-| Original Phase2 additions | Not introduced into original production by Stage work | Full cancellation credit memos, strict imports/contributions, proposed clients and scoped API/MCP |
-| Subscription product | No Phase3 cutover performed | Free/Solo/Pro capacity, explicit registration and Paddle Sandbox |
-| Quoting/Library | Not shipped into production | Case-bound HLE, editable document starters, templates/uploads and immutable publications |
-| Outbound service statements | On-demand download/manual delivery | Separate reviewed statement and commercial Sending; scheduled jobs off |
-| Optional usage | Source merged but runtime activation remains OFF in last documented state | Optional and disabled in retained configuration |
-| Pause | Service remains as is; no production change | Engineering improvements paused until explicit HOC resume; service not shut down |
+| Repository | `edlopezpm-ops/timeKER` | `edlopezpm-ops/timeker-PH2`; no new production repository |
+| Git checkpoint | `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609` | `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` |
+| Last documented runtime source | `a672c8f95bb54c61b6fdb7686f96161cd3491e8c`, last verified 2026-10-12 | `e282985ea74e89e1665351c22f91706498495e93`, final readback 2026-10-18T03:42:14.067017+00:00 |
+| Worker | `retained resource identifier omitted`, dated registry | `retained resource identifier omitted` |
+| Deployment | `retained resource identifier omitted`, dated 100 percent | `retained resource identifier omitted`, 100 percent at readback |
+| Container | `retained resource identifier omitted`, dated configuration 12 | `retained resource identifier omitted`, application/running 29 |
+| Image SHA-256 | `a5445f4403161b0d81804db3ad0ac9afac55ac44a591389f3fd83af778ef008a` | `fb3399f00baa2ee9efda0f0dd3e460cc2c706a4ce820133e8af429690948c80c` |
+| PostgreSQL | Separate production project; two retained fixed schemas documented at `a82d43cf6120` | Separate Stage project; nine runtime schemas last verified at `ph3_009_read_indexes`; five quarantines unchanged |
+| Authentication | Dated deployed Google-only allowlisted path; current overrides not queried | Google/GitHub/managed email configured, immutable binding, explicit linking/acknowledgment and finite prepared slots |
+| Original PH2 core | Not promoted by this task | Credit memos, strict reviewed Draft imports/contributions, proposed clients and scoped OAuth/API/MCP implemented; actual host acceptance pending |
+| Later business/UX | No final combined cutover performed | Enrollment/Sandbox, Quoting/Library/commercial Sending, lifecycle/search/paging, Dashboard/Timecards/navigation/reference/performance/Settings changes |
+| Scheduling/delivery | Existing production profile/overrides retained; no new query/mutation | Manual Sending source; jobs off; Case-only 02:17 UTC handler configured, actual scheduled execution unobserved |
+| Optional processing | Later optional-measurement source recorded OFF; no new runtime claim | Optional usage/contact/inbound capture are separate decisions; retained Stage profile disables them |
+| Lifecycle | Existing service unchanged by administrative work | PH2 closed; independent PH3 prepared/awaiting owner prompts; existing Stage continues |
 
-The original source main hash is not the same thing as the last deployed production source. The hosting registry explicitly records that later optional-measurement source was not activated. Do not replace this distinction with an assumption that Git push deploys the service.
+Production identities are dated original-registry facts, not current provider observations. Original source: [HOSTING.md:8](https://github.com/edlopezpm-ops/timeKER/blob/dfb2538ec81d07f1c91fdf2bdc5096d4d0313609/HOSTING.md#L8). Stage source: [HOSTING.md:12](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L12). Later optional-measurement/main source does not establish production activation. Git publication did not deploy either service during administrative work.
 
-Sources: original `HOSTING.md:8`, original `docs/STATUS.md:13`, original `docs/STATUS.md:39`; Stage `HOSTING.md:9`, `docs/STATUS.md:3`, current `CONTINUE.md`. Production source hashes and runtime identities are dated registry facts, not freshly queried provider state.
+Stage final anonymous readback passed 31 GET checks/15 matching assets, live 200/ready 200. Provider metadata remains active 1/healthy 0, one running instance and no active rollout errors. Do not normalize counters or promote anonymous checks to authenticated UAT. Separate schema 009 custody preserved 486 business-table fingerprints, 36 guards/schema, 72 reciprocal denials before/after and five quarantines. Sources: [HOSTING.md:14](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L14), [HOSTING.md:26](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L26).
 
-## Future release implications
+## Future combined production candidate
 
-A production push is not a simple rename of the Stage Worker. The owner must select the candidate and approve environment-specific flags, immutable legacy owner identity bootstrap, migrations/grants/backups for every retained schema, provider/secret custody, public admission inventory, accepted data/retention rules and actual UAT. Existing production runtime overrides need reconciliation against the intended source configuration. Preserve issued business artifacts and do not seed/copy Stage fixtures into production.
+The retained [original timeKER draft PR3](https://github.com/edlopezpm-ops/timeKER/pull/3) has historical candidate `4f60d228fb205cff09698b94d6749dd86d76164a`. It was not merged/deployed by closeout and is not the final current Stage source. Its files exist in later PH2/PH3; an old snapshot must not overwrite later work. Refresh the reviewable candidate from eventual final **PH2 plus authorized PH3** source before separately authorized migration/configuration/deploy. No intermediate PH2-only promotion is requested. Source: [docs/PHASE2_CLOSEOUT.md:20](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L20).
 
-A historical production draft integration package may predate the current authentication and commercial additions. Its existence does not prove parity with the Stage analysis commit. This dossier neither rebuilds that candidate nor updates/merges/deploys a production PR. The current HOC pause prevents starting that work automatically.
+Production is not a Stage Worker rename. Reconcile original immutable owner/bootstrap coverage, actual runtime overrides, environment-specific origin/provider/secret custody, retained/prepared database inventory, migrations/grants/guards, consistent encrypted backup and compatible repair. Keep Stage fixtures/Sandbox datasets/synthetic grants out of production. Source: [docs/OPERATIONS.md:197](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L197).
 
-## Tracked tree comparison
+General admission, Live merchant/catalog/credentials/webhooks, real billing/delivery lifecycle proof, accepted legal/retention/offboarding contracts and human UAT remain separate decisions. Quoting/Library/commercial Sending is production-disabled in source; statement Sending has separate production enablement. A source flag/draft PR does not establish activation. Sources: [app/config.py:74](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L74), [app/config.py:199](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L199), [docs/OPERATIONS.md:264](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L264), [docs/STATUS.md:27](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27).
 
-Original tracked paths: **230**; Stage tracked paths at analysis commit: **414**.
-Different path counts: Different source bytes: **86**, Stage only: **184**.
+## Static Git tree comparison
 
-The following table is a static source comparison, not a migration prescription, release patch or declaration that every changed file should be copied. Existing project history/ADRs and environment-specific configuration must be reconciled deliberately. Credential values and actual data are not present in this table.
+| Metadata category | Count |
+| --- | ---: |
+| Original tracked paths at `dfb2538` | 230 |
+| PH3 tracked paths at `9fc9eeb` | 503 |
+| Shared identical Git blobs | 102 |
+| Shared different Git blobs | 128 |
+| PH3-only paths | 273 |
+| Original-only paths | 0 |
+| Changed/added/removed rows below | 401 |
+
+Counts use immutable `git ls-tree -r` metadata and object-ID comparison. `git diff --shortstat` reports 401 files changed, 54,751 insertions and 1,685 deletions. This line delta describes source, not completeness/risk/readiness. These are committed paths, not business records, database tables, passed tests or deployed artifacts. No source code, private data or archived payload is reproduced.
+
+PH3 differs from frozen PH2 only in CONTINUE, README and STATUS. Independent preparation checked 503 tracked files and raw-byte identity of the other 500. Git storage has no shared commondir/alternates; all 22 corresponding object/pack metadata files checked had distinct file identities and link count one. Runtime/test/migration/build/dependency paths are unchanged. Root-AGENTS generic scaffold incompatibility remains explicit; 32-ID map/local-link checks passed. Source: [docs/PHASE2_CLOSEOUT.md:77](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L77).
+
+Local reversible custody covers 28 batches/8,149 files/1,580,224,720 bytes plus the separate native Quoting move. Protected payload is outside this public comparison and does not supply off-host backup/hosted recovery. Source: [docs/PHASE2_CLOSEOUT.md:49](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L49).
+
+## Complete changed-path metadata
+
+Text-file links point to the exact committed file at one-based line 1; binary-file links point to the immutable blob without a line anchor. A source link supplies provenance; the dossier does not copy its contents or prescribe replacing that production file. Reconcile domain contracts, migration history and environment-specific behavior rather than treating this table as a release patch.
 
 | Path | Source relationship |
 | --- | --- |
-| `.dockerignore` | Different source bytes |
-| `.env.example` | Different source bytes |
-| `.gitignore` | Different source bytes |
-| `AGENTS.md` | Different source bytes |
-| `Dockerfile` | Different source bytes |
-| `HOSTING.md` | Different source bytes |
-| `PROJECT_MAP.md` | Different source bytes |
-| `README.md` | Different source bytes |
-| `alembic/env.py` | Different source bytes |
-| `alembic/versions/ph2_001_credit_memos.py` | Stage only |
-| `alembic/versions/ph2_002_time_commands.py` | Stage only |
-| `alembic/versions/ph2_003_integrations.py` | Stage only |
-| `alembic/versions/ph3_001_subscriptions.py` | Stage only |
-| `alembic/versions/ph3_002_sandbox_billing.py` | Stage only |
-| `alembic/versions/ph3_003_onboarding_auth.py` | Stage only |
-| `alembic/versions/ph3_004_sending.py` | Stage only |
-| `alembic/versions/ph3_005_public_admission.py` | Stage only |
-| `alembic/versions/ph3_006_quoting_library.py` | Stage only |
-| `app/admission.py` | Stage only |
-| `app/admission_models.py` | Stage only |
-| `app/admission_operations.py` | Stage only |
-| `app/auth.py` | Different source bytes |
-| `app/billing.py` | Different source bytes |
-| `app/case_routes.py` | Different source bytes |
-| `app/cases.py` | Different source bytes |
-| `app/cli.py` | Different source bytes |
-| `app/client_drafts.py` | Stage only |
-| `app/clients.py` | Different source bytes |
-| `app/config.py` | Different source bytes |
-| `app/credit_memo_models.py` | Stage only |
-| `app/db.py` | Different source bytes |
-| `app/email_auth.py` | Stage only |
-| `app/enrollment.py` | Stage only |
-| `app/enrollment_models.py` | Stage only |
-| `app/enrollment_routes.py` | Stage only |
-| `app/integration_auth.py` | Stage only |
-| `app/integration_models.py` | Stage only |
-| `app/integration_routes.py` | Stage only |
-| `app/internal_routes.py` | Different source bytes |
-| `app/library.py` | Stage only |
-| `app/library_models.py` | Stage only |
-| `app/library_routes.py` | Stage only |
-| `app/logging.py` | Different source bytes |
-| `app/lookups.py` | Different source bytes |
-| `app/main.py` | Different source bytes |
-| `app/models.py` | Different source bytes |
-| `app/paddle.py` | Stage only |
-| `app/pdf.py` | Different source bytes |
-| `app/project_routes.py` | Different source bytes |
-| `app/proposal_sending.py` | Stage only |
-| `app/proposal_sending_models.py` | Stage only |
-| `app/proposal_sending_routes.py` | Stage only |
-| `app/proposal_sending_transport.py` | Stage only |
-| `app/quoting.py` | Stage only |
-| `app/quoting_models.py` | Stage only |
-| `app/quoting_routes.py` | Stage only |
-| `app/sending.py` | Stage only |
-| `app/sending_dispatch_routes.py` | Stage only |
-| `app/sending_models.py` | Stage only |
-| `app/sending_routes.py` | Stage only |
-| `app/sending_transport.py` | Stage only |
-| `app/social_auth.py` | Stage only |
-| `app/subscription_billing.py` | Stage only |
-| `app/subscription_billing_models.py` | Stage only |
-| `app/subscription_models.py` | Stage only |
-| `app/subscription_payment_routes.py` | Stage only |
-| `app/subscription_routes.py` | Stage only |
-| `app/subscriptions.py` | Stage only |
-| `app/tenancy.py` | Different source bytes |
-| `app/time_command_models.py` | Stage only |
-| `app/time_commands.py` | Stage only |
-| `app/time_import.py` | Stage only |
-| `app/time_import_routes.py` | Stage only |
-| `app/timecards.py` | Different source bytes |
-| `app/web/static/app.css` | Different source bytes |
-| `app/web/static/app.js` | Different source bytes |
-| `app/web/static/auth_challenge.js` | Stage only |
-| `app/web/static/github-invertocat.svg` | Stage only |
-| `app/web/static/google-g.png` | Stage only |
-| `app/web/static/google-sans-OFL.txt` | Stage only |
-| `app/web/static/google-sans-medium.ttf` | Stage only |
-| `app/web/static/paddle_checkout.css` | Stage only |
-| `app/web/static/paddle_checkout.js` | Stage only |
-| `app/web/templates/account_security.html` | Stage only |
-| `app/web/templates/archive.html` | Different source bytes |
-| `app/web/templates/assistant_connection_guide.html` | Stage only |
-| `app/web/templates/auth_challenge.html` | Stage only |
-| `app/web/templates/auth_layout.html` | Stage only |
-| `app/web/templates/auth_methods.html` | Stage only |
-| `app/web/templates/auth_notice.html` | Stage only |
-| `app/web/templates/auth_notice_fields.html` | Stage only |
-| `app/web/templates/auth_provider_button.html` | Stage only |
-| `app/web/templates/auth_provider_forms.html` | Stage only |
-| `app/web/templates/base.html` | Different source bytes |
-| `app/web/templates/billing.html` | Different source bytes |
-| `app/web/templates/capacity_prompt.html` | Stage only |
-| `app/web/templates/case_detail.html` | Different source bytes |
-| `app/web/templates/case_form.html` | Different source bytes |
-| `app/web/templates/client_detail.html` | Different source bytes |
-| `app/web/templates/client_drafts.html` | Stage only |
-| `app/web/templates/client_form.html` | Different source bytes |
-| `app/web/templates/credit_memo.html` | Stage only |
-| `app/web/templates/credit_memo_pdf.html` | Stage only |
-| `app/web/templates/email/invitation.html` | Stage only |
-| `app/web/templates/error.html` | Different source bytes |
-| `app/web/templates/help.html` | Different source bytes |
-| `app/web/templates/invoice.html` | Different source bytes |
-| `app/web/templates/landing.html` | Different source bytes |
-| `app/web/templates/landing_info.html` | Different source bytes |
-| `app/web/templates/legal_policies.html` | Stage only |
-| `app/web/templates/legal_policy_content.html` | Stage only |
-| `app/web/templates/library.html` | Stage only |
-| `app/web/templates/library_document.html` | Stage only |
-| `app/web/templates/library_document_pdf.html` | Stage only |
-| `app/web/templates/lookup.html` | Different source bytes |
-| `app/web/templates/mail_import.html` | Different source bytes |
-| `app/web/templates/navigation_icons.html` | Different source bytes |
-| `app/web/templates/project_form.html` | Different source bytes |
-| `app/web/templates/proposal_sending.html` | Stage only |
-| `app/web/templates/proposal_sending_prepare.html` | Stage only |
-| `app/web/templates/proposal_sending_readiness.html` | Stage only |
-| `app/web/templates/proposal_sending_review.html` | Stage only |
-| `app/web/templates/public_plans.html` | Stage only |
-| `app/web/templates/quote_detail.html` | Stage only |
-| `app/web/templates/quote_form.html` | Stage only |
-| `app/web/templates/quote_pdf.html` | Stage only |
-| `app/web/templates/quoting.html` | Stage only |
-| `app/web/templates/registration.html` | Stage only |
-| `app/web/templates/sending.html` | Stage only |
-| `app/web/templates/sending_followup_review.html` | Stage only |
-| `app/web/templates/sending_prepare.html` | Stage only |
-| `app/web/templates/sending_readiness.html` | Stage only |
-| `app/web/templates/sending_review.html` | Stage only |
-| `app/web/templates/settings.html` | Different source bytes |
-| `app/web/templates/settings_integrations.html` | Stage only |
-| `app/web/templates/sign_in.html` | Stage only |
-| `app/web/templates/sign_up.html` | Stage only |
-| `app/web/templates/subscription.html` | Stage only |
-| `app/web/templates/subscription_account.html` | Stage only |
-| `app/web/templates/subscription_change_review.html` | Stage only |
-| `app/web/templates/subscription_checkout.html` | Stage only |
-| `app/web/templates/subscription_command.html` | Stage only |
-| `app/web/templates/subscription_payment_controls.html` | Stage only |
-| `app/web/templates/subscription_portal.html` | Stage only |
-| `app/web/templates/subscription_retention_review.html` | Stage only |
-| `app/web/templates/time_import.html` | Stage only |
-| `app/web/templates/timecards.html` | Different source bytes |
-| `app/workspace_operations.py` | Stage only |
-| `deploy/cloudflare/FOOTER_RELEASE.md` | Different source bytes |
-| `deploy/cloudflare/README.md` | Different source bytes |
-| `deploy/cloudflare/STAGE_RELEASE.md` | Stage only |
-| `deploy/cloudflare/VERIFICATION.md` | Different source bytes |
-| `deploy/cloudflare/package-lock.json` | Different source bytes |
-| `deploy/cloudflare/package.json` | Different source bytes |
-| `deploy/cloudflare/src/contact.ts` | Different source bytes |
-| `deploy/cloudflare/src/index.ts` | Different source bytes |
-| `deploy/cloudflare/src/internal.ts` | Different source bytes |
-| `deploy/cloudflare/src/production-proxy.ts` | Stage only |
-| `deploy/cloudflare/src/production.ts` | Stage only |
-| `deploy/cloudflare/src/proxy.ts` | Different source bytes |
-| `deploy/cloudflare/test/paddle.test.mjs` | Stage only |
-| `deploy/cloudflare/test/production.test.mjs` | Stage only |
-| `deploy/cloudflare/test/proxy.test.mjs` | Different source bytes |
-| `deploy/cloudflare/test/sending.test.mjs` | Stage only |
-| `deploy/cloudflare/tsconfig.json` | Different source bytes |
-| `deploy/cloudflare/worker-configuration.d.ts` | Different source bytes |
-| `deploy/cloudflare/worker-production-configuration.d.ts` | Stage only |
-| `deploy/cloudflare/wrangler.jsonc` | Different source bytes |
-| `deploy/cloudflare/wrangler.production.jsonc` | Stage only |
-| `deploy/postgres/README.md` | Different source bytes |
-| `deploy/supabase/stage-auth-code.html` | Stage only |
-| `deploy/supabase/stage-auth-invitation.html` | Stage only |
-| `docs/DECISIONS.md` | Different source bytes |
-| `docs/DEPLOYMENT.md` | Different source bytes |
-| `docs/OPERATIONS.md` | Different source bytes |
-| `docs/PROJECT_BRIEF.md` | Different source bytes |
-| `docs/STATUS.md` | Different source bytes |
-| `docs/design/DESIGN_SPEC.md` | Different source bytes |
-| `docs/design/EXPANSION_DISCOVERY.md` | Different source bytes |
-| `docs/email/assets/timeker-wordmark.png` | Stage only |
-| `docs/email/invitation-preview.html` | Stage only |
-| `docs/legal/LANDING_COPY.md` | Different source bytes |
-| `docs/legal/PRIVACY_DISCOVERY.md` | Different source bytes |
-| `integrations/README.md` | Stage only |
-| `integrations/timeker-stage/assets/logo.svg` | Stage only |
-| `integrations/timeker-stage/mcp.json` | Stage only |
-| `integrations/timeker-stage/plugin.json` | Stage only |
-| `integrations/timeker-stage/skills/timeker/SKILL.md` | Stage only |
-| `scripts/postgres-runtime-grants.sql` | Different source bytes |
-| `scripts/render_invitation.py` | Stage only |
-| `tests/conftest.py` | Different source bytes |
-| `tests/e2e/conftest.py` | Different source bytes |
-| `tests/e2e/test_archive_browser.py` | Different source bytes |
-| `tests/e2e/test_credit_memos_browser.py` | Stage only |
-| `tests/e2e/test_delegated_oauth_browser.py` | Stage only |
-| `tests/e2e/test_live_checkout_browser.py` | Stage only |
-| `tests/e2e/test_oauth_csp_browser.py` | Different source bytes |
-| `tests/e2e/test_onboarding_browser.py` | Stage only |
-| `tests/e2e/test_paddle_overlay_browser.py` | Stage only |
-| `tests/e2e/test_proposal_sending_browser.py` | Stage only |
-| `tests/e2e/test_quoting_library_browser.py` | Stage only |
-| `tests/e2e/test_quoting_lookup_browser.py` | Stage only |
-| `tests/e2e/test_sending_browser.py` | Stage only |
-| `tests/e2e/test_sending_manual_followup_browser.py` | Stage only |
-| `tests/e2e/test_shared_auth_challenge.py` | Stage only |
-| `tests/e2e/test_subscription_browser.py` | Stage only |
-| `tests/e2e/test_time_import_browser.py` | Stage only |
-| `tests/e2e/test_timecard_selection.py` | Different source bytes |
-| `tests/integration/test_archiving.py` | Different source bytes |
-| `tests/integration/test_auth_get_sessions.py` | Stage only |
-| `tests/integration/test_auth_notice.py` | Stage only |
-| `tests/integration/test_credit_memos.py` | Stage only |
-| `tests/integration/test_delegated_integration.py` | Stage only |
-| `tests/integration/test_email_start_retries.py` | Stage only |
-| `tests/integration/test_hardening.py` | Different source bytes |
-| `tests/integration/test_library.py` | Stage only |
-| `tests/integration/test_live_billing.py` | Stage only |
-| `tests/integration/test_migrations.py` | Different source bytes |
-| `tests/integration/test_onboarding_auth.py` | Stage only |
-| `tests/integration/test_project_attachments_migration.py` | Different source bytes |
-| `tests/integration/test_proposal_sending.py` | Stage only |
-| `tests/integration/test_public_admission.py` | Stage only |
-| `tests/integration/test_quoting.py` | Stage only |
-| `tests/integration/test_quoting_routes.py` | Stage only |
-| `tests/integration/test_recovery_rehearsal.py` | Stage only |
-| `tests/integration/test_sending_dispatch.py` | Stage only |
-| `tests/integration/test_sending_isolation.py` | Stage only |
-| `tests/integration/test_sending_manual_followup.py` | Stage only |
-| `tests/integration/test_sending_routes.py` | Stage only |
-| `tests/integration/test_social_auth.py` | Stage only |
-| `tests/integration/test_subscription_billing.py` | Stage only |
-| `tests/integration/test_subscription_capacity.py` | Stage only |
-| `tests/integration/test_subscription_domain.py` | Stage only |
-| `tests/integration/test_subscription_http.py` | Stage only |
-| `tests/integration/test_subscription_payments_http.py` | Stage only |
-| `tests/integration/test_subscription_retention.py` | Stage only |
-| `tests/integration/test_tenancy.py` | Different source bytes |
-| `tests/integration/test_tenancy_capacity.py` | Stage only |
-| `tests/integration/test_tenant_demo.py` | Different source bytes |
-| `tests/integration/test_time_commands.py` | Stage only |
-| `tests/integration/test_time_import_http.py` | Stage only |
-| `tests/integration/test_usage_browser_flow.py` | Different source bytes |
-| `tests/integration/test_workspace_operations.py` | Stage only |
-| `tests/test_project_billing.py` | Different source bytes |
-| `tests/test_sending.py` | Stage only |
-| `tests/test_tenancy_config.py` | Different source bytes |
-| `tests/unit/__init__.py` | Stage only |
-| `tests/unit/test_email_auth.py` | Stage only |
-| `tests/unit/test_integration_contracts.py` | Stage only |
-| `tests/unit/test_invitation_template.py` | Stage only |
-| `tests/unit/test_library.py` | Stage only |
-| `tests/unit/test_live_templates.py` | Stage only |
-| `tests/unit/test_logging.py` | Different source bytes |
-| `tests/unit/test_onboarding_templates.py` | Stage only |
-| `tests/unit/test_paddle.py` | Stage only |
-| `tests/unit/test_paddle_templates.py` | Stage only |
-| `tests/unit/test_production_capabilities.py` | Stage only |
-| `tests/unit/test_proposal_sending.py` | Stage only |
-| `tests/unit/test_proposal_sending_transport.py` | Stage only |
-| `tests/unit/test_public_admission_proof.py` | Stage only |
-| `tests/unit/test_quoting.py` | Stage only |
-| `tests/unit/test_quoting_routes.py` | Stage only |
-| `tests/unit/test_retention.py` | Stage only |
-| `tests/unit/test_sending_templates.py` | Stage only |
-| `tests/unit/test_sending_transport.py` | Stage only |
-| `tests/unit/test_social_auth_proof.py` | Stage only |
-| `tests/unit/test_subscription_templates.py` | Stage only |
-| `tests/unit/test_subscriptions.py` | Stage only |
-| `tests/unit/test_templates.py` | Different source bytes |
-| `tests/unit/test_time_import.py` | Stage only |
+| [.dockerignore](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/.dockerignore#L1) | Different Git blob |
+| [.env.example](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/.env.example#L1) | Different Git blob |
+| [.gitignore](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/.gitignore#L1) | Different Git blob |
+| [AGENTS.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/AGENTS.md#L1) | Different Git blob |
+| [CONTINUE.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1) | PH3 only |
+| [Dockerfile](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/Dockerfile#L1) | Different Git blob |
+| [HOSTING.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L1) | Different Git blob |
+| [PROJECT_MAP.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/PROJECT_MAP.md#L1) | Different Git blob |
+| [README.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/README.md#L1) | Different Git blob |
+| [alembic/env.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/env.py#L1) | Different Git blob |
+| [alembic/versions/ph2_001_credit_memos.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_001_credit_memos.py#L1) | PH3 only |
+| [alembic/versions/ph2_002_time_commands.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_002_time_commands.py#L1) | PH3 only |
+| [alembic/versions/ph2_003_integrations.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_003_integrations.py#L1) | PH3 only |
+| [alembic/versions/ph3_001_subscriptions.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_001_subscriptions.py#L1) | PH3 only |
+| [alembic/versions/ph3_002_sandbox_billing.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_002_sandbox_billing.py#L1) | PH3 only |
+| [alembic/versions/ph3_003_onboarding_auth.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_003_onboarding_auth.py#L1) | PH3 only |
+| [alembic/versions/ph3_004_sending.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_004_sending.py#L1) | PH3 only |
+| [alembic/versions/ph3_005_public_admission.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_005_public_admission.py#L1) | PH3 only |
+| [alembic/versions/ph3_006_quoting_library.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_006_quoting_library.py#L1) | PH3 only |
+| [alembic/versions/ph3_007_work_records.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L1) | PH3 only |
+| [alembic/versions/ph3_008_client_lifecycle.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_008_client_lifecycle.py#L1) | PH3 only |
+| [alembic/versions/ph3_009_read_indexes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_009_read_indexes.py#L1) | PH3 only |
+| [app/admission.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L1) | PH3 only |
+| [app/admission_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L1) | PH3 only |
+| [app/admission_operations.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_operations.py#L1) | PH3 only |
+| [app/archive_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archive_routes.py#L1) | Different Git blob |
+| [app/archiving.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archiving.py#L1) | Different Git blob |
+| [app/auth.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/auth.py#L1) | Different Git blob |
+| [app/billing.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/billing.py#L1) | Different Git blob |
+| [app/case_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/case_routes.py#L1) | Different Git blob |
+| [app/cases.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/cases.py#L1) | Different Git blob |
+| [app/cli.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/cli.py#L1) | Different Git blob |
+| [app/client_drafts.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/client_drafts.py#L1) | PH3 only |
+| [app/client_sources.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/client_sources.py#L1) | PH3 only |
+| [app/clients.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/clients.py#L1) | Different Git blob |
+| [app/config.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L1) | Different Git blob |
+| [app/credit_memo_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/credit_memo_models.py#L1) | PH3 only |
+| [app/dashboard.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/dashboard.py#L1) | PH3 only |
+| [app/data/COPYRIGHT.pycountry.txt](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/data/COPYRIGHT.pycountry.txt#L1) | PH3 only |
+| [app/data/LICENSE.pycountry.txt](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/data/LICENSE.pycountry.txt#L1) | PH3 only |
+| [app/data/README.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/data/README.md#L1) | PH3 only |
+| [app/data/iso_3166-1.json](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/data/iso_3166-1.json#L1) | PH3 only |
+| [app/data/iso_4217.json](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/data/iso_4217.json#L1) | PH3 only |
+| [app/db.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py#L1) | Different Git blob |
+| [app/demo.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/demo.py#L1) | Different Git blob |
+| [app/email_auth.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/email_auth.py#L1) | PH3 only |
+| [app/enrollment.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment.py#L1) | PH3 only |
+| [app/enrollment_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py#L1) | PH3 only |
+| [app/enrollment_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_routes.py#L1) | PH3 only |
+| [app/flexfields.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/flexfields.py#L1) | PH3 only |
+| [app/forms.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/forms.py#L1) | Different Git blob |
+| [app/integration_auth.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L1) | PH3 only |
+| [app/integration_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L1) | PH3 only |
+| [app/integration_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L1) | PH3 only |
+| [app/internal_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L1) | Different Git blob |
+| [app/library.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library.py#L1) | PH3 only |
+| [app/library_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py#L1) | PH3 only |
+| [app/library_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_routes.py#L1) | PH3 only |
+| [app/logging.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/logging.py#L1) | Different Git blob |
+| [app/lookups.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/lookups.py#L1) | Different Git blob |
+| [app/mail_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py#L1) | Different Git blob |
+| [app/mail_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_routes.py#L1) | Different Git blob |
+| [app/main.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/main.py#L1) | Different Git blob |
+| [app/models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L1) | Different Git blob |
+| [app/paddle.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/paddle.py#L1) | PH3 only |
+| [app/pagination.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/pagination.py#L1) | PH3 only |
+| [app/pdf.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/pdf.py#L1) | Different Git blob |
+| [app/project_billing_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_billing_routes.py#L1) | Different Git blob |
+| [app/project_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/project_routes.py#L1) | Different Git blob |
+| [app/proposal_sending.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending.py#L1) | PH3 only |
+| [app/proposal_sending_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_models.py#L1) | PH3 only |
+| [app/proposal_sending_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_routes.py#L1) | PH3 only |
+| [app/proposal_sending_transport.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_transport.py#L1) | PH3 only |
+| [app/quoting.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting.py#L1) | PH3 only |
+| [app/quoting_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L1) | PH3 only |
+| [app/quoting_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_routes.py#L1) | PH3 only |
+| [app/record_references.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/record_references.py#L1) | PH3 only |
+| [app/reference_choices.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/reference_choices.py#L1) | PH3 only |
+| [app/reports.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/reports.py#L1) | Different Git blob |
+| [app/repositories.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/repositories.py#L1) | Different Git blob |
+| [app/search_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/search_routes.py#L1) | PH3 only |
+| [app/seed.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/seed.py#L1) | Different Git blob |
+| [app/sending.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending.py#L1) | PH3 only |
+| [app/sending_dispatch_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_dispatch_routes.py#L1) | PH3 only |
+| [app/sending_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L1) | PH3 only |
+| [app/sending_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_routes.py#L1) | PH3 only |
+| [app/sending_transport.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_transport.py#L1) | PH3 only |
+| [app/settings.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/settings.py#L1) | Different Git blob |
+| [app/social_auth.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/social_auth.py#L1) | PH3 only |
+| [app/static_assets.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/static_assets.py#L1) | PH3 only |
+| [app/subscription_billing.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing.py#L1) | PH3 only |
+| [app/subscription_billing_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py#L1) | PH3 only |
+| [app/subscription_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_models.py#L1) | PH3 only |
+| [app/subscription_payment_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_payment_routes.py#L1) | PH3 only |
+| [app/subscription_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_routes.py#L1) | PH3 only |
+| [app/subscriptions.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscriptions.py#L1) | PH3 only |
+| [app/tenancy.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L1) | Different Git blob |
+| [app/tenant_demo.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenant_demo.py#L1) | Different Git blob |
+| [app/time_command_models.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py#L1) | PH3 only |
+| [app/time_commands.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_commands.py#L1) | PH3 only |
+| [app/time_import.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import.py#L1) | PH3 only |
+| [app/time_import_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import_routes.py#L1) | PH3 only |
+| [app/timecards.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/timecards.py#L1) | Different Git blob |
+| [app/web/static/app.css](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/app.css#L1) | Different Git blob |
+| [app/web/static/app.js](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/app.js#L1) | Different Git blob |
+| [app/web/static/auth_challenge.js](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/auth_challenge.js#L1) | PH3 only |
+| [app/web/static/cases.css](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/cases.css#L1) | PH3 only |
+| [app/web/static/cases.js](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/cases.js#L1) | PH3 only |
+| [app/web/static/github-invertocat.svg](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/github-invertocat.svg#L1) | PH3 only |
+| [app/web/static/google-g.png](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/google-g.png) | PH3 only |
+| [app/web/static/google-sans-OFL.txt](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/google-sans-OFL.txt#L1) | PH3 only |
+| [app/web/static/google-sans-medium.ttf](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/google-sans-medium.ttf) | PH3 only |
+| [app/web/static/paddle_checkout.css](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/paddle_checkout.css#L1) | PH3 only |
+| [app/web/static/paddle_checkout.js](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/paddle_checkout.js#L1) | PH3 only |
+| [app/web/static/settings_cache.js](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/settings_cache.js#L1) | PH3 only |
+| [app/web/static/status.css](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/status.css#L1) | PH3 only |
+| [app/web/static/timecards.css](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/timecards.css#L1) | PH3 only |
+| [app/web/static/timecards.js](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/timecards.js#L1) | PH3 only |
+| [app/web/static/workspace.css](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/workspace.css#L1) | PH3 only |
+| [app/web/static/workspace.js](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/static/workspace.js#L1) | PH3 only |
+| [app/web/templates/account_security.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/account_security.html#L1) | PH3 only |
+| [app/web/templates/archive.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/archive.html#L1) | Different Git blob |
+| [app/web/templates/archived_timecard.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/archived_timecard.html#L1) | Different Git blob |
+| [app/web/templates/assistant_connection_guide.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/assistant_connection_guide.html#L1) | PH3 only |
+| [app/web/templates/audit.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/audit.html#L1) | Different Git blob |
+| [app/web/templates/auth_challenge.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_challenge.html#L1) | PH3 only |
+| [app/web/templates/auth_layout.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_layout.html#L1) | PH3 only |
+| [app/web/templates/auth_methods.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_methods.html#L1) | PH3 only |
+| [app/web/templates/auth_notice.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_notice.html#L1) | PH3 only |
+| [app/web/templates/auth_notice_fields.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_notice_fields.html#L1) | PH3 only |
+| [app/web/templates/auth_provider_button.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_provider_button.html#L1) | PH3 only |
+| [app/web/templates/auth_provider_forms.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/auth_provider_forms.html#L1) | PH3 only |
+| [app/web/templates/base.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/base.html#L1) | Different Git blob |
+| [app/web/templates/billing.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/billing.html#L1) | Different Git blob |
+| [app/web/templates/capacity_prompt.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/capacity_prompt.html#L1) | PH3 only |
+| [app/web/templates/case_allocations.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_allocations.html#L1) | Different Git blob |
+| [app/web/templates/case_detail.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_detail.html#L1) | Different Git blob |
+| [app/web/templates/case_form.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_form.html#L1) | Different Git blob |
+| [app/web/templates/case_mass_edit.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_mass_edit.html#L1) | PH3 only |
+| [app/web/templates/case_mass_edit_content.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/case_mass_edit_content.html#L1) | PH3 only |
+| [app/web/templates/cases.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/cases.html#L1) | Different Git blob |
+| [app/web/templates/client_detail.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/client_detail.html#L1) | Different Git blob |
+| [app/web/templates/client_drafts.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/client_drafts.html#L1) | PH3 only |
+| [app/web/templates/client_form.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/client_form.html#L1) | Different Git blob |
+| [app/web/templates/clients.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/clients.html#L1) | Different Git blob |
+| [app/web/templates/components.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/components.html#L1) | Different Git blob |
+| [app/web/templates/credit_memo.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/credit_memo.html#L1) | PH3 only |
+| [app/web/templates/credit_memo_pdf.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/credit_memo_pdf.html#L1) | PH3 only |
+| [app/web/templates/dashboard.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/dashboard.html#L1) | Different Git blob |
+| [app/web/templates/dashboard_detail.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/dashboard_detail.html#L1) | PH3 only |
+| [app/web/templates/email/invitation.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/email/invitation.html#L1) | PH3 only |
+| [app/web/templates/error.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/error.html#L1) | Different Git blob |
+| [app/web/templates/flexfields.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/flexfields.html#L1) | PH3 only |
+| [app/web/templates/help.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/help.html#L1) | Different Git blob |
+| [app/web/templates/invoice.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/invoice.html#L1) | Different Git blob |
+| [app/web/templates/landing.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/landing.html#L1) | Different Git blob |
+| [app/web/templates/landing_info.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/landing_info.html#L1) | Different Git blob |
+| [app/web/templates/legal_policies.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/legal_policies.html#L1) | PH3 only |
+| [app/web/templates/legal_policy_content.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/legal_policy_content.html#L1) | PH3 only |
+| [app/web/templates/library.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/library.html#L1) | PH3 only |
+| [app/web/templates/library_document.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/library_document.html#L1) | PH3 only |
+| [app/web/templates/library_document_pdf.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/library_document_pdf.html#L1) | PH3 only |
+| [app/web/templates/lookup.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/lookup.html#L1) | Different Git blob |
+| [app/web/templates/mail.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail.html#L1) | Different Git blob |
+| [app/web/templates/mail_addresses.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_addresses.html#L1) | Different Git blob |
+| [app/web/templates/mail_detail.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_detail.html#L1) | Different Git blob |
+| [app/web/templates/mail_import.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/mail_import.html#L1) | Different Git blob |
+| [app/web/templates/navigation_icons.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/navigation_icons.html#L1) | Different Git blob |
+| [app/web/templates/project_billing.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/project_billing.html#L1) | Different Git blob |
+| [app/web/templates/project_form.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/project_form.html#L1) | Different Git blob |
+| [app/web/templates/projects.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/projects.html#L1) | Different Git blob |
+| [app/web/templates/proposal_sending.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending.html#L1) | PH3 only |
+| [app/web/templates/proposal_sending_prepare.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending_prepare.html#L1) | PH3 only |
+| [app/web/templates/proposal_sending_readiness.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending_readiness.html#L1) | PH3 only |
+| [app/web/templates/proposal_sending_review.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/proposal_sending_review.html#L1) | PH3 only |
+| [app/web/templates/public_plans.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/public_plans.html#L1) | PH3 only |
+| [app/web/templates/quote_detail.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quote_detail.html#L1) | PH3 only |
+| [app/web/templates/quote_form.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quote_form.html#L1) | PH3 only |
+| [app/web/templates/quote_pdf.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quote_pdf.html#L1) | PH3 only |
+| [app/web/templates/quoting.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/quoting.html#L1) | PH3 only |
+| [app/web/templates/registration.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/registration.html#L1) | PH3 only |
+| [app/web/templates/reports.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/reports.html#L1) | Different Git blob |
+| [app/web/templates/search.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/search.html#L1) | PH3 only |
+| [app/web/templates/sending.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending.html#L1) | PH3 only |
+| [app/web/templates/sending_followup_review.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_followup_review.html#L1) | PH3 only |
+| [app/web/templates/sending_prepare.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_prepare.html#L1) | PH3 only |
+| [app/web/templates/sending_readiness.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_readiness.html#L1) | PH3 only |
+| [app/web/templates/sending_review.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sending_review.html#L1) | PH3 only |
+| [app/web/templates/settings.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/settings.html#L1) | Different Git blob |
+| [app/web/templates/settings_integrations.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/settings_integrations.html#L1) | PH3 only |
+| [app/web/templates/sign_in.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sign_in.html#L1) | PH3 only |
+| [app/web/templates/sign_up.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/sign_up.html#L1) | PH3 only |
+| [app/web/templates/subscription.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription.html#L1) | PH3 only |
+| [app/web/templates/subscription_account.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_account.html#L1) | PH3 only |
+| [app/web/templates/subscription_change_review.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_change_review.html#L1) | PH3 only |
+| [app/web/templates/subscription_checkout.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_checkout.html#L1) | PH3 only |
+| [app/web/templates/subscription_command.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_command.html#L1) | PH3 only |
+| [app/web/templates/subscription_payment_controls.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_payment_controls.html#L1) | PH3 only |
+| [app/web/templates/subscription_portal.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_portal.html#L1) | PH3 only |
+| [app/web/templates/subscription_retention_review.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/subscription_retention_review.html#L1) | PH3 only |
+| [app/web/templates/time_import.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/time_import.html#L1) | PH3 only |
+| [app/web/templates/timecards.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/timecards.html#L1) | Different Git blob |
+| [app/web/templates/workspace_search_dialog.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/web/templates/workspace_search_dialog.html#L1) | PH3 only |
+| [app/work_history.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/work_history.py#L1) | PH3 only |
+| [app/work_lifecycle.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/work_lifecycle.py#L1) | PH3 only |
+| [app/workspace_operations.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/workspace_operations.py#L1) | PH3 only |
+| [app/workspace_search.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/workspace_search.py#L1) | PH3 only |
+| [deploy/cloudflare/FOOTER_RELEASE.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/FOOTER_RELEASE.md#L1) | Different Git blob |
+| [deploy/cloudflare/README.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/README.md#L1) | Different Git blob |
+| [deploy/cloudflare/STAGE_RELEASE.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/STAGE_RELEASE.md#L1) | PH3 only |
+| [deploy/cloudflare/VERIFICATION.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/VERIFICATION.md#L1) | Different Git blob |
+| [deploy/cloudflare/package-lock.json](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/package-lock.json#L1) | Different Git blob |
+| [deploy/cloudflare/package.json](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/package.json#L1) | Different Git blob |
+| [deploy/cloudflare/src/contact.ts](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/contact.ts#L1) | Different Git blob |
+| [deploy/cloudflare/src/index.ts](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/index.ts#L1) | Different Git blob |
+| [deploy/cloudflare/src/internal.ts](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/internal.ts#L1) | Different Git blob |
+| [deploy/cloudflare/src/production-proxy.ts](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/production-proxy.ts#L1) | PH3 only |
+| [deploy/cloudflare/src/production.ts](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/production.ts#L1) | PH3 only |
+| [deploy/cloudflare/src/proxy.ts](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/proxy.ts#L1) | Different Git blob |
+| [deploy/cloudflare/src/stage-archive.ts](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/stage-archive.ts#L1) | PH3 only |
+| [deploy/cloudflare/test/paddle.test.mjs](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/paddle.test.mjs#L1) | PH3 only |
+| [deploy/cloudflare/test/production.test.mjs](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/production.test.mjs#L1) | PH3 only |
+| [deploy/cloudflare/test/proxy.test.mjs](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/proxy.test.mjs#L1) | Different Git blob |
+| [deploy/cloudflare/test/sending.test.mjs](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/sending.test.mjs#L1) | PH3 only |
+| [deploy/cloudflare/test/stage-archive.test.mjs](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/test/stage-archive.test.mjs#L1) | PH3 only |
+| [deploy/cloudflare/tsconfig.json](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/tsconfig.json#L1) | Different Git blob |
+| [deploy/cloudflare/worker-configuration.d.ts](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/worker-configuration.d.ts#L1) | Different Git blob |
+| [deploy/cloudflare/worker-production-configuration.d.ts](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/worker-production-configuration.d.ts#L1) | PH3 only |
+| [deploy/cloudflare/wrangler.jsonc](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/wrangler.jsonc#L1) | Different Git blob |
+| [deploy/cloudflare/wrangler.production.jsonc](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/wrangler.production.jsonc#L1) | PH3 only |
+| [deploy/postgres/README.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/postgres/README.md#L1) | Different Git blob |
+| [deploy/supabase/stage-auth-code.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/supabase/stage-auth-code.html#L1) | PH3 only |
+| [deploy/supabase/stage-auth-invitation.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/supabase/stage-auth-invitation.html#L1) | PH3 only |
+| [docs/DECISIONS.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1) | Different Git blob |
+| [docs/DEPLOYMENT.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DEPLOYMENT.md#L1) | Different Git blob |
+| [docs/OPERATIONS.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L1) | Different Git blob |
+| [docs/PERFORMANCE_ANALYSIS_2026-10-17.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PERFORMANCE_ANALYSIS_2026-10-17.md#L1) | PH3 only |
+| [docs/PERFORMANCE_IMPROVEMENTS_2026-10-17.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PERFORMANCE_IMPROVEMENTS_2026-10-17.md#L1) | PH3 only |
+| [docs/PHASE2_CLOSEOUT.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L1) | PH3 only |
+| [docs/PROJECT_BRIEF.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PROJECT_BRIEF.md#L1) | Different Git blob |
+| [docs/STATUS.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L1) | Different Git blob |
+| [docs/design/DESIGN_SPEC.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/design/DESIGN_SPEC.md#L1) | Different Git blob |
+| [docs/design/EXPANSION_DISCOVERY.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/design/EXPANSION_DISCOVERY.md#L1) | Different Git blob |
+| [docs/email/assets/timeker-wordmark.png](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/email/assets/timeker-wordmark.png) | PH3 only |
+| [docs/email/invitation-preview.html](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/email/invitation-preview.html#L1) | PH3 only |
+| [docs/legal/LANDING_COPY.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/legal/LANDING_COPY.md#L1) | Different Git blob |
+| [docs/legal/PRIVACY_DISCOVERY.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/legal/PRIVACY_DISCOVERY.md#L1) | Different Git blob |
+| [integrations/README.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/integrations/README.md#L1) | PH3 only |
+| [integrations/timeker-stage/assets/logo.svg](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/integrations/timeker-stage/assets/logo.svg#L1) | PH3 only |
+| [integrations/timeker-stage/mcp.json](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/integrations/timeker-stage/mcp.json#L1) | PH3 only |
+| [integrations/timeker-stage/plugin.json](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/integrations/timeker-stage/plugin.json#L1) | PH3 only |
+| [integrations/timeker-stage/skills/timeker/SKILL.md](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/integrations/timeker-stage/skills/timeker/SKILL.md#L1) | PH3 only |
+| [scripts/postgres-runtime-grants.sql](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/postgres-runtime-grants.sql#L1) | Different Git blob |
+| [scripts/render_invitation.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/render_invitation.py#L1) | PH3 only |
+| [tests/conftest.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/conftest.py#L1) | Different Git blob |
+| [tests/e2e/conftest.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/conftest.py#L1) | Different Git blob |
+| [tests/e2e/test_archive_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_archive_browser.py#L1) | Different Git blob |
+| [tests/e2e/test_case_mass_edit_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_case_mass_edit_browser.py#L1) | PH3 only |
+| [tests/e2e/test_credit_memos_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_credit_memos_browser.py#L1) | PH3 only |
+| [tests/e2e/test_dashboard_detail_pagination_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_dashboard_detail_pagination_browser.py#L1) | PH3 only |
+| [tests/e2e/test_dashboard_outstanding_pagination_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_dashboard_outstanding_pagination_browser.py#L1) | PH3 only |
+| [tests/e2e/test_delegated_oauth_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_delegated_oauth_browser.py#L1) | PH3 only |
+| [tests/e2e/test_ker_navigation_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_ker_navigation_browser.py#L1) | PH3 only |
+| [tests/e2e/test_live_checkout_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_live_checkout_browser.py#L1) | PH3 only |
+| [tests/e2e/test_oauth_csp_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_oauth_csp_browser.py#L1) | Different Git blob |
+| [tests/e2e/test_onboarding_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_onboarding_browser.py#L1) | PH3 only |
+| [tests/e2e/test_owner_work_refinements_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_owner_work_refinements_browser.py#L1) | PH3 only |
+| [tests/e2e/test_paddle_overlay_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_paddle_overlay_browser.py#L1) | PH3 only |
+| [tests/e2e/test_projects_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_projects_browser.py#L1) | Different Git blob |
+| [tests/e2e/test_proposal_sending_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_proposal_sending_browser.py#L1) | PH3 only |
+| [tests/e2e/test_quoting_library_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_quoting_library_browser.py#L1) | PH3 only |
+| [tests/e2e/test_quoting_lookup_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_quoting_lookup_browser.py#L1) | PH3 only |
+| [tests/e2e/test_record_pagination_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_record_pagination_browser.py#L1) | PH3 only |
+| [tests/e2e/test_reference_fields_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_reference_fields_browser.py#L1) | PH3 only |
+| [tests/e2e/test_sending_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_sending_browser.py#L1) | PH3 only |
+| [tests/e2e/test_sending_manual_followup_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_sending_manual_followup_browser.py#L1) | PH3 only |
+| [tests/e2e/test_settings_cache_refresh_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_settings_cache_refresh_browser.py#L1) | PH3 only |
+| [tests/e2e/test_shared_auth_challenge.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_shared_auth_challenge.py#L1) | PH3 only |
+| [tests/e2e/test_stage_refinements.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_stage_refinements.py#L1) | PH3 only |
+| [tests/e2e/test_subscription_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_subscription_browser.py#L1) | PH3 only |
+| [tests/e2e/test_time_import_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_time_import_browser.py#L1) | PH3 only |
+| [tests/e2e/test_timecard_local_clock.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_local_clock.py#L1) | Different Git blob |
+| [tests/e2e/test_timecard_productivity_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_productivity_browser.py#L1) | PH3 only |
+| [tests/e2e/test_timecard_selection.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_selection.py#L1) | Different Git blob |
+| [tests/e2e/test_timecard_week_metrics_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_timecard_week_metrics_browser.py#L1) | PH3 only |
+| [tests/e2e/test_ui_refresh_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_ui_refresh_browser.py#L1) | Different Git blob |
+| [tests/e2e/test_work_management.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_work_management.py#L1) | Different Git blob |
+| [tests/e2e/test_workflow_feedback_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_workflow_feedback_browser.py#L1) | Different Git blob |
+| [tests/e2e/test_workspace_search_browser.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/e2e/test_workspace_search_browser.py#L1) | PH3 only |
+| [tests/integration/test_archiving.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_archiving.py#L1) | Different Git blob |
+| [tests/integration/test_auth_get_sessions.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_auth_get_sessions.py#L1) | PH3 only |
+| [tests/integration/test_auth_notice.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_auth_notice.py#L1) | PH3 only |
+| [tests/integration/test_case_lists.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_lists.py#L1) | Different Git blob |
+| [tests/integration/test_case_mass_edit.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_mass_edit.py#L1) | PH3 only |
+| [tests/integration/test_case_retention.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_retention.py#L1) | PH3 only |
+| [tests/integration/test_case_workflow.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_case_workflow.py#L1) | Different Git blob |
+| [tests/integration/test_cases.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_cases.py#L1) | Different Git blob |
+| [tests/integration/test_cases_migration.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_cases_migration.py#L1) | Different Git blob |
+| [tests/integration/test_client_codes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_client_codes.py#L1) | PH3 only |
+| [tests/integration/test_credit_memos.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_credit_memos.py#L1) | PH3 only |
+| [tests/integration/test_dashboard_contribution_scope.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_contribution_scope.py#L1) | PH3 only |
+| [tests/integration/test_dashboard_detail_pagination.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_detail_pagination.py#L1) | PH3 only |
+| [tests/integration/test_dashboard_outstanding_pagination.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_outstanding_pagination.py#L1) | PH3 only |
+| [tests/integration/test_dashboard_performance.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_dashboard_performance.py#L1) | PH3 only |
+| [tests/integration/test_delegated_integration.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_delegated_integration.py#L1) | PH3 only |
+| [tests/integration/test_email_start_retries.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_email_start_retries.py#L1) | PH3 only |
+| [tests/integration/test_financial_query_growth.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_financial_query_growth.py#L1) | PH3 only |
+| [tests/integration/test_hardening.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_hardening.py#L1) | Different Git blob |
+| [tests/integration/test_ker_navigation.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_ker_navigation.py#L1) | PH3 only |
+| [tests/integration/test_library.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_library.py#L1) | PH3 only |
+| [tests/integration/test_live_billing.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_live_billing.py#L1) | PH3 only |
+| [tests/integration/test_lookups.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_lookups.py#L1) | Different Git blob |
+| [tests/integration/test_mail.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_mail.py#L1) | Different Git blob |
+| [tests/integration/test_migrations.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_migrations.py#L1) | Different Git blob |
+| [tests/integration/test_onboarding_auth.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_onboarding_auth.py#L1) | PH3 only |
+| [tests/integration/test_owner_work_refinements.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_owner_work_refinements.py#L1) | PH3 only |
+| [tests/integration/test_project_attachments.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_attachments.py#L1) | Different Git blob |
+| [tests/integration/test_project_attachments_migration.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_attachments_migration.py#L1) | Different Git blob |
+| [tests/integration/test_project_lifecycle_work.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_project_lifecycle_work.py#L1) | Different Git blob |
+| [tests/integration/test_projects.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_projects.py#L1) | Different Git blob |
+| [tests/integration/test_proposal_sending.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_proposal_sending.py#L1) | PH3 only |
+| [tests/integration/test_public_admission.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_public_admission.py#L1) | PH3 only |
+| [tests/integration/test_quoting.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_quoting.py#L1) | PH3 only |
+| [tests/integration/test_quoting_list_performance.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_quoting_list_performance.py#L1) | PH3 only |
+| [tests/integration/test_quoting_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_quoting_routes.py#L1) | PH3 only |
+| [tests/integration/test_record_fields.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_record_fields.py#L1) | PH3 only |
+| [tests/integration/test_record_pagination.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_record_pagination.py#L1) | PH3 only |
+| [tests/integration/test_recovery_rehearsal.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_recovery_rehearsal.py#L1) | PH3 only |
+| [tests/integration/test_reference_fields.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_reference_fields.py#L1) | PH3 only |
+| [tests/integration/test_report_pagination.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_report_pagination.py#L1) | PH3 only |
+| [tests/integration/test_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_routes.py#L1) | Different Git blob |
+| [tests/integration/test_save_feedback.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_save_feedback.py#L1) | Different Git blob |
+| [tests/integration/test_sending_dispatch.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_dispatch.py#L1) | PH3 only |
+| [tests/integration/test_sending_isolation.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_isolation.py#L1) | PH3 only |
+| [tests/integration/test_sending_manual_followup.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_manual_followup.py#L1) | PH3 only |
+| [tests/integration/test_sending_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_sending_routes.py#L1) | PH3 only |
+| [tests/integration/test_settings_cache_refresh.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_settings_cache_refresh.py#L1) | PH3 only |
+| [tests/integration/test_social_auth.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_social_auth.py#L1) | PH3 only |
+| [tests/integration/test_static_asset_cache.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_static_asset_cache.py#L1) | PH3 only |
+| [tests/integration/test_subscription_billing.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_billing.py#L1) | PH3 only |
+| [tests/integration/test_subscription_capacity.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_capacity.py#L1) | PH3 only |
+| [tests/integration/test_subscription_domain.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_domain.py#L1) | PH3 only |
+| [tests/integration/test_subscription_http.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_http.py#L1) | PH3 only |
+| [tests/integration/test_subscription_payments_http.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_payments_http.py#L1) | PH3 only |
+| [tests/integration/test_subscription_retention.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_subscription_retention.py#L1) | PH3 only |
+| [tests/integration/test_tenancy.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_tenancy.py#L1) | Different Git blob |
+| [tests/integration/test_tenancy_capacity.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_tenancy_capacity.py#L1) | PH3 only |
+| [tests/integration/test_tenant_demo.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_tenant_demo.py#L1) | Different Git blob |
+| [tests/integration/test_time_commands.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_time_commands.py#L1) | PH3 only |
+| [tests/integration/test_time_import_http.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_time_import_http.py#L1) | PH3 only |
+| [tests/integration/test_timecard_cross_module.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_timecard_cross_module.py#L1) | PH3 only |
+| [tests/integration/test_timecard_productivity.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_timecard_productivity.py#L1) | PH3 only |
+| [tests/integration/test_timecard_week_metrics.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_timecard_week_metrics.py#L1) | PH3 only |
+| [tests/integration/test_usage_browser_flow.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_usage_browser_flow.py#L1) | Different Git blob |
+| [tests/integration/test_workspace_operations.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_workspace_operations.py#L1) | PH3 only |
+| [tests/integration/test_workspace_overview_search.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/integration/test_workspace_overview_search.py#L1) | PH3 only |
+| [tests/migration_target.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/migration_target.py#L1) | PH3 only |
+| [tests/template_assets.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/template_assets.py#L1) | PH3 only |
+| [tests/test_project_billing.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_project_billing.py#L1) | Different Git blob |
+| [tests/test_project_billing_reports.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_project_billing_reports.py#L1) | Different Git blob |
+| [tests/test_record_references.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_record_references.py#L1) | PH3 only |
+| [tests/test_sending.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_sending.py#L1) | PH3 only |
+| [tests/test_tenancy_config.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/test_tenancy_config.py#L1) | Different Git blob |
+| [tests/timecard_history.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/timecard_history.py#L1) | PH3 only |
+| [tests/unit/__init__.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/__init__.py#L1) | PH3 only |
+| [tests/unit/test_client_code_validation.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_client_code_validation.py#L1) | PH3 only |
+| [tests/unit/test_dashboard_calendar.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_dashboard_calendar.py#L1) | PH3 only |
+| [tests/unit/test_email_auth.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_email_auth.py#L1) | PH3 only |
+| [tests/unit/test_financial_values.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_financial_values.py#L1) | PH3 only |
+| [tests/unit/test_flexfields.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_flexfields.py#L1) | PH3 only |
+| [tests/unit/test_integration_contracts.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_integration_contracts.py#L1) | PH3 only |
+| [tests/unit/test_invitation_template.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_invitation_template.py#L1) | PH3 only |
+| [tests/unit/test_ker_navigation.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_ker_navigation.py#L1) | PH3 only |
+| [tests/unit/test_library.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_library.py#L1) | PH3 only |
+| [tests/unit/test_live_templates.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_live_templates.py#L1) | PH3 only |
+| [tests/unit/test_logging.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_logging.py#L1) | Different Git blob |
+| [tests/unit/test_migration_target.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_migration_target.py#L1) | PH3 only |
+| [tests/unit/test_onboarding_templates.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_onboarding_templates.py#L1) | PH3 only |
+| [tests/unit/test_paddle.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_paddle.py#L1) | PH3 only |
+| [tests/unit/test_paddle_templates.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_paddle_templates.py#L1) | PH3 only |
+| [tests/unit/test_pagination.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_pagination.py#L1) | PH3 only |
+| [tests/unit/test_production_capabilities.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_production_capabilities.py#L1) | PH3 only |
+| [tests/unit/test_proposal_sending.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_proposal_sending.py#L1) | PH3 only |
+| [tests/unit/test_proposal_sending_transport.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_proposal_sending_transport.py#L1) | PH3 only |
+| [tests/unit/test_public_admission_proof.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_public_admission_proof.py#L1) | PH3 only |
+| [tests/unit/test_quote_pagination.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_quote_pagination.py#L1) | PH3 only |
+| [tests/unit/test_quoting.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_quoting.py#L1) | PH3 only |
+| [tests/unit/test_quoting_routes.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_quoting_routes.py#L1) | PH3 only |
+| [tests/unit/test_readiness_worker.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_readiness_worker.py#L1) | PH3 only |
+| [tests/unit/test_reference_choices.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_reference_choices.py#L1) | PH3 only |
+| [tests/unit/test_retention.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_retention.py#L1) | PH3 only |
+| [tests/unit/test_sending_templates.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_sending_templates.py#L1) | PH3 only |
+| [tests/unit/test_sending_transport.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_sending_transport.py#L1) | PH3 only |
+| [tests/unit/test_settings_cache_refresh.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_settings_cache_refresh.py#L1) | PH3 only |
+| [tests/unit/test_social_auth_proof.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_social_auth_proof.py#L1) | PH3 only |
+| [tests/unit/test_static_assets.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_static_assets.py#L1) | PH3 only |
+| [tests/unit/test_status_palette.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_status_palette.py#L1) | PH3 only |
+| [tests/unit/test_subscription_templates.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_subscription_templates.py#L1) | PH3 only |
+| [tests/unit/test_subscriptions.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_subscriptions.py#L1) | PH3 only |
+| [tests/unit/test_templates.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_templates.py#L1) | Different Git blob |
+| [tests/unit/test_time_import.py](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/tests/unit/test_time_import.py#L1) | PH3 only |
 
+---
+
+# PH3 prompt-refresh brief — 2026-10-18
+
+The owner will provide PH3 prompts after this preparation. Use the current
+dossier to revise those prompts for the actual delivered timeKER baseline.
+Source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` includes frozen PH2 `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6` plus three startup documents.
+No PH3 feature implementation has begun under those forthcoming prompts.
+
+## Fixed handoff contract
+
+- Continue existing Stage. Retain one monolith/database per environment and
+  server-resolved private owner schemas/roles. Keep the production service as is.
+- Build one eventual reviewed PROD candidate containing PH2 plus PH3. The old
+  production draft is historical and must be refreshed; no intermediate PH2
+  cutover or automatic merge/deployment is requested.
+- Preserve integer-minute duration, Decimal money, explicit business zones,
+  immutable issued JSON/PDF/checksums, original financial history and manual
+  payment tracking. Never invent tax/bank/legal/FX/contract facts.
+- Preserve immutable issuer/subject proof, fresh explicit account linking,
+  finite operator-prepared slots, owner authorization/CSRF, no runtime DDL/admin
+  credential/default-workspace fallback and no unverified email merge.
+- Keep authentication, support, inbound Mail, statement Sending and commercial
+  document Sending as separately bounded flows. Scheduled statement Sending jobs
+  remain disabled unless separately selected/authorized. The configured Case-only
+  02:17 UTC cron has no observed scheduled execution. Do not infer mail/charge
+  approval from UI.
+- Use the supplied brand/reference system, SSR/HTMX/minimal local JavaScript,
+  accessible native fallbacks, fresh private financial data and explicit
+  environment/provider activation. Do not redesign architecture without evidence.
+
+## Delivered baseline to account for
+
+Original credit memos, strict reviewed imports/contributions, proposed clients
+and scoped API/MCP; individual capacity/enrollment and Sandbox subscriptions;
+Google/GitHub/managed email and finite signup; Quoting/Library and reviewed
+Sending; work records/client lifecycle and mandatory activation fields;
+pagination/status/visible IDs; timecard weekly metrics; Dashboard fixed-five
+detail pages and rhythm; native K navigation/Back; grouped/batched read paths and
+worker execution; versioned public assets/native reference choices; Settings
+public-file refresh with unsaved-form preservation. Use chapters02–05 for actual
+constraints before specifying changes. Existing delivery does not prove UAT.
+
+## Carry-forward acceptance and decisions
+
+| Queue | Required evidence or owner decision |
+| --- | --- |
+| P2-01 | Normal human OAuth allow, actual MCP discovery/use, two fictional owners' reciprocal isolation, idempotent Draft corrections, refresh rotation/revocation |
+| P2-02 | Explicit human Stage UAT for existing/new identities, linking/recovery and business workflows; accept/reject and retain defects |
+| P2-03 | Backup cadence/off-host/key custody, hosted tenant restore, retention/rights/holds, budgets and adopted RPO/RTO |
+| EXT-01 | Apple and full account deletion/offboarding remain unimplemented or incomplete; obtain exact product/provider/retention contract |
+| EXT-02 | Remaining actual Sandbox annual/3DS/change/cancel/failed-renewal/grace rehearsal; Live remains separate |
+| EXT-03 | Authenticated hosted Quoting/Library/commercial Sending owner walkthrough |
+| EXT-04 | Exact Sending operational selection/activation and addressed test authority; preserve retry uncertainty |
+| EXT-05 | Final combined PROD candidate, current overrides/identities/migrations/grants/providers/custody and separately authorized rollout |
+| Follow-ups | Human/perceptual acceptance of latest UI/performance/Settings and actual Case-only cron observation |
+
+Canonical residual details are mirrored in chapter08. Preserve unknowns and
+separate owner decisions from engineering. A synthetic Stage Pro grant is not a
+payment event or production entitlement. Public GETs/test counts/backup TOC
+checks are not authenticated acceptance or hosted recovery proof.
+
+## Requested output once prompts are supplied
+
+For each original prompt, identify the intended outcome, already-delivered
+behavior, remaining delta, current source contract, dependencies, exact acceptance
+evidence and excluded effects. Rewrite only the necessary scope. Keep provenance
+and explain additions/removals rather than silently dropping an unresolved gate.
+Bundle overlapping prompts into coherent vertical increments when that removes
+duplicated work; retain identity/provider/effect/release trust boundaries.
+
+Provide a prioritized sequence with bounded work items, clear file/domain impact,
+meaningful verification and failure/recovery rules. Mark actual owner choices
+explicitly. Do not fabricate old prompt text, business policy, provider facts,
+reviewed production readiness or support for a client/voice surface.
+
+This repository authorizes review/proposal preparation only. Execution follows
+the owner's later prompts in the maintained application checkout.

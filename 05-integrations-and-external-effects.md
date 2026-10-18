@@ -1,145 +1,240 @@
 # 05 — Integrations and external effects
 
-**Dated engineering snapshot: 16 October 2026.** This chapter describes the implementation and evidence available at the HOC pause. It is not a new specification, a provider setup instruction, or permission to perform external actions.
+Source snapshot: **2026-10-18**, PH3 commit
+`9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`.
+PH2 is administratively closed; PH3 is prepared on `codex/ph3-stage` and awaits
+owner prompts. Existing Stage continues. One future reviewed production candidate
+must include PH2 and authorized PH3 work. This documentation refresh performed no
+provider call, send, charge, database operation, authentication or deployment.
+[Continuation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1).
 
-**Source baseline:** `C:/Users/edlop/OneDrive/Documents/VS Code/timeker-PH2-quoting`, documentation HEAD `48e854ff2107dffb217dfe7c487b1b9d36a7f41d`; deployed feature source `dbf73e52ca03726e7903dc74ef27e40339c06936`. References below use repository-relative `file:line` pointers at this snapshot. Canonical decisions and current sections take precedence over historical sections of the same files.
+## 1. Distinct integration authorities
 
-**Current environment:** isolated Stage at `https://stage-timeker.aekr.io`; Worker `9a1cfc5f-73ec-4856-b3bb-ea9a2817168c`, Container application version 20, database head `ph3_006_quoting_library`. Production was not changed. The HOC pause stops engineering work; it does not stop deployed runtimes, provider webhooks, existing schedules, or third-party processing. Operational shutdown would require a separate explicit action and authority.
-
-## 1. Integration map and authority boundaries
-
-| Surface | Purpose and effect | Current boundary | Primary source |
-| --- | --- | --- | --- |
-| Google/GitHub OAuth and managed email authentication | Establish a verified human identity; resolve or allocate the permitted workspace | Stage has the bounded public admission profile. Production remains the existing separate Google-only deployment. Linking requires proof of the current account and the provider identity. | `app/enrollment_routes.py:513`, `app/email_auth.py:101`, `app/social_auth.py`; `docs/DECISIONS.md:877` and `docs/DECISIONS.md:914` |
-| Delegated OAuth + MCP/HTTP tools | Give an explicitly approved client a narrow grant to actual workspace records | Fixed registered clients, explicit owner consent, scoped tokens; no assistant-selected tenant | `app/integration_auth.py:24`, `app/integration_routes.py:61`, `docs/DECISIONS.md:487` |
-| Time import | Turn a bounded JSON/CSV file into reviewed Draft contributions | Native owner preview and confirmation; no automatic finalization or invoice issuance | `app/time_import.py:15`, `app/time_import_routes.py:271`, `app/time_commands.py:424` |
-| Authentication email | Deliver OTP/confirmation through the managed identity provider | Supabase Auth owns its CAPTCHA verification and separate SMTP configuration | `app/email_auth.py:101`, `docs/OPERATIONS.md:337` |
-| Public support contact | Deliver one user-submitted support message to the fixed operator destination | Stage delivery is disabled; durable abuse controls and a private Worker path | `app/contact.py:25`, `deploy/cloudflare/wrangler.jsonc:36` |
-| Business Sending | Deliver an owner-reviewed immutable attachment | Cloudflare REST transport; collections and commercial proposals have separate business models | `app/sending.py:213`, `app/proposal_sending.py:139` |
-| Inbound Mail | Retain an imported or routed correspondence record and attachments | Not an inbox-reading connector; Stage capture is disabled | `app/mail_service.py:201`, `app/internal_routes.py:129`, `deploy/cloudflare/wrangler.jsonc:37` |
-| Paddle | Sell a timeKER SaaS subscription and reconcile verified provider events | Sandbox on Stage. Live merchant launch remains separately gated. | `app/paddle.py:17`, `app/subscription_billing.py:726`, `docs/OPERATIONS.md:226` |
-
-These are different authorities. An authenticated session does not authorize an email. A connected assistant does not receive unrestricted owner powers. A saved draft does not authorize dispatch. A successful provider request is not agreement acceptance, invoice payment, delivery into a recipient's inbox, or human UAT.
-
-## 2. Delegated OAuth and the MCP/API implementation
-
-### 2.1 Surfaces and actual protocol subset
-
-The same tool service is exposed through `POST /mcp` and `POST /api/integration/tools/{name}`. OAuth metadata is available through the authorization-server and protected-resource discovery routes. The owner manages grants at `/settings/integrations`; grant revocation is an owner/CSRF-protected POST. Sources: `app/integration_routes.py:669`, `app/integration_routes.py:692`, `app/integration_routes.py:842`, `app/integration_routes.py:862`, `app/integration_routes.py:889`, `app/integration_routes.py:1045`, `app/integration_routes.py:1066`.
-
-The MCP implementation is a **finite, stateless JSON Streamable HTTP subset**, rather than a general streaming server. It accepts protocol versions `2025-03-26`, `2025-06-18`, and `2025-11-25`. The request must use JSON and advertise both `application/json` and `text/event-stream` in Accept; the implementation returns finite JSON. Authenticated GET/DELETE on `/mcp` return 405. There is no SSE/session stream, dynamic registration, resources/prompts catalog, hosted inference engine, or arbitrary remote execution. Supported methods are `initialize`, `ping`, `tools/list`, and `tools/call`; initialized/cancelled notifications return 202. The initialized capabilities advertise tools only. The body limit is 32 KiB, and unknown/invalid JSON-RPC shapes are rejected. Sources: `app/integration_routes.py:45`, `app/integration_routes.py:607`, `app/integration_routes.py:842`, `app/integration_routes.py:889`, `app/integration_routes.py:933`, `app/integration_routes.py:944`; decision `docs/DECISIONS.md:487`.
-
-The server explicitly labels business text as untrusted data. Client names, case descriptions, notes and tool output cannot grant permission or instruct the service to bypass a check. The initial server instruction requires explicit dates, exact minutes and selection; writes remain Draft. This is a service boundary, not a claim that every model or client will interpret text safely. Sources: `app/integration_routes.py:47`, `app/integration_routes.py:958`.
-
-### 2.2 Eight scopes and fifteen tools
-
-The catalog is filtered by the granted scopes. Schema validation rejects extra arguments and requires the documented types, UUIDs, dates, limits and optimistic versions. Tool annotations identify read-only/destructive/idempotent behavior and declare a closed world. Sources: `app/integration_auth.py:24`, `app/integration_routes.py:61`, `app/integration_routes.py:217`, `app/integration_routes.py:257`.
-
-| Scope | Tools | Permitted result and limits |
+| Surface | Implemented boundary | Current acceptance/activation limit |
 | --- | --- | --- |
-| `clients:read` | `search_clients` | Search actual client records and their project identities. |
-| `clients:draft` | `create_client_draft` | Create a proposed client for native review; does not publish an active client. |
-| `cases:read` | `list_open_cases`, `get_case` | Read actual owned cases and their current versions; a case is not evidence of hours worked. |
-| `cases:write` | `create_case`, `edit_case`, `close_case` | Explicitly create/change/close a case linked to real owned client/project records. Closing a case creates no time or bill. |
-| `time:read` | `list_time_entries` | Read actual entries for an explicit client and week, including contribution/version information. |
-| `time:write` | `create_time_entry`, `edit_time_entry`, `delete_time_entry` | Create or correct only this connection's Draft contribution with explicit minutes, confirmation and versions. It cannot finalize the timecard or remove another source's minutes. |
-| `bills:read` | `list_bills`, `get_bill`, `list_credit_memos` | Read retained statement/credit summaries and lines. Issuer bank settings are excluded; no issue, void, payment or send tool exists. |
-| `dashboard:read` | `get_week_summary` | Summarize actual owner records for the explicitly supplied week. |
+| Google/GitHub/email | User authentication and explicit linking | Normal human proof/UAT remains open |
+| OAuth/MCP/API | Delegated, scoped owner business tools | Actual external-client acceptance remains P2-01 |
+| Time import | Reviewed bounded JSON/CSV Draft contributions | Does not finalize cards or bill automatically |
+| Managed auth email | Supabase-controlled verification delivery | Authentication SMTP is a separate custody domain |
+| Support contact | Fixed operator destination and durable abuse controls | Separate environment-specific enablement |
+| Statement Sending | Reviewed issued-statement delivery and bounded follow-ups | Scheduled Sending remains disabled |
+| Commercial Sending | Explicit selected published quote/document version | Separate ledger/review; no automatic collections |
+| Inbound mail | Bounded import or signed capture into an owned context | Capture activation remains separately controlled |
+| Paddle | The owner's software subscription | Sandbox proof is not Live merchant readiness |
+| Case retention | Signed Stage-only Case archive job | Configured schedule; actual invocation unobserved |
 
-There are no Quoting/Library publishing tools, commercial dispatch tools, subscription purchase tools, credentials tools, mailbox-reading tools or autonomous collection tools in this catalog. Their absence is relevant when reviewing any client capability claim.
+Configuration is not a blanket permission to perform an external effect. Business
+intent, current owner authority, immutable artifact/version, provider readiness
+and environment-specific gates remain independent.
+[Capabilities](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L35).
 
-### 2.3 Consent, token lifecycle and workspace selection
+## 2. Delegated OAuth and the actual MCP subset
 
-Registered clients are operator-controlled JSON descriptors, not caller-created clients. Public clients use authorization code with mandatory PKCE S256 and token endpoint authentication `none`. Redirects must be fixed HTTPS URLs without wildcards, fragments, user information or an injected issuer query. Resources are the canonical same-origin `/mcp` or `/api/integration` audiences. Authorization validates response type, client, redirect, requested scopes, state, challenge and resource before displaying the validated callback host and selected scope consent. A normal owner session is required to allow the native consent POST. Sources: `app/integration_auth.py:106`, `app/integration_auth.py:147`, `app/integration_auth.py:192`, `app/integration_auth.py:197`, `app/integration_auth.py:299`, `app/integration_routes.py:710`, `app/integration_routes.py:746`.
+The existing application exposes authorization-server/protected-resource metadata,
+`/oauth/authorize`, `/oauth/token`, `/oauth/revoke`, `/mcp` and the same bounded
+business tools through `/api/integration/tools/{name}`. The bridge reuses the
+application's services, ownership checks and transactions; it is not a second
+backend or an inference proxy.
+[OAuth public router](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L668),
+[API transport](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L864).
 
-Authorization codes expire after five minutes; access tokens last ten minutes; grants and refresh authority are bounded to thirty days. Credentials are opaque values whose digests are retained in tenant-local tables. Their tenant component is only a routing selector: the trusted registry resolves it, and the service verifies the digest, active owner, grant, client, resource, scope, expiry and revoked/used state before accessing business data. The client cannot supply a free-form schema or obtain another workspace by editing a token selector. Sources: `app/integration_auth.py:34`, `app/integration_auth.py:70`, `app/integration_auth.py:86`, `app/integration_auth.py:231`, `app/integration_auth.py:254`, `app/integration_auth.py:313`, `app/integration_auth.py:323`, `app/integration_auth.py:336`, `app/integration_auth.py:497`.
+MCP is a finite stateless JSON Streamable HTTP subset. Supported protocol strings
+are `2025-03-26`, `2025-06-18` and `2025-11-25`. The route validates media type,
+Accept headers, Origin, protocol, JSON-RPC shape and a 32 KiB body limit. It accepts
+bounded initialization, ping, tool discovery/calls and specific notifications.
+There is no implemented SSE/session-stream service or automatic client registration.
+[MCP constants](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L45),
+[request validation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L891).
 
-Code replay revokes the associated grant. Refresh credentials rotate, and reuse is handled as replay rather than silently extending authority. Revocation is available through the OAuth endpoint and the owner's settings. The implementation keeps revocation/replay effects committed when returning the relevant OAuth error. The authorization response also carries issuer identity for the shared callback use case. Sources: `app/integration_auth.py:349`, `app/integration_auth.py:410`, `app/integration_auth.py:447`, `app/integration_auth.py:484`, `app/integration_routes.py:774`, `app/integration_routes.py:809`; `docs/DECISIONS.md:519`.
+### Scopes and tools
 
-Writes require `confirmed: true` and a bounded `idempotency_key`. A durable receipt is bound to the source/grant and command content; a conflicting reuse returns a conflict. Optimistic versions and the same domain services used by native UI protect concurrent changes. A server accepting `confirmed: true` proves only that the request supplied that assertion; client UI must still obtain the human confirmation required by its product contract. Sources: `app/integration_routes.py:55`, `app/integration_routes.py:515`, `app/integration_routes.py:589`; `app/time_commands.py:28`.
+| Scope | Exposed tools | Mutation boundary |
+| --- | --- | --- |
+| `clients:read` | `search_clients` | Read actual owned client/project identities |
+| `clients:draft` | `create_client_draft` | Proposed client only; no active publication |
+| `cases:read` | `list_open_cases`, `get_case` | Read actual owned Cases |
+| `cases:write` | `create_case`, `edit_case`, `close_case` | Confirmed, versioned Case changes |
+| `time:read` | `list_time_entries` | Explicit week and actual contribution versions |
+| `time:write` | `create_time_entry`, `edit_time_entry`, `delete_time_entry` | This connection's Draft contributions only |
+| `bills:read` | `list_bills`, `get_bill`, `list_credit_memos` | Read bounded statements/memos; no issuer-bank settings |
+| `dashboard:read` | `get_week_summary` | Recorded data for an explicit week |
 
-### 2.4 Evidence and pending client work
+These are eight scopes and fifteen tools, not an unrestricted CRUD interface.
+No tool finalizes a timecard, issues/voids a statement, records/refunds a payment,
+purchases a plan, sends email or grants another owner access.
+[Scope definitions](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L24),
+[tool catalog](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L61).
 
-The portable private connection package and scoped server are implemented. Local authorization, tool, isolation, import and replay tests exist, and hosted denial/issuer compatibility checks were retained. **Normal human OAuth Allow, actual client tool discovery, actual two-tenant platform reads, and refresh/revocation through the real client remain pending.** OpenAI is the preferred first client, not a claim of a completed connection; no Dot, voice or general platform support is claimed. Sources: `docs/STATUS.md:601`, `docs/DECISIONS.md:519`; tests `tests/integration/test_delegated_integration.py` and `tests/unit/test_integration_contracts.py`.
+### Consent, routing and token lifecycle
 
-Resume work should use the normal owner-controlled OAuth consent flow. Do not extract cookies/tokens, copy a session across environments, or replace client E2E with a synthetic bearer request and call it an actual connection.
+Clients are operator-registered with exact fixed HTTPS callbacks; wildcards,
+credential-bearing redirects and dynamic public registration are rejected.
+Authorization uses code flow with mandatory PKCE S256, bounded state, exact
+requested scopes and resource audience. The consent page identifies the selected
+client/callback. RFC9207 issuer identification supports the registered shared
+callback without weakening redirect matching.
+[Client validation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L147),
+[authorization contract](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L197).
 
-## 3. Time import and source-bound contributions
+Credentials are opaque; database records hold hashes. Their selector can locate
+only a fixed trusted tenant descriptor. It does not make a submitted tenant ID,
+email or assistant argument authoritative. Each use rechecks the credential hash,
+expiry, owner activity, registered client, resource and current grant/scopes.
+[Access authentication](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L231).
 
-The import schema is `timeker.daily-time-import.v1`. Uploads accept strict UTF-8 JSON or CSV, bounded to 256 KiB and 200 entries. Records identify actual client/project UUIDs, work date, integer minutes, description and a stable source record ID; optional case allocations are bounded and must sum within the parent entry. JSON permits an explicit IANA timezone and otherwise uses the schema's UTC default; this is not an invitation to infer a user's timezone from prose. Duplicate JSON fields, excessive depth, non-finite values, duplicate source IDs and ambiguous headers/cells are rejected. Sources: `app/time_import.py:15`, `app/time_import.py:139`, `app/time_import.py:164`, `app/time_import.py:220`.
+Access tokens last 600 seconds. Authorization codes last five minutes; grants and
+refresh lifetime are bounded to 30 days. Refresh credentials rotate; replay of used
+code/refresh material revokes the relevant grant rather than silently renewing it.
+Owner revocation is retained and subsequent access fails closed.
+[Grant/code lifecycle](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L323),
+[refresh replay](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L385),
+[token persistence](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_auth.py#L484).
 
-The native workflow is upload → server preview → explicit commit. The signed confirmation binds owner, tenant and session revision, expires after fifteen minutes, and is revalidated against current records/versions. The commit is atomic and replay-aware. Existing/manual/other-connection contributions remain distinguishable; correcting or deleting one contribution must not erase another source's work. Draft imports do not finalize a card, infer unrecorded time, issue an invoice or change a payment. Sources: `app/time_import_routes.py:29`, `app/time_import_routes.py:35`, `app/time_import_routes.py:271`, `app/time_import_routes.py:296`, `app/time_import_routes.py:301`, `app/time_commands.py:424`, `app/time_commands.py:556`; decision `docs/DECISIONS.md:471`.
+### Confirmed writes and replay
 
-## 4. Email is three outbound channels, not one shared capability
+Write calls require `confirmed=true`, stable idempotency identity and relevant
+optimistic versions. Time commands preserve source-owned contributions and manual/
+other-source minutes. Case/proposed-client operations retain a grant-local key and
+canonical payload digest: an exact replay returns the result; a conflicting reuse
+fails. A tool result's business text is explicitly untrusted data, not an
+instruction or new authorization.
+[Write implementation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L515),
+[shared call boundary](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_routes.py#L591).
 
-### 4.1 Managed authentication email
+### Actual client evidence still missing
 
-`SupabaseEmail` calls the configured provider's `/auth/v1/otp`, `/resend`, `/verify`, and `/user` endpoints. The app uses its Auth publishable key, not the provider's service-role database authority. OTP sends carry the provider CAPTCHA token; Supabase consumes/verifies that token, so the application must not consume it first in a duplicate verification. Public account creation is separately gated. After verification, the code fetches fresh `/user` proof, requires a confirmed, non-anonymous matching email and a valid subject UUID, and only then constructs the identity proof. Requests use bounded timeouts/responses and do not follow redirects or inherit proxy configuration. Sources: `app/email_auth.py:101`, `app/email_auth.py:110`, `app/email_auth.py:128`, `app/email_auth.py:152`.
+The private connection package and Settings onboarding exist. Source/local tests
+cover protocol, scope, isolation and replay behavior. They do not establish a
+completed real ChatGPT/Claude/client connection. OpenAI is the selected first
+client in the documented contract; Dot/voice support is not inferred.
+[Connection decision](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L519).
 
-The managed provider's SMTP setup is separate from business Sending. The reviewed Stage configuration uses Cloudflare SMTP over implicit TLS on port 465; the application is not a generic SMTP client and does not carry that SMTP credential. Authentication messages establish proof of address, not an account's entitlement to a workspace. Durable admission, existing-identity matching, bounded slot allocation and current notice handling remain application checks. Sources: `docs/OPERATIONS.md:337`, `docs/OPERATIONS.md:357`, `HOSTING.md:372`.
+P2-01 requires normal human OAuth Allow, actual tool discovery, bounded reads by
+two fictional owners, reciprocal isolation, confirmed idempotent Draft correction,
+refresh rotation and revocation stopping the real client's access. Record the
+actual host/client surface. Installing a plugin or making a synthetic bearer
+request cannot substitute for this evidence.
+[Residual P2-01](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L31).
 
-Owner-controlled OTP retrieval, normal authentication and fresh Google/GitHub linking remain human gates. This dossier contains no codes, mailbox contents, credentials, session cookies or approval of those actions.
+## 3. Reviewed imports and contribution provenance
 
-### 4.2 Public support contact
+The canonical import format is `timeker.daily-time-import.v1`, with strict UTF-8
+JSON or exact CSV columns, a 256 KiB payload ceiling and 200-entry limit. Stable batch
+and source-record IDs bind replay. Entries use actual owned client/project IDs,
+explicit work dates, integer minutes and bounded Case allocation; services enforce
+timezone, project and weekly-cap rules.
+[Import parser](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_import.py#L1).
 
-Support delivery is a separate channel to the fixed operator mailbox. It cannot choose an arbitrary business recipient or attach an issued statement. The form is bounded, validates CSRF and the contact CAPTCHA action, uses a honeypot, and reserves a durable attempt before external delivery. Session/address/network digests, cooldowns and day/hour limits are abuse controls rather than analytics. The private `timeker-mail.internal/send` outbound path is implemented by the production Worker; a request exception after reservation becomes uncertain rather than causing an automatic duplicate send. Sources: `app/contact.py:25`, `app/contact.py` admission/delivery methods; `deploy/cloudflare/src/production.ts:63`.
+Preview exposes labels, totals, conflicts and versions before an atomic Draft-only
+commit. Populated-cell conflicts do not silently merge/overwrite manual work.
+Contribution corrections retain source provenance and versions. No import infers
+authorization, reopens finalized history, overrides contract caps, finalizes a
+card, creates an invoice or starts an external send.
+[Import contract D054](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L471).
 
-Stage currently has `TIMEKER_CONTACT_DELIVERY=disabled` and does not gain the production contact binding merely because business Sending is configured. A contact preview or a successful CAPTCHA is not delivery evidence. Source: `deploy/cloudflare/wrangler.jsonc:36`.
+## 4. Email channels have separate custody
 
-### 4.3 Business outbound: Collections
+Authentication email belongs to the managed provider. The app requests the
+configured verification action; the owner enters the code. Supabase authentication
+SMTP credentials must not be extracted or repurposed for outbound business email.
+[Managed email](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/email_auth.py#L101).
 
-The retained Collections workflow starts from an owned **issued immutable invoice PDF**, freezes the attachment identity/checksum, and renders editable recipient/subject/body templates for owner review. Optional follow-ups require explicit opt-in and bounded intervals/counts. Payment, void, plan stop and stop-all state block future sends; resume enables future eligible plans rather than reviving stopped history. Failed delivery retry is explicit and bounded; uncertain acceptance is not a retryable failure. Sources: `app/sending.py:145`, `app/sending.py:193`, `app/sending.py:213`, `app/sending.py:287`, `app/sending.py:314`, `app/sending.py:328`, `app/sending.py:340`, `app/sending.py:347`, `app/sending_routes.py:97`.
+Support contact is a separate fixed-operator channel, with bounded user-submitted
+content, CSRF, contact-action CAPTCHA, durable quotas and duplicate/uncertain-send
+protection. It is not an arbitrary relay or a statement distribution endpoint.
+[Contact controller](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/contact.py#L1).
 
-Every provider attempt has a durable claim committed before network I/O. An interrupted request therefore leaves uncertainty instead of pretending nothing happened. The provider adapter validates a pinned Cloudflare endpoint, immutable PDF hash, recipient and bounded request/response sizes. A generic HTTP 2xx is insufficient: the response must prove the exact requested recipient in its supported result classification. Diagnostic logs exclude message content, addresses, PDFs, tokens and raw provider replies. Sources: `app/sending.py:544`, `app/sending_transport.py:18`; tests `tests/integration/test_sending_dispatch.py`, `tests/integration/test_sending_isolation.py`, `tests/unit/test_sending_transport.py`.
+### Statement Sending
 
-The internal batch endpoint is machine-authenticated, checks both availability and jobs enablement, selects actual eligible owners server-side, and caps a batch at twenty deliveries. It does not expose a caller-selected owner or recipient. **Stage jobs are false and the Stage entrypoint configures no Sending cron.** The historical two-message Stage rehearsal authorized those two messages only; it authorizes no further messages. Sources: `app/internal_routes.py:20`, `app/internal_routes.py:42`, `deploy/cloudflare/wrangler.jsonc:55`, `docs/OPERATIONS.md:252`.
+Statement Sending selects an eligible issued statement and its retained PDF/hash,
+uses reviewed editable templates and recipient, and stores a delivery plan/history.
+It does not regenerate or alter issued PDFs, invoice dates/terms, payment records
+or receipt dates. Provider acceptance is not client receipt, inbox placement or
+payment. Client payment tracking remains manual.
+[Statement service](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending.py#L1).
 
-### 4.4 Business outbound: Quoting and agreements
+A durable uncertain claim is committed before provider I/O. If a result is
+ambiguous, the system retains uncertainty instead of automatically trying again.
+Known retryable failures have bounded explicit retry; owner Stop, payment and
+void eligibility stop applicable follow-ups. Rechecks and locks protect current
+eligibility near the effect boundary.
+[Stop/retry](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending.py#L288),
+[dispatch](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending.py#L513).
 
-The new `/sending/proposals` framework is independent of Collections/payment rules. It selects an owned published HLE artifact or a published working Library version; every working source is Case-bound, with Project/Client derived from that Case. Reusable case-less templates cannot be sent as working documents. A duration-only HLE does not require a contract. Prepare and Review save a draft; they do not send email. The exact immutable attachment, revision, filename, MIME type, SHA-256 and Case/source identity are frozen with the draft. Library publication explicitly selects the saved-text PDF or the original uploaded PDF/DOCX/TXT/Markdown bytes. Sources: `app/proposal_sending.py:100`, `app/proposal_sending.py:139`, `app/library.py` frozen-artifact resolver; `docs/OPERATIONS.md:71`.
+The transport uses separate configured outbound credentials. No undocumented
+provider idempotency guarantee is assumed. A scheduled internal endpoint exists,
+but `sending_jobs_enabled` remains false in retained Stage configuration. Manual
+reviewed dispatch and future scheduled activation are different decisions.
+[Transport](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_transport.py#L1),
+[job gate](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L20).
 
-The recipient, subject and message remain editable before claim. Confirm and send requires a fresh review digest and explicit confirmation. A double click cannot create a second accepted claim. States retain draft/sent/failed/uncertain/stopped history; there are at most four total attempts. Only a definitive failed result can be explicitly retried. An uncertain or already sent delivery is blocked from dispatch. Stop is sticky for future claims and cannot recall a message already handed to the provider. No recurring commercial chase, invoice issuance, payment recording, signature or acceptance inference is added. Sources: `app/proposal_sending.py:25`, `app/proposal_sending.py:173`, `app/proposal_sending.py:181`, `app/proposal_sending.py:193`, `app/proposal_sending.py:227`, `app/proposal_sending_routes.py:80`.
+### Quoting, Library and commercial Sending
 
-The email budget is **5 MiB after encoding**, not a promise that any 5 MiB upload is sendable. Preflight measures serialized REST bytes and a conservative MIME estimate including base64 line folding, text/HTML and 64 KiB header/boundary reserve. Oversize delivery is rejected before a durable attempt is consumed. The provider response must be HTTP 200, `success: true`, and contain exactly the requested recipient once across delivered/queued/bounce/suppression classes. A queue result means accepted for delivery, not that a human read or signed anything; bounces/suppression are failed, malformed/ambiguous responses are uncertain. Sources: `app/proposal_sending_transport.py:17`, `app/proposal_sending_transport.py:38`, `app/proposal_sending_transport.py:65`.
+Commercial Sending selects an immutable published quote or Library artifact and
+its exact attachment/hash, reviews the addressed content and uses a separate
+commercial outbox. HLE publication does not require inventing a contract; working
+commercial documents retain their owned Case/project association.
+[Commercial service](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending.py#L100).
 
-This feature is unavailable in production through `commercial_documents_available`. Actual dispatch additionally requires Sending availability and a configured enabled provider. Draft review works with transport disabled. Current tests use fake adapters; this delivery performed **no real commercial email send**. Sources: `app/config.py:202`, `app/config.py:206`, `app/proposal_sending_transport.py:60`; `tests/integration/test_proposal_sending.py`, `tests/e2e/test_proposal_sending_browser.py`.
+This path has its own review digest, explicit confirmation, attempt history,
+uncertain claim and stop/retry rules. Publishing an estimate/document never
+sends it automatically, creates time, invoices a client or starts collections.
+Authenticated hosted creation/edit/upload/publication/send-review UAT remains
+EXT-03; no real customer send is implied by simulated Sent fixture history.
+[Commercial dispatch](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending.py#L230),
+[transport](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_transport.py#L1).
 
 ## 5. Inbound correspondence and archive
 
-Manual `.eml` import and optional routed capture retain correspondence; they are not outgoing email and do not connect a user's existing mailbox. The parser bounds raw/decoded files to 5 MiB, body to 1 MiB, MIME parts to 100 and recursion to ten; header/filename handling is bounded and HTML becomes safe plain text rather than executed content. Attachments are authenticated downloads, not executable previews or remote fetches. Source: `app/mail_service.py:23`, `app/mail_service.py:29`, `app/mail_service.py:58`, `app/mail_service.py:66`; owner routes `app/mail_routes.py:214`, `app/mail_routes.py:402`.
+Manual EML import is owner-only and bounded before parsing. Conservative MIME
+size/depth/part limits, escaped text, immutable attachments, sanitized forced
+attachment downloads and owner-scoped raw-hash deduplication protect retained
+correspondence. Sender, Message-ID and Date are untrusted content, not identity,
+work authorization or archive-clock authority.
+[Mail parsing/ingestion](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_service.py#L23).
 
-Capture uses an opaque tagged recipient and HMAC-authenticated private ingress. Signatures bind timestamp, exact route, recipient and raw-body digest with a five-minute window. The service resolves an active owned capture address instead of trusting a caller-selected tenant. The production entrypoint has `email` and archive `scheduled` handlers; the Stage entrypoint does not. Capture is currently disabled in Stage. Sources: `app/internal_routes.py:82`, `app/internal_routes.py:129`, `deploy/cloudflare/src/internal.ts:19`, `deploy/cloudflare/src/production.ts:67`, `deploy/cloudflare/wrangler.jsonc:37`.
+Optional capture uses a separate signed edge-to-container transport. Timestamp,
+route, recipient and body hash are HMAC-bound; input is bounded and expired
+signatures fail. Public proxy paths do not expose an open internal relay. A
+committed response is different from a redirect or public login page.
+[Internal authentication](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L82).
 
-Six-month archiving is a visibility/retention policy, not a backup or physical storage reduction. It retains rows and attachment manifests; protected correspondence remains part of encrypted database/backup custody. A future restore must reconcile mail/address and external-event state rather than assume that hiding old screens deleted the data. Source: `docs/OPERATIONS.md:720`; `app/archiving.py`.
+Archive is retained export-only state, not deletion. The existing Stage schedule
+is **02:17 UTC daily**, invoking only Case retention for Cases closed at least
+90 days. The signed Case endpoint leaves mail/timecard archive scope untouched.
+An actual scheduled invocation has not been observed; configured cron is not
+execution evidence. Scheduled Sending remains disabled.
+[Stage scheduler](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/src/index.ts#L63),
+[Case-only job](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/internal_routes.py#L108),
+[retention predicate](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/archiving.py#L120).
 
-## 6. Paddle subscription lifecycle and external payment effects
+## 6. Paddle subscription effects
 
-### 6.1 What Paddle bills
+Paddle bills the owner's timeKER subscription. It does not charge that owner's
+clients or collect issued service statements. Checkout/portal readiness, signed
+webhooks, retained event identity, mode-specific provider records and service
+state determine entitlement; a browser success redirect alone is insufficient.
+[Provider/webhook boundary](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/paddle.py#L183),
+[billing service](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing.py#L1).
 
-Paddle bills the owner's **timeKER SaaS subscription**, not the owner's clients. Client invoices, manual payment tracking, credits and immutable statement PDFs remain application business records. Stage uses the separate Sandbox origin, catalog, API key, public token and signing secret. The Free/Solo/Pro entitlement catalog and archived-over-limit selection are application rules; an arbitrary browser checkout event cannot grant paid access. Sources: `app/paddle.py:17`, `app/subscriptions.py`, `app/subscription_billing.py:99`, `docs/DECISIONS.md:636`.
+The retained real-provider rehearsal covers a first Solo-monthly **Sandbox**
+test-card purchase, signed paid event and portal Paid readback. Annual/3DS,
+confirmed plan changes, cancellation/retention and failed-renewal/grace still need
+bounded real-provider rehearsal. Synthetic Stage capacity and simulated manual
+payments are not provider payment evidence.
+[Current provider limits](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L63).
 
-Live mode exists as an explicitly gated production capability: canonical production origin, onboarding prerequisites, Live enablement, independent Live keys, four price mappings, verified catalog and mode-compatible retained history are required. Missing historical mode markers mean Sandbox; changing credentials cannot convert those records into Live history. Demo tenants cannot perform Live billing. Merchant launch and production activation remain pending. Sources: `app/paddle.py:242`, `app/paddle.py:660`, `app/subscription_billing.py:184`, `docs/OPERATIONS.md:226`, `docs/DECISIONS.md:836`.
+Live requires independently configured Live merchant/catalog/credentials/webhooks
+and explicit production capabilities. Changing environment name cannot promote
+Sandbox credentials/history into Live. Mixed/foreign mode history fails closed;
+Live merchant eligibility and general PROD admission remain open gates.
+[Mode/capability validation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L171).
 
-### 6.2 Checkout, webhook and entitlement proof
+## 7. PH3 external-effect acceptance
 
-Checkout starts with an owned durable operation key and explicit renewal authority. The service prevents overlapping reserved/uncertain monetary effects. Closing an overlay is not cancellation; a pending checkout is resumed/reconciled rather than duplicated. Checkout return GETs and SDK success messages do not grant entitlement. The app fetches provider transaction/subscription proof, validates tenant/checkout custom binding, customer/subscription IDs, exact price mapping, completed status and credible paid period, and only then updates the entitlement. Sources: `app/subscription_billing.py:99`, `app/subscription_billing.py:201`, `app/subscription_billing.py:338`, `app/subscription_billing.py:400`, `app/subscription_billing.py:454`, `app/subscription_billing.py:584`; `app/subscription_payment_routes.py:92`.
-
-Webhook verification uses the unchanged raw body, bounded to 100 KiB. It validates the Paddle `ts`/`h1` format, a five-second timestamp tolerance and HMAC before decoding/applying an event. Signed receipt IDs and content digests make replay explicit; contradictory duplicate payloads are not treated as a fresh event. The service independently fetches current provider evidence, validates deployment/mode/tenant binding and handles stale/out-of-order events before changing local state. Sources: `app/paddle.py:183`, `app/subscription_payment_routes.py:395`, `app/subscription_billing.py:630`, `app/subscription_billing.py:726`.
-
-Signature timing requires a correct host clock. A delivery retry has a new valid provider signature; the durable event identity, rather than accepting an old signature indefinitely, provides idempotency.
-
-### 6.3 Changes, cancellation, grace and uncertainty
-
-Plan change uses a current provider preview, retained review binding, explicit confirmation and idempotent operation reservation. Downgrade includes an owner-selected retained client/project inventory rather than silent data destruction. Optional retention uses a configured, validated fixed discount with bounded eligibility and one retained claim; cancellation remains available when the offer is unavailable. Cancellation is explicitly at the paid-period end. Read-only renewal reconciliation remains possible while another mutation is uncertain. Sources: `app/subscription_billing.py:536`, `app/subscription_billing.py:1028`, `app/subscription_billing.py:1085`, `app/subscription_billing.py:1214`, `app/subscription_billing.py:1294`, `app/subscription_billing.py:1419`, `app/subscription_billing.py:1589`; `app/paddle.py:544`.
-
-Failed renewal grace is seven days from the earliest verified failure for the unpaid period; repeated events cannot keep extending it. Network/malformed-provider ambiguity is recorded as uncertain and blocks another monetary effect until reconciliation. There is no automatic blind replay merely because a request timed out. Sources: `app/subscription_billing.py:43`, `app/subscription_billing.py:388`, `app/subscription_billing.py:908`, `app/subscription_billing.py:921`.
-
-Actual retained evidence covers the first Sandbox Solo-monthly test-card purchase, signed completed event, paid-period entitlement and authenticated portal; Solo-to-Pro proration was previewed. Annual checkout, 3DS, confirmed plan changes, retention, cancellation and failed-renewal grace have synthetic coverage, not completed real provider journeys. Source: `docs/STATUS.md:595`. No Live charge or merchant production readiness is claimed.
-
-## 7. Review and resume checklist for external effects
-
-Before resuming any integration work, resolve the current source/receipt baseline and the specific HOC authority. Then distinguish read-only provider metadata, normal human proof, reversible native drafts and irreversible external effects. Require fresh review for sending, billing mutations, OAuth grants or provider-console changes. Use fake adapters and disposable databases for engineering checks; keep real provider messages, signed callbacks and user-controlled identity steps in their separately authorized lanes.
-
-Retain uncertainty rather than manufacture success. Provider acceptance is not inbox delivery; read-only metadata is not a completed human flow; a local isolation test is not a real-client cross-tenant test; a Stage deployment is not a production release or product acceptance. Canonical pending gates and privacy boundaries remain in `docs/STATUS.md:634`, `docs/OPERATIONS.md:226`, `docs/legal/PRIVACY_DISCOVERY.md:143`, and `docs/legal/PRIVACY_DISCOVERY.md:182`.
-
-**Pause result:** no command in this chapter has been executed as part of dossier preparation. No mailbox, token, secret value, live contract payload, provider configuration, database or external recipient was accessed or changed for this chapter.
+Use exact owner-selected scope, actual client/provider mode, fresh human proof,
+confirmed recipient/artifact/version and durable readback. Preserve uncertain
+results; reconcile before retrying. Do not copy sessions, authentication SMTP,
+Sandbox history or synthetic entitlements into production. P2-01/P2-02/P2-03 and
+EXT-01 through EXT-05 remain explicit work, not approval-only bookkeeping.
+[Current queue](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27).

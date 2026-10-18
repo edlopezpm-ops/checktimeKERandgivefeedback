@@ -1,105 +1,90 @@
-# timeKER — full codebase dossier and HOC pause
+# timeKER — current codebase dossier and PH3 prompt handoff
 
-Prepared for Ed Lopez on 2026-10-16. Language: English, following the project's
-source/documentation convention. This package supports a deep technical/product
-review of the whole codebase and its operating model. It is a dated analysis
-snapshot, not a competing active specification, source/data backup or permission
-to execute the included operational commands.
+Snapshot **2026-10-18**. PH2 is administratively closed; the independent PH3 source
+checkout is prepared and awaits Ed Lopez's feature prompts. Existing Stage
+continues. One later production candidate must include PH2 plus PH3.
 
-**Stage improvement work is PAUSED until direct HOC resume. PROD remains as is.**
-The current services/configuration/data are retained; no runtime shutdown or flag
-change is part of the pause. Only documentation and verification of this package
-were performed for this closeout. No database, provider, authentication, customer
-send, payment, migration or deployment was executed to prepare it.
+This is a descriptive public review snapshot. Canonical contracts remain in the
+application repository. No implementation, provider activation, data mutation,
+human acceptance or production authority follows from this package.
 
-## Read this package
+## Exact provenance
 
-For one continuous Markdown document, open [timeKER-FULL-DOSSIER.md](timeKER-FULL-DOSSIER.md).
-For focused review, use the chapters below. Both formats contain the same substantive
-chapters; the combined file is generated from these files, not independently authored.
+| Item | Current snapshot |
+| --- | --- |
+| Analyzed source | `edlopezpm-ops/timeker-PH2`, branch `codex/ph3-stage`, commit `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` |
+| Frozen PH2 baseline | `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6`, tag `ph2-closeout-2026-10-18` |
+| PH3 startup delta | Three entry/continuation Markdown files; all 500 other tracked files match PH2 byte for byte |
+| Last verified Stage source | `e282985ea74e89e1665351c22f91706498495e93`, Stage 29; release readback 2026-10-18T03:42:14.067017+00:00 |
+| Last verified schema | `ph3_009_read_indexes`, nine actual runtime schemas; five quarantines retained |
+| Stage URL | https://stage-timeker.aekr.io |
+| Original production source | `edlopezpm-ops/timeKER`, main `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`, clean and unchanged by this session |
+| Production URL | https://timeker.aekr.io |
+| Inventory | 503 tracked paths; 291 Python files; 180 literal route decorators; 54 mapped class/table declarations; 48 Settings fields; 90 Jinja templates; 1089 declared test functions |
+| Generation | Offline AST/TOML/JSON/Git and maintained source/documentation; no application imports or product tests |
+
+Source pointers are pinned to the analyzed commit and actual one-based lines.
+Private source links can require repository access; the narrative and complete
+inventories here support documentation review without pretending code access.
+Runtime facts are retained dated receipts, not live continuous monitoring.
+
+## Read the dossier
+
+Use [timeKER-FULL-DOSSIER.md](timeKER-FULL-DOSSIER.md) for one continuous reading
+copy, or the chapters below. The dated 2026-10-18 combined copy has identical bytes.
 
 | Chapter | Content |
 | --- | --- |
-| [01 — Architecture and stack](01-architecture-and-stack.md) | System context, monolith, Worker/Container/PostgreSQL topology, layers, request lifecycle, actual stack/versions and runtime boundaries. |
-| [02 — Data model and transactions](02-data-model-and-transactions.md) | Entity relationships, ownership, stored/derived states, constraints/guards, transaction protocols, money/minutes/time zones, history/immutability. |
-| [03 — Product and user workflows](03-product-and-user-workflows.md) | Complete page/domain catalog and ordinary/error workflows: clients, projects/Cases, timecards, imports, reports, billing, credit memos, payments, Mail/archive, settings, plans, Quoting/Library and Sending. |
-| [04 — Authentication, registration and access](04-authentication-registration-and-access.md) | Google/GitHub/managed email, shared Turnstile, identity binding/linking, notices/receipts, signup/admission slots, session/CSRF/roles, failure/recovery and absent Apple/deletion. |
-| [05 — Integrations and external effects](05-integrations-and-external-effects.md) | OAuth/API/MCP tools/scopes, confirmation and token lifecycle, import, separate email channels, Paddle, signed webhooks/internal jobs, retry/uncertainty/idempotency boundaries. |
-| [06 — Deployment and operations SOP](06-deployment-and-operations-sop.md) | Local setup, containers, environment/secret custody, actual Stage hosting, migration/grants, deployment/readback, backup/restore, incident handling and future HOC-gated production release steps. |
-| [07 — Security, privacy, quality and evidence](07-security-privacy-quality-and-evidence.md) | Implemented controls, data/encryption/file limits, diagnostic/business audit distinction, policy/preferences, executed QA and honest pending verification. |
-| [08 — Pause and continue](08-PAUSE-AND-CONTINUE.md) | Owner pause, exact retained snapshot, original Phase2 closure queue, later scope, receipts and resume procedure. This mirrors the canonical repository CONTINUE at closeout. |
-| [09 — Improvement review guide](09-improvement-review-guide-and-open-decisions.md) | Source-backed review questions, measured change criteria, known open work and distinctions between capability, activation, execution and acceptance. No implementation is authorized by these prompts. |
-| [10 — HTTP routes and templates](10-http-routes-and-templates.md) | Offline literal route-decorator catalog and Jinja template inventory, with extraction limits. |
-| [11 — Models, configuration and dependencies](11-models-configuration-and-dependencies.md) | All53 mapped entities/fields,48 Settings fields, migration chain, complete Python lock inventory and Worker package inventory; credential values omitted. |
-| [12 — Source map, tests and manifest](12-source-map-tests-and-manifest.md) | Every app module, static test-file catalog,414 tracked paths with byte/hash identity. Static counts are not executed-test counts. |
-| [13 — PROD/Stage differences](13-production-stage-differences.md) | Exact untouched production baseline versus Stage, dated runtime identities, feature differences, complete tracked source delta and future release implications. |
-
-## Snapshot and provenance
-
-| Item | Snapshot |
-| --- | --- |
-| Primary analyzed codebase | `C:\Users\edlop\OneDrive\Documents\VS Code\timeker-PH2` |
-| Stage source-analysis commit | `48e854ff2107dffb217dfe7c487b1b9d36a7f41d` on `codex/ph3-onboarding-auth` |
-| Deployed Stage application source | `dbf73e52ca03726e7903dc74ef27e40339c06936`; analysis checkpoint adds documentation only |
-| Stage URL | `https://stage-timeker.aekr.io` |
-| Original production repository | `C:\Users\edlop\OneDrive\Documents\VS Code\timeKER`, main `dfb2538ec81d07f1c91fdf2bdc5096d4d0313609`, clean and unchanged |
-| Production URL | `https://timeker.aekr.io` |
-| Inventory method | Offline AST/TOML/JSON/Git tree reads, no application imports or live service discovery |
-| Static inventory | 414 tracked paths,227 Python files,173 literal route declarations,53 mapped entities,48 Settings fields,892 declared test functions |
-| Canonical source of product truth | Repository AGENTS, PROJECT_BRIEF, DECISIONS, DESIGN_SPEC, STATUS, HOSTING and relevant maintained contracts |
-| Canonical pause/resume entry | `timeker-PH2/CONTINUE.md`, carried in chapter08 |
-
-Later pause closeout edits are Markdown/continuation only. The exact baseline
-manifest intentionally remains pinned to the analyzed commit rather than silently
-changing source identity when the pause is committed. Source pointers refer to
-that commit; some local documentation line numbers move after the pause prefix is
-added. Application source references remain stable because no app code changed.
-
-The package uses public source and maintained operator/product documents, with
-selected already-recorded release metadata. Runtime identities are last verified
-receipts, not fresh continuous monitoring. No source archive/private historical
-payload was retrieved to generate the technical chapters. Actual uploaded client
-contracts, database contents, private seeds, invoice PDFs and protected credential
-values are excluded. Configuration names, public URLs, source hashes and schema
-structure are included to make analysis precise.
+| [Architecture and stack](01-architecture-and-stack.md) | Monolith, edge/container/database topology, workers, read paths and public-file caching. |
+| [Data model and transactions](02-data-model-and-transactions.md) | Owner/schema boundaries, exact minutes/money, immutable artifacts and transaction protocols. |
+| [Product and workflows](03-product-and-user-workflows.md) | Current complete navigation/business flows, lifecycle, pagination, native choices and cache refresh. |
+| [Authentication and admission](04-authentication-registration-and-access.md) | Existing/new owners, immutable proof, linking, finite slots, session/CSRF/CAPTCHA and actual gaps. |
+| [Integrations and effects](05-integrations-and-external-effects.md) | MCP/scopes, imports, token lifecycle, separate delivery channels, Sandbox and jobs. |
+| [Deployment and operations](06-deployment-and-operations-sop.md) | Current retained Stage 29/schema 009, safe SOP, custody, recovery and one future combined PROD candidate. |
+| [Security, privacy and evidence](07-security-privacy-quality-and-evidence.md) | Controls, exact source-bound test/release attribution, historical failures and unverified acceptance. |
+| [PH2 closure and PH3 continuation](08-PAUSE-AND-CONTINUE.md) | Current continuation; administrative closure and all transferred P2/EXT residuals. |
+| [Improvement review](09-improvement-review-guide-and-open-decisions.md) | Current delivered baseline, remaining decisions and bounded review priorities. |
+| [Routes and templates](10-http-routes-and-templates.md) | Complete offline literal route-decorator and Jinja inventories. |
+| [Models/configuration/dependencies](11-models-configuration-and-dependencies.md) | Complete mapped-class/field, Settings, migration and lockfile appendices. |
+| [Source/test manifest](12-source-map-tests-and-manifest.md) | Every tracked source path with raw-byte hash and complete static test/module catalogs. |
+| [Production/Stage differences](13-production-stage-differences.md) | Exact source-tree comparison and dated environment differences; original production untouched. |
+| [PH3 prompt-refresh brief](14-phase3-prompt-refresh-brief.md) | Instructions and acceptance boundaries for revising the owner-supplied PH3 prompts. |
 
 ## Current delivery truth
 
-- The original Phase2 feature core is implemented in Stage. Real assistant/client
-  OAuth allow, tool discovery/use with two owners, refresh/revocation and owner UAT
-  remain open. A saved private plugin is not evidence of an authenticated connection.
-- Later Stage functionality includes public signup into finite preprepared private
-  workspaces, alternate sign-in, Free/Solo/Pro Sandbox subscriptions, separate
-  statement Sending and Case-bound Quoting/Library/commercial Sending.
-- Apple runtime/account deletion is absent. Remaining actual subscription-provider
-  rehearsals, hosted commercial owner UAT, operational budgets/custody and a current
-  production candidate/full rollout are separately tracked.
-- Last backend gate is consolidated coverage of1,785 distinct cases, not a new
-  all-green full run. The raw full run remains FAILED at1,784 PASS/one obsolete
-  assertion; a complete761-unit rerun passed after the test-only correction.
-  Final affected browser suite32 PASS and19 hosted public GET checks passed.
-- The nine-schema Stage migration retained396 old table fingerprints and verified
-  guards/grants/isolation. Its encrypted backup passed custody/inventory/hash checks;
-  that operation did not perform a restore rehearsal.
-- No human Stage acceptance, actual customer email, Apple activation, Live payment
-  or production rollout is implied by automated checks or this package.
+Original D052–D058 feature modules exist. Remaining P2-01 actual MCP/two-owner/
+token lifecycle, P2-02 human Stage UAT and P2-03 operational/recovery decisions
+are explicitly transferred. Later Apple/offboarding, actual Sandbox lifecycle,
+commercial owner UAT, Sending selection and future PROD gates remain separate.
+Stage follow-ups include work-record/client lifecycle, consistent pagination and
+status, stable visible Project IDs, weekly Timecards summaries, Dashboard
+fixed-five details/rhythm, K navigation, measured read-path performance, native
+reference choices and Settings public-file refresh. Review these existing flows
+before proposing them as new PH3 work.
 
-## Recommended reading sequence
+Retained full base source 3e1d564 passed 2,153 backend/296 browser cases; final
+Settings source e282985 passed 8 backend/4 browser focused cases and 7 static checks.
+These source-bound denominators are not added as one unique-feature count.
+Stage 29 readback passed 31 anonymous GETs/15 matching source assets. Separate schema 009
+proof retained 486 business-table fingerprints across nine schemas. Human UAT,
+hosted restore, actual external MCP and paid-PROD readiness remain unestablished.
 
-1. Read08 for what is paused, retained and allowed to resume.
-2. Read01–02 for system/data/transaction structure.
-3. Read03–05 for exact product, identity and integration behavior.
-4. Read06–07 for SOP, operational limits and actual assurance.
-5. Use10–13 while inspecting source or comparing a proposed change.
-6. Use09 to organize improvement analysis without treating open ideas as approved work.
+Administrative closure verified 28 archive batches/8,149files with raw hashes and
+inverse maps, recoverable Quoting checkout custody, independent PH3 Git storage
+and 500 unchanged tracked raw-file hashes. The generic scaffold validator still
+rejects unchanged mandatory product AGENTS; the Project Map passed. Local
+custody is not off-host recovery. Current tests/migrations/contracts remain active.
 
-## Verification files
+## Integrity and limitations
 
-- [source-snapshot-manifest.json](source-snapshot-manifest.json) pins baseline source paths/bytes/hashes and offline extraction counts.
-- `PACKAGE-MANIFEST.json` and `SHA256SUMS.txt` pin the final delivered Desktop files.
-- `PACKAGE-VERIFICATION.json` records actual offline package checks, limitations and final closeout source identity. These describe documentation validation, not product test execution or a security certification.
+[source-snapshot-manifest.json](source-snapshot-manifest.json) pins all source
+paths/raw bytes/hashes and Git blob IDs. [PACKAGE-MANIFEST.json](PACKAGE-MANIFEST.json)
+and [SHA256SUMS.txt](SHA256SUMS.txt) bind current review-package files.
+[PACKAGE-VERIFICATION.json](PACKAGE-VERIFICATION.json) records actual offline
+checks and limitations. Package integrity is not product correctness, security
+certification, UAT, deployment or recovery proof.
 
-Keep all chapters together so relative links resolve. The combined MD can be read
-alone for narrative/appendices, while its linked chapter files remain useful for
-navigation. No ZIP, vendor upload, sharing permission or external publication is
-required to use the local package.
+No private archives, business records, actual uploaded contracts, environment
+credentials, session tokens, invoice PDFs, backup/key material or machine-local
+paths are published. Historical dated entry names are small compatibility pointers;
+the previous dossier remains recoverable in this repository's Git history.
