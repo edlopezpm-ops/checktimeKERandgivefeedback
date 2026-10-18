@@ -20,8 +20,8 @@
     },
     {
       "path": "01-architecture-and-stack.md",
-      "bytes": 13220,
-      "sha256": "26de04f220c9c39686116eb68fde5e3501f78d9bfd61dc9f9a72baf38ce59a43"
+      "bytes": 14878,
+      "sha256": "390f1c105c8d52de5cb6cb3d8f5043cc50166c73672951a4de6c37e01a11564e"
     },
     {
       "path": "02-data-model-and-transactions.md",
@@ -101,7 +101,7 @@
     {
       "path": "PACKAGE-VERIFICATION.json",
       "bytes": 1207,
-      "sha256": "a5498288ac9cd4a7e40ce13d78cefd593a262ae7fd9c28101ed5fb8f0df2df93"
+      "sha256": "daefdd0ec5849c7b0fffff8105253e70829bc8bfd51009956b43de88119a1ebc"
     },
     {
       "path": "README.md",
@@ -120,13 +120,13 @@
     },
     {
       "path": "timeKER-FULL-DOSSIER-2026-10-18.md",
-      "bytes": 546205,
-      "sha256": "1a67ecee9f9c33d39c79c8777aa34dce04f077ec8e0a5911452772c489309a87"
+      "bytes": 547863,
+      "sha256": "30c3584be0d73d33af2130342f06a64d4b91a17d09b8516cfb1a333fc59ecdd5"
     },
     {
       "path": "timeKER-FULL-DOSSIER.md",
-      "bytes": 546205,
-      "sha256": "1a67ecee9f9c33d39c79c8777aa34dce04f077ec8e0a5911452772c489309a87"
+      "bytes": 547863,
+      "sha256": "30c3584be0d73d33af2130342f06a64d4b91a17d09b8516cfb1a333fc59ecdd5"
     },
     {
       "path": "timeKER-START-HERE-2026-10-16.md",

@@ -54,18 +54,18 @@ Sources: `AGENTS.md`, `app/tenancy.py`, `app/admission.py`,
 
 ## 2. Declared stack and packaging
 
-| Area | Current source declaration |
-| --- | --- |
-| Python | `>=3.12`; Docker build/runtime use `python:3.13-slim` |
-| Packaging | `uv.lock`, Hatchling; application package `timeker` version `0.1.0` |
-| Application | FastAPI, Uvicorn, Jinja2, vendored HTMX |
-| Persistence | Synchronous SQLAlchemy 2, psycopg 3, PostgreSQL, Alembic |
-| Authentication/security | Authlib, HTTPX, ItsDangerous, cryptography |
-| Documents | WeasyPrint; pypdf for test text inspection |
-| Time/configuration | tzdata, python-dotenv; explicit environment configuration |
-| Verification | pytest, Ruff, mypy, Playwright and vendored axe |
-| Edge | Cloudflare Workers/Containers SDK, TypeScript, Wrangler |
-| Local development | Docker Compose and operator/local CLI commands |
+| Area | Layer | Current source declaration | Key details |
+| --- | --- | --- | --- |
+| Python | Backend | `>=3.12`; Docker build/runtime use `python:3.13-slim` | Language for application services, business rules and request handling. The minimum supported version and container version are distinct declarations. |
+| Packaging | Build / tooling | `uv.lock`, Hatchling; application package `timeker` version `0.1.0` | uv locks dependencies; Hatchling builds the Python package. Deployment installs locked runtime dependencies. |
+| Application | Backend / UI / frontend | FastAPI, Uvicorn, Jinja2, vendored HTMX | FastAPI handles routes; Uvicorn serves ASGI; Jinja2 renders the UI on the server; HTMX updates page fragments in the browser. Same-origin, progressively enhanced pages; no SPA. |
+| Persistence | Backend / data | Synchronous SQLAlchemy 2, psycopg 3, PostgreSQL, Alembic | SQLAlchemy and psycopg access PostgreSQL; Alembic versions schema changes. Business records and immutable issued artifacts persist in the database. |
+| Authentication/security | Backend / security | Authlib, HTTPX, ItsDangerous, cryptography | OAuth integration, provider HTTP requests, signed values and encryption. Identity proof, workspace authorization and provider activation remain separate controls. |
+| Documents | Backend / PDF | WeasyPrint; pypdf for test text inspection | WeasyPrint renders PDFs on the server; pypdf extracts text during tests to inspect content and totals. |
+| Time/configuration | Backend / configuration | tzdata, python-dotenv; explicit environment configuration | IANA time-zone data and environment loading. Business time zones remain explicit; technical timestamps use UTC. |
+| Verification | QA / tooling | pytest, Ruff, mypy, Playwright and vendored axe | Backend tests, linting, static type checks, browser flows and accessibility checks. Tool availability does not establish that a test was executed. |
+| Edge | Infrastructure / edge | Cloudflare Workers/Containers SDK, TypeScript, Wrangler | A TypeScript Worker proxies requests to the Python container; the Container SDK manages its lifecycle. Wrangler is the operator CLI. |
+| Local development | Development environment / tooling | Docker Compose and operator/local CLI commands | Local application/database services and explicit setup or maintenance commands. Development configuration is separate from hosted Stage and production. |
 
 Exact locked versions and configuration declarations belong to chapter 11 and
 the source lockfiles. A declared or locked version is not a live-process query.
