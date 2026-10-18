@@ -1,37 +1,50 @@
 {
   "state": "PASS",
   "final_seal": true,
-  "verified_utc": "2026-10-18T14:49:55.437495+00:00",
-  "analysis_source": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+  "verified_utc": "2026-10-18T17:01:43.986109+00:00",
+  "analysis_source": "4bb5c424d6e7d270cdca1479283896be77d581c3",
+  "source_repository": "edlopezpm-ops/timeKER-Stage",
+  "production_repository": "edlopezpm-ops/timeKER-PROD",
   "closed_ph2_commit": "39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6",
-  "production_head": "dfb2538ec81d07f1c91fdf2bdc5096d4d0313609",
-  "project_lifecycle": "PH2_ADMINISTRATIVELY_CLOSED_PH3_PREPARED_AWAITING_PROMPTS",
+  "project_lifecycle": "PH2_CLOSED_PRIVATE_PRODUCTION_PRELAUNCH_TECHNICALLY_VERIFIED_PH3_PROMPTS_PENDING",
+  "production_release_authorized": true,
+  "production_migration_complete": true,
+  "production_deployment_complete": true,
+  "production_hosted_readback_complete": true,
+  "personal_owner_enrollment_complete": false,
   "chapter_and_index_markdown_files": 17,
   "generated_combined_copies": 4,
   "root_combined_copies": 2,
   "database_combined_copies": 1,
   "code_flow_combined_copies": 1,
-  "local_links_checked": 789,
-  "pinned_source_pointers_checked": 8895,
-  "source_manifest_files_verified": 503,
+  "local_links_checked": 810,
+  "pinned_source_pointers_checked": 8999,
+  "source_manifest_files_verified": 506,
   "utf8_no_NUL_and_fences_valid": true,
   "publication_sensitive_pattern_check": "PASS",
   "source_checkout_clean_and_unchanged": true,
-  "application_model_imports": true,
+  "source_analysis_pin_object_identity_verified": true,
+  "source_raw_hashes_from_current_matching_bytes": 506,
+  "source_raw_hashes_reproduced_from_pinned_git_blob": 0,
+  "source_working_delta_excluded_from_analysis": [],
+  "application_model_imports_this_refresh": false,
   "application_startups": 0,
   "product_tests_executed": 0,
-  "database_actions": {
-    "scope": "new empty local reconstruction only",
-    "migrations_applied": 26,
-    "alembic_metadata_check": "PASS",
-    "schema_only_replay": "PASS",
-    "read_only_collector_local_check": "PASS",
-    "hosted_connections": 0,
-    "business_rows_read": false,
-    "owned_server_stopped": true
+  "database_actions_this_refresh": {
+    "connections": 0,
+    "migrations_applied": 0,
+    "ddl_replays": 0,
+    "business_rows_read": false
   },
-  "provider_actions": 0,
-  "deployments": 0,
+  "inherited_database_evidence": {
+    "original_source": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+    "structural_inputs_verified_unchanged": 45,
+    "original_empty_reconstruction_migrations": 26,
+    "fresh_reconstruction": false,
+    "original_checks": "Original native upgrade/metadata/DDL-replay/collector evidence retained in database provenance"
+  },
+  "provider_actions_this_refresh": 0,
+  "deployments_this_refresh": 0,
   "customer_messages": 0,
   "code_flow": {
     "source_traced_chapters": 8,
@@ -42,7 +55,7 @@
       "script_python_modules": 1,
       "class_declarations": 103,
       "function_and_async_declarations": 945,
-      "syntactic_call_sites": 13140,
+      "syntactic_call_sites": 13150,
       "internal_declared_import_edges": 438,
       "app_literal_route_decorators": 180
     },
@@ -51,17 +64,85 @@
     "mermaid_verifier": "mermaid11.12.0 parse with jsdom26.1.0; local documentation tooling only",
     "unique_diagrams_in_package": 28,
     "diagram_occurrences_including_reading_copies": 57,
-    "browser_render_verification": false,
-    "review_context": "Inherited; reduced assurance",
-    "bounded_read_only_review_receipts": 3,
-    "bounded_read_only_review": "PASS",
-    "new_sdk_or_product_behavior": false
+    "browser_render_verification": false
+  },
+  "current_independent_review": {
+    "verdict": "PASS",
+    "source_commit": "4bb5c424d6e7d270cdca1479283896be77d581c3",
+    "reviewed_payload_sha256": "4921db314449bebcc60717b2e43dea93a5571ab9aec4465b160398b5e1c7c252"
+  },
+  "canonical_payload_sha256": "4921db314449bebcc60717b2e43dea93a5571ab9aec4465b160398b5e1c7c252",
+  "production_release_evidence": {
+    "observed_utc": "2026-10-18T16:39:19.019735+00:00",
+    "runtime_source_commit": "5b0fb0d29f506d04e4a6af3ebd8a193089af7214",
+    "worker_version": "d7618b2e-0ff5-410c-b6db-63482e3ca355",
+    "deployment_id": "c20208fa-4510-45da-a3ad-f7204fa22645",
+    "container_config_version": 13,
+    "running_instance_versions": [
+      13
+    ],
+    "container_image_digest": "sha256:9323ae9e842b70695b56f83c579dc939d91f8f210b8a39ba31bbaf79aa38b464",
+    "production_schema_heads": {
+      "timeker": "ph3_009_read_indexes",
+      "timeker_eve": "ph3_009_read_indexes"
+    },
+    "old_business_projection_tables_preserved": 40,
+    "actual_cross_schema_42501_denials": 4,
+    "post_login_projection_drift_tables": [],
+    "raw_source_matching_static_assets": 13,
+    "production_health": [
+      {
+        "path": "/health/live",
+        "status": 200
+      },
+      {
+        "path": "/health/ready",
+        "status": 200
+      }
+    ],
+    "stage_health": [
+      {
+        "path": "/health/live",
+        "status": 200
+      },
+      {
+        "path": "/health/ready",
+        "status": 200
+      }
+    ],
+    "exact_final_ciphertext_local_recovery_pass": true,
+    "final_backup_ciphertext_sha256": "95db86b295a7c21c1ac0f64adc70a94d25cc1e7329a92b4f57c35ac14a4cb678",
+    "local_recovery_seconds": 8.985,
+    "local_recovery_cluster_stopped": true,
+    "hosted_restore_performed": false,
+    "paddle_records_or_transactions_created": false,
+    "mail_capture_enabled_preserved": true,
+    "source_packet_sha256": "f5f383cb5881405e2ee3e8bbf3ddcf9d90db3584bd6cca513a25d371575dad6e",
+    "anonymous_html_is_complete_flag_proof": false
+  },
+  "upstream_checks": {
+    "gitguardian": "FAILED: historical fake-password transport fixture references actual Stage project; not a placeholder or passing check",
+    "supabase_preview": "SKIPPED: no Supabase Branch association"
+  },
+  "release_qa_attribution": {
+    "earlier_backend_aggregate": 2229,
+    "earlier_browser_aggregate": 304,
+    "fresh_bounded_backend_cases": 429,
+    "added_unit_cases_in_fresh_backend_block": 49,
+    "fresh_subscription_browser_cases": 13,
+    "added_browser_cases_in_fresh_browser_block": 3,
+    "unchanged_packaged_runtime_files": 239,
+    "changed_packaged_runtime_files": 5,
+    "packaged_runtime_file_count": 244,
+    "overlapping_blocks_are_summed": false,
+    "entire_earlier_matrix_rerun_at_final_documentation_pin": false
   },
   "limitations": [
-    "Documentation/source and empty local schema reconstruction; no hosted/security certification",
-    "No new hosted, identity, MCP, human UAT or recovery execution",
-    "Source URLs may require access; remote HTTP links not network-validated",
-    "Inherited generic scaffold AGENTS compatibility concern remains recorded"
+    "Source/documentary package checks are not hosted, security, UAT or recovery certification",
+    "Technical release is verified by separately retained receipts; personal Google/acknowledgment/catalog/plan/UAT and hosted recovery acceptance remain pending",
+    "Original empty-schema native evidence is inherited after exact unchanged structural input comparison; no DDL rerun",
+    "Private source links may require repository access; external HTTP links not network-validated",
+    "Context inherited; final bounded independent review pending unless explicitly recorded PASS"
   ],
   "errors": []
 }

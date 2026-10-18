@@ -1,18 +1,18 @@
 {
-  "snapshot_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+  "snapshot_commit": "4bb5c424d6e7d270cdca1479283896be77d581c3",
   "snapshot_date": "2026-10-18",
-  "generated_utc": "2026-10-18T04:28:35.291518+00:00",
-  "source_repository": "edlopezpm-ops/timeker-PH2",
-  "source_branch": "codex/ph3-stage",
+  "generated_utc": "2026-10-18T16:53:39.539280+00:00",
+  "source_repository": "edlopezpm-ops/timeKER-Stage",
+  "source_branch": "main",
   "closed_ph2_commit": "39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6",
-  "tracked_files": 503,
-  "python_files": 291,
+  "tracked_files": 506,
+  "python_files": 294,
   "literal_route_declarations": 180,
   "mapped_models": 54,
-  "settings_fields": 48,
-  "declared_test_functions": 1089,
+  "settings_fields": 49,
+  "declared_test_functions": 1118,
   "jinja_templates": 90,
-  "source_bytes": 14984204,
+  "source_bytes": 15068880,
   "source_manifest": [
     {
       "path": ".dockerignore",
@@ -22,9 +22,9 @@
     },
     {
       "path": ".env.example",
-      "bytes": 2318,
-      "sha256": "3bee36cc2391658fa7e58ec694cd1a42d0f72c17db65656c05e86ba9e255c7bb",
-      "git_blob_sha1": "ebf55f2ac21643c1c99164c0eafa34a8efeff946"
+      "bytes": 2445,
+      "sha256": "43239cb0e72b855f7bf63cddb9600b459c4f36d36478b770fabbbf33c509f638",
+      "git_blob_sha1": "25cd810966bbc03075ba60153ae1a2b098859bb5"
     },
     {
       "path": ".gitignore",
@@ -34,15 +34,15 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 10083,
-      "sha256": "1d7a72077e3bd5d7fe6b06ff25ef724c50ca799533bc3a236ee213dbc785dd8e",
-      "git_blob_sha1": "3390f641a56d9364d5b61cba0da5f70ac6ab8e10"
+      "bytes": 10962,
+      "sha256": "3185f12d2a9800d741c6f311a7935d0cddcb49bb84f3680c7553e18ba3b024f3",
+      "git_blob_sha1": "53694a9dc10f7675ea32f43ac55609c68ea7fc4d"
     },
     {
       "path": "CONTINUE.md",
-      "bytes": 1757,
-      "sha256": "11cab9b7e0a5f3bc02c3237d74a273ce852020d74a657f0775c78302430078b9",
-      "git_blob_sha1": "f6bc4792466f064b013bdbcc6c53f615664aedb6"
+      "bytes": 3761,
+      "sha256": "89d79baf6f809fc2364d0487047be15fc66b2840783671cc46e1fe81796af249",
+      "git_blob_sha1": "cb0c083a5af62faeb7f32bce29ac6087a8bff73d"
     },
     {
       "path": "DESIGN_SPEC.md",
@@ -58,9 +58,9 @@
     },
     {
       "path": "HOSTING.md",
-      "bytes": 7842,
-      "sha256": "758d9f0d818db410bca97084d3283784837e37283b43cb591d6057ffcd81a227",
-      "git_blob_sha1": "44ee2fa2a414a787a840e6121ff3734516e95107"
+      "bytes": 21840,
+      "sha256": "050b57bf8ca898e3f81dc3f44cbd742adb07322c70bf2a7af08a1af564081669",
+      "git_blob_sha1": "1bd4228cbb3d1a89e93aa26d8b74e82591169c11"
     },
     {
       "path": "PROJECT_BRIEF.md",
@@ -76,9 +76,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 5315,
-      "sha256": "ab409fefc1877030e20232f1fb5a3386e57de67820a6913fd498334b0be74764",
-      "git_blob_sha1": "5448aed9ec66bfb41db2c6d5c51c955a6e9be0e2"
+      "bytes": 6885,
+      "sha256": "b213294ad3a6af79347de24d7696a6e85858cd92ff71f8db98ea52ca19bd723e",
+      "git_blob_sha1": "d0cacbd610ee833c164aba0dcc2be6e841ecc971"
     },
     {
       "path": "alembic.ini",
@@ -352,9 +352,9 @@
     },
     {
       "path": "app/config.py",
-      "bytes": 13393,
-      "sha256": "988fb2cc23e55bc4e9f310992a86d496dfa5f9a543609780591085e63a50446e",
-      "git_blob_sha1": "82010d42a37755acaa59e14ad7f53ea1c926817d"
+      "bytes": 14112,
+      "sha256": "0cdf336021c1e0aa9f57eeddaa2890f8923b186eeb90184f8fa5d6610a8712d0",
+      "git_blob_sha1": "32bc247650236502ddfc27dc039a5289abc7ba6b"
     },
     {
       "path": "app/contact.py",
@@ -544,9 +544,9 @@
     },
     {
       "path": "app/paddle.py",
-      "bytes": 26862,
-      "sha256": "81d60d45b1b7a172ced8b663c67f1968f2129ad749610024603ec63d42d8ab48",
-      "git_blob_sha1": "d24972c446c55cf0bdca98139d5364838e2eb5a2"
+      "bytes": 27521,
+      "sha256": "a4a84895a0aa041e02de95d24358f7cb6fbf006b1b0ff3c4f95f1646e0d1a367",
+      "git_blob_sha1": "ba052de2932b4168a8a4a5ce210a59cd9743a8fc"
     },
     {
       "path": "app/pagination.py",
@@ -1042,9 +1042,9 @@
     },
     {
       "path": "app/web/templates/base.html",
-      "bytes": 5074,
-      "sha256": "8224c72032fdc1a3d1774e2a67b8b87b90703518cf7fcb5503732741d637c6e8",
-      "git_blob_sha1": "e1d026c441decf731e9332583b16ea295579d94d"
+      "bytes": 5206,
+      "sha256": "80b71e1c0e0b861ab056dbe8910a866a6d84eb0b96fd71ad3baa37a2e273a76a",
+      "git_blob_sha1": "d5b262a4abbd1c09f38774a4d88a2f6d57386c9f"
     },
     {
       "path": "app/web/templates/billing.html",
@@ -1450,21 +1450,21 @@
     },
     {
       "path": "app/web/templates/subscription_account.html",
-      "bytes": 11446,
-      "sha256": "d3b56d688fa54ec159ecb931bcbab1ce9db2bc8f02b5ab24c24ea5e30060db70",
-      "git_blob_sha1": "2cd3a5e93e355eed70811fa306fe43db6f417dd3"
+      "bytes": 11776,
+      "sha256": "1894b3fc3ca00191917dba1e794108b37992d091e189ea39e88033ae83a0f90e",
+      "git_blob_sha1": "5c22cbd9223cbcd696f355ffcfaa94a09e3f4cea"
     },
     {
       "path": "app/web/templates/subscription_change_review.html",
-      "bytes": 3686,
-      "sha256": "bd8f4ddb15b7eec24b56366220ddb23da0d3619631efd24465eb6d8dd06d84b4",
-      "git_blob_sha1": "1fb1c02d7433b4a5593984de3fd48ffe2ea57134"
+      "bytes": 4069,
+      "sha256": "8699dd3e3fe8018906dca2950ae3d3a5a3ccd2259668276745fe4e3b98dc2343",
+      "git_blob_sha1": "6e77fa8e69c33d4e7dc08b39d432b4b31580d59c"
     },
     {
       "path": "app/web/templates/subscription_checkout.html",
-      "bytes": 3629,
-      "sha256": "aa6dd07bae31bbd40d4b845f8cf70290bffc427d8292ab9f365fd9987d782d8d",
-      "git_blob_sha1": "b630eac280ed4a28310044d4a4148420d9700bb6"
+      "bytes": 3997,
+      "sha256": "3a04193f7f4f039063959c69ff4f9c6bc93728422453ea61ec65afbd04b09502",
+      "git_blob_sha1": "2f63e94c2c1f78b6601f347848cc68bb89f679b5"
     },
     {
       "path": "app/web/templates/subscription_command.html",
@@ -1474,21 +1474,21 @@
     },
     {
       "path": "app/web/templates/subscription_payment_controls.html",
-      "bytes": 3096,
-      "sha256": "92ebbd82d0385822d2b5db34eaf030b3076b99a7aba76670cd571d716767170f",
-      "git_blob_sha1": "79b3e5eaa4253456fc19bd0db22fc665d437e007"
+      "bytes": 3479,
+      "sha256": "23a67ec037944d2199d2eef98dd7ce13a56fc26241f635f4a85eabc943e6825f",
+      "git_blob_sha1": "09db2b4c150e529350acc811262ae27d50de6fed"
     },
     {
       "path": "app/web/templates/subscription_portal.html",
-      "bytes": 1348,
-      "sha256": "02d911f97877ad5a826bf0df5be66150edf85f0e5d0fa15c37525d019589b535",
-      "git_blob_sha1": "6f7bb134726163fa30cfdb9b78b30ecbb440cd41"
+      "bytes": 1731,
+      "sha256": "c8ff25aa400ef6b73904a6d3f80fcd0527b3f728482c57fd83b5bc1887bd4056",
+      "git_blob_sha1": "12c7cd84d5a44d6160f46cd5876f6c89618f46cb"
     },
     {
       "path": "app/web/templates/subscription_retention_review.html",
-      "bytes": 3654,
-      "sha256": "1fcc1a791bc217ab2087dcbb0286cf3671069b63789b77d14188184bcb99b80e",
-      "git_blob_sha1": "31c3f7903610646c006d1015ba4f55726a454a25"
+      "bytes": 4037,
+      "sha256": "1a6a3a60340c33e4db399be63898d5ef3fa1a0ca8f66167fb26fb23ba7bc0197",
+      "git_blob_sha1": "4f1c8f14b33bbde8600382f24c75381b042536f4"
     },
     {
       "path": "app/web/templates/time_import.html",
@@ -1522,9 +1522,9 @@
     },
     {
       "path": "app/workspace_operations.py",
-      "bytes": 20129,
-      "sha256": "9e6c6030e5ca6a366b8f04d4f30d23b1fe5382df0a80073181c69767191defc2",
-      "git_blob_sha1": "a259980ec29ba917e56138cb76bbca19245004a6"
+      "bytes": 20154,
+      "sha256": "9aa97fed67ce9d6d269d3595573da2728353449a0fc23ec6af2d5ae7f01d9164",
+      "git_blob_sha1": "fb0b63ae408d9755b171315d762dd77615f830b1"
     },
     {
       "path": "app/workspace_search.py",
@@ -1624,9 +1624,9 @@
     },
     {
       "path": "deploy/cloudflare/src/proxy.ts",
-      "bytes": 21248,
-      "sha256": "6347729be81eea2ad256ac6869a2a0a054f42fd6dab8828c5b41aea4b5b6ee98",
-      "git_blob_sha1": "fe3fc771eb34a2bd81529f7d4e0b73cd83fd351f"
+      "bytes": 22126,
+      "sha256": "f9874be18de60c24c24636004ac2d6165d9b3c77e000d183486ae6f31f9154c2",
+      "git_blob_sha1": "8de0072b240659ce2f48fb2eb8b27f993b5b534a"
     },
     {
       "path": "deploy/cloudflare/src/stage-archive.ts",
@@ -1648,15 +1648,15 @@
     },
     {
       "path": "deploy/cloudflare/test/paddle.test.mjs",
-      "bytes": 9277,
-      "sha256": "d68625342cede433525eb4faf54b2e2ae4dbea2c6059539bc4923e2a2f4300fd",
-      "git_blob_sha1": "9129c2c9f87701d25fddaafc76c690df305e1990"
+      "bytes": 9319,
+      "sha256": "53fd0278605a220aa5fb364193bd834878688cb15ae4a09c10ae99f6cbafd292",
+      "git_blob_sha1": "e29ed521e38174d66b6703c2c099d37959e6e231"
     },
     {
       "path": "deploy/cloudflare/test/production.test.mjs",
-      "bytes": 10011,
-      "sha256": "4fdf2dd51f69cf0c67034968e6dccf03440166b97eb4af2566ffd73619231d37",
-      "git_blob_sha1": "fc96848831253fc68bb1753a8f53b0317be2a711"
+      "bytes": 13983,
+      "sha256": "9f2dd356f35bb942e6196c1a994dc1409c406813148e0199fe195ea864df37ed",
+      "git_blob_sha1": "7cf178645b6dccca212d004c94a2fd08e0905456"
     },
     {
       "path": "deploy/cloudflare/test/proxy.test.mjs",
@@ -1690,9 +1690,9 @@
     },
     {
       "path": "deploy/cloudflare/worker-production-configuration.d.ts",
-      "bytes": 3569,
-      "sha256": "fe5d0731a189cc12ab29b443429eb21e2572e86cbece2705bf159e3863811e31",
-      "git_blob_sha1": "a718a1d271578f9f38fcbfcc4b9335682ee65821"
+      "bytes": 3635,
+      "sha256": "8da4b0820ee3ae1e91590997ad4d434ef6ccf1294581ef4844a720135f9aa435",
+      "git_blob_sha1": "3c899141d267460e30d6e9f24c8b08e2a8a604ae"
     },
     {
       "path": "deploy/cloudflare/wrangler.jsonc",
@@ -1702,9 +1702,9 @@
     },
     {
       "path": "deploy/cloudflare/wrangler.production.jsonc",
-      "bytes": 2988,
-      "sha256": "ac82ed503a760144ae841b54a7e53d2880af1e82faa2f28f8c2e2dba28c0c674",
-      "git_blob_sha1": "aa891c8d76d89c29edbd9b6e343b2c708da3f72b"
+      "bytes": 3031,
+      "sha256": "9be6314b301b35c2d0c7d979b0d480a1c423f30bf27be8e9296cdebef97812ab",
+      "git_blob_sha1": "ababf41bbbd1afc27d4429353874a5f7b49801b0"
     },
     {
       "path": "deploy/postgres/README.md",
@@ -1744,15 +1744,15 @@
     },
     {
       "path": "docs/DECISIONS.md",
-      "bytes": 95340,
-      "sha256": "ed235bf374ed261f5df0ef02d1866e21a18437461719cecb1fcb9c00935c0be2",
-      "git_blob_sha1": "647093afe65870214001d3ec4129edeef2a2284c"
+      "bytes": 99894,
+      "sha256": "c18a0bb11f406575e7012c9740926203f84d96ca124281f5523ab536e9baa68a",
+      "git_blob_sha1": "aa265471c8ccbe8bc80eef5c6bb0b3cee4898d18"
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "bytes": 28306,
-      "sha256": "be36487a2d5286947bf99eb7320a32481f8e02fcfebc211c0927f90a6109114a",
-      "git_blob_sha1": "3229d01d42c6463745b7f2b89d15eb3e271e614f"
+      "bytes": 31607,
+      "sha256": "b75e88fce7d33371949a8245e23b3e37673db5f4f1dd9a460cff2b2fc95d2640",
+      "git_blob_sha1": "bafbc16c99ee79d6b87bec0716bce00679afd982"
     },
     {
       "path": "docs/MAIL.md",
@@ -1780,15 +1780,15 @@
     },
     {
       "path": "docs/PHASE2_CLOSEOUT.md",
-      "bytes": 7678,
-      "sha256": "bd4ff556e8fef5effa40ff287d0f9909decd5facc8d0bd94eb7a176167993b5c",
-      "git_blob_sha1": "7f44b662ada6344ba2eafd44b41f97bc579dab12"
+      "bytes": 8238,
+      "sha256": "22cff8a2bcfeb117406f34948d8477c14d089a2eb0e980af70d7b5f79394bc92",
+      "git_blob_sha1": "fe52f60a335e7924e4d8277346b7140b70f568ec"
     },
     {
       "path": "docs/PROJECT_BRIEF.md",
-      "bytes": 27439,
-      "sha256": "6997f881306afa76ce74bf3c8a1eee3b4f4b28600cae2ca973633e78a96aa807",
-      "git_blob_sha1": "66cfc29968922b3f0db9d4abd662c854ca9c204d"
+      "bytes": 28124,
+      "sha256": "59a97ecd8f321787a01536fd65f96969a5d9f90a70b5c4eb9706cd408a867020",
+      "git_blob_sha1": "22d0da380430546fea28951c75769418a133e3f8"
     },
     {
       "path": "docs/SECURITY.md",
@@ -1798,9 +1798,9 @@
     },
     {
       "path": "docs/STATUS.md",
-      "bytes": 22319,
-      "sha256": "93d901e2f652299dfe9d7681a7ace79702ab3eef37893488d41e45ee2e2ebd07",
-      "git_blob_sha1": "4fd3c5904457d0a0731dd969900dc8def9b47a4d"
+      "bytes": 30478,
+      "sha256": "16b24640504505736761063530ad410f6227daa92f2a176b4a4709c2520c1ec8",
+      "git_blob_sha1": "883219330f1bacf48cad716ee4e6f73bdfdb4153"
     },
     {
       "path": "docs/contracts/ALCO_CONTRACT_SOURCE_NOTES.md",
@@ -1996,9 +1996,9 @@
     },
     {
       "path": "tests/e2e/test_archive_browser.py",
-      "bytes": 5936,
-      "sha256": "1ca811a00c90e07f6faa80c205d87709d3eeacdfd9ef598c95d5576f1f8a529c",
-      "git_blob_sha1": "91dbb4a1c1166e3e19e998450a24c5717617f857"
+      "bytes": 5944,
+      "sha256": "35631d3cc92fea4dc60949066a0823c8bf808888f681e6ada9c3e1ec41adaf18",
+      "git_blob_sha1": "ce2c40dcc61259c6ad71f5412795549b840c9110"
     },
     {
       "path": "tests/e2e/test_browser.py",
@@ -2121,6 +2121,12 @@
       "git_blob_sha1": "e21dfb594b759ba1dabd2c2c017cb6afe365729c"
     },
     {
+      "path": "tests/e2e/test_prelaunch_checkout_browser.py",
+      "bytes": 10997,
+      "sha256": "23753a0a73e7c1a754951ea90e88cd441e27913ee7f6dbf89b45183095577e57",
+      "git_blob_sha1": "2299af5a7221b0034ae84a4de1c278aaaa6373c5"
+    },
+    {
       "path": "tests/e2e/test_project_billing_browser.py",
       "bytes": 3996,
       "sha256": "dc93b71a704b3e047802426b9e6e2986a2e1b2de24ec3fc3fa79516eab626cbe",
@@ -2140,9 +2146,9 @@
     },
     {
       "path": "tests/e2e/test_quoting_library_browser.py",
-      "bytes": 12825,
-      "sha256": "0b4020a9812ac71d0b7918f22f883bfc22dd8631e79f20385e6498b91a18185c",
-      "git_blob_sha1": "09b9434aae790d87b23640d310bc59b23b1c3c14"
+      "bytes": 12928,
+      "sha256": "d354df706d4e36aa4ce6aa5a2c9f13c250d53bbf24b80386d1f37effe5050e14",
+      "git_blob_sha1": "c7656bfdac2afd812da648252cfc3698697f32cd"
     },
     {
       "path": "tests/e2e/test_quoting_lookup_browser.py",
@@ -2455,6 +2461,12 @@
       "bytes": 11977,
       "sha256": "8973831b8a8488cb18a2600b3b545d7748055cf31a04df4a097ab9200de73463",
       "git_blob_sha1": "46ad1c7f25a4fb893994277bd631e74d49a296e5"
+    },
+    {
+      "path": "tests/integration/test_prelaunch_auth.py",
+      "bytes": 11693,
+      "sha256": "4bef4174035cf152401671d56242c6046ab535053458cb60e1c6275a5af43203",
+      "git_blob_sha1": "0693040cf97e7109831661477575d113d5252411"
     },
     {
       "path": "tests/integration/test_privacy_preferences.py",
@@ -2899,6 +2911,12 @@
       "bytes": 5363,
       "sha256": "0280a1334c0ebdf3a33639e215265584a52f5f26b5319422c97e1591172572e2",
       "git_blob_sha1": "c56b072f1da69516058158bc81b9069f54888935"
+    },
+    {
+      "path": "tests/unit/test_prelaunch_capabilities.py",
+      "bytes": 17272,
+      "sha256": "29594bef21eafd155fec4df27a06ab4be05723a49be2c5a3695a8431ea825a7c",
+      "git_blob_sha1": "519a64af6866ffcf06924ba5e8a3da4e76969374"
     },
     {
       "path": "tests/unit/test_production_capabilities.py",

@@ -1,6 +1,6 @@
 # All functions and stored procedures
 
-Source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`; migration head `ph3_009_read_indexes`. Extracted on 2026-10-18 from a new empty PostgreSQL 18.4 database after all 26 Alembic migrations. `timeker_reference` is a synthetic documentation schema, not a hosted schema name. No seed, business-row query or hosted connection ran.
+Candidate source `4bb5c424d6e7d270cdca1479283896be77d581c3`; migration head `ph3_009_read_indexes`. Structural reference inherited from the original 2026-10-18 empty PostgreSQL18.4 reconstruction at `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` after 26 migrations. Exactly 45 structural input blobs are unchanged at the candidate. No database connection, migration or DDL replay was rerun in this refresh. `timeker_reference` is synthetic, not a hosted schema name; no business rows or hosted catalog are included.
 
 
 ## Inventory and execution semantics
@@ -58,7 +58,7 @@ ACL statements and must not be used as a hosted permission template.
 
 ## timeker_admission_history_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_005_public_admission.py#L62).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_005_public_admission.py#L62).
 
 Bindings: `admission_identities.admission_identity_history`, `public_email_challenges.public_email_challenge_history`, `workspace_admissions.admission_allocation_history`.
 
@@ -97,7 +97,7 @@ AS $function$
 
 ## timeker_allocated_entry_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e672c40fa912_cases_and_allocations.py#L121).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/e672c40fa912_cases_and_allocations.py#L121).
 
 Bindings: `time_entries.entry_allocation_guard`.
 
@@ -123,7 +123,7 @@ AS $function$
 
 ## timeker_allocated_parent_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e672c40fa912_cases_and_allocations.py#L137).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/e672c40fa912_cases_and_allocations.py#L137).
 
 Bindings: `projects.allocated_project_guard`, `timecards.allocated_card_guard`.
 
@@ -152,7 +152,7 @@ AS $function$
 
 ## timeker_allocation_contribution_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_002_time_commands.py#L116).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_002_time_commands.py#L116).
 
 Bindings: `case_time_allocations.allocation_contribution_guard`.
 
@@ -176,7 +176,7 @@ AS $function$
 
 ## timeker_allocation_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L154).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_007_work_records.py#L154).
 
 Bindings: `case_time_allocations.allocation_guard`.
 
@@ -229,7 +229,7 @@ AS $function$
 
 ## timeker_archive_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py#L119).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py#L119).
 
 Bindings: `mail_messages.archive_mail_guard`, `timecards.archive_card_guard`.
 
@@ -253,7 +253,7 @@ AS $function$
 
 ## timeker_artifact_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/c46f2f62a011_immutable_artifacts.py#L33).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/c46f2f62a011_immutable_artifacts.py#L33).
 
 Bindings: `audit_events.audit_guard`, `invoice_artifacts.artifact_guard`.
 
@@ -268,7 +268,7 @@ AS $function$
 
 ## timeker_case_archive_status_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L315).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_007_work_records.py#L315).
 
 Bindings: `cases.case_archive_status_guard`.
 
@@ -287,7 +287,7 @@ AS $function$
 
 ## timeker_case_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e640ab7230cd_case_identity_and_types.py#L105).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/e640ab7230cd_case_identity_and_types.py#L105).
 
 Bindings: `cases.case_guard`.
 
@@ -326,7 +326,7 @@ AS $function$
 
 ## timeker_commercial_case_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_006_quoting_library.py#L430).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_006_quoting_library.py#L430).
 
 Bindings: `cases.commercial_case_guard`.
 
@@ -347,7 +347,7 @@ AS $function$
 
 ## timeker_contribution_allocation_check
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_002_time_commands.py#L129).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_002_time_commands.py#L129).
 
 Bindings: `time_contributions.contribution_allocation_check`.
 
@@ -371,7 +371,7 @@ AS $function$
 
 ## timeker_contribution_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_002_time_commands.py#L70).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_002_time_commands.py#L70).
 
 Bindings: `time_contributions.contribution_guard`.
 
@@ -415,7 +415,7 @@ AS $function$
 
 ## timeker_credit_memo_final_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_001_credit_memos.py#L74).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_001_credit_memos.py#L74).
 
 Bindings: `credit_memos.credit_memo_invoice_check`, `invoices.invoice_credit_memo_check`.
 
@@ -443,7 +443,7 @@ AS $function$
 
 ## timeker_credit_memo_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_001_credit_memos.py#L40).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_001_credit_memos.py#L40).
 
 Bindings: `credit_memos.credit_memo_guard`.
 
@@ -487,7 +487,7 @@ AS $function$
 
 ## timeker_entry_contribution_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_002_time_commands.py#L103).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_002_time_commands.py#L103).
 
 Bindings: `time_entries.entry_contribution_guard`.
 
@@ -511,7 +511,7 @@ AS $function$
 
 ## timeker_entry_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L210).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_007_work_records.py#L210).
 
 Bindings: `time_entries.entry_guard`.
 
@@ -551,7 +551,7 @@ AS $function$
 
 ## timeker_internal_billing_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L306).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_007_work_records.py#L306).
 
 Bindings: `invoice_time_entries.internal_billing_guard`.
 
@@ -571,7 +571,7 @@ AS $function$
 
 ## timeker_internal_card_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L287).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_007_work_records.py#L287).
 
 Bindings: `timecards.internal_card_guard`.
 
@@ -601,7 +601,7 @@ AS $function$
 
 ## timeker_invoice_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/d529b08f14a2_project_billing.py#L116).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/d529b08f14a2_project_billing.py#L116).
 
 Bindings: `invoices.invoice_guard`.
 
@@ -670,7 +670,7 @@ AS $function$
 
 ## timeker_issued_artifact_check
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/c46f2f62a011_immutable_artifacts.py#L68).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/c46f2f62a011_immutable_artifacts.py#L68).
 
 Bindings: `invoices.issued_artifact_check`.
 
@@ -689,7 +689,7 @@ AS $function$
 
 ## timeker_library_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L95).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_007_work_records.py#L95).
 
 Bindings: `library_document_versions.library_version_guard`, `library_documents.library_document_guard`, `library_uploads.library_upload_guard`.
 
@@ -756,7 +756,7 @@ AS $function$
 
 ## timeker_line_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/d529b08f14a2_project_billing.py#L176).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/d529b08f14a2_project_billing.py#L176).
 
 Bindings: `invoice_lines.line_guard`.
 
@@ -804,7 +804,7 @@ AS $function$
 
 ## timeker_mail_attachment_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/f710bc319ae2_mail_attachment_custody.py#L36).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/f710bc319ae2_mail_attachment_custody.py#L36).
 
 Bindings: `mail_attachments.mail_attachment_guard`.
 
@@ -837,7 +837,7 @@ AS $function$
 
 ## timeker_mail_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e640ab7230cd_case_identity_and_types.py#L38).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/e640ab7230cd_case_identity_and_types.py#L38).
 
 Bindings: `mail_addresses.mail_address_guard`, `mail_messages.mail_message_guard`.
 
@@ -880,7 +880,7 @@ AS $function$
 
 ## timeker_object_id_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L323).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_007_work_records.py#L323).
 
 Bindings: `clients.object_id_guard`, `invoices.object_id_guard`, `library_documents.object_id_guard`, `projects.object_id_guard`, `timecards.object_id_guard`.
 
@@ -898,7 +898,7 @@ AS $function$
 
 ## timeker_payment_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e3b42aea781a_parent_guards_and_sessions.py#L46).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/e3b42aea781a_parent_guards_and_sessions.py#L46).
 
 Bindings: `payments.payment_guard`.
 
@@ -920,7 +920,7 @@ AS $function$
 
 ## timeker_project_agreement_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/a82d43cf6120_project_workflow_and_agreements.py#L38).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/a82d43cf6120_project_workflow_and_agreements.py#L38).
 
 Bindings: `project_agreements.project_agreement_guard`.
 
@@ -949,7 +949,7 @@ AS $function$
 
 ## timeker_project_billing_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/d529b08f14a2_project_billing.py#L86).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/d529b08f14a2_project_billing.py#L86).
 
 Bindings: `projects.project_billing_guard`.
 
@@ -989,7 +989,7 @@ AS $function$
 
 ## timeker_proposal_sending_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_006_quoting_library.py#L441).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_006_quoting_library.py#L441).
 
 Bindings: `proposal_sending_attempts.proposal_attempt_guard`, `proposal_sending_deliveries.proposal_delivery_guard`.
 
@@ -1076,7 +1076,7 @@ AS $function$
 
 ## timeker_quote_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py#L20).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_007_work_records.py#L20).
 
 Bindings: `quote_artifacts.quote_artifact_guard`, `quote_lines.quote_line_guard`, `quote_revisions.quote_revision_guard`, `quotes.quote_root_guard`.
 
@@ -1162,7 +1162,7 @@ AS $function$
 
 ## timeker_registration_history_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_003_onboarding_auth.py#L62).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_003_onboarding_auth.py#L62).
 
 Bindings: `email_auth_challenges.email_challenge_history`, `owner_identities.identity_binding_history`, `owner_registrations.registration_acceptance_history`.
 
@@ -1202,7 +1202,7 @@ AS $function$
 
 ## timeker_sending_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_004_sending.py#L89).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_004_sending.py#L89).
 
 Bindings: `sending_attempts.sending_attempt_history`, `sending_deliveries.sending_delivery_history`, `sending_plans.sending_plan_history`.
 
@@ -1269,7 +1269,7 @@ AS $function$
 
 ## timeker_subscription_billing_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_002_sandbox_billing.py#L97).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_002_sandbox_billing.py#L97).
 
 Bindings: `subscription_billing_accounts.subscription_billing_account_history`, `subscription_billing_events.subscription_billing_event_history`, `subscription_billing_operations.subscription_billing_operation_history`.
 
@@ -1305,7 +1305,7 @@ AS $function$
 
 ## timeker_subscription_history_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_001_subscriptions.py#L43).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_001_subscriptions.py#L43).
 
 Bindings: `subscription_operations.subscription_operation_history`, `workspace_subscriptions.subscription_assignment_history`.
 
@@ -1328,7 +1328,7 @@ AS $function$
 
 ## timeker_time_operation_guard
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_002_time_commands.py#L142).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_002_time_commands.py#L142).
 
 Bindings: `time_import_records.time_import_record_guard`, `time_operations.time_operation_guard`.
 
@@ -1343,7 +1343,7 @@ AS $function$
 
 ## timeker_timecard_void_restriction
 
-[Final body source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_001_credit_memos.py#L94).
+[Final body source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_001_credit_memos.py#L94).
 
 Bindings: `timecards.timecard_void_restriction`.
 

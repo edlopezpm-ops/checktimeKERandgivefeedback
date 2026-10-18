@@ -1,12 +1,11 @@
 {
-  "state": "VERIFIED_LOCAL_STRUCTURE",
-  "source_repository": "edlopezpm-ops/timeker-PH2",
-  "source_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
-  "source_branch": "codex/ph3-stage",
+  "state": "INHERITED_VERIFIED_LOCAL_STRUCTURE_UNCHANGED_INPUTS",
+  "source_repository": "edlopezpm-ops/timeKER-Stage",
+  "source_commit": "4bb5c424d6e7d270cdca1479283896be77d581c3",
+  "source_branch": "main",
   "migration_head": "ph3_009_read_indexes",
   "reference_schema": "timeker_reference",
   "reference_engine": "PostgreSQL18.4",
-  "verified_utc": "2026-10-18T14:24:37.064735+00:00",
   "counts": {
     "mapped_application_tables": 54,
     "physical_tables_in_reference_schema": 55,
@@ -162,7 +161,36 @@
       "source": "alembic/versions/ph3_009_read_indexes.py"
     }
   ],
-  "checks": {
+  "retained_hosted_evidence": {
+    "refreshed": false,
+    "stage_version": 29,
+    "source": "e282985ea74e89e1665351c22f91706498495e93",
+    "schema_head": "ph3_009_read_indexes",
+    "maintained_schemas": 9,
+    "quarantines_outside_population": 5,
+    "complete_exact_live_names_available": false
+  },
+  "limitations": [
+    "Reference names/ACL owner/internal trigger names are synthetic or installation-specific",
+    "No live Stage/PROD or platform catalog inventory; full names and drift remain unknown",
+    "Role/grant deployment policy is source-described, not installed or freshly verified",
+    "PG18 NOT NULL catalog entries can differ from another engine major version",
+    "No UAT, hosted restore, provider activation or security certification"
+  ],
+  "artifact_sha256": {
+    "catalog.json": "4ceaec86f408a3c66b8884504405b90f7564b04353b61487feb8b780aae20921",
+    "reference-schema.sql": "6c93efc76bc581bcd9f9fd9ff6b5232f3d6d52aaa97e8785466909b96087230b",
+    "relationships.mmd": "e964ff77c6146bf8930f0497991ed6f4b712e0420525ef0c60c96040779c14ec",
+    "inventory-live.sql": "dc3d85538808a91f9df19ffb36145c13884a305f6f7a03c6966e49197e8a5f7f"
+  },
+  "original_reconstruction_source": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+  "evidence_inherited": true,
+  "structural_inputs_verified_unchanged": 45,
+  "database_connections_this_refresh": 0,
+  "migrations_this_refresh": 0,
+  "ddl_replays_this_refresh": 0,
+  "original_reconstruction_verified_utc": "2026-10-18T14:24:37.064735+00:00",
+  "original_reconstruction_checks": {
     "upgrade_from_empty": "PASS",
     "alembic_metadata_check": "PASS",
     "mapped_table_set_exact": "PASS",
@@ -182,28 +210,15 @@
     "read_only_inventory_sql_runs_on_reference_database": "PASS",
     "collector_rolls_back_to_idle": "PASS",
     "published_ddl_replays_empty_55_36_61": "PASS",
-    "collector_actual_database_role_and_read_only_identity": "PASS"
+    "collector_actual_database_role_and_read_only_identity": "PASS",
+    "scope": "Original empty local reconstruction only; not reexecuted in this refresh"
   },
-  "retained_hosted_evidence": {
-    "refreshed": false,
-    "stage_version": 29,
-    "source": "e282985ea74e89e1665351c22f91706498495e93",
-    "schema_head": "ph3_009_read_indexes",
-    "maintained_schemas": 9,
-    "quarantines_outside_population": 5,
-    "complete_exact_live_names_available": false
-  },
-  "limitations": [
-    "Reference names/ACL owner/internal trigger names are synthetic or installation-specific",
-    "No live Stage/PROD or platform catalog inventory; full names and drift remain unknown",
-    "Role/grant deployment policy is source-described, not installed or freshly verified",
-    "PG18 NOT NULL catalog entries can differ from another engine major version",
-    "No UAT, hosted restore, provider activation or security certification"
-  ],
-  "artifact_sha256": {
-    "catalog.json": "461413c4ba43edf96c08b9916e34ef8821dd2629386d22159b384e35838d8301",
-    "reference-schema.sql": "6c93efc76bc581bcd9f9fd9ff6b5232f3d6d52aaa97e8785466909b96087230b",
-    "relationships.mmd": "e964ff77c6146bf8930f0497991ed6f4b712e0420525ef0c60c96040779c14ec",
-    "inventory-live.sql": "dc3d85538808a91f9df19ffb36145c13884a305f6f7a03c6966e49197e8a5f7f"
+  "checks_this_refresh": {
+    "exact_structural_input_blob_identity": "PASS",
+    "database_connections": 0,
+    "ddl_execution": 0,
+    "migrations_applied": 0,
+    "product_tests": 0,
+    "hosted_catalog_read": false
   }
 }

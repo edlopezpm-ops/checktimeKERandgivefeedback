@@ -1,24 +1,24 @@
 {
-  "snapshot_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+  "snapshot_commit": "4bb5c424d6e7d270cdca1479283896be77d581c3",
   "snapshot_date": "2026-10-18",
-  "source_repository": "edlopezpm-ops/timeker-PH2",
-  "source_branch": "codex/ph3-stage",
+  "source_repository": "edlopezpm-ops/timeKER-Stage",
+  "source_branch": "main",
   "closed_ph2_commit": "39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6",
-  "tracked_files": 503,
-  "python_files": 291,
+  "tracked_files": 506,
+  "python_files": 294,
   "literal_route_declarations": 180,
   "mapped_models": 54,
-  "settings_fields": 48,
-  "declared_test_functions": 1089,
+  "settings_fields": 49,
+  "declared_test_functions": 1118,
   "jinja_templates": 90,
-  "lifecycle": "PH2_ADMINISTRATIVELY_CLOSED_PH3_PREPARED_AWAITING_PROMPTS",
+  "lifecycle": "PH2_CLOSED_PRIVATE_PRODUCTION_PRELAUNCH_TECHNICALLY_VERIFIED_PH3_PROMPTS_PENDING",
   "stage_url": "https://stage-timeker.aekr.io",
   "production_url": "https://timeker.aekr.io",
   "last_verified_stage_source": "e282985ea74e89e1665351c22f91706498495e93",
   "last_verified_stage_version": 29,
   "last_verified_stage_schema": "ph3_009_read_indexes",
   "original_production_source": "dfb2538ec81d07f1c91fdf2bdc5096d4d0313609",
-  "future_production_scope": "PH2 plus authorized PH3 in one candidate",
+  "future_production_scope": "Current private PH2 prelaunch authorized; subsequent PH3 features use permanent Stage then reviewed PROD release",
   "pending": [
     "P2-01",
     "P2-02",
@@ -31,14 +31,14 @@
   ],
   "runtime_changes_in_dossier_refresh": 0,
   "product_tests_executed_in_refresh": 0,
-  "fresh_hosted_verification": false,
+  "fresh_hosted_verification": true,
   "human_uat_complete": false,
   "hosted_restore_proven": false,
-  "production_release_authorized": false,
+  "production_release_authorized": true,
   "database_reference": {
     "path": "database/README.md",
-    "source_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
-    "scope": "empty local PostgreSQL 18.4 migration reconstruction; no hosted catalog",
+    "source_commit": "4bb5c424d6e7d270cdca1479283896be77d581c3",
+    "scope": "Inherited empty local PostgreSQL18.4 reconstruction; 45 structural source inputs identical; no new native/hosted connection",
     "migration_head": "ph3_009_read_indexes",
     "counts": {
       "mapped_application_tables": 54,
@@ -63,18 +63,23 @@
       "rls_policies": 0,
       "custom_enum_domain_range_types": 0
     },
-    "local_migrations_applied": 26,
-    "alembic_metadata_check": "PASS",
-    "published_ddl_replay": "PASS",
-    "read_only_collector_local_check": "PASS",
     "hosted_connections": 0,
     "business_rows_read": false,
-    "complete_live_schema_names_available": false
+    "complete_live_schema_names_available": false,
+    "original_reconstruction_source": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+    "evidence_inherited": true,
+    "structural_inputs_verified_unchanged": 45,
+    "local_migrations_applied_this_refresh": 0,
+    "local_migrations_applied_original_reconstruction": 26,
+    "alembic_metadata_check_original_reconstruction": "PASS",
+    "published_ddl_replay_original_reconstruction": "PASS",
+    "read_only_collector_local_check_original_reconstruction": "PASS",
+    "hosted_inventory_scope": "Inherited data-free PostgreSQL18 reference catalog; the bounded two-schema production migration/guard/isolation evidence is separately recorded in production_release_evidence"
   },
   "code_flow_reference": {
     "path": "code-flow/README.md",
     "single_markdown": "code-flow/timeKER-CODE-FLOW-FULL.md",
-    "source_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+    "source_commit": "4bb5c424d6e7d270cdca1479283896be77d581c3",
     "source_traced_module_chapters": 8,
     "static_index_counts": {
       "python_modules": 118,
@@ -83,7 +88,7 @@
       "script_python_modules": 1,
       "class_declarations": 103,
       "function_and_async_declarations": 945,
-      "syntactic_call_sites": 13140,
+      "syntactic_call_sites": 13150,
       "internal_declared_import_edges": 438,
       "app_literal_route_decorators": 180
     },
@@ -91,5 +96,129 @@
     "new_sdk_or_product_features": false,
     "hosted_connections": 0,
     "product_tests": 0
+  },
+  "production_repository": "edlopezpm-ops/timeKER-PROD",
+  "stage_repository": "edlopezpm-ops/timeKER-Stage",
+  "production_deployment_complete": true,
+  "production_migration_complete": true,
+  "production_hosted_readback_complete": true,
+  "personal_enrollment_complete": false,
+  "selected_production_profile": {
+    "prelaunch_enabled": true,
+    "subscription_provider": "paddle_sandbox",
+    "onboarding_enabled": false,
+    "public_signup_enabled": false,
+    "email_public_signup_enabled": false,
+    "stage_onboarding_enabled": false,
+    "paddle_live_enabled": false,
+    "sending_provider": "disabled",
+    "sending_jobs_enabled": false,
+    "production_data_or_identities_copied_from_stage": false,
+    "preserve_existing_contact_and_inbound_mail_runtime_overrides": true
+  },
+  "release_fields_pending": [
+    "personal fresh Google proof and explicit acknowledgment",
+    "owner Verify catalog and plan choice through normal UI",
+    "human UAT/acceptance",
+    "later public/Live activation and hosted recovery/operational acceptance"
+  ],
+  "final_shared_main_source": "4bb5c424d6e7d270cdca1479283896be77d581c3",
+  "fresh_hosted_verification_source": "Retained timestamped release-receipt packet; no HTTP action performed by dossier generation",
+  "production_release_evidence": {
+    "observed_utc": "2026-10-18T16:39:19.019735+00:00",
+    "runtime_source_commit": "5b0fb0d29f506d04e4a6af3ebd8a193089af7214",
+    "worker_version": "d7618b2e-0ff5-410c-b6db-63482e3ca355",
+    "deployment_id": "c20208fa-4510-45da-a3ad-f7204fa22645",
+    "container_config_version": 13,
+    "running_instance_versions": [
+      13
+    ],
+    "container_image_digest": "sha256:9323ae9e842b70695b56f83c579dc939d91f8f210b8a39ba31bbaf79aa38b464",
+    "production_schema_heads": {
+      "timeker": "ph3_009_read_indexes",
+      "timeker_eve": "ph3_009_read_indexes"
+    },
+    "old_business_projection_tables_preserved": 40,
+    "actual_cross_schema_42501_denials": 4,
+    "post_login_projection_drift_tables": [],
+    "raw_source_matching_static_assets": 13,
+    "production_health": [
+      {
+        "path": "/health/live",
+        "status": 200
+      },
+      {
+        "path": "/health/ready",
+        "status": 200
+      }
+    ],
+    "stage_health": [
+      {
+        "path": "/health/live",
+        "status": 200
+      },
+      {
+        "path": "/health/ready",
+        "status": 200
+      }
+    ],
+    "exact_final_ciphertext_local_recovery_pass": true,
+    "final_backup_ciphertext_sha256": "95db86b295a7c21c1ac0f64adc70a94d25cc1e7329a92b4f57c35ac14a4cb678",
+    "local_recovery_seconds": 8.985,
+    "local_recovery_cluster_stopped": true,
+    "hosted_restore_performed": false,
+    "paddle_records_or_transactions_created": false,
+    "mail_capture_enabled_preserved": true,
+    "source_packet_sha256": "f5f383cb5881405e2ee3e8bbf3ddcf9d90db3584bd6cca513a25d371575dad6e",
+    "anonymous_html_is_complete_flag_proof": false
+  },
+  "upstream_checks": {
+    "gitguardian": "FAILED: historical fake-password transport fixture references actual Stage project; not a placeholder or passing check",
+    "supabase_preview": "SKIPPED: no Supabase Branch association"
+  },
+  "release_qa_attribution": {
+    "earlier_backend_aggregate": 2229,
+    "earlier_browser_aggregate": 304,
+    "fresh_bounded_backend_cases": 429,
+    "added_unit_cases_in_fresh_backend_block": 49,
+    "fresh_subscription_browser_cases": 13,
+    "added_browser_cases_in_fresh_browser_block": 3,
+    "unchanged_packaged_runtime_files": 239,
+    "changed_packaged_runtime_files": 5,
+    "packaged_runtime_file_count": 244,
+    "overlapping_blocks_are_summed": false,
+    "entire_earlier_matrix_rerun_at_final_documentation_pin": false
+  },
+  "repository_promotion": {
+    "shared_main_commit": "4bb5c424d6e7d270cdca1479283896be77d581c3",
+    "shared_tree": "e0dd4c64d603b3e8c551342395b9683389821f25",
+    "baseline_tag": "ph2-prelaunch-2026-10-18",
+    "both_tag_peels_match_shared_main": true,
+    "merged_prs": [
+      {
+        "mergeCommit": {
+          "oid": "25d6ca649784f2714af51c9a5d8dc1a4be9d08ba"
+        },
+        "mergedAt": "2026-10-18T16:49:42Z",
+        "state": "MERGED",
+        "url": "https://github.com/edlopezpm-ops/timeKER-PROD/pull/3"
+      },
+      {
+        "mergeCommit": {
+          "oid": "4bb5c424d6e7d270cdca1479283896be77d581c3"
+        },
+        "mergedAt": "2026-10-18T16:49:56Z",
+        "state": "MERGED",
+        "url": "https://github.com/edlopezpm-ops/timeKER-Stage/pull/5"
+      }
+    ],
+    "active_stage_branch": "codex/ph3-stage",
+    "old_stage_prs_2_and_3_closed_branches_retained": true,
+    "open_stage_pr_count_at_handoff": 0,
+    "frozen_ph2_commit": "39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6",
+    "raw_runtime_files_unchanged_from_deployed_image": 244,
+    "promotion_observed_utc": "2026-10-18T16:52:53.814806+00:00",
+    "source_packet_sha256": "e14ffa51ef11d86ac6940219ae6366076dae3ec94ab1185891c45fdee060a011",
+    "remote_ref_reads_in_dossier_generation": 0
   }
 }

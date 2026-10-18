@@ -26,9 +26,9 @@ database and role before running the rest of the script; confusing Stage,
 production and the local reference invalidates the result.
 
 The application itself checks connection role/schema identity in
-[app/db.py:19](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py#L19).
+[app/db.py:19](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/db.py#L19).
 Its environment/tenant validation is defined in
-[app/tenancy.py:148](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L148).
+[app/tenancy.py:148](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/tenancy.py#L148).
 These are source controls, not evidence that this procedure has connected.
 
 ## PostgreSQL command-line client
@@ -115,7 +115,7 @@ The latest retained Stage maintenance proof covers nine schemas at
 `ph3_009_read_indexes` and five excluded quarantines. Full exact live names and
 provider/platform inventories remain unknown until this separate inspection is
 authorized, executed and reviewed.
-[Retained maintenance evidence](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L26).
+[Retained maintenance evidence](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/HOSTING.md#L197).
 
 A catalog match establishes structural correspondence within the observed scope.
 It does not prove application correctness, human UAT, tenant recovery, current

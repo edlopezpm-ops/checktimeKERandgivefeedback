@@ -1,9 +1,9 @@
 # Schemas, tenancy and known inventory
 
 This database reference follows application source
-`9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`, prepared on 2026-10-18 after PH2
+`4bb5c424d6e7d270cdca1479283896be77d581c3`, prepared on 2026-10-18 after PH2
 administrative closure. It describes source-defined structure, retained dated
-Stage evidence and a separately built empty reference database. No live
+Stage evidence and an inherited separately built empty reference database with 45 unchanged structural inputs. No live
 Stage/production catalog or business table was queried to prepare this chapter.
 
 A complete source-derived reference and a complete live database inventory are
@@ -19,11 +19,11 @@ where the available evidence does not enumerate them.
 | Maintained Stage targets | Nine schemas last verified at head 009; 495 snapshot tables and 486 retained application-table images | Dated backup/migration/readback evidence; does not enumerate every live schema name or imply nine active owners/free slots. |
 | Excluded Stage quarantines | Five retained quarantined schemas, separate from the nine maintained targets | Retained exclusion evidence. Exact names and fresh live catalog state are not available in this source snapshot. |
 
-The source pins the maintained head in [app/db.py:6](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py#L6).
+The source pins the maintained head in [app/db.py:6](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/db.py#L6).
 The dated nine-schema preservation result is in
-[HOSTING.md:26](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L26),
+[HOSTING.md:197](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/HOSTING.md#L197),
 with current inventory limits at
-[HOSTING.md:38](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/HOSTING.md#L38).
+[HOSTING.md:209](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/HOSTING.md#L209).
 
 The reference catalog is an empty structural specimen, not a Stage backup,
 production restore, provider-schema dump or migration applied to an existing
@@ -41,10 +41,10 @@ not establish either hosted environment's current server version or capacity.
 | `timeker_stage_signup_*` | Five prepared schemas are described using this family in the operations record | Exact suffixes, current allocation and owner identities are not published in the source inventory. |
 | `public` | Non-hosted fallback when no explicit schema is selected | It is not proof that hosted business tables use `public`, or a complete account of provider-managed schemas. |
 
-Sources: [default schema selection](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L105),
-[Stage schema/role policy](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/README.md#L26),
-[historical inactive schema](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/postgres/README.md#L9),
-[prepared-family and quarantine boundary](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L93).
+Sources: [default schema selection](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/tenancy.py#L105),
+[Stage schema/role policy](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/deploy/cloudflare/README.md#L26),
+[historical inactive schema](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/deploy/postgres/README.md#L9),
+[prepared-family and quarantine boundary](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/OPERATIONS.md#L93).
 
 **UNKNOWN:** the complete nine-name maintained Stage list; the complete five-name
 quarantine list; each target's current owner/runtime role, allocation and grants;
@@ -72,7 +72,7 @@ population. Older evidence describes them as empty, NOLOGIN and retained at
 head 005. “Empty” must not be translated into zero physical tables: retained
 migration markers and structure are different from an absence of business rows.
 Their exact physical table inventory remains unknown here.
-[Dated owner/quarantine record](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L144).
+[Dated owner/quarantine record](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/OPERATIONS.md#L144).
 
 The reference's 36 functions and 61 application triggers are structure counts.
 The additional 360 internal triggers are PostgreSQL-maintained catalog objects,
@@ -92,15 +92,15 @@ The registry requires unique identifiers, schemas, roles and encryption keys;
 additional descriptors and prepared slots must remain on the selected database
 boundary. Each connection checks its actual `current_user` and `current_schema()`
 against the expected descriptor. A connection string alone is not isolation proof.
-[Registry validation](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L148),
-[prepared slots](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L251),
-[connection identity check](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/db.py#L19).
+[Registry validation](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/tenancy.py#L148),
+[prepared slots](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/tenancy.py#L251),
+[connection identity check](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/db.py#L19).
 
 New-owner admission reserves an exact operator-prepared slot, initializes and
 reads back its immutable owner identity, then activates the retained mapping.
 Reservations survive partial failure; they are not casually reassigned. A
 prepared schema is not necessarily an active owner workspace or currently free.
-[Reserve/initialize/activate](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission.py#L142).
+[Reserve/initialize/activate](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/admission.py#L142).
 
 ## Runtime roles and schema owners
 
@@ -113,15 +113,15 @@ prepared schema is not necessarily an active owner workspace or currently free.
 | Quarantine roles | Retained NOLOGIN exclusion; not proof of usable runtime admission or authorization to enable them. |
 | Provider/platform roles | `anon`, `authenticated` and `service_role` occur as revoked principals in grant policy; this does not inventory every installed role or provider schema. |
 
-[Runtime grants](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/postgres-runtime-grants.sql#L3),
-[historical default owner/runtime provisioning](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/postgres/README.md#L57),
-[four/five owner split](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L144).
+[Runtime grants](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/scripts/postgres-runtime-grants.sql#L3),
+[historical default owner/runtime provisioning](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/deploy/postgres/README.md#L57),
+[four/five owner split](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/OPERATIONS.md#L144).
 
 Readiness checks reject runtime object ownership, schema CREATE, role membership,
 foreign-schema USAGE and elevated role capabilities. Operator/migrator authority
 must not enter the serving container or be substituted for the runtime role to
 make an isolation check pass.
-[Runtime privilege verification](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/tenancy.py#L405).
+[Runtime privilege verification](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/tenancy.py#L405).
 
 ## Central directory and noncentral shadows
 
@@ -131,8 +131,8 @@ structure, but only the fixed default directory role receives their central
 SELECT/INSERT/UPDATE authorization. Noncentral runtime roles lose access to
 their shadow copies. Physical presence therefore does not imply the same
 operational purpose or permission in every workspace schema.
-[Directory table list](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_operations.py#L12),
-[directory grant boundary](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_operations.py#L79).
+[Directory table list](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/admission_operations.py#L12),
+[directory grant boundary](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/admission_operations.py#L79).
 
 ## How to close the live inventory gap
 

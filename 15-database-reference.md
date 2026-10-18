@@ -1,12 +1,12 @@
 # 15 — Complete application database reference
 
 The [database folder](database/README.md) contains the complete physical database
-reference produced by the pinned PH3 source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`
+reference produced by the pinned PH3 source `4bb5c424d6e7d270cdca1479283896be77d581c3`
 at migration head `ph3_009_read_indexes`.
 
-This extension applied all 26 migrations to a new, empty, loopback-only
+The original extension at source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` applied all 26 migrations to a new, empty, loopback-only
 PostgreSQL 18.4 database, inspected native catalogs and ran Alembic metadata
-comparison successfully. It imported models and executed local migrations only;
+comparison successfully. That original run imported models and executed local migrations only;
 it did not start the application, seed/read business records, connect to a hosted
 database or run product tests. The owned local server was stopped afterward.
 
@@ -46,3 +46,8 @@ all application-function PUBLIC access. Hosted role/grant installation was not
 performed or freshly verified here; the schema-only export omits privileges.
 SQLAlchemy client defaults and Python domain behavior remain separate from
 PostgreSQL defaults, trigger guards and stored procedures.
+
+
+## Reconstruction evidence inherited for this candidate
+
+The original empty PostgreSQL18.4 reconstruction was performed against source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. This refresh compares 45 migration/model/database/grants source inputs by immutable Git blob and finds them unchanged at `4bb5c424d6e7d270cdca1479283896be77d581c3`. All tables/columns/functions/triggers/FKs/DDL references are retained. No migration, database connection, DDL replay or business-row read was repeated. Original native verification timestamps/results remain attributed in [PROVENANCE.json](database/PROVENANCE.json). Fresh generated inventories are static source evidence; production migration/readback are separately verified by the bounded release evidence; the reference catalog remains an inherited empty-schema reconstruction.

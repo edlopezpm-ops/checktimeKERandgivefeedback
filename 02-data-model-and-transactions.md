@@ -2,8 +2,8 @@
 
 ## Review baseline
 
-This chapter describes declarations and service behavior at source `9fc9eeb`
-in `edlopezpm-ops/timeker-PH2`, the prepared PH3 branch. PH2 is administratively
+This chapter describes declarations and service behavior at source `4bb5c424d6e7d270cdca1479283896be77d581c3`
+in `edlopezpm-ops/timeKER-Stage`, the reviewed private-prelaunch candidate branch. PH2 is administratively
 closed at tag `ph2-closeout-2026-10-18` / `39bcde0`; the retained Stage runtime
 is Stage 29 / `e282985`. The expected migration head is
 `ph3_009_read_indexes`. The initial general dossier refresh queried no database,
@@ -17,7 +17,7 @@ declaration index; source models/migrations remain authoritative. Historical
 `ph2_` and `ph3_` migration prefixes are permanent identifiers, not the current
 delivery phase or instructions to rerun migrations.
 
-Sources: [models](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eeb/app/models.py),
+Sources: [models](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py),
 `app/db.py`, `docs/PHASE2_CLOSEOUT.md`, `docs/STATUS.md`.
 
 ## 1. Physical tenancy and ownership

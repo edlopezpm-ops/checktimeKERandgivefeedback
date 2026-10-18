@@ -1,20 +1,15 @@
 # Models, configuration, migrations and dependencies
 
-Snapshot: 2026-10-18. Source commit `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` on `codex/ph3-stage`.
+Snapshot: 2026-10-18. Source commit `4bb5c424d6e7d270cdca1479283896be77d581c3` on `main`.
 Generated offline from tracked source only. No app import, product-test execution, database query, provider/identity action or deployment. Static counts do not describe executed tests or live routing/database state.
 
 ## 54 mapped class/table declarations
 
 Fields below are directly declared annotated attributes, including relationships; common Base/mixin fields are inherited separately. This is not a database reflection or proof of deployed grants/indexes. No row values or secrets are included.
 
-For complete inherited column layouts, physical keys/indexes, SQL defaults,
-identity sequences and final trigger/function definitions, use the
-[native database reference](database/README.md). That separate extension reflects
-an empty local migration reconstruction, not the hosted database.
-
 ### `workspace_admissions` — `WorkspaceAdmission`
 
-[`app/admission_models.py:12`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L12); bases: `Entity`, `Base`.
+[`app/admission_models.py:12`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/admission_models.py#L12); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -27,7 +22,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `admission_identities` — `AdmissionIdentity`
 
-[`app/admission_models.py:26`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L26); bases: `Entity`, `Base`.
+[`app/admission_models.py:26`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/admission_models.py#L26); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -41,7 +36,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `public_email_challenges` — `PublicEmailChallenge`
 
-[`app/admission_models.py:43`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L43); bases: `Entity`, `Base`.
+[`app/admission_models.py:43`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/admission_models.py#L43); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -58,7 +53,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `credit_memos` — `CreditMemo`
 
-[`app/credit_memo_models.py:14`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/credit_memo_models.py#L14); bases: `Entity`, `Base`.
+[`app/credit_memo_models.py:14`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/credit_memo_models.py#L14); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -77,7 +72,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `owner_identities` — `OwnerIdentity`
 
-[`app/enrollment_models.py:12`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py#L12); bases: `Entity`, `Base`.
+[`app/enrollment_models.py:12`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/enrollment_models.py#L12); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -89,7 +84,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `owner_registrations` — `OwnerRegistration`
 
-[`app/enrollment_models.py:26`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py#L26); bases: `Entity`, `Base`.
+[`app/enrollment_models.py:26`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/enrollment_models.py#L26); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -102,7 +97,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `email_auth_challenges` — `EmailAuthChallenge`
 
-[`app/enrollment_models.py:42`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py#L42); bases: `Entity`, `Base`.
+[`app/enrollment_models.py:42`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/enrollment_models.py#L42); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -116,7 +111,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `integration_grants` — `IntegrationGrant`
 
-[`app/integration_models.py:21`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L21); bases: `Entity`, `Base`.
+[`app/integration_models.py:21`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/integration_models.py#L21); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -131,7 +126,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `integration_codes` — `IntegrationCode`
 
-[`app/integration_models.py:33`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L33); bases: `Entity`, `Base`.
+[`app/integration_models.py:33`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/integration_models.py#L33); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -146,7 +141,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `integration_tokens` — `IntegrationToken`
 
-[`app/integration_models.py:51`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L51); bases: `Entity`, `Base`.
+[`app/integration_models.py:51`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/integration_models.py#L51); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -160,7 +155,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `integration_operations` — `IntegrationOperation`
 
-[`app/integration_models.py:69`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L69); bases: `Entity`, `Base`.
+[`app/integration_models.py:69`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/integration_models.py#L69); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -172,7 +167,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `client_drafts` — `ClientDraft`
 
-[`app/integration_models.py:79`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L79); bases: `Entity`, `Base`.
+[`app/integration_models.py:79`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/integration_models.py#L79); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -182,7 +177,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `library_documents` — `LibraryDocument`
 
-[`app/library_models.py:26`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py#L26); bases: `Entity`, `Base`.
+[`app/library_models.py:26`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/library_models.py#L26); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -203,7 +198,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `library_uploads` — `LibraryUpload`
 
-[`app/library_models.py:52`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py#L52); bases: `Entity`, `Base`.
+[`app/library_models.py:52`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/library_models.py#L52); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -217,7 +212,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `library_document_versions` — `LibraryDocumentVersion`
 
-[`app/library_models.py:68`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py#L68); bases: `Entity`, `Base`.
+[`app/library_models.py:68`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/library_models.py#L68); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -235,7 +230,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `mail_messages` — `MailMessage`
 
-[`app/mail_models.py:22`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py#L22); bases: `Entity`, `Base`.
+[`app/mail_models.py:22`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/mail_models.py#L22); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -259,7 +254,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `mail_addresses` — `MailAddress`
 
-[`app/mail_models.py:49`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py#L49); bases: `Entity`, `Base`.
+[`app/mail_models.py:49`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/mail_models.py#L49); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -272,7 +267,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `mail_attachments` — `MailAttachment`
 
-[`app/mail_models.py:64`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py#L64); bases: `Entity`, `Base`.
+[`app/mail_models.py:64`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/mail_models.py#L64); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -286,7 +281,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `contact_attempts` — `ContactAttempt`
 
-[`app/models.py:33`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L33); bases: `Base`.
+[`app/models.py:33`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L33); bases: `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -300,7 +295,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `users` — `User`
 
-[`app/models.py:59`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L59); bases: `Entity`, `Base`.
+[`app/models.py:59`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L59); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -313,7 +308,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `clients` — `Client`
 
-[`app/models.py:69`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L69); bases: `Entity`, `Base`.
+[`app/models.py:69`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L69); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -337,7 +332,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `contacts` — `Contact`
 
-[`app/models.py:99`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L99); bases: `Entity`, `Base`.
+[`app/models.py:99`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L99); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -353,7 +348,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `projects` — `Project`
 
-[`app/models.py:112`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L112); bases: `Entity`, `Base`.
+[`app/models.py:112`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L112); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -375,7 +370,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `client_source_references` — `ClientSourceReference`
 
-[`app/models.py:153`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L153); bases: `Entity`, `Base`.
+[`app/models.py:153`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L153); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -389,7 +384,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `project_agreements` — `ProjectAgreement`
 
-[`app/models.py:169`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L169); bases: `Entity`, `Base`.
+[`app/models.py:169`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L169); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -402,7 +397,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `timecards` — `Timecard`
 
-[`app/models.py:184`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L184); bases: `Entity`, `Base`.
+[`app/models.py:184`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L184); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -424,7 +419,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `time_entries` — `TimeEntry`
 
-[`app/models.py:215`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L215); bases: `Entity`, `Base`.
+[`app/models.py:215`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L215); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -439,7 +434,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `cases` — `Case`
 
-[`app/models.py:233`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L233); bases: `Entity`, `Base`.
+[`app/models.py:233`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L233); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -462,7 +457,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `case_time_allocations` — `CaseTimeAllocation`
 
-[`app/models.py:266`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L266); bases: `Entity`, `Base`.
+[`app/models.py:266`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L266); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -474,7 +469,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `invoices` — `Invoice`
 
-[`app/models.py:280`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L280); bases: `Entity`, `Base`.
+[`app/models.py:280`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L280); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -504,7 +499,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `invoice_lines` — `InvoiceLine`
 
-[`app/models.py:341`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L341); bases: `Entity`, `Base`.
+[`app/models.py:341`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L341); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -521,7 +516,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `invoice_time_entries` — `Reservation`
 
-[`app/models.py:365`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L365); bases: `Base`.
+[`app/models.py:365`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L365); bases: `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -530,7 +525,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `invoice_artifacts` — `Artifact`
 
-[`app/models.py:371`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L371); bases: `Entity`, `Base`.
+[`app/models.py:371`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L371); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -542,7 +537,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `payments` — `Payment`
 
-[`app/models.py:380`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L380); bases: `Entity`, `Base`.
+[`app/models.py:380`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L380); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -558,7 +553,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `audit_events` — `Audit`
 
-[`app/models.py:394`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L394); bases: `Entity`, `Base`.
+[`app/models.py:394`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L394); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -571,7 +566,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `app_settings` — `AppSettings`
 
-[`app/models.py:404`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L404); bases: `Entity`, `Base`.
+[`app/models.py:404`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L404); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -581,7 +576,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `proposal_sending_deliveries` — `ProposalSendingDelivery`
 
-[`app/proposal_sending_models.py:22`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_models.py#L22); bases: `Entity`, `Base`.
+[`app/proposal_sending_models.py:22`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/proposal_sending_models.py#L22); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -610,7 +605,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `proposal_sending_attempts` — `ProposalSendingAttempt`
 
-[`app/proposal_sending_models.py:58`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_models.py#L58); bases: `Entity`, `Base`.
+[`app/proposal_sending_models.py:58`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/proposal_sending_models.py#L58); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -622,7 +617,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `quotes` — `Quote`
 
-[`app/quoting_models.py:30`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L30); bases: `Entity`, `Base`.
+[`app/quoting_models.py:30`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/quoting_models.py#L30); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -636,7 +631,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `quote_revisions` — `QuoteRevision`
 
-[`app/quoting_models.py:46`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L46); bases: `Entity`, `Base`.
+[`app/quoting_models.py:46`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/quoting_models.py#L46); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -659,7 +654,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `quote_lines` — `QuoteLine`
 
-[`app/quoting_models.py:79`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L79); bases: `Entity`, `Base`.
+[`app/quoting_models.py:79`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/quoting_models.py#L79); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -675,7 +670,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `quote_artifacts` — `QuoteArtifact`
 
-[`app/quoting_models.py:105`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L105); bases: `Entity`, `Base`.
+[`app/quoting_models.py:105`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/quoting_models.py#L105); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -691,7 +686,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `sending_preferences` — `SendingPreferences`
 
-[`app/sending_models.py:21`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L21); bases: `Entity`, `Base`.
+[`app/sending_models.py:21`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/sending_models.py#L21); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -704,7 +699,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `sending_plans` — `SendingPlan`
 
-[`app/sending_models.py:31`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L31); bases: `Entity`, `Base`.
+[`app/sending_models.py:31`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/sending_models.py#L31); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -724,7 +719,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `sending_deliveries` — `SendingDelivery`
 
-[`app/sending_models.py:55`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L55); bases: `Entity`, `Base`.
+[`app/sending_models.py:55`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/sending_models.py#L55); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -739,7 +734,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `sending_attempts` — `SendingAttempt`
 
-[`app/sending_models.py:72`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L72); bases: `Entity`, `Base`.
+[`app/sending_models.py:72`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/sending_models.py#L72); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -752,7 +747,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `subscription_billing_accounts` — `BillingAccount`
 
-[`app/subscription_billing_models.py:24`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py#L24); bases: `Base`.
+[`app/subscription_billing_models.py:24`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/subscription_billing_models.py#L24); bases: `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -781,7 +776,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `subscription_billing_operations` — `BillingOperation`
 
-[`app/subscription_billing_models.py:71`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py#L71); bases: `Entity`, `Base`.
+[`app/subscription_billing_models.py:71`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/subscription_billing_models.py#L71); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -796,7 +791,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `subscription_billing_events` — `BillingEvent`
 
-[`app/subscription_billing_models.py:89`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py#L89); bases: `Entity`, `Base`.
+[`app/subscription_billing_models.py:89`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/subscription_billing_models.py#L89); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -808,7 +803,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `workspace_subscriptions` — `WorkspaceSubscription`
 
-[`app/subscription_models.py:13`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_models.py#L13); bases: `Base`.
+[`app/subscription_models.py:13`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/subscription_models.py#L13); bases: `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -823,7 +818,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `subscription_operations` — `SubscriptionOperation`
 
-[`app/subscription_models.py:37`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_models.py#L37); bases: `Entity`, `Base`.
+[`app/subscription_models.py:37`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/subscription_models.py#L37); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -835,7 +830,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `time_import_records` — `TimeImportRecord`
 
-[`app/time_command_models.py:13`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py#L13); bases: `Entity`, `Base`.
+[`app/time_command_models.py:13`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/time_command_models.py#L13); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -847,7 +842,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `time_contributions` — `TimeContribution`
 
-[`app/time_command_models.py:26`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py#L26); bases: `Entity`, `Base`.
+[`app/time_command_models.py:26`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/time_command_models.py#L26); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -866,7 +861,7 @@ an empty local migration reconstruction, not the hosted database.
 
 ### `time_operations` — `TimeOperation`
 
-[`app/time_command_models.py:49`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py#L49); bases: `Entity`, `Base`.
+[`app/time_command_models.py:49`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/time_command_models.py#L49); bases: `Entity`, `Base`.
 
 | Attribute | Annotation | Persistence/relationship declaration |
 | --- | --- | --- |
@@ -877,9 +872,9 @@ an empty local migration reconstruction, not the hosted database.
 | `operation` | `Mapped[str]` | `mapped_column(String(20))` |
 | `result` | `Mapped[dict]` | `mapped_column(JSONB)` |
 
-## 48 Settings fields
+## 49 Settings fields
 
-[`app/config.py:14`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/config.py#L14). Names and types are source metadata; string/provider/identity/connection values are deliberately omitted. Properties and environment loaders are behavior, not extra dataclass fields.
+[`app/config.py:14`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/config.py#L14). Names and types are source metadata; string/provider/identity/connection values are deliberately omitted. Properties and environment loaders are behavior, not extra dataclass fields.
 
 | Name | Type | Declared default category |
 | --- | --- | --- |
@@ -913,6 +908,7 @@ an empty local migration reconstruction, not the hosted database.
 | `integration_clients_json` | `str` | Declared; value omitted |
 | `subscription_provider` | `str` | disabled |
 | `paddle_live_enabled` | `bool` | False |
+| `prelaunch_enabled` | `bool` | False |
 | `paddle_api_key` | `str` | Declared; value omitted |
 | `paddle_client_token` | `str` | Declared; value omitted |
 | `paddle_webhook_secret` | `str` | Declared; value omitted |
@@ -938,32 +934,32 @@ Historical revision names containing `ph2` or `ph3` are retained identifiers; ad
 
 | Revision | Parent | Source |
 | --- | --- | --- |
-| 3f3c0f09ecf4 | e672c40fa912 | [`alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py) |
-| 7e416c6444fe | None | [`alembic/versions/7e416c6444fe_baseline.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/7e416c6444fe_baseline.py) |
-| a10d45de891c | f409a1ac1700 | [`alembic/versions/a10d45de891c_issued_status_guard.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/a10d45de891c_issued_status_guard.py) |
-| a82d43cf6120 | f710bc319ae2 | [`alembic/versions/a82d43cf6120_project_workflow_and_agreements.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/a82d43cf6120_project_workflow_and_agreements.py) |
-| b07c9d621a30 | a10d45de891c | [`alembic/versions/b07c9d621a30_pin_guard_schema.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/b07c9d621a30_pin_guard_schema.py) |
-| c41894d13cb7 | 3f3c0f09ecf4 | [`alembic/versions/c41894d13cb7_project_commercial_metadata.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/c41894d13cb7_project_commercial_metadata.py) |
-| c46f2f62a011 | 7e416c6444fe | [`alembic/versions/c46f2f62a011_immutable_artifacts.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/c46f2f62a011_immutable_artifacts.py) |
-| d3517d81ce20 | b07c9d621a30 | [`alembic/versions/d3517d81ce20_contact_reservations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/d3517d81ce20_contact_reservations.py) |
-| d529b08f14a2 | c41894d13cb7 | [`alembic/versions/d529b08f14a2_project_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/d529b08f14a2_project_billing.py) |
-| e3b42aea781a | c46f2f62a011 | [`alembic/versions/e3b42aea781a_parent_guards_and_sessions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e3b42aea781a_parent_guards_and_sessions.py) |
-| e640ab7230cd | d529b08f14a2 | [`alembic/versions/e640ab7230cd_case_identity_and_types.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e640ab7230cd_case_identity_and_types.py) |
-| e672c40fa912 | d3517d81ce20 | [`alembic/versions/e672c40fa912_cases_and_allocations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/e672c40fa912_cases_and_allocations.py) |
-| f409a1ac1700 | e3b42aea781a | [`alembic/versions/f409a1ac1700_parent_lock_guards.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/f409a1ac1700_parent_lock_guards.py) |
-| f710bc319ae2 | e640ab7230cd | [`alembic/versions/f710bc319ae2_mail_attachment_custody.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/f710bc319ae2_mail_attachment_custody.py) |
-| ph2_001_credit_memos | a82d43cf6120 | [`alembic/versions/ph2_001_credit_memos.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_001_credit_memos.py) |
-| ph2_002_time_commands | ph2_001_credit_memos | [`alembic/versions/ph2_002_time_commands.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_002_time_commands.py) |
-| ph2_003_integrations | ph2_002_time_commands | [`alembic/versions/ph2_003_integrations.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph2_003_integrations.py) |
-| ph3_001_subscriptions | ph2_003_integrations | [`alembic/versions/ph3_001_subscriptions.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_001_subscriptions.py) |
-| ph3_002_sandbox_billing | ph3_001_subscriptions | [`alembic/versions/ph3_002_sandbox_billing.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_002_sandbox_billing.py) |
-| ph3_003_onboarding_auth | ph3_002_sandbox_billing | [`alembic/versions/ph3_003_onboarding_auth.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_003_onboarding_auth.py) |
-| ph3_004_sending | ph3_003_onboarding_auth | [`alembic/versions/ph3_004_sending.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_004_sending.py) |
-| ph3_005_public_admission | ph3_004_sending | [`alembic/versions/ph3_005_public_admission.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_005_public_admission.py) |
-| ph3_006_quoting_library | ph3_005_public_admission | [`alembic/versions/ph3_006_quoting_library.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_006_quoting_library.py) |
-| ph3_007_work_records | ph3_006_quoting_library | [`alembic/versions/ph3_007_work_records.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_007_work_records.py) |
-| ph3_008_client_lifecycle | ph3_007_work_records | [`alembic/versions/ph3_008_client_lifecycle.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_008_client_lifecycle.py) |
-| ph3_009_read_indexes | ph3_008_client_lifecycle | [`alembic/versions/ph3_009_read_indexes.py`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/alembic/versions/ph3_009_read_indexes.py) |
+| 3f3c0f09ecf4 | e672c40fa912 | [`alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py) |
+| 7e416c6444fe | None | [`alembic/versions/7e416c6444fe_baseline.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/7e416c6444fe_baseline.py) |
+| a10d45de891c | f409a1ac1700 | [`alembic/versions/a10d45de891c_issued_status_guard.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/a10d45de891c_issued_status_guard.py) |
+| a82d43cf6120 | f710bc319ae2 | [`alembic/versions/a82d43cf6120_project_workflow_and_agreements.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/a82d43cf6120_project_workflow_and_agreements.py) |
+| b07c9d621a30 | a10d45de891c | [`alembic/versions/b07c9d621a30_pin_guard_schema.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/b07c9d621a30_pin_guard_schema.py) |
+| c41894d13cb7 | 3f3c0f09ecf4 | [`alembic/versions/c41894d13cb7_project_commercial_metadata.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/c41894d13cb7_project_commercial_metadata.py) |
+| c46f2f62a011 | 7e416c6444fe | [`alembic/versions/c46f2f62a011_immutable_artifacts.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/c46f2f62a011_immutable_artifacts.py) |
+| d3517d81ce20 | b07c9d621a30 | [`alembic/versions/d3517d81ce20_contact_reservations.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/d3517d81ce20_contact_reservations.py) |
+| d529b08f14a2 | c41894d13cb7 | [`alembic/versions/d529b08f14a2_project_billing.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/d529b08f14a2_project_billing.py) |
+| e3b42aea781a | c46f2f62a011 | [`alembic/versions/e3b42aea781a_parent_guards_and_sessions.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/e3b42aea781a_parent_guards_and_sessions.py) |
+| e640ab7230cd | d529b08f14a2 | [`alembic/versions/e640ab7230cd_case_identity_and_types.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/e640ab7230cd_case_identity_and_types.py) |
+| e672c40fa912 | d3517d81ce20 | [`alembic/versions/e672c40fa912_cases_and_allocations.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/e672c40fa912_cases_and_allocations.py) |
+| f409a1ac1700 | e3b42aea781a | [`alembic/versions/f409a1ac1700_parent_lock_guards.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/f409a1ac1700_parent_lock_guards.py) |
+| f710bc319ae2 | e640ab7230cd | [`alembic/versions/f710bc319ae2_mail_attachment_custody.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/f710bc319ae2_mail_attachment_custody.py) |
+| ph2_001_credit_memos | a82d43cf6120 | [`alembic/versions/ph2_001_credit_memos.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_001_credit_memos.py) |
+| ph2_002_time_commands | ph2_001_credit_memos | [`alembic/versions/ph2_002_time_commands.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_002_time_commands.py) |
+| ph2_003_integrations | ph2_002_time_commands | [`alembic/versions/ph2_003_integrations.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph2_003_integrations.py) |
+| ph3_001_subscriptions | ph2_003_integrations | [`alembic/versions/ph3_001_subscriptions.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_001_subscriptions.py) |
+| ph3_002_sandbox_billing | ph3_001_subscriptions | [`alembic/versions/ph3_002_sandbox_billing.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_002_sandbox_billing.py) |
+| ph3_003_onboarding_auth | ph3_002_sandbox_billing | [`alembic/versions/ph3_003_onboarding_auth.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_003_onboarding_auth.py) |
+| ph3_004_sending | ph3_003_onboarding_auth | [`alembic/versions/ph3_004_sending.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_004_sending.py) |
+| ph3_005_public_admission | ph3_004_sending | [`alembic/versions/ph3_005_public_admission.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_005_public_admission.py) |
+| ph3_006_quoting_library | ph3_005_public_admission | [`alembic/versions/ph3_006_quoting_library.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_006_quoting_library.py) |
+| ph3_007_work_records | ph3_006_quoting_library | [`alembic/versions/ph3_007_work_records.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_007_work_records.py) |
+| ph3_008_client_lifecycle | ph3_007_work_records | [`alembic/versions/ph3_008_client_lifecycle.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_008_client_lifecycle.py) |
+| ph3_009_read_indexes | ph3_008_client_lifecycle | [`alembic/versions/ph3_009_read_indexes.py`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/alembic/versions/ph3_009_read_indexes.py) |
 
 ## Python project declarations
 
@@ -1064,7 +1060,7 @@ Locked versions are snapshot facts, not recommendations or a current vulnerabili
 
 ## Worker package declarations
 
-[`deploy/cloudflare/package.json`](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/deploy/cloudflare/package.json)
+[`deploy/cloudflare/package.json`](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/deploy/cloudflare/package.json)
 
 | Group | Package | Version |
 | --- | --- | --- |

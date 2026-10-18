@@ -1,6 +1,6 @@
 # All tables and complete layouts
 
-Source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`; migration head `ph3_009_read_indexes`. Extracted on 2026-10-18 from a new empty PostgreSQL 18.4 database after all 26 Alembic migrations. `timeker_reference` is a synthetic documentation schema, not a hosted schema name. No seed, business-row query or hosted connection ran.
+Candidate source `4bb5c424d6e7d270cdca1479283896be77d581c3`; migration head `ph3_009_read_indexes`. Structural reference inherited from the original 2026-10-18 empty PostgreSQL18.4 reconstruction at `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` after 26 migrations. Exactly 45 structural input blobs are unchanged at the candidate. No database connection, migration or DDL replay was rerun in this refresh. `timeker_reference` is synthetic, not a hosted schema name; no business rows or hosted catalog are included.
 
 
 All names below are relative to the synthetic reference schema. SQL server defaults,
@@ -27,7 +27,7 @@ All tables are permanent ordinary tables, without RLS or partition keys in this 
 
 ## admission_identities
 
-Mapped class `AdmissionIdentity`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L26).
+Mapped class `AdmissionIdentity`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/admission_models.py#L26).
 
 10 columns; 15 catalog constraints; 4 indexes; 1 application triggers.
 
@@ -108,7 +108,7 @@ None.
 
 ## app_settings
 
-Mapped class `AppSettings`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L404).
+Mapped class `AppSettings`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L404).
 
 6 columns; 7 catalog constraints; 2 indexes; 0 application triggers.
 
@@ -146,7 +146,7 @@ None.
 
 ## audit_events
 
-Mapped class `Audit`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L394).
+Mapped class `Audit`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L394).
 
 9 columns; 10 catalog constraints; 3 indexes; 1 application triggers.
 
@@ -193,7 +193,7 @@ Mapped class `Audit`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob
 
 ## case_time_allocations
 
-Mapped class `CaseTimeAllocation`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L266).
+Mapped class `CaseTimeAllocation`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L266).
 
 8 columns; 14 catalog constraints; 4 indexes; 2 application triggers.
 
@@ -245,7 +245,7 @@ Mapped class `CaseTimeAllocation`; [Source](https://github.com/edlopezpm-ops/tim
 
 ## cases
 
-Mapped class `Case`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L233).
+Mapped class `Case`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L233).
 
 18 columns; 23 catalog constraints; 7 indexes; 3 application triggers.
 
@@ -320,7 +320,7 @@ Mapped class `Case`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/
 
 ## client_drafts
 
-Mapped class `ClientDraft`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L79).
+Mapped class `ClientDraft`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/integration_models.py#L79).
 
 6 columns; 8 catalog constraints; 2 indexes; 0 application triggers.
 
@@ -359,7 +359,7 @@ None.
 
 ## client_source_references
 
-Mapped class `ClientSourceReference`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L153).
+Mapped class `ClientSourceReference`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L153).
 
 10 columns; 12 catalog constraints; 2 indexes; 0 application triggers.
 
@@ -406,7 +406,7 @@ None.
 
 ## clients
 
-Mapped class `Client`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L69).
+Mapped class `Client`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L69).
 
 20 columns; 26 catalog constraints; 5 indexes; 1 application triggers.
 
@@ -482,7 +482,7 @@ Mapped class `Client`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blo
 
 ## contact_attempts
 
-Mapped class `ContactAttempt`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L33).
+Mapped class `ContactAttempt`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L33).
 
 7 columns; 9 catalog constraints; 2 indexes; 0 application triggers.
 
@@ -523,7 +523,7 @@ None.
 
 ## contacts
 
-Mapped class `Contact`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L99).
+Mapped class `Contact`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L99).
 
 12 columns; 11 catalog constraints; 2 indexes; 0 application triggers.
 
@@ -571,7 +571,7 @@ None.
 
 ## credit_memos
 
-Mapped class `CreditMemo`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/credit_memo_models.py#L14).
+Mapped class `CreditMemo`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/credit_memo_models.py#L14).
 
 15 columns; 25 catalog constraints; 3 indexes; 2 application triggers.
 
@@ -640,7 +640,7 @@ Mapped class `CreditMemo`; [Source](https://github.com/edlopezpm-ops/timeker-PH2
 
 ## email_auth_challenges
 
-Mapped class `EmailAuthChallenge`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py#L42).
+Mapped class `EmailAuthChallenge`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/enrollment_models.py#L42).
 
 10 columns; 16 catalog constraints; 1 indexes; 1 application triggers.
 
@@ -692,7 +692,7 @@ Mapped class `EmailAuthChallenge`; [Source](https://github.com/edlopezpm-ops/tim
 
 ## integration_codes
 
-Mapped class `IntegrationCode`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L33).
+Mapped class `IntegrationCode`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/integration_models.py#L33).
 
 11 columns; 13 catalog constraints; 3 indexes; 0 application triggers.
 
@@ -742,7 +742,7 @@ None.
 
 ## integration_grants
 
-Mapped class `IntegrationGrant`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L21).
+Mapped class `IntegrationGrant`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/integration_models.py#L21).
 
 11 columns; 12 catalog constraints; 2 indexes; 0 application triggers.
 
@@ -790,7 +790,7 @@ None.
 
 ## integration_operations
 
-Mapped class `IntegrationOperation`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L69).
+Mapped class `IntegrationOperation`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/integration_models.py#L69).
 
 8 columns; 11 catalog constraints; 3 indexes; 0 application triggers.
 
@@ -835,7 +835,7 @@ None.
 
 ## integration_tokens
 
-Mapped class `IntegrationToken`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/integration_models.py#L51).
+Mapped class `IntegrationToken`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/integration_models.py#L51).
 
 10 columns; 13 catalog constraints; 4 indexes; 0 application triggers.
 
@@ -885,7 +885,7 @@ None.
 
 ## invoice_artifacts
 
-Mapped class `Artifact`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L371).
+Mapped class `Artifact`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L371).
 
 8 columns; 11 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -931,7 +931,7 @@ Mapped class `Artifact`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/b
 
 ## invoice_lines
 
-Mapped class `InvoiceLine`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L341).
+Mapped class `InvoiceLine`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L341).
 
 13 columns; 17 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -988,7 +988,7 @@ Mapped class `InvoiceLine`; [Source](https://github.com/edlopezpm-ops/timeker-PH
 
 ## invoice_time_entries
 
-Mapped class `Reservation`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L365).
+Mapped class `Reservation`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L365).
 
 2 columns; 5 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -1022,7 +1022,7 @@ Mapped class `Reservation`; [Source](https://github.com/edlopezpm-ops/timeker-PH
 
 ## invoices
 
-Mapped class `Invoice`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L280).
+Mapped class `Invoice`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L280).
 
 25 columns; 30 catalog constraints; 9 indexes; 4 application triggers.
 
@@ -1114,7 +1114,7 @@ Mapped class `Invoice`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/bl
 
 ## library_document_versions
 
-Mapped class `LibraryDocumentVersion`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py#L68).
+Mapped class `LibraryDocumentVersion`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/library_models.py#L68).
 
 14 columns; 21 catalog constraints; 4 indexes; 1 application triggers.
 
@@ -1178,7 +1178,7 @@ Mapped class `LibraryDocumentVersion`; [Source](https://github.com/edlopezpm-ops
 
 ## library_documents
 
-Mapped class `LibraryDocument`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py#L26).
+Mapped class `LibraryDocument`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/library_models.py#L26).
 
 17 columns; 25 catalog constraints; 6 indexes; 2 application triggers.
 
@@ -1252,7 +1252,7 @@ Mapped class `LibraryDocument`; [Source](https://github.com/edlopezpm-ops/timeke
 
 ## library_uploads
 
-Mapped class `LibraryUpload`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/library_models.py#L52).
+Mapped class `LibraryUpload`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/library_models.py#L52).
 
 10 columns; 16 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -1305,7 +1305,7 @@ Mapped class `LibraryUpload`; [Source](https://github.com/edlopezpm-ops/timeker-
 
 ## mail_addresses
 
-Mapped class `MailAddress`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py#L49).
+Mapped class `MailAddress`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/mail_models.py#L49).
 
 9 columns; 12 catalog constraints; 6 indexes; 1 application triggers.
 
@@ -1357,7 +1357,7 @@ Mapped class `MailAddress`; [Source](https://github.com/edlopezpm-ops/timeker-PH
 
 ## mail_attachments
 
-Mapped class `MailAttachment`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py#L64).
+Mapped class `MailAttachment`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/mail_models.py#L64).
 
 10 columns; 17 catalog constraints; 3 indexes; 1 application triggers.
 
@@ -1412,7 +1412,7 @@ Mapped class `MailAttachment`; [Source](https://github.com/edlopezpm-ops/timeker
 
 ## mail_messages
 
-Mapped class `MailMessage`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/mail_models.py#L22).
+Mapped class `MailMessage`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/mail_models.py#L22).
 
 20 columns; 24 catalog constraints; 9 indexes; 2 application triggers.
 
@@ -1491,7 +1491,7 @@ Mapped class `MailMessage`; [Source](https://github.com/edlopezpm-ops/timeker-PH
 
 ## owner_identities
 
-Mapped class `OwnerIdentity`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py#L12).
+Mapped class `OwnerIdentity`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/enrollment_models.py#L12).
 
 8 columns; 12 catalog constraints; 3 indexes; 1 application triggers.
 
@@ -1539,7 +1539,7 @@ Mapped class `OwnerIdentity`; [Source](https://github.com/edlopezpm-ops/timeker-
 
 ## owner_registrations
 
-Mapped class `OwnerRegistration`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/enrollment_models.py#L26).
+Mapped class `OwnerRegistration`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/enrollment_models.py#L26).
 
 9 columns; 13 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -1588,7 +1588,7 @@ Mapped class `OwnerRegistration`; [Source](https://github.com/edlopezpm-ops/time
 
 ## payments
 
-Mapped class `Payment`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L380).
+Mapped class `Payment`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L380).
 
 12 columns; 13 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -1640,7 +1640,7 @@ Mapped class `Payment`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/bl
 
 ## project_agreements
 
-Mapped class `ProjectAgreement`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L169).
+Mapped class `ProjectAgreement`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L169).
 
 9 columns; 16 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -1692,7 +1692,7 @@ Mapped class `ProjectAgreement`; [Source](https://github.com/edlopezpm-ops/timek
 
 ## projects
 
-Mapped class `Project`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L112).
+Mapped class `Project`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L112).
 
 18 columns; 21 catalog constraints; 4 indexes; 3 application triggers.
 
@@ -1762,7 +1762,7 @@ Mapped class `Project`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/bl
 
 ## proposal_sending_attempts
 
-Mapped class `ProposalSendingAttempt`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_models.py#L58).
+Mapped class `ProposalSendingAttempt`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/proposal_sending_models.py#L58).
 
 8 columns; 12 catalog constraints; 3 indexes; 1 application triggers.
 
@@ -1810,7 +1810,7 @@ Mapped class `ProposalSendingAttempt`; [Source](https://github.com/edlopezpm-ops
 
 ## proposal_sending_deliveries
 
-Mapped class `ProposalSendingDelivery`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/proposal_sending_models.py#L22).
+Mapped class `ProposalSendingDelivery`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/proposal_sending_models.py#L22).
 
 25 columns; 32 catalog constraints; 5 indexes; 1 application triggers.
 
@@ -1897,7 +1897,7 @@ Mapped class `ProposalSendingDelivery`; [Source](https://github.com/edlopezpm-op
 
 ## public_email_challenges
 
-Mapped class `PublicEmailChallenge`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L43).
+Mapped class `PublicEmailChallenge`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/admission_models.py#L43).
 
 13 columns; 19 catalog constraints; 5 indexes; 1 application triggers.
 
@@ -1959,7 +1959,7 @@ Mapped class `PublicEmailChallenge`; [Source](https://github.com/edlopezpm-ops/t
 
 ## quote_artifacts
 
-Mapped class `QuoteArtifact`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L105).
+Mapped class `QuoteArtifact`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/quoting_models.py#L105).
 
 12 columns; 19 catalog constraints; 3 indexes; 1 application triggers.
 
@@ -2018,7 +2018,7 @@ Mapped class `QuoteArtifact`; [Source](https://github.com/edlopezpm-ops/timeker-
 
 ## quote_lines
 
-Mapped class `QuoteLine`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L79).
+Mapped class `QuoteLine`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/quoting_models.py#L79).
 
 12 columns; 16 catalog constraints; 3 indexes; 1 application triggers.
 
@@ -2074,7 +2074,7 @@ Mapped class `QuoteLine`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/
 
 ## quote_revisions
 
-Mapped class `QuoteRevision`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L46).
+Mapped class `QuoteRevision`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/quoting_models.py#L46).
 
 19 columns; 29 catalog constraints; 7 indexes; 1 application triggers.
 
@@ -2154,7 +2154,7 @@ Mapped class `QuoteRevision`; [Source](https://github.com/edlopezpm-ops/timeker-
 
 ## quotes
 
-Mapped class `Quote`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/quoting_models.py#L30).
+Mapped class `Quote`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/quoting_models.py#L30).
 
 9 columns; 13 catalog constraints; 5 indexes; 1 application triggers.
 
@@ -2206,7 +2206,7 @@ Mapped class `Quote`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob
 
 ## sending_attempts
 
-Mapped class `SendingAttempt`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L72).
+Mapped class `SendingAttempt`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/sending_models.py#L72).
 
 9 columns; 12 catalog constraints; 3 indexes; 1 application triggers.
 
@@ -2255,7 +2255,7 @@ Mapped class `SendingAttempt`; [Source](https://github.com/edlopezpm-ops/timeker
 
 ## sending_deliveries
 
-Mapped class `SendingDelivery`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L55).
+Mapped class `SendingDelivery`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/sending_models.py#L55).
 
 11 columns; 15 catalog constraints; 6 indexes; 1 application triggers.
 
@@ -2312,7 +2312,7 @@ Mapped class `SendingDelivery`; [Source](https://github.com/edlopezpm-ops/timeke
 
 ## sending_plans
 
-Mapped class `SendingPlan`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L31).
+Mapped class `SendingPlan`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/sending_models.py#L31).
 
 16 columns; 22 catalog constraints; 3 indexes; 1 application triggers.
 
@@ -2378,7 +2378,7 @@ Mapped class `SendingPlan`; [Source](https://github.com/edlopezpm-ops/timeker-PH
 
 ## sending_preferences
 
-Mapped class `SendingPreferences`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/sending_models.py#L21).
+Mapped class `SendingPreferences`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/sending_models.py#L21).
 
 9 columns; 12 catalog constraints; 2 indexes; 0 application triggers.
 
@@ -2424,7 +2424,7 @@ None.
 
 ## subscription_billing_accounts
 
-Mapped class `BillingAccount`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py#L24).
+Mapped class `BillingAccount`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/subscription_billing_models.py#L24).
 
 22 columns; 24 catalog constraints; 3 indexes; 1 application triggers.
 
@@ -2498,7 +2498,7 @@ Mapped class `BillingAccount`; [Source](https://github.com/edlopezpm-ops/timeker
 
 ## subscription_billing_events
 
-Mapped class `BillingEvent`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py#L89).
+Mapped class `BillingEvent`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/subscription_billing_models.py#L89).
 
 8 columns; 12 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -2545,7 +2545,7 @@ Mapped class `BillingEvent`; [Source](https://github.com/edlopezpm-ops/timeker-P
 
 ## subscription_billing_operations
 
-Mapped class `BillingOperation`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_billing_models.py#L71).
+Mapped class `BillingOperation`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/subscription_billing_models.py#L71).
 
 11 columns; 17 catalog constraints; 3 indexes; 1 application triggers.
 
@@ -2601,7 +2601,7 @@ Mapped class `BillingOperation`; [Source](https://github.com/edlopezpm-ops/timek
 
 ## subscription_operations
 
-Mapped class `SubscriptionOperation`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_models.py#L37).
+Mapped class `SubscriptionOperation`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/subscription_models.py#L37).
 
 8 columns; 13 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -2649,7 +2649,7 @@ Mapped class `SubscriptionOperation`; [Source](https://github.com/edlopezpm-ops/
 
 ## time_contributions
 
-Mapped class `TimeContribution`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py#L26).
+Mapped class `TimeContribution`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/time_command_models.py#L26).
 
 15 columns; 24 catalog constraints; 4 indexes; 2 application triggers.
 
@@ -2718,7 +2718,7 @@ Mapped class `TimeContribution`; [Source](https://github.com/edlopezpm-ops/timek
 
 ## time_entries
 
-Mapped class `TimeEntry`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L215).
+Mapped class `TimeEntry`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L215).
 
 11 columns; 13 catalog constraints; 5 indexes; 3 application triggers.
 
@@ -2774,7 +2774,7 @@ Mapped class `TimeEntry`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/
 
 ## time_import_records
 
-Mapped class `TimeImportRecord`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py#L13).
+Mapped class `TimeImportRecord`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/time_command_models.py#L13).
 
 8 columns; 12 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -2821,7 +2821,7 @@ Mapped class `TimeImportRecord`; [Source](https://github.com/edlopezpm-ops/timek
 
 ## time_operations
 
-Mapped class `TimeOperation`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/time_command_models.py#L49).
+Mapped class `TimeOperation`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/time_command_models.py#L49).
 
 9 columns; 14 catalog constraints; 2 indexes; 1 application triggers.
 
@@ -2871,7 +2871,7 @@ Mapped class `TimeOperation`; [Source](https://github.com/edlopezpm-ops/timeker-
 
 ## timecards
 
-Mapped class `Timecard`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L184).
+Mapped class `Timecard`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L184).
 
 17 columns; 22 catalog constraints; 8 indexes; 5 application triggers.
 
@@ -2947,7 +2947,7 @@ Mapped class `Timecard`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/b
 
 ## users
 
-Mapped class `User`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/models.py#L59).
+Mapped class `User`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/models.py#L59).
 
 9 columns; 10 catalog constraints; 2 indexes; 0 application triggers.
 
@@ -2991,7 +2991,7 @@ None.
 
 ## workspace_admissions
 
-Mapped class `WorkspaceAdmission`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_models.py#L12).
+Mapped class `WorkspaceAdmission`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/admission_models.py#L12).
 
 9 columns; 15 catalog constraints; 5 indexes; 1 application triggers.
 
@@ -3045,7 +3045,7 @@ Mapped class `WorkspaceAdmission`; [Source](https://github.com/edlopezpm-ops/tim
 
 ## workspace_subscriptions
 
-Mapped class `WorkspaceSubscription`; [Source](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/subscription_models.py#L13).
+Mapped class `WorkspaceSubscription`; [Source](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/subscription_models.py#L13).
 
 8 columns; 12 catalog constraints; 1 indexes; 1 application triggers.
 

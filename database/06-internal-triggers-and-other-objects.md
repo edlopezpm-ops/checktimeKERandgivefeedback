@@ -1,6 +1,6 @@
 # Internal triggers and other database objects
 
-Source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`; migration head `ph3_009_read_indexes`. Extracted on 2026-10-18 from a new empty PostgreSQL 18.4 database after all 26 Alembic migrations. `timeker_reference` is a synthetic documentation schema, not a hosted schema name. No seed, business-row query or hosted connection ran.
+Candidate source `4bb5c424d6e7d270cdca1479283896be77d581c3`; migration head `ph3_009_read_indexes`. Structural reference inherited from the original 2026-10-18 empty PostgreSQL18.4 reconstruction at `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` after 26 migrations. Exactly 45 structural input blobs are unchanged at the candidate. No database connection, migration or DDL replay was rerun in this refresh. `timeker_reference` is synthetic, not a hosted schema name; no business rows or hosted catalog are included.
 
 
 ## Sequences

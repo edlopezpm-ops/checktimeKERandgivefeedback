@@ -3,24 +3,19 @@
 ## Review baseline
 
 This chapter describes the source prepared for Phase 3 on 2026-10-18. The
-reviewed source is `edlopezpm-ops/timeker-PH2` commit `9fc9eeb`, branch
-`codex/ph3-stage`, derived from the closed PH2 tag `ph2-closeout-2026-10-18`
-at `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6`. The repository name retains PH2
-for continuity; the active development phase is PH3.
+reviewed source is `edlopezpm-ops/timeKER-Stage` commit `4bb5c424d6e7d270cdca1479283896be77d581c3`, branch
+`main`, derived from the closed PH2 tag `ph2-closeout-2026-10-18`
+at `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6`. Permanent repositories are timeKER-Stage and timeKER-PROD; PH3 names the next feature scope, not a temporary repository.
 
-The owner chose to keep using Stage. PH3 feature work awaits the owner's prompts.
-The eventual reviewed production candidate must combine PH2 and authorized PH3
-work. Administrative closure does not establish human acceptance, production GO,
-provider readiness or hosted recovery. This dossier is a source review, not an
+The owner authorized the bounded private PH2 production prelaunch. Production migration/deployment/readback are technically verified; PH3 feature prompts follow on Stage. Execution is supported by the separate release records; approval alone does not establish personal enrollment, human UAT, public/Live readiness or hosted recovery. This dossier is a source review, not an
 instruction to merge, configure a provider, migrate a database or deploy.
 
 Last retained hosted evidence identifies Stage 29, runtime source `e282985`, and
 schema head `ph3_009_read_indexes`. These facts come from canonical records;
-this refresh did not contact Stage or run application tests. Later preparation
-commits change documentation/custody, not the delivered application behavior.
+this refresh did not contact Stage or run application tests. The later reviewed prelaunch delta changes bounded configuration/provider/capability behavior; its bounded private production activation and readback are technically verified.
 
-Sources: [continuation boundary](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eeb/CONTINUE.md),
-[closeout](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eeb/docs/PHASE2_CLOSEOUT.md),
+Sources: [continuation boundary](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/CONTINUE.md),
+[closeout](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/PHASE2_CLOSEOUT.md),
 `docs/STATUS.md`, `HOSTING.md`.
 
 ## 1. System shape
@@ -111,7 +106,7 @@ presence does not prove an actual scheduled run. Scheduled statement Sending
 remains disabled; the Case schedule is not permission to activate it.
 
 Sources: `deploy/cloudflare/src/proxy.ts`,
-[Stage entrypoint](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eeb/deploy/cloudflare/src/index.ts#L6),
+[Stage entrypoint](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/deploy/cloudflare/src/index.ts#L6),
 `deploy/cloudflare/src/stage-archive.ts`, `deploy/cloudflare/wrangler.jsonc`.
 
 ## 4. Request, authentication and tenant boundaries
@@ -232,4 +227,4 @@ identity details, notes, credentials and artifact bytes stay out of logs.
 For PH3 proposals, retain these boundaries and identify the exact source path,
 affected tenant/transaction, user-visible behavior and needed evidence. Residual
 assistant proof, human UAT, recovery/custody, provider lifecycle rehearsal and
-future combined PROD readiness remain open in `docs/STATUS.md`.
+personal enrollment/acceptance and later public/Live readiness remain open in `docs/STATUS.md`; the bounded private prelaunch readback is verified.

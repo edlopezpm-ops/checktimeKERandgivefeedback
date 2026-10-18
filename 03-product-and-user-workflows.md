@@ -2,9 +2,8 @@
 
 ## Current review boundary
 
-Source `9fc9eeb` on prepared `codex/ph3-stage` is the 2026-10-18 review baseline.
-PH2 is administratively closed; Stage continues and PH3 awaits owner prompts.
-The eventual production candidate combines PH2 and authorized PH3 work.
+Source `4bb5c424d6e7d270cdca1479283896be77d581c3` on prepared `main` is the 2026-10-18 review baseline.
+PH2 is administratively closed. Its private production prelaunch is technically verified; Stage continues and PH3 awaits owner prompts.
 
 Last retained hosted evidence is Stage 29 / runtime source `e282985` /
 schema `ph3_009_read_indexes`. This chapter explains source-delivered behavior;
@@ -12,7 +11,7 @@ it does not report new human UAT, new provider proof or a fresh hosted check.
 Current residuals are in `docs/STATUS.md`, including actual assistant connection,
 owner UAT and operational recovery/custody.
 
-Sources: [canonical product brief](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eeb/docs/PROJECT_BRIEF.md),
+Sources: [canonical product brief](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/PROJECT_BRIEF.md),
 `docs/design/DESIGN_SPEC.md`, `docs/PHASE2_CLOSEOUT.md`, `CONTINUE.md`.
 
 ## 1. Product model, navigation and interaction
@@ -78,8 +77,10 @@ shortcut. Google, GitHub and configured managed email are supported source
 methods; configuration alone does not prove successful human enrollment.
 Apple remains design/preparation work.
 
-Registration requires explicit versioned acknowledgment and an activated first
-plan before ordinary workspace use. An existing identity signs in to its own
+Registration requires explicit versioned acknowledgment. An empty new workspace
+requires explicit first-plan activation; an acknowledged owner with retained
+client history may retain workspace access, while plan/capacity guards still
+control growth. An existing identity signs in to its own
 workspace; a verified new owner consumes a prepared private slot. Account
 security links/revokes methods through fresh proof, never an email-string merge.
 
@@ -294,7 +295,7 @@ residuals; source implementation does not prove a human assistant session.
 
 PH3 prompts should build from these delivered workflows, name genuine gaps and
 retain acceptance boundaries. Human UAT, grid comfort, latest performance/Settings
-acceptance, Apple/offboarding, operational recovery and future combined PH2+PH3
+acceptance, Apple/offboarding, operational recovery and private prelaunch verification and later public/Live
 PROD readiness remain open. No new implementation or rollout follows from this
 review package.
 

@@ -1,6 +1,6 @@
 # 09 — PH3 prompt preparation and open decisions
 
-Snapshot: **2026-10-18**, source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. PH2 bookkeeping is closed, PH3 is prepared, and the owner will provide feature prompts. Use this chapter to review the product and formulate bounded work. It starts no implementation and creates no competing specification. Read [canonical CONTINUE][continue] and the [exact queue](08-PAUSE-AND-CONTINUE.md).
+Snapshot: **2026-10-18**, source `4bb5c424d6e7d270cdca1479283896be77d581c3`. PH2 bookkeeping is closed, PH3 is prepared, and the owner will provide feature prompts. Use this chapter to review the product and formulate bounded work. It starts no implementation and creates no competing specification. Read [canonical CONTINUE][continue] and the [exact queue](08-PAUSE-AND-CONTINUE.md).
 
 ## 1. Keep four evidence questions separate
 
@@ -42,7 +42,7 @@ The base cohort and Settings spot check serve different purposes. Retained media
 | EXT-02 | Actual Sandbox annual/3DS/change/cancellation/retention/failed-renewal/grace rehearsal | Provider/tenant/cycle/signed-event evidence; Live activation separate |
 | EXT-03 | Hosted Quoting/Library/commercial Sending UAT | Normal authenticated synthetic creation/edit/upload/publication/review |
 | EXT-04 | Sending operating selection | Decision on manual/jobs/recipient scope and bounded authorized rehearsal; jobs off |
-| EXT-05 | Combined PH2 plus PH3 production candidate | Current diff, owner/bootstrap/override reconciliation, required QA/UAT and release authority |
+| EXT-05 | Authorized private PH2 prelaunch and later public/Live release | Current private-prelaunch diff, personally completed fixed-owner Google/acknowledgment, independent overrides/migrations/grants/custody, fresh deployment/readback; later public/Live authority separate |
 
 Source: [canonical residuals][residuals]. Latest navigation/performance/Settings acceptance and actual Case-cron execution remain explicit limits. Configured cron is not observed execution; a synthetic Pro grant is not a paid-provider event.
 
@@ -78,23 +78,23 @@ The owner selects the next journey, actual assistant host/device scope, lifecycl
 
 ## 7. Source and custody
 
-This analysis follows PH2 consolidation and three PH3 startup-document changes. Tests/migrations/contracts/design references remain active. Superseded operators/test output have local recoverable custody: 28 batches/8,149 files, outside this public package. It does not supply off-host recovery. Independent PH3 bytes/object/link/map checks passed; generic root-AGENTS scaffold compatibility remains an explicit concern. Sources: [custody][custody], [verification limits][verification].
+This analysis follows PH2 consolidation and the reviewed bounded production-prelaunch candidate. Initial clone checks below are retained historical evidence, not a claim that the current candidate differs only in startup documents. Tests/migrations/contracts/design references remain active. Superseded operators/test output have local recoverable custody: 28 batches/8,149 files, outside this public package. It does not supply off-host recovery. Independent PH3 bytes/object/link/map checks passed; generic root-AGENTS scaffold compatibility remains an explicit concern. Sources: [custody][custody], [verification limits][verification].
 
 Approved behavior changes belong in canonical source documents when the owner provides the next scope.
 
-[continue]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/CONTINUE.md#L1
-[status]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L7
-[commercial]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L945
-[work]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L983
-[dense]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1011
-[weekly]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1036
-[performance]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1060
-[measure]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PERFORMANCE_IMPROVEMENTS_2026-10-17.md#L1
-[residuals]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L27
-[agents]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/AGENTS.md#L49
-[operations]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/OPERATIONS.md#L711
-[brief]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PROJECT_BRIEF.md#L1
-[extensions]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/STATUS.md#L39
-[closure]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/DECISIONS.md#L1079
-[custody]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L49
-[verification]: https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/docs/PHASE2_CLOSEOUT.md#L77
+[continue]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/CONTINUE.md#L1
+[status]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/STATUS.md#L52
+[commercial]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/DECISIONS.md#L945
+[work]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/DECISIONS.md#L983
+[dense]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/DECISIONS.md#L1011
+[weekly]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/DECISIONS.md#L1036
+[performance]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/DECISIONS.md#L1060
+[measure]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/PERFORMANCE_IMPROVEMENTS_2026-10-17.md#L1
+[residuals]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/STATUS.md#L72
+[agents]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/AGENTS.md#L55
+[operations]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/OPERATIONS.md#L711
+[brief]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/PROJECT_BRIEF.md#L1
+[extensions]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/STATUS.md#L84
+[closure]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/DECISIONS.md#L1079
+[custody]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/PHASE2_CLOSEOUT.md#L49
+[verification]: https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/docs/PHASE2_CLOSEOUT.md#L77

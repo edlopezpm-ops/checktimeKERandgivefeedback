@@ -30196,9 +30196,13 @@
     }
   ],
   "provenance": {
-    "source_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+    "source_commit": "4bb5c424d6e7d270cdca1479283896be77d581c3",
     "scope": "empty-local-reference-schema-only",
     "not_a_hosted_inventory": true,
-    "no_business_rows": true
+    "no_business_rows": true,
+    "original_reconstruction_source": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+    "evidence_inherited": true,
+    "structural_inputs_verified_unchanged": 45,
+    "no_new_database_connection": true
   }
 }

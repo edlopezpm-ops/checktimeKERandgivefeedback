@@ -1,6 +1,6 @@
 # timeKER database reference
 
-Source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`; migration head `ph3_009_read_indexes`. Extracted on 2026-10-18 from a new empty PostgreSQL 18.4 database after all 26 Alembic migrations. `timeker_reference` is a synthetic documentation schema, not a hosted schema name. No seed, business-row query or hosted connection ran.
+Candidate source `4bb5c424d6e7d270cdca1479283896be77d581c3`; migration head `ph3_009_read_indexes`. Structural reference inherited from the original 2026-10-18 empty PostgreSQL18.4 reconstruction at `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` after 26 migrations. Exactly 45 structural input blobs are unchanged at the candidate. No database connection, migration or DDL replay was rerun in this refresh. `timeker_reference` is synthetic, not a hosted schema name; no business rows or hosted catalog are included.
 
 This folder documents the exact application structure produced by the pinned
 migrations. It is a descriptive reference, not a migration plan or live database dump.
@@ -73,11 +73,16 @@ application callable business-operation stored procedures at this migration head
   were retained outside that population. This task did not refresh those facts.
 - The local cluster used a synthetic DDL owner; hosted roles/grants, platform
   schemas/extensions and actual owner allocations were not reconstructed or read.
-  [Source runtime grant policy](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/scripts/postgres-runtime-grants.sql) and
-  [directory grant policy](https://github.com/edlopezpm-ops/timeker-PH2/blob/9fc9eebdaf9f52170530c8a28d34f6c8cd612c64/app/admission_operations.py#L79-L87) are separate.
+  [Source runtime grant policy](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/scripts/postgres-runtime-grants.sql) and
+  [directory grant policy](https://github.com/edlopezpm-ops/timeKER-Stage/blob/4bb5c424d6e7d270cdca1479283896be77d581c3/app/admission_operations.py#L79-L87) are separate.
 - SQLAlchemy Python defaults and `onupdate` run through that client; they are
   not PostgreSQL DEFAULT clauses or general UPDATE triggers. Direct SQL writers
   must supply fields without server defaults and preserve service/domain rules.
 - No source, hosted data, runtime, provider setting or production deployment was
   changed. Source/models/migrations remain authoritative; regenerate this reference
   after authorized schema changes.
+
+
+## Reconstruction evidence inherited for this candidate
+
+The original empty PostgreSQL18.4 reconstruction was performed against source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64`. This refresh compares 45 migration/model/database/grants source inputs by immutable Git blob and finds them unchanged at `4bb5c424d6e7d270cdca1479283896be77d581c3`. All tables/columns/functions/triggers/FKs/DDL references are retained. No migration, database connection, DDL replay or business-row read was repeated. Original native verification timestamps/results remain attributed in [PROVENANCE.json](PROVENANCE.json). Fresh generated inventories are static source evidence; production migration/readback are separately verified by the bounded release evidence; the reference catalog remains an inherited empty-schema reconstruction.

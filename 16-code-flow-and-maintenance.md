@@ -1,7 +1,7 @@
 # 16 — Code flow and maintenance keystone
 
 The [code-flow reference](code-flow/README.md) traces the pinned PH3 source
-`9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` through real functions, branches,
+`4bb5c424d6e7d270cdca1479283896be77d581c3` through real functions, branches,
 transactions, persistence guards, external effects and error outcomes.
 
 Read the [single code-flow Markdown](code-flow/timeKER-CODE-FLOW-FULL.md), or the
@@ -11,7 +11,7 @@ documents/Mail/Sending, integrations/subscriptions, operations/troubleshooting,
 browser/UI and the complete Python symbol index.
 
 The deterministic AST index covers 118 production/support Python modules,
-103 classes, 945 functions/async declarations, 13,140 syntactic call sites and
+103 classes, 945 functions/async declarations, 13,150 syntactic call sites and
 438 internal declared-import edges; it includes 180 app literal route decorators.
 It provides source locations rather than claiming runtime call resolution,
 execution order, coverage or reachability. All browser scripts and Worker entry

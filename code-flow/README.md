@@ -1,7 +1,7 @@
 # timeKER code flow — maintenance keystone
 
 This is a source-traced maintenance reference for commit
-`9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` of the prepared PH3 branch. Diagrams
+`4bb5c424d6e7d270cdca1479283896be77d581c3` of the reviewed private-prelaunch candidate branch. Diagrams
 follow actual entry points, function branches, transaction boundaries, failure
 outcomes and external-effect custody. They describe source behavior, not fresh
 Stage/PROD execution or an approved future SDK.
@@ -82,7 +82,7 @@ supplies all source hashes and test declarations.
 
 The [AST JSON](module-symbol-call-index.json) covers 118 tracked Python modules:
 90 application, 27 Alembic including its environment and 1 support script; 103 class
-declarations, 945 function/async declarations and 13,140 syntactic call sites. It
+declarations, 945 function/async declarations and 13,150 syntactic call sites. It
 also records 180 app literal route decorators and 438 internal declared-import
 edges. This is a source-location index, not an inferred runtime call graph.
 The [declared-import Mermaid source](declared-imports.mmd) is correspondingly a
@@ -101,7 +101,7 @@ diagrams explain control behavior the AST cannot prove.
 Do not turn a current implementation detail or a static call expression into a
 stable public contract. Source capability, deployment activation, observed
 execution and human acceptance remain different facts. PH2 residuals, Stage-only
-boundaries and future combined PH2+PH3 PROD authority remain in the dossier.
+boundaries and authorized private prelaunch and later public/Live production boundaries remain in the dossier.
 
 ## Incident evidence template
 

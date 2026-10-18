@@ -1,5 +1,5 @@
 {
-  "source_commit": "9fc9eebdaf9f52170530c8a28d34f6c8cd612c64",
+  "source_commit": "4bb5c424d6e7d270cdca1479283896be77d581c3",
   "hash_domain": "SHA-256 of raw inspected checkout bytes; Git blob line endings can differ; canonical source manifest also records Git blob IDs",
   "scope": "tracked app/alembic/scripts Python; tests are indexed in dossier chapter12",
   "method": "Python AST declarations/import statements/call expression locations; no code imports or execution",
@@ -19,7 +19,7 @@
     "script_python_modules": 1,
     "class_declarations": 103,
     "function_and_async_declarations": 945,
-    "syntactic_call_sites": 13140,
+    "syntactic_call_sites": 13150,
     "internal_declared_import_edges": 438,
     "app_literal_route_decorators": 180
   },
@@ -24201,7 +24201,7 @@
     {
       "path": "app/config.py",
       "module": "app.config",
-      "sha256": "988fb2cc23e55bc4e9f310992a86d496dfa5f9a543609780591085e63a50446e",
+      "sha256": "0cdf336021c1e0aa9f57eeddaa2890f8923b186eeb90184f8fa5d6610a8712d0",
       "imports": [
         {
           "module": "os",
@@ -24263,21 +24263,21 @@
           "module": "app.integration_auth",
           "symbol": "registered_clients",
           "alias": null,
-          "line": 168,
+          "line": 171,
           "scope": "Settings.__post_init__"
         },
         {
           "module": "app.paddle",
           "symbol": "PaddleError",
           "alias": null,
-          "line": 186,
+          "line": 195,
           "scope": "Settings.__post_init__"
         },
         {
           "module": "app.paddle",
           "symbol": "provider_from_settings",
           "alias": null,
-          "line": 186,
+          "line": 195,
           "scope": "Settings.__post_init__"
         }
       ],
@@ -24287,14 +24287,14 @@
           "qualified_name": "Settings",
           "kind": "class",
           "line": 14,
-          "end_line": 239
+          "end_line": 249
         },
         {
           "name": "__post_init__",
           "qualified_name": "Settings.__post_init__",
           "kind": "function",
-          "line": 64,
-          "end_line": 191,
+          "line": 65,
+          "end_line": 200,
           "parameters": [
             "self"
           ],
@@ -24305,8 +24305,8 @@
           "name": "enrollment_active",
           "qualified_name": "Settings.enrollment_active",
           "kind": "function",
-          "line": 194,
-          "end_line": 195,
+          "line": 203,
+          "end_line": 204,
           "parameters": [
             "self"
           ],
@@ -24317,8 +24317,8 @@
           "name": "hosted",
           "qualified_name": "Settings.hosted",
           "kind": "function",
-          "line": 198,
-          "end_line": 199,
+          "line": 207,
+          "end_line": 208,
           "parameters": [
             "self"
           ],
@@ -24329,8 +24329,8 @@
           "name": "commercial_documents_available",
           "qualified_name": "Settings.commercial_documents_available",
           "kind": "function",
-          "line": 202,
-          "end_line": 203,
+          "line": 211,
+          "end_line": 212,
           "parameters": [
             "self"
           ],
@@ -24341,8 +24341,8 @@
           "name": "sending_available",
           "qualified_name": "Settings.sending_available",
           "kind": "function",
-          "line": 206,
-          "end_line": 207,
+          "line": 215,
+          "end_line": 216,
           "parameters": [
             "self"
           ],
@@ -24353,8 +24353,8 @@
           "name": "sending_enabled",
           "qualified_name": "Settings.sending_enabled",
           "kind": "function",
-          "line": 210,
-          "end_line": 211,
+          "line": 219,
+          "end_line": 220,
           "parameters": [
             "self"
           ],
@@ -24365,8 +24365,8 @@
           "name": "from_env",
           "qualified_name": "Settings.from_env",
           "kind": "function",
-          "line": 214,
-          "end_line": 239,
+          "line": 223,
+          "end_line": 249,
           "parameters": [
             "cls"
           ],
@@ -24398,11 +24398,6 @@
         {
           "caller": "Settings",
           "callee_expression": "field",
-          "line": 45
-        },
-        {
-          "caller": "Settings",
-          "callee_expression": "field",
           "line": 46
         },
         {
@@ -24418,97 +24413,92 @@
         {
           "caller": "Settings",
           "callee_expression": "field",
-          "line": 56
+          "line": 49
         },
         {
           "caller": "Settings",
           "callee_expression": "field",
-          "line": 60
+          "line": 57
+        },
+        {
+          "caller": "Settings",
+          "callee_expression": "field",
+          "line": 61
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "re.fullmatch",
-          "line": 65
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
           "line": 66
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "re.fullmatch",
+          "callee_expression": "ValueError",
           "line": 67
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
+          "callee_expression": "re.fullmatch",
           "line": 68
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "re.fullmatch",
-          "line": 70
+          "callee_expression": "ValueError",
+          "line": 69
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
+          "callee_expression": "re.fullmatch",
           "line": 71
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "len",
+          "callee_expression": "ValueError",
           "line": 72
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
+          "callee_expression": "len",
           "line": 73
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 75
+          "line": 74
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 77
+          "line": 76
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
+          "line": 78
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "re.fullmatch",
-          "line": 78
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "len",
-          "line": 78
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
           "line": 79
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "type",
-          "line": 80
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "type",
-          "line": 80
+          "callee_expression": "len",
+          "line": 79
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
+          "line": 80
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "any",
           "line": 81
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "self.base_url.rstrip",
-          "line": 83
+          "callee_expression": "type",
+          "line": 81
         },
         {
           "caller": "Settings.__post_init__",
@@ -24517,67 +24507,62 @@
         },
         {
           "caller": "Settings.__post_init__",
+          "callee_expression": "self.base_url.rstrip",
+          "line": 86
+        },
+        {
+          "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 88
+          "line": 87
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "re.fullmatch",
-          "line": 90
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "re.fullmatch",
+          "callee_expression": "ValueError",
           "line": 91
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
+          "callee_expression": "re.fullmatch",
           "line": 93
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
-          "line": 95
+          "callee_expression": "re.fullmatch",
+          "line": 94
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "len",
+          "callee_expression": "ValueError",
           "line": 96
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 97
+          "line": 98
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
+          "callee_expression": "len",
           "line": 99
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 101
+          "line": 100
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "self.database_url.startswith",
+          "callee_expression": "ValueError",
           "line": 102
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 103
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "urlsplit",
           "line": 104
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "re.fullmatch",
+          "callee_expression": "self.database_url.startswith",
           "line": 105
         },
         {
@@ -24587,23 +24572,33 @@
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
+          "callee_expression": "urlsplit",
+          "line": 107
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "re.fullmatch",
           "line": 108
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "bool",
-          "line": 109
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "bool",
+          "callee_expression": "ValueError",
           "line": 109
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 110
+          "line": 111
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "bool",
+          "line": 112
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "bool",
+          "line": 112
         },
         {
           "caller": "Settings.__post_init__",
@@ -24612,72 +24607,62 @@
         },
         {
           "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
+          "line": 116
+        },
+        {
+          "caller": "Settings.__post_init__",
           "callee_expression": "len",
-          "line": 114
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
-          "line": 115
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
           "line": 117
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 119
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "any",
-          "line": 120
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "re.match",
-          "line": 121
+          "line": 118
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
+          "line": 120
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
+          "line": 122
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "any",
+          "line": 123
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "re.match",
           "line": 124
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 126
+          "line": 127
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 128
+          "line": 129
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
+          "line": 131
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "Fernet",
-          "line": 130
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "self.encryption_key.encode",
-          "line": 130
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
-          "line": 132
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "any",
           "line": 133
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "type",
+          "callee_expression": "self.encryption_key.encode",
           "line": 133
         },
         {
@@ -24687,18 +24672,28 @@
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
-          "line": 137
+          "callee_expression": "any",
+          "line": 136
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "len",
+          "callee_expression": "type",
+          "line": 136
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
           "line": 138
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 139
+          "line": 140
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "len",
+          "line": 141
         },
         {
           "caller": "Settings.__post_init__",
@@ -24708,106 +24703,101 @@
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 146
+          "line": 145
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "getattr",
-          "line": 148
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "getattr",
+          "callee_expression": "ValueError",
           "line": 149
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "isinstance",
-          "line": 150
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "isinstance",
-          "line": 150
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
+          "callee_expression": "getattr",
           "line": 151
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "bool",
+          "callee_expression": "getattr",
           "line": 152
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "bool",
-          "line": 152
+          "callee_expression": "isinstance",
+          "line": 153
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "re.fullmatch",
+          "callee_expression": "isinstance",
+          "line": 153
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
           "line": 154
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "len",
+          "callee_expression": "bool",
           "line": 155
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "any",
+          "callee_expression": "bool",
           "line": 155
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "character.isspace",
-          "line": 155
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
-          "line": 157
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
-          "line": 159
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "re.fullmatch",
-          "line": 162
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "self.email_auth_publishable_key.startswith",
-          "line": 163
+          "line": 157
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "len",
-          "line": 164
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
-          "line": 166
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "registered_clients",
-          "line": 170
-        },
-        {
-          "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
-          "line": 172
+          "line": 158
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "any",
+          "line": 158
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "character.isspace",
+          "line": 158
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
+          "line": 160
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
+          "line": 162
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "re.fullmatch",
+          "line": 165
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "self.email_auth_publishable_key.startswith",
+          "line": 166
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "len",
+          "line": 167
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
+          "line": 169
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "registered_clients",
           "line": 173
         },
         {
@@ -24817,78 +24807,98 @@
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "self.base_url.rstrip",
+          "callee_expression": "any",
+          "line": 176
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
           "line": 178
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
-          "line": 179
+          "callee_expression": "self.base_url.rstrip",
+          "line": 181
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "re.fullmatch",
+          "callee_expression": "ValueError",
           "line": 182
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "ValueError",
+          "callee_expression": "self.base_url.rstrip",
           "line": 184
         },
         {
           "caller": "Settings.__post_init__",
-          "callee_expression": "provider_from_settings",
-          "line": 189
+          "callee_expression": "ValueError",
+          "line": 188
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "re.fullmatch",
+          "line": 191
         },
         {
           "caller": "Settings.__post_init__",
           "callee_expression": "ValueError",
-          "line": 191
+          "line": 193
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "provider_from_settings",
+          "line": 198
+        },
+        {
+          "caller": "Settings.__post_init__",
+          "callee_expression": "ValueError",
+          "line": 200
         },
         {
           "caller": "Settings.from_env",
           "callee_expression": "load_dotenv",
-          "line": 215
+          "line": 224
         },
         {
           "caller": "Settings.from_env",
           "callee_expression": "os.getenv",
-          "line": 218
+          "line": 227
         },
         {
           "caller": "Settings.from_env",
           "callee_expression": "name.upper",
-          "line": 218
+          "line": 227
         },
         {
           "caller": "Settings.from_env",
           "callee_expression": "raw.lower",
-          "line": 234
+          "line": 244
         },
         {
           "caller": "Settings.from_env",
           "callee_expression": "tuple",
-          "line": 236
+          "line": 246
         },
         {
           "caller": "Settings.from_env",
           "callee_expression": "x.strip",
-          "line": 236
+          "line": 246
         },
         {
           "caller": "Settings.from_env",
           "callee_expression": "raw.split",
-          "line": 236
+          "line": 246
         },
         {
           "caller": "Settings.from_env",
           "callee_expression": "x.strip",
-          "line": 236
+          "line": 246
         },
         {
           "caller": "Settings.from_env",
           "callee_expression": "cls",
-          "line": 239
+          "line": 249
         },
         {
           "caller": "Settings",
@@ -55277,7 +55287,7 @@
     {
       "path": "app/paddle.py",
       "module": "app.paddle",
-      "sha256": "81d60d45b1b7a172ced8b663c67f1968f2129ad749610024603ec63d42d8ab48",
+      "sha256": "a4a84895a0aa041e02de95d24358f7cb6fbf006b1b0ff3c4f95f1646e0d1a367",
       "imports": [
         {
           "module": "hashlib",
@@ -55546,14 +55556,14 @@
           "qualified_name": "PaddleSandbox",
           "kind": "class",
           "line": 242,
-          "end_line": 657
+          "end_line": 665
         },
         {
           "name": "__init__",
           "qualified_name": "PaddleSandbox.__init__",
           "kind": "function",
           "line": 248,
-          "end_line": 297,
+          "end_line": 305,
           "parameters": [
             "self",
             "settings",
@@ -55566,8 +55576,8 @@
           "name": "_request",
           "qualified_name": "PaddleSandbox._request",
           "kind": "async_function",
-          "line": 299,
-          "end_line": 334,
+          "line": 307,
+          "end_line": 342,
           "parameters": [
             "self",
             "method",
@@ -55582,8 +55592,8 @@
           "name": "_offer",
           "qualified_name": "PaddleSandbox._offer",
           "kind": "function",
-          "line": 336,
-          "end_line": 339,
+          "line": 344,
+          "end_line": 347,
           "parameters": [
             "self",
             "offer"
@@ -55595,8 +55605,8 @@
           "name": "validated_price",
           "qualified_name": "PaddleSandbox.validated_price",
           "kind": "async_function",
-          "line": 341,
-          "end_line": 345,
+          "line": 349,
+          "end_line": 353,
           "parameters": [
             "self",
             "offer"
@@ -55608,8 +55618,8 @@
           "name": "_price",
           "qualified_name": "PaddleSandbox._price",
           "kind": "function",
-          "line": 347,
-          "end_line": 362,
+          "line": 355,
+          "end_line": 370,
           "parameters": [
             "self",
             "data",
@@ -55623,8 +55633,8 @@
           "name": "_items",
           "qualified_name": "PaddleSandbox._items",
           "kind": "function",
-          "line": 364,
-          "end_line": 380,
+          "line": 372,
+          "end_line": 388,
           "parameters": [
             "self",
             "data",
@@ -55637,8 +55647,8 @@
           "name": "_subscription",
           "qualified_name": "PaddleSandbox._subscription",
           "kind": "function",
-          "line": 382,
-          "end_line": 389,
+          "line": 390,
+          "end_line": 397,
           "parameters": [
             "self",
             "data",
@@ -55653,8 +55663,8 @@
           "name": "get_subscription",
           "qualified_name": "PaddleSandbox.get_subscription",
           "kind": "async_function",
-          "line": 391,
-          "end_line": 395,
+          "line": 399,
+          "end_line": 403,
           "parameters": [
             "self",
             "identifier"
@@ -55666,8 +55676,8 @@
           "name": "get_transaction",
           "qualified_name": "PaddleSandbox.get_transaction",
           "kind": "async_function",
-          "line": 397,
-          "end_line": 417,
+          "line": 405,
+          "end_line": 425,
           "parameters": [
             "self",
             "identifier"
@@ -55679,8 +55689,8 @@
           "name": "_checkout_url",
           "qualified_name": "PaddleSandbox._checkout_url",
           "kind": "function",
-          "line": 419,
-          "end_line": 431,
+          "line": 427,
+          "end_line": 439,
           "parameters": [
             "self",
             "value",
@@ -55693,8 +55703,8 @@
           "name": "create_checkout",
           "qualified_name": "PaddleSandbox.create_checkout",
           "kind": "async_function",
-          "line": 433,
-          "end_line": 462,
+          "line": 441,
+          "end_line": 470,
           "parameters": [
             "self",
             "checkout_uuid",
@@ -55708,8 +55718,8 @@
           "name": "portal",
           "qualified_name": "PaddleSandbox.portal",
           "kind": "async_function",
-          "line": 464,
-          "end_line": 493,
+          "line": 472,
+          "end_line": 501,
           "parameters": [
             "self",
             "customer_id",
@@ -55722,8 +55732,8 @@
           "name": "_portal_url",
           "qualified_name": "PaddleSandbox._portal_url",
           "kind": "function",
-          "line": 495,
-          "end_line": 513,
+          "line": 503,
+          "end_line": 521,
           "parameters": [
             "self",
             "value",
@@ -55737,8 +55747,8 @@
           "name": "_change",
           "qualified_name": "PaddleSandbox._change",
           "kind": "async_function",
-          "line": 515,
-          "end_line": 536,
+          "line": 523,
+          "end_line": 544,
           "parameters": [
             "self",
             "identifier",
@@ -55753,8 +55763,8 @@
           "name": "preview_change",
           "qualified_name": "PaddleSandbox.preview_change",
           "kind": "async_function",
-          "line": 538,
-          "end_line": 539,
+          "line": 546,
+          "end_line": 547,
           "parameters": [
             "self",
             "subscription_id",
@@ -55768,8 +55778,8 @@
           "name": "change_subscription",
           "qualified_name": "PaddleSandbox.change_subscription",
           "kind": "async_function",
-          "line": 541,
-          "end_line": 542,
+          "line": 549,
+          "end_line": 550,
           "parameters": [
             "self",
             "subscription_id",
@@ -55783,8 +55793,8 @@
           "name": "validated_retention_discount",
           "qualified_name": "PaddleSandbox.validated_retention_discount",
           "kind": "async_function",
-          "line": 544,
-          "end_line": 570,
+          "line": 552,
+          "end_line": 578,
           "parameters": [
             "self"
           ],
@@ -55795,8 +55805,8 @@
           "name": "_retention",
           "qualified_name": "PaddleSandbox._retention",
           "kind": "async_function",
-          "line": 572,
-          "end_line": 605,
+          "line": 580,
+          "end_line": 613,
           "parameters": [
             "self",
             "identifier",
@@ -55811,8 +55821,8 @@
           "name": "preview_retention",
           "qualified_name": "PaddleSandbox.preview_retention",
           "kind": "async_function",
-          "line": 607,
-          "end_line": 608,
+          "line": 615,
+          "end_line": 616,
           "parameters": [
             "self",
             "identifier",
@@ -55825,8 +55835,8 @@
           "name": "apply_retention",
           "qualified_name": "PaddleSandbox.apply_retention",
           "kind": "async_function",
-          "line": 610,
-          "end_line": 611,
+          "line": 618,
+          "end_line": 619,
           "parameters": [
             "self",
             "identifier",
@@ -55840,8 +55850,8 @@
           "name": "cancel_at_period_end",
           "qualified_name": "PaddleSandbox.cancel_at_period_end",
           "kind": "async_function",
-          "line": 613,
-          "end_line": 629,
+          "line": 621,
+          "end_line": 637,
           "parameters": [
             "self",
             "identifier"
@@ -55853,8 +55863,8 @@
           "name": "_error",
           "qualified_name": "PaddleSandbox._error",
           "kind": "function",
-          "line": 632,
-          "end_line": 633,
+          "line": 640,
+          "end_line": 641,
           "parameters": [
             "self",
             "code"
@@ -55866,8 +55876,8 @@
           "name": "_uncertain",
           "qualified_name": "PaddleSandbox._uncertain",
           "kind": "function",
-          "line": 635,
-          "end_line": 636,
+          "line": 643,
+          "end_line": 644,
           "parameters": [
             "self"
           ],
@@ -55878,8 +55888,8 @@
           "name": "_unavailable",
           "qualified_name": "PaddleSandbox._unavailable",
           "kind": "function",
-          "line": 638,
-          "end_line": 639,
+          "line": 646,
+          "end_line": 647,
           "parameters": [
             "self"
           ],
@@ -55890,8 +55900,8 @@
           "name": "_id",
           "qualified_name": "PaddleSandbox._id",
           "kind": "function",
-          "line": 641,
-          "end_line": 645,
+          "line": 649,
+          "end_line": 653,
           "parameters": [
             "self",
             "value",
@@ -55904,8 +55914,8 @@
           "name": "_date",
           "qualified_name": "PaddleSandbox._date",
           "kind": "function",
-          "line": 647,
-          "end_line": 651,
+          "line": 655,
+          "end_line": 659,
           "parameters": [
             "self",
             "value"
@@ -55917,8 +55927,8 @@
           "name": "_url",
           "qualified_name": "PaddleSandbox._url",
           "kind": "function",
-          "line": 653,
-          "end_line": 657,
+          "line": 661,
+          "end_line": 665,
           "parameters": [
             "self",
             "value"
@@ -55930,15 +55940,15 @@
           "name": "PaddleLive",
           "qualified_name": "PaddleLive",
           "kind": "class",
-          "line": 660,
-          "end_line": 664
+          "line": 668,
+          "end_line": 672
         },
         {
           "name": "provider_from_settings",
           "qualified_name": "provider_from_settings",
           "kind": "function",
-          "line": 667,
-          "end_line": 669,
+          "line": 675,
+          "end_line": 677,
           "parameters": [
             "settings",
             "transport"
@@ -56375,803 +56385,808 @@
         },
         {
           "caller": "PaddleSandbox.__init__",
-          "callee_expression": "settings.base_url.rstrip",
+          "callee_expression": "getattr",
           "line": 257
         },
         {
           "caller": "PaddleSandbox.__init__",
-          "callee_expression": "isinstance",
+          "callee_expression": "settings.base_url.rstrip",
           "line": 258
         },
         {
           "caller": "PaddleSandbox.__init__",
-          "callee_expression": "len",
+          "callee_expression": "isinstance",
           "line": 259
         },
         {
           "caller": "PaddleSandbox.__init__",
-          "callee_expression": "any",
+          "callee_expression": "len",
           "line": 260
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "any",
+          "line": 261
         },
         {
           "caller": "PaddleSandbox.__init__",
           "callee_expression": "c.isspace",
-          "line": 260
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "isinstance",
-          "line": 262
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "re.fullmatch",
-          "line": 263
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "isinstance",
-          "line": 267
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "re.fullmatch",
-          "line": 268
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "self._error",
-          "line": 271
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "urlsplit",
-          "line": 273
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "_json",
-          "line": 274
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "isinstance",
-          "line": 284
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "set",
-          "line": 285
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "set",
-          "line": 285
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "len",
-          "line": 286
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "set",
-          "line": 286
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "prices.values",
-          "line": 286
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "prices.values",
-          "line": 289
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "self._id",
-          "line": 290
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "self._error",
-          "line": 292
-        },
-        {
-          "caller": "PaddleSandbox.__init__",
-          "callee_expression": "settings.base_url.rstrip",
-          "line": 293
+          "line": 261
         },
         {
           "caller": "PaddleSandbox.__init__",
           "callee_expression": "getattr",
-          "line": 296
+          "line": 263
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "getattr",
+          "line": 264
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "getattr",
+          "line": 265
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "getattr",
+          "line": 266
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "getattr",
+          "line": 267
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "getattr",
+          "line": 268
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "settings.base_url.rstrip",
+          "line": 269
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "isinstance",
+          "line": 270
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "re.fullmatch",
+          "line": 271
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "isinstance",
+          "line": 275
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "re.fullmatch",
+          "line": 276
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "self._error",
+          "line": 279
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "urlsplit",
+          "line": 281
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "_json",
+          "line": 282
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "isinstance",
+          "line": 292
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "set",
+          "line": 293
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "set",
+          "line": 293
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "len",
+          "line": 294
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "set",
+          "line": 294
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "prices.values",
+          "line": 294
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "prices.values",
+          "line": 297
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "self._id",
+          "line": 298
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "self._error",
+          "line": 300
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "settings.base_url.rstrip",
+          "line": 301
+        },
+        {
+          "caller": "PaddleSandbox.__init__",
+          "callee_expression": "getattr",
+          "line": 304
         },
         {
           "caller": "PaddleSandbox._request",
           "callee_expression": "httpx.AsyncClient",
-          "line": 301
+          "line": 309
         },
         {
           "caller": "PaddleSandbox._request",
           "callee_expression": "httpx.Timeout",
-          "line": 303
+          "line": 311
         },
         {
           "caller": "PaddleSandbox._request",
           "callee_expression": "client.request",
-          "line": 307
+          "line": 315
         },
         {
           "caller": "PaddleSandbox._request",
           "callee_expression": "self._uncertain",
-          "line": 318
-        },
-        {
-          "caller": "PaddleSandbox._request",
-          "callee_expression": "self._unavailable",
-          "line": 318
-        },
-        {
-          "caller": "PaddleSandbox._request",
-          "callee_expression": "self._uncertain",
-          "line": 321
-        },
-        {
-          "caller": "PaddleSandbox._request",
-          "callee_expression": "self._unavailable",
-          "line": 321
-        },
-        {
-          "caller": "PaddleSandbox._request",
-          "callee_expression": "self._uncertain",
-          "line": 323
-        },
-        {
-          "caller": "PaddleSandbox._request",
-          "callee_expression": "_rejection",
-          "line": 324
-        },
-        {
-          "caller": "PaddleSandbox._request",
-          "callee_expression": "len",
           "line": 326
         },
         {
           "caller": "PaddleSandbox._request",
-          "callee_expression": "_json",
-          "line": 328
-        },
-        {
-          "caller": "PaddleSandbox._request",
-          "callee_expression": "isinstance",
-          "line": 330
+          "callee_expression": "self._unavailable",
+          "line": 326
         },
         {
           "caller": "PaddleSandbox._request",
           "callee_expression": "self._uncertain",
-          "line": 333
+          "line": 329
+        },
+        {
+          "caller": "PaddleSandbox._request",
+          "callee_expression": "self._unavailable",
+          "line": 329
+        },
+        {
+          "caller": "PaddleSandbox._request",
+          "callee_expression": "self._uncertain",
+          "line": 331
+        },
+        {
+          "caller": "PaddleSandbox._request",
+          "callee_expression": "_rejection",
+          "line": 332
+        },
+        {
+          "caller": "PaddleSandbox._request",
+          "callee_expression": "len",
+          "line": 334
+        },
+        {
+          "caller": "PaddleSandbox._request",
+          "callee_expression": "_json",
+          "line": 336
+        },
+        {
+          "caller": "PaddleSandbox._request",
+          "callee_expression": "isinstance",
+          "line": 338
+        },
+        {
+          "caller": "PaddleSandbox._request",
+          "callee_expression": "self._uncertain",
+          "line": 341
         },
         {
           "caller": "PaddleSandbox._request",
           "callee_expression": "self._error",
-          "line": 333
+          "line": 341
         },
         {
           "caller": "PaddleSandbox._offer",
           "callee_expression": "isinstance",
-          "line": 337
+          "line": 345
         },
         {
           "caller": "PaddleSandbox._offer",
           "callee_expression": "self._error",
-          "line": 338
+          "line": 346
         },
         {
           "caller": "PaddleSandbox.validated_price",
           "callee_expression": "self._offer",
-          "line": 342
+          "line": 350
         },
         {
           "caller": "PaddleSandbox.validated_price",
           "callee_expression": "self._request",
-          "line": 343
+          "line": 351
         },
         {
           "caller": "PaddleSandbox.validated_price",
           "callee_expression": "self._price",
-          "line": 344
-        },
-        {
-          "caller": "PaddleSandbox._price",
-          "callee_expression": "data.get",
-          "line": 349
-        },
-        {
-          "caller": "PaddleSandbox._price",
-          "callee_expression": "data.get",
-          "line": 351
-        },
-        {
-          "caller": "PaddleSandbox._price",
-          "callee_expression": "data.get",
           "line": 352
         },
         {
           "caller": "PaddleSandbox._price",
           "callee_expression": "data.get",
-          "line": 353
-        },
-        {
-          "caller": "PaddleSandbox._price",
-          "callee_expression": "data.get",
-          "line": 354
-        },
-        {
-          "caller": "PaddleSandbox._price",
-          "callee_expression": "data.get",
-          "line": 355
-        },
-        {
-          "caller": "PaddleSandbox._price",
-          "callee_expression": "data.get",
-          "line": 356
-        },
-        {
-          "caller": "PaddleSandbox._price",
-          "callee_expression": "isinstance",
           "line": 357
         },
         {
           "caller": "PaddleSandbox._price",
+          "callee_expression": "data.get",
+          "line": 359
+        },
+        {
+          "caller": "PaddleSandbox._price",
+          "callee_expression": "data.get",
+          "line": 360
+        },
+        {
+          "caller": "PaddleSandbox._price",
+          "callee_expression": "data.get",
+          "line": 361
+        },
+        {
+          "caller": "PaddleSandbox._price",
+          "callee_expression": "data.get",
+          "line": 362
+        },
+        {
+          "caller": "PaddleSandbox._price",
+          "callee_expression": "data.get",
+          "line": 363
+        },
+        {
+          "caller": "PaddleSandbox._price",
+          "callee_expression": "data.get",
+          "line": 364
+        },
+        {
+          "caller": "PaddleSandbox._price",
+          "callee_expression": "isinstance",
+          "line": 365
+        },
+        {
+          "caller": "PaddleSandbox._price",
           "callee_expression": "cycle.get",
-          "line": 358
+          "line": 366
         },
         {
           "caller": "PaddleSandbox._price",
           "callee_expression": "type",
-          "line": 359
+          "line": 367
         },
         {
           "caller": "PaddleSandbox._price",
           "callee_expression": "cycle.get",
-          "line": 359
+          "line": 367
         },
         {
           "caller": "PaddleSandbox._price",
           "callee_expression": "self._error",
-          "line": 362
+          "line": 370
         },
         {
           "caller": "PaddleSandbox._items",
           "callee_expression": "data.get",
-          "line": 365
+          "line": 373
         },
         {
           "caller": "PaddleSandbox._items",
           "callee_expression": "isinstance",
-          "line": 366
+          "line": 374
         },
         {
           "caller": "PaddleSandbox._items",
           "callee_expression": "len",
-          "line": 366
+          "line": 374
         },
         {
           "caller": "PaddleSandbox._items",
           "callee_expression": "isinstance",
-          "line": 366
+          "line": 374
         },
         {
           "caller": "PaddleSandbox._items",
           "callee_expression": "self._error",
-          "line": 367
-        },
-        {
-          "caller": "PaddleSandbox._items",
-          "callee_expression": "items[subscript].get",
-          "line": 368
-        },
-        {
-          "caller": "PaddleSandbox._items",
-          "callee_expression": "type",
-          "line": 370
-        },
-        {
-          "caller": "PaddleSandbox._items",
-          "callee_expression": "items[subscript].get",
-          "line": 370
-        },
-        {
-          "caller": "PaddleSandbox._items",
-          "callee_expression": "isinstance",
-          "line": 372
-        },
-        {
-          "caller": "PaddleSandbox._items",
-          "callee_expression": "price.get",
-          "line": 373
-        },
-        {
-          "caller": "PaddleSandbox._items",
-          "callee_expression": "self._prices.values",
-          "line": 373
-        },
-        {
-          "caller": "PaddleSandbox._items",
-          "callee_expression": "data.get",
           "line": 375
         },
         {
           "caller": "PaddleSandbox._items",
-          "callee_expression": "data.get",
+          "callee_expression": "items[subscript].get",
           "line": 376
         },
         {
           "caller": "PaddleSandbox._items",
-          "callee_expression": "self._error",
+          "callee_expression": "type",
           "line": 378
         },
         {
           "caller": "PaddleSandbox._items",
-          "callee_expression": "next",
-          "line": 379
+          "callee_expression": "items[subscript].get",
+          "line": 378
         },
         {
           "caller": "PaddleSandbox._items",
-          "callee_expression": "self._prices.items",
-          "line": 379
-        },
-        {
-          "caller": "PaddleSandbox._items",
-          "callee_expression": "self._price",
+          "callee_expression": "isinstance",
           "line": 380
         },
         {
-          "caller": "PaddleSandbox._subscription",
+          "caller": "PaddleSandbox._items",
+          "callee_expression": "price.get",
+          "line": 381
+        },
+        {
+          "caller": "PaddleSandbox._items",
+          "callee_expression": "self._prices.values",
+          "line": 381
+        },
+        {
+          "caller": "PaddleSandbox._items",
           "callee_expression": "data.get",
           "line": 383
         },
         {
+          "caller": "PaddleSandbox._items",
+          "callee_expression": "data.get",
+          "line": 384
+        },
+        {
+          "caller": "PaddleSandbox._items",
+          "callee_expression": "self._error",
+          "line": 386
+        },
+        {
+          "caller": "PaddleSandbox._items",
+          "callee_expression": "next",
+          "line": 387
+        },
+        {
+          "caller": "PaddleSandbox._items",
+          "callee_expression": "self._prices.items",
+          "line": 387
+        },
+        {
+          "caller": "PaddleSandbox._items",
+          "callee_expression": "self._price",
+          "line": 388
+        },
+        {
+          "caller": "PaddleSandbox._subscription",
+          "callee_expression": "data.get",
+          "line": 391
+        },
+        {
           "caller": "PaddleSandbox._subscription",
           "callee_expression": "self._error",
-          "line": 384
+          "line": 392
         },
         {
           "caller": "PaddleSandbox._subscription",
           "callee_expression": "self._id",
-          "line": 385
+          "line": 393
         },
         {
           "caller": "PaddleSandbox._subscription",
           "callee_expression": "data.get",
-          "line": 385
+          "line": 393
         },
         {
           "caller": "PaddleSandbox._subscription",
           "callee_expression": "data.get",
-          "line": 386
+          "line": 394
         },
         {
           "caller": "PaddleSandbox._subscription",
           "callee_expression": "self._error",
-          "line": 387
+          "line": 395
         },
         {
           "caller": "PaddleSandbox._subscription",
           "callee_expression": "self._items",
-          "line": 388
+          "line": 396
         },
         {
           "caller": "PaddleSandbox.get_subscription",
           "callee_expression": "self._id",
-          "line": 392
+          "line": 400
         },
         {
           "caller": "PaddleSandbox.get_subscription",
           "callee_expression": "self._subscription",
-          "line": 393
+          "line": 401
         },
         {
           "caller": "PaddleSandbox.get_subscription",
           "callee_expression": "self._request",
-          "line": 394
+          "line": 402
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "self._id",
-          "line": 398
+          "line": 406
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "self._request",
-          "line": 399
+          "line": 407
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "data.get",
-          "line": 400
+          "line": 408
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "data.get",
-          "line": 400
+          "line": 408
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "self._error",
-          "line": 409
+          "line": 417
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "self._items",
-          "line": 410
+          "line": 418
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "data.get",
-          "line": 411
+          "line": 419
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "self._id",
-          "line": 412
+          "line": 420
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "data.get",
-          "line": 413
+          "line": 421
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "isinstance",
-          "line": 414
+          "line": 422
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "self._error",
-          "line": 415
+          "line": 423
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "self._checkout_url",
-          "line": 416
+          "line": 424
         },
         {
           "caller": "PaddleSandbox.get_transaction",
           "callee_expression": "data[subscript].get",
-          "line": 416
+          "line": 424
         },
         {
           "caller": "PaddleSandbox._checkout_url",
           "callee_expression": "self._url",
-          "line": 421
-        },
-        {
-          "caller": "PaddleSandbox._checkout_url",
-          "callee_expression": "<call-result>.geturl",
-          "line": 423
-        },
-        {
-          "caller": "PaddleSandbox._checkout_url",
-          "callee_expression": "url._replace",
-          "line": 423
-        },
-        {
-          "caller": "PaddleSandbox._checkout_url",
-          "callee_expression": "parse_qsl",
-          "line": 426
-        },
-        {
-          "caller": "PaddleSandbox._checkout_url",
-          "callee_expression": "self._error",
           "line": 429
         },
         {
           "caller": "PaddleSandbox._checkout_url",
-          "callee_expression": "self._error",
+          "callee_expression": "<call-result>.geturl",
           "line": 431
         },
         {
+          "caller": "PaddleSandbox._checkout_url",
+          "callee_expression": "url._replace",
+          "line": 431
+        },
+        {
+          "caller": "PaddleSandbox._checkout_url",
+          "callee_expression": "parse_qsl",
+          "line": 434
+        },
+        {
+          "caller": "PaddleSandbox._checkout_url",
+          "callee_expression": "self._error",
+          "line": 437
+        },
+        {
+          "caller": "PaddleSandbox._checkout_url",
+          "callee_expression": "self._error",
+          "line": 439
+        },
+        {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "str",
-          "line": 436
+          "line": 444
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "UUID",
-          "line": 436
+          "line": 444
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "str",
-          "line": 436
+          "line": 444
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "str",
-          "line": 437
+          "line": 445
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "UUID",
-          "line": 437
+          "line": 445
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "str",
-          "line": 437
+          "line": 445
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "self._error",
-          "line": 440
+          "line": 448
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "self.validated_price",
-          "line": 441
+          "line": 449
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "self._request",
-          "line": 442
+          "line": 450
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "self._id",
-          "line": 455
+          "line": 463
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "data.get",
-          "line": 455
+          "line": 463
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "self._items",
-          "line": 456
+          "line": 464
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "self._checkout_url",
-          "line": 457
+          "line": 465
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "data.get",
-          "line": 458
+          "line": 466
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "data.get",
-          "line": 458
+          "line": 466
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "self._error",
-          "line": 459
+          "line": 467
         },
         {
           "caller": "PaddleSandbox.create_checkout",
           "callee_expression": "self._uncertain",
-          "line": 461
-        },
-        {
-          "caller": "PaddleSandbox.portal",
-          "callee_expression": "self._id",
-          "line": 465
-        },
-        {
-          "caller": "PaddleSandbox.portal",
-          "callee_expression": "self.get_subscription",
-          "line": 466
-        },
-        {
-          "caller": "PaddleSandbox.portal",
-          "callee_expression": "self._error",
-          "line": 468
-        },
-        {
-          "caller": "PaddleSandbox.portal",
-          "callee_expression": "self._request",
           "line": 469
         },
         {
           "caller": "PaddleSandbox.portal",
           "callee_expression": "self._id",
-          "line": 476
+          "line": 473
         },
         {
           "caller": "PaddleSandbox.portal",
-          "callee_expression": "data.get",
-          "line": 476
-        },
-        {
-          "caller": "PaddleSandbox.portal",
-          "callee_expression": "data.get",
-          "line": 479
-        },
-        {
-          "caller": "PaddleSandbox.portal",
-          "callee_expression": "len",
-          "line": 480
+          "callee_expression": "self.get_subscription",
+          "line": 474
         },
         {
           "caller": "PaddleSandbox.portal",
           "callee_expression": "self._error",
-          "line": 483
+          "line": 476
         },
         {
           "caller": "PaddleSandbox.portal",
-          "callee_expression": "self._portal_url",
+          "callee_expression": "self._request",
+          "line": 477
+        },
+        {
+          "caller": "PaddleSandbox.portal",
+          "callee_expression": "self._id",
           "line": 484
         },
         {
           "caller": "PaddleSandbox.portal",
+          "callee_expression": "data.get",
+          "line": 484
+        },
+        {
+          "caller": "PaddleSandbox.portal",
+          "callee_expression": "data.get",
+          "line": 487
+        },
+        {
+          "caller": "PaddleSandbox.portal",
+          "callee_expression": "len",
+          "line": 488
+        },
+        {
+          "caller": "PaddleSandbox.portal",
+          "callee_expression": "self._error",
+          "line": 491
+        },
+        {
+          "caller": "PaddleSandbox.portal",
           "callee_expression": "self._portal_url",
-          "line": 490
+          "line": 492
+        },
+        {
+          "caller": "PaddleSandbox.portal",
+          "callee_expression": "self._portal_url",
+          "line": 498
         },
         {
           "caller": "PaddleSandbox.portal",
           "callee_expression": "self._uncertain",
-          "line": 492
+          "line": 500
         },
         {
           "caller": "PaddleSandbox._portal_url",
           "callee_expression": "self._url",
-          "line": 496
+          "line": 504
         },
         {
           "caller": "PaddleSandbox._portal_url",
           "callee_expression": "parse_qsl",
-          "line": 497
-        },
-        {
-          "caller": "PaddleSandbox._portal_url",
-          "callee_expression": "dict",
-          "line": 498
-        },
-        {
-          "caller": "PaddleSandbox._portal_url",
-          "callee_expression": "re.fullmatch",
           "line": 505
         },
         {
           "caller": "PaddleSandbox._portal_url",
-          "callee_expression": "len",
-          "line": 507
+          "callee_expression": "dict",
+          "line": 506
+        },
+        {
+          "caller": "PaddleSandbox._portal_url",
+          "callee_expression": "re.fullmatch",
+          "line": 513
         },
         {
           "caller": "PaddleSandbox._portal_url",
           "callee_expression": "len",
-          "line": 507
+          "line": 515
+        },
+        {
+          "caller": "PaddleSandbox._portal_url",
+          "callee_expression": "len",
+          "line": 515
         },
         {
           "caller": "PaddleSandbox._portal_url",
           "callee_expression": "set",
-          "line": 508
+          "line": 516
         },
         {
           "caller": "PaddleSandbox._portal_url",
           "callee_expression": "params.get",
-          "line": 509
+          "line": 517
         },
         {
           "caller": "PaddleSandbox._portal_url",
           "callee_expression": "params.get",
-          "line": 510
+          "line": 518
         },
         {
           "caller": "PaddleSandbox._portal_url",
           "callee_expression": "params.get",
-          "line": 511
+          "line": 519
         },
         {
           "caller": "PaddleSandbox._portal_url",
           "callee_expression": "self._error",
-          "line": 513
+          "line": 521
         },
         {
           "caller": "PaddleSandbox._change",
           "callee_expression": "isinstance",
-          "line": 516
+          "line": 524
         },
         {
           "caller": "PaddleSandbox._change",
           "callee_expression": "self._error",
-          "line": 517
+          "line": 525
         },
         {
           "caller": "PaddleSandbox._change",
           "callee_expression": "self.get_subscription",
-          "line": 518
+          "line": 526
         },
         {
           "caller": "PaddleSandbox._change",
           "callee_expression": "self.validated_price",
-          "line": 519
+          "line": 527
         },
         {
           "caller": "PaddleSandbox._change",
           "callee_expression": "self._request",
-          "line": 520
+          "line": 528
         },
         {
           "caller": "PaddleSandbox._change",
           "callee_expression": "self._subscription",
-          "line": 531
+          "line": 539
         },
         {
           "caller": "PaddleSandbox._change",
           "callee_expression": "self._error",
-          "line": 533
+          "line": 541
         },
         {
           "caller": "PaddleSandbox._change",
           "callee_expression": "self._error",
-          "line": 535
+          "line": 543
         },
         {
           "caller": "PaddleSandbox._change",
           "callee_expression": "self._uncertain",
-          "line": 535
+          "line": 543
         },
         {
           "caller": "PaddleSandbox.preview_change",
           "callee_expression": "self._change",
-          "line": 539
+          "line": 547
         },
         {
           "caller": "PaddleSandbox.change_subscription",
           "callee_expression": "self._change",
-          "line": 542
+          "line": 550
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
           "callee_expression": "self._id",
-          "line": 546
-        },
-        {
-          "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "self._request",
-          "line": 547
-        },
-        {
-          "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "data.get",
-          "line": 549
-        },
-        {
-          "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "data.get",
-          "line": 551
-        },
-        {
-          "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "data.get",
-          "line": 552
-        },
-        {
-          "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "data.get",
-          "line": 553
-        },
-        {
-          "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "data.get",
           "line": 554
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "data.get",
+          "callee_expression": "self._request",
           "line": 555
-        },
-        {
-          "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "data.get",
-          "line": 556
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
@@ -57181,22 +57196,17 @@
         {
           "caller": "PaddleSandbox.validated_retention_discount",
           "callee_expression": "data.get",
-          "line": 558
-        },
-        {
-          "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "data.get",
           "line": 559
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "type",
+          "callee_expression": "data.get",
           "line": 560
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
           "callee_expression": "data.get",
-          "line": 560
+          "line": 561
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
@@ -57210,253 +57220,293 @@
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "isinstance",
+          "callee_expression": "data.get",
           "line": 564
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "len",
+          "callee_expression": "data.get",
           "line": 565
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "any",
+          "callee_expression": "data.get",
           "line": 566
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "isinstance",
-          "line": 566
-        },
-        {
-          "caller": "PaddleSandbox.validated_retention_discount",
-          "callee_expression": "set",
+          "callee_expression": "data.get",
           "line": 567
         },
         {
           "caller": "PaddleSandbox.validated_retention_discount",
+          "callee_expression": "type",
+          "line": 568
+        },
+        {
+          "caller": "PaddleSandbox.validated_retention_discount",
+          "callee_expression": "data.get",
+          "line": 568
+        },
+        {
+          "caller": "PaddleSandbox.validated_retention_discount",
+          "callee_expression": "data.get",
+          "line": 570
+        },
+        {
+          "caller": "PaddleSandbox.validated_retention_discount",
+          "callee_expression": "data.get",
+          "line": 571
+        },
+        {
+          "caller": "PaddleSandbox.validated_retention_discount",
+          "callee_expression": "isinstance",
+          "line": 572
+        },
+        {
+          "caller": "PaddleSandbox.validated_retention_discount",
+          "callee_expression": "len",
+          "line": 573
+        },
+        {
+          "caller": "PaddleSandbox.validated_retention_discount",
+          "callee_expression": "any",
+          "line": 574
+        },
+        {
+          "caller": "PaddleSandbox.validated_retention_discount",
+          "callee_expression": "isinstance",
+          "line": 574
+        },
+        {
+          "caller": "PaddleSandbox.validated_retention_discount",
+          "callee_expression": "set",
+          "line": 575
+        },
+        {
+          "caller": "PaddleSandbox.validated_retention_discount",
           "callee_expression": "self._error",
-          "line": 569
+          "line": 577
         },
         {
           "caller": "PaddleSandbox._retention",
           "callee_expression": "self._error",
-          "line": 574
+          "line": 582
         },
         {
           "caller": "PaddleSandbox._retention",
           "callee_expression": "self.validated_retention_discount",
-          "line": 575
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "self.get_subscription",
-          "line": 576
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "self._items",
-          "line": 577
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "self._offer",
-          "line": 577
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "before.get",
-          "line": 580
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "before.get",
-          "line": 581
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "self._error",
           "line": 583
         },
         {
           "caller": "PaddleSandbox._retention",
-          "callee_expression": "any",
+          "callee_expression": "self.get_subscription",
+          "line": 584
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "self._items",
           "line": 585
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "before.get",
-          "line": 585
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "expected.get",
-          "line": 585
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "self._error",
-          "line": 586
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "self._request",
-          "line": 587
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "self._subscription",
-          "line": 594
         },
         {
           "caller": "PaddleSandbox._retention",
           "callee_expression": "self._offer",
-          "line": 594
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "any",
-          "line": 596
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "data.get",
-          "line": 596
+          "line": 585
         },
         {
           "caller": "PaddleSandbox._retention",
           "callee_expression": "before.get",
-          "line": 596
+          "line": 588
         },
         {
           "caller": "PaddleSandbox._retention",
-          "callee_expression": "data.get",
-          "line": 597
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "data.get",
-          "line": 598
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "isinstance",
-          "line": 599
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "data.get",
-          "line": 599
-        },
-        {
-          "caller": "PaddleSandbox._retention",
-          "callee_expression": "data[subscript].get",
-          "line": 600
+          "callee_expression": "before.get",
+          "line": 589
         },
         {
           "caller": "PaddleSandbox._retention",
           "callee_expression": "self._error",
+          "line": 591
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "any",
+          "line": 593
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "before.get",
+          "line": 593
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "expected.get",
+          "line": 593
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "self._error",
+          "line": 594
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "self._request",
+          "line": 595
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "self._subscription",
           "line": 602
         },
         {
           "caller": "PaddleSandbox._retention",
-          "callee_expression": "self._error",
+          "callee_expression": "self._offer",
+          "line": 602
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "any",
           "line": 604
         },
         {
           "caller": "PaddleSandbox._retention",
-          "callee_expression": "self._uncertain",
+          "callee_expression": "data.get",
           "line": 604
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "before.get",
+          "line": 604
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "data.get",
+          "line": 605
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "data.get",
+          "line": 606
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "isinstance",
+          "line": 607
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "data.get",
+          "line": 607
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "data[subscript].get",
+          "line": 608
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "self._error",
+          "line": 610
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "self._error",
+          "line": 612
+        },
+        {
+          "caller": "PaddleSandbox._retention",
+          "callee_expression": "self._uncertain",
+          "line": 612
         },
         {
           "caller": "PaddleSandbox.preview_retention",
           "callee_expression": "self._retention",
-          "line": 608
+          "line": 616
         },
         {
           "caller": "PaddleSandbox.apply_retention",
           "callee_expression": "self._retention",
-          "line": 611
+          "line": 619
         },
         {
           "caller": "PaddleSandbox.cancel_at_period_end",
           "callee_expression": "self._id",
-          "line": 614
-        },
-        {
-          "caller": "PaddleSandbox.cancel_at_period_end",
-          "callee_expression": "self._request",
-          "line": 615
-        },
-        {
-          "caller": "PaddleSandbox.cancel_at_period_end",
-          "callee_expression": "self._subscription",
           "line": 622
         },
         {
           "caller": "PaddleSandbox.cancel_at_period_end",
+          "callee_expression": "self._request",
+          "line": 623
+        },
+        {
+          "caller": "PaddleSandbox.cancel_at_period_end",
+          "callee_expression": "self._subscription",
+          "line": 630
+        },
+        {
+          "caller": "PaddleSandbox.cancel_at_period_end",
           "callee_expression": "self._error",
-          "line": 625
+          "line": 633
         },
         {
           "caller": "PaddleSandbox.cancel_at_period_end",
           "callee_expression": "self._date",
-          "line": 626
+          "line": 634
         },
         {
           "caller": "PaddleSandbox.cancel_at_period_end",
           "callee_expression": "self._uncertain",
-          "line": 628
+          "line": 636
         },
         {
           "caller": "PaddleSandbox._error",
           "callee_expression": "PaddleError",
-          "line": 633
+          "line": 641
         },
         {
           "caller": "PaddleSandbox._uncertain",
           "callee_expression": "PaddleUncertain",
-          "line": 636
+          "line": 644
         },
         {
           "caller": "PaddleSandbox._unavailable",
           "callee_expression": "PaddleUnavailable",
-          "line": 639
+          "line": 647
         },
         {
           "caller": "PaddleSandbox._id",
           "callee_expression": "_id",
-          "line": 643
+          "line": 651
         },
         {
           "caller": "PaddleSandbox._id",
           "callee_expression": "self._error",
-          "line": 645
+          "line": 653
         },
         {
           "caller": "PaddleSandbox._date",
           "callee_expression": "_date",
-          "line": 649
+          "line": 657
         },
         {
           "caller": "PaddleSandbox._date",
           "callee_expression": "self._error",
-          "line": 651
+          "line": 659
         },
         {
           "caller": "PaddleSandbox._url",
           "callee_expression": "_url",
-          "line": 655
+          "line": 663
         },
         {
           "caller": "PaddleSandbox._url",
           "callee_expression": "self._error",
-          "line": 657
+          "line": 665
         },
         {
           "caller": "provider_from_settings",
           "callee_expression": "provider",
-          "line": 669
+          "line": 677
         }
       ],
       "route_decorators": []
@@ -92114,7 +92164,7 @@
     {
       "path": "app/workspace_operations.py",
       "module": "app.workspace_operations",
-      "sha256": "9e6c6030e5ca6a366b8f04d4f30d23b1fe5382df0a80073181c69767191defc2",
+      "sha256": "9aa97fed67ce9d6d269d3595573da2728353449a0fc23ec6af2d5ae7f01d9164",
       "imports": [
         {
           "module": "hashlib",

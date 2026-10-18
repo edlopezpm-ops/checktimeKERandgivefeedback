@@ -1,17 +1,11 @@
 # PH3 prompt-refresh brief — 2026-10-18
 
-The owner will provide PH3 prompts after this preparation. Use the current
-dossier to revise those prompts for the actual delivered timeKER baseline.
-Source `9fc9eebdaf9f52170530c8a28d34f6c8cd612c64` includes frozen PH2 `39bcde0e99e8993d4de861a9c0c1da56a9e8e9a6` plus three startup documents.
-No PH3 feature implementation has begun under those forthcoming prompts.
+The owner will provide PH3 feature prompts after the bounded private production prelaunch. Use candidate `4bb5c424d6e7d270cdca1479283896be77d581c3` and the actual delivered baseline. It contains frozen PH2 and original PROD ancestry plus the reviewed prelaunch delta. Migration/deployment/readback are technically verified; personal Google/acknowledgment/catalog/plan choice and UAT remain pending. No forthcoming PH3 feature prompt has been implemented.
 
 ## Fixed handoff contract
 
-- Continue existing Stage. Retain one monolith/database per environment and
-  server-resolved private owner schemas/roles. Keep the production service as is.
-- Build one eventual reviewed PROD candidate containing PH2 plus PH3. The old
-  production draft is historical and must be refreshed; no intermediate PH2
-  cutover or automatic merge/deployment is requested.
+- Maintain permanent timeKER-Stage/timeKER-PROD repositories with shared lineage and one monolith/database per environment. PH3 prompts continue on Stage; database/configuration/identity custody stays independent.
+- Account for the now-authorized private PH2 prelaunch: existing fixed-owner Google registration, personally completed fresh proof/acknowledgment and Sandbox only. Generic/public/email-public/Stage onboarding, Live and Sending jobs stay false. Technical release results are verified; personal owner actions and acceptance remain pending; later public/Live or PH3 changes need their own scope.
 - Preserve integer-minute duration, Decimal money, explicit business zones,
   immutable issued JSON/PDF/checksums, original financial history and manual
   payment tracking. Never invent tax/bank/legal/FX/contract facts.
@@ -50,7 +44,7 @@ constraints before specifying changes. Existing delivery does not prove UAT.
 | EXT-02 | Remaining actual Sandbox annual/3DS/change/cancel/failed-renewal/grace rehearsal; Live remains separate |
 | EXT-03 | Authenticated hosted Quoting/Library/commercial Sending owner walkthrough |
 | EXT-04 | Exact Sending operational selection/activation and addressed test authority; preserve retry uncertainty |
-| EXT-05 | Final combined PROD candidate, current overrides/identities/migrations/grants/providers/custody and separately authorized rollout |
+| EXT-05 | Private prelaunch technical release verified; personal Google/acknowledgment/catalog verification/plan choice/UAT and later public/Live/hosted recovery acceptance remain open |
 | Follow-ups | Human/perceptual acceptance of latest UI/performance/Settings and actual Case-only cron observation |
 
 Canonical residual details are mirrored in chapter08. Preserve unknowns and
@@ -74,3 +68,13 @@ reviewed production readiness or support for a client/voice surface.
 
 This repository authorizes review/proposal preparation only. Execution follows
 the owner's later prompts in the maintained application checkout.
+
+<!-- timeker-final-release-evidence -->
+## Verified release and remaining personal actions
+
+The bounded private PH2 production prelaunch is technically verified under D076. The deployed runtime is `5b0fb0d29f506d04e4a6af3ebd8a193089af7214`, with both retained production schemas at `ph3_009_read_indexes`. Paddle remains Sandbox; generic/public/email-public/Stage onboarding, Live and Sending jobs remain false. Existing inbound Mail capture remains enabled. Personal fresh Google proof, explicit acknowledgment, owner catalog verification/plan choice and human UAT remain pending. PH3 feature prompts still follow; no future feature prompt has been implemented.
+
+
+
+Exact technical release facts are retained in [chapter06](06-deployment-and-operations-sop.md#9-verified-private-ph2-production-prelaunch).
+<!-- /timeker-final-release-evidence -->
