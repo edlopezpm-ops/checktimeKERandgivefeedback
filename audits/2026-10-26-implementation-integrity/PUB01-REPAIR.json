@@ -1,0 +1,116 @@
+{
+  "schema": "functional-integrity.publication-xml-repair.v1",
+  "directive": "HOC-2026-10-26-TIMEKER-REPAIR-STAGE-PROD",
+  "finding": "PUB-01",
+  "recorded_utc": "2026-10-26T23:03:56.250561+00:00",
+  "historical_snapshot": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+  "public_base": "7f6fe33fca840240aeffaf95a9e1d7348c46c830",
+  "publisher_before_sha256": "3d1fe8ef6c1c1c0578c84f5cea2153440a360493713a0061708eb4749139f1af",
+  "publisher_after_sha256": "37113f42666040dca549144a82fdf078d331f86306f55ed31ffe01b957a2f760",
+  "publisher_route": "Parsed XML text, tail and attribute sanitization; serialization and reparse before writing.",
+  "portable_helper": "repro/sanitize_xml.py",
+  "portable_test": "repro/test_sanitize_xml.py",
+  "portable_regressions": {
+    "tests": 5,
+    "exit_code": 0,
+    "old_raw_replacement_rejected": true
+  },
+  "escaped_aliases": {
+    "AUDIT_ROOT": 2,
+    "USER_HOME": 65
+  },
+  "prior_invalid_derived_sha256": {
+    "backend-complete.xml": "71eb12d5d391b496758838e546234c1a04beab36efe07b9316b2a54dbdf9a8bb",
+    "browser-complete.xml": "25b9a005b56316a7eeee110849957ad5ab204e35a50b00ed045f09e6cdea1a0c"
+  },
+  "xml_checks": [
+    {
+      "path": "evidence/backend-complete.xml",
+      "original_parse": "PASS",
+      "derived_parse": "PASS",
+      "test_identity_structure_status_counts_preserved": true,
+      "original_sha256": "a020b8cb0745d74d34f1d32d674160e7e4e0d7fd88c0d2349a0d0d775583a297",
+      "derived_sha256": "753d9fe3a5eb2f73f161cffe6e0a256db1d80ba24bcfd7ade152a9dbf96f4d19",
+      "all_decoded_text_tail_attributes_equal_sanitized_original": true
+    },
+    {
+      "path": "evidence/backend-runtime-role-recovered.xml",
+      "original_parse": "PASS",
+      "derived_parse": "PASS",
+      "test_identity_structure_status_counts_preserved": true,
+      "original_sha256": "246d759a690a25ee7615bd982713350e516fce89ea650dcf700386ca09d3a128",
+      "derived_sha256": "0f88d8d55352937a51899398f076286ab6a1f049bfc11f9a55f1a110eb85e746",
+      "unchanged_derived_bytes_verified": true
+    },
+    {
+      "path": "evidence/backend-setup-recovered.xml",
+      "original_parse": "PASS",
+      "derived_parse": "PASS",
+      "test_identity_structure_status_counts_preserved": true,
+      "original_sha256": "4374a780673a1de6c0ea22df707e54a21493745d51e4695c86cebb2b9609791b",
+      "derived_sha256": "ff23db0b5b52b135fc93f34af663df5dbcc1447d71e658e0f3af0fa449c09ccf",
+      "unchanged_derived_bytes_verified": true
+    },
+    {
+      "path": "evidence/browser-complete.xml",
+      "original_parse": "PASS",
+      "derived_parse": "PASS",
+      "test_identity_structure_status_counts_preserved": true,
+      "original_sha256": "bba2e268ba4522045b7bc94378e3715a6faf0b76cffaf3055e04f86f785d502d",
+      "derived_sha256": "5a18b3c38e5c74572ad7e739e5d9dc9af380a16699ed9af3af68596f991f3a38",
+      "all_decoded_text_tail_attributes_equal_sanitized_original": true
+    },
+    {
+      "path": "evidence/browser-navigation-diagnosis.xml",
+      "original_parse": "PASS",
+      "derived_parse": "PASS",
+      "test_identity_structure_status_counts_preserved": true,
+      "original_sha256": "79b29db08aecd8bc3b8030f3f9c3b4a2d92e50d419ffe836600d787197194c03",
+      "derived_sha256": "dd08f887aed502635acabc2cd95fdae0a4f8fd84acda054a35bc78df73a3120a",
+      "unchanged_derived_bytes_verified": true
+    },
+    {
+      "path": "evidence/browser-navigation-observed.xml",
+      "original_parse": "PASS",
+      "derived_parse": "PASS",
+      "test_identity_structure_status_counts_preserved": true,
+      "original_sha256": "f9224bbf4c3c3eaac2352bf8dbbdcf4249d1e499840011c06b2055ed887fe56d",
+      "derived_sha256": "3cf4457228e49c13448a63f04fccdb75c1395a8252c0e78cff861290ebf5c8ad",
+      "unchanged_derived_bytes_verified": true
+    },
+    {
+      "path": "evidence/browser-navigation-waited.xml",
+      "original_parse": "PASS",
+      "derived_parse": "PASS",
+      "test_identity_structure_status_counts_preserved": true,
+      "original_sha256": "199f49f87da32c0efbf790fe173e5de27888fa017b4f6167fce477471f783bec",
+      "derived_sha256": "a4b3eea64a257759f8017fc641681ca4966ee2c25553bd78d3d6e7cb79267b0f",
+      "unchanged_derived_bytes_verified": true
+    },
+    {
+      "path": "evidence/browser-setup-recovered.xml",
+      "original_parse": "PASS",
+      "derived_parse": "PASS",
+      "test_identity_structure_status_counts_preserved": true,
+      "original_sha256": "0cbc1d0c9f42af881a21a21b319163680ec40764499f789baa53d71bef74870e",
+      "derived_sha256": "52877bc0ea160230e2419d1aea7b964026c1069cc2fff8493006aa82e54b911e",
+      "unchanged_derived_bytes_verified": true
+    },
+    {
+      "path": "evidence/usage-browser-enabled.xml",
+      "original_parse": "PASS",
+      "derived_parse": "PASS",
+      "test_identity_structure_status_counts_preserved": true,
+      "original_sha256": "a800af40aac326bf021f12bc9b27f386cae6134f1087bee412f4ea73fa830e89",
+      "derived_sha256": "6abd34ddbf08ed82406367741401795a4be493e56e52646f1edabe923b317a6a",
+      "unchanged_derived_bytes_verified": true
+    }
+  ],
+  "original_evidence_unchanged": true,
+  "historical_failures_and_scores_unchanged": true,
+  "private_sources_published": false,
+  "product_or_runtime_modified": false,
+  "publication_state": "CANDIDATE_NOT_YET_PUSHED",
+  "carriage_return_entities_preserved": true,
+  "initial_candidate_observation": "Whitespace validation identified spaces present in original logs but trimmed in historical derivatives. The two regenerated XML files retain original decoded log whitespace; seven other XML files remain byte-identical. A separate CR regression verifies character references preserve XML-decoded log characters."
+}

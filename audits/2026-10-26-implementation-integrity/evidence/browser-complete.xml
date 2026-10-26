@@ -1,349 +1,349 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="65" failures="17" skipped="0" tests="328" time="592.707" timestamp="2026-10-26T16:18:41.221270-04:00" hostname="Ed"><testcase classname="tests.e2e.test_account_closure_browser" name="test_export_then_close_native_account[1440-True]" time="1.502"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+<testsuites name="pytest tests"><testsuite name="pytest" errors="65" failures="17" skipped="0" tests="328" time="592.707" timestamp="2026-10-26T16:18:41.221270-04:00" hostname="Ed"><testcase classname="tests.e2e.test_account_closure_browser" name="test_export_then_close_native_account[1440-True]" time="1.502"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_account_closure_browser" name="test_export_then_close_native_account[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_account_closure_browser" name="test_export_then_close_native_account[390-False]" time="0.358"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_archive_browser" name="test_archive_settings_exports_and_screen_accessibility[1440-True]" time="0.631"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_archive_browser" name="test_archive_settings_exports_and_screen_accessibility[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_archive_browser" name="test_archive_settings_exports_and_screen_accessibility[1440-False]" time="0.136"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_complete_browser_workflow" time="0.508"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_visual_accessibility_primary_pages[1440-900]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_visual_accessibility_primary_pages[1280-800]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_visual_accessibility_primary_pages[390-844]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_without_javascript" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_additional_modules_accessibility[1440-900]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_additional_modules_accessibility[390-844]" time="0.117"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser_session_expiry" name="test_unsaved_settings_survive_revocation_and_new_tab_login" time="0.463"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser_session_expiry" name="test_sessions_native_controls_and_accessibility[1440-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser_session_expiry" name="test_sessions_native_controls_and_accessibility[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser_session_expiry" name="test_sessions_native_controls_and_accessibility[390-False]" time="15.186"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_mass_edit_browser" name="test_case_mass_edit_project_filter_native_fallback_and_status_type_only[1280-True]" time="0.791"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_mass_edit_browser" name="test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_mass_edit_browser" name="test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-False]" time="0.168"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[1280-True]" time="0.506"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[1280-False]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[390-False]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_cases_typed_search_keeps_focus_and_updates_only_results[1280]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_cases_typed_search_keeps_focus_and_updates_only_results[390]" time="0.191"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_clock" name="test_clock_uses_browser_zone_and_fractional_seconds[America/New_York-10-15]" time="0.473"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_clock" name="test_clock_uses_browser_zone_and_fractional_seconds[Europe/Madrid-16-15]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_clock" name="test_clock_uses_browser_zone_and_fractional_seconds[Asia/Kathmandu-20-0]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_clock" name="test_clock_rollover_and_visibility_resync" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_clock" name="test_clock_respects_reduced_motion_and_preference_changes" time="0.354"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_contact_browser" name="test_contact_preview_and_repeated_session[1440]" time="0.486"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_contact_browser" name="test_contact_preview_and_repeated_session[390]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_contact_browser" name="test_contact_without_javascript" time="0.266"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-320]" time="0.506"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-390]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-760]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-1024]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-320]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-390]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-760]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-1024]" time="0.117"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_cookie_choices_are_nonmodal_reversible_and_private[1440]" time="0.457"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_cookie_choices_are_nonmodal_reversible_and_private[390]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_browser_privacy_signals_keep_marketing_refused[gpc-header]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_browser_privacy_signals_keep_marketing_refused[dnt-header]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_browser_privacy_signals_keep_marketing_refused[gpc-browser]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_cookie_choice_without_javascript_and_failure_keeps_control" time="0.106"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_credit_memos_browser" name="test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-True]" time="0.452"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_credit_memos_browser" name="test_owner_reviewed_credit_preserves_original_and_downloads_note[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_credit_memos_browser" name="test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-False]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_credit_memos_browser" name="test_cancel_draft_has_distinct_action_and_no_credit" time="0.112"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_detail_pagination_browser" name="test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[1440-True-1]" time="0.457"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_detail_pagination_browser" name="test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-True-50]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_detail_pagination_browser" name="test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-False-1]" time="0.129"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_outstanding_pagination_browser" name="test_outstanding_five_rows_preserve_card_chart_and_native_navigation[1440-True-1]" time="0.453"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_outstanding_pagination_browser" name="test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-True-50]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_outstanding_pagination_browser" name="test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-False-1]" time="15.194"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_authorize_reaches_registered_callback_with_persisted_code" time="0.485"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\test_delegated_oauth_browser.py:49: in server
@@ -351,7 +351,7 @@ E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.
 tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_decline_reaches_callback_without_creating_credentials" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\test_delegated_oauth_browser.py:49: in server
@@ -359,7 +359,7 @@ E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.
 tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_modified_consent_rejects_without_callback_or_grant[scope]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\test_delegated_oauth_browser.py:49: in server
@@ -367,7 +367,7 @@ E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.
 tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_modified_consent_rejects_without_callback_or_grant[csrf]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\test_delegated_oauth_browser.py:49: in server
@@ -375,36 +375,36 @@ E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.
 tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_stage_assistant_guide_navigation_identity_and_accessibility[1440-True]" time="1.310" /><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_stage_assistant_guide_navigation_identity_and_accessibility[390-True]" time="1.030" /><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_stage_assistant_guide_navigation_identity_and_accessibility[390-False]" time="1.107" /><testcase classname="tests.e2e.test_ker_navigation_browser" name="test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[1440-True]" time="0.434"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_ker_navigation_browser" name="test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_ker_navigation_browser" name="test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-False]" time="0.108"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
     with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+&lt;USER_HOME&gt;\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
     return io.open(self, mode, buffering, encoding, errors, newline)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_live_checkout_browser" name="test_live_overlay_uses_real_csp_no_sandbox_switch_and_pinned_transaction[1440]" time="2.066" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_live_overlay_uses_real_csp_no_sandbox_switch_and_pinned_transaction[390]" time="0.699" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes0]" time="0.298" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes1]" time="0.465" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes2]" time="0.292" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes3]" time="0.302" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes4]" time="0.298" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes5]" time="0.309" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes6]" time="0.282" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes7]" time="0.613" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes8]" time="0.305" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes9]" time="0.278" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_client_guard_rejects_invalid_origin_or_dom_before_initialize[noncanonical-browser]" time="0.308" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_client_guard_rejects_invalid_origin_or_dom_before_initialize[wrong-success-origin]" time="0.276" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_client_guard_rejects_invalid_origin_or_dom_before_initialize[tampered-mode]" time="0.290" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_no_javascript_retains_review_truth_and_never_opens_payment" time="0.788" /><testcase classname="tests.e2e.test_lookups_browser" name="test_paged_selector_preserves_unsaved_form_and_saved_choice[1280-True]" time="6.676" /><testcase classname="tests.e2e.test_lookups_browser" name="test_paged_selector_preserves_unsaved_form_and_saved_choice[390-True]" time="1.428" /><testcase classname="tests.e2e.test_lookups_browser" name="test_paged_selector_preserves_unsaved_form_and_saved_choice[1280-False]" time="1.338" /><testcase classname="tests.e2e.test_lookups_browser" name="test_paged_selector_preserves_unsaved_form_and_saved_choice[390-False]" time="1.293" /><testcase classname="tests.e2e.test_lookups_browser" name="test_native_single_slot_clear_browse_and_billing_periods" time="6.850"><failure message="AssertionError: Locator expected to have Value '2026-10-01'&#10;Actual value: None&#10;Error: element(s) not found &#10;Call log:&#10;  - Expect &quot;to_have_value&quot; get_by_label(&quot;Period start&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_label(&quot;Period start&quot;, exact=True)&#10;&#10;Aria snapshot:&#10;- link &quot;Skip to content&quot;:&#10;  - /url: &quot;#main&quot;&#10;- banner:&#10;  - link &quot;timeKER&quot;:&#10;    - /url: /dashboard&#10;    - img &quot;timeKER&quot;&#10;  - link &quot;Search workspace&quot;:&#10;    - /url: /search&#10;  - group: EL&#10;  - button &quot;Menu&quot;&#10;- main:&#10;  - alert:&#10;    - heading &quot;Invalid request&quot; [level=1]&#10;    - paragraph: Review the supplied date or identifier.&#10;    - button &quot;Back&quot;&#10;    - link &quot;Dashboard&quot;:&#10;      - /url: /dashboard&#10;  - group: help&#10;- group:&#10;  - text: Close&#10;  - region &quot;Cookies and privacy choices&quot;:&#10;    - heading &quot;Cookies and privacy choices&quot; [level=2]&#10;    - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.&#10;    - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.&#10;    - paragraph:&#10;      - text: You can reject or change your choice here at any time without affecting access.&#10;      - link &quot;Read privacy and cookies&quot;:&#10;        - /url: /?info=privacy#privacy-and-cookies&#10;    - paragraph: Optional measurement is disabled in this environment.&#10;    - paragraph: No optional preference has been selected.&#10;    - button &quot;Accept measurement&quot; [disabled]&#10;    - button &quot;Reject nonessential&quot;">tests\e2e\test_lookups_browser.py:82: in test_native_single_slot_clear_browse_and_billing_periods
     expect(page.get_by_label("Period start", exact=True)).to_have_value("2026-10-01")
 E   AssertionError: Locator expected to have Value '2026-10-01'
 E   Actual value: None
-E   Error: element(s) not found
+E   Error: element(s) not found 
 E   Call log:
 E     - Expect "to_have_value" get_by_label("Period start", exact=True) with timeout 5000ms
 E     - waiting for get_by_label("Period start", exact=True)
-E
+E   
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -444,7 +444,7 @@ E   Actual value: None
 E   Error: strict mode violation: get_by_text("Fixed fee", exact=True) resolved to 2 elements:
 E       1) &lt;h2&gt;Fixed fee&lt;/h2&gt; aka get_by_role("heading", name="Fixed fee")
 E       2) &lt;h3&gt;Fixed fee&lt;/h3&gt; aka locator("#screen-help-dialog").get_by_text("Fixed fee", exact=True)
-E
+E    
 E   Call log:
 E     - Expect "to_be_visible" get_by_text("Fixed fee", exact=True) with timeout 5000ms
 E     - waiting for get_by_text("Fixed fee", exact=True)</failure></testcase><testcase classname="tests.e2e.test_project_billing_browser" name="test_fixed_fee_and_authorized_extra[390-True]" time="1.299"><failure message="AssertionError: Locator expected to be visible&#10;Actual value: None&#10;Error: strict mode violation: get_by_text(&quot;Fixed fee&quot;, exact=True) resolved to 2 elements:&#10;    1) &lt;h2&gt;Fixed fee&lt;/h2&gt; aka get_by_role(&quot;heading&quot;, name=&quot;Fixed fee&quot;)&#10;    2) &lt;h3&gt;Fixed fee&lt;/h3&gt; aka locator(&quot;#screen-help-dialog&quot;).get_by_text(&quot;Fixed fee&quot;, exact=True)&#10; &#10;Call log:&#10;  - Expect &quot;to_be_visible&quot; get_by_text(&quot;Fixed fee&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_text(&quot;Fixed fee&quot;, exact=True)">tests\e2e\test_project_billing_browser.py:33: in test_fixed_fee_and_authorized_extra
@@ -454,18 +454,18 @@ E   Actual value: None
 E   Error: strict mode violation: get_by_text("Fixed fee", exact=True) resolved to 2 elements:
 E       1) &lt;h2&gt;Fixed fee&lt;/h2&gt; aka get_by_role("heading", name="Fixed fee")
 E       2) &lt;h3&gt;Fixed fee&lt;/h3&gt; aka locator("#screen-help-dialog").get_by_text("Fixed fee", exact=True)
-E
+E    
 E   Call log:
 E     - Expect "to_be_visible" get_by_text("Fixed fee", exact=True) with timeout 5000ms
 E     - waiting for get_by_text("Fixed fee", exact=True)</failure></testcase><testcase classname="tests.e2e.test_project_billing_browser" name="test_fixed_fee_and_authorized_extra[390-False]" time="2.850" /><testcase classname="tests.e2e.test_projects_browser" name="test_project_screen_create_validate_edit_archive[1440-True]" time="8.138" /><testcase classname="tests.e2e.test_projects_browser" name="test_project_screen_create_validate_edit_archive[1280-True]" time="3.648" /><testcase classname="tests.e2e.test_projects_browser" name="test_project_screen_create_validate_edit_archive[390-True]" time="3.614" /><testcase classname="tests.e2e.test_projects_browser" name="test_project_screen_create_validate_edit_archive[390-False]" time="3.312" /><testcase classname="tests.e2e.test_projects_browser" name="test_add_project_returns_to_selected_week" time="1.534" /><testcase classname="tests.e2e.test_proposal_sending_browser" name="test_native_published_hle_and_original_sow_review_without_dispatch[1440-True]" time="10.642" /><testcase classname="tests.e2e.test_proposal_sending_browser" name="test_native_published_hle_and_original_sow_review_without_dispatch[390-True]" time="3.496" /><testcase classname="tests.e2e.test_proposal_sending_browser" name="test_native_published_hle_and_original_sow_review_without_dispatch[390-False]" time="2.744" /><testcase classname="tests.e2e.test_publication_delivery_browser" name="test_exact_publish_send_review_is_accessible_and_durable[1440-True]" time="8.307" /><testcase classname="tests.e2e.test_publication_delivery_browser" name="test_exact_publish_send_review_is_accessible_and_durable[390-True]" time="2.322" /><testcase classname="tests.e2e.test_publication_delivery_browser" name="test_exact_publish_send_review_is_accessible_and_durable[390-False]" time="1.973" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_native_service_case_then_independent_hle_with_published_pdf[1440-True]" time="10.343" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_native_service_case_then_independent_hle_with_published_pdf[390-True]" time="3.573" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_native_service_case_then_independent_hle_with_published_pdf[390-False]" time="2.754" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_case_bound_sow_imports_editable_docx_and_freezes_exact_original[1440-True]" time="3.387" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_case_bound_sow_imports_editable_docx_and_freezes_exact_original[390-True]" time="3.118" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_case_bound_sow_imports_editable_docx_and_freezes_exact_original[390-False]" time="2.395" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_reusable_sla_template_stays_independent_and_clones_into_a_case[1440-True]" time="2.159" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_reusable_sla_template_stays_independent_and_clones_into_a_case[390-True]" time="2.151" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_reusable_sla_template_stays_independent_and_clones_into_a_case[390-False]" time="2.355" /><testcase classname="tests.e2e.test_quoting_lookup_browser" name="test_case_search_keeps_all_clients_scope_without_a_client_field[/quoting/new]" time="5.376" /><testcase classname="tests.e2e.test_quoting_lookup_browser" name="test_case_search_keeps_all_clients_scope_without_a_client_field[/quoting/documents/new?kind=sow]" time="2.514" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_case_pages_preserve_filters_focus_scroll_and_native_fallback[1440-True]" time="5.163" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_case_pages_preserve_filters_focus_scroll_and_native_fallback[390-True]" time="1.539" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_case_pages_preserve_filters_focus_scroll_and_native_fallback[390-False]" time="1.257" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_client_history_pages_leave_pending_source_form_in_place[True]" time="2.561" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_client_history_pages_leave_pending_source_form_in_place[False]" time="1.270" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_project_history_pages_preserve_pending_project_fields" time="0.999" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_shared_status_colors_match_across_record_screens" time="1.996" /><testcase classname="tests.e2e.test_reference_fields_browser" name="test_reference_selects_preserve_codes_errors_and_native_keyboard[1440-True]" time="5.536" /><testcase classname="tests.e2e.test_reference_fields_browser" name="test_reference_selects_preserve_codes_errors_and_native_keyboard[390-True]" time="1.959" /><testcase classname="tests.e2e.test_reference_fields_browser" name="test_reference_selects_preserve_codes_errors_and_native_keyboard[390-False]" time="1.587" /><testcase classname="tests.e2e.test_sending_browser" name="test_review_confirmation_stop_and_templates_use_native_forms[1440-True]" time="6.821"><failure message="AssertionError: Locator expected to be visible&#10;Actual value: None&#10;Error: element(s) not found &#10;Call log:&#10;  - Expect &quot;to_be_visible&quot; get_by_role(&quot;heading&quot;, name=&quot;Review sending&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_role(&quot;heading&quot;, name=&quot;Review sending&quot;, exact=True)&#10;&#10;Aria snapshot:&#10;- link &quot;Skip to content&quot;:&#10;  - /url: &quot;#main&quot;&#10;- banner:&#10;  - link &quot;timeKER&quot;:&#10;    - /url: /dashboard&#10;    - img &quot;timeKER&quot;&#10;  - text: clients • billing • timecards&#10;  - link &quot;Search workspace&quot;:&#10;    - /url: /search&#10;  - group: EO&#10;  - text: Example Owner&#10;- complementary:&#10;  - navigation &quot;Primary&quot;:&#10;    - link &quot;Dashboard&quot;:&#10;      - /url: /dashboard&#10;    - link &quot;Clients&quot;:&#10;      - /url: /clients&#10;    - link &quot;Projects&quot;:&#10;      - /url: /projects&#10;    - link &quot;Timecards&quot;:&#10;      - /url: /timecards&#10;    - link &quot;Cases&quot;:&#10;      - /url: /cases&#10;    - link &quot;Mail&quot;:&#10;      - /url: /mail&#10;    - link &quot;Billing&quot;:&#10;      - /url: /billing&#10;    - link &quot;Sending&quot;:&#10;      - /url: /sending&#10;    - link &quot;Reports&quot;:&#10;      - /url: /reports&#10;    - link &quot;Archive&quot;:&#10;      - /url: /archive&#10;    - link &quot;Settings&quot;:&#10;      - /url: /settings&#10;    - link &quot;Audit history&quot;:&#10;      - /url: /audit&#10;  - text: AEKR Private workspace&#10;- main:&#10;  - alert:&#10;    - text: The session check could not finish. Your changes are still here. Check your connection and submit again.&#10;    - link &quot;Open sign-in in a new tab&quot;:&#10;      - /url: /&#10;  - note: Stage&#10;  - heading &quot;Prepare sending&quot; [level=1]&#10;  - paragraph:&#10;    - link &quot;SYNTHETIC-001&quot;:&#10;      - /url: /billing/10000000-0000-0000-0000-000000000001&#10;    - text: · Example Studio &lt;private&gt; · USD 30.00&#10;  - link &quot;Back&quot;:&#10;    - /url: /sending&#10;  - note:&#10;    - strong: Sending is not configured.&#10;    - text: You can review and prepare statements. No outgoing email or scheduled follow-up can run until a separate sender is enabled.&#10;  - heading &quot;Statement message&quot; [level=2]&#10;  - paragraph: Choose the client's confirmed recipient and review the issued PDF. Preparing a message does not change its payment or receipt status.&#10;  - paragraph:&#10;    - link &quot;Open issued PDF&quot;:&#10;      - /url: /billing/10000000-0000-0000-0000-000000000001/pdf&#10;    - text: · SYNTHETIC-001.pdf&#10;  - paragraph:&#10;    - text: &quot;PDF SHA-256:&quot;&#10;    - code: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&#10;  - text: Recipient email *&#10;  - textbox &quot;Recipient email *&quot;: reviewed@example.com&#10;  - text: One confirmed recipient. No CC or BCC. Subject *&#10;  - textbox &quot;Subject *&quot;: &quot;Statement {invoice_number}&quot;&#10;  - text: Message&#10;  - textbox &quot;Message&quot;: An explicitly reviewed message.&#10;  - paragraph:&#10;    - text: &quot;Placeholders:&quot;&#10;    - code: &quot;{invoice_number}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{client_name}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{currency}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{total}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{balance}&quot;&#10;    - text: .&#10;  - group &quot;Unpaid follow-ups&quot;:&#10;    - text: Unpaid follow-ups&#10;    - checkbox &quot;Enable follow-ups for this statement&quot; [checked]&#10;    - text: Enable follow-ups for this statement&#10;    - paragraph: Off unless selected. Any payment, void or Stop cancels future messages. Reversing a payment does not restart sending.&#10;    - text: Days between follow-ups&#10;    - spinbutton &quot;Days between follow-ups&quot;: &quot;7&quot;&#10;    - text: Maximum follow-ups&#10;    - spinbutton &quot;Maximum follow-ups&quot;: &quot;1&quot;&#10;    - text: Follow-up subject&#10;    - textbox &quot;Follow-up subject&quot;: &quot;Follow-up {invoice_number}&quot;&#10;    - text: Follow-up message&#10;    - textbox &quot;Follow-up message&quot;: &quot;Outstanding balance: {currency} {balance}.&quot;&#10;  - button &quot;Review message&quot;&#10;  - link &quot;Cancel&quot;:&#10;    - /url: /sending&#10;  - group: help">tests\e2e\test_sending_browser.py:59: in test_review_confirmation_stop_and_templates_use_native_forms
     expect(page.get_by_role("heading", name="Review sending", exact=True)).to_be_visible()
 E   AssertionError: Locator expected to be visible
 E   Actual value: None
-E   Error: element(s) not found
+E   Error: element(s) not found 
 E   Call log:
 E     - Expect "to_be_visible" get_by_role("heading", name="Review sending", exact=True) with timeout 5000ms
 E     - waiting for get_by_role("heading", name="Review sending", exact=True)
-E
+E   
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -568,11 +568,11 @@ E     - group: help</failure></testcase><testcase classname="tests.e2e.test_send
     expect(page.get_by_role("heading", name="Review sending", exact=True)).to_be_visible()
 E   AssertionError: Locator expected to be visible
 E   Actual value: None
-E   Error: element(s) not found
+E   Error: element(s) not found 
 E   Call log:
 E     - Expect "to_be_visible" get_by_role("heading", name="Review sending", exact=True) with timeout 5000ms
 E     - waiting for get_by_role("heading", name="Review sending", exact=True)
-E
+E   
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -677,11 +677,11 @@ E     - navigating to "http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca
     expect(page.get_by_role("button", name="Create draft statement", exact=True)).to_have_class(
 E   AssertionError: Locator expected to have class 'draft-action'
 E   Actual value: None
-E   Error: element(s) not found
+E   Error: element(s) not found 
 E   Call log:
 E     - Expect "to_have_class" get_by_role("button", name="Create draft statement", exact=True) with timeout 5000ms
 E     - waiting for get_by_role("button", name="Create draft statement", exact=True)
-E
+E   
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -815,11 +815,11 @@ E       - button "Reject nonessential"</failure></testcase><testcase classname="
     expect(page.get_by_role("button", name="Create draft statement", exact=True)).to_have_class(
 E   AssertionError: Locator expected to have class 'draft-action'
 E   Actual value: None
-E   Error: element(s) not found
+E   Error: element(s) not found 
 E   Call log:
 E     - Expect "to_have_class" get_by_role("button", name="Create draft statement", exact=True) with timeout 5000ms
 E     - waiting for get_by_role("button", name="Create draft statement", exact=True)
-E
+E   
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -1047,7 +1047,7 @@ E   Call log:
 E     - navigating to "http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05", waiting until "load"</failure></testcase><testcase classname="tests.e2e.test_work_management" name="test_sibling_required_fields_keep_separate_errors_and_notice" time="0.929" /><testcase classname="tests.e2e.test_workflow_feedback_browser" name="test_about_rows_share_color_alignment_and_cookie_action" time="3.804" /><testcase classname="tests.e2e.test_workflow_feedback_browser" name="test_save_notice_is_dismissible_and_fresh_client_form_is_clear[1280]" time="1.446" /><testcase classname="tests.e2e.test_workflow_feedback_browser" name="test_save_notice_is_dismissible_and_fresh_client_form_is_clear[390]" time="1.227" /><testcase classname="tests.e2e.test_workflow_feedback_browser" name="test_save_notice_without_javascript_stays_in_document_flow" time="1.016" /><testcase classname="tests.e2e.test_workflow_feedback_browser" name="test_signed_in_contact_landing_returns_to_workspace" time="1.286" /><testcase classname="tests.e2e.test_workspace_search_browser" name="test_workspace_search_overlay_preserves_form_and_navigates_record[1440]" time="5.911" /><testcase classname="tests.e2e.test_workspace_search_browser" name="test_workspace_search_overlay_preserves_form_and_navigates_record[390]" time="2.509" /><testcase classname="tests.e2e.test_workspace_search_browser" name="test_workspace_search_overlay_preserves_form_and_navigates_record[320]" time="2.504" /><testcase classname="tests.e2e.test_workspace_search_browser" name="test_workspace_search_native_page_without_javascript" time="1.062" /><testcase classname="tests.e2e.test_workspace_search_browser" name="test_dashboard_panels_and_chart_switch_keep_distinct_actions[1440]" time="6.344"><properties><property name="bars_card_heights" value="{'clients': 462.328125, 'rhythm': 462.328125}" /><property name="contribution_card_heights" value="{'clients': 481.328125, 'rhythm': 481.328125}" /></properties><failure message="AssertionError: Locator expected to have attribute 'true'&#10;Actual value: None &#10;Call log:&#10;  - Expect &quot;to_have_attribute&quot; locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first with timeout 5000ms&#10;  - waiting for locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first&#10;    14 × locator resolved to &lt;rect y=&quot;23&quot; x=&quot;266&quot; rx=&quot;4.5&quot; width=&quot;14&quot; height=&quot;12&quot; data-minutes=&quot;0&quot; data-future=&quot;true&quot; data-weekend=&quot;false&quot; data-contribution-day=&quot;2026-10-27&quot; class=&quot;contribution-day contribution-level-0 contribution-future&quot;&gt;…&lt;/rect&gt;&#10;       - unexpected value &quot;null&quot;">tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
     expect(future).to_have_attribute("aria-hidden", "true")
 E   AssertionError: Locator expected to have attribute 'true'
-E   Actual value: None
+E   Actual value: None 
 E   Call log:
 E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
 E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
@@ -1055,7 +1055,7 @@ E       14 × locator resolved to &lt;rect y="23" x="266" rx="4.5" width="14" he
 E          - unexpected value "null"</failure></testcase><testcase classname="tests.e2e.test_workspace_search_browser" name="test_dashboard_panels_and_chart_switch_keep_distinct_actions[390]" time="6.341"><properties><property name="bars_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /><property name="contribution_card_heights" value="{'clients': 390.484375, 'rhythm': 390.484375}" /></properties><failure message="AssertionError: Locator expected to have attribute 'true'&#10;Actual value: None &#10;Call log:&#10;  - Expect &quot;to_have_attribute&quot; locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first with timeout 5000ms&#10;  - waiting for locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first&#10;    14 × locator resolved to &lt;rect y=&quot;23&quot; x=&quot;266&quot; rx=&quot;4.5&quot; width=&quot;14&quot; height=&quot;12&quot; data-minutes=&quot;0&quot; data-future=&quot;true&quot; data-weekend=&quot;false&quot; data-contribution-day=&quot;2026-10-27&quot; class=&quot;contribution-day contribution-level-0 contribution-future&quot;&gt;…&lt;/rect&gt;&#10;       - unexpected value &quot;null&quot;">tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
     expect(future).to_have_attribute("aria-hidden", "true")
 E   AssertionError: Locator expected to have attribute 'true'
-E   Actual value: None
+E   Actual value: None 
 E   Call log:
 E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
 E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
@@ -1063,7 +1063,7 @@ E       14 × locator resolved to &lt;rect y="23" x="266" rx="4.5" width="14" he
 E          - unexpected value "null"</failure></testcase><testcase classname="tests.e2e.test_workspace_search_browser" name="test_dashboard_panels_and_chart_switch_keep_distinct_actions[320]" time="6.394"><properties><property name="bars_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /><property name="contribution_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /></properties><failure message="AssertionError: Locator expected to have attribute 'true'&#10;Actual value: None &#10;Call log:&#10;  - Expect &quot;to_have_attribute&quot; locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first with timeout 5000ms&#10;  - waiting for locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first&#10;    14 × locator resolved to &lt;rect y=&quot;23&quot; x=&quot;266&quot; rx=&quot;4.5&quot; width=&quot;14&quot; height=&quot;12&quot; data-minutes=&quot;0&quot; data-future=&quot;true&quot; data-weekend=&quot;false&quot; data-contribution-day=&quot;2026-10-27&quot; class=&quot;contribution-day contribution-level-0 contribution-future&quot;&gt;…&lt;/rect&gt;&#10;       - unexpected value &quot;null&quot;">tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
     expect(future).to_have_attribute("aria-hidden", "true")
 E   AssertionError: Locator expected to have attribute 'true'
-E   Actual value: None
+E   Actual value: None 
 E   Call log:
 E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
 E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first

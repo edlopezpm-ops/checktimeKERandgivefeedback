@@ -9,3 +9,18 @@ Before running machine-bound reproduction templates, substitute aliases in a sep
 No PDF/PNG was published. Extracted synthetic totals, hashes and the recorded visual-inspection result provide the public evidence; originals remain in local audit custody. Scripts referring to those raw outputs explain how to regenerate them in an isolated environment.
 
 Public text uses canonical LF and removes trailing transport whitespace. Raw evidence retains its original whitespace outside the public repository. This representation change does not change measured outcomes; the publication manifest seals the actual Git blob bytes.
+
+## XML publication correction — 2026-10-26
+
+PUB-01 repairs only the serialization of the two invalid derived JUnit documents.
+The actual publisher now parses original XML, sanitizes text/tail/attribute values,
+serializes, and reparses before writing. Literal path aliases remain escaped text.
+The portable helper and its five regressions are under repro/. All nine derived
+XML files parse; testcase identity, status, structure and recorded counts match
+their valid originals. The 2 AUDIT_ROOT and 65 USER_HOME aliases are escaped.
+The two repaired XML files are an exception to the historical trailing-whitespace
+normalization above: they preserve all sanitized original decoded text, tail and
+attribute values, including log whitespace. The other seven XML files retain
+their historical published bytes.
+Original evidence, historical failures, scores and product source are unchanged.
+See PUB01-REPAIR.json for exact original/derived hashes and the publisher change.

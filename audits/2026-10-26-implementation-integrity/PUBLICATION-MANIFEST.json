@@ -104,8 +104,8 @@
     },
     {
       "path": "evidence/backend-complete.xml",
-      "bytes": 1850284,
-      "sha256": "71eb12d5d391b496758838e546234c1a04beab36efe07b9316b2a54dbdf9a8bb"
+      "bytes": 1850257,
+      "sha256": "753d9fe3a5eb2f73f161cffe6e0a256db1d80ba24bcfd7ade152a9dbf96f4d19"
     },
     {
       "path": "evidence/backend-diagnosis.log",
@@ -349,8 +349,8 @@
     },
     {
       "path": "evidence/browser-complete.xml",
-      "bytes": 157246,
-      "sha256": "25b9a005b56316a7eeee110849957ad5ab204e35a50b00ed045f09e6cdea1a0c"
+      "bytes": 157628,
+      "sha256": "5a18b3c38e5c74572ad7e739e5d9dc9af380a16699ed9af3af68596f991f3a38"
     },
     {
       "path": "evidence/browser-navigation-diagnosis.log",
@@ -818,14 +818,19 @@
       "sha256": "154ee7878a42c2006fbe2fb64a460974f99bf8eec43dfe69a4349aa96ac849e9"
     },
     {
+      "path": "PUB01-REPAIR.json",
+      "bytes": 5660,
+      "sha256": "b259091ea751388857e9aeb10c78de6eda4f1b6a3e3e738430c52018d3a771e2"
+    },
+    {
       "path": "PUBLICATION-VALIDATION.json",
       "bytes": 407,
       "sha256": "c249de33b54ab55609079a7b425d932cecd99a1341a0f1e1c81a18f36d83370d"
     },
     {
       "path": "PUBLICATION.md",
-      "bytes": 1584,
-      "sha256": "a63036d9571fc1f95ed142600088529bb547ffb340567b9bae80108ee8f711e5"
+      "bytes": 2555,
+      "sha256": "97b64cc006dc2fd8de0984ec5c8ceccbb377cee5d5f8ae044809f1e9c7463e40"
     },
     {
       "path": "REPORT.md",
@@ -1013,6 +1018,11 @@
       "sha256": "b209192d348ca4981c783e3dc4e73912c4fd69fa55b3ca765c6b63b2f5a2fd79"
     },
     {
+      "path": "repro/sanitize_xml.py",
+      "bytes": 907,
+      "sha256": "be6cba61fc876dfb1db0f504a80ba7ec71e479d2047f6992bbf647a439c3e35f"
+    },
+    {
       "path": "repro/session_preflight_csrf.mjs",
       "bytes": 1732,
       "sha256": "1c02bb6f6d154b2efffdee1be33a90d7b4a9324f8aa0778101d528e629140e71"
@@ -1026,6 +1036,11 @@
       "path": "repro/suite_triage.py",
       "bytes": 1453,
       "sha256": "de6bab7ebc90010bc10ea96c0c4c62924194005c6dccd5f4e580e71e57fea32d"
+    },
+    {
+      "path": "repro/test_sanitize_xml.py",
+      "bytes": 3395,
+      "sha256": "094bb7ca19a84a88008958f8b9b6601577a14f5cee2aaa54db60e51393155600"
     },
     {
       "path": "repro/write_behavior_review.py",
@@ -1158,5 +1173,6 @@
     "path_alias_occurrences": 509
   },
   "manifest_self_excluded": true,
-  "canonical_text": "UTF-8 LF; trailing transport whitespace removed; raw receipts retained outside publication"
+  "canonical_text": "UTF-8 LF; trailing transport whitespace removed historically, except the two PUB-01 repaired XML files preserve sanitized original decoded text/tail/attribute values including whitespace; raw receipts retained outside publication",
+  "pub01_repair": "PUB01-REPAIR.json"
 }
