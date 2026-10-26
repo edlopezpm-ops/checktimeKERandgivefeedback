@@ -1,0 +1,86 @@
+{
+  "target": "timeker_guard_contract_audit_r2_test on loopback55526 only",
+  "elapsed_seconds": 0.1031793000001926,
+  "checks": [
+    {
+      "name": "issued_total",
+      "result": "REJECTED",
+      "sqlstate": "P0001"
+    },
+    {
+      "name": "issued_snapshot",
+      "result": "REJECTED",
+      "sqlstate": "P0001"
+    },
+    {
+      "name": "issued_line",
+      "result": "REJECTED",
+      "sqlstate": "P0001"
+    },
+    {
+      "name": "artifact_update",
+      "result": "REJECTED",
+      "sqlstate": "P0001"
+    },
+    {
+      "name": "artifact_delete",
+      "result": "REJECTED",
+      "sqlstate": "P0001"
+    },
+    {
+      "name": "published_claim_delete",
+      "result": "REJECTED",
+      "sqlstate": "P0001"
+    },
+    {
+      "name": "published_void",
+      "result": "REJECTED",
+      "sqlstate": "P0001"
+    },
+    {
+      "name": "published_entry_edit",
+      "result": "REJECTED",
+      "sqlstate": "P0001"
+    },
+    {
+      "name": "cumulative_rounding_credit_1",
+      "result": "ACCEPTED",
+      "amount": "0.02",
+      "minutes": 1
+    },
+    {
+      "name": "cumulative_rounding_credit_2",
+      "result": "ACCEPTED",
+      "amount": "0.01",
+      "minutes": 1
+    },
+    {
+      "name": "cumulative_rounding_credit_3",
+      "result": "ACCEPTED",
+      "amount": "0.02",
+      "minutes": 1
+    },
+    {
+      "name": "published_claim_after_full_credit",
+      "result": "REJECTED",
+      "sqlstate": "P0001"
+    },
+    {
+      "name": "credit_update",
+      "result": "REJECTED",
+      "sqlstate": "P0001"
+    },
+    {
+      "name": "fresh_connection_retains_original_and_full_credit",
+      "result": "PASS",
+      "original_total": "0.05",
+      "credited_total": "0.05",
+      "claims": 1,
+      "worked_minutes": 3,
+      "artifact_sha256": "bab66b8f1277b520549483d4b3743bb6a0cfb2f61bd48f899d59c5dbf87b2087"
+    }
+  ],
+  "checks_count": 14,
+  "expected_rejections": 10,
+  "limits": "Direct SQL/ORM trigger checks on synthetic data, outside pytest hooks. Placeholder PDF bytes test custody guards only; no PDF renderer or public HTTP flow is credited."
+}

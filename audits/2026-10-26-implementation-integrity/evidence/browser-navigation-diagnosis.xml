@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="15.084" timestamp="2026-10-26T16:39:12.967104-04:00" hostname="Ed"><testcase classname="tests.e2e.test_stage_refinements" name="test_unicode_flexfield_save_and_numeric_identity[390]" time="4.950"><failure message="playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit&#10;Call log:&#10;  - navigating to &quot;http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit&quot;, waiting until &quot;load&quot;">tests\e2e\test_stage_refinements.py:119: in test_unicode_flexfield_save_and_numeric_identity
+    page.goto(f"{server}/projects/{project_id}/edit")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit", waiting until "load"</failure></testcase><testcase classname="tests.e2e.test_stage_refinements" name="test_unicode_flexfield_save_and_numeric_identity[1440]" time="1.509"><failure message="playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit&#10;Call log:&#10;  - navigating to &quot;http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit&quot;, waiting until &quot;load&quot;">tests\e2e\test_stage_refinements.py:119: in test_unicode_flexfield_save_and_numeric_identity
+    page.goto(f"{server}/projects/{project_id}/edit")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit", waiting until "load"</failure></testcase><testcase classname="tests.e2e.test_work_management" name="test_cases_time_and_screen_walkthrough[1440]" time="5.198"><failure message="playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05&#10;Call log:&#10;  - navigating to &quot;http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05&quot;, waiting until &quot;load&quot;">tests\e2e\test_work_management.py:103: in test_cases_time_and_screen_walkthrough
+    page.goto(f"{server}/timecards?client_id={client.id}&amp;week=2026-10-05")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05", waiting until "load"</failure></testcase><testcase classname="tests.e2e.test_work_management" name="test_cases_time_and_screen_walkthrough[390]" time="2.247"><failure message="playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05&#10;Call log:&#10;  - navigating to &quot;http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05&quot;, waiting until &quot;load&quot;">tests\e2e\test_work_management.py:103: in test_cases_time_and_screen_walkthrough
+    page.goto(f"{server}/timecards?client_id={client.id}&amp;week=2026-10-05")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05", waiting until "load"</failure></testcase></testsuite></testsuites>

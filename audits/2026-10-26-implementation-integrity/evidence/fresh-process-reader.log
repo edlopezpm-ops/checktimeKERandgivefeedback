@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "<AUDIT_ROOT>\repro\fresh_process_reader.py", line 8, in <module>
+    cur.execute('SELECT id,status,total,snapshot_json FROM invoices')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\psycopg\cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedColumn: column "snapshot_json" does not exist
+LINE 1: SELECT id,status,total,snapshot_json FROM invoices
+                               ^

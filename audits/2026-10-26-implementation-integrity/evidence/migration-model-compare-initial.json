@@ -1,0 +1,2622 @@
+{
+  "target": "new disposable loopback database timeker_schema_contract_audit_test",
+  "head": "ph3_017_operation_limits",
+  "elapsed_seconds": 2.063047600000118,
+  "actual_tables": [
+    "account_closures",
+    "admission_identities",
+    "app_settings",
+    "audit_events",
+    "browser_sessions",
+    "case_time_allocations",
+    "cases",
+    "client_drafts",
+    "client_source_references",
+    "clients",
+    "contact_attempts",
+    "contacts",
+    "credit_drafts",
+    "credit_memos",
+    "email_auth_challenges",
+    "integration_codes",
+    "integration_grants",
+    "integration_operations",
+    "integration_tokens",
+    "invoice_artifacts",
+    "invoice_lines",
+    "invoice_time_entries",
+    "invoices",
+    "library_document_versions",
+    "library_documents",
+    "library_uploads",
+    "mail_addresses",
+    "mail_attachments",
+    "mail_messages",
+    "operation_counters",
+    "owner_identities",
+    "owner_registrations",
+    "payments",
+    "project_agreements",
+    "projects",
+    "proposal_sending_attempts",
+    "proposal_sending_deliveries",
+    "public_email_challenges",
+    "publication_reviews",
+    "quote_artifacts",
+    "quote_lines",
+    "quote_revisions",
+    "quotes",
+    "sending_attempts",
+    "sending_deliveries",
+    "sending_plans",
+    "sending_preferences",
+    "subscription_billing_accounts",
+    "subscription_billing_events",
+    "subscription_billing_operations",
+    "subscription_operations",
+    "time_contributions",
+    "time_entries",
+    "time_import_records",
+    "time_operations",
+    "timecards",
+    "users",
+    "workspace_admissions",
+    "workspace_subscriptions"
+  ],
+  "model_tables": [
+    "account_closures",
+    "admission_identities",
+    "app_settings",
+    "audit_events",
+    "browser_sessions",
+    "case_time_allocations",
+    "cases",
+    "client_drafts",
+    "client_source_references",
+    "clients",
+    "contact_attempts",
+    "contacts",
+    "credit_drafts",
+    "credit_memos",
+    "email_auth_challenges",
+    "integration_codes",
+    "integration_grants",
+    "integration_operations",
+    "integration_tokens",
+    "invoice_artifacts",
+    "invoice_lines",
+    "invoice_time_entries",
+    "invoices",
+    "library_document_versions",
+    "library_documents",
+    "library_uploads",
+    "mail_addresses",
+    "mail_attachments",
+    "mail_messages",
+    "operation_counters",
+    "owner_identities",
+    "owner_registrations",
+    "payments",
+    "project_agreements",
+    "projects",
+    "proposal_sending_attempts",
+    "proposal_sending_deliveries",
+    "public_email_challenges",
+    "publication_reviews",
+    "quote_artifacts",
+    "quote_lines",
+    "quote_revisions",
+    "quotes",
+    "sending_attempts",
+    "sending_deliveries",
+    "sending_plans",
+    "sending_preferences",
+    "subscription_billing_accounts",
+    "subscription_billing_events",
+    "subscription_billing_operations",
+    "subscription_operations",
+    "time_contributions",
+    "time_entries",
+    "time_import_records",
+    "time_operations",
+    "timecards",
+    "users",
+    "workspace_admissions",
+    "workspace_subscriptions"
+  ],
+  "actual_table_count": 59,
+  "model_table_count": 59,
+  "missing_model_tables": [],
+  "missing_actual_tables": [],
+  "missing_columns": [],
+  "extra_columns": [],
+  "type_string_differences": [
+    {
+      "column": "account_closures.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "account_closures.status_expires_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "account_closures.restricted_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "account_closures.provider_operation_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "account_closures.retention_due_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "account_closures.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "account_closures.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "account_closures.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "admission_identities.tenant_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "admission_identities.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "admission_identities.identity_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "admission_identities.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "admission_identities.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "admission_identities.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "app_settings.encrypted_value",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "app_settings.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "app_settings.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "app_settings.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "audit_events.actor_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "audit_events.request_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "audit_events.entity_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "audit_events.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "audit_events.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "audit_events.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "browser_sessions.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "browser_sessions.last_seen_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "browser_sessions.absolute_expires_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "browser_sessions.revoked_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "browser_sessions.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "browser_sessions.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "browser_sessions.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "case_time_allocations.entry_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "case_time_allocations.case_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "case_time_allocations.actor_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "case_time_allocations.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "case_time_allocations.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "case_time_allocations.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "cases.client_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "cases.project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "cases.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "cases.opened_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "cases.resolved_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "cases.closed_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "cases.archived_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "cases.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "cases.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "cases.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "client_drafts.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "client_drafts.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "client_drafts.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "client_drafts.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "client_source_references.client_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "client_source_references.uploaded_by",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "client_source_references.content",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "client_source_references.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "client_source_references.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "client_source_references.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "clients.archived_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "clients.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "clients.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "clients.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "contact_attempts.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "contact_attempts.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "contacts.client_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "contacts.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "contacts.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "contacts.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "credit_drafts.invoice_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "credit_drafts.actor_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "credit_drafts.issued_memo_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "credit_drafts.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "credit_drafts.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "credit_drafts.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "credit_memos.invoice_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "credit_memos.actor_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "credit_memos.pdf_bytes",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "credit_memos.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "credit_memos.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "credit_memos.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "email_auth_challenges.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "email_auth_challenges.expires_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "email_auth_challenges.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "email_auth_challenges.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "email_auth_challenges.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_codes.grant_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "integration_codes.expires_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_codes.used_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_codes.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "integration_codes.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_codes.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_grants.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "integration_grants.tenant_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "integration_grants.expires_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_grants.revoked_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_grants.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "integration_grants.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_grants.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_operations.grant_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "integration_operations.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "integration_operations.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_operations.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_tokens.grant_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "integration_tokens.expires_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_tokens.used_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_tokens.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "integration_tokens.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "integration_tokens.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "invoice_artifacts.invoice_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoice_artifacts.pdf_bytes",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "invoice_artifacts.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoice_artifacts.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "invoice_artifacts.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "invoice_lines.invoice_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoice_lines.project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoice_lines.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoice_lines.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "invoice_lines.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "invoice_time_entries.entry_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoice_time_entries.invoice_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoices.client_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoices.fixed_fee_project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoices.manual_extra_project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoices.issued_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "invoices.voided_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "invoices.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "invoices.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "invoices.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "library_document_versions.document_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_document_versions.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_document_versions.source_upload_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_document_versions.pdf_bytes",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "library_document_versions.published_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "library_document_versions.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_document_versions.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "library_document_versions.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "library_documents.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_documents.case_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_documents.client_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_documents.project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_documents.source_upload_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_documents.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_documents.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "library_documents.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "library_uploads.document_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_uploads.uploaded_by",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_uploads.payload",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "library_uploads.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "library_uploads.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "library_uploads.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_addresses.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_addresses.client_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_addresses.project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_addresses.case_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_addresses.revoked_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_addresses.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_addresses.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_addresses.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_attachments.message_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_attachments.payload",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "mail_attachments.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_attachments.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_attachments.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_messages.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_messages.client_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_messages.project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_messages.case_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_messages.message_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_messages.received_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_messages.archived_basis_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_messages.archived_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_messages.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "mail_messages.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "mail_messages.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "operation_counters.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "operation_counters.bucket_start",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "owner_identities.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "owner_identities.revoked_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "owner_identities.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "owner_identities.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "owner_identities.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "owner_registrations.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "owner_registrations.accepted_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "owner_registrations.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "owner_registrations.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "owner_registrations.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "payments.invoice_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "payments.created_by",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "payments.reversed_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "payments.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "payments.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "payments.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "project_agreements.project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "project_agreements.uploaded_by",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "project_agreements.payload",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "project_agreements.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "project_agreements.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "project_agreements.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "projects.client_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "projects.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "projects.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "projects.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "proposal_sending_attempts.delivery_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "proposal_sending_attempts.completed_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "proposal_sending_attempts.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "proposal_sending_attempts.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "proposal_sending_attempts.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "proposal_sending_deliveries.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "proposal_sending_deliveries.case_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "proposal_sending_deliveries.quote_artifact_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "proposal_sending_deliveries.library_version_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "proposal_sending_deliveries.artifact_revision_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "proposal_sending_deliveries.attachment_bytes",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "proposal_sending_deliveries.operation_key",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "proposal_sending_deliveries.confirmed_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "proposal_sending_deliveries.sent_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "proposal_sending_deliveries.stopped_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "proposal_sending_deliveries.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "proposal_sending_deliveries.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "proposal_sending_deliveries.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "public_email_challenges.expires_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "public_email_challenges.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "public_email_challenges.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "public_email_challenges.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "publication_reviews.invoice_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "publication_reviews.actor_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "publication_reviews.pdf_bytes",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "publication_reviews.expires_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "publication_reviews.published_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "publication_reviews.plan_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "publication_reviews.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "publication_reviews.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "publication_reviews.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "quote_artifacts.revision_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_artifacts.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_artifacts.pdf_bytes",
+      "actual": "BYTEA",
+      "model": "BLOB"
+    },
+    {
+      "column": "quote_artifacts.published_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "quote_artifacts.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_artifacts.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "quote_artifacts.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "quote_lines.revision_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_lines.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_lines.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "quote_lines.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "quote_revisions.quote_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_revisions.parent_revision_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_revisions.case_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_revisions.client_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_revisions.project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_revisions.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quote_revisions.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "quote_revisions.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "quotes.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quotes.operation_key",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quotes.archived_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "quotes.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "quotes.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "quotes.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_attempts.delivery_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_attempts.completed_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_attempts.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_attempts.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_attempts.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_deliveries.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_deliveries.plan_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_deliveries.scheduled_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_deliveries.sent_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_deliveries.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_deliveries.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_deliveries.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_plans.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_plans.invoice_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_plans.replaces_plan_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_plans.artifact_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_plans.stopped_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_plans.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_plans.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_plans.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_preferences.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_preferences.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "sending_preferences.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "sending_preferences.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_accounts.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "subscription_billing_accounts.checkout_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "subscription_billing_accounts.paid_through",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_accounts.proven_period_start",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_accounts.past_due_since",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_accounts.failed_period_start",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_accounts.provider_updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_accounts.pending_effective_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_accounts.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_accounts.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_events.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "subscription_billing_events.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_events.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_operations.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "subscription_billing_operations.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "subscription_billing_operations.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_billing_operations.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_operations.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "subscription_operations.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "subscription_operations.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "subscription_operations.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "time_contributions.actor_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_contributions.import_record_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_contributions.timecard_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_contributions.project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_contributions.entry_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_contributions.case_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_contributions.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_contributions.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "time_contributions.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "time_entries.timecard_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_entries.project_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_entries.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_entries.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "time_entries.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "time_import_records.actor_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_import_records.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_import_records.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "time_import_records.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "time_operations.actor_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_operations.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "time_operations.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "time_operations.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "timecards.internal_case_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "timecards.archived_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "timecards.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "timecards.client_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "timecards.finalized_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "timecards.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "timecards.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "timecards.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "users.last_login_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "users.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "users.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "users.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "workspace_admissions.slot_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "workspace_admissions.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "workspace_admissions.id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "workspace_admissions.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "workspace_admissions.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "workspace_subscriptions.owner_id",
+      "actual": "UUID",
+      "model": "CHAR(32)"
+    },
+    {
+      "column": "workspace_subscriptions.access_expires_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "workspace_subscriptions.created_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    },
+    {
+      "column": "workspace_subscriptions.updated_at",
+      "actual": "TIMESTAMP",
+      "model": "DATETIME"
+    }
+  ],
+  "autogenerate_differences": [
+    "[('modify_default', None, 'projects', 'status', {'existing_nullable': False, 'existing_type': VARCHAR(length=20), 'existing_comment': None}, DefaultClause(<sqlalchemy.sql.elements.TextClause object at 0x00000203F9532D60>, for_update=False), None)]"
+  ],
+  "check_constraint_count": 150,
+  "functions": [
+    {
+      "proname": "guard_account_closure",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "guard_browser_session",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "guard_closed_account_owner",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_admission_history_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_allocated_entry_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_allocated_parent_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_allocation_contribution_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_allocation_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_archive_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_artifact_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_billing_hold_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_case_archive_status_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_case_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_commercial_case_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_contribution_allocation_check",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_contribution_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_credit_draft_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_credit_memo_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_entry_contribution_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_entry_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_internal_billing_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_internal_card_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_invoice_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_issued_artifact_check",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_library_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_line_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_mail_attachment_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_mail_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_object_id_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_payment_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_project_agreement_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_project_billing_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_proposal_sending_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_publication_claim_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_publication_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_publication_review_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_quote_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_registration_history_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_sending_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_sending_revision_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_subscription_billing_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_subscription_history_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_time_operation_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_timecard_void_restriction",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_work_batch_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "relname": "account_closures",
+      "tgname": "account_closure_guard",
+      "proname": "guard_account_closure",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "admission_identities",
+      "tgname": "admission_identity_history",
+      "proname": "timeker_admission_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "audit_events",
+      "tgname": "audit_guard",
+      "proname": "timeker_artifact_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "browser_sessions",
+      "tgname": "browser_session_guard",
+      "proname": "guard_browser_session",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "case_time_allocations",
+      "tgname": "allocation_contribution_guard",
+      "proname": "timeker_allocation_contribution_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "case_time_allocations",
+      "tgname": "allocation_guard",
+      "proname": "timeker_allocation_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "cases",
+      "tgname": "case_archive_status_guard",
+      "proname": "timeker_case_archive_status_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "cases",
+      "tgname": "case_guard",
+      "proname": "timeker_case_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "cases",
+      "tgname": "commercial_case_guard",
+      "proname": "timeker_commercial_case_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "clients",
+      "tgname": "object_id_guard",
+      "proname": "timeker_object_id_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "credit_drafts",
+      "tgname": "credit_draft_guard",
+      "proname": "timeker_credit_draft_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "credit_memos",
+      "tgname": "credit_memo_guard",
+      "proname": "timeker_credit_memo_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "email_auth_challenges",
+      "tgname": "email_challenge_history",
+      "proname": "timeker_registration_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoice_artifacts",
+      "tgname": "artifact_guard",
+      "proname": "timeker_artifact_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoice_lines",
+      "tgname": "line_guard",
+      "proname": "timeker_line_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoice_time_entries",
+      "tgname": "billing_hold_guard",
+      "proname": "timeker_billing_hold_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoice_time_entries",
+      "tgname": "internal_billing_guard",
+      "proname": "timeker_internal_billing_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoice_time_entries",
+      "tgname": "publication_claim_guard",
+      "proname": "timeker_publication_claim_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoices",
+      "tgname": "invoice_guard",
+      "proname": "timeker_invoice_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoices",
+      "tgname": "issued_artifact_check",
+      "proname": "timeker_issued_artifact_check",
+      "tgdeferrable": true,
+      "tginitdeferred": true
+    },
+    {
+      "relname": "invoices",
+      "tgname": "object_id_guard",
+      "proname": "timeker_object_id_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoices",
+      "tgname": "publication_guard",
+      "proname": "timeker_publication_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "library_document_versions",
+      "tgname": "library_version_guard",
+      "proname": "timeker_library_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "library_documents",
+      "tgname": "library_document_guard",
+      "proname": "timeker_library_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "library_documents",
+      "tgname": "object_id_guard",
+      "proname": "timeker_object_id_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "library_uploads",
+      "tgname": "library_upload_guard",
+      "proname": "timeker_library_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "mail_addresses",
+      "tgname": "mail_address_guard",
+      "proname": "timeker_mail_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "mail_attachments",
+      "tgname": "mail_attachment_guard",
+      "proname": "timeker_mail_attachment_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "mail_messages",
+      "tgname": "archive_mail_guard",
+      "proname": "timeker_archive_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "mail_messages",
+      "tgname": "mail_message_guard",
+      "proname": "timeker_mail_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "owner_identities",
+      "tgname": "identity_binding_history",
+      "proname": "timeker_registration_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "owner_registrations",
+      "tgname": "registration_acceptance_history",
+      "proname": "timeker_registration_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "payments",
+      "tgname": "payment_guard",
+      "proname": "timeker_payment_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "project_agreements",
+      "tgname": "project_agreement_guard",
+      "proname": "timeker_project_agreement_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "projects",
+      "tgname": "allocated_project_guard",
+      "proname": "timeker_allocated_parent_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "projects",
+      "tgname": "object_id_guard",
+      "proname": "timeker_object_id_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "projects",
+      "tgname": "project_billing_guard",
+      "proname": "timeker_project_billing_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "proposal_sending_attempts",
+      "tgname": "proposal_attempt_guard",
+      "proname": "timeker_proposal_sending_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "proposal_sending_deliveries",
+      "tgname": "proposal_delivery_guard",
+      "proname": "timeker_proposal_sending_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "public_email_challenges",
+      "tgname": "public_email_challenge_history",
+      "proname": "timeker_admission_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "publication_reviews",
+      "tgname": "publication_review_history",
+      "proname": "timeker_publication_review_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "quote_artifacts",
+      "tgname": "quote_artifact_guard",
+      "proname": "timeker_quote_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "quote_lines",
+      "tgname": "quote_line_guard",
+      "proname": "timeker_quote_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "quote_revisions",
+      "tgname": "quote_revision_guard",
+      "proname": "timeker_quote_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "quotes",
+      "tgname": "quote_root_guard",
+      "proname": "timeker_quote_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "sending_attempts",
+      "tgname": "sending_attempt_history",
+      "proname": "timeker_sending_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "sending_deliveries",
+      "tgname": "sending_delivery_history",
+      "proname": "timeker_sending_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "sending_plans",
+      "tgname": "sending_plan_history",
+      "proname": "timeker_sending_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "sending_plans",
+      "tgname": "sending_plan_revision",
+      "proname": "timeker_sending_revision_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "subscription_billing_accounts",
+      "tgname": "subscription_billing_account_history",
+      "proname": "timeker_subscription_billing_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "subscription_billing_events",
+      "tgname": "subscription_billing_event_history",
+      "proname": "timeker_subscription_billing_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "subscription_billing_operations",
+      "tgname": "subscription_billing_operation_history",
+      "proname": "timeker_subscription_billing_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "subscription_operations",
+      "tgname": "subscription_operation_history",
+      "proname": "timeker_subscription_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_contributions",
+      "tgname": "contribution_allocation_check",
+      "proname": "timeker_contribution_allocation_check",
+      "tgdeferrable": true,
+      "tginitdeferred": true
+    },
+    {
+      "relname": "time_contributions",
+      "tgname": "contribution_guard",
+      "proname": "timeker_contribution_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_entries",
+      "tgname": "entry_allocation_guard",
+      "proname": "timeker_allocated_entry_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_entries",
+      "tgname": "entry_contribution_guard",
+      "proname": "timeker_entry_contribution_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_entries",
+      "tgname": "entry_guard",
+      "proname": "timeker_entry_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_import_records",
+      "tgname": "time_import_record_guard",
+      "proname": "timeker_time_operation_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_operations",
+      "tgname": "time_operation_guard",
+      "proname": "timeker_time_operation_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "allocated_card_guard",
+      "proname": "timeker_allocated_parent_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "archive_card_guard",
+      "proname": "timeker_archive_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "internal_card_guard",
+      "proname": "timeker_internal_card_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "object_id_guard",
+      "proname": "timeker_object_id_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "timecard_void_restriction",
+      "proname": "timeker_timecard_void_restriction",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "work_batch_guard",
+      "proname": "timeker_work_batch_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "users",
+      "tgname": "closed_account_owner_guard",
+      "proname": "guard_closed_account_owner",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "workspace_admissions",
+      "tgname": "admission_allocation_history",
+      "proname": "timeker_admission_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "workspace_subscriptions",
+      "tgname": "subscription_assignment_history",
+      "proname": "timeker_subscription_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    }
+  ],
+  "limits": "No external provider. Autogenerate does not compare all CHECK expressions or trigger semantics. Static review covers these separately. Target retained for audit, no data from Stage/PROD."
+}

@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: prepared Stage signup requires inventory and closed generic mode retains existing access
+ok 1 - prepared Stage signup requires inventory and closed generic mode retains existing access
+  ---
+  duration_ms: 2.6258
+  type: 'test'
+  ...
+# Subtest: public enrollment accepts only a complete bounded independent Stage slot inventory
+ok 2 - public enrollment accepts only a complete bounded independent Stage slot inventory
+  ---
+  duration_ms: 0.8555
+  type: 'test'
+  ...
+# Subtest: public auth receives only a recomputed edge network HMAC and no caller or raw IP
+ok 3 - public auth receives only a recomputed edge network HMAC and no caller or raw IP
+  ---
+  duration_ms: 25.6342
+  type: 'test'
+  ...
+# Subtest: social providers forward only complete explicitly configured pairs
+ok 4 - social providers forward only complete explicitly configured pairs
+  ---
+  duration_ms: 1.2302
+  type: 'test'
+  ...
+# Subtest: social provider misconfiguration fails before a container or provider request
+ok 5 - social provider misconfiguration fails before a container or provider request
+  ---
+  duration_ms: 1.1359
+  type: 'test'
+  ...
+# Subtest: all missing required bindings fail closed without resolving a container
+ok 6 - all missing required bindings fail closed without resolving a container
+  ---
+  duration_ms: 1.1746
+  type: 'test'
+  ...
+# Subtest: Stage switches and strong signing remain mandatory; forbidden surfaces fail closed
+ok 7 - Stage switches and strong signing remain mandatory; forbidden surfaces fail closed
+  ---
+  duration_ms: 0.4866
+  type: 'test'
+  ...
+# Subtest: original or foreign projects, weak TLS and duplicate TLS parameters fail closed
+ok 8 - original or foreign projects, weak TLS and duplicate TLS parameters fail closed
+  ---
+  duration_ms: 2.3268
+  type: 'test'
+  ...
+# Subtest: every registry target uses a Stage schema and role on the exact independent project
+ok 9 - every registry target uses a Stage schema and role on the exact independent project
+  ---
+  duration_ms: 0.7619
+  type: 'test'
+  ...
+# Subtest: origin config forbids production, alternate hosts, credentials, path, query and fragment
+ok 10 - origin config forbids production, alternate hosts, credentials, path, query and fragment
+  ---
+  duration_ms: 0.4252
+  type: 'test'
+  ...
+# Subtest: noncanonical incoming origins and upgrade never invoke a container
+ok 11 - noncanonical incoming origins and upgrade never invoke a container
+  ---
+  duration_ms: 0.665
+  type: 'test'
+  ...
+# Subtest: spoofed forwarding and private target are stripped; Stage identity rebuilt
+ok 12 - spoofed forwarding and private target are stripped; Stage identity rebuilt
+  ---
+  duration_ms: 3.4742
+  type: 'test'
+  ...
+# Subtest: redirects, streaming body and multiple session cookies survive unchanged
+ok 13 - redirects, streaming body and multiple session cookies survive unchanged
+  ---
+  duration_ms: 0.6575
+  type: 'test'
+  ...
+# Subtest: exceptions and injected diagnostics contain no sensitive request or raw error
+ok 14 - exceptions and injected diagnostics contain no sensitive request or raw error
+  ---
+  duration_ms: 0.8304
+  type: 'test'
+  ...
+# Subtest: observer failure cannot change a successful committed response
+ok 15 - observer failure cannot change a successful committed response
+  ---
+  duration_ms: 0.3213
+  type: 'test'
+  ...
+# Subtest: only explicit app, tenant and integration bindings enter the container
+ok 16 - only explicit app, tenant and integration bindings enter the container
+  ---
+  duration_ms: 0.364
+  type: 'test'
+  ...
+# Subtest: internal jobs and disabled public contact never reach the container
+ok 17 - internal jobs and disabled public contact never reach the container
+  ---
+  duration_ms: 1.8986
+  type: 'test'
+  ...
+# Subtest: Stage manifest keeps existing resources, case-only cron and disabled Sending jobs and telemetry
+ok 18 - Stage manifest keeps existing resources, case-only cron and disabled Sending jobs and telemetry
+  ---
+  duration_ms: 0.5097
+  type: 'test'
+  ...
+# Subtest: default Stage logger emits no Worker telemetry
+ok 19 - default Stage logger emits no Worker telemetry
+  ---
+  duration_ms: 0.0858
+  type: 'test'
+  ...
+# Subtest: email authentication remains disabled unless complete exact Stage provider is selected
+ok 20 - email authentication remains disabled unless complete exact Stage provider is selected
+  ---
+  duration_ms: 0.8506
+  type: 'test'
+  ...
+# Subtest: retention catalog identity is explicit Sandbox-only and never accepts an arbitrary upstream
+ok 21 - retention catalog identity is explicit Sandbox-only and never accepts an arbitrary upstream
+  ---
+  duration_ms: 0.6608
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 151.2285

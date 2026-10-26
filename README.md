@@ -70,3 +70,8 @@ Both permanent GitHub `main` branches now resolve to `4bb5c424d6e7d270cdca147928
 
 The final documentary checkpoint keeps all244 raw runtime-file hashes identical to the tested/deployed runtime `5b0fb0d29f506d04e4a6af3ebd8a193089af7214`. Shared Git lineage does not merge production and Stage databases, provider configuration or identity custody. The permanent repositories remain [timeKER-Stage](https://github.com/edlopezpm-ops/timeKER-Stage) and [timeKER-PROD](https://github.com/edlopezpm-ops/timeKER-PROD); future feature prompts continue on Stage.
 <!-- /timeker-final-repository-promotion -->
+
+
+## Implementation integrity audit - 26 October 2026
+
+[Read the implementation integrity audit](audits/2026-10-26-implementation-integrity/REPORT.md) for the source snapshot `1036d705`. Verdict: **FAIL**, with reproducible findings, frozen capability weights, test evidence, refutations and explicit unknowns. This audit preserves the evaluated product and the historical dossier; it grants no release or production authority.

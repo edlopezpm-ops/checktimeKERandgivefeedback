@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: contact sends only fixed operator recipient and sender with escaped content
+ok 1 - contact sends only fixed operator recipient and sender with escaped content
+  ---
+  duration_ms: 19.7296
+  type: 'test'
+  ...
+# Subtest: invalid addressing, recipients, content and IDs never reach email
+ok 2 - invalid addressing, recipients, content and IDs never reach email
+  ---
+  duration_ms: 3.4665
+  type: 'test'
+  ...
+# Subtest: only exact virtual endpoint POST JSON is accepted
+ok 3 - only exact virtual endpoint POST JSON is accepted
+  ---
+  duration_ms: 1.0547
+  type: 'test'
+  ...
+# Subtest: actual bytes are bounded even with missing or misleading Content-Length
+ok 4 - actual bytes are bounded even with missing or misleading Content-Length
+  ---
+  duration_ms: 1.6088
+  type: 'test'
+  ...
+# Subtest: provider failures are sanitized and never retried or logged
+ok 5 - provider failures are sanitized and never retried or logged
+  ---
+  duration_ms: 0.5696
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 119.6881

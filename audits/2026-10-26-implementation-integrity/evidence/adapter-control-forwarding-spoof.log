@@ -1,0 +1,152 @@
+TAP version 13
+# Subtest: prepared Stage signup requires inventory and closed generic mode retains existing access
+ok 1 - prepared Stage signup requires inventory and closed generic mode retains existing access
+  ---
+  duration_ms: 2.1276
+  type: 'test'
+  ...
+# Subtest: public enrollment accepts only a complete bounded independent Stage slot inventory
+ok 2 - public enrollment accepts only a complete bounded independent Stage slot inventory
+  ---
+  duration_ms: 0.8285
+  type: 'test'
+  ...
+# Subtest: public auth receives only a recomputed edge network HMAC and no caller or raw IP
+ok 3 - public auth receives only a recomputed edge network HMAC and no caller or raw IP
+  ---
+  duration_ms: 25.7335
+  type: 'test'
+  ...
+# Subtest: social providers forward only complete explicitly configured pairs
+ok 4 - social providers forward only complete explicitly configured pairs
+  ---
+  duration_ms: 1.2386
+  type: 'test'
+  ...
+# Subtest: social provider misconfiguration fails before a container or provider request
+ok 5 - social provider misconfiguration fails before a container or provider request
+  ---
+  duration_ms: 1.1603
+  type: 'test'
+  ...
+# Subtest: all missing required bindings fail closed without resolving a container
+ok 6 - all missing required bindings fail closed without resolving a container
+  ---
+  duration_ms: 1.2605
+  type: 'test'
+  ...
+# Subtest: Stage switches and strong signing remain mandatory; forbidden surfaces fail closed
+ok 7 - Stage switches and strong signing remain mandatory; forbidden surfaces fail closed
+  ---
+  duration_ms: 0.5226
+  type: 'test'
+  ...
+# Subtest: original or foreign projects, weak TLS and duplicate TLS parameters fail closed
+ok 8 - original or foreign projects, weak TLS and duplicate TLS parameters fail closed
+  ---
+  duration_ms: 1.3399
+  type: 'test'
+  ...
+# Subtest: every registry target uses a Stage schema and role on the exact independent project
+ok 9 - every registry target uses a Stage schema and role on the exact independent project
+  ---
+  duration_ms: 0.5027
+  type: 'test'
+  ...
+# Subtest: origin config forbids production, alternate hosts, credentials, path, query and fragment
+ok 10 - origin config forbids production, alternate hosts, credentials, path, query and fragment
+  ---
+  duration_ms: 0.3902
+  type: 'test'
+  ...
+# Subtest: noncanonical incoming origins and upgrade never invoke a container
+ok 11 - noncanonical incoming origins and upgrade never invoke a container
+  ---
+  duration_ms: 0.5849
+  type: 'test'
+  ...
+# Subtest: spoofed forwarding and private target are stripped; Stage identity rebuilt
+not ok 12 - spoofed forwarding and private target are stripped; Stage identity rebuilt
+  ---
+  duration_ms: 2.5018
+  type: 'test'
+  location: '<AUDIT_ROOT>\\repro\\adapter-mutation-copy\\test\\proxy.test.mjs:198:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    503 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 503
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///<AUDIT_ROOT>/repro/adapter-mutation-copy/test/proxy.test.mjs:223:10)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: redirects, streaming body and multiple session cookies survive unchanged
+ok 13 - redirects, streaming body and multiple session cookies survive unchanged
+  ---
+  duration_ms: 1.3772
+  type: 'test'
+  ...
+# Subtest: exceptions and injected diagnostics contain no sensitive request or raw error
+ok 14 - exceptions and injected diagnostics contain no sensitive request or raw error
+  ---
+  duration_ms: 0.8563
+  type: 'test'
+  ...
+# Subtest: observer failure cannot change a successful committed response
+ok 15 - observer failure cannot change a successful committed response
+  ---
+  duration_ms: 0.2788
+  type: 'test'
+  ...
+# Subtest: only explicit app, tenant and integration bindings enter the container
+ok 16 - only explicit app, tenant and integration bindings enter the container
+  ---
+  duration_ms: 0.2717
+  type: 'test'
+  ...
+# Subtest: internal jobs and disabled public contact never reach the container
+ok 17 - internal jobs and disabled public contact never reach the container
+  ---
+  duration_ms: 1.5647
+  type: 'test'
+  ...
+# Subtest: Stage manifest keeps existing resources, case-only cron and disabled Sending jobs and telemetry
+ok 18 - Stage manifest keeps existing resources, case-only cron and disabled Sending jobs and telemetry
+  ---
+  duration_ms: 0.5183
+  type: 'test'
+  ...
+# Subtest: default Stage logger emits no Worker telemetry
+ok 19 - default Stage logger emits no Worker telemetry
+  ---
+  duration_ms: 0.0869
+  type: 'test'
+  ...
+# Subtest: email authentication remains disabled unless complete exact Stage provider is selected
+ok 20 - email authentication remains disabled unless complete exact Stage provider is selected
+  ---
+  duration_ms: 0.6155
+  type: 'test'
+  ...
+# Subtest: retention catalog identity is explicit Sandbox-only and never accepts an arbitrary upstream
+ok 21 - retention catalog identity is explicit Sandbox-only and never accepts an arbitrary upstream
+  ---
+  duration_ms: 0.5455
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 20
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 167.8457

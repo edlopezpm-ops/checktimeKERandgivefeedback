@@ -1,0 +1,839 @@
+{
+  "reviewer": "contract agent, independent migration/model/SQL pass",
+  "snapshot_head": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+  "files": [
+    {
+      "path": "alembic/versions/3f3c0f09ecf4_mail_custody_and_six_month_archive.py",
+      "sha256": "5546dbd4d323183823febd3ca212dd74e83b7d2081710cd2f5056d1648c72c88",
+      "lines": 203,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          203
+        ]
+      ],
+      "semantic_note": "Immutable normalized mail, revocable capture identity, permanent archive markers, explicit associations.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/7e416c6444fe_baseline.py",
+      "sha256": "8570667b383600a021ec36cdab00f2a3851c50dc5aad8ec5d742fad45b91d0c7",
+      "lines": 354,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          354
+        ]
+      ],
+      "semantic_note": "Initial tables, integer minutes, NUMERIC money, ownership FKs, timecard identity, reservation primary key, forward and reverse dependency order.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/a10d45de891c_issued_status_guard.py",
+      "sha256": "96a89b00f181fbed439d78cce295958bf6be88033b39b9f40f1b26f9653bfcf2",
+      "lines": 51,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          51
+        ]
+      ],
+      "semantic_note": "Issued_at-based financial protections independent of operational status, no issued-to-Draft.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/a82d43cf6120_project_workflow_and_agreements.py",
+      "sha256": "73649633d2736af6891f91024d3f61491b40d5e285ba16ba326f7c00efc4a0a9",
+      "lines": 82,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          82
+        ]
+      ],
+      "semantic_note": "Closed project status; immutable bounded owner agreement; nonempty downgrade refused.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/b07c9d621a30_pin_guard_schema.py",
+      "sha256": "3d3412bd0df933a257df60ba61d1c0458a7d0dd8f21441aeb108414ed2eff7ab",
+      "lines": 33,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          33
+        ]
+      ],
+      "semantic_note": "Installed schema quoted and pinned for all six original guard functions.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/c41894d13cb7_project_commercial_metadata.py",
+      "sha256": "335cd2864120a186f11cbbce4e2906f2e1ab22f71edfb2013d0f354aa9f29bce",
+      "lines": 51,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          51
+        ]
+      ],
+      "semantic_note": "Nullable owner-chosen project type, budget/currency and document-reference pairs.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/c46f2f62a011_immutable_artifacts.py",
+      "sha256": "e101d2922ca2f5d842055548cf57ae49539763eb1433bb35af6a22a1f3645f55",
+      "lines": 96,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          96
+        ]
+      ],
+      "semantic_note": "Invoice snapshot/artifact/audit immutability, entry parent integrity, deferred complete-artifact commit check.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/d3517d81ce20_contact_reservations.py",
+      "sha256": "7642340c9545f651c410f986d11e93d973c0f71faded34a590ce0e5bbaf422d7",
+      "lines": 29,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          29
+        ]
+      ],
+      "semantic_note": "Durable bounded abuse fingerprints/statuses; no message plaintext columns.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/d529b08f14a2_project_billing.py",
+      "sha256": "8cde2a842be37f6e2edeb2388398e5772b94335b2bc251a2d7e40a64799a54ad",
+      "lines": 248,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          248
+        ]
+      ],
+      "semantic_note": "Fixed-fee/manual-extra claims, unique nonvoid fee/reference, budget reservation and financial parent guards.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/e3b42aea781a_parent_guards_and_sessions.py",
+      "sha256": "2514f05093a597f52a618b2141526e137755c5c728e32704b749ebfce97eedc4",
+      "lines": 63,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          63
+        ]
+      ],
+      "semantic_note": "Both source and destination parents guarded, revocation epoch, immutable payment facts.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/e640ab7230cd_case_identity_and_types.py",
+      "sha256": "6a50cd2b360207042a7f5c31c9326d89cb4318e20efdbd7f5cda78c19c5163fd",
+      "lines": 178,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          178
+        ]
+      ],
+      "semantic_note": "Empty-only legacy case classification preflight, generated case identity, owned mandatory project, Mail case lock.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/e672c40fa912_cases_and_allocations.py",
+      "sha256": "c342d896866a8bf90e98f8c432050cb5979550ed3181137970fc326e223037a9",
+      "lines": 185,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          185
+        ]
+      ],
+      "semantic_note": "Owned case associations; exact-minute allocation sum under parent locks; retained case identity.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/f409a1ac1700_parent_lock_guards.py",
+      "sha256": "4cee6118c21cb895b9c1a183739ac1837e4ece5331af376c59255a68911c340a",
+      "lines": 48,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          48
+        ]
+      ],
+      "semantic_note": "Stable parent row locking before entry/line mutation guards; compatible protection retained on downgrade.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/f710bc319ae2_mail_attachment_custody.py",
+      "sha256": "bac187ef38a608d5c794e8495e383c42dfb69ea8d6ea8645dd4a4f52baea2a7a",
+      "lines": 74,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          74
+        ]
+      ],
+      "semantic_note": "Immutable bounded attachment payload/size/hash metadata and parent count/size concurrency locks.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph2_001_credit_memos.py",
+      "sha256": "c8d79b29322e46bb5d68a04bfa6953e32fdb7526ca3aac4c6fc6db45c502dbf7",
+      "lines": 129,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          129
+        ]
+      ],
+      "semantic_note": "Historical full-credit/Void coupling and new-timecard-void restriction; original credit history immutable.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph2_002_time_commands.py",
+      "sha256": "2760dd9b1efc7a4bba705468d8915204bae2068c1a49ac681c60ff3b800b986c",
+      "lines": 190,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          190
+        ]
+      ],
+      "semantic_note": "Retained source identities/idempotency receipts; contribution parent/aggregate and deferred allocation checks.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph2_003_integrations.py",
+      "sha256": "aaca02a6e9db2e2515393e1ba12264574f305a1cbd332f8527f956958451360c",
+      "lines": 104,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          104
+        ]
+      ],
+      "semantic_note": "Tenant-local hashed grant/code/token authority and retained operation/client-proposal records.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_001_subscriptions.py",
+      "sha256": "8a671d6355bd80b43239596e94fa94dc8f7ede7835e52d168a8a429498096d8a",
+      "lines": 82,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          82
+        ]
+      ],
+      "semantic_note": "Single tenant assignment, explicit catalog/version and immutable operation receipts.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_002_sandbox_billing.py",
+      "sha256": "ad8af64c3f14f8143d02dc9efe767ce68402639399166a22e916fa341e4cef09",
+      "lines": 158,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          158
+        ]
+      ],
+      "semantic_note": "Durable provider intents/events, current binding partial uniqueness, proven access interval and immutable terminal history.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_003_onboarding_auth.py",
+      "sha256": "8b4d28cf64781e7cd198f5769733f143ffe12d21186d08737d3962d92138a0d2",
+      "lines": 113,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          113
+        ]
+      ],
+      "semantic_note": "Immutable issuer/subject and acknowledgment, bounded challenge state and attempt transitions.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_004_sending.py",
+      "sha256": "e269d73e8a835f46987e4ea304a25f6b5bdb89bfa3eba0541a1ebb765debc24e",
+      "lines": 169,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          169
+        ]
+      ],
+      "semantic_note": "Artifact/owner-bound sending plan, durable uncertain attempts and conservative delivery state transitions.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_005_public_admission.py",
+      "sha256": "59036e375d5875b42d8de8d134b71d5ed8ed7056df122b4f2ac6df4d272ea2bc",
+      "lines": 110,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          110
+        ]
+      ],
+      "semantic_note": "Finite central slot ownership, immutable identities, bounded email challenge state; no runtime DDL.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_006_quoting_library.py",
+      "sha256": "8a851a397894f99dedb11fa3a322346327ca22407f209ee3f6647d371b58bd38",
+      "lines": 544,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          544
+        ]
+      ],
+      "semantic_note": "All quotation/library/commercial delivery tables, published revision/artifact/source guards, lineage and source bytes binding.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_007_work_records.py",
+      "sha256": "5de9f8aee0166f1eed32abdec3000f9633d41dd6aecb0256057d6a46638c41b3",
+      "lines": 372,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          372
+        ]
+      ],
+      "semantic_note": "Retained numeric identities/flexfields, internal nonbillable cards, case archive/Closed restriction and existing guard extensions.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_008_client_lifecycle.py",
+      "sha256": "9f2e5027dabe0256522c224b412453d79d64df9fee7f9ff570f3bd7f4ceac1d8",
+      "lines": 34,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          34
+        ]
+      ],
+      "semantic_note": "Draft client status without rewriting prior Active records; refuse downgrade with retained Draft.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_009_read_indexes.py",
+      "sha256": "95e6579d5993aa015445e91f56a073125f227e2728f0f11451ef46bceff5355b",
+      "lines": 26,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          26
+        ]
+      ],
+      "semantic_note": "Three stable-pagination indexes only; no data rewrite or trigger alteration.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_010_work_batches.py",
+      "sha256": "8328daeb8f5b4e4485ee1b2053de67bbdac0828c7c399a0f1fa91abec1c338e1",
+      "lines": 152,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          152
+        ]
+      ],
+      "semantic_note": "Explicit batch ordinal, persistent holds, frozen Ready rates, aggregate daily/weekly limits and guarded repricing.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_011_publication.py",
+      "sha256": "426df0d9e6334808a83a1787cb8cd446f7f1aa20e1471b74903f04cae3e0815e",
+      "lines": 66,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          66
+        ]
+      ],
+      "semantic_note": "New publication-contract claims permanent even after credits; exact source_ids and no new Void escape.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_012_partial_credits.py",
+      "sha256": "d408d745a7bbd77585adda763d206bb45681bd4783e3514ef0db63cd5e04f881",
+      "lines": 144,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          144
+        ]
+      ],
+      "semantic_note": "Deliberate replacement of old single/full/paid-prohibition credit rules; cumulative line/statement money+minute bounds, immutable credit drafts/results.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_013_browser_sessions.py",
+      "sha256": "7f1918400222482458c12291420073bb76d5cd8460e891f5f0a74345ea46a168",
+      "lines": 49,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          49
+        ]
+      ],
+      "semantic_note": "Per-browser immutable identity/expiry and monotonic last-seen/revocation.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_014_account_closure.py",
+      "sha256": "9a4228ea9df6a14154f0fcfad7adcac13830c3a8668631ae738487644562d4dc",
+      "lines": 74,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          74
+        ]
+      ],
+      "semantic_note": "Closure receipt restriction/provider/retention states; operating-role retention policy and no ordinary reactivation.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_015_sending_revisions.py",
+      "sha256": "afbebbbb7e5da86a0a9df3d97264630a88fe05dc90dcf94b56a076b7ae29b5d1",
+      "lines": 51,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          51
+        ]
+      ],
+      "semantic_note": "Explicit replacements only for credit-stopped plans, no payment/full-credit or uncertain replay.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_016_publication_reviews.py",
+      "sha256": "aaa5ab29c5b3e9c5f6f7200856ec8114338ddc6cf358582984338f2fe20e82b4",
+      "lines": 78,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          78
+        ]
+      ],
+      "semantic_note": "Complete exact reviewed artifact, recipient and content retained and revalidated against publication/plan.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/versions/ph3_017_operation_limits.py",
+      "sha256": "5dfef7b82f9db79b6c5b3f7c7b163785ec825c1abf90a3844d1588257b92436f",
+      "lines": 29,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          29
+        ]
+      ],
+      "semantic_note": "Short-lived minute-window owner/principal/class counters separate from business facts and no commercial daily quota.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "alembic/env.py",
+      "sha256": "875f66db4bbb744c8dacdfbfde495f0e824b936c8bc38708da1e6b0310305a8d",
+      "lines": 51,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          51
+        ]
+      ],
+      "semantic_note": "Imports every model module; accepts explicit supplied migration connection; no schema creation on normal runtime startup.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "scripts/postgres-demo-init.sql",
+      "sha256": "5d6899892a69e7143c05e3160dea3dd37304e9e47dd85cef33160d3e1fcb2c05",
+      "lines": 3,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          3
+        ]
+      ],
+      "semantic_note": "Development-only owner grants or explicit hosted runtime DML allowlist; no live application/external execution.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "scripts/postgres-init.sql",
+      "sha256": "8935807978bc8a134f4d3217c9331b5e8f12dc9c8cf8bb9f0d89a507cfaaeda2",
+      "lines": 3,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          3
+        ]
+      ],
+      "semantic_note": "Development-only owner grants or explicit hosted runtime DML allowlist; no live application/external execution.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "scripts/postgres-runtime-grants.sql",
+      "sha256": "d97281d5b6ccf708454d1090d16246a01979e9d77600a2df680f128fd453564a",
+      "lines": 33,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          33
+        ]
+      ],
+      "semantic_note": "Development-only owner grants or explicit hosted runtime DML allowlist; no live application/external execution.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/account_closure_models.py",
+      "sha256": "7c8c5a4adeb2057feb715e35649ace379092d59a769f03b311f7caf5466d37e2",
+      "lines": 34,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          34
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/admission_models.py",
+      "sha256": "dc8149b178ca17241e5617b149a7e759618f4501b4f4fa3f37ac9ae929fa6d82",
+      "lines": 61,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          61
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/browser_session_models.py",
+      "sha256": "594e89629708fec7d6bde5c84c19399c3ec1299b53475b4e757aae83c7ed95b5",
+      "lines": 24,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          24
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/credit_memo_models.py",
+      "sha256": "8320c558febd554fcad96f7cb2b33aaab78fe4150ec162e7fdd790b424a135d7",
+      "lines": 60,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          60
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/enrollment_models.py",
+      "sha256": "cc28a549353c52c5c0abbdbceb0db19c88bf4774ba2fddc5c20dd6f37a2a1c0d",
+      "lines": 56,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          56
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/integration_models.py",
+      "sha256": "b34fd0f5ae069977ba78b800f18b7329b9a86ce420592d0a4bc17c4efff9766b",
+      "lines": 84,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          84
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/library_models.py",
+      "sha256": "31cf9525e21fa7e711b6dfd0ace11a7a06752f63f6339e6be77a1feb3cbec7dc",
+      "lines": 86,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          86
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/mail_models.py",
+      "sha256": "de5d6203acc78fd54236b653bc379b2c0a1950844aca06abe872799d7d5104ed",
+      "lines": 81,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          81
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/models.py",
+      "sha256": "bcc93fbb20240dac13855535303b0ec31d4d90f4320a1c952ab64a23e18e3fcf",
+      "lines": 420,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          420
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/operation_limit_models.py",
+      "sha256": "049fd4e78a500f1c13e7c20ecf752ab102e8a2d6660c89699a35d68f4268499b",
+      "lines": 26,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          26
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/proposal_sending_models.py",
+      "sha256": "78a724d0ecfc1db0ce5ad8b333680ae0bdbe5ad64c1b38e5b5df74bbd82c0d41",
+      "lines": 69,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          69
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/publication_delivery_models.py",
+      "sha256": "07b9f47c048658c7eb7941d63c8fdc9819529fcb812c9ff6c47265f8415e001a",
+      "lines": 34,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          34
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/quoting_models.py",
+      "sha256": "24910fd16be91df9e117f6ead470e3e9dde084045d257ba7061f4b1e6a888991",
+      "lines": 120,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          120
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/sending_models.py",
+      "sha256": "ce51bef4b2483a151ed829201e9cce35a081f143d4f67d0dbbce85453a5b1e02",
+      "lines": 89,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          89
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/subscription_billing_models.py",
+      "sha256": "6d7e872cb2c38646c8eaea8859c0da4412a6bed26ea20d96ab91d6f1e6cbce58",
+      "lines": 101,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          101
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/subscription_models.py",
+      "sha256": "3a04dfbdcaf1922272d72ac788ef2179160156962dfb64402a40fdcac9501743",
+      "lines": 48,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          48
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/time_command_models.py",
+      "sha256": "5d19880baee473007d13ac2b7e26f390be645bb532efe82adca7310a598a8ddb",
+      "lines": 61,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          61
+        ]
+      ],
+      "semantic_note": "Full ORM definition reviewed against migration semantics: columns/types/nullability, exact monetary/duration types, identifiers/FKs/checks, source/history custody and deferred large payloads where configured.",
+      "matches_sandbox": true
+    },
+    {
+      "path": "app/db.py",
+      "sha256": "8e048866c6055ef1eccb952d1fc991633b298cd6b84256d0df602afcc5432782",
+      "lines": 29,
+      "review": "STATIC_FULL",
+      "reviewed_ranges": [
+        [
+          1,
+          29
+        ]
+      ],
+      "semantic_note": "Fixed role/schema checked at connect; pool bounded; matches SCHEMA_HEAD017; no runtime DDL.",
+      "matches_sandbox": true
+    }
+  ],
+  "full_review_file_count": 56,
+  "all_reviewed_files_match_sandbox": true,
+  "migration_count": 34,
+  "model_module_count": 17,
+  "catalog_result": {
+    "head": "ph3_017_operation_limits",
+    "tables": 59,
+    "models": 59,
+    "checks": 150,
+    "functions": 45,
+    "triggers": 69,
+    "missing_tables": [],
+    "missing_columns": [],
+    "type_differences": [],
+    "metadata_drift": [
+      {
+        "kind": "modify_default",
+        "table": "projects",
+        "column": "status",
+        "actual_server_default": "'draft'::character varying",
+        "model_server_default": null
+      }
+    ]
+  },
+  "guard_probe": {
+    "checks": 14,
+    "expected_rejections": 10,
+    "evidence": "evidence/migration-guard-probe.json"
+  },
+  "confirmed_new_findings": [],
+  "nonblocking_observations": [
+    {
+      "id": "M-OBS01",
+      "path": "app/models.py",
+      "topic": "Project.status mapper omits installed draft server_default; ORM Python default agrees, no current functional defect established."
+    }
+  ],
+  "evidence": [
+    "evidence/migration-model-compare.json",
+    "evidence/migration-model-compare-initial.json",
+    "evidence/migration-guard-probe.json",
+    "evidence/migration-guard-probe-initial-error.json"
+  ],
+  "limits": [
+    "Only new disposable loopback targets; no live tenant/role/provider execution.",
+    "No exhaustive old-dataset or concurrency validation credited by this subreview.",
+    "Generic type aliases and inline-JSON bind harness errors retained and corrected; not product failures.",
+    "Static full-file review is not a claim that every input/state was executed."
+  ]
+}

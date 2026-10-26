@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="6" skipped="0" tests="65" time="221.160" timestamp="2026-10-26T16:30:15.942348-04:00" hostname="Ed"><testcase classname="tests.e2e.test_account_closure_browser" name="test_export_then_close_native_account[1440-True]" time="5.516" /><testcase classname="tests.e2e.test_account_closure_browser" name="test_export_then_close_native_account[390-True]" time="1.656" /><testcase classname="tests.e2e.test_account_closure_browser" name="test_export_then_close_native_account[390-False]" time="1.453" /><testcase classname="tests.e2e.test_archive_browser" name="test_archive_settings_exports_and_screen_accessibility[1440-True]" time="10.319" /><testcase classname="tests.e2e.test_archive_browser" name="test_archive_settings_exports_and_screen_accessibility[390-True]" time="5.898" /><testcase classname="tests.e2e.test_archive_browser" name="test_archive_settings_exports_and_screen_accessibility[1440-False]" time="3.765" /><testcase classname="tests.e2e.test_browser" name="test_complete_browser_workflow" time="35.553"><failure message="playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.&#10;Call log:&#10;  - waiting for get_by_role(&quot;button&quot;, name=&quot;Create draft statement&quot;, exact=True)">tests\e2e\test_browser.py:40: in test_complete_browser_workflow
+    page.get_by_role("button", name="Create draft statement", exact=True).click()
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:18032: in click
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_locator.py:165: in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:594: in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E   Call log:
+E     - waiting for get_by_role("button", name="Create draft statement", exact=True)</failure></testcase><testcase classname="tests.e2e.test_browser" name="test_visual_accessibility_primary_pages[1440-900]" time="3.353" /><testcase classname="tests.e2e.test_browser" name="test_visual_accessibility_primary_pages[1280-800]" time="3.361" /><testcase classname="tests.e2e.test_browser" name="test_visual_accessibility_primary_pages[390-844]" time="2.896" /><testcase classname="tests.e2e.test_browser" name="test_without_javascript" time="6.183"><failure message="AssertionError: Locator expected to be visible&#10;Actual value: None&#10;Error: element(s) not found &#10;Call log:&#10;  - Expect &quot;to_be_visible&quot; get_by_text(&quot;Weekly total: 0:15&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_text(&quot;Weekly total: 0:15&quot;, exact=True)&#10;&#10;Aria snapshot:&#10;- link &quot;Skip to content&quot;:&#10;  - /url: &quot;#main&quot;&#10;- banner:&#10;  - link &quot;timeKER&quot;:&#10;    - /url: /dashboard&#10;    - img &quot;timeKER&quot;&#10;  - text: clients • billing • timecards&#10;  - link &quot;Search workspace&quot;:&#10;    - /url: /search&#10;  - group: EL&#10;  - text: Ed López&#10;- complementary:&#10;  - navigation &quot;Primary&quot;:&#10;    - link &quot;Dashboard&quot;:&#10;      - /url: /dashboard&#10;    - link &quot;Clients&quot;:&#10;      - /url: /clients&#10;    - link &quot;Projects&quot;:&#10;      - /url: /projects&#10;    - link &quot;Timecards&quot;:&#10;      - /url: /timecards&#10;    - link &quot;Cases&quot;:&#10;      - /url: /cases&#10;    - link &quot;Mail&quot;:&#10;      - /url: /mail&#10;    - link &quot;Quoting&quot;:&#10;      - /url: /quoting&#10;    - link &quot;Billing&quot;:&#10;      - /url: /billing&#10;    - link &quot;Sending&quot;:&#10;      - /url: /sending&#10;    - link &quot;Library&quot;:&#10;      - /url: /library&#10;    - link &quot;Reports&quot;:&#10;      - /url: /reports&#10;    - link &quot;Archive&quot;:&#10;      - /url: /archive&#10;    - link &quot;Settings&quot;:&#10;      - /url: /settings&#10;    - link &quot;Audit history&quot;:&#10;      - /url: /audit&#10;  - text: AEKR Private workspace&#10;- main:&#10;  - heading &quot;Timecards&quot; [level=1]&#10;  - link &quot;Import time&quot;:&#10;    - /url: /timecards/import&#10;  - paragraph: Selected week · all clients and internal time&#10;  - article:&#10;    - strong: &quot;1&quot;&#10;    - text: Ongoing timecards&#10;  - article:&#10;    - strong: &quot;1&quot;&#10;    - text: Ongoing projects&#10;  - article:&#10;    - text: Fill rate Draft&#10;    - strong: &quot;1&quot;&#10;    - text: Finalized&#10;    - strong: &quot;0&quot;&#10;  - article &quot;Browser-local clock&quot;&#10;  - link &quot;Previous week&quot;:&#10;    - /url: /timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-09-21&#10;  - text: Week containing *&#10;  - textbox &quot;Week containing *&quot;: 2026-09-28&#10;  - link &quot;Next week&quot;:&#10;    - /url: /timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05&#10;  - text: Client&#10;  - combobox &quot;Client&quot;:&#10;    - option &quot;Choose…&quot;&#10;    - option &quot;Fixture Consulting&quot; [selected]&#10;  - status: 1 records&#10;  - checkbox &quot;Internal timecard&quot;&#10;  - text: Internal timecard&#10;  - button &quot;Load week&quot;&#10;  - button &quot;Remove draft&quot; [disabled]&#10;  - navigation &quot;Week batches&quot;:&#10;    - link &quot;Batch 1 · Draft&quot;:&#10;      - /url: /timecards?card_id=454e1157-e8ac-4bc1-b1e7-add9d5445639&#10;  - strong: Draft&#10;  - text: Saved week Project Mon Sep 28 Tue Sep 29 Wed Sep 30 Thu Oct 01 Fri Oct 02 Sat Oct 03 Sun Oct 04&#10;  - group &quot;Select SCALE Consulting Fixture draft SCALE Consulting Fixture&quot;:&#10;    - checkbox &quot;Select SCALE Consulting Fixture draft&quot;&#10;    - text: SCALE Consulting Fixture SCALE Consulting Fixture · Monday&#10;    - textbox &quot;SCALE Consulting Fixture · Monday&quot;:&#10;      - /placeholder: 0:00&#10;      - text: 0:15&#10;    - text: SCALE Consulting Fixture · Monday note&#10;    - textbox &quot;SCALE Consulting Fixture · Monday note&quot;:&#10;      - /placeholder: Optional note&#10;    - link &quot;Cases&quot;:&#10;      - /url: /timecards/entries/8fc83054-40b7-4a0b-bee9-d976262ed659/cases&#10;    - link &quot;Contributions&quot;:&#10;      - /url: /timecards/contributions?entry_id=8fc83054-40b7-4a0b-bee9-d976262ed659&#10;    - text: SCALE Consulting Fixture · Tuesday&#10;    - textbox &quot;SCALE Consulting Fixture · Tuesday&quot;:&#10;      - /placeholder: 0:00&#10;    - text: SCALE Consulting Fixture · Tuesday note&#10;    - textbox &quot;SCALE Consulting Fixture · Tuesday note&quot;:&#10;      - /placeholder: Optional note&#10;    - text: SCALE Consulting Fixture · Wednesday&#10;    - textbox &quot;SCALE Consulting Fixture · Wednesday&quot;:&#10;      - /placeholder: 0:00&#10;    - text: SCALE Consulting Fixture · Wednesday note&#10;    - textbox &quot;SCALE Consulting Fixture · Wednesday note&quot;:&#10;      - /placeholder: Optional note&#10;    - text: SCALE Consulting Fixture · Thursday&#10;    - textbox &quot;SCALE Consulting Fixture · Thursday&quot;:&#10;      - /placeholder: 0:00&#10;    - text: SCALE Consulting Fixture · Thursday note&#10;    - textbox &quot;SCALE Consulting Fixture · Thursday note&quot;:&#10;      - /placeholder: Optional note&#10;    - text: SCALE Consulting Fixture · Friday&#10;    - textbox &quot;SCALE Consulting Fixture · Friday&quot;:&#10;      - /placeholder: 0:00&#10;    - text: SCALE Consulting Fixture · Friday note&#10;    - textbox &quot;SCALE Consulting Fixture · Friday note&quot;:&#10;      - /placeholder: Optional note&#10;    - text: SCALE Consulting Fixture · Saturday&#10;    - textbox &quot;SCALE Consulting Fixture · Saturday&quot;:&#10;      - /placeholder: 0:00&#10;    - text: SCALE Consulting Fixture · Saturday note&#10;    - textbox &quot;SCALE Consulting Fixture · Saturday note&quot;:&#10;      - /placeholder: Optional note&#10;    - text: SCALE Consulting Fixture · Sunday&#10;    - textbox &quot;SCALE Consulting Fixture · Sunday&quot;:&#10;      - /placeholder: 0:00&#10;    - text: SCALE Consulting Fixture · Sunday note&#10;    - textbox &quot;SCALE Consulting Fixture · Sunday note&quot;:&#10;      - /placeholder: Optional note&#10;  - paragraph: &quot;Contract week: America/Santiago / Monday-Sunday.&quot;&#10;  - paragraph: Use 8, 8.5, 8:30 or 0:15. Values must resolve to whole minutes.&#10;  - group: Additional fields&#10;  - button &quot;Add another project&quot;&#10;  - group: Add existing project&#10;  - strong: &quot;Batch total: 0:15&quot;&#10;  - button &quot;Save draft&quot;&#10;  - group: Weekly cap override (if required)&#10;  - button &quot;Finalize week&quot;&#10;  - button &quot;Duplicate structure into next week&quot;&#10;  - heading &quot;Previous timecards&quot; [level=2]&#10;  - text: Search timecards&#10;  - searchbox &quot;Search timecards&quot;&#10;  - text: Records&#10;  - combobox &quot;Records&quot;:&#10;    - option &quot;Active&quot; [selected]&#10;    - option &quot;Archived&quot;&#10;    - option &quot;All retained&quot;&#10;  - text: First week&#10;  - textbox &quot;First week&quot;&#10;  - text: Last week&#10;  - textbox &quot;Last week&quot;&#10;  - text: History status&#10;  - combobox &quot;History status&quot;:&#10;    - option &quot;All statuses&quot; [selected]&#10;    - option &quot;Draft&quot;&#10;    - option &quot;Finalized&quot;&#10;    - option &quot;Invoiced&quot;&#10;    - option &quot;Voided&quot;&#10;  - button &quot;Filter history&quot;&#10;  - region &quot;Scrollable data table&quot;:&#10;    - table:&#10;      - rowgroup:&#10;        - row &quot;Week Client Time Status Finalized Statements&quot;:&#10;          - columnheader &quot;Week&quot;&#10;          - columnheader &quot;Client&quot;&#10;          - columnheader &quot;Time&quot;&#10;          - columnheader &quot;Status&quot;&#10;          - columnheader &quot;Finalized&quot;&#10;          - columnheader &quot;Statements&quot;&#10;      - rowgroup:&#10;        - row &quot;2026-09-28 · Batch 1 Fixture Consulting 0:15 Draft Not finalized Unbilled&quot;:&#10;          - cell &quot;2026-09-28 · Batch 1&quot;:&#10;            - link &quot;2026-09-28 · Batch 1&quot;:&#10;              - /url: /timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-09-28&amp;card_id=454e1157-e8ac-4bc1-b1e7-add9d5445639&#10;          - cell &quot;Fixture Consulting&quot;&#10;          - cell &quot;0:15&quot;&#10;          - cell &quot;Draft&quot;&#10;          - cell &quot;Not finalized&quot;&#10;          - cell &quot;Unbilled&quot;&#10;  - navigation &quot;Pagination&quot;:&#10;    - status: 1 records · Page 1 of 1&#10;    - text: Previous Next&#10;  - group: help&#10;- group:&#10;  - text: Close&#10;  - region &quot;Cookies and privacy choices&quot;:&#10;    - heading &quot;Cookies and privacy choices&quot; [level=2]&#10;    - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.&#10;    - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.&#10;    - paragraph:&#10;      - text: You can reject or change your choice here at any time without affecting access.&#10;      - link &quot;Read privacy and cookies&quot;:&#10;        - /url: /?info=privacy#privacy-and-cookies&#10;    - paragraph: Optional measurement is disabled in this environment.&#10;    - paragraph: No optional preference has been selected.&#10;    - button &quot;Accept measurement&quot; [disabled]&#10;    - button &quot;Reject nonessential&quot;">tests\e2e\test_browser.py:134: in test_without_javascript
+    expect(page.get_by_text("Weekly total: 0:15", exact=True)).to_be_visible()
+E   AssertionError: Locator expected to be visible
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_be_visible" get_by_text("Weekly total: 0:15", exact=True) with timeout 5000ms
+E     - waiting for get_by_text("Weekly total: 0:15", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - text: clients • billing • timecards
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EL
+E     - text: Ed López
+E   - complementary:
+E     - navigation "Primary":
+E       - link "Dashboard":
+E         - /url: /dashboard
+E       - link "Clients":
+E         - /url: /clients
+E       - link "Projects":
+E         - /url: /projects
+E       - link "Timecards":
+E         - /url: /timecards
+E       - link "Cases":
+E         - /url: /cases
+E       - link "Mail":
+E         - /url: /mail
+E       - link "Quoting":
+E         - /url: /quoting
+E       - link "Billing":
+E         - /url: /billing
+E       - link "Sending":
+E         - /url: /sending
+E       - link "Library":
+E         - /url: /library
+E       - link "Reports":
+E         - /url: /reports
+E       - link "Archive":
+E         - /url: /archive
+E       - link "Settings":
+E         - /url: /settings
+E       - link "Audit history":
+E         - /url: /audit
+E     - text: AEKR Private workspace
+E   - main:
+E     - heading "Timecards" [level=1]
+E     - link "Import time":
+E       - /url: /timecards/import
+E     - paragraph: Selected week · all clients and internal time
+E     - article:
+E       - strong: "1"
+E       - text: Ongoing timecards
+E     - article:
+E       - strong: "1"
+E       - text: Ongoing projects
+E     - article:
+E       - text: Fill rate Draft
+E       - strong: "1"
+E       - text: Finalized
+E       - strong: "0"
+E     - article "Browser-local clock"
+E     - link "Previous week":
+E       - /url: /timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-09-21
+E     - text: Week containing *
+E     - textbox "Week containing *": 2026-09-28
+E     - link "Next week":
+E       - /url: /timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05
+E     - text: Client
+E     - combobox "Client":
+E       - option "Choose…"
+E       - option "Fixture Consulting" [selected]
+E     - status: 1 records
+E     - checkbox "Internal timecard"
+E     - text: Internal timecard
+E     - button "Load week"
+E     - button "Remove draft" [disabled]
+E     - navigation "Week batches":
+E       - link "Batch 1 · Draft":
+E         - /url: /timecards?card_id=454e1157-e8ac-4bc1-b1e7-add9d5445639
+E     - strong: Draft
+E     - text: Saved week Project Mon Sep 28 Tue Sep 29 Wed Sep 30 Thu Oct 01 Fri Oct 02 Sat Oct 03 Sun Oct 04
+E     - group "Select SCALE Consulting Fixture draft SCALE Consulting Fixture":
+E       - checkbox "Select SCALE Consulting Fixture draft"
+E       - text: SCALE Consulting Fixture SCALE Consulting Fixture · Monday
+E       - textbox "SCALE Consulting Fixture · Monday":
+E         - /placeholder: 0:00
+E         - text: 0:15
+E       - text: SCALE Consulting Fixture · Monday note
+E       - textbox "SCALE Consulting Fixture · Monday note":
+E         - /placeholder: Optional note
+E       - link "Cases":
+E         - /url: /timecards/entries/8fc83054-40b7-4a0b-bee9-d976262ed659/cases
+E       - link "Contributions":
+E         - /url: /timecards/contributions?entry_id=8fc83054-40b7-4a0b-bee9-d976262ed659
+E       - text: SCALE Consulting Fixture · Tuesday
+E       - textbox "SCALE Consulting Fixture · Tuesday":
+E         - /placeholder: 0:00
+E       - text: SCALE Consulting Fixture · Tuesday note
+E       - textbox "SCALE Consulting Fixture · Tuesday note":
+E         - /placeholder: Optional note
+E       - text: SCALE Consulting Fixture · Wednesday
+E       - textbox "SCALE Consulting Fixture · Wednesday":
+E         - /placeholder: 0:00
+E       - text: SCALE Consulting Fixture · Wednesday note
+E       - textbox "SCALE Consulting Fixture · Wednesday note":
+E         - /placeholder: Optional note
+E       - text: SCALE Consulting Fixture · Thursday
+E       - textbox "SCALE Consulting Fixture · Thursday":
+E         - /placeholder: 0:00
+E       - text: SCALE Consulting Fixture · Thursday note
+E       - textbox "SCALE Consulting Fixture · Thursday note":
+E         - /placeholder: Optional note
+E       - text: SCALE Consulting Fixture · Friday
+E       - textbox "SCALE Consulting Fixture · Friday":
+E         - /placeholder: 0:00
+E       - text: SCALE Consulting Fixture · Friday note
+E       - textbox "SCALE Consulting Fixture · Friday note":
+E         - /placeholder: Optional note
+E       - text: SCALE Consulting Fixture · Saturday
+E       - textbox "SCALE Consulting Fixture · Saturday":
+E         - /placeholder: 0:00
+E       - text: SCALE Consulting Fixture · Saturday note
+E       - textbox "SCALE Consulting Fixture · Saturday note":
+E         - /placeholder: Optional note
+E       - text: SCALE Consulting Fixture · Sunday
+E       - textbox "SCALE Consulting Fixture · Sunday":
+E         - /placeholder: 0:00
+E       - text: SCALE Consulting Fixture · Sunday note
+E       - textbox "SCALE Consulting Fixture · Sunday note":
+E         - /placeholder: Optional note
+E     - paragraph: "Contract week: America/Santiago / Monday-Sunday."
+E     - paragraph: Use 8, 8.5, 8:30 or 0:15. Values must resolve to whole minutes.
+E     - group: Additional fields
+E     - button "Add another project"
+E     - group: Add existing project
+E     - strong: "Batch total: 0:15"
+E     - button "Save draft"
+E     - group: Weekly cap override (if required)
+E     - button "Finalize week"
+E     - button "Duplicate structure into next week"
+E     - heading "Previous timecards" [level=2]
+E     - text: Search timecards
+E     - searchbox "Search timecards"
+E     - text: Records
+E     - combobox "Records":
+E       - option "Active" [selected]
+E       - option "Archived"
+E       - option "All retained"
+E     - text: First week
+E     - textbox "First week"
+E     - text: Last week
+E     - textbox "Last week"
+E     - text: History status
+E     - combobox "History status":
+E       - option "All statuses" [selected]
+E       - option "Draft"
+E       - option "Finalized"
+E       - option "Invoiced"
+E       - option "Voided"
+E     - button "Filter history"
+E     - region "Scrollable data table":
+E       - table:
+E         - rowgroup:
+E           - row "Week Client Time Status Finalized Statements":
+E             - columnheader "Week"
+E             - columnheader "Client"
+E             - columnheader "Time"
+E             - columnheader "Status"
+E             - columnheader "Finalized"
+E             - columnheader "Statements"
+E         - rowgroup:
+E           - row "2026-09-28 · Batch 1 Fixture Consulting 0:15 Draft Not finalized Unbilled":
+E             - cell "2026-09-28 · Batch 1":
+E               - link "2026-09-28 · Batch 1":
+E                 - /url: /timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-09-28&amp;card_id=454e1157-e8ac-4bc1-b1e7-add9d5445639
+E             - cell "Fixture Consulting"
+E             - cell "0:15"
+E             - cell "Draft"
+E             - cell "Not finalized"
+E             - cell "Unbilled"
+E     - navigation "Pagination":
+E       - status: 1 records · Page 1 of 1
+E       - text: Previous Next
+E     - group: help
+E   - group:
+E     - text: Close
+E     - region "Cookies and privacy choices":
+E       - heading "Cookies and privacy choices" [level=2]
+E       - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.
+E       - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.
+E       - paragraph:
+E         - text: You can reject or change your choice here at any time without affecting access.
+E         - link "Read privacy and cookies":
+E           - /url: /?info=privacy#privacy-and-cookies
+E       - paragraph: Optional measurement is disabled in this environment.
+E       - paragraph: No optional preference has been selected.
+E       - button "Accept measurement" [disabled]
+E       - button "Reject nonessential"</failure></testcase><testcase classname="tests.e2e.test_browser" name="test_additional_modules_accessibility[1440-900]" time="3.956" /><testcase classname="tests.e2e.test_browser" name="test_additional_modules_accessibility[390-844]" time="4.046" /><testcase classname="tests.e2e.test_browser_session_expiry" name="test_unsaved_settings_survive_revocation_and_new_tab_login" time="4.689" /><testcase classname="tests.e2e.test_browser_session_expiry" name="test_sessions_native_controls_and_accessibility[1440-True]" time="1.095" /><testcase classname="tests.e2e.test_browser_session_expiry" name="test_sessions_native_controls_and_accessibility[390-True]" time="1.024" /><testcase classname="tests.e2e.test_browser_session_expiry" name="test_sessions_native_controls_and_accessibility[390-False]" time="1.235" /><testcase classname="tests.e2e.test_case_mass_edit_browser" name="test_case_mass_edit_project_filter_native_fallback_and_status_type_only[1280-True]" time="5.016" /><testcase classname="tests.e2e.test_case_mass_edit_browser" name="test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-True]" time="1.673" /><testcase classname="tests.e2e.test_case_mass_edit_browser" name="test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-False]" time="1.771" /><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[1280-True]" time="4.644" /><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[390-True]" time="1.327" /><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[1280-False]" time="1.329" /><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[390-False]" time="1.324" /><testcase classname="tests.e2e.test_case_workflow_browser" name="test_cases_typed_search_keeps_focus_and_updates_only_results[1280]" time="2.946" /><testcase classname="tests.e2e.test_case_workflow_browser" name="test_cases_typed_search_keeps_focus_and_updates_only_results[390]" time="3.228" /><testcase classname="tests.e2e.test_clock" name="test_clock_uses_browser_zone_and_fractional_seconds[America/New_York-10-15]" time="3.330" /><testcase classname="tests.e2e.test_clock" name="test_clock_uses_browser_zone_and_fractional_seconds[Europe/Madrid-16-15]" time="0.311" /><testcase classname="tests.e2e.test_clock" name="test_clock_uses_browser_zone_and_fractional_seconds[Asia/Kathmandu-20-0]" time="0.321" /><testcase classname="tests.e2e.test_clock" name="test_clock_rollover_and_visibility_resync" time="0.305" /><testcase classname="tests.e2e.test_clock" name="test_clock_respects_reduced_motion_and_preference_changes" time="0.640" /><testcase classname="tests.e2e.test_contact_browser" name="test_contact_preview_and_repeated_session[1440]" time="4.422" /><testcase classname="tests.e2e.test_contact_browser" name="test_contact_preview_and_repeated_session[390]" time="1.147" /><testcase classname="tests.e2e.test_contact_browser" name="test_contact_without_javascript" time="1.122" /><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-320]" time="4.147" /><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-390]" time="1.005" /><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-760]" time="1.032" /><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-1024]" time="1.075" /><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-320]" time="0.986" /><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-390]" time="0.982" /><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-760]" time="1.021" /><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-1024]" time="1.363" /><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_cookie_choices_are_nonmodal_reversible_and_private[1440]" time="5.191" /><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_cookie_choices_are_nonmodal_reversible_and_private[390]" time="1.984" /><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_browser_privacy_signals_keep_marketing_refused[gpc-header]" time="0.794" /><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_browser_privacy_signals_keep_marketing_refused[dnt-header]" time="0.768" /><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_browser_privacy_signals_keep_marketing_refused[gpc-browser]" time="0.832" /><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_cookie_choice_without_javascript_and_failure_keeps_control" time="2.046" /><testcase classname="tests.e2e.test_credit_memos_browser" name="test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-True]" time="8.263" /><testcase classname="tests.e2e.test_credit_memos_browser" name="test_owner_reviewed_credit_preserves_original_and_downloads_note[390-True]" time="1.745" /><testcase classname="tests.e2e.test_credit_memos_browser" name="test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-False]" time="1.577" /><testcase classname="tests.e2e.test_credit_memos_browser" name="test_cancel_draft_has_distinct_action_and_no_credit" time="1.457" /><testcase classname="tests.e2e.test_dashboard_detail_pagination_browser" name="test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[1440-True-1]" time="6.559"><failure message="AssertionError: assert (0 == 0 and 'Tue 27 Oct 2...rded work yet' == ''&#10;  &#10;  + Tue 27 Oct 2026 · Future date · No recorded work yet)">tests\e2e\test_dashboard_detail_pagination_browser.py:104: in test_dashboard_five_panels_keep_independent_pages_chart_and_navigation
+    assert expected == 0 and cell["title"] == ""
+E   AssertionError: assert (0 == 0 and 'Tue 27 Oct 2...rded work yet' == ''
+E     
+E     + Tue 27 Oct 2026 · Future date · No recorded work yet)</failure></testcase><testcase classname="tests.e2e.test_dashboard_detail_pagination_browser" name="test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-True-50]" time="2.944"><failure message="AssertionError: assert (0 == 0 and 'Tue 27 Oct 2...rded work yet' == ''&#10;  &#10;  + Tue 27 Oct 2026 · Future date · No recorded work yet)">tests\e2e\test_dashboard_detail_pagination_browser.py:104: in test_dashboard_five_panels_keep_independent_pages_chart_and_navigation
+    assert expected == 0 and cell["title"] == ""
+E   AssertionError: assert (0 == 0 and 'Tue 27 Oct 2...rded work yet' == ''
+E     
+E     + Tue 27 Oct 2026 · Future date · No recorded work yet)</failure></testcase><testcase classname="tests.e2e.test_dashboard_detail_pagination_browser" name="test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-False-1]" time="4.100"><failure message="AssertionError: assert (0 == 0 and 'Tue 27 Oct 2...rded work yet' == ''&#10;  &#10;  + Tue 27 Oct 2026 · Future date · No recorded work yet)">tests\e2e\test_dashboard_detail_pagination_browser.py:104: in test_dashboard_five_panels_keep_independent_pages_chart_and_navigation
+    assert expected == 0 and cell["title"] == ""
+E   AssertionError: assert (0 == 0 and 'Tue 27 Oct 2...rded work yet' == ''
+E     
+E     + Tue 27 Oct 2026 · Future date · No recorded work yet)</failure></testcase><testcase classname="tests.e2e.test_dashboard_outstanding_pagination_browser" name="test_outstanding_five_rows_preserve_card_chart_and_native_navigation[1440-True-1]" time="6.081" /><testcase classname="tests.e2e.test_dashboard_outstanding_pagination_browser" name="test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-True-50]" time="2.100" /><testcase classname="tests.e2e.test_dashboard_outstanding_pagination_browser" name="test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-False-1]" time="2.345" /><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_authorize_reaches_registered_callback_with_persisted_code" time="5.886" /><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_decline_reaches_callback_without_creating_credentials" time="2.614" /><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_modified_consent_rejects_without_callback_or_grant[scope]" time="1.012" /><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_modified_consent_rejects_without_callback_or_grant[csrf]" time="1.503"><failure message="AssertionError: assert 302 == 403&#10; +  where 302 = &lt;Response url='http://127.0.0.1:8019/oauth/authorize' request=&lt;Request url='http://127.0.0.1:8019/oauth/authorize' method='POST'&gt;&gt;.status&#10; +    where &lt;Response url='http://127.0.0.1:8019/oauth/authorize' request=&lt;Request url='http://127.0.0.1:8019/oauth/authorize' method='POST'&gt;&gt; = &lt;playwright._impl._sync_base.EventInfo object at 0x000002DDBD704120&gt;.value">tests\e2e\test_delegated_oauth_browser.py:223: in test_modified_consent_rejects_without_callback_or_grant
+    assert rejected.value.status == (400 if tamper == "scope" else 403)
+E   AssertionError: assert 302 == 403
+E    +  where 302 = &lt;Response url='http://127.0.0.1:8019/oauth/authorize' request=&lt;Request url='http://127.0.0.1:8019/oauth/authorize' method='POST'&gt;&gt;.status
+E    +    where &lt;Response url='http://127.0.0.1:8019/oauth/authorize' request=&lt;Request url='http://127.0.0.1:8019/oauth/authorize' method='POST'&gt;&gt; = &lt;playwright._impl._sync_base.EventInfo object at 0x000002DDBD704120&gt;.value</failure></testcase><testcase classname="tests.e2e.test_ker_navigation_browser" name="test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[1440-True]" time="8.530" /><testcase classname="tests.e2e.test_ker_navigation_browser" name="test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-True]" time="4.251" /><testcase classname="tests.e2e.test_ker_navigation_browser" name="test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-False]" time="3.635" /></testsuite></testsuites>

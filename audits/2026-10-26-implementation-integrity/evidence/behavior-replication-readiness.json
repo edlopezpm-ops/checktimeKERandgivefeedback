@@ -1,0 +1,13 @@
+{
+  "configuration": "two isolated nonowner schema roles from existing fixture; only role attributes instrumented; baseline ready first",
+  "replication": true,
+  "other_elevated_flags": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "readiness": "ACCEPTED",
+  "expected": "Reject runtime replication privilege under deploy/postgres/README.md:59-61",
+  "scope": "local isolated schemas only, not actual Stage or PROD"
+}

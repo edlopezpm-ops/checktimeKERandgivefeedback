@@ -1,0 +1,16 @@
+<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\authlib\integrations\httpx_client\assertion_client.py:5: AuthlibDeprecationWarning: The httpx module is deprecated; please use httpx2 instead.
+  from ._compat import httpx2
+timestamp=2026-10-26T20:24:05.328022+00:00 severity=INFO event=application.started execution_id=b1752336-7431-4976-94d7-17a2be10218d outcome=SUCCEEDED
+timestamp=2026-10-26T20:24:05.419142+00:00 severity=INFO event=request.completed request_id=95c9f69d-f029-4166-b3da-82ca4767e482 route=/ method=GET status=200 outcome=SUCCEEDED duration_ms=88
+timestamp=2026-10-26T20:24:05.434112+00:00 severity=INFO event=request.completed request_id=abe1e326-1c60-489d-a82a-3e08c982804d route=/auth/local method=POST status=303 outcome=SUCCEEDED duration_ms=12
+timestamp=2026-10-26T20:24:05.553502+00:00 severity=INFO event=request.completed request_id=ba2128a0-c349-486b-98df-a5501a4d7243 route=/dashboard method=GET status=200 outcome=SUCCEEDED duration_ms=117
+timestamp=2026-10-26T20:24:05.569713+00:00 severity=INFO event=request.completed request_id=d3cd7682-c197-4795-81b4-ce340e30ec4a route=[REDACTED] method=GET status=200 outcome=SUCCEEDED duration_ms=14
+timestamp=2026-10-26T20:24:05.579744+00:00 severity=INFO event=request.completed request_id=bfe062df-b000-4a6d-a0a7-920d027dff7c route=[REDACTED] method=POST status=302 outcome=SUCCEEDED duration_ms=8
+timestamp=2026-10-26T20:24:05.591312+00:00 severity=INFO event=request.completed request_id=4d0c1c19-88fb-4ec7-9eab-d76963e28d9e route=[REDACTED] method=POST status=200 outcome=SUCCEEDED duration_ms=10
+timestamp=2026-10-26T20:24:05.648039+00:00 severity=INFO event=request.completed request_id=a29b8a5b-ca65-4299-b350-27ea63592909 route=[REDACTED] method=POST status=200 outcome=SUCCEEDED duration_ms=55
+timestamp=2026-10-26T20:24:05.672067+00:00 severity=INFO event=request.completed request_id=8c12fc67-476f-49b2-a6f3-dc3d3b7494df route=[REDACTED] method=POST status=200 outcome=SUCCEEDED duration_ms=22
+timestamp=2026-10-26T20:24:05.689729+00:00 severity=INFO event=request.completed request_id=5e6a7957-2c91-4efc-9272-fe6eba4ef1c6 route=[REDACTED] method=POST status=200 outcome=SUCCEEDED duration_ms=11
+timestamp=2026-10-26T20:24:05.696432+00:00 severity=INFO event=application.stopped execution_id=829ab538-1aa3-4fb1-b8c4-9e8701da8196 outcome=SUCCEEDED
+{"oracle": "Metamorphic property: adding an unrelated client must not change a client+exact-timecard read; independent SQL count proves exactly one stored timecard. Public MCP OAuth/PKCE/token/tool path used, only synthetic local owner login.", "stored_timecards": 1, "stored_clients_after": 2, "before_timecard_ids": ["5082750c-0942-4f2d-947b-e72b85279b1a"], "after_timecard_ids": ["5082750c-0942-4f2d-947b-e72b85279b1a", "5082750c-0942-4f2d-947b-e72b85279b1a"], "before_singular_timecard_present": true, "after_singular_timecard_present": false, "entry_minutes_after": [37], "unexpected_duplicate_count": 1}

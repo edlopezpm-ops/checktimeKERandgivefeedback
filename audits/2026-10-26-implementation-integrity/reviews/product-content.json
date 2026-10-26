@@ -1,0 +1,47 @@
+{
+  "snapshot": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+  "role": "additional-product-content-services-and-routes",
+  "findings": [],
+  "later_findings_ref": "reviews/suite-triage.json contains independently confirmed BILLING-NATIVE-LOOKUP; this later result supersedes the initial no-new-finding statement for the affected native Billing selector capability",
+  "reviewed_semantically": [
+    "app/clients.py", "app/client_drafts.py", "app/client_sources.py", "app/cases.py", "app/case_routes.py",
+    "app/flexfields.py", "app/forms.py", "app/project_terms.py", "app/project_attachments.py", "app/project_routes.py",
+    "app/repositories.py", "app/quoting.py", "app/quoting_routes.py", "app/quoting_models.py",
+    "app/library.py", "app/library_routes.py", "app/library_models.py", "app/mail_service.py", "app/mail_routes.py", "app/mail_models.py",
+    "app/time_import.py", "app/time_import_routes.py", "app/workspace_search.py", "app/search_routes.py",
+    "app/lookups.py", "app/reference_choices.py", "app/record_references.py", "app/work_history.py", "app/work_lifecycle.py",
+    "app/archive_routes.py", "app/archiving.py", "app/pdf.py", "app/web/static/cases.js", "app/web/static/workspace.js",
+    "app/web/templates/client_form.html", "app/web/templates/project_form.html", "app/web/templates/quote_form.html",
+    "app/web/templates/library_document.html", "app/web/templates/library_document_pdf.html", "app/web/templates/quote_pdf.html",
+    "app/web/templates/time_import.html", "app/web/templates/mail_import.html",
+    "tests/unit/test_library.py", "tests/unit/test_quoting.py"
+  ],
+  "sampled_not_complete": ["app/main.py", "docs/PROJECT_BRIEF.md", "docs/DECISIONS.md", "docs/OPERATIONS.md"],
+  "executed_pure_services": ["app/quoting.py", "app/time_import.py", "app/library.py", "app/mail_service.py", "app/flexfields.py", "app/client_drafts.py"],
+  "evidence": "evidence/content-independent.json",
+  "repro": "repro/content_independent.py",
+  "oracles": [
+    {"requirement_source": "docs/PROJECT_BRIEF.md:190-201 and docs/DECISIONS.md:D067", "domain": "quote totals", "oracle": "Fraction aggregate then integer half-up to cents; no product calculation used as expected", "samples": 500, "seed": 99123},
+    {"requirement_source": "app/web/templates/time_import.html published file contract", "domain": "strict JSON/CSV time import", "oracle": "Literal closed schema and generated input dictionaries, 200 distinct new rows, both serializations", "samples": 200},
+    {"requirement_source": "docs/PROJECT_BRIEF.md:202-206 and docs/OPERATIONS.md:203-207", "domain": "Library imports", "oracle": "Literal text paragraphs and unchanged synthetic source bytes; malformed format/encoding limits"},
+    {"requirement_source": "app/web/templates/mail_import.html and maintained mail contract", "domain": "MIME normalization", "oracle": "Python email producer with explicit text/date/attachment bytes and independently calculated digest"},
+    {"requirement_source": "docs/DECISIONS.md:1011", "domain": "flexfields", "oracle": "Exact decimal equality, omitted/clear semantics and literal boundaries"}
+  ],
+  "route_effect_traces": [
+    {"entry": "Client form/main and project_routes", "service": "clients.update_client/save_project", "effect": "ORM changes+audit+capacity/replay", "evidence_strength": "semantic_static"},
+    {"entry": "case_routes native/modal", "service": "cases.save_case/mass_update/set_allocation", "effect": "validated versioned ORM change then mutate commit before success", "evidence_strength": "semantic_static"},
+    {"entry": "quoting_routes", "service": "quoting.publish", "effect": "real renderer callback+snapshot+PDF+hash record", "evidence_strength": "static_route_effect_and_pure_arithmetic"},
+    {"entry": "library_routes upload/publish/download", "service": "library.upload/publish/frozen_artifact", "effect": "retained originals/text/version bytes and checked download", "evidence_strength": "static_route_effect_and_pure_parsers"},
+    {"entry": "mail_routes upload", "service": "mail_service.ingest", "effect": "owned assignment+idempotent Message/Attachment then transaction commit", "evidence_strength": "static_route_effect_and_pure_MIME"},
+    {"entry": "time_import_routes preview/commit", "service": "time_import.parse_upload then time_commands.commit_import", "effect": "signed owner/tenant/hash/version-bound transaction before receipt", "evidence_strength": "static_route_effect_and_pure_parser; domain commit covered by coordinator"},
+    {"entry": "search_routes/lookup and workspace.js", "service": "workspace_search.search/lookups.selection_page", "effect": "bounded real SQL results into native/JSON view", "evidence_strength": "semantic_static"},
+    {"entry": "archive_routes and signed internal Stage job", "service": "archiving.run_archive", "effect": "retained markers+audit, no irreversible purge; CSV streaming snapshot", "evidence_strength": "semantic_static; adapter signature tests separate"}
+  ],
+  "limitations": [
+    "No persistence/provider or hosted browser execution by this additional role",
+    "Source route effects distinguished from actual database readback",
+    "ISO datasets and dependencies inventoried, not every data entry audited",
+    "No deep structural PDF validation or DOCX layout fidelity claimed by these probes",
+    "No new product repair or tests written inside evaluated repository"
+  ]
+}

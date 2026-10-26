@@ -1,0 +1,24 @@
+{
+  "method": "git ignored metadata only; no ignored credential, archive or private record payload read",
+  "groups": {
+    ".aekr": 17951,
+    ".local": 38,
+    ".mypy_cache": 3,
+    ".playwright-cli": 9,
+    ".pytest_cache": 5,
+    ".ruff_cache": 14,
+    "alembic": 35,
+    "app": 102,
+    "deploy": 2318,
+    "output": 251,
+    "scripts": 2,
+    "tests": 197
+  },
+  "inspection": {
+    "dependencies": "not vendored in source; locked installs in sandbox",
+    "private_governance": "operating instructions read, not evaluated",
+    "local_logs_and_outputs": "historical evidence excluded from current verification",
+    "credential_files": "not copied or opened",
+    "submodules": ""
+  }
+}

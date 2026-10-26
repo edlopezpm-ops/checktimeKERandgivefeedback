@@ -1,0 +1,373 @@
+{
+  "schema": "functional-integrity.findings.v1",
+  "snapshot": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+  "configuration": "Isolated local/native PostgreSQL/Edge; conditional hosted-shaped and feature-enabled reproductions identified per finding",
+  "findings": [
+    {
+      "id": "FIN-01",
+      "status": "CONFIRMED",
+      "category": "CONTRACT_FAILURE",
+      "severity": "medium",
+      "title": "El cálculo monetario subredondea empates exactos de medio centavo",
+      "requirement_sources": [
+        "docs/DECISIONS.md:67-68 (D002)",
+        "docs/PROJECT_BRIEF.md:609-619",
+        "AGENTS.md:Data and billing invariants"
+      ],
+      "locations": [
+        {
+          "path": "app/domain.py",
+          "start_line": 48,
+          "end_line": 49
+        },
+        {
+          "path": "app/billing.py",
+          "start_line": 338,
+          "end_line": 377
+        },
+        {
+          "path": "app/reports.py",
+          "start_line": 49,
+          "end_line": 49
+        }
+      ],
+      "trajectory": "POST timecards/save -> finalización y tarifa Ready -> POST billing/create -> agrupación project/week/rate -> line_amount -> invoice_lines/invoices NUMERIC -> lectura SQL nueva.",
+      "input": {
+        "minutes": 2,
+        "rate": "15.15",
+        "period": "2026-10-19 / 2026-10-25",
+        "line_count": 1
+      },
+      "expected": "2*15.15/60 = 0.505; ROUND_HALF_UP a dos decimales = USD0.51",
+      "observed": "HTTP200 y total/line_amount persistidos USD0.50. Otra muestra:602min*602.85/h =>6048.59 frente6048.60.",
+      "evidence": [
+        "evidence/rounding-counterexample.json",
+        "evidence/rounding-counterexample.log",
+        "evidence/rounding-counterexample.receipt.json",
+        "evidence/rounding-exports-counterexample.log",
+        "evidence/rounding-exports-counterexample.receipt.json",
+        "evidence/independent-finance.log"
+      ],
+      "repro": [
+        "repro/rounding_probe.py",
+        "repro/independent_finance.py"
+      ],
+      "oracle": "Centavos enteros: floor((minutes*rate_cents+30)/60), Fraction y Decimal precisión80 independientes. Semilla20261026;400 casos,398 iguales/2 discrepancias.",
+      "alternative_considered": "D002 redondea por línea agrupada, no por intervención. El contraejemplo tiene una sola línea; esa política no explica el error. Decimal evita float pero la división periódica antes de multiplicar puede bajar el empate exacto.",
+      "impact": "Subfacturación de un centavo en combinaciones válidas de minutos/tarifa; afecta también consumidores del helper. No se mide pérdida real ni se modifica factura real.",
+      "correction": "Calcular el producto exacto minutos*tarifa antes de dividir por60 y cuantizar una sola vez; conservar límites Decimal y redondeo por grupo.",
+      "verification": "Nuevos casos racionales fuera de las muestras publicadas, límites, varias tarifas/semana y ruta hasta SQL/PDF. Verificar guards de importe/snapshot sin reparar el snapshot auditado.",
+      "refutation": "Agente de comportamiento confirmó el oráculo contra D002; no encontró alternativa legítima para una línea."
+    },
+    {
+      "id": "B01",
+      "status": "CONFIRMED",
+      "category": "CONTRACT_FAILURE",
+      "severity": "medium",
+      "title": "Readiness omits required runtime privilege checks in supported configurations",
+      "requirement_sources": [
+        "HOSTING.md:247-252",
+        "deploy/postgres/README.md:52-61",
+        "deploy/postgres/README.md:77-79",
+        "docs/DECISIONS.md:1078"
+      ],
+      "locations": [
+        {
+          "path": "app/tenancy.py",
+          "start_line": 425,
+          "end_line": 443
+        },
+        {
+          "path": "app/main.py",
+          "start_line": 724,
+          "end_line": 730
+        },
+        {
+          "path": "app/main.py",
+          "start_line": 129,
+          "end_line": 134
+        },
+        {
+          "path": "app/main.py",
+          "start_line": 741,
+          "end_line": 747
+        }
+      ],
+      "trajectory": "Valid hosted staging settings -> create_app lifespan -> registry.ready -> _check_databases -> singleton skips ownership/elevated query -> /health/ready reports200. Multi-workspace query runs but omits rolreplication.",
+      "input": "One staging workspace, onboarding disabled, valid local TLS verify-full, selected role has administrative/ownership privileges; separately two nonowner schema roles with REPLICATION-only elevation.",
+      "expected": "Fail readiness/startup for runtime administrative/owner/replication authority forbidden by the hosting contract.",
+      "observed": "Hosted-shaped singleton application starts and /health/ready returns200 while superuser/createdb/createrole/bypassrls/client ownership all true. Two-workspace readiness also accepts REPLICATION-only role.",
+      "evidence": [
+        "evidence/behavior-hosted-singleton-readiness.json",
+        "evidence/behavior-hosted-singleton-readiness-r2.log",
+        "evidence/behavior-hosted-singleton-readiness-r2.receipt.json",
+        "evidence/behavior-replication-readiness.json",
+        "evidence/behavior-replication-readiness.log",
+        "evidence/behavior-replication-readiness.receipt.json"
+      ],
+      "repro": [
+        "repro/behavior_hosted_singleton_readiness.py",
+        "repro/behavior_replication_readiness.py"
+      ],
+      "alternative_considered": "Development/test migration-owner allowance could be legitimate; refuted by valid staging config with TLS and ordinary startup. Cross-schema tests still enforce existing covered flags for multiple workspaces; no actual Stage misconfiguration is alleged.",
+      "impact": "Incorrect readiness of unsafe configuration; increases consequences of separate app/credential compromise. Does not establish present remote exposure, unauthorized data access, malicious intent or evaluator tampering.",
+      "correction": "Separate local development allowance from hosted checks. Run hosted owner/elevated checks even for one workspace and include rolreplication. Keep cross-schema checks conditional only where another schema exists.",
+      "verification": "Fresh staging-shaped singleton admin/owner rejection and two-nonowner REPLICATION rejection; ordinary nonprivileged singleton/multi readiness must pass."
+    },
+    {
+      "id": "B02",
+      "status": "CONFIRMED",
+      "category": "CONTRACT_FAILURE",
+      "severity": "medium",
+      "title": "MCP list_time_entries multiplies returned timecards by unrelated client records",
+      "requirement_sources": [
+        "docs/PH3.md:282",
+        "integrations/timeker-stage/skills/timeker/SKILL.md:23-29",
+        "app/integration_routes.py:93-101 (declared public tool contract)"
+      ],
+      "locations": [
+        {
+          "path": "app/integration_routes.py",
+          "start_line": 406,
+          "end_line": 417
+        },
+        {
+          "path": "app/archiving.py",
+          "start_line": 38,
+          "end_line": 42
+        }
+      ],
+      "trajectory": "Local owner -> OAuth consent/code+PKCE/token -> /mcp tools/call list_time_entries -> active_card_predicate references Client.timezone -> card query lacks Client join -> Cartesian product -> duplicate summaries / incorrect singular timecard / premature truncation.",
+      "input": "One stored37-minute timecard for selected client/week, exact timecard_id filter; add a different draft client without changing requested timecard.",
+      "expected": "Both reads return exactly one identical timecard with singular timecard present. Unrelated draft client must not change scoped read cardinality.",
+      "observed": "Before one summary/singular present; after same stored ID appears twice and singular timecard is null; independent new SQL connection counts one stored card, two clients; entries remain37minutes.",
+      "evidence": [
+        "evidence/behavior-mcp-cartesian.json",
+        "evidence/behavior-mcp-cartesian-r2.log",
+        "evidence/behavior-mcp-cartesian-r2.receipt.json"
+      ],
+      "repro": [
+        "repro/behavior_mcp_cartesian.py"
+      ],
+      "alternative_considered": "Multiple real PH3 batches are legitimate, but independent persisted count and identical repeated UUID refute that explanation. Added client is unrelated Draft, so client selection/capacity did not legitimately change requested card.",
+      "impact": "Assistant receives duplicated batch records and loses singular selection. With sufficient clients the101-row limit can truncate true batches earlier. No data mutation, money duplication or cross-tenant leakage demonstrated.",
+      "correction": "Join the selected card to its own Client before applying timezone/archive predicate; retain deterministic unique batch identities. Do not merely deduplicate after the query limit.",
+      "verification": "New metamorphic multi-client MCP test plus >100-match threshold test using exact persisted card counts; verify unrelated timezones cannot determine retention eligibility."
+    },
+    {
+      "id": "B03",
+      "status": "CONFIRMED",
+      "category": "DISCONNECTED_IMPLEMENTATION",
+      "related_category": "WEAK_TEST",
+      "severity": "low",
+      "title": "Anonymous consented optional home measurement cannot reach the collector through real application middleware",
+      "requirement_sources": [
+        "docs/optional-usage-implementation.md:3-9",
+        "docs/optional-usage-implementation.md:47-52",
+        "docs/optional-usage-implementation.md:64-73",
+        "docs/optional-usage-implementation.md:95-101"
+      ],
+      "locations": [
+        {
+          "path": "app/tenancy.py",
+          "start_line": 24,
+          "end_line": 55
+        },
+        {
+          "path": "app/tenancy.py",
+          "start_line": 524,
+          "end_line": 529
+        },
+        {
+          "path": "tests/integration/test_optional_usage.py",
+          "start_line": 13,
+          "end_line": 17
+        },
+        {
+          "path": "tests/integration/test_privacy_preferences.py",
+          "start_line": 14,
+          "end_line": 26
+        }
+      ],
+      "trajectory": "Anonymous public home -> explicit signed current-version consent -> usage.js POST /privacy/usage -> TenantMiddleware does not recognize public path ->303 /; collector is never executed. After normal owner login the exact body/headers reaches collector204.",
+      "input": "Valid source-supported test configuration optional_usage_enabled=True; anonymous browser with current signed accept_usage choice; Origin http://testserver and Sec-Fetch-Site same-origin; home/page_view category.",
+      "expected": "Public same-origin collector route reaches explicit consent/origin/flag validation and accepts allowed home category204. Optional measurement cannot add an authentication prerequisite.",
+      "observed": "Consent returns200 usage_enabled true, anonymous POST303 /, authenticated owner POST204 and usage.page_view log. No router/middleware/collector monkeypatch.",
+      "evidence": [
+        "evidence/behavior-usage-route.json",
+        "evidence/behavior-usage-route.log",
+        "evidence/behavior-usage-route.receipt.json"
+      ],
+      "repro": [
+        "repro/behavior_usage_route.py"
+      ],
+      "alternative_considered": "The environment flag remains intentionally false in baseline and remote activation prerequisites remain pending. This repro toggles only a local synthetic configuration to validate the already authorized source candidate. Default-off does not justify an undisclosed owner-login requirement for the public home category. No live activation failure or unauthorized tracking is alleged. Unit/browser helper deliberately uses in-memory app, a valid isolation choice, but its omission of TenantMiddleware leaves this connection untested. No evaluator tampering intent established.",
+      "impact": "Enabled anonymous home/navigation events are absent. JS uses redirect:error and catches the failure, making the collector silently ineffective for public visitors. Privacy refusal/fail-closed remains preserved.",
+      "correction": "Include collector in the public route boundary while preserving signed consent/origin/body/budget enforcement; add one full-create_app anonymous integration test. Do not activate hosting or change consent purpose as part of this correction.",
+      "verification": "Actual create_app path: anonymous no consent403, current consent204, withdrawal403, disabled404, malformed400, wrong origin/privacy signal403; ordinary business authentication remains unchanged."
+    },
+    {
+      "id": "B04",
+      "status": "CONFIRMED",
+      "category": "CONTRACT_FAILURE",
+      "severity": "medium",
+      "title": "Repeated failed-renewal observations change retained grace expiry across DST in a supported non-UTC database session",
+      "requirement_sources": [
+        "AGENTS.md:technical timestamps UTC",
+        "docs/DECISIONS.md:649-650",
+        "docs/PH3.md:402-405"
+      ],
+      "locations": [
+        {
+          "path": "app/subscription_billing.py",
+          "start_line": 1164,
+          "end_line": 1175
+        },
+        {
+          "path": "app/db.py",
+          "start_line": 10,
+          "end_line": 31
+        }
+      ],
+      "trajectory": "Bound verified-event service -> provider transaction/subscription GET via actual adapter over local mock transport -> failed-period matching -> earliest failure retained in timestamptz -> fresh session loads ZoneInfo(database timezone) -> min keeps equal existing first argument -> timedelta7days uses local wall arithmetic -> changed persisted WorkspaceSubscription.access_expires_at.",
+      "input": "Own behavior_grace_test, connection timezone America/New_York, fixed earliest failed renewal2026-10-25T09:17:23Z; three distinct failed events share the same earliest provider failure and period. Separate UTC/no-transition/spring controls.",
+      "expected": "Expiry remains invariant across repeated observations of the identical earliest verified failure. UTC seven elapsed days are604800seconds. No retry may extend the grace window.",
+      "observed": "NYfall first604800seconds, second/third608400 (+3600). UTCsamefailure604800 each. NYnoDST604800 each. NYspring first604800 then601200 (-3600). Earliest failure UTC stays identical for every event in each case.",
+      "evidence": [
+        "evidence/behavior-grace-dst.json",
+        "evidence/behavior-grace-dst.log",
+        "evidence/behavior-grace-dst.receipt.json"
+      ],
+      "repro": [
+        "repro/behavior_grace_dst.py"
+      ],
+      "alternative_considered": "A calendar-day reading could dispute a fixed604800second oracle in isolation, but cannot justify the same retained failure giving a different expiry on later observations. UTC control and no-DST control pass. This is a real timezone-dependent source defect rather than the original fixture clock or runner comparator. Actual Stage database timezone remains unobserved. An externally guaranteed UTC session can avoid exposure but the application factory does not enforce it.",
+      "impact": "Grace access can be extended or shortened by one hour when a subsequent failed-renewal notification reloads its anchor across a DST boundary. No real renewal, charge or current Stage entitlement was altered or measured.",
+      "correction": "Normalize the retained failure instant to UTC before adding the technical duration; optionally enforce UTC for application database sessions as a separate defense. Preserve earliest-failure and paid-period bindings.",
+      "verification": "New fixed-instant domain/service cases with real DB fresh sessions in UTC and DST zones, autumn/spring boundaries, distinct retry events and exact replays; assert unchanged earliest anchor and expiry. No real provider mutation required."
+    },
+    {
+      "id": "BILLING-NATIVE-LOOKUP",
+      "category": "CONTRACT_FAILURE",
+      "status": "CONFIRMED",
+      "severity": "medium",
+      "title": "Native Billing client search/paging invokes work selection and loses selector form",
+      "requirement_sources": [
+        "docs/design/DESIGN_SPEC.md:334-338",
+        "docs/DECISIONS.md:D048"
+      ],
+      "locations": [
+        {
+          "path": "app/web/templates/billing.html",
+          "line": 4
+        },
+        {
+          "path": "app/web/templates/lookup.html",
+          "line": 17
+        },
+        {
+          "path": "app/main.py",
+          "line": 1539
+        }
+      ],
+      "snapshot": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+      "configuration": "test/fullcreate_app, native noJS behavior; selector_page_size1/search_limit4; own loopback diagnostic_test",
+      "minimal_input": {
+        "client_id": "",
+        "period_start": "2026-10-01",
+        "period_end": "2026-10-31",
+        "_lookup": "client_id:search"
+      },
+      "expected": "HTTP200 Billing selector page with preserved dates, searched/paged client options; no business navigation",
+      "observed": "Rendered action/billing/work receives native lookup submit. Clearclient400 Invalidrequest; selectedclient200 workpage. Both lose lookup/periodediting controls. Normal validbusinesssubmit200workpage is positive control.",
+      "repro": "python repro/run_check.py billing-native-lookup-r2 <audit>/repro/billing_native_lookup.py",
+      "evidence": [
+        "evidence/billing-native-lookup.json",
+        "evidence/billing-native-lookup-r2.log",
+        "evidence/billing-native-lookup-r2.receipt.json",
+        "evidence/browser-complete.xml"
+      ],
+      "impact": "NoJS user cannot search/page Billing client selector; clearing the sole selected record under page size1 cannot recover a different client and entered dates disappear with errorpage",
+      "alternatives_refuted": "PH3 workselection is accepted business behavior, but shared selector fallback remains explicitly required; actual Searchbutton is submitted, not Choosework action. Validclient control independently shows the wrong branch even without validationfailure.",
+      "correction": "Route native selector actions back through Billing form rendering with retained form state; only explicit Choosework reaches/billing/work. Verify Search/Previous/Next with empty/selectedclient, native/JS and size1/multipage.",
+      "audit_instrumentation_note": "Initial probe assumed422; actual application errorhandler returns400. Initial failedoracle/log preserved; corrected probe reproduces same observed defect exit0. Original product untouched.",
+      "capabilities_affected": [
+        "C11",
+        "C27"
+      ]
+    },
+    {
+      "id": "EVAL-01",
+      "category": "WEAK_TEST",
+      "status": "CONFIRMED",
+      "severity": "medium",
+      "title": "Bundled adapter suite misses disconnected exported Stage fetch",
+      "source": "User audit prompt sections 3 and 6; AGENTS.md quality gates",
+      "locations": [
+        {
+          "path": "deploy/cloudflare/src/index.ts",
+          "line": 68
+        },
+        {
+          "path": "deploy/cloudflare/test/proxy.test.mjs",
+          "line": 302
+        },
+        {
+          "path": "deploy/cloudflare/test/stage-archive.test.mjs",
+          "line": 58
+        }
+      ],
+      "input": "Disposable copy: replace default.fetch forwarding with constant HTTP200",
+      "expected": "Relevant existing verifier rejects no-op exported entrypoint",
+      "observed": "All55 bundled Node cases pass, exit0",
+      "evidence": [
+        "evidence/adapter-negative-controls.json",
+        "evidence/adapter-control-entrypoint-false-success.log"
+      ],
+      "repro": "python repro/adapter_negative_controls.py",
+      "impact": "The adapter helper suite alone cannot support a claim that the public exported handler reaches the container",
+      "counterevidence": "Current baseline exported handler reaches real proxy and stubbed container in independent verifier; 3 other targeted mutations are detected by existing tests",
+      "recovered_evidence": [
+        "evidence/adapter-independent-entrypoint.json",
+        "evidence/adapter-independent-baseline.log",
+        "evidence/adapter-independent-mutated.log"
+      ],
+      "correction": "Add exported-handler and lifecycle tests that execute actual binding; keep helper tests",
+      "limitations": "No current product no-op or deliberate tampering demonstrated; SDK/provider implementation remains stubbed"
+    },
+    {
+      "id": "EVAL-02",
+      "category": "CONTRACT_FAILURE",
+      "status": "CONFIRMED",
+      "severity": "low",
+      "title": "Adapter runtime README still excludes an implemented cron handler",
+      "source": "Maintained product documentation consistency required by AGENTS.md authoritative project documents",
+      "locations": [
+        {
+          "path": "deploy/cloudflare/README.md",
+          "line": 40
+        },
+        {
+          "path": "deploy/cloudflare/src/index.ts",
+          "line": 63
+        },
+        {
+          "path": "deploy/cloudflare/wrangler.jsonc",
+          "line": 11
+        }
+      ],
+      "expected": "Runtime description identifies configured daily archive schedule",
+      "observed": "README says no cron handler, but default export and config implement it",
+      "evidence_type": "unequivocal_static_contradiction",
+      "repro": "Compare README.md:40-42, src/index.ts:63-66, wrangler.jsonc:12",
+      "impact": "Stale operational description can mislead maintainers about scheduled maintenance",
+      "counterevidence": "README routes readers to later release receipts; archive helper and5 tests execute successfully",
+      "correction": "Update current runtime description, preserve dated history",
+      "limitations": "No remote cron or provider state execution asserted"
+    }
+  ],
+  "evaluator_tampering": "NOT_OBSERVED",
+  "test_special_casing": "NOT_OBSERVED",
+  "agent_attribution": "NOT_DETERMINED",
+  "intent": "NOT_DETERMINED"
+}

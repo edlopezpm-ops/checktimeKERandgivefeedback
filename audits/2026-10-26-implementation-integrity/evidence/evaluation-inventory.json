@@ -1,0 +1,1469 @@
+{
+  "python_test_files": [
+    {
+      "path": "tests/conftest.py",
+      "sha256": "42ccdc44fd65f3897f16db611046713d8636dc828b4b168ed6d94b38dbf8df47",
+      "test_function_definitions": 0,
+      "python_assert_nodes": 3,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/conftest.py",
+      "sha256": "9b351cd7e133b0603f0ffd31421f7cf025e547fd7293c5cd903603e0dc628891",
+      "test_function_definitions": 0,
+      "python_assert_nodes": 2,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_account_closure_browser.py",
+      "sha256": "3710291eb4233ee82cf79caf4e00e053e5fb831740e96ca0582857390b046636",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_archive_browser.py",
+      "sha256": "77fed91e4aad68aa026720e3ab952a0cfdc2ce0d6b3d9fce3be566f70625009b",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 7,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_browser.py",
+      "sha256": "75b06faa68541fc1d116b9029f7a86c1c16ac85c5c3b3416509794b330277147",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_browser_session_expiry.py",
+      "sha256": "179f9595a4f7944fe0b5e227d1daa7975b64db23a1ed1c675aaa9e4fb540e36e",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 3,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_case_mass_edit_browser.py",
+      "sha256": "298ea501d3d1347266c8a11ee5a921e8a4ae8cbcf7972eaed69a2e7c8ed95b6e",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_case_workflow_browser.py",
+      "sha256": "8881e4d98d4fa058090470988ff56446834535c2c3767cbde347f982373423cc",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_clock.py",
+      "sha256": "c9953115f70defbb624384a9fa8bcf65d7d97714ccf4caef7205cdbe35f14f4a",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 11,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_contact_browser.py",
+      "sha256": "9c2521fd49c0f260718850719d0faf226e1c2cf341266b33efbefb40ab8cadca",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 2,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_cookie_flow_browser.py",
+      "sha256": "3f213966d09694013db6cd7cd14e2776b21021b234b556709c9a04cf710f823e",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_cookie_preferences_browser.py",
+      "sha256": "74a0310386553d2ae1c579392f44c58e6d409f68adac20b65542466ae79a0f2f",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 11,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_credit_memos_browser.py",
+      "sha256": "58870c89f36e4ef633bb068d7f21200f3e2949e77a819cd48bd935bf489cea0b",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 4,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_dashboard_detail_pagination_browser.py",
+      "sha256": "49272f0960a173034e25e45bc0e1a6c1fe08cb8dee5ecda4b8570f46a93179a2",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 32,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_dashboard_outstanding_pagination_browser.py",
+      "sha256": "154bfa43ae670c58729abf34787a5983b4a8811fdd4d5cd4cc1de7a0a87e8371",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 13,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_delegated_oauth_browser.py",
+      "sha256": "5276cb565f53b498a5022f8930195d9064d893bb45bee3bb65aac8961ffa1590",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 35,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_ker_navigation_browser.py",
+      "sha256": "a8fb6eb90695433490f9606d9ca2ee695eeb0d59958648e0820c66d7a8d0d2cd",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 10,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_live_checkout_browser.py",
+      "sha256": "1ca111ecf91a475d0141f100f1dee51a0294e65b964afe5c75387b5896fb8dbc",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 24,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_lookups_browser.py",
+      "sha256": "fd1a9f23ba1011d6b97356fad3467ae6d8abcbbf0514377d0aeefcf4ece22a5e",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 3,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_mail_attachments_browser.py",
+      "sha256": "c9a937b4b1d2ae473ac2c3fa2c105747ced5bead2dfa31971767e3f514c41d13",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_mail_browser.py",
+      "sha256": "da0b918b3ce78bba64e03b29ee59c39808b97bcff5a7bc23453f91d316a416bc",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 2,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_oauth_csp_browser.py",
+      "sha256": "88954281485f634c0612e06526b81966187922e98869054879c4153792e03e01",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_onboarding_browser.py",
+      "sha256": "e8b8f517fdf24ebf6afe807af1b589662c77cf511fc97e35253f493a4de521dd",
+      "test_function_definitions": 14,
+      "python_assert_nodes": 82,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_owner_work_refinements_browser.py",
+      "sha256": "2116b925a7f7c160fdf684d3b7b8bc76f4c486fc3380f01d9f16b6b6ba24719d",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 4,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_paddle_overlay_browser.py",
+      "sha256": "5bab02f45836c03be23da99d8d83843ce45b53c1a96e219d17a5c27c5c69c678",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 15,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_ph3_billing_credit_browser.py",
+      "sha256": "885cbc3f9753e80d0c526966f9c8b4628ea1daf8ff16927c58d5ac60db0088a5",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 2,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_prelaunch_checkout_browser.py",
+      "sha256": "23753a0a73e7c1a754951ea90e88cd441e27913ee7f6dbf89b45183095577e57",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 27,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_project_billing_browser.py",
+      "sha256": "dc93b71a704b3e047802426b9e6e2986a2e1b2de24ec3fc3fa79516eab626cbe",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 1,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_projects_browser.py",
+      "sha256": "3e19820a16c842a17b35e537c8bb78accfe66d64a68ff88c201e0868ec43b601",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_proposal_sending_browser.py",
+      "sha256": "410739046fb1f78072ee66b7b973e5ee535630aae7d6592c72e1668dab690c2f",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 10,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_publication_delivery_browser.py",
+      "sha256": "6dd95e33ed0e257c86f18f7a4a8174161955b1d7e6a3c1eb87c25b82eff7e477",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 7,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_quoting_library_browser.py",
+      "sha256": "d354df706d4e36aa4ce6aa5a2c9f13c250d53bbf24b80386d1f37effe5050e14",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 17,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_quoting_lookup_browser.py",
+      "sha256": "e9873ac5642c0dc1ab1dd4d0aeba6a255a16f76e01519ab4d6e3ada00d200afc",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 3,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_record_pagination_browser.py",
+      "sha256": "0be25e892a00c84f7f665349309c8de2ba87a7fd332a7643220df7dbfe6b4474",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 15,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_reference_fields_browser.py",
+      "sha256": "241908079710929209be5c7558bfeebfc89e66b2782c8aff6c1fc7e5ce12a1d6",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_sending_browser.py",
+      "sha256": "5d8886cba4f372c59d8dfd84ee58a6e56361918b2895f2749cb3f82f9efc5c8b",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 15,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_sending_manual_followup_browser.py",
+      "sha256": "2ec4eb2f58a0fc12398373db2c41208a53eb188f65e4f51666ba65ebfd4ad4dc",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_session_recovery_browser.py",
+      "sha256": "ea3a8a56007fbe3990ce61b9e5e339cf006fd88edf2cf3fc45d6408b2b986239",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 1,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_settings_cache_refresh_browser.py",
+      "sha256": "7f01a468635b087a9f24305eb7c7b39b01ea3846af4ef09e1c5ff2060998f1d4",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 13,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_shared_auth_challenge.py",
+      "sha256": "89a2f86c8703e40c897229316eb56c6f8b78be7abb6e8c19c69cfdadcd3559de",
+      "test_function_definitions": 5,
+      "python_assert_nodes": 21,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_stage_refinements.py",
+      "sha256": "9448829889e993dbb57d5d1c9ae9847de038baae877d34de48f8bbc0f4224af8",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 16,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_subscription_browser.py",
+      "sha256": "262c785bdeaa97d92e44fd9582aaddb646fb6925fb7a530a964a3d2928aedd27",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 13,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_subscription_proration_browser.py",
+      "sha256": "a38328a19b26d029948f242702e4b3e489a9f783394da6f320a4cfaa65e71c75",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 6,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_supplemental_batches_browser.py",
+      "sha256": "5be34d92c920e68b8eb20f0704375ecd5cc70731007ceee7478138601a49a5c9",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_time_import_browser.py",
+      "sha256": "081a5710effa4d7fc7a82c41a0f3a1ffb05428dea6624b9375696b3d479b1a11",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_timecard_local_clock.py",
+      "sha256": "2eee58768f1ebdeef33020f536c47735de5532225b01861cbf890a15f0ddf15d",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_timecard_productivity_browser.py",
+      "sha256": "114059820b817e5641b599c8353cd02b4779b702e8ccabbd386fbb6cea98cb02",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_timecard_selection.py",
+      "sha256": "7e38b5664b0189ee0c58d1ccd04741382b667562992f5d7a03e094287845522b",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 4,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_timecard_week_metrics_browser.py",
+      "sha256": "c6fe03a207184a8c466744b0892bd1f5250de94035416578962e21b53f7cadf0",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 11,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_ui_refresh_browser.py",
+      "sha256": "02143d2951bb1e33bc06f76b21531e47257501750bedda9a410ee214fa41074e",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 14,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_work_management.py",
+      "sha256": "9c8194949d7ed4d926fe2cd3659bdcfce800255cfe00900988154483c0b04fd0",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_workflow_feedback_browser.py",
+      "sha256": "ca1431cf0a5ba17d6edbb01e1185a6a28cc3ba250e3e654def5860ebb1920f40",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/e2e/test_workspace_search_browser.py",
+      "sha256": "db767bdba6e1082f4857dfc22c94114a35bf87c053b0f017e19743e4fb5f8264",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 21,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_account_closure.py",
+      "sha256": "f6163e5b4f78f09e87b5373b2acebc3c470cc41de7a25d5cbc65a6aaf50fc848",
+      "test_function_definitions": 16,
+      "python_assert_nodes": 66,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_archiving.py",
+      "sha256": "9d85186fe321bd25cb73abfaf03ebff5b87fe4492b75cf76418611e64fc78603",
+      "test_function_definitions": 13,
+      "python_assert_nodes": 51,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_assistant_connection_status.py",
+      "sha256": "5c5f2e84762ae6df64d4b5f7ad97bc9e3cc96ad92ece0d7d13206c89139b78d2",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 7,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_auth_get_sessions.py",
+      "sha256": "395010bd9eb7342aedbc89db6ba1522e7200a619ece322c881aa3e9cf0c43ead",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 38,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_auth_notice.py",
+      "sha256": "efde9a62e384b06586431886f6e19901517b039a35d0369e21008308f06ebaf5",
+      "test_function_definitions": 9,
+      "python_assert_nodes": 70,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_browser_sessions.py",
+      "sha256": "482f6c2984d9ed34345e537ed39a735b7817f99e98eb164a77a6abc8ce690465",
+      "test_function_definitions": 8,
+      "python_assert_nodes": 30,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_case_lists.py",
+      "sha256": "8abf9953436e848241dc1afae5e8e11f6f0445eb6675d15966cd8da8d591c728",
+      "test_function_definitions": 5,
+      "python_assert_nodes": 34,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_case_mass_edit.py",
+      "sha256": "85ebd62425d08216681207d5ea78f3170be0b1687041f3bfec415f5191620412",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 26,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_case_retention.py",
+      "sha256": "a16ca949660539c7ea91836fb6a25336897a049d70c888ed5ac3bde105700b68",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 12,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_case_workflow.py",
+      "sha256": "104051ea91da393e3487ed5fab69054bdf93a91ffca8da1c32b7d1e1b10810ce",
+      "test_function_definitions": 5,
+      "python_assert_nodes": 16,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_cases.py",
+      "sha256": "30106700ebaf725e2a8f7158901c39989ad15540c886503a692bb2477c79a205",
+      "test_function_definitions": 18,
+      "python_assert_nodes": 31,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_cases_migration.py",
+      "sha256": "f5ffb6ceb039a5dcee4fbdd43e2b088c30112a770ad4113e2e75499f8b92b6da",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_client_codes.py",
+      "sha256": "cabcc34f1c5cbb39c18ca2274ed5c16f12dade77a007e199eae5417f9c9deeae",
+      "test_function_definitions": 12,
+      "python_assert_nodes": 31,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_contact.py",
+      "sha256": "35c3270e36d185c7d1021bb13434ab97f0fc13d92957fadfc13ef2c71e419e79",
+      "test_function_definitions": 12,
+      "python_assert_nodes": 44,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_credit_memos.py",
+      "sha256": "aa6ad5856465b77e00cb13e12de6d8f42fd5d62d0298e44cb1a0b4666b8d5d52",
+      "test_function_definitions": 16,
+      "python_assert_nodes": 43,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_credit_number_prefix.py",
+      "sha256": "d07534d104bfa522639afd296c9298b77aac4e3fc094b830ebf06e5cbe48659a",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_dashboard_contribution_scope.py",
+      "sha256": "e015c2669db78d7315d90ac80a70cea4b428cf3dacdcbc41f7abf9423fec65a1",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 25,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_dashboard_detail_pagination.py",
+      "sha256": "45e1248aab947e5e14db322c38021c9de6bd34739d5ddd6bc451d0a563384ce2",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 37,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_dashboard_outstanding_pagination.py",
+      "sha256": "c7ae4db4cb9ec7a0b1784d4db428184721f325b6c70693ce64862900433fc0e4",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 33,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_dashboard_performance.py",
+      "sha256": "c1ea30e898b1b01cbc6ec1c255c5ef0f95243a2fb4838e3bd8554348ccec3d59",
+      "test_function_definitions": 5,
+      "python_assert_nodes": 41,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_delegated_integration.py",
+      "sha256": "42f884e940117a059161cb446b9109a84c7918117df069bd7dc49ac09c28fd8c",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 63,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_email_start_retries.py",
+      "sha256": "04ab05b32d03071a14ffb57fb7aae08cca0ef49b894c97955c36df54abd101a9",
+      "test_function_definitions": 16,
+      "python_assert_nodes": 85,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_financial_query_growth.py",
+      "sha256": "fca2e3aed3d2adf0e9269d64097f3a66bb0a35154454559a9bb855ae22ab2f00",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 37,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_hardening.py",
+      "sha256": "1ef7b0e2edb743a04e0f802168bb6d4f596508a8c4341f599a5716085c6c226d",
+      "test_function_definitions": 17,
+      "python_assert_nodes": 32,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_internal_jobs.py",
+      "sha256": "6cf3c2b29a906c4986df0ea976dc7e95f7a9c792fe1d16c22a730a9176757114",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 12,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_ker_navigation.py",
+      "sha256": "336ffe00abbd2ace8627acf5515962ce3c8ff9fed2634c6f1a9f04a914e51c7f",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 13,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_legacy_credit_upgrade.py",
+      "sha256": "55681254f2c15037283c29e5872b3efe3b7878105c77f7500205eea0d6d89adb",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_library.py",
+      "sha256": "7428fae6c2e443e5600f0ed8c1a1d4442cb49a54270638c05ce7d27f6b4bd001",
+      "test_function_definitions": 9,
+      "python_assert_nodes": 31,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_live_billing.py",
+      "sha256": "f3d5a1d2382916f18b944624ad1d13a70e777d494b1b73ef9d9c202bdbc268d6",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 18,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_lookups.py",
+      "sha256": "0a0519b318d7a83c648b779e78377cf2878bb9368a422f369986a103e5109e72",
+      "test_function_definitions": 10,
+      "python_assert_nodes": 35,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_mail.py",
+      "sha256": "570cd1125ba7f985015c761406e5b1602c3a259e4e53cf14ae6acc29221e9d3b",
+      "test_function_definitions": 15,
+      "python_assert_nodes": 71,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_mail_attachments.py",
+      "sha256": "f14ea44644a0f5dccae152c5862028eedb070eee8c4984907ee853d0441fca5f",
+      "test_function_definitions": 12,
+      "python_assert_nodes": 57,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_mail_case_reference.py",
+      "sha256": "eaf45678909da7347d6d77e766d478666778b7a7ef33abb1becd58bfce491f5b",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 10,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_mcp_financial_workflow.py",
+      "sha256": "59c537b6601c30068c8a3e4c539a70fb286e9059b2934959d83c3e8baed6e657",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 29,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_mcp_time_batches.py",
+      "sha256": "7deb988fb2b3d6fe772b83465fabb35fafe1af16052d28b364ee2658f27b6afe",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 15,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_migrations.py",
+      "sha256": "77ab2e38a81e41ef818194f6758932087e212bd16ece324c0ce69131f63e66d7",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 14,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_oauth.py",
+      "sha256": "22087f743f6a3f4465c16f39192159ed4b32c0283484a5c452e0c5228e6aa741",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 7,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_onboarding_auth.py",
+      "sha256": "ef845c51e54abc83aee6972fa253e6b145c7c12ab07d125f13bb2aa8e9da7d4f",
+      "test_function_definitions": 27,
+      "python_assert_nodes": 132,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_operation_limits.py",
+      "sha256": "c69bb677a13dff76cb73922faeda14346e455da5fa2d2fb064dcd101c9532faf",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 14,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_optional_usage.py",
+      "sha256": "ec25c09fcd87ad5e8cec45797b675c36161ae5a4a4436810687ad6a36475ee81",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 11,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_owner_work_refinements.py",
+      "sha256": "937c20114941b6e60afdbefee9539382189a36001c8676dbd0d7c467880dc8c9",
+      "test_function_definitions": 11,
+      "python_assert_nodes": 34,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_partial_credits.py",
+      "sha256": "473eb3a7a9d2773e238040d418ceb2785373bff6b6d076b7bf50a8507d918703",
+      "test_function_definitions": 10,
+      "python_assert_nodes": 22,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_ph3_mixed_workload_probe.py",
+      "sha256": "e62f854bd299c9a5fa8e5d07979b537df2e9ab0be721441014d0864787cf1378",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_ph3_publication_flow.py",
+      "sha256": "bdb23b7d7afc59ba8200ea25ed4ce3497059d6b5b5658074d26ccf32c42b5874",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 33,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_ph3_readiness_probe.py",
+      "sha256": "a9981a65c095c0d0831a54e8ca4ff4db97a7e99b736232c795f165ba69e62003",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_ph3_work_rates_holds.py",
+      "sha256": "b311af89ff53bcfe4d9e7d1980300f9b671a9d89e9ecb21895455a86910e3f8c",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 12,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_prelaunch_auth.py",
+      "sha256": "4bef4174035cf152401671d56242c6046ab535053458cb60e1c6275a5af43203",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 44,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_privacy_preferences.py",
+      "sha256": "f30bcfbc1469363d261cd0128d453c5809e1a71067c2e6a1543b0ad75bc93499",
+      "test_function_definitions": 10,
+      "python_assert_nodes": 43,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_project_attachments.py",
+      "sha256": "21b965c67c54c4bad2ade0274736c4e2371bdb6ed25fe668cca29299fddd3090",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 33,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_project_attachments_migration.py",
+      "sha256": "3d83f715fa2abd0d59360b13ab366b236df5a16348bbffc954287ed3c95570b3",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_project_billing_routes.py",
+      "sha256": "3443c9caf81bf93e9c1b02886825971bcea463be88d6ba8b04603fdf018f190b",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 15,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_project_lifecycle_work.py",
+      "sha256": "0688daa199bf7dd930ab2a20e741651ee06c80eee79fb3e401b0bdb3012f91f4",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 1,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_projects.py",
+      "sha256": "e24786156d31c055f9df6594adc3e7bed6f5790b3cfc8883050dcc4b2e0e6c71",
+      "test_function_definitions": 13,
+      "python_assert_nodes": 74,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_proposal_sending.py",
+      "sha256": "fdee4c06178dc0957fab19816c6a3f4dcecd00ebe9f967f7bdd988522e128b43",
+      "test_function_definitions": 14,
+      "python_assert_nodes": 60,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_public_admission.py",
+      "sha256": "09b6a8c29a7ab94426cb7c11faf50e458b17dafcb1f49843c3b3ed44476c6fa8",
+      "test_function_definitions": 31,
+      "python_assert_nodes": 170,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_publication_delivery.py",
+      "sha256": "609df6f80c22459fc9c4f37b40731a7245d2905981ee73efa52472ddb0a87c82",
+      "test_function_definitions": 5,
+      "python_assert_nodes": 19,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_quoting.py",
+      "sha256": "c9316bf715fa117f56503eb5afd1b72fdfcb4d067b0c3217f463c5a9512bec07",
+      "test_function_definitions": 15,
+      "python_assert_nodes": 53,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_quoting_list_performance.py",
+      "sha256": "4ccc442aae7f1d9203b72c65a4cd5768638f83b3e352f50a013893eb0eb0bf00",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 28,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_quoting_routes.py",
+      "sha256": "d4b671c30a8a6eaa8fd491fc39ac99728cc0024254f093639a652b5348b11253",
+      "test_function_definitions": 10,
+      "python_assert_nodes": 44,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_record_fields.py",
+      "sha256": "3b32d8f948f199c2fcc65bf935f612d961bfb7ca01c8e41478d8c4a311cab4bf",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 7,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_record_pagination.py",
+      "sha256": "2bdf00e5b08285ed726bc8fedbfc016b77af51d6ce737dfe6c85eba423b59fe5",
+      "test_function_definitions": 9,
+      "python_assert_nodes": 34,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_recovery_rehearsal.py",
+      "sha256": "c46e61c5c197a0e8a9116d33ffcafc92fa8c18febbeacb562fc9ed0e33ccc7c7",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 40,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_reference_fields.py",
+      "sha256": "318f4ace61a9b3af98cbf98db5ab1399870ccd949d6a0307b976c68468cf1aa1",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 18,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_report_pagination.py",
+      "sha256": "52bb4c95ccc7121c31c7b5093f914d4de8412ec7e67d3262a8febd729aa87519",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 10,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_retained_history.py",
+      "sha256": "60d869e1e822f0c7ff8bc0f29c93f4253e478555dc21ed0af3266287a283a7c0",
+      "test_function_definitions": 5,
+      "python_assert_nodes": 28,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_routes.py",
+      "sha256": "becf98a21866855272ec27a90341590d8f7a12d34feacea143b5355ff236e4b7",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 25,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_save_feedback.py",
+      "sha256": "b266fe68d068e2cb94cd3e530061a0db418151578ce5484c820ab5d57d69de0b",
+      "test_function_definitions": 5,
+      "python_assert_nodes": 22,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_sending_credit_revisions.py",
+      "sha256": "ae57064e9a54eada008a65a3da834cf5dab1019daa18fef45ab8097fecb111f7",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 14,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_sending_dispatch.py",
+      "sha256": "1075d4ddb8dfd5712381f1609f3619834eb6e521ea5feccbc6bd9f42a0eb1591",
+      "test_function_definitions": 12,
+      "python_assert_nodes": 58,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_sending_isolation.py",
+      "sha256": "e33a02ffe0d73ccf17e7237e0c2d1819d12ce60305456dced8ce6511965e523e",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 32,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_sending_manual_followup.py",
+      "sha256": "193d82cebb3a6d7c18e5740ee686daf56cd029cededfb2684bc29619dbbcaa58",
+      "test_function_definitions": 5,
+      "python_assert_nodes": 43,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_sending_routes.py",
+      "sha256": "9fd120d9aedab105850f9b93da2395d0859dfcd0a863ac37ce297525227cf92e",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 33,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_session_recovery.py",
+      "sha256": "fffe7ea2851bf157ab016cc2a6292a1e688d7413fd77f9d7eea92c46b5ec75df",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 7,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_settings_cache_refresh.py",
+      "sha256": "5daa7b3e0e89bd7f7a753a5d83315e4f3b6543019f30e73e5c2839cf4a266b6e",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 10,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_social_auth.py",
+      "sha256": "0c44e8117be5e3f5c6c67e8a1600f8f1260199ec5398a62891640b1633d6f29e",
+      "test_function_definitions": 9,
+      "python_assert_nodes": 59,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_static_asset_cache.py",
+      "sha256": "8a74c22d47a23f8e2c8e37bcbcb4ecb5ea7300e075eddfb3c046c143d1cee52b",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 31,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_subscription_billing.py",
+      "sha256": "91abe0ea01bd5d786db2d477ca865d06a264074824148f946f3957b5135bd8f0",
+      "test_function_definitions": 26,
+      "python_assert_nodes": 101,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_subscription_capacity.py",
+      "sha256": "8800a02cf97bddbc4523378dd5ba490a3e06bb2f6f9b7d995e85855be36328ee",
+      "test_function_definitions": 15,
+      "python_assert_nodes": 49,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_subscription_domain.py",
+      "sha256": "470cf4cc8ab5f17b91d63d9812b00573cfbd050b4492a92f75839d52f0d9e5d1",
+      "test_function_definitions": 12,
+      "python_assert_nodes": 37,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_subscription_http.py",
+      "sha256": "e3967f1561a7378c0c2256b4720abfd412a6b0cc16506f108189b28cc8883856",
+      "test_function_definitions": 9,
+      "python_assert_nodes": 43,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_subscription_payments_http.py",
+      "sha256": "ccb3fe20de185e1af25c62cc1e45e795a6a4374725bb5043dae34c2bd40872ed",
+      "test_function_definitions": 10,
+      "python_assert_nodes": 50,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_subscription_proration.py",
+      "sha256": "b371cd65e8f32f13561768e7c31882e3528d04f64db2aad690bb6c094b19a4ea",
+      "test_function_definitions": 10,
+      "python_assert_nodes": 44,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_subscription_retention.py",
+      "sha256": "dbe343ebfdb86465797bdd9214d211cc66d3041cd85faee45abe99ca79489e6a",
+      "test_function_definitions": 17,
+      "python_assert_nodes": 84,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_supplemental_batches.py",
+      "sha256": "297182ccbf191dc146921f37a66d5d7726b845c8dea39cd17579f2de30172c58",
+      "test_function_definitions": 10,
+      "python_assert_nodes": 42,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_tenancy.py",
+      "sha256": "7890aec8af236214afd1d70082d41cc4a51f3796411c46d6c6361cae39669f79",
+      "test_function_definitions": 11,
+      "python_assert_nodes": 30,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_tenancy_capacity.py",
+      "sha256": "fabc34d50cd1669ec4e6fe55012687ea9a82e84430fbd9dc93b0b54921182249",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 27,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_tenant_demo.py",
+      "sha256": "f14ff404cc31e2aef5d4f82c7723c4f4c830a8626dc9708489259df9dc8340e3",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 21,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_time_commands.py",
+      "sha256": "65fd5474b2b87fdbde27205d39e49bfe94b319d541306a8f0886e52a2a0e6ab2",
+      "test_function_definitions": 13,
+      "python_assert_nodes": 43,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_time_import_http.py",
+      "sha256": "05d3c89df2f9e298705595862eaf52693cea2490618e53c65a747413209c52c2",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 27,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_timecard_cross_module.py",
+      "sha256": "84d8e175ad02caefe1759a52cc131ca2e2403dba6ac5d06cc995cab06f0dac82",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 27,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_timecard_productivity.py",
+      "sha256": "8a35cd139edd7bac6ddf21528a0f68f83fdd536892438ad03c281bc0e3345000",
+      "test_function_definitions": 13,
+      "python_assert_nodes": 42,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_timecard_week_metrics.py",
+      "sha256": "df0df4855caa61c640128c7aa7dc888fb6e5913ef68b9a4711206e008b219ef2",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 16,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_ui_refresh.py",
+      "sha256": "3d449850d96e2e247f5fc67b5ba8765c74c09b1b793ce5cb30905dffbcb0b669",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 18,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_usage_browser_flow.py",
+      "sha256": "9917592dbb17cd8cff2d7462cb3637533afcbd8a581234dc85f627273cd5917f",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_work_forms.py",
+      "sha256": "fac37c617ed10e1c29d5b71b965dfa1a86067c5cae76b067adbebca246d5c362",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_workflow.py",
+      "sha256": "782488372ddb63f2d09aa570f1e06cefcfdc934b5cc8b486ddc9964d027fd183",
+      "test_function_definitions": 8,
+      "python_assert_nodes": 25,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_workspace_operations.py",
+      "sha256": "6e3d83272a06ce20b8c9421999ce1070f14c297b4c671cc45e503eca076f9d21",
+      "test_function_definitions": 14,
+      "python_assert_nodes": 42,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/integration/test_workspace_overview_search.py",
+      "sha256": "8ab359c7c033098d776d18ac1772cd41533d5f5bb39c4582dccdaeb2e313998a",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 46,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/migration_target.py",
+      "sha256": "5cc41c5267364228c60012de371c2d36b0f62bdea058249c098f6989fe706635",
+      "test_function_definitions": 0,
+      "python_assert_nodes": 0,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/template_assets.py",
+      "sha256": "a571a11353e8c08175956c85026d9da4998eb4f5ffe1dae51a6ed149a1db396d",
+      "test_function_definitions": 0,
+      "python_assert_nodes": 0,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/test_project_billing.py",
+      "sha256": "f6fc09e76ac50463deecfbdb0a058ac0dae43e01970d195d41026f8406eb9d59",
+      "test_function_definitions": 14,
+      "python_assert_nodes": 27,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/test_project_billing_reports.py",
+      "sha256": "1ef8f8486071ae7e7ae262788bcd1b533dc9be601fa1ad203f2212cfe636a31d",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 13,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/test_record_references.py",
+      "sha256": "5639bd279634888ed1db963c2d0210c421bbad1004245d92d540c3ef11241922",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/test_sending.py",
+      "sha256": "befdf486eeb900d3a9df62e64248e17300dbe7689656a62057a2da4eaad91779",
+      "test_function_definitions": 21,
+      "python_assert_nodes": 59,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/test_tenancy_config.py",
+      "sha256": "0435c597922fea7cb8ed3293c67ab10b89df8fc1faa4dfd8b74fc4304d60d804",
+      "test_function_definitions": 11,
+      "python_assert_nodes": 20,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/timecard_history.py",
+      "sha256": "a7f109b6971b3862a6b9136f34e31b041233eaeebd18f59b1b746fa377809618",
+      "test_function_definitions": 0,
+      "python_assert_nodes": 0,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/__init__.py",
+      "sha256": "92dcce4dd9d428604e749a05163c1c3489e7ed4319edea19067c0dc47b30987a",
+      "test_function_definitions": 0,
+      "python_assert_nodes": 0,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_archive_dates.py",
+      "sha256": "66199f0b712e16dfefb8b96a3fec17e7c2fb227f97d915c623c67b3cc8f27a2f",
+      "test_function_definitions": 8,
+      "python_assert_nodes": 12,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_bot_check.py",
+      "sha256": "2d183fe6ea2bc275e1ca569f8c9ca9565f16ac9ccdb9abdde2cd223345211dc7",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 6,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_client_code_validation.py",
+      "sha256": "547cb4ed936b3010a6429ce3c2315affe718b53dae345997ac895b3284406679",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 2,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_dashboard_calendar.py",
+      "sha256": "51a72a7a75164f9e3b40c8285318f8aa0da8ce532a4e1be816c0670e304ea7f0",
+      "test_function_definitions": 2,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_dashboard_calendar_template.py",
+      "sha256": "e38eba8b1f20d685c0bef9772ec256e970d58e3fe968e5b3d8691bc1e99974db",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 12,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_domain.py",
+      "sha256": "8c6aa3ba05b8d990b26315964686138bf85479751f7aef4bc712075fb22fdb59",
+      "test_function_definitions": 8,
+      "python_assert_nodes": 7,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_email_auth.py",
+      "sha256": "0710e487c7fe1c845d51ff39217bda9da95ce452ec95c480e11cd899d8609cb9",
+      "test_function_definitions": 12,
+      "python_assert_nodes": 17,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_financial_values.py",
+      "sha256": "bd4b4180ee606938dffc5d29d918aed9e30f5b538ada2781a4b904a772c78f16",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 11,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_flexfields.py",
+      "sha256": "71052ed925cf2ded2c6e6fc7ffe06921898230bad3e1a12017116a61cfb372ff",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_integration_contracts.py",
+      "sha256": "901c76e5397f1b3e9e5789196049cd7f028960d9f2db172cdfcc0fe363814a62",
+      "test_function_definitions": 11,
+      "python_assert_nodes": 23,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_invitation_template.py",
+      "sha256": "7229845a77abec602a822d638012e1a4c7bcb59c640ed58b321dae372a2fb684",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_ker_navigation.py",
+      "sha256": "710d11e5983a0da84bc8b6c98dd1407773da3c11668ca3b13b5976a0b5ac3767",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 20,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_library.py",
+      "sha256": "e1bc3606f6d179f0003e5bfca3a27bb65abf58c64f188228e28b76700fd1fd2e",
+      "test_function_definitions": 9,
+      "python_assert_nodes": 13,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_live_templates.py",
+      "sha256": "4ae3ed2139429fa504a41277e313cfedb3079c2389bcec569b5c1119b09fd96f",
+      "test_function_definitions": 11,
+      "python_assert_nodes": 58,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_logging.py",
+      "sha256": "dfc10aa7f71812c3a819004c25db2308e9b42f3b752f679d1ce699245aba1f7d",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 12,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_mcp_discovery_metadata.py",
+      "sha256": "bf27d08c0551457093f3df66187487c8919103a6e8e3ca243190f5e27459bb5d",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 14,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_migration_target.py",
+      "sha256": "acb8144c9fe2d5a12d606c91843a23bfa1ea85d8f937fd9cac0b2a7d12cc44e5",
+      "test_function_definitions": 4,
+      "python_assert_nodes": 3,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_onboarding_templates.py",
+      "sha256": "6b021c18840dca708116373b3b3f1cd669df767a5a40276ff5616516cd388cea",
+      "test_function_definitions": 25,
+      "python_assert_nodes": 165,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_paddle.py",
+      "sha256": "e3d2ea3c03f67a84b8b305d7e7be3036b2985a67d9fae11c08a39841166ccad2",
+      "test_function_definitions": 30,
+      "python_assert_nodes": 57,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_paddle_templates.py",
+      "sha256": "c9b2fe1e2eecd483942bcff8815514db1a5ac4055a4bd22d940060acd283cb04",
+      "test_function_definitions": 8,
+      "python_assert_nodes": 36,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_pagination.py",
+      "sha256": "0280a1334c0ebdf3a33639e215265584a52f5f26b5319422c97e1591172572e2",
+      "test_function_definitions": 5,
+      "python_assert_nodes": 12,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_prelaunch_capabilities.py",
+      "sha256": "b8fd1e2386b364b7fa8fd5de2e739a111ab6bd4c5510568513970ab775517e85",
+      "test_function_definitions": 23,
+      "python_assert_nodes": 69,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_production_capabilities.py",
+      "sha256": "36226071e7a5e8a36b19246e95350713e7563b6b3011bb6790e5c89650e1ed2b",
+      "test_function_definitions": 11,
+      "python_assert_nodes": 27,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_proposal_sending.py",
+      "sha256": "16b06392ea4d854fc0842b6e15cb833573e312795d46c73a9e3cc1d4a9638b85",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_proposal_sending_transport.py",
+      "sha256": "292100edb54eead33012321dfba9a4dae98abf3ebb5976a4bea041ccae5650c7",
+      "test_function_definitions": 8,
+      "python_assert_nodes": 20,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_public_admission_proof.py",
+      "sha256": "edf627e722d137b0298167f7a9584e78dd431805dc22dad026e7c4c7566c9124",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 5,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_quote_pagination.py",
+      "sha256": "675cc29009907ec3aabd460651dfadce58be07754ac7494bee94ffd908d62294",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_quoting.py",
+      "sha256": "d88e22fdfcf7b8ef62d8c88bd5c4d8b137437e8e2bb67e6f1810b85e3a5d8d78",
+      "test_function_definitions": 8,
+      "python_assert_nodes": 14,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_quoting_routes.py",
+      "sha256": "d355df7d268c71d6a88e3bfd876af4f0f8eee31723685cddc265ee1ffec2b0da",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 10,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_readiness_worker.py",
+      "sha256": "4292fa7b5882ebce365414bab2e4f0391c4821333c3d6002ef44b9628e3932b3",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_reference_choices.py",
+      "sha256": "dd2ffd1964122f930aa91e698228434b489e4e2cb6b5595d7be46124f0662f96",
+      "test_function_definitions": 8,
+      "python_assert_nodes": 29,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_retention.py",
+      "sha256": "6bd62789cfca4b330f8fd6006542841cb75ec8839c30becdbe83f84221ceecc2",
+      "test_function_definitions": 11,
+      "python_assert_nodes": 23,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_sending_templates.py",
+      "sha256": "40c5d2f9b2bc4b2a18da4d72d3034bbcf7b5fa0016ef1916ad1272d54d87d9d5",
+      "test_function_definitions": 9,
+      "python_assert_nodes": 39,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_sending_transport.py",
+      "sha256": "6ef6b22da8b697b86b4c42ceeca483eb7efd937029003798fc4f528c0e552e54",
+      "test_function_definitions": 9,
+      "python_assert_nodes": 28,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_settings_cache_refresh.py",
+      "sha256": "6acf6c740622957dcdd84dbb84434d69f9bdf3fa3953edeea834548de892b382",
+      "test_function_definitions": 1,
+      "python_assert_nodes": 21,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_social_auth_proof.py",
+      "sha256": "5ad376191d1554e5a6c4c234d52a39f376573793eea450abd2ebd6b139a28fd6",
+      "test_function_definitions": 8,
+      "python_assert_nodes": 9,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_static_assets.py",
+      "sha256": "059b4a6e703dcf250903b3703b2c39678b394163801cfb46aeca2ea2dc773e1e",
+      "test_function_definitions": 6,
+      "python_assert_nodes": 10,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_status_palette.py",
+      "sha256": "1e01893cccd156072b544190c13f0168a04944341ec6c3a223b398150ad00999",
+      "test_function_definitions": 3,
+      "python_assert_nodes": 8,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_subscription_templates.py",
+      "sha256": "a1ff23bbc5a61e799b351b8429b80b9e06fdf1a4ed7b8174d1de80e17e269f74",
+      "test_function_definitions": 9,
+      "python_assert_nodes": 57,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_subscriptions.py",
+      "sha256": "a7fffb8d85d4c207a7e2fed9229985193c65ce2e85082cf7112dd51bbe0b47a2",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 10,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_templates.py",
+      "sha256": "57c521bdd1ccaee0a2a466e16f45bfadbbaf025229a0b1e458ce79d9a355be65",
+      "test_function_definitions": 7,
+      "python_assert_nodes": 21,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    },
+    {
+      "path": "tests/unit/test_time_import.py",
+      "sha256": "e2fe5b259e1f35220dc3f48ed05adf4155b44fa22a2780f609b804472ee485f4",
+      "test_function_definitions": 5,
+      "python_assert_nodes": 7,
+      "classification": "inventoried/static_AST_screen; not full semantic review"
+    }
+  ],
+  "test_function_definitions": 1242,
+  "python_assert_nodes": 5002,
+  "literal_tautology_candidates": [
+    {
+      "path": "tests/e2e/test_browser.py",
+      "line": 51,
+      "kind": "self_comparison"
+    }
+  ],
+  "node_root_lock_alignment": [
+    {
+      "name": "@cloudflare/containers",
+      "package_spec": "0.3.7",
+      "locked_version": "0.3.7",
+      "matches_exact": true
+    },
+    {
+      "name": "@cloudflare/workers-types",
+      "package_spec": "5.20261011.1",
+      "locked_version": "5.20261011.1",
+      "matches_exact": true
+    },
+    {
+      "name": "@types/node",
+      "package_spec": "26.6.5",
+      "locked_version": "26.6.5",
+      "matches_exact": true
+    },
+    {
+      "name": "typescript",
+      "package_spec": "7.0.2",
+      "locked_version": "7.0.2",
+      "matches_exact": true
+    },
+    {
+      "name": "wrangler",
+      "package_spec": "4.149.0",
+      "locked_version": "4.149.0",
+      "matches_exact": true
+    }
+  ],
+  "uv_lock_version": 1,
+  "uv_lock_revision": 5,
+  "uv_locked_packages": 61,
+  "requires_python_matches": true,
+  "tracked_ci_paths": [],
+  "limitations": [
+    "AST tests are function definitions, not parametrized discovered counts.",
+    "Dependency source/binary implementations are inventoried/locked, not exhaustively reviewed.",
+    "No CI configuration in this snapshot does not disprove external repository branch checks."
+  ]
+}

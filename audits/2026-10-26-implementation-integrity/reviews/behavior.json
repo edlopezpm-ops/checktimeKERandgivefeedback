@@ -1,0 +1,802 @@
+{
+  "reviewer": "behavior subagent; inherited root context, separate pass not fresh-context independence",
+  "snapshot": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+  "scope": "Backend identity/tenancy, MCP, subscriptions/provider effects, Sending, closure and selected attachment/retention chains",
+  "findings": [
+    {
+      "id": "B01",
+      "status": "CONFIRMED",
+      "category": "CONTRACT_FAILURE",
+      "severity": "medium",
+      "title": "Readiness omits required runtime privilege checks in supported configurations",
+      "requirement_sources": [
+        "HOSTING.md:247-252",
+        "deploy/postgres/README.md:52-61",
+        "deploy/postgres/README.md:77-79",
+        "docs/DECISIONS.md:1078"
+      ],
+      "locations": [
+        {
+          "path": "app/tenancy.py",
+          "start_line": 425,
+          "end_line": 443
+        },
+        {
+          "path": "app/main.py",
+          "start_line": 724,
+          "end_line": 730
+        }
+      ],
+      "trajectory": "Valid hosted staging settings -> create_app lifespan -> registry.ready -> _check_databases -> singleton skips ownership/elevated query -> /health/ready reports200. Multi-workspace query runs but omits rolreplication.",
+      "input": "One staging workspace, onboarding disabled, valid local TLS verify-full, selected role has administrative/ownership privileges; separately two nonowner schema roles with REPLICATION-only elevation.",
+      "expected": "Fail readiness/startup for runtime administrative/owner/replication authority forbidden by the hosting contract.",
+      "observed": "Hosted-shaped singleton application starts and /health/ready returns200 while superuser/createdb/createrole/bypassrls/client ownership all true. Two-workspace readiness also accepts REPLICATION-only role.",
+      "evidence": [
+        "evidence/behavior-hosted-singleton-readiness.json",
+        "evidence/behavior-hosted-singleton-readiness-r2.log",
+        "evidence/behavior-hosted-singleton-readiness-r2.receipt.json",
+        "evidence/behavior-replication-readiness.json",
+        "evidence/behavior-replication-readiness.log",
+        "evidence/behavior-replication-readiness.receipt.json"
+      ],
+      "repro": [
+        "repro/behavior_hosted_singleton_readiness.py",
+        "repro/behavior_replication_readiness.py"
+      ],
+      "alternative_considered": "Development/test migration-owner allowance could be legitimate; refuted by valid staging config with TLS and ordinary startup. Cross-schema tests still enforce existing covered flags for multiple workspaces; no actual Stage misconfiguration is alleged.",
+      "impact": "Incorrect readiness of unsafe configuration; increases consequences of separate app/credential compromise. Does not establish present remote exposure, unauthorized data access, malicious intent or evaluator tampering.",
+      "correction": "Separate local development allowance from hosted checks. Run hosted owner/elevated checks even for one workspace and include rolreplication. Keep cross-schema checks conditional only where another schema exists.",
+      "verification": "Fresh staging-shaped singleton admin/owner rejection and two-nonowner REPLICATION rejection; ordinary nonprivileged singleton/multi readiness must pass."
+    },
+    {
+      "id": "B02",
+      "status": "CONFIRMED",
+      "category": "CONTRACT_FAILURE",
+      "severity": "medium",
+      "title": "MCP list_time_entries multiplies returned timecards by unrelated client records",
+      "requirement_sources": [
+        "docs/PH3.md:282",
+        "integrations/timeker-stage/skills/timeker/SKILL.md:23-29",
+        "app/integration_routes.py:106-119 (declared public tool contract)"
+      ],
+      "locations": [
+        {
+          "path": "app/integration_routes.py",
+          "start_line": 406,
+          "end_line": 417
+        },
+        {
+          "path": "app/archiving.py",
+          "start_line": 44,
+          "end_line": 48
+        }
+      ],
+      "trajectory": "Local owner -> OAuth consent/code+PKCE/token -> /mcp tools/call list_time_entries -> active_card_predicate references Client.timezone -> card query lacks Client join -> Cartesian product -> duplicate summaries / incorrect singular timecard / premature truncation.",
+      "input": "One stored37-minute timecard for selected client/week, exact timecard_id filter; add a different draft client without changing requested timecard.",
+      "expected": "Both reads return exactly one identical timecard with singular timecard present. Unrelated draft client must not change scoped read cardinality.",
+      "observed": "Before one summary/singular present; after same stored ID appears twice and singular timecard is null; independent new SQL connection counts one stored card, two clients; entries remain37minutes.",
+      "evidence": [
+        "evidence/behavior-mcp-cartesian.json",
+        "evidence/behavior-mcp-cartesian-r2.log",
+        "evidence/behavior-mcp-cartesian-r2.receipt.json"
+      ],
+      "repro": [
+        "repro/behavior_mcp_cartesian.py"
+      ],
+      "alternative_considered": "Multiple real PH3 batches are legitimate, but independent persisted count and identical repeated UUID refute that explanation. Added client is unrelated Draft, so client selection/capacity did not legitimately change requested card.",
+      "impact": "Assistant receives duplicated batch records and loses singular selection. With sufficient clients the101-row limit can truncate true batches earlier. No data mutation, money duplication or cross-tenant leakage demonstrated.",
+      "correction": "Join the selected card to its own Client before applying timezone/archive predicate; retain deterministic unique batch identities. Do not merely deduplicate after the query limit.",
+      "verification": "New metamorphic multi-client MCP test plus >100-match threshold test using exact persisted card counts; verify unrelated timezones cannot determine retention eligibility."
+    },
+    {
+      "id": "B03",
+      "status": "CONFIRMED",
+      "category": "DISCONNECTED_IMPLEMENTATION",
+      "related_category": "WEAK_TEST",
+      "severity": "low",
+      "title": "Anonymous consented optional home measurement cannot reach the collector through real application middleware",
+      "requirement_sources": [
+        "docs/optional-usage-implementation.md:3-9",
+        "docs/optional-usage-implementation.md:47-52",
+        "docs/optional-usage-implementation.md:64-73",
+        "docs/optional-usage-implementation.md:95-101"
+      ],
+      "locations": [
+        {
+          "path": "app/tenancy.py",
+          "start_line": 24,
+          "end_line": 55
+        },
+        {
+          "path": "app/tenancy.py",
+          "start_line": 524,
+          "end_line": 529
+        },
+        {
+          "path": "tests/integration/test_optional_usage.py",
+          "start_line": 13,
+          "end_line": 17
+        },
+        {
+          "path": "tests/integration/test_privacy_preferences.py",
+          "start_line": 14,
+          "end_line": 26
+        }
+      ],
+      "trajectory": "Anonymous public home -> explicit signed current-version consent -> usage.js POST /privacy/usage -> TenantMiddleware does not recognize public path ->303 /; collector is never executed. After normal owner login the exact body/headers reaches collector204.",
+      "input": "Valid source-supported test configuration optional_usage_enabled=True; anonymous browser with current signed accept_usage choice; Origin http://testserver and Sec-Fetch-Site same-origin; home/page_view category.",
+      "expected": "Public same-origin collector route reaches explicit consent/origin/flag validation and accepts allowed home category204. Optional measurement cannot add an authentication prerequisite.",
+      "observed": "Consent returns200 usage_enabled true, anonymous POST303 /, authenticated owner POST204 and usage.page_view log. No router/middleware/collector monkeypatch.",
+      "evidence": [
+        "evidence/behavior-usage-route.json",
+        "evidence/behavior-usage-route.log",
+        "evidence/behavior-usage-route.receipt.json"
+      ],
+      "repro": [
+        "repro/behavior_usage_route.py"
+      ],
+      "alternative_considered": "The environment flag remains intentionally false in baseline and remote activation prerequisites remain pending. This repro toggles only a local synthetic configuration to validate the already authorized source candidate. Default-off does not justify an undisclosed owner-login requirement for the public home category. No live activation failure or unauthorized tracking is alleged. Unit/browser helper deliberately uses in-memory app, a valid isolation choice, but its omission of TenantMiddleware leaves this connection untested. No evaluator tampering intent established.",
+      "impact": "Enabled anonymous home/navigation events are absent. JS uses redirect:error and catches the failure, making the collector silently ineffective for public visitors. Privacy refusal/fail-closed remains preserved.",
+      "correction": "Include collector in the public route boundary while preserving signed consent/origin/body/budget enforcement; add one full-create_app anonymous integration test. Do not activate hosting or change consent purpose as part of this correction.",
+      "verification": "Actual create_app path: anonymous no consent403, current consent204, withdrawal403, disabled404, malformed400, wrong origin/privacy signal403; ordinary business authentication remains unchanged."
+    },
+    {
+      "id": "B04",
+      "status": "CONFIRMED",
+      "category": "CONTRACT_FAILURE",
+      "severity": "medium",
+      "title": "Repeated failed-renewal observations change retained grace expiry across DST in a supported non-UTC database session",
+      "requirement_sources": [
+        "AGENTS.md:technical timestamps UTC",
+        "docs/DECISIONS.md:649-650",
+        "docs/PH3.md:402-405"
+      ],
+      "locations": [
+        {
+          "path": "app/subscription_billing.py",
+          "start_line": 1164,
+          "end_line": 1175
+        },
+        {
+          "path": "app/db.py",
+          "start_line": 10,
+          "end_line": 31
+        }
+      ],
+      "trajectory": "Bound verified-event service -> provider transaction/subscription GET via actual adapter over local mock transport -> failed-period matching -> earliest failure retained in timestamptz -> fresh session loads ZoneInfo(database timezone) -> min keeps equal existing first argument -> timedelta7days uses local wall arithmetic -> changed persisted WorkspaceSubscription.access_expires_at.",
+      "input": "Own behavior_grace_test, connection timezone America/New_York, fixed earliest failed renewal2026-10-25T09:17:23Z; three distinct failed events share the same earliest provider failure and period. Separate UTC/no-transition/spring controls.",
+      "expected": "Expiry remains invariant across repeated observations of the identical earliest verified failure. UTC seven elapsed days are604800seconds. No retry may extend the grace window.",
+      "observed": "NYfall first604800seconds, second/third608400 (+3600). UTCsamefailure604800 each. NYnoDST604800 each. NYspring first604800 then601200 (-3600). Earliest failure UTC stays identical for every event in each case.",
+      "evidence": [
+        "evidence/behavior-grace-dst.json",
+        "evidence/behavior-grace-dst.log",
+        "evidence/behavior-grace-dst.receipt.json"
+      ],
+      "repro": [
+        "repro/behavior_grace_dst.py"
+      ],
+      "alternative_considered": "A calendar-day reading could dispute a fixed604800second oracle in isolation, but cannot justify the same retained failure giving a different expiry on later observations. UTC control and no-DST control pass. This is a real timezone-dependent source defect rather than the original fixture clock or runner comparator. Actual Stage database timezone remains unobserved. An externally guaranteed UTC session can avoid exposure but the application factory does not enforce it.",
+      "impact": "Grace access can be extended or shortened by one hour when a subsequent failed-renewal notification reloads its anchor across a DST boundary. No real renewal, charge or current Stage entitlement was altered or measured.",
+      "correction": "Normalize the retained failure instant to UTC before adding the technical duration; optionally enforce UTC for application database sessions as a separate defense. Preserve earliest-failure and paid-period bindings.",
+      "verification": "New fixed-instant domain/service cases with real DB fresh sessions in UTC and DST zones, autumn/spring boundaries, distinct retry events and exact replays; assert unchanged earliest anchor and expiry. No real provider mutation required."
+    }
+  ],
+  "coverage_ledger": [
+    {
+      "path": "app/auth.py",
+      "mode": "static_semantic_full",
+      "lines": 134,
+      "sha256": "90727e50a10b473526795e81f8e15331cd896fc819df7d376b938ba053d4f81a"
+    },
+    {
+      "path": "app/tenancy.py",
+      "mode": "static_semantic_full",
+      "lines": 531,
+      "sha256": "373c73e5082bae67f87086dc83634adfea91370793050126fa659aef3c7d7374"
+    },
+    {
+      "path": "app/browser_sessions.py",
+      "mode": "static_semantic_full",
+      "lines": 109,
+      "sha256": "910c37b30b350d5a2e3e26cd7f2dd24076f6c30645b74151790236f64e944700"
+    },
+    {
+      "path": "app/config.py",
+      "mode": "static_semantic_full",
+      "lines": 266,
+      "sha256": "5bda7167c8c119ad69d6b85b0c92bb62b5ef5a7030a96d3ec9835ee9a0594cf4"
+    },
+    {
+      "path": "app/db.py",
+      "mode": "static_semantic_full",
+      "lines": 29,
+      "sha256": "8e048866c6055ef1eccb952d1fc991633b298cd6b84256d0df602afcc5432782"
+    },
+    {
+      "path": "app/admission.py",
+      "mode": "static_semantic_full",
+      "lines": 414,
+      "sha256": "33f6d1c678fb2ed7c8440f8a8e2d9b887e0067dd502f393b5659a50191ca23e3"
+    },
+    {
+      "path": "app/admission_operations.py",
+      "mode": "static_semantic_full",
+      "lines": 147,
+      "sha256": "ed51d2cc5391fc984d48f45b5e6984921064ea790dcc74d5bbbe6c5e1093a7e4"
+    },
+    {
+      "path": "app/enrollment.py",
+      "mode": "static_semantic_full",
+      "lines": 245,
+      "sha256": "68a49be835fe2903f1dd45f36bdf88384a805c507ec1a62647d80d6819d2efd3"
+    },
+    {
+      "path": "app/email_auth.py",
+      "mode": "static_semantic_full",
+      "lines": 228,
+      "sha256": "db24f443e5512f013277a3b075dd66d846cf1cf6988e4aa6b96f5b91ce642067"
+    },
+    {
+      "path": "app/social_auth.py",
+      "mode": "static_semantic_full",
+      "lines": 76,
+      "sha256": "16ca8368511d60857cd3ca928b469d996f52fa0a1a28fea463df1794a1dbbbc9"
+    },
+    {
+      "path": "app/integration_auth.py",
+      "mode": "static_semantic_full",
+      "lines": 544,
+      "sha256": "ff9b1cd21c66ddabf32c12e4f8867eb82e4697a09bc2f2f120ab5ef5b5c30b9d"
+    },
+    {
+      "path": "app/integration_finance.py",
+      "mode": "static_semantic_full",
+      "lines": 225,
+      "sha256": "0c025a6580c45ea3eebf608c641133d338c647ba22917176634eb1905034429a"
+    },
+    {
+      "path": "app/integration_routes.py",
+      "mode": "static_semantic_full",
+      "lines": 1232,
+      "sha256": "8fff5a53392f6e828fa05d12b7087feba5a3e96b55f7f56097cfba7e53107c47"
+    },
+    {
+      "path": "app/integration_models.py",
+      "mode": "static_semantic_full",
+      "lines": 84,
+      "sha256": "b34fd0f5ae069977ba78b800f18b7329b9a86ce420592d0a4bc17c4efff9766b"
+    },
+    {
+      "path": "app/sending.py",
+      "mode": "static_semantic_full",
+      "lines": 702,
+      "sha256": "91c1397df146d3d97d2c60cc3c272f96c9884a4fe992933b76802e6702bd63e9"
+    },
+    {
+      "path": "app/sending_transport.py",
+      "mode": "static_semantic_full",
+      "lines": 116,
+      "sha256": "87566951cfe2a1a38bf78650b4322281a9d3fc579293264fa276c8815bc6a74f"
+    },
+    {
+      "path": "app/sending_routes.py",
+      "mode": "static_semantic_full",
+      "lines": 197,
+      "sha256": "db09d44b2888d77a496464e48ab99eabbf08a01cfe4fe0d4e145eb5c1b327da5"
+    },
+    {
+      "path": "app/sending_dispatch_routes.py",
+      "mode": "static_semantic_full",
+      "lines": 82,
+      "sha256": "10e6ca799e17cb6f3acc8fe474f21159c262e3987664cdb18fe13ac5a3a544aa"
+    },
+    {
+      "path": "app/sending_models.py",
+      "mode": "static_semantic_full",
+      "lines": 89,
+      "sha256": "ce51bef4b2483a151ed829201e9cce35a081f143d4f67d0dbbce85453a5b1e02"
+    },
+    {
+      "path": "app/proposal_sending.py",
+      "mode": "static_semantic_full",
+      "lines": 277,
+      "sha256": "29362e637a348ac241d3c1af6ad70e785fcb94a3a5949e2b9ae1b280f67bfac8"
+    },
+    {
+      "path": "app/proposal_sending_transport.py",
+      "mode": "static_semantic_full",
+      "lines": 132,
+      "sha256": "46bb13a7e8d59a19ced5ac8c95b032449b070125f783d339a3339085be55d89b"
+    },
+    {
+      "path": "app/proposal_sending_routes.py",
+      "mode": "static_semantic_full",
+      "lines": 116,
+      "sha256": "c66cdb170dfbfb3ea3b417e340b691d5091c52d5d9353f8ca13ef7980f60c5d0"
+    },
+    {
+      "path": "app/proposal_sending_models.py",
+      "mode": "static_semantic_full",
+      "lines": 69,
+      "sha256": "78a724d0ecfc1db0ce5ad8b333680ae0bdbe5ad64c1b38e5b5df74bbd82c0d41"
+    },
+    {
+      "path": "app/subscriptions.py",
+      "mode": "static_semantic_full",
+      "lines": 439,
+      "sha256": "e9cce91ef4287afd5f7cc0931681f9b1359795ca42b036e47c1adcfe4ac5d9fd"
+    },
+    {
+      "path": "app/subscription_routes.py",
+      "mode": "static_semantic_full",
+      "lines": 166,
+      "sha256": "122a1bdd40a236c8fbea7d52732291e1f51a895e8f1d4fe6afe29dcffb89920f"
+    },
+    {
+      "path": "app/subscription_billing.py",
+      "mode": "static_semantic_full",
+      "lines": 1931,
+      "sha256": "6d8c41ba1ff55eda3b66b40ff19bcb3d209e6859d1d09408cff9b85015fb5f14"
+    },
+    {
+      "path": "app/subscription_models.py",
+      "mode": "static_semantic_full",
+      "lines": 48,
+      "sha256": "3a04dfbdcaf1922272d72ac788ef2179160156962dfb64402a40fdcac9501743"
+    },
+    {
+      "path": "app/subscription_billing_models.py",
+      "mode": "static_semantic_full",
+      "lines": 101,
+      "sha256": "6d7e872cb2c38646c8eaea8859c0da4412a6bed26ea20d96ab91d6f1e6cbce58"
+    },
+    {
+      "path": "app/paddle.py",
+      "mode": "static_semantic_full",
+      "lines": 700,
+      "sha256": "aa9063358b5734573e7e08d29d0256a0df8b980e6a21a84820897304118dc30e"
+    },
+    {
+      "path": "app/account_closure.py",
+      "mode": "static_semantic_full",
+      "lines": 363,
+      "sha256": "67dc5e82d5cabc44ab55ce0102e1368b43948573c18e92fd6ee321bfa5ead20d"
+    },
+    {
+      "path": "app/account_closure_models.py",
+      "mode": "static_semantic_full",
+      "lines": 34,
+      "sha256": "7c8c5a4adeb2057feb715e35649ace379092d59a769f03b311f7caf5466d37e2"
+    },
+    {
+      "path": "app/browser_session_models.py",
+      "mode": "static_semantic_full",
+      "lines": 24,
+      "sha256": "594e89629708fec7d6bde5c84c19399c3ec1299b53475b4e757aae83c7ed95b5"
+    },
+    {
+      "path": "app/enrollment_models.py",
+      "mode": "static_semantic_full",
+      "lines": 56,
+      "sha256": "cc28a549353c52c5c0abbdbceb0db19c88bf4774ba2fddc5c20dd6f37a2a1c0d"
+    },
+    {
+      "path": "app/admission_models.py",
+      "mode": "static_semantic_full",
+      "lines": 61,
+      "sha256": "dc8149b178ca17241e5617b149a7e759618f4501b4f4fa3f37ac9ae929fa6d82"
+    },
+    {
+      "path": "app/operation_limits.py",
+      "mode": "static_semantic_full",
+      "lines": 113,
+      "sha256": "382f12e55c600d03e5a4885b8894c1d486c38240f583dffe4527600444ae158e"
+    },
+    {
+      "path": "app/internal_routes.py",
+      "mode": "static_semantic_full",
+      "lines": 194,
+      "sha256": "ab16a622f5f44b9a211d020a3f8d1e0ce5919cddfef8e1c7a36755d3178fcc6f"
+    },
+    {
+      "path": "app/logging.py",
+      "mode": "static_semantic_full",
+      "lines": 109,
+      "sha256": "3d18cb7338c745f175a95901a58b0f7f329b8857dfc26d3f74e10665f4e9d676"
+    },
+    {
+      "path": "app/project_attachments.py",
+      "mode": "static_semantic_full",
+      "lines": 100,
+      "sha256": "ba5e96917ba2bed7b6dd84dc2791405ba26d18faf411f1db211ce34135b045bc"
+    },
+    {
+      "path": "app/client_sources.py",
+      "mode": "static_semantic_full",
+      "lines": 127,
+      "sha256": "08efd63c7b78a3bdd3a14eaab8d93d8abe69185fc4bfb2556f06811ad27825e3"
+    },
+    {
+      "path": "app/client_drafts.py",
+      "mode": "static_semantic_full",
+      "lines": 68,
+      "sha256": "c25a759c44732499616f26187c931b3e76af2831f8630a3474af979eb6ce900d"
+    },
+    {
+      "path": "app/publication_delivery.py",
+      "mode": "static_semantic_full",
+      "lines": 136,
+      "sha256": "fdb56e7a9287a2a6de807fa81df2c21aa2fa6ef5c3a774af0ca810b9f0cab2dd"
+    },
+    {
+      "path": "app/archiving.py",
+      "mode": "static_semantic_full",
+      "lines": 184,
+      "sha256": "15b6014f11a56bf222531d09a7c28355d639aaac9df6289de508ff5213b0dd88"
+    },
+    {
+      "path": "app/domain.py",
+      "mode": "static_semantic_full",
+      "lines": 67,
+      "sha256": "d63afdf63d9fd40f45426f2c88482f74185efc361225ad6ea195d8ae21dddb70"
+    },
+    {
+      "path": "app/seed.py",
+      "mode": "static_semantic_full",
+      "lines": 106,
+      "sha256": "1247398affebede6bdfafdab02c004cfd83aa70298b3c4c30d146f7601e731eb"
+    },
+    {
+      "path": "tests/integration/test_account_closure.py",
+      "mode": "static_semantic_full",
+      "lines": 382,
+      "sha256": "f6163e5b4f78f09e87b5373b2acebc3c470cc41de7a25d5cbc65a6aaf50fc848"
+    },
+    {
+      "path": "tests/integration/test_tenancy.py",
+      "mode": "static_semantic_full",
+      "lines": 454,
+      "sha256": "7890aec8af236214afd1d70082d41cc4a51f3796411c46d6c6361cae39669f79"
+    },
+    {
+      "path": "tests/integration/test_mcp_time_batches.py",
+      "mode": "static_semantic_full",
+      "lines": 121,
+      "sha256": "7deb988fb2b3d6fe772b83465fabb35fafe1af16052d28b364ee2658f27b6afe"
+    },
+    {
+      "path": "tests/conftest.py",
+      "mode": "static_semantic_full",
+      "lines": 103,
+      "sha256": "42ccdc44fd65f3897f16db611046713d8636dc828b4b168ed6d94b38dbf8df47"
+    },
+    {
+      "path": "app/main.py",
+      "ranges": [
+        [
+          71,
+          211
+        ],
+        [
+          321,
+          431
+        ],
+        [
+          591,
+          720
+        ],
+        [
+          1971,
+          2009
+        ],
+        [
+          736,
+          786
+        ],
+        [
+          1511,
+          1571
+        ]
+      ],
+      "reason": "app construction, middleware/mutation, provider callback, router connection",
+      "mode": "sampled"
+    },
+    {
+      "path": "app/subscription_payment_routes.py",
+      "ranges": [
+        [
+          1,
+          50
+        ],
+        [
+          69,
+          9999
+        ]
+      ],
+      "reason": "read output was truncated around command_form/checkout setup; no whole-file review claim",
+      "mode": "sampled"
+    },
+    {
+      "path": "app/enrollment_routes.py",
+      "ranges": [],
+      "reason": "symbol/caller search only; not semantic review",
+      "mode": "inventoried_search_only"
+    },
+    {
+      "path": "app/models.py",
+      "ranges": [
+        [
+          61,
+          114
+        ],
+        [
+          181,
+          242
+        ]
+      ],
+      "reason": "client and timecard definitions plus table inventory",
+      "mode": "sampled"
+    },
+    {
+      "path": "tests/integration/test_delegated_integration.py",
+      "ranges": [
+        [
+          1,
+          148
+        ]
+      ],
+      "reason": "OAuth/PKCE consent and MCP request helper plus smoke",
+      "mode": "sampled"
+    },
+    {
+      "path": "HOSTING.md",
+      "ranges": [
+        [
+          241,
+          259
+        ]
+      ],
+      "reason": "single/multi runtime role contract",
+      "mode": "sampled"
+    },
+    {
+      "path": "deploy/postgres/README.md",
+      "ranges": [
+        [
+          49,
+          84
+        ]
+      ],
+      "reason": "admin/migrator/runtime separation contract",
+      "mode": "sampled"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "ranges": [
+        [
+          64,
+          70
+        ],
+        [
+          317,
+          342
+        ],
+        [
+          1061,
+          1085
+        ],
+        [
+          1211,
+          1251
+        ]
+      ],
+      "reason": "D002, tenancy, D073, P3 publication/closure; other hits only search",
+      "mode": "sampled"
+    },
+    {
+      "path": "docs/PH3.md",
+      "ranges": [
+        [
+          301,
+          346
+        ]
+      ],
+      "reason": "freshness/scope and original review/remaining evidence; prior full read output truncated, not claimed full",
+      "mode": "sampled"
+    },
+    {
+      "path": "app/privacy.py",
+      "mode": "static_semantic_full",
+      "lines": 125,
+      "sha256": "11d50b154251250dd54a601713c34ccd86a9ea235aba38738989b5c232ade569"
+    },
+    {
+      "path": "app/usage.py",
+      "mode": "static_semantic_full",
+      "lines": 88,
+      "sha256": "22d85b100c90de845ea1ed37dcf76209c1899d62836e0458030c5d2a3483eae0"
+    },
+    {
+      "path": "app/bot_check.py",
+      "mode": "static_semantic_full",
+      "lines": 36,
+      "sha256": "2863beef71e5ac4791e71a3561aa8380acee689150a41c12f87a3a7765a45b2f"
+    },
+    {
+      "path": "app/settings.py",
+      "mode": "static_semantic_full",
+      "lines": 163,
+      "sha256": "7653208aa42c2d40c40485f6b6b86c7a9ae574d9a11ec85a2118d843d4ba30f3"
+    },
+    {
+      "path": "app/contact.py",
+      "mode": "static_semantic_full",
+      "lines": 215,
+      "sha256": "1a643a8dc3f1be76778d16d29fa4f8544072d2e111f423550dfd528d99b357f3"
+    },
+    {
+      "path": "app/web/static/session_recovery.js",
+      "mode": "static_semantic_full",
+      "lines": 56,
+      "sha256": "d77e7e2299ca28183bcca796195cb5ff8b199d3718dfa657af786aace3bdc9cc"
+    },
+    {
+      "path": "app/web/static/settings_cache.js",
+      "mode": "static_semantic_full",
+      "lines": 78,
+      "sha256": "802f55b9c0fed4d2390f3c7f4f0e82a9e0254cec831d826d50c0c43bfc8f4e7b"
+    },
+    {
+      "path": "app/web/static/usage.js",
+      "mode": "static_semantic_full",
+      "lines": 48,
+      "sha256": "63bf9cd2e1016b15f318ebc7441165b537f0805e9023fbcdb788670eb5e1a6da"
+    },
+    {
+      "path": "tests/integration/test_optional_usage.py",
+      "mode": "static_semantic_full",
+      "lines": 103,
+      "sha256": "ec25c09fcd87ad5e8cec45797b675c36161ae5a4a4436810687ad6a36475ee81"
+    },
+    {
+      "path": "tests/integration/test_usage_browser_flow.py",
+      "mode": "static_semantic_full",
+      "lines": 131,
+      "sha256": "9917592dbb17cd8cff2d7462cb3637533afcbd8a581234dc85f627273cd5917f"
+    },
+    {
+      "path": "tests/integration/test_session_recovery.py",
+      "mode": "static_semantic_full",
+      "lines": 24,
+      "sha256": "fffe7ea2851bf157ab016cc2a6292a1e688d7413fd77f9d7eea92c46b5ec75df"
+    },
+    {
+      "path": "tests/e2e/test_session_recovery_browser.py",
+      "mode": "static_semantic_full",
+      "lines": 20,
+      "sha256": "ea3a8a56007fbe3990ce61b9e5e339cf006fd88edf2cf3fc45d6408b2b986239"
+    },
+    {
+      "path": "docs/optional-usage-implementation.md",
+      "mode": "static_semantic_full",
+      "lines": 103,
+      "sha256": "fbee22bba70be58010101396aa061382c00c15200c5500dd3466da6dc44e92f8"
+    },
+    {
+      "path": "tests/integration/test_privacy_preferences.py",
+      "mode": "sampled",
+      "ranges": [
+        [
+          1,
+          59
+        ]
+      ],
+      "reason": "Bare FastAPI privacy-client helper and consent assertions; rest truncated"
+    },
+    {
+      "path": "app/web/templates/billing.html",
+      "mode": "static_semantic_full",
+      "lines": 6,
+      "sha256": "7f7f1493a74c7668e044c06ef55beaff49a97fda118fea710dd712263f77a6bc"
+    },
+    {
+      "path": "app/web/templates/lookup.html",
+      "mode": "static_semantic_full",
+      "lines": 24,
+      "sha256": "8ddce4062ddca92e263fa0226d61cecd41a9ef2f1708fb6ec198b38cf2548048"
+    }
+  ],
+  "independent_checks": {
+    "assertions_passed": 317,
+    "pytest_nodes_claimed": 0,
+    "evidence": "evidence/behavior-independent.json",
+    "oracle": "Contract-derived outcomes and malformed provider/protocol inputs; no same-product oracle for expected values."
+  },
+  "refutations": [
+    {
+      "subject": "Root money rounding finding",
+      "result": "No legitimate counterevidence: D002 mandates ROUND_HALF_UP per grouped line; a single2-minute group atUSD1.65 equalsUSD0.055 and must round0.06. Integer cents oracle (minutes*rate_cents+30)//60 is exact for nonnegative permitted cents rates. Per-entry policy cannot explain one grouped line."
+    },
+    {
+      "subject": "Evaluator Billing native lookup regression",
+      "result": "No legitimate counterevidence. DESIGN_SPEC337 promises shared selector native fallback. billing.html4 GET/billing/work contains lookup buttons named _lookup with formnovalidate; main1539 validates clientUUID/dates before body and ignores _lookup. Blank selection fails400; chosen selection enters unrelated work view200. PH3 selective business workflow does not remove selector fallback. Existing real-form repro with normal-action positive control supports root-cause. No independent second runtime execution performed by this reviewer.",
+      "evidence": [
+        "evidence/billing-native-lookup.json",
+        "app/web/templates/billing.html:4",
+        "app/web/templates/lookup.html:17-19",
+        "app/main.py:1539",
+        "docs/design/DESIGN_SPEC.md:337"
+      ]
+    }
+  ],
+  "rejected_hypotheses": [
+    {
+      "subject": "Account export omitted PH3 business tables",
+      "result": "Not confirmed: explicit business export list includes current contribution/operation/review data; omitted auth/credential/directory tables legitimately excluded. One-owner schema invariant explains non-owner_id tables."
+    },
+    {
+      "subject": "Native review MCP terminal action is decoy",
+      "result": "Refuted: explicit accepted requirement is native human review, no caller boolean as terminal proof; returned REVIEW_REQUIRED status is truthful and connected to normal UI handlers."
+    },
+    {
+      "subject": "Disabled provider or ambiguous timeout reports success",
+      "result": "No such confirmed behavior in reviewed Cloudflare/Paddle adapters. Disabled paths reject; ambiguous effects retain uncertain state and no automatic replay."
+    }
+  ],
+  "limits": [
+    "No real Google/GitHub/Supabase/Paddle/Cloudflare provider credential used, send, checkout or remote workspace action performed.",
+    "No hosted Stage/PROD database privilege or current live plugin lifecycle evidence collected; they remain UNKNOWN independently of local source checks.",
+    "Full semantic coverage is limited to the explicit ledger; sampled main/provider routes and unreviewed enrollment_routes are not counted as full source review.",
+    "No authorship or intentional deception attribution determined.",
+    "No actual evaluator tampering found in assigned backend surfaces; evaluator pass belongs to separate agent."
+  ],
+  "environment_attempts": [
+    "Initial host Python lacked fastapi: environment limitation, not product failure.",
+    "First hosted singleton probe hung while capturing inherited PostgreSQL daemon output; exact owned Python process terminated, own cluster stopped; failure retained and file-logged restart r2 completed.",
+    "First MCP probe failed setup because import-time default database role differed; role env corrected in external repro only, r2 completed."
+  ],
+  "cleanup": {
+    "own_ssl_postgres_55527": "stopped",
+    "replication_flag": "restored NOREPLICATION before fixture cleanup",
+    "temporary_replication_schemas_and_roles": "dropped by original fixture cleanup",
+    "other_native_cluster_55526": "parent owned, left running",
+    "databases": [
+      "behavior_audit_test",
+      "behavior_mcp_test",
+      "behavior_grace_test"
+    ],
+    "source_edits": 0
+  },
+  "additional_review": "Requested logging/privacy/usage/contact/bot_check/settings/session recovery review complete for ledger-listed files. Contact honeypot accepted/no-send is an explicit bot-suppression path, not a confirmed false-success bug. Preview contact is prohibited hosted. Session recovery retains unsent form DOM and checks same owner+tenant then refreshes CSRF before native resubmit. Cache refresh validates finite public immutable files, consumes responses, waits failures, and reports partial failures truthfully. No additional confirmed defect in these surfaces beyond B03.",
+  "hosted_public_observation": {
+    "utc_window": "2026-10-26T20:31:20Z through20:31:59Z",
+    "origin": "https://stage-timeker.aekr.io",
+    "availability": "health/live200 ok; health/ready200 ready; sign-in200 with Google label",
+    "assets": {
+      "wordmark.svg": "raw SHA256 exact to evaluated working bytes",
+      "timecards.js": "LF/CRLF only, equal after newline normalization",
+      "app.js": "content differs beyond line endings from evaluated working bytes and Git HEAD blob",
+      "app.css": "content differs beyond line endings from evaluated working bytes and Git HEAD blob"
+    },
+    "evidence": [
+      "evidence/hosted-public-readback.json",
+      "evidence/hosted-public-readback.receipt.json",
+      "evidence/hosted-public-readback.log",
+      "evidence/hosted-asset-canonicalization.json",
+      "evidence/hosted-asset-canonicalization.receipt.json",
+      "evidence/hosted-asset-canonicalization.log"
+    ],
+    "classification": "Public availability observed; deployed-source/image identity remains UNKNOWN. Source/deployment difference is not by itself a confirmed product defect.",
+    "authority": "Public GET only; no credential tool, login, identity/provider action, deployment, remote write or PROD request."
+  },
+  "grace_reproduction": {
+    "independent_oracle": "retry invariance + independent elapsedseconds arithmetic",
+    "cases": 4,
+    "distinct_events_per_case": 3,
+    "provider_gets_total": 24,
+    "provider_writes_total": 0,
+    "database": "behavior_grace_test",
+    "test_setup_reuse": "No original test expected value/helper used; payloads and source-compatible state constructed explicitly. Only external provider transport mocked.",
+    "scope": "Service verified-event boundary exercised, not public HMAC ingress or actual Stage provider/timezone."
+  }
+}

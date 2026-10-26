@@ -1,0 +1,36 @@
+# Pasada adicional: contenido, documentos, clientes y trabajo
+
+Snapshot `1036d705f7f3721e2fa83df67cf913a40dad65b8`. Revisión estática semántica separada del runner, sin reparar código ni usar la base de pruebas compartida. Esta pasada inicial no encontró un defecto funcional confirmado nuevo en su subconjunto. Una revisión posterior de la suite y una reproducción independiente sí confirmaron el lookup nativo de Billing; el hallazgo y su refutación están en `reviews/suite-triage.json/md` y prevalecen para esa capacidad. No equivale a certificación global ni a ejecución de cada recorrido.
+
+## Trayectorias reales revisadas
+
+1. Clientes y proyectos: formularios nativos → rutas protegidas/main y `project_routes` → `clients.update_client/save_project` → cambios ORM, capacidad, replay e historial. Las propuestas del asistente permanecen en `ClientDraft` con `published:false` y `client_id:null`. Los datos legales desconocidos quedan vacíos. Los cambios de estado validan relaciones abiertas y confirmación, y la actividad de cliente controla proyectos/casos. El contrato fijo conserva el fee después de reservas activas; no hay cálculo financiero en la plantilla.
+2. Fuente de cliente/acuerdo de proyecto: formulario acotado/CSRF → servicios de archivo → bytes y SHA-256 retenidos; respuesta de descarga privada. Un acuerdo no se reemplaza por otro hash. Los enlaces de cliente se validan sin fetch; no se finge extracción contractual. La fuente de cliente es reemplazable por operación del dueño y se distingue del acuerdo inmutable.
+3. Casos: rutas nativas y modal → `cases.save_case/mass_update/set_allocation` → escritura, control de versión y auditoría. El cambio masivo verifica el snapshot de todos los casos antes de mutar; los minutos asignados no pueden exceder el registro padre ni reducir aportaciones importadas. El JSON `saved:true` del modal se produce después de que `mutate` devuelve el redirect de éxito. No se observó éxito anticipado en esa cadena actual.
+4. Quoting: formulario → normalización de minutos/Decimal → Quote/Revision/Lines → publicación por renderer real inyectado desde ruta → snapshot/PDF/checksum. El download de versión publicada lee los bytes retenidos y verifica tamaño/hash. La revisión posterior crea otra versión; no genera entradas de tiempo ni facturas. El total agregado se comprobó contra un oráculo independiente de fracciones racionales.
+5. Library: formulario protegido → documento case-bound o plantilla sin caso → importador acotado → original completo/hash y texto editable → publicación/versiones retenidas. PDF es custodia de bytes, sin conversión de texto; DOCX extrae texto de párrafos y no sigue relaciones. No se presume fidelidad de maquetación DOCX ni validación PDF estructural profunda. El contrato declara texto editable y originales completos, no una conversión de toda la maquetación. Las descargas verifican bytes/hash de la versión/original elegido.
+6. Mail: `.eml` acotado → parser MIME → validación de asociación → hash idempotente por dueño → MailMessage/adjuntos → commit antes del aviso. La UI declara que no conserva los bytes originales del mensaje, conservando texto/cabeceras y adjuntos separados. No hay fetch de recursos HTML ni autorización de trabajo inferida del mensaje. Captura/revocación usa token digest y revalidación del registro real; habilitación hosted se mantiene separada.
+7. Time import: upload JSON/CSV → parser cerrado → preview real → token firmado vinculado a dueño/tenant/revisión/hash/versiones → `commit_import` en transacción → recibo después de commit. La ruta llama al servicio real; la revisión profunda de `time_commands`/persistencia pertenece a la pasada principal. El parser se ejecutó independientemente en esta pasada, sin reclamar persistencia.
+8. Search/lookup: GET autenticado → consultas SQL parametrizadas, límites/paginación → resultados propios del tenant seleccionado. La búsqueda global literal escapa comodines, el modal comprueba estado/tipo JSON y usa texto DOM. Las listas históricas nativas que admiten comodines no se reinterpretan como una promesa de búsqueda literal. Archiving marca registros retenidos y los exports CSV transmiten snapshots con fórmulas escapadas; no se elimina historia.
+
+`app/main.py:1975-1989` monta estas rutas en el router protegido. Se muestreó aquí ese montaje; la dependencia `owner`, binding de tenant y transacción `mutate` completas pertenecen a la pasada principal.
+
+## Verificación independiente ejecutada
+
+Comando: `..\timeKER\.venv\Scripts\python.exe <audit>\repro\content_independent.py`, con `PYTHONDONTWRITEBYTECODE=1`. El módulo reporta sus rutas cargadas y apunta al snapshot evaluado, sin importar tests del producto ni hooks pytest. Resultado exit0, siete grupos PASS:
+
+- 500 estimaciones nuevas con semilla99123, 1–8 líneas de duración/fijo/T&M, importes exactos por `Fraction`, rounding half-up calculado por división entera y propiedad de orden inverso. Minutos y ambos extremos coinciden; no se llama a la implementación para obtener el esperado.
+- Un batch nuevo de200 filas Unicode se normaliza exactamente desde JSON con BOM y CSV, con headers literales del contrato publicado. No hay pérdida de IDs, minutos ni descripción.
+- Doce clases de importación inválida/límite se rechazan antes de persistencia: bool/0/1441/float, campo extra, fecha imposible, UUID inválido, descripción larga, IDs/celda duplicados, batch vacío, JSON con clave repetida y tamaño excesivo.
+- DOCX nuevo con dos párrafos/Unicode y Markdown UTF-8/BOM/CRLF conservan el texto esperado; tres clases de archivo inválido se rechazan.
+- MIME nuevo con adjunto binario conserva contenido/tamaño/hash, fecha UTC y asunto Unicode; HTML se normaliza a texto sin script y mensaje sin cabeceras se rechaza.
+- Flexfields comprueba extremos exactos decimal(19,5), cero negativo, omisión/borrado, límite Unicode250 y seis clases rechazadas.
+- Propuesta cliente conserva `None` para información desconocida y rechaza campo contractual no publicado.
+
+Evidencia: `evidence/content-independent.json`. Las entradas se generan de modo reproducible en el script; no contienen datos reales. No se ejecutó persistencia ni proveedor en esta pasada; tampoco se atribuye aprobación hosted a estos casos puros. Los resultados de integración/browser ejecutados por el coordinador son evidencia distinta.
+
+## Refutaciones y límites
+
+Retornos `None` al eliminar asignación de minutos o al no tener un source son estados válidos y explícitos. Listas vacías al no haber registros y banderas que cierran Quoting/Library en producción son decisiones documentadas de Stage, no implementaciones señuelo. Los starters conservan placeholders para datos legales/comerciales, sin inventar una empresa, ley, impuesto o acuerdo. El render PDF usa el renderer real y bloquea recursos arbitrarios.
+
+No se inspeccionó a mano cada valor de catálogos ISO ni el código interno de bibliotecas; se inventariaron como datos/dependencias. Tampoco se reclama haber revisado todos los tests de estos módulos; los dos tests unitarios Library/Quoting se leyeron para distinguir contratos de fixtures y sus supuestos, no como oráculo exclusivo. Las restricciones de DOCX y PDF expuestas no se convierten en defectos sin un requisito adicional de maquetación o de validación estructural.

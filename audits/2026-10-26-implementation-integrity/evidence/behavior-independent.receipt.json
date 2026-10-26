@@ -1,0 +1,17 @@
+{
+  "label": "behavior-independent",
+  "argv": [
+    "<AUDIT_ROOT>\\sandbox\\product\\.venv\\Scripts\\python.exe",
+    "<AUDIT_ROOT>\\repro\\behavior_independent.py"
+  ],
+  "cwd": "<AUDIT_ROOT>\\sandbox\\product",
+  "started_utc": "2026-10-26T20:17:15.461723+00:00",
+  "duration_seconds": 1.5358000999999604,
+  "exit_code": 0,
+  "environment": {
+    "TIMEKER_TEST_DATABASE_URL": "postgresql+psycopg://timeker_app@127.0.0.1:55526/timeker_audit_test",
+    "TIMEKER_DATABASE_URL": "postgresql+psycopg://timeker_app@127.0.0.1:55526/timeker_audit_test",
+    "TIMEKER_ENVIRONMENT": "test",
+    "WEASYPRINT_DLL_DIRECTORIES": "<WORKSPACE_ROOT>\\timeKER\\.local\\weasyprint\\onedir\\weasyprint\\_internal"
+  }
+}

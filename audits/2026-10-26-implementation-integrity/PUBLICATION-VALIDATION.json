@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "files_checked": 228,
+  "json_parse": true,
+  "python_syntax": true,
+  "node_syntax": true,
+  "links_evidence_matrix_score": true,
+  "private_binaries_excluded": true,
+  "absolute_windows_paths_absent": true,
+  "PEM_key_material_absent": true,
+  "source_reference_corrections_resolved": 5,
+  "raw_receipt_paths_aliased": true,
+  "numerators": [
+    126,
+    63,
+    42,
+    21
+  ]
+}

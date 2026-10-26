@@ -1,0 +1,10 @@
+{
+  "method": "Read-only independent driver SQL on retained synthetic target; no product query/helper used",
+  "stored_exact_cards": 1,
+  "unrelated_clients": 1,
+  "cross_join_rows": 2,
+  "contract_association_join_rows": 1,
+  "alternative_multiple_supplemental_batches": "Refuted: one exact persisted card selected by UUID, not two batches.",
+  "alternative_helper_only_artifact": "Refuted: source query lacks join and independent direct SQL reproduces 2 vs 1 cardinality.",
+  "limitations": "Local synthetic database only; actual external MCP host not exercised by this reviewer."
+}

@@ -1,0 +1,219 @@
+{
+  "node": "repro/navigation_tests/test_stage_refinements.py::test_unicode_flexfield_save_and_numeric_identity[1440]",
+  "mode": "immediate",
+  "events": [
+    {
+      "elapsed": 0.3740935000000718,
+      "kind": "request",
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "elapsed": 0.3839580999997452,
+      "kind": "response",
+      "status": 200,
+      "path": "/"
+    },
+    {
+      "elapsed": 0.38704669999970065,
+      "kind": "navigated",
+      "path": "/"
+    },
+    {
+      "elapsed": 0.5206487999998899,
+      "kind": "request",
+      "method": "POST",
+      "path": "/auth/local"
+    },
+    {
+      "elapsed": 0.531998399999793,
+      "kind": "response",
+      "status": 303,
+      "path": "/auth/local"
+    },
+    {
+      "elapsed": 0.5322120999999242,
+      "kind": "request",
+      "method": "GET",
+      "path": "/dashboard"
+    },
+    {
+      "elapsed": 0.5584666999998262,
+      "kind": "response",
+      "status": 200,
+      "path": "/dashboard"
+    },
+    {
+      "elapsed": 0.5610723999998299,
+      "kind": "navigated",
+      "path": "/dashboard"
+    },
+    {
+      "elapsed": 0.6077729999997246,
+      "kind": "request",
+      "method": "GET",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 0.6209893000000193,
+      "kind": "response",
+      "status": 200,
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 0.6233554000000368,
+      "kind": "navigated",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 0.7896516000000702,
+      "kind": "request",
+      "method": "GET",
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 0.7985954999999194,
+      "kind": "response",
+      "status": 200,
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 0.8074031000001014,
+      "kind": "request",
+      "method": "POST",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 0.8282623999998577,
+      "kind": "response",
+      "status": 303,
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 0.8287846999996873,
+      "kind": "request",
+      "method": "GET",
+      "path": "/clients"
+    },
+    {
+      "elapsed": 0.8398956000000908,
+      "kind": "response",
+      "status": 200,
+      "path": "/clients"
+    },
+    {
+      "elapsed": 0.8430683999999928,
+      "kind": "navigated",
+      "path": "/clients"
+    },
+    {
+      "elapsed": 0.9090621999998802,
+      "kind": "request",
+      "method": "GET",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff"
+    },
+    {
+      "elapsed": 0.9312710999997762,
+      "kind": "response",
+      "status": 200,
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff"
+    },
+    {
+      "elapsed": 0.933915099999922,
+      "kind": "navigated",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff"
+    },
+    {
+      "elapsed": 0.9775027000000591,
+      "kind": "request",
+      "method": "GET",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 0.9915477999998075,
+      "kind": "response",
+      "status": 200,
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 0.994643399999859,
+      "kind": "navigated",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 1.0804168999998183,
+      "kind": "request",
+      "method": "GET",
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit"
+    },
+    {
+      "elapsed": 1.1030431999997745,
+      "kind": "response",
+      "status": 200,
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit"
+    },
+    {
+      "elapsed": 1.1062143999997716,
+      "kind": "navigated",
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit"
+    },
+    {
+      "elapsed": 1.218587899999875,
+      "kind": "request",
+      "method": "GET",
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.2255144000000655,
+      "kind": "request",
+      "method": "GET",
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit"
+    },
+    {
+      "elapsed": 1.234874299999774,
+      "kind": "response",
+      "status": 200,
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.2353895000001103,
+      "kind": "requestfailed",
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "elapsed": 1.410472199999731,
+      "kind": "request",
+      "method": "POST",
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6"
+    },
+    {
+      "elapsed": 1.4106987999998637,
+      "kind": "response",
+      "status": 303,
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6"
+    },
+    {
+      "elapsed": 1.4108948999996755,
+      "kind": "request",
+      "method": "GET",
+      "path": "/projects"
+    },
+    {
+      "elapsed": 1.4110768000000462,
+      "kind": "response",
+      "status": 200,
+      "path": "/projects"
+    },
+    {
+      "elapsed": 1.4114260999999715,
+      "kind": "navigated",
+      "path": "/projects"
+    }
+  ],
+  "independent_new_session_SQL_readback": {
+    "projects_with_expected_flexfield2": 1,
+    "cases_by_status": {},
+    "archived_cases": 0
+  }
+}

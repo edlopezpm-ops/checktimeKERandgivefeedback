@@ -1,0 +1,47 @@
+{
+  "tool": "selective source mutation; standalone contract verifier",
+  "version": "1",
+  "results": [
+    {
+      "operator": "constant_calculation",
+      "path": "app/domain.py",
+      "exit_code": 1,
+      "detected": true,
+      "expected_assertion": "amount-0",
+      "duration_seconds": 2.8650692000001072,
+      "log": "negative-constant_calculation.log",
+      "restored_sha256": "d63afdf63d9fd40f45426f2c88482f74185efc361225ad6ea195d8ae21dddb70"
+    },
+    {
+      "operator": "omit_persistence",
+      "path": "app/timecards.py",
+      "exit_code": 1,
+      "detected": true,
+      "expected_assertion": "fresh-SQL-saved-minutes",
+      "duration_seconds": 4.243379500000174,
+      "log": "negative-omit_persistence.log",
+      "restored_sha256": "ace139e03472342516fc7cadcc9df17b31ceffe5b19f9d7b51857cc3caa79f18"
+    },
+    {
+      "operator": "fake_publish_success",
+      "path": "app/billing.py",
+      "exit_code": 1,
+      "detected": true,
+      "expected_assertion": "render-failure-not-success",
+      "duration_seconds": 7.014659599999959,
+      "argv": [
+        "<AUDIT_ROOT>\\sandbox\\product\\.venv\\Scripts\\python.exe",
+        "<AUDIT_ROOT>\\repro\\independent_finance.py",
+        "<AUDIT_ROOT>\\sandbox\\mutations\\fake_publish_success",
+        "--flow-only"
+      ],
+      "log": "negative-fake_publish_success.log",
+      "restored_sha256": "3000cae9a2a21852cb7346106bb2e46ea0106d2fb274b248851f147e347a21ce"
+    }
+  ],
+  "detected": 3,
+  "surviving": 0,
+  "timeouts": 0,
+  "equivalent": 0,
+  "invalid": 0
+}

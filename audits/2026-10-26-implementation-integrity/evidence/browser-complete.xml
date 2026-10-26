@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="65" failures="17" skipped="0" tests="328" time="592.707" timestamp="2026-10-26T16:18:41.221270-04:00" hostname="Ed"><testcase classname="tests.e2e.test_account_closure_browser" name="test_export_then_close_native_account[1440-True]" time="1.502"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_account_closure_browser" name="test_export_then_close_native_account[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_account_closure_browser" name="test_export_then_close_native_account[390-False]" time="0.358"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_archive_browser" name="test_archive_settings_exports_and_screen_accessibility[1440-True]" time="0.631"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_archive_browser" name="test_archive_settings_exports_and_screen_accessibility[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_archive_browser" name="test_archive_settings_exports_and_screen_accessibility[1440-False]" time="0.136"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_complete_browser_workflow" time="0.508"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_visual_accessibility_primary_pages[1440-900]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_visual_accessibility_primary_pages[1280-800]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_visual_accessibility_primary_pages[390-844]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_without_javascript" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_additional_modules_accessibility[1440-900]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser" name="test_additional_modules_accessibility[390-844]" time="0.117"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser_session_expiry" name="test_unsaved_settings_survive_revocation_and_new_tab_login" time="0.463"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser_session_expiry" name="test_sessions_native_controls_and_accessibility[1440-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser_session_expiry" name="test_sessions_native_controls_and_accessibility[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_browser_session_expiry" name="test_sessions_native_controls_and_accessibility[390-False]" time="15.186"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_mass_edit_browser" name="test_case_mass_edit_project_filter_native_fallback_and_status_type_only[1280-True]" time="0.791"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_mass_edit_browser" name="test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_mass_edit_browser" name="test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-False]" time="0.168"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[1280-True]" time="0.506"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[1280-False]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_case_single_form_dependency_and_enter_save[390-False]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_cases_typed_search_keeps_focus_and_updates_only_results[1280]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_case_workflow_browser" name="test_cases_typed_search_keeps_focus_and_updates_only_results[390]" time="0.191"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_clock" name="test_clock_uses_browser_zone_and_fractional_seconds[America/New_York-10-15]" time="0.473"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_clock" name="test_clock_uses_browser_zone_and_fractional_seconds[Europe/Madrid-16-15]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_clock" name="test_clock_uses_browser_zone_and_fractional_seconds[Asia/Kathmandu-20-0]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_clock" name="test_clock_rollover_and_visibility_resync" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_clock" name="test_clock_respects_reduced_motion_and_preference_changes" time="0.354"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_contact_browser" name="test_contact_preview_and_repeated_session[1440]" time="0.486"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_contact_browser" name="test_contact_preview_and_repeated_session[390]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_contact_browser" name="test_contact_without_javascript" time="0.266"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-320]" time="0.506"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-390]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-760]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[568-1024]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-320]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-390]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-760]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_flow_browser" name="test_mobile_open_preferences_preserve_sign_in_flow[844-1024]" time="0.117"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_cookie_choices_are_nonmodal_reversible_and_private[1440]" time="0.457"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_cookie_choices_are_nonmodal_reversible_and_private[390]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_browser_privacy_signals_keep_marketing_refused[gpc-header]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_browser_privacy_signals_keep_marketing_refused[dnt-header]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_browser_privacy_signals_keep_marketing_refused[gpc-browser]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_cookie_preferences_browser" name="test_cookie_choice_without_javascript_and_failure_keeps_control" time="0.106"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_credit_memos_browser" name="test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-True]" time="0.452"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_credit_memos_browser" name="test_owner_reviewed_credit_preserves_original_and_downloads_note[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_credit_memos_browser" name="test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-False]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_credit_memos_browser" name="test_cancel_draft_has_distinct_action_and_no_credit" time="0.112"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_detail_pagination_browser" name="test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[1440-True-1]" time="0.457"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_detail_pagination_browser" name="test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-True-50]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_detail_pagination_browser" name="test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-False-1]" time="0.129"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_outstanding_pagination_browser" name="test_outstanding_five_rows_preserve_card_chart_and_native_navigation[1440-True-1]" time="0.453"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_outstanding_pagination_browser" name="test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-True-50]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_dashboard_outstanding_pagination_browser" name="test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-False-1]" time="15.194"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_authorize_reaches_registered_callback_with_persisted_code" time="0.485"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\test_delegated_oauth_browser.py:49: in server
+    yield from local_server.__wrapped__(factory)
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_decline_reaches_callback_without_creating_credentials" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\test_delegated_oauth_browser.py:49: in server
+    yield from local_server.__wrapped__(factory)
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_modified_consent_rejects_without_callback_or_grant[scope]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\test_delegated_oauth_browser.py:49: in server
+    yield from local_server.__wrapped__(factory)
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_modified_consent_rejects_without_callback_or_grant[csrf]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\test_delegated_oauth_browser.py:49: in server
+    yield from local_server.__wrapped__(factory)
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_stage_assistant_guide_navigation_identity_and_accessibility[1440-True]" time="1.310" /><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_stage_assistant_guide_navigation_identity_and_accessibility[390-True]" time="1.030" /><testcase classname="tests.e2e.test_delegated_oauth_browser" name="test_stage_assistant_guide_navigation_identity_and_accessibility[390-False]" time="1.107" /><testcase classname="tests.e2e.test_ker_navigation_browser" name="test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[1440-True]" time="0.434"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_ker_navigation_browser" name="test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_ker_navigation_browser" name="test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-False]" time="0.108"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'&quot;">tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'</error></testcase><testcase classname="tests.e2e.test_live_checkout_browser" name="test_live_overlay_uses_real_csp_no_sandbox_switch_and_pinned_transaction[1440]" time="2.066" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_live_overlay_uses_real_csp_no_sandbox_switch_and_pinned_transaction[390]" time="0.699" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes0]" time="0.298" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes1]" time="0.465" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes2]" time="0.292" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes3]" time="0.302" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes4]" time="0.298" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes5]" time="0.309" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes6]" time="0.282" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes7]" time="0.613" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes8]" time="0.305" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_mixed_mode_disabled_or_unverified_checkout_never_loads_sdk[changes9]" time="0.278" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_client_guard_rejects_invalid_origin_or_dom_before_initialize[noncanonical-browser]" time="0.308" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_client_guard_rejects_invalid_origin_or_dom_before_initialize[wrong-success-origin]" time="0.276" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_client_guard_rejects_invalid_origin_or_dom_before_initialize[tampered-mode]" time="0.290" /><testcase classname="tests.e2e.test_live_checkout_browser" name="test_no_javascript_retains_review_truth_and_never_opens_payment" time="0.788" /><testcase classname="tests.e2e.test_lookups_browser" name="test_paged_selector_preserves_unsaved_form_and_saved_choice[1280-True]" time="6.676" /><testcase classname="tests.e2e.test_lookups_browser" name="test_paged_selector_preserves_unsaved_form_and_saved_choice[390-True]" time="1.428" /><testcase classname="tests.e2e.test_lookups_browser" name="test_paged_selector_preserves_unsaved_form_and_saved_choice[1280-False]" time="1.338" /><testcase classname="tests.e2e.test_lookups_browser" name="test_paged_selector_preserves_unsaved_form_and_saved_choice[390-False]" time="1.293" /><testcase classname="tests.e2e.test_lookups_browser" name="test_native_single_slot_clear_browse_and_billing_periods" time="6.850"><failure message="AssertionError: Locator expected to have Value '2026-10-01'&#10;Actual value: None&#10;Error: element(s) not found &#10;Call log:&#10;  - Expect &quot;to_have_value&quot; get_by_label(&quot;Period start&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_label(&quot;Period start&quot;, exact=True)&#10;&#10;Aria snapshot:&#10;- link &quot;Skip to content&quot;:&#10;  - /url: &quot;#main&quot;&#10;- banner:&#10;  - link &quot;timeKER&quot;:&#10;    - /url: /dashboard&#10;    - img &quot;timeKER&quot;&#10;  - link &quot;Search workspace&quot;:&#10;    - /url: /search&#10;  - group: EL&#10;  - button &quot;Menu&quot;&#10;- main:&#10;  - alert:&#10;    - heading &quot;Invalid request&quot; [level=1]&#10;    - paragraph: Review the supplied date or identifier.&#10;    - button &quot;Back&quot;&#10;    - link &quot;Dashboard&quot;:&#10;      - /url: /dashboard&#10;  - group: help&#10;- group:&#10;  - text: Close&#10;  - region &quot;Cookies and privacy choices&quot;:&#10;    - heading &quot;Cookies and privacy choices&quot; [level=2]&#10;    - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.&#10;    - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.&#10;    - paragraph:&#10;      - text: You can reject or change your choice here at any time without affecting access.&#10;      - link &quot;Read privacy and cookies&quot;:&#10;        - /url: /?info=privacy#privacy-and-cookies&#10;    - paragraph: Optional measurement is disabled in this environment.&#10;    - paragraph: No optional preference has been selected.&#10;    - button &quot;Accept measurement&quot; [disabled]&#10;    - button &quot;Reject nonessential&quot;">tests\e2e\test_lookups_browser.py:82: in test_native_single_slot_clear_browse_and_billing_periods
+    expect(page.get_by_label("Period start", exact=True)).to_have_value("2026-10-01")
+E   AssertionError: Locator expected to have Value '2026-10-01'
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_have_value" get_by_label("Period start", exact=True) with timeout 5000ms
+E     - waiting for get_by_label("Period start", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EL
+E     - button "Menu"
+E   - main:
+E     - alert:
+E       - heading "Invalid request" [level=1]
+E       - paragraph: Review the supplied date or identifier.
+E       - button "Back"
+E       - link "Dashboard":
+E         - /url: /dashboard
+E     - group: help
+E   - group:
+E     - text: Close
+E     - region "Cookies and privacy choices":
+E       - heading "Cookies and privacy choices" [level=2]
+E       - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.
+E       - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.
+E       - paragraph:
+E         - text: You can reject or change your choice here at any time without affecting access.
+E         - link "Read privacy and cookies":
+E           - /url: /?info=privacy#privacy-and-cookies
+E       - paragraph: Optional measurement is disabled in this environment.
+E       - paragraph: No optional preference has been selected.
+E       - button "Accept measurement" [disabled]
+E       - button "Reject nonessential"</failure></testcase><testcase classname="tests.e2e.test_mail_attachments_browser" name="test_compact_details_and_lazy_attachment_download[1280]" time="6.338" /><testcase classname="tests.e2e.test_mail_attachments_browser" name="test_compact_details_and_lazy_attachment_download[390]" time="2.808" /><testcase classname="tests.e2e.test_mail_browser" name="test_mail_import_read_filter_and_archive[1440-True]" time="7.291" /><testcase classname="tests.e2e.test_mail_browser" name="test_mail_import_read_filter_and_archive[390-True]" time="2.261" /><testcase classname="tests.e2e.test_mail_browser" name="test_mail_import_read_filter_and_archive[390-False]" time="3.264" /><testcase classname="tests.e2e.test_oauth_csp_browser" name="test_google_post_redirect_allowed_by_real_csp[/]" time="3.040" /><testcase classname="tests.e2e.test_oauth_csp_browser" name="test_google_post_redirect_allowed_by_real_csp[/contact]" time="2.350" /><testcase classname="tests.e2e.test_oauth_csp_browser" name="test_google_post_redirect_allowed_by_real_csp[/sign-in]" time="2.332" /><testcase classname="tests.e2e.test_oauth_csp_browser" name="test_google_post_redirect_allowed_by_real_csp[/sign-up]" time="2.686" /><testcase classname="tests.e2e.test_oauth_csp_browser" name="test_real_cookie_google_forms_survive_entry_and_preauth_navigation[fresh]" time="1.575" /><testcase classname="tests.e2e.test_oauth_csp_browser" name="test_real_cookie_google_forms_survive_entry_and_preauth_navigation[pending-email]" time="1.524" /><testcase classname="tests.e2e.test_oauth_csp_browser" name="test_real_cookie_google_forms_survive_entry_and_preauth_navigation[rejected-code]" time="1.520" /><testcase classname="tests.e2e.test_oauth_csp_browser" name="test_real_cookie_google_forms_survive_entry_and_preauth_navigation[history]" time="1.623" /><testcase classname="tests.e2e.test_oauth_csp_browser" name="test_real_cookie_google_forms_survive_entry_and_preauth_navigation[parallel-tab]" time="2.077" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_public_plan_floating_window_focus_and_safe_offer_navigation[1440-True]" time="1.489" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_public_plan_floating_window_focus_and_safe_offer_navigation[390-True]" time="0.802" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_public_plan_floating_window_focus_and_safe_offer_navigation[390-False]" time="0.560" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_notice_links_are_visible_and_cookie_policy_opens_without_any_authentication[sign_in.html-/sign-in-1440-True]" time="0.599" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_notice_links_are_visible_and_cookie_policy_opens_without_any_authentication[sign_in.html-/sign-in-390-True]" time="0.579" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_notice_links_are_visible_and_cookie_policy_opens_without_any_authentication[sign_in.html-/sign-in-390-False]" time="0.370" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_notice_links_are_visible_and_cookie_policy_opens_without_any_authentication[sign_up.html-/sign-up-1440-True]" time="0.570" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_notice_links_are_visible_and_cookie_policy_opens_without_any_authentication[sign_up.html-/sign-up-390-True]" time="1.227" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_notice_links_are_visible_and_cookie_policy_opens_without_any_authentication[sign_up.html-/sign-up-390-False]" time="0.428" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_legacy_verified_registration_uses_one_native_continue_before_explicit_free_activation[1440-True]" time="0.934" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_legacy_verified_registration_uses_one_native_continue_before_explicit_free_activation[390-True]" time="0.943" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_legacy_verified_registration_uses_one_native_continue_before_explicit_free_activation[390-False]" time="0.681" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_capacity_panel_retains_input_and_closes_without_archival_or_checkout[1440-True]" time="0.885" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_capacity_panel_retains_input_and_closes_without_archival_or_checkout[390-True]" time="0.759" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_capacity_panel_retains_input_and_closes_without_archival_or_checkout[390-False]" time="0.479" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_code_full_paste_and_unavailable_email_no_fake_action[123456]" time="0.649" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_code_full_paste_and_unavailable_email_no_fake_action[12345678]" time="0.688" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_linked_email_stays_available_without_any_removal_ui[1440-True]" time="0.555" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_linked_email_stays_available_without_any_removal_ui[390-True]" time="0.507" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_linked_email_stays_available_without_any_removal_ui[390-False]" time="0.318" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_first_owner_starts_explicit_google_link_without_registration_or_purchase[1440-True]" time="0.571" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_first_owner_starts_explicit_google_link_without_registration_or_purchase[390-True]" time="0.584" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_first_owner_starts_explicit_google_link_without_registration_or_purchase[390-False]" time="0.382" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[otp-signin-1440-True]" time="1.228" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[otp-signin-390-True]" time="1.383" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[otp-signin-390-False]" time="0.955" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[otp-signup-1440-True]" time="1.377" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[otp-signup-390-True]" time="1.109" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[otp-signup-390-False]" time="0.742" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[otp-link-1440-True]" time="1.089" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[otp-link-390-True]" time="1.062" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[otp-link-390-False]" time="0.720" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[confirmation-signin-1440-True]" time="1.149" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[confirmation-signin-390-True]" time="1.113" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[confirmation-signin-390-False]" time="0.710" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[confirmation-signup-1440-True]" time="1.047" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[confirmation-signup-390-True]" time="1.014" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[confirmation-signup-390-False]" time="0.653" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[confirmation-link-1440-True]" time="1.061" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[confirmation-link-390-True]" time="1.081" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_email_delivery_uses_only_clicked_submitter_then_restarts_without_resending[confirmation-link-390-False]" time="0.686" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_fixed_security_return_posts_explicitly_and_restart_get_keeps_the_closed_target[email-1440-True]" time="1.085" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_fixed_security_return_posts_explicitly_and_restart_get_keeps_the_closed_target[email-390-True]" time="1.079" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_fixed_security_return_posts_explicitly_and_restart_get_keeps_the_closed_target[email-390-False]" time="0.718" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_fixed_security_return_posts_explicitly_and_restart_get_keeps_the_closed_target[google-1440-True]" time="0.726" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_fixed_security_return_posts_explicitly_and_restart_get_keeps_the_closed_target[google-390-True]" time="0.721" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_fixed_security_return_posts_explicitly_and_restart_get_keeps_the_closed_target[google-390-False]" time="0.482" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_existing_solo_registration_keeps_catalog_reference_separate_without_free_activation[1440-True]" time="0.705" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_existing_solo_registration_keeps_catalog_reference_separate_without_free_activation[390-True]" time="0.731" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_existing_solo_registration_keeps_catalog_reference_separate_without_free_activation[390-False]" time="0.529" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_configured_provider_buttons_keep_destination_private_and_submit_native_forms[False-1440-True]" time="0.957" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_configured_provider_buttons_keep_destination_private_and_submit_native_forms[False-390-True]" time="0.850" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_configured_provider_buttons_keep_destination_private_and_submit_native_forms[False-390-False]" time="0.617" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_configured_provider_buttons_keep_destination_private_and_submit_native_forms[True-1440-True]" time="0.964" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_configured_provider_buttons_keep_destination_private_and_submit_native_forms[True-390-True]" time="0.850" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_configured_provider_buttons_keep_destination_private_and_submit_native_forms[True-390-False]" time="0.614" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_provider_failure_preserves_other_ready_methods_and_code_entry[390-True]" time="1.115" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_provider_failure_preserves_other_ready_methods_and_code_entry[390-False]" time="0.367" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_public_signup_shows_ready_providers_without_invitation_or_unready_email_action[1440-True]" time="0.732" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_public_signup_shows_ready_providers_without_invitation_or_unready_email_action[390-True]" time="0.627" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_public_signup_shows_ready_providers_without_invitation_or_unready_email_action[390-False]" time="0.433" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_real_callback_recovery_uses_native_email_login_then_account_security[current-1440-True]" time="2.161" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_real_callback_recovery_uses_native_email_login_then_account_security[current-390-True]" time="1.861" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_real_callback_recovery_uses_native_email_login_then_account_security[current-390-False]" time="1.416" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_real_callback_recovery_uses_native_email_login_then_account_security[retained_v1-1440-True]" time="2.696" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_real_callback_recovery_uses_native_email_login_then_account_security[retained_v1-390-True]" time="2.061" /><testcase classname="tests.e2e.test_onboarding_browser" name="test_real_callback_recovery_uses_native_email_login_then_account_security[retained_v1-390-False]" time="1.876" /><testcase classname="tests.e2e.test_owner_work_refinements_browser" name="test_client_source_upload_edit_and_archive_confirmation[1280-True]" time="6.911" /><testcase classname="tests.e2e.test_owner_work_refinements_browser" name="test_client_source_upload_edit_and_archive_confirmation[390-True]" time="2.321" /><testcase classname="tests.e2e.test_owner_work_refinements_browser" name="test_client_source_upload_edit_and_archive_confirmation[390-False]" time="2.180" /><testcase classname="tests.e2e.test_paddle_overlay_browser" name="test_owned_overlay_layout_pointer_resize_close_and_same_transaction_resume" time="2.583" /><testcase classname="tests.e2e.test_ph3_billing_credit_browser" name="test_selected_publish_credit_native_and_accessible[1440-True]" time="10.095" /><testcase classname="tests.e2e.test_ph3_billing_credit_browser" name="test_selected_publish_credit_native_and_accessible[390-True]" time="2.932" /><testcase classname="tests.e2e.test_ph3_billing_credit_browser" name="test_selected_publish_credit_native_and_accessible[390-False]" time="2.485" /><testcase classname="tests.e2e.test_prelaunch_checkout_browser" name="test_canonical_preview_notice_sandbox_csp_keyboard_and_accessibility[1440]" time="1.440" /><testcase classname="tests.e2e.test_prelaunch_checkout_browser" name="test_canonical_preview_notice_sandbox_csp_keyboard_and_accessibility[390]" time="0.647" /><testcase classname="tests.e2e.test_prelaunch_checkout_browser" name="test_preview_notice_and_native_checkout_truth_survive_without_javascript" time="0.376" /><testcase classname="tests.e2e.test_prelaunch_checkout_browser" name="test_preview_view_context_cannot_enable_sandbox_without_explicit_flag" time="0.394" /><testcase classname="tests.e2e.test_prelaunch_checkout_browser" name="test_prelaunch_subscription_first_use_then_verified_choices_without_provider_effects[1440-True]" time="1.650" /><testcase classname="tests.e2e.test_prelaunch_checkout_browser" name="test_prelaunch_subscription_first_use_then_verified_choices_without_provider_effects[390-True]" time="0.791" /><testcase classname="tests.e2e.test_prelaunch_checkout_browser" name="test_prelaunch_subscription_first_use_then_verified_choices_without_provider_effects[390-False]" time="0.827" /><testcase classname="tests.e2e.test_project_billing_browser" name="test_fixed_fee_and_authorized_extra[1440-True]" time="5.636"><failure message="AssertionError: Locator expected to be visible&#10;Actual value: None&#10;Error: strict mode violation: get_by_text(&quot;Fixed fee&quot;, exact=True) resolved to 2 elements:&#10;    1) &lt;h2&gt;Fixed fee&lt;/h2&gt; aka get_by_role(&quot;heading&quot;, name=&quot;Fixed fee&quot;)&#10;    2) &lt;h3&gt;Fixed fee&lt;/h3&gt; aka locator(&quot;#screen-help-dialog&quot;).get_by_text(&quot;Fixed fee&quot;, exact=True)&#10; &#10;Call log:&#10;  - Expect &quot;to_be_visible&quot; get_by_text(&quot;Fixed fee&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_text(&quot;Fixed fee&quot;, exact=True)">tests\e2e\test_project_billing_browser.py:33: in test_fixed_fee_and_authorized_extra
+    expect(page.get_by_text("Fixed fee", exact=True)).to_be_visible()
+E   AssertionError: Locator expected to be visible
+E   Actual value: None
+E   Error: strict mode violation: get_by_text("Fixed fee", exact=True) resolved to 2 elements:
+E       1) &lt;h2&gt;Fixed fee&lt;/h2&gt; aka get_by_role("heading", name="Fixed fee")
+E       2) &lt;h3&gt;Fixed fee&lt;/h3&gt; aka locator("#screen-help-dialog").get_by_text("Fixed fee", exact=True)
+E    
+E   Call log:
+E     - Expect "to_be_visible" get_by_text("Fixed fee", exact=True) with timeout 5000ms
+E     - waiting for get_by_text("Fixed fee", exact=True)</failure></testcase><testcase classname="tests.e2e.test_project_billing_browser" name="test_fixed_fee_and_authorized_extra[390-True]" time="1.299"><failure message="AssertionError: Locator expected to be visible&#10;Actual value: None&#10;Error: strict mode violation: get_by_text(&quot;Fixed fee&quot;, exact=True) resolved to 2 elements:&#10;    1) &lt;h2&gt;Fixed fee&lt;/h2&gt; aka get_by_role(&quot;heading&quot;, name=&quot;Fixed fee&quot;)&#10;    2) &lt;h3&gt;Fixed fee&lt;/h3&gt; aka locator(&quot;#screen-help-dialog&quot;).get_by_text(&quot;Fixed fee&quot;, exact=True)&#10; &#10;Call log:&#10;  - Expect &quot;to_be_visible&quot; get_by_text(&quot;Fixed fee&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_text(&quot;Fixed fee&quot;, exact=True)">tests\e2e\test_project_billing_browser.py:33: in test_fixed_fee_and_authorized_extra
+    expect(page.get_by_text("Fixed fee", exact=True)).to_be_visible()
+E   AssertionError: Locator expected to be visible
+E   Actual value: None
+E   Error: strict mode violation: get_by_text("Fixed fee", exact=True) resolved to 2 elements:
+E       1) &lt;h2&gt;Fixed fee&lt;/h2&gt; aka get_by_role("heading", name="Fixed fee")
+E       2) &lt;h3&gt;Fixed fee&lt;/h3&gt; aka locator("#screen-help-dialog").get_by_text("Fixed fee", exact=True)
+E    
+E   Call log:
+E     - Expect "to_be_visible" get_by_text("Fixed fee", exact=True) with timeout 5000ms
+E     - waiting for get_by_text("Fixed fee", exact=True)</failure></testcase><testcase classname="tests.e2e.test_project_billing_browser" name="test_fixed_fee_and_authorized_extra[390-False]" time="2.850" /><testcase classname="tests.e2e.test_projects_browser" name="test_project_screen_create_validate_edit_archive[1440-True]" time="8.138" /><testcase classname="tests.e2e.test_projects_browser" name="test_project_screen_create_validate_edit_archive[1280-True]" time="3.648" /><testcase classname="tests.e2e.test_projects_browser" name="test_project_screen_create_validate_edit_archive[390-True]" time="3.614" /><testcase classname="tests.e2e.test_projects_browser" name="test_project_screen_create_validate_edit_archive[390-False]" time="3.312" /><testcase classname="tests.e2e.test_projects_browser" name="test_add_project_returns_to_selected_week" time="1.534" /><testcase classname="tests.e2e.test_proposal_sending_browser" name="test_native_published_hle_and_original_sow_review_without_dispatch[1440-True]" time="10.642" /><testcase classname="tests.e2e.test_proposal_sending_browser" name="test_native_published_hle_and_original_sow_review_without_dispatch[390-True]" time="3.496" /><testcase classname="tests.e2e.test_proposal_sending_browser" name="test_native_published_hle_and_original_sow_review_without_dispatch[390-False]" time="2.744" /><testcase classname="tests.e2e.test_publication_delivery_browser" name="test_exact_publish_send_review_is_accessible_and_durable[1440-True]" time="8.307" /><testcase classname="tests.e2e.test_publication_delivery_browser" name="test_exact_publish_send_review_is_accessible_and_durable[390-True]" time="2.322" /><testcase classname="tests.e2e.test_publication_delivery_browser" name="test_exact_publish_send_review_is_accessible_and_durable[390-False]" time="1.973" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_native_service_case_then_independent_hle_with_published_pdf[1440-True]" time="10.343" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_native_service_case_then_independent_hle_with_published_pdf[390-True]" time="3.573" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_native_service_case_then_independent_hle_with_published_pdf[390-False]" time="2.754" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_case_bound_sow_imports_editable_docx_and_freezes_exact_original[1440-True]" time="3.387" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_case_bound_sow_imports_editable_docx_and_freezes_exact_original[390-True]" time="3.118" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_case_bound_sow_imports_editable_docx_and_freezes_exact_original[390-False]" time="2.395" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_reusable_sla_template_stays_independent_and_clones_into_a_case[1440-True]" time="2.159" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_reusable_sla_template_stays_independent_and_clones_into_a_case[390-True]" time="2.151" /><testcase classname="tests.e2e.test_quoting_library_browser" name="test_reusable_sla_template_stays_independent_and_clones_into_a_case[390-False]" time="2.355" /><testcase classname="tests.e2e.test_quoting_lookup_browser" name="test_case_search_keeps_all_clients_scope_without_a_client_field[/quoting/new]" time="5.376" /><testcase classname="tests.e2e.test_quoting_lookup_browser" name="test_case_search_keeps_all_clients_scope_without_a_client_field[/quoting/documents/new?kind=sow]" time="2.514" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_case_pages_preserve_filters_focus_scroll_and_native_fallback[1440-True]" time="5.163" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_case_pages_preserve_filters_focus_scroll_and_native_fallback[390-True]" time="1.539" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_case_pages_preserve_filters_focus_scroll_and_native_fallback[390-False]" time="1.257" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_client_history_pages_leave_pending_source_form_in_place[True]" time="2.561" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_client_history_pages_leave_pending_source_form_in_place[False]" time="1.270" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_project_history_pages_preserve_pending_project_fields" time="0.999" /><testcase classname="tests.e2e.test_record_pagination_browser" name="test_shared_status_colors_match_across_record_screens" time="1.996" /><testcase classname="tests.e2e.test_reference_fields_browser" name="test_reference_selects_preserve_codes_errors_and_native_keyboard[1440-True]" time="5.536" /><testcase classname="tests.e2e.test_reference_fields_browser" name="test_reference_selects_preserve_codes_errors_and_native_keyboard[390-True]" time="1.959" /><testcase classname="tests.e2e.test_reference_fields_browser" name="test_reference_selects_preserve_codes_errors_and_native_keyboard[390-False]" time="1.587" /><testcase classname="tests.e2e.test_sending_browser" name="test_review_confirmation_stop_and_templates_use_native_forms[1440-True]" time="6.821"><failure message="AssertionError: Locator expected to be visible&#10;Actual value: None&#10;Error: element(s) not found &#10;Call log:&#10;  - Expect &quot;to_be_visible&quot; get_by_role(&quot;heading&quot;, name=&quot;Review sending&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_role(&quot;heading&quot;, name=&quot;Review sending&quot;, exact=True)&#10;&#10;Aria snapshot:&#10;- link &quot;Skip to content&quot;:&#10;  - /url: &quot;#main&quot;&#10;- banner:&#10;  - link &quot;timeKER&quot;:&#10;    - /url: /dashboard&#10;    - img &quot;timeKER&quot;&#10;  - text: clients • billing • timecards&#10;  - link &quot;Search workspace&quot;:&#10;    - /url: /search&#10;  - group: EO&#10;  - text: Example Owner&#10;- complementary:&#10;  - navigation &quot;Primary&quot;:&#10;    - link &quot;Dashboard&quot;:&#10;      - /url: /dashboard&#10;    - link &quot;Clients&quot;:&#10;      - /url: /clients&#10;    - link &quot;Projects&quot;:&#10;      - /url: /projects&#10;    - link &quot;Timecards&quot;:&#10;      - /url: /timecards&#10;    - link &quot;Cases&quot;:&#10;      - /url: /cases&#10;    - link &quot;Mail&quot;:&#10;      - /url: /mail&#10;    - link &quot;Billing&quot;:&#10;      - /url: /billing&#10;    - link &quot;Sending&quot;:&#10;      - /url: /sending&#10;    - link &quot;Reports&quot;:&#10;      - /url: /reports&#10;    - link &quot;Archive&quot;:&#10;      - /url: /archive&#10;    - link &quot;Settings&quot;:&#10;      - /url: /settings&#10;    - link &quot;Audit history&quot;:&#10;      - /url: /audit&#10;  - text: AEKR Private workspace&#10;- main:&#10;  - alert:&#10;    - text: The session check could not finish. Your changes are still here. Check your connection and submit again.&#10;    - link &quot;Open sign-in in a new tab&quot;:&#10;      - /url: /&#10;  - note: Stage&#10;  - heading &quot;Prepare sending&quot; [level=1]&#10;  - paragraph:&#10;    - link &quot;SYNTHETIC-001&quot;:&#10;      - /url: /billing/10000000-0000-0000-0000-000000000001&#10;    - text: · Example Studio &lt;private&gt; · USD 30.00&#10;  - link &quot;Back&quot;:&#10;    - /url: /sending&#10;  - note:&#10;    - strong: Sending is not configured.&#10;    - text: You can review and prepare statements. No outgoing email or scheduled follow-up can run until a separate sender is enabled.&#10;  - heading &quot;Statement message&quot; [level=2]&#10;  - paragraph: Choose the client's confirmed recipient and review the issued PDF. Preparing a message does not change its payment or receipt status.&#10;  - paragraph:&#10;    - link &quot;Open issued PDF&quot;:&#10;      - /url: /billing/10000000-0000-0000-0000-000000000001/pdf&#10;    - text: · SYNTHETIC-001.pdf&#10;  - paragraph:&#10;    - text: &quot;PDF SHA-256:&quot;&#10;    - code: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&#10;  - text: Recipient email *&#10;  - textbox &quot;Recipient email *&quot;: reviewed@example.com&#10;  - text: One confirmed recipient. No CC or BCC. Subject *&#10;  - textbox &quot;Subject *&quot;: &quot;Statement {invoice_number}&quot;&#10;  - text: Message&#10;  - textbox &quot;Message&quot;: An explicitly reviewed message.&#10;  - paragraph:&#10;    - text: &quot;Placeholders:&quot;&#10;    - code: &quot;{invoice_number}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{client_name}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{currency}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{total}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{balance}&quot;&#10;    - text: .&#10;  - group &quot;Unpaid follow-ups&quot;:&#10;    - text: Unpaid follow-ups&#10;    - checkbox &quot;Enable follow-ups for this statement&quot; [checked]&#10;    - text: Enable follow-ups for this statement&#10;    - paragraph: Off unless selected. Any payment, void or Stop cancels future messages. Reversing a payment does not restart sending.&#10;    - text: Days between follow-ups&#10;    - spinbutton &quot;Days between follow-ups&quot;: &quot;7&quot;&#10;    - text: Maximum follow-ups&#10;    - spinbutton &quot;Maximum follow-ups&quot;: &quot;1&quot;&#10;    - text: Follow-up subject&#10;    - textbox &quot;Follow-up subject&quot;: &quot;Follow-up {invoice_number}&quot;&#10;    - text: Follow-up message&#10;    - textbox &quot;Follow-up message&quot;: &quot;Outstanding balance: {currency} {balance}.&quot;&#10;  - button &quot;Review message&quot;&#10;  - link &quot;Cancel&quot;:&#10;    - /url: /sending&#10;  - group: help">tests\e2e\test_sending_browser.py:59: in test_review_confirmation_stop_and_templates_use_native_forms
+    expect(page.get_by_role("heading", name="Review sending", exact=True)).to_be_visible()
+E   AssertionError: Locator expected to be visible
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_be_visible" get_by_role("heading", name="Review sending", exact=True) with timeout 5000ms
+E     - waiting for get_by_role("heading", name="Review sending", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - text: clients • billing • timecards
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EO
+E     - text: Example Owner
+E   - complementary:
+E     - navigation "Primary":
+E       - link "Dashboard":
+E         - /url: /dashboard
+E       - link "Clients":
+E         - /url: /clients
+E       - link "Projects":
+E         - /url: /projects
+E       - link "Timecards":
+E         - /url: /timecards
+E       - link "Cases":
+E         - /url: /cases
+E       - link "Mail":
+E         - /url: /mail
+E       - link "Billing":
+E         - /url: /billing
+E       - link "Sending":
+E         - /url: /sending
+E       - link "Reports":
+E         - /url: /reports
+E       - link "Archive":
+E         - /url: /archive
+E       - link "Settings":
+E         - /url: /settings
+E       - link "Audit history":
+E         - /url: /audit
+E     - text: AEKR Private workspace
+E   - main:
+E     - alert:
+E       - text: The session check could not finish. Your changes are still here. Check your connection and submit again.
+E       - link "Open sign-in in a new tab":
+E         - /url: /
+E     - note: Stage
+E     - heading "Prepare sending" [level=1]
+E     - paragraph:
+E       - link "SYNTHETIC-001":
+E         - /url: /billing/10000000-0000-0000-0000-000000000001
+E       - text: · Example Studio &lt;private&gt; · USD 30.00
+E     - link "Back":
+E       - /url: /sending
+E     - note:
+E       - strong: Sending is not configured.
+E       - text: You can review and prepare statements. No outgoing email or scheduled follow-up can run until a separate sender is enabled.
+E     - heading "Statement message" [level=2]
+E     - paragraph: Choose the client's confirmed recipient and review the issued PDF. Preparing a message does not change its payment or receipt status.
+E     - paragraph:
+E       - link "Open issued PDF":
+E         - /url: /billing/10000000-0000-0000-0000-000000000001/pdf
+E       - text: · SYNTHETIC-001.pdf
+E     - paragraph:
+E       - text: "PDF SHA-256:"
+E       - code: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+E     - text: Recipient email *
+E     - textbox "Recipient email *": reviewed@example.com
+E     - text: One confirmed recipient. No CC or BCC. Subject *
+E     - textbox "Subject *": "Statement {invoice_number}"
+E     - text: Message
+E     - textbox "Message": An explicitly reviewed message.
+E     - paragraph:
+E       - text: "Placeholders:"
+E       - code: "{invoice_number}"
+E       - text: ","
+E       - code: "{client_name}"
+E       - text: ","
+E       - code: "{currency}"
+E       - text: ","
+E       - code: "{total}"
+E       - text: ","
+E       - code: "{balance}"
+E       - text: .
+E     - group "Unpaid follow-ups":
+E       - text: Unpaid follow-ups
+E       - checkbox "Enable follow-ups for this statement" [checked]
+E       - text: Enable follow-ups for this statement
+E       - paragraph: Off unless selected. Any payment, void or Stop cancels future messages. Reversing a payment does not restart sending.
+E       - text: Days between follow-ups
+E       - spinbutton "Days between follow-ups": "7"
+E       - text: Maximum follow-ups
+E       - spinbutton "Maximum follow-ups": "1"
+E       - text: Follow-up subject
+E       - textbox "Follow-up subject": "Follow-up {invoice_number}"
+E       - text: Follow-up message
+E       - textbox "Follow-up message": "Outstanding balance: {currency} {balance}."
+E     - button "Review message"
+E     - link "Cancel":
+E       - /url: /sending
+E     - group: help</failure></testcase><testcase classname="tests.e2e.test_sending_browser" name="test_review_confirmation_stop_and_templates_use_native_forms[390-True]" time="6.212"><failure message="AssertionError: Locator expected to be visible&#10;Actual value: None&#10;Error: element(s) not found &#10;Call log:&#10;  - Expect &quot;to_be_visible&quot; get_by_role(&quot;heading&quot;, name=&quot;Review sending&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_role(&quot;heading&quot;, name=&quot;Review sending&quot;, exact=True)&#10;&#10;Aria snapshot:&#10;- link &quot;Skip to content&quot;:&#10;  - /url: &quot;#main&quot;&#10;- banner:&#10;  - link &quot;timeKER&quot;:&#10;    - /url: /dashboard&#10;    - img &quot;timeKER&quot;&#10;  - link &quot;Search workspace&quot;:&#10;    - /url: /search&#10;  - group: EO&#10;  - button &quot;Menu&quot;&#10;- main:&#10;  - alert:&#10;    - text: The session check could not finish. Your changes are still here. Check your connection and submit again.&#10;    - link &quot;Open sign-in in a new tab&quot;:&#10;      - /url: /&#10;  - note: Stage&#10;  - heading &quot;Prepare sending&quot; [level=1]&#10;  - paragraph:&#10;    - link &quot;SYNTHETIC-001&quot;:&#10;      - /url: /billing/10000000-0000-0000-0000-000000000001&#10;    - text: · Example Studio &lt;private&gt; · USD 30.00&#10;  - link &quot;Back&quot;:&#10;    - /url: /sending&#10;  - note:&#10;    - strong: Sending is not configured.&#10;    - text: You can review and prepare statements. No outgoing email or scheduled follow-up can run until a separate sender is enabled.&#10;  - heading &quot;Statement message&quot; [level=2]&#10;  - paragraph: Choose the client's confirmed recipient and review the issued PDF. Preparing a message does not change its payment or receipt status.&#10;  - paragraph:&#10;    - link &quot;Open issued PDF&quot;:&#10;      - /url: /billing/10000000-0000-0000-0000-000000000001/pdf&#10;    - text: · SYNTHETIC-001.pdf&#10;  - paragraph:&#10;    - text: &quot;PDF SHA-256:&quot;&#10;    - code: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&#10;  - text: Recipient email *&#10;  - textbox &quot;Recipient email *&quot;: reviewed@example.com&#10;  - text: One confirmed recipient. No CC or BCC. Subject *&#10;  - textbox &quot;Subject *&quot;: &quot;Statement {invoice_number}&quot;&#10;  - text: Message&#10;  - textbox &quot;Message&quot;: An explicitly reviewed message.&#10;  - paragraph:&#10;    - text: &quot;Placeholders:&quot;&#10;    - code: &quot;{invoice_number}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{client_name}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{currency}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{total}&quot;&#10;    - text: &quot;,&quot;&#10;    - code: &quot;{balance}&quot;&#10;    - text: .&#10;  - group &quot;Unpaid follow-ups&quot;:&#10;    - text: Unpaid follow-ups&#10;    - checkbox &quot;Enable follow-ups for this statement&quot; [checked]&#10;    - text: Enable follow-ups for this statement&#10;    - paragraph: Off unless selected. Any payment, void or Stop cancels future messages. Reversing a payment does not restart sending.&#10;    - text: Days between follow-ups&#10;    - spinbutton &quot;Days between follow-ups&quot;: &quot;7&quot;&#10;    - text: Maximum follow-ups&#10;    - spinbutton &quot;Maximum follow-ups&quot;: &quot;1&quot;&#10;    - text: Follow-up subject&#10;    - textbox &quot;Follow-up subject&quot;: &quot;Follow-up {invoice_number}&quot;&#10;    - text: Follow-up message&#10;    - textbox &quot;Follow-up message&quot;: &quot;Outstanding balance: {currency} {balance}.&quot;&#10;  - button &quot;Review message&quot;&#10;  - link &quot;Cancel&quot;:&#10;    - /url: /sending&#10;  - group: help">tests\e2e\test_sending_browser.py:59: in test_review_confirmation_stop_and_templates_use_native_forms
+    expect(page.get_by_role("heading", name="Review sending", exact=True)).to_be_visible()
+E   AssertionError: Locator expected to be visible
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_be_visible" get_by_role("heading", name="Review sending", exact=True) with timeout 5000ms
+E     - waiting for get_by_role("heading", name="Review sending", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EO
+E     - button "Menu"
+E   - main:
+E     - alert:
+E       - text: The session check could not finish. Your changes are still here. Check your connection and submit again.
+E       - link "Open sign-in in a new tab":
+E         - /url: /
+E     - note: Stage
+E     - heading "Prepare sending" [level=1]
+E     - paragraph:
+E       - link "SYNTHETIC-001":
+E         - /url: /billing/10000000-0000-0000-0000-000000000001
+E       - text: · Example Studio &lt;private&gt; · USD 30.00
+E     - link "Back":
+E       - /url: /sending
+E     - note:
+E       - strong: Sending is not configured.
+E       - text: You can review and prepare statements. No outgoing email or scheduled follow-up can run until a separate sender is enabled.
+E     - heading "Statement message" [level=2]
+E     - paragraph: Choose the client's confirmed recipient and review the issued PDF. Preparing a message does not change its payment or receipt status.
+E     - paragraph:
+E       - link "Open issued PDF":
+E         - /url: /billing/10000000-0000-0000-0000-000000000001/pdf
+E       - text: · SYNTHETIC-001.pdf
+E     - paragraph:
+E       - text: "PDF SHA-256:"
+E       - code: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+E     - text: Recipient email *
+E     - textbox "Recipient email *": reviewed@example.com
+E     - text: One confirmed recipient. No CC or BCC. Subject *
+E     - textbox "Subject *": "Statement {invoice_number}"
+E     - text: Message
+E     - textbox "Message": An explicitly reviewed message.
+E     - paragraph:
+E       - text: "Placeholders:"
+E       - code: "{invoice_number}"
+E       - text: ","
+E       - code: "{client_name}"
+E       - text: ","
+E       - code: "{currency}"
+E       - text: ","
+E       - code: "{total}"
+E       - text: ","
+E       - code: "{balance}"
+E       - text: .
+E     - group "Unpaid follow-ups":
+E       - text: Unpaid follow-ups
+E       - checkbox "Enable follow-ups for this statement" [checked]
+E       - text: Enable follow-ups for this statement
+E       - paragraph: Off unless selected. Any payment, void or Stop cancels future messages. Reversing a payment does not restart sending.
+E       - text: Days between follow-ups
+E       - spinbutton "Days between follow-ups": "7"
+E       - text: Maximum follow-ups
+E       - spinbutton "Maximum follow-ups": "1"
+E       - text: Follow-up subject
+E       - textbox "Follow-up subject": "Follow-up {invoice_number}"
+E       - text: Follow-up message
+E       - textbox "Follow-up message": "Outstanding balance: {currency} {balance}."
+E     - button "Review message"
+E     - link "Cancel":
+E       - /url: /sending
+E     - group: help</failure></testcase><testcase classname="tests.e2e.test_sending_browser" name="test_review_confirmation_stop_and_templates_use_native_forms[390-False]" time="1.495" /><testcase classname="tests.e2e.test_sending_browser" name="test_unknown_delivery_exposes_stop_and_history_without_retry_or_send[1440]" time="0.752" /><testcase classname="tests.e2e.test_sending_browser" name="test_unknown_delivery_exposes_stop_and_history_without_retry_or_send[390]" time="0.696" /><testcase classname="tests.e2e.test_sending_browser" name="test_real_owner_prepares_immutable_pdf_and_stops_pending_email[1440-True]" time="7.300" /><testcase classname="tests.e2e.test_sending_browser" name="test_real_owner_prepares_immutable_pdf_and_stops_pending_email[390-False]" time="2.976" /><testcase classname="tests.e2e.test_sending_manual_followup_browser" name="test_real_routes_review_then_advance_followup_without_changing_schedule[1440-True]" time="3.637" /><testcase classname="tests.e2e.test_sending_manual_followup_browser" name="test_real_routes_review_then_advance_followup_without_changing_schedule[390-True]" time="1.877" /><testcase classname="tests.e2e.test_sending_manual_followup_browser" name="test_real_routes_review_then_advance_followup_without_changing_schedule[390-False]" time="3.247" /><testcase classname="tests.e2e.test_session_recovery_browser" name="test_revoked_browser_session_recovers" time="4.901" /><testcase classname="tests.e2e.test_settings_cache_refresh_browser" name="test_public_file_refresh_keeps_settings_sign_in_and_native_fallback[1440-True]" time="5.336" /><testcase classname="tests.e2e.test_settings_cache_refresh_browser" name="test_public_file_refresh_keeps_settings_sign_in_and_native_fallback[390-True]" time="2.522" /><testcase classname="tests.e2e.test_settings_cache_refresh_browser" name="test_public_file_refresh_keeps_settings_sign_in_and_native_fallback[390-False]" time="1.076" /><testcase classname="tests.e2e.test_settings_cache_refresh_browser" name="test_failed_public_file_refresh_can_retry_without_losing_pending_settings" time="1.366" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_one_challenge_keeps_native_provider_and_email_payloads_independent[signin-google-1440]" time="1.222" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_one_challenge_keeps_native_provider_and_email_payloads_independent[signin-github-390]" time="0.730" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_one_challenge_keeps_native_provider_and_email_payloads_independent[signup-otp-1440]" time="0.669" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_one_challenge_keeps_native_provider_and_email_payloads_independent[signup-confirmation-390]" time="0.649" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_one_challenge_keeps_native_provider_and_email_payloads_independent[security-google-1440]" time="0.732" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_one_challenge_keeps_native_provider_and_email_payloads_independent[security-otp-390]" time="0.732" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_one_challenge_keeps_native_provider_and_email_payloads_independent[security-confirmation-1440]" time="0.717" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_unready_expired_and_failed_challenges_block_native_auth_with_visible_feedback[unavailable]" time="0.619" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_unready_expired_and_failed_challenges_block_native_auth_with_visible_feedback[empty]" time="0.653" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_unready_expired_and_failed_challenges_block_native_auth_with_visible_feedback[expired]" time="0.619" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_unready_expired_and_failed_challenges_block_native_auth_with_visible_feedback[error]" time="0.617" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_email_code_verification_is_not_blocked_or_polluted_by_shared_start_challenge[signin]" time="0.462" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_email_code_verification_is_not_blocked_or_polluted_by_shared_start_challenge[security]" time="0.443" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_back_forward_restore_resets_only_login_challenge_and_allows_fresh_method" time="0.596" /><testcase classname="tests.e2e.test_shared_auth_challenge" name="test_captcha_disabled_keeps_both_native_signin_methods_without_javascript" time="0.887" /><testcase classname="tests.e2e.test_stage_refinements" name="test_public_stage_copy_menu_and_signup[True]" time="1.168" /><testcase classname="tests.e2e.test_stage_refinements" name="test_public_stage_copy_menu_and_signup[False]" time="0.506" /><testcase classname="tests.e2e.test_stage_refinements" name="test_unicode_flexfield_save_and_numeric_identity[390]" time="4.360"><failure message="playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit&#10;Call log:&#10;  - navigating to &quot;http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit&quot;, waiting until &quot;load&quot;">tests\e2e\test_stage_refinements.py:119: in test_unicode_flexfield_save_and_numeric_identity
+    page.goto(f"{server}/projects/{project_id}/edit")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit", waiting until "load"</failure></testcase><testcase classname="tests.e2e.test_stage_refinements" name="test_unicode_flexfield_save_and_numeric_identity[1440]" time="1.413"><failure message="playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit&#10;Call log:&#10;  - navigating to &quot;http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit&quot;, waiting until &quot;load&quot;">tests\e2e\test_stage_refinements.py:119: in test_unicode_flexfield_save_and_numeric_identity
+    page.goto(f"{server}/projects/{project_id}/edit")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit", waiting until "load"</failure></testcase><testcase classname="tests.e2e.test_stage_refinements" name="test_full_preset_tiles_and_semantic_work_colors[390]" time="6.512"><failure message="AssertionError: Locator expected to have class 'draft-action'&#10;Actual value: None&#10;Error: element(s) not found &#10;Call log:&#10;  - Expect &quot;to_have_class&quot; get_by_role(&quot;button&quot;, name=&quot;Create draft statement&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_role(&quot;button&quot;, name=&quot;Create draft statement&quot;, exact=True)&#10;&#10;Aria snapshot:&#10;- link &quot;Skip to content&quot;:&#10;  - /url: &quot;#main&quot;&#10;- banner:&#10;  - link &quot;timeKER&quot;:&#10;    - /url: /dashboard&#10;    - img &quot;timeKER&quot;&#10;  - link &quot;Search workspace&quot;:&#10;    - /url: /search&#10;  - group: EL&#10;  - button &quot;Menu&quot;&#10;- main:&#10;  - heading &quot;Billing&quot; [level=1]&#10;  - link &quot;+ Create statement&quot;:&#10;    - /url: &quot;#create&quot;&#10;  - article:&#10;    - strong: &quot;0.00&quot;&#10;    - text: Outstanding balance&#10;  - article:&#10;    - strong: &quot;0.00&quot;&#10;    - text: Paid this month&#10;  - article:&#10;    - strong: &quot;0&quot;&#10;    - text: Overdue statements&#10;  - article:&#10;    - strong: &quot;0.00&quot;&#10;    - text: Billed year to date&#10;  - text: Search statements or clients&#10;  - searchbox &quot;Search statements or clients&quot;&#10;  - text: Status&#10;  - combobox &quot;Status&quot;:&#10;    - option &quot;All statuses&quot; [selected]&#10;    - option &quot;Draft&quot;&#10;    - option &quot;Issued&quot;&#10;    - option &quot;Sent&quot;&#10;    - option &quot;Partially Paid&quot;&#10;    - option &quot;Paid&quot;&#10;    - option &quot;Credited&quot;&#10;    - option &quot;Customer credit&quot;&#10;    - option &quot;Overdue&quot;&#10;    - option &quot;Void&quot;&#10;    - option &quot;Cancelled draft&quot;&#10;  - button &quot;Search&quot;&#10;  - region &quot;Scrollable data table&quot;:&#10;    - table:&#10;      - rowgroup:&#10;        - row &quot;Statement Client Period Amount Status Due date&quot;:&#10;          - columnheader &quot;Statement&quot;&#10;          - columnheader &quot;Client&quot;&#10;          - columnheader &quot;Period&quot;&#10;          - columnheader &quot;Amount&quot;&#10;          - columnheader &quot;Status&quot;&#10;          - columnheader &quot;Due date&quot;&#10;      - rowgroup:&#10;        - row &quot;STYLE-DRAFT Fixture Consulting 2026-10-01 — 2026-10-17 USD 0.00 Draft Not delivered&quot;:&#10;          - cell &quot;STYLE-DRAFT&quot;:&#10;            - link &quot;STYLE-DRAFT&quot;:&#10;              - /url: /billing/1572ce21-c12d-4210-9aca-113bd75b8d49&#10;          - cell &quot;Fixture Consulting&quot;&#10;          - cell &quot;2026-10-01 — 2026-10-17&quot;&#10;          - cell &quot;USD 0.00&quot;&#10;          - cell &quot;Draft&quot;&#10;          - cell &quot;Not delivered&quot;&#10;  - navigation &quot;Pagination&quot;:&#10;    - status: 1 records · Page 1 of 1&#10;    - text: Previous Next&#10;  - heading &quot;Create statement&quot; [level=2]&#10;  - text: Client&#10;  - combobox &quot;Client&quot;:&#10;    - option &quot;Choose…&quot;&#10;    - option &quot;Fixture Consulting&quot; [selected]&#10;  - status: 1 records&#10;  - text: Period start *&#10;  - textbox &quot;Period start *&quot;&#10;  - text: Period end *&#10;  - textbox &quot;Period end *&quot;&#10;  - button &quot;Choose work batches&quot;&#10;  - paragraph: Review Available, On hold, In draft and Published work by explicit batch, within project budgets. Fixed fees and manual extras are prepared in Project billing below. No email is sent.&#10;  - heading &quot;Project billing&quot; [level=2]&#10;  - paragraph: Manage fixed fees, budgets and additional-charge permissions for each client's project.&#10;  - region &quot;Project billing&quot;:&#10;    - table:&#10;      - rowgroup:&#10;        - row &quot;Client Project Budget / fixed fee Overbilling&quot;:&#10;          - columnheader &quot;Client&quot;&#10;          - columnheader &quot;Project&quot;&#10;          - columnheader &quot;Budget / fixed fee&quot;&#10;          - columnheader &quot;Overbilling&quot;&#10;      - rowgroup:&#10;        - row &quot;Fixture Consulting SCALE Consulting Fixture Not set Disabled&quot;:&#10;          - cell &quot;Fixture Consulting&quot;&#10;          - cell &quot;SCALE Consulting Fixture&quot;:&#10;            - link &quot;SCALE Consulting Fixture&quot;:&#10;              - /url: /project-billing/f627e279-07da-500a-bd04-ca9d846aabf6&#10;          - cell &quot;Not set&quot;&#10;          - cell &quot;Disabled&quot;&#10;  - navigation &quot;Billing project pages&quot;:&#10;    - status: 1 records · Page 1 of 1&#10;    - text: Previous Next&#10;  - heading &quot;Recent payments&quot; [level=2]&#10;  - region &quot;Scrollable data table&quot;:&#10;    - table:&#10;      - rowgroup:&#10;        - row &quot;Date Statement Amount Method Status&quot;:&#10;          - columnheader &quot;Date&quot;&#10;          - columnheader &quot;Statement&quot;&#10;          - columnheader &quot;Amount&quot;&#10;          - columnheader &quot;Method&quot;&#10;          - columnheader &quot;Status&quot;&#10;      - rowgroup:&#10;        - row &quot;No payments recorded.&quot;:&#10;          - cell &quot;No payments recorded.&quot;&#10;  - navigation &quot;Payment pages&quot;:&#10;    - status: 0 records · Page 1 of 1&#10;    - text: Previous Next&#10;  - group: help&#10;- group:&#10;  - text: Close&#10;  - region &quot;Cookies and privacy choices&quot;:&#10;    - heading &quot;Cookies and privacy choices&quot; [level=2]&#10;    - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.&#10;    - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.&#10;    - paragraph:&#10;      - text: You can reject or change your choice here at any time without affecting access.&#10;      - link &quot;Read privacy and cookies&quot;:&#10;        - /url: /?info=privacy#privacy-and-cookies&#10;    - paragraph: Optional measurement is disabled in this environment.&#10;    - paragraph: No optional preference has been selected.&#10;    - button &quot;Accept measurement&quot; [disabled]&#10;    - button &quot;Reject nonessential&quot;">tests\e2e\test_stage_refinements.py:190: in test_full_preset_tiles_and_semantic_work_colors
+    expect(page.get_by_role("button", name="Create draft statement", exact=True)).to_have_class(
+E   AssertionError: Locator expected to have class 'draft-action'
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_have_class" get_by_role("button", name="Create draft statement", exact=True) with timeout 5000ms
+E     - waiting for get_by_role("button", name="Create draft statement", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EL
+E     - button "Menu"
+E   - main:
+E     - heading "Billing" [level=1]
+E     - link "+ Create statement":
+E       - /url: "#create"
+E     - article:
+E       - strong: "0.00"
+E       - text: Outstanding balance
+E     - article:
+E       - strong: "0.00"
+E       - text: Paid this month
+E     - article:
+E       - strong: "0"
+E       - text: Overdue statements
+E     - article:
+E       - strong: "0.00"
+E       - text: Billed year to date
+E     - text: Search statements or clients
+E     - searchbox "Search statements or clients"
+E     - text: Status
+E     - combobox "Status":
+E       - option "All statuses" [selected]
+E       - option "Draft"
+E       - option "Issued"
+E       - option "Sent"
+E       - option "Partially Paid"
+E       - option "Paid"
+E       - option "Credited"
+E       - option "Customer credit"
+E       - option "Overdue"
+E       - option "Void"
+E       - option "Cancelled draft"
+E     - button "Search"
+E     - region "Scrollable data table":
+E       - table:
+E         - rowgroup:
+E           - row "Statement Client Period Amount Status Due date":
+E             - columnheader "Statement"
+E             - columnheader "Client"
+E             - columnheader "Period"
+E             - columnheader "Amount"
+E             - columnheader "Status"
+E             - columnheader "Due date"
+E         - rowgroup:
+E           - row "STYLE-DRAFT Fixture Consulting 2026-10-01 — 2026-10-17 USD 0.00 Draft Not delivered":
+E             - cell "STYLE-DRAFT":
+E               - link "STYLE-DRAFT":
+E                 - /url: /billing/1572ce21-c12d-4210-9aca-113bd75b8d49
+E             - cell "Fixture Consulting"
+E             - cell "2026-10-01 — 2026-10-17"
+E             - cell "USD 0.00"
+E             - cell "Draft"
+E             - cell "Not delivered"
+E     - navigation "Pagination":
+E       - status: 1 records · Page 1 of 1
+E       - text: Previous Next
+E     - heading "Create statement" [level=2]
+E     - text: Client
+E     - combobox "Client":
+E       - option "Choose…"
+E       - option "Fixture Consulting" [selected]
+E     - status: 1 records
+E     - text: Period start *
+E     - textbox "Period start *"
+E     - text: Period end *
+E     - textbox "Period end *"
+E     - button "Choose work batches"
+E     - paragraph: Review Available, On hold, In draft and Published work by explicit batch, within project budgets. Fixed fees and manual extras are prepared in Project billing below. No email is sent.
+E     - heading "Project billing" [level=2]
+E     - paragraph: Manage fixed fees, budgets and additional-charge permissions for each client's project.
+E     - region "Project billing":
+E       - table:
+E         - rowgroup:
+E           - row "Client Project Budget / fixed fee Overbilling":
+E             - columnheader "Client"
+E             - columnheader "Project"
+E             - columnheader "Budget / fixed fee"
+E             - columnheader "Overbilling"
+E         - rowgroup:
+E           - row "Fixture Consulting SCALE Consulting Fixture Not set Disabled":
+E             - cell "Fixture Consulting"
+E             - cell "SCALE Consulting Fixture":
+E               - link "SCALE Consulting Fixture":
+E                 - /url: /project-billing/f627e279-07da-500a-bd04-ca9d846aabf6
+E             - cell "Not set"
+E             - cell "Disabled"
+E     - navigation "Billing project pages":
+E       - status: 1 records · Page 1 of 1
+E       - text: Previous Next
+E     - heading "Recent payments" [level=2]
+E     - region "Scrollable data table":
+E       - table:
+E         - rowgroup:
+E           - row "Date Statement Amount Method Status":
+E             - columnheader "Date"
+E             - columnheader "Statement"
+E             - columnheader "Amount"
+E             - columnheader "Method"
+E             - columnheader "Status"
+E         - rowgroup:
+E           - row "No payments recorded.":
+E             - cell "No payments recorded."
+E     - navigation "Payment pages":
+E       - status: 0 records · Page 1 of 1
+E       - text: Previous Next
+E     - group: help
+E   - group:
+E     - text: Close
+E     - region "Cookies and privacy choices":
+E       - heading "Cookies and privacy choices" [level=2]
+E       - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.
+E       - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.
+E       - paragraph:
+E         - text: You can reject or change your choice here at any time without affecting access.
+E         - link "Read privacy and cookies":
+E           - /url: /?info=privacy#privacy-and-cookies
+E       - paragraph: Optional measurement is disabled in this environment.
+E       - paragraph: No optional preference has been selected.
+E       - button "Accept measurement" [disabled]
+E       - button "Reject nonessential"</failure></testcase><testcase classname="tests.e2e.test_stage_refinements" name="test_full_preset_tiles_and_semantic_work_colors[1440]" time="6.699"><failure message="AssertionError: Locator expected to have class 'draft-action'&#10;Actual value: None&#10;Error: element(s) not found &#10;Call log:&#10;  - Expect &quot;to_have_class&quot; get_by_role(&quot;button&quot;, name=&quot;Create draft statement&quot;, exact=True) with timeout 5000ms&#10;  - waiting for get_by_role(&quot;button&quot;, name=&quot;Create draft statement&quot;, exact=True)&#10;&#10;Aria snapshot:&#10;- link &quot;Skip to content&quot;:&#10;  - /url: &quot;#main&quot;&#10;- banner:&#10;  - link &quot;timeKER&quot;:&#10;    - /url: /dashboard&#10;    - img &quot;timeKER&quot;&#10;  - text: clients • billing • timecards&#10;  - link &quot;Search workspace&quot;:&#10;    - /url: /search&#10;  - group: EL&#10;  - text: Ed López&#10;- complementary:&#10;  - navigation &quot;Primary&quot;:&#10;    - link &quot;Dashboard&quot;:&#10;      - /url: /dashboard&#10;    - link &quot;Clients&quot;:&#10;      - /url: /clients&#10;    - link &quot;Projects&quot;:&#10;      - /url: /projects&#10;    - link &quot;Timecards&quot;:&#10;      - /url: /timecards&#10;    - link &quot;Cases&quot;:&#10;      - /url: /cases&#10;    - link &quot;Mail&quot;:&#10;      - /url: /mail&#10;    - link &quot;Quoting&quot;:&#10;      - /url: /quoting&#10;    - link &quot;Billing&quot;:&#10;      - /url: /billing&#10;    - link &quot;Sending&quot;:&#10;      - /url: /sending&#10;    - link &quot;Library&quot;:&#10;      - /url: /library&#10;    - link &quot;Reports&quot;:&#10;      - /url: /reports&#10;    - link &quot;Archive&quot;:&#10;      - /url: /archive&#10;    - link &quot;Settings&quot;:&#10;      - /url: /settings&#10;    - link &quot;Audit history&quot;:&#10;      - /url: /audit&#10;  - text: AEKR Private workspace&#10;- main:&#10;  - heading &quot;Billing&quot; [level=1]&#10;  - link &quot;+ Create statement&quot;:&#10;    - /url: &quot;#create&quot;&#10;  - article:&#10;    - strong: &quot;0.00&quot;&#10;    - text: Outstanding balance&#10;  - article:&#10;    - strong: &quot;0.00&quot;&#10;    - text: Paid this month&#10;  - article:&#10;    - strong: &quot;0&quot;&#10;    - text: Overdue statements&#10;  - article:&#10;    - strong: &quot;0.00&quot;&#10;    - text: Billed year to date&#10;  - text: Search statements or clients&#10;  - searchbox &quot;Search statements or clients&quot;&#10;  - text: Status&#10;  - combobox &quot;Status&quot;:&#10;    - option &quot;All statuses&quot; [selected]&#10;    - option &quot;Draft&quot;&#10;    - option &quot;Issued&quot;&#10;    - option &quot;Sent&quot;&#10;    - option &quot;Partially Paid&quot;&#10;    - option &quot;Paid&quot;&#10;    - option &quot;Credited&quot;&#10;    - option &quot;Customer credit&quot;&#10;    - option &quot;Overdue&quot;&#10;    - option &quot;Void&quot;&#10;    - option &quot;Cancelled draft&quot;&#10;  - button &quot;Search&quot;&#10;  - region &quot;Scrollable data table&quot;:&#10;    - table:&#10;      - rowgroup:&#10;        - row &quot;Statement Client Period Amount Status Due date&quot;:&#10;          - columnheader &quot;Statement&quot;&#10;          - columnheader &quot;Client&quot;&#10;          - columnheader &quot;Period&quot;&#10;          - columnheader &quot;Amount&quot;&#10;          - columnheader &quot;Status&quot;&#10;          - columnheader &quot;Due date&quot;&#10;      - rowgroup:&#10;        - row &quot;STYLE-DRAFT Fixture Consulting 2026-10-01 — 2026-10-17 USD 0.00 Draft Not delivered&quot;:&#10;          - cell &quot;STYLE-DRAFT&quot;:&#10;            - link &quot;STYLE-DRAFT&quot;:&#10;              - /url: /billing/3be02e78-19e8-4430-a6c1-3f640d633ed1&#10;          - cell &quot;Fixture Consulting&quot;&#10;          - cell &quot;2026-10-01 — 2026-10-17&quot;&#10;          - cell &quot;USD 0.00&quot;&#10;          - cell &quot;Draft&quot;&#10;          - cell &quot;Not delivered&quot;&#10;  - navigation &quot;Pagination&quot;:&#10;    - status: 1 records · Page 1 of 1&#10;    - text: Previous Next&#10;  - heading &quot;Create statement&quot; [level=2]&#10;  - text: Client&#10;  - combobox &quot;Client&quot;:&#10;    - option &quot;Choose…&quot;&#10;    - option &quot;Fixture Consulting&quot; [selected]&#10;  - status: 1 records&#10;  - text: Period start *&#10;  - textbox &quot;Period start *&quot;&#10;  - text: Period end *&#10;  - textbox &quot;Period end *&quot;&#10;  - button &quot;Choose work batches&quot;&#10;  - paragraph: Review Available, On hold, In draft and Published work by explicit batch, within project budgets. Fixed fees and manual extras are prepared in Project billing below. No email is sent.&#10;  - heading &quot;Project billing&quot; [level=2]&#10;  - paragraph: Manage fixed fees, budgets and additional-charge permissions for each client's project.&#10;  - region &quot;Project billing&quot;:&#10;    - table:&#10;      - rowgroup:&#10;        - row &quot;Client Project Budget / fixed fee Overbilling&quot;:&#10;          - columnheader &quot;Client&quot;&#10;          - columnheader &quot;Project&quot;&#10;          - columnheader &quot;Budget / fixed fee&quot;&#10;          - columnheader &quot;Overbilling&quot;&#10;      - rowgroup:&#10;        - row &quot;Fixture Consulting SCALE Consulting Fixture Not set Disabled&quot;:&#10;          - cell &quot;Fixture Consulting&quot;&#10;          - cell &quot;SCALE Consulting Fixture&quot;:&#10;            - link &quot;SCALE Consulting Fixture&quot;:&#10;              - /url: /project-billing/f627e279-07da-500a-bd04-ca9d846aabf6&#10;          - cell &quot;Not set&quot;&#10;          - cell &quot;Disabled&quot;&#10;  - navigation &quot;Billing project pages&quot;:&#10;    - status: 1 records · Page 1 of 1&#10;    - text: Previous Next&#10;  - heading &quot;Recent payments&quot; [level=2]&#10;  - region &quot;Scrollable data table&quot;:&#10;    - table:&#10;      - rowgroup:&#10;        - row &quot;Date Statement Amount Method Status&quot;:&#10;          - columnheader &quot;Date&quot;&#10;          - columnheader &quot;Statement&quot;&#10;          - columnheader &quot;Amount&quot;&#10;          - columnheader &quot;Method&quot;&#10;          - columnheader &quot;Status&quot;&#10;      - rowgroup:&#10;        - row &quot;No payments recorded.&quot;:&#10;          - cell &quot;No payments recorded.&quot;&#10;  - navigation &quot;Payment pages&quot;:&#10;    - status: 0 records · Page 1 of 1&#10;    - text: Previous Next&#10;  - group: help&#10;- group:&#10;  - text: Close&#10;  - region &quot;Cookies and privacy choices&quot;:&#10;    - heading &quot;Cookies and privacy choices&quot; [level=2]&#10;    - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.&#10;    - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.&#10;    - paragraph:&#10;      - text: You can reject or change your choice here at any time without affecting access.&#10;      - link &quot;Read privacy and cookies&quot;:&#10;        - /url: /?info=privacy#privacy-and-cookies&#10;    - paragraph: Optional measurement is disabled in this environment.&#10;    - paragraph: No optional preference has been selected.&#10;    - button &quot;Accept measurement&quot; [disabled]&#10;    - button &quot;Reject nonessential&quot;">tests\e2e\test_stage_refinements.py:190: in test_full_preset_tiles_and_semantic_work_colors
+    expect(page.get_by_role("button", name="Create draft statement", exact=True)).to_have_class(
+E   AssertionError: Locator expected to have class 'draft-action'
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_have_class" get_by_role("button", name="Create draft statement", exact=True) with timeout 5000ms
+E     - waiting for get_by_role("button", name="Create draft statement", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - text: clients • billing • timecards
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EL
+E     - text: Ed López
+E   - complementary:
+E     - navigation "Primary":
+E       - link "Dashboard":
+E         - /url: /dashboard
+E       - link "Clients":
+E         - /url: /clients
+E       - link "Projects":
+E         - /url: /projects
+E       - link "Timecards":
+E         - /url: /timecards
+E       - link "Cases":
+E         - /url: /cases
+E       - link "Mail":
+E         - /url: /mail
+E       - link "Quoting":
+E         - /url: /quoting
+E       - link "Billing":
+E         - /url: /billing
+E       - link "Sending":
+E         - /url: /sending
+E       - link "Library":
+E         - /url: /library
+E       - link "Reports":
+E         - /url: /reports
+E       - link "Archive":
+E         - /url: /archive
+E       - link "Settings":
+E         - /url: /settings
+E       - link "Audit history":
+E         - /url: /audit
+E     - text: AEKR Private workspace
+E   - main:
+E     - heading "Billing" [level=1]
+E     - link "+ Create statement":
+E       - /url: "#create"
+E     - article:
+E       - strong: "0.00"
+E       - text: Outstanding balance
+E     - article:
+E       - strong: "0.00"
+E       - text: Paid this month
+E     - article:
+E       - strong: "0"
+E       - text: Overdue statements
+E     - article:
+E       - strong: "0.00"
+E       - text: Billed year to date
+E     - text: Search statements or clients
+E     - searchbox "Search statements or clients"
+E     - text: Status
+E     - combobox "Status":
+E       - option "All statuses" [selected]
+E       - option "Draft"
+E       - option "Issued"
+E       - option "Sent"
+E       - option "Partially Paid"
+E       - option "Paid"
+E       - option "Credited"
+E       - option "Customer credit"
+E       - option "Overdue"
+E       - option "Void"
+E       - option "Cancelled draft"
+E     - button "Search"
+E     - region "Scrollable data table":
+E       - table:
+E         - rowgroup:
+E           - row "Statement Client Period Amount Status Due date":
+E             - columnheader "Statement"
+E             - columnheader "Client"
+E             - columnheader "Period"
+E             - columnheader "Amount"
+E             - columnheader "Status"
+E             - columnheader "Due date"
+E         - rowgroup:
+E           - row "STYLE-DRAFT Fixture Consulting 2026-10-01 — 2026-10-17 USD 0.00 Draft Not delivered":
+E             - cell "STYLE-DRAFT":
+E               - link "STYLE-DRAFT":
+E                 - /url: /billing/3be02e78-19e8-4430-a6c1-3f640d633ed1
+E             - cell "Fixture Consulting"
+E             - cell "2026-10-01 — 2026-10-17"
+E             - cell "USD 0.00"
+E             - cell "Draft"
+E             - cell "Not delivered"
+E     - navigation "Pagination":
+E       - status: 1 records · Page 1 of 1
+E       - text: Previous Next
+E     - heading "Create statement" [level=2]
+E     - text: Client
+E     - combobox "Client":
+E       - option "Choose…"
+E       - option "Fixture Consulting" [selected]
+E     - status: 1 records
+E     - text: Period start *
+E     - textbox "Period start *"
+E     - text: Period end *
+E     - textbox "Period end *"
+E     - button "Choose work batches"
+E     - paragraph: Review Available, On hold, In draft and Published work by explicit batch, within project budgets. Fixed fees and manual extras are prepared in Project billing below. No email is sent.
+E     - heading "Project billing" [level=2]
+E     - paragraph: Manage fixed fees, budgets and additional-charge permissions for each client's project.
+E     - region "Project billing":
+E       - table:
+E         - rowgroup:
+E           - row "Client Project Budget / fixed fee Overbilling":
+E             - columnheader "Client"
+E             - columnheader "Project"
+E             - columnheader "Budget / fixed fee"
+E             - columnheader "Overbilling"
+E         - rowgroup:
+E           - row "Fixture Consulting SCALE Consulting Fixture Not set Disabled":
+E             - cell "Fixture Consulting"
+E             - cell "SCALE Consulting Fixture":
+E               - link "SCALE Consulting Fixture":
+E                 - /url: /project-billing/f627e279-07da-500a-bd04-ca9d846aabf6
+E             - cell "Not set"
+E             - cell "Disabled"
+E     - navigation "Billing project pages":
+E       - status: 1 records · Page 1 of 1
+E       - text: Previous Next
+E     - heading "Recent payments" [level=2]
+E     - region "Scrollable data table":
+E       - table:
+E         - rowgroup:
+E           - row "Date Statement Amount Method Status":
+E             - columnheader "Date"
+E             - columnheader "Statement"
+E             - columnheader "Amount"
+E             - columnheader "Method"
+E             - columnheader "Status"
+E         - rowgroup:
+E           - row "No payments recorded.":
+E             - cell "No payments recorded."
+E     - navigation "Payment pages":
+E       - status: 0 records · Page 1 of 1
+E       - text: Previous Next
+E     - group: help
+E   - group:
+E     - text: Close
+E     - region "Cookies and privacy choices":
+E       - heading "Cookies and privacy choices" [level=2]
+E       - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.
+E       - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.
+E       - paragraph:
+E         - text: You can reject or change your choice here at any time without affecting access.
+E         - link "Read privacy and cookies":
+E           - /url: /?info=privacy#privacy-and-cookies
+E       - paragraph: Optional measurement is disabled in this environment.
+E       - paragraph: No optional preference has been selected.
+E       - button "Accept measurement" [disabled]
+E       - button "Reject nonessential"</failure></testcase><testcase classname="tests.e2e.test_subscription_browser" name="test_subscription_review_confirmation_and_accessibility[1440-True]" time="5.239" /><testcase classname="tests.e2e.test_subscription_browser" name="test_subscription_review_confirmation_and_accessibility[390-True]" time="2.447" /><testcase classname="tests.e2e.test_subscription_browser" name="test_subscription_review_confirmation_and_accessibility[390-False]" time="1.434" /><testcase classname="tests.e2e.test_subscription_browser" name="test_synthetic_paid_account_forms_keyboard_and_accessibility[1440-True]" time="1.211" /><testcase classname="tests.e2e.test_subscription_browser" name="test_synthetic_paid_account_forms_keyboard_and_accessibility[390-True]" time="1.039" /><testcase classname="tests.e2e.test_subscription_browser" name="test_synthetic_paid_account_forms_keyboard_and_accessibility[390-False]" time="1.076" /><testcase classname="tests.e2e.test_subscription_proration_browser" name="test_pending_upgrade_reconciliation_native_keyboard_and_accessibility[1440-True]" time="1.600" /><testcase classname="tests.e2e.test_subscription_proration_browser" name="test_pending_upgrade_reconciliation_native_keyboard_and_accessibility[390-True]" time="0.901" /><testcase classname="tests.e2e.test_subscription_proration_browser" name="test_pending_upgrade_reconciliation_native_keyboard_and_accessibility[390-False]" time="0.836" /><testcase classname="tests.e2e.test_supplemental_batches_browser" name="test_supplemental_grid_keeps_prior_sources_and_real_work_dates[1440-True]" time="5.451" /><testcase classname="tests.e2e.test_supplemental_batches_browser" name="test_supplemental_grid_keeps_prior_sources_and_real_work_dates[390-True]" time="1.823" /><testcase classname="tests.e2e.test_supplemental_batches_browser" name="test_supplemental_grid_keeps_prior_sources_and_real_work_dates[390-False]" time="1.454" /><testcase classname="tests.e2e.test_supplemental_batches_browser" name="test_partial_publication_grid_preserves_claimed_cell_while_editing_remaining_work[1440-True]" time="2.168" /><testcase classname="tests.e2e.test_supplemental_batches_browser" name="test_partial_publication_grid_preserves_claimed_cell_while_editing_remaining_work[390-False]" time="1.964" /><testcase classname="tests.e2e.test_time_import_browser" name="test_import_preview_commit_accessibility_and_retained_draft[1440-True]" time="8.501" /><testcase classname="tests.e2e.test_time_import_browser" name="test_import_preview_commit_accessibility_and_retained_draft[390-True]" time="6.790" /><testcase classname="tests.e2e.test_time_import_browser" name="test_import_preview_commit_accessibility_and_retained_draft[390-False]" time="3.715" /><testcase classname="tests.e2e.test_timecard_local_clock" name="test_zone_and_two_clocks_follow_browser_not_contract[1440-no-preference-America/New_York-1-9-15]" time="6.690" /><testcase classname="tests.e2e.test_timecard_local_clock" name="test_zone_and_two_clocks_follow_browser_not_contract[1440-no-preference-America/New_York-10-10-15]" time="1.553" /><testcase classname="tests.e2e.test_timecard_local_clock" name="test_zone_and_two_clocks_follow_browser_not_contract[1440-no-preference-Asia/Kathmandu-10-20-0]" time="1.470" /><testcase classname="tests.e2e.test_timecard_local_clock" name="test_zone_and_two_clocks_follow_browser_not_contract[390-reduce-America/New_York-1-9-15]" time="1.505" /><testcase classname="tests.e2e.test_timecard_local_clock" name="test_zone_and_two_clocks_follow_browser_not_contract[390-reduce-America/New_York-10-10-15]" time="1.531" /><testcase classname="tests.e2e.test_timecard_local_clock" name="test_zone_and_two_clocks_follow_browser_not_contract[390-reduce-Asia/Kathmandu-10-20-0]" time="1.845" /><testcase classname="tests.e2e.test_timecard_productivity_browser" name="test_internal_productivity_saves_without_client_or_project" time="4.558" /><testcase classname="tests.e2e.test_timecard_productivity_browser" name="test_remove_project_drafts_and_load_again" time="1.677" /><testcase classname="tests.e2e.test_timecard_productivity_browser" name="test_internal_productivity_native_without_javascript" time="1.178" /><testcase classname="tests.e2e.test_timecard_productivity_browser" name="test_timecard_controls_accessibility[390]" time="2.525" /><testcase classname="tests.e2e.test_timecard_productivity_browser" name="test_timecard_controls_accessibility[1440]" time="2.180" /><testcase classname="tests.e2e.test_timecard_selection" name="test_date_selection_loads_actual_lifecycle_and_new_week[Draft]" time="4.382" /><testcase classname="tests.e2e.test_timecard_selection" name="test_date_selection_loads_actual_lifecycle_and_new_week[Finalized]" time="0.955" /><testcase classname="tests.e2e.test_timecard_selection" name="test_date_selection_loads_actual_lifecycle_and_new_week[Invoiced]" time="0.984" /><testcase classname="tests.e2e.test_timecard_selection" name="test_date_selection_loads_actual_lifecycle_and_new_week[Voided]" time="1.002" /><testcase classname="tests.e2e.test_timecard_selection" name="test_dirty_picker_and_mutation_cancel_preserve_loaded_week" time="1.268" /><testcase classname="tests.e2e.test_timecard_selection" name="test_invalid_date_and_no_javascript_fallback" time="1.803" /><testcase classname="tests.e2e.test_timecard_selection" name="test_client_selection_loads_that_clients_week" time="1.254" /><testcase classname="tests.e2e.test_timecard_week_metrics_browser" name="test_week_metrics_keep_global_scope_clock_and_editor[1440-True-America/New_York]" time="3.327"><failure message="app.domain.DomainError: Choose an explicit rate for backdated work whose historical rate is unknown">tests\e2e\test_timecard_week_metrics_browser.py:104: in test_week_metrics_keep_global_scope_clock_and_editor
+    data = populate_week_metrics(factory, seeded)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\e2e\test_timecard_week_metrics_browser.py:78: in populate_week_metrics
+    save(second.id, monday, [(east.id, ["1:30", "", "", "", "", "", ""])], "Finalized")
+tests\e2e\test_timecard_week_metrics_browser.py:66: in save
+    timecards.finalize(db, owner.id, card.id, expected_version=card.version)
+app\timecards.py:331: in finalize
+    freeze_ready_rates(db, card, choices=rate_choices)
+app\work_rates.py:78: in freeze_ready_rates
+    raise DomainError("Choose an explicit rate for backdated work whose historical rate is unknown")
+E   app.domain.DomainError: Choose an explicit rate for backdated work whose historical rate is unknown</failure></testcase><testcase classname="tests.e2e.test_timecard_week_metrics_browser" name="test_week_metrics_keep_global_scope_clock_and_editor[390-True-Asia/Kathmandu]" time="0.521"><failure message="app.domain.DomainError: Choose an explicit rate for backdated work whose historical rate is unknown">tests\e2e\test_timecard_week_metrics_browser.py:104: in test_week_metrics_keep_global_scope_clock_and_editor
+    data = populate_week_metrics(factory, seeded)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\e2e\test_timecard_week_metrics_browser.py:78: in populate_week_metrics
+    save(second.id, monday, [(east.id, ["1:30", "", "", "", "", "", ""])], "Finalized")
+tests\e2e\test_timecard_week_metrics_browser.py:66: in save
+    timecards.finalize(db, owner.id, card.id, expected_version=card.version)
+app\timecards.py:331: in finalize
+    freeze_ready_rates(db, card, choices=rate_choices)
+app\work_rates.py:78: in freeze_ready_rates
+    raise DomainError("Choose an explicit rate for backdated work whose historical rate is unknown")
+E   app.domain.DomainError: Choose an explicit rate for backdated work whose historical rate is unknown</failure></testcase><testcase classname="tests.e2e.test_timecard_week_metrics_browser" name="test_week_metrics_keep_global_scope_clock_and_editor[390-False-Pacific/Kiritimati]" time="0.610"><failure message="app.domain.DomainError: Choose an explicit rate for backdated work whose historical rate is unknown">tests\e2e\test_timecard_week_metrics_browser.py:104: in test_week_metrics_keep_global_scope_clock_and_editor
+    data = populate_week_metrics(factory, seeded)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\e2e\test_timecard_week_metrics_browser.py:78: in populate_week_metrics
+    save(second.id, monday, [(east.id, ["1:30", "", "", "", "", "", ""])], "Finalized")
+tests\e2e\test_timecard_week_metrics_browser.py:66: in save
+    timecards.finalize(db, owner.id, card.id, expected_version=card.version)
+app\timecards.py:331: in finalize
+    freeze_ready_rates(db, card, choices=rate_choices)
+app\work_rates.py:78: in freeze_ready_rates
+    raise DomainError("Choose an explicit rate for backdated work whose historical rate is unknown")
+E   app.domain.DomainError: Choose an explicit rate for backdated work whose historical rate is unknown</failure></testcase><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_initials_menu_preserves_account_and_public_help[True-1440]" time="5.562" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_initials_menu_preserves_account_and_public_help[True-390]" time="1.485" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_initials_menu_preserves_account_and_public_help[False-1440]" time="1.496" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_initials_menu_preserves_account_and_public_help[False-390]" time="1.415" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_landing_panels_keyboard_privacy_and_brand[1440]" time="2.542" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_landing_panels_keyboard_privacy_and_brand[390]" time="2.335" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_public_legal_deep_links[terms-panel-title-1440]" time="1.043" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_public_legal_deep_links[terms-panel-title-390]" time="1.080" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_public_legal_deep_links[privacy-and-cookies-1440]" time="0.993" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_public_legal_deep_links[privacy-and-cookies-390]" time="1.011" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_public_legal_deep_links_without_javascript[terms-panel-title-1440]" time="0.643" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_public_legal_deep_links_without_javascript[terms-panel-title-390]" time="0.644" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_public_legal_deep_links_without_javascript[privacy-and-cookies-1440]" time="0.651" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_public_legal_deep_links_without_javascript[privacy-and-cookies-390]" time="0.649" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_help_each_module_and_dashboard_details" time="5.326" /><testcase classname="tests.e2e.test_ui_refresh_browser" name="test_no_javascript_help_legal_and_dashboard" time="1.211" /><testcase classname="tests.e2e.test_work_management" name="test_client_validation_keeps_input[True]" time="4.650" /><testcase classname="tests.e2e.test_work_management" name="test_client_validation_keeps_input[False]" time="1.412" /><testcase classname="tests.e2e.test_work_management" name="test_cases_time_and_screen_walkthrough[1440]" time="2.310"><failure message="playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05&#10;Call log:&#10;  - navigating to &quot;http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05&quot;, waiting until &quot;load&quot;">tests\e2e\test_work_management.py:103: in test_cases_time_and_screen_walkthrough
+    page.goto(f"{server}/timecards?client_id={client.id}&amp;week=2026-10-05")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05", waiting until "load"</failure></testcase><testcase classname="tests.e2e.test_work_management" name="test_cases_time_and_screen_walkthrough[390]" time="2.084"><failure message="playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05&#10;Call log:&#10;  - navigating to &quot;http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05&quot;, waiting until &quot;load&quot;">tests\e2e\test_work_management.py:103: in test_cases_time_and_screen_walkthrough
+    page.goto(f"{server}/timecards?client_id={client.id}&amp;week=2026-10-05")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&amp;week=2026-10-05", waiting until "load"</failure></testcase><testcase classname="tests.e2e.test_work_management" name="test_sibling_required_fields_keep_separate_errors_and_notice" time="0.929" /><testcase classname="tests.e2e.test_workflow_feedback_browser" name="test_about_rows_share_color_alignment_and_cookie_action" time="3.804" /><testcase classname="tests.e2e.test_workflow_feedback_browser" name="test_save_notice_is_dismissible_and_fresh_client_form_is_clear[1280]" time="1.446" /><testcase classname="tests.e2e.test_workflow_feedback_browser" name="test_save_notice_is_dismissible_and_fresh_client_form_is_clear[390]" time="1.227" /><testcase classname="tests.e2e.test_workflow_feedback_browser" name="test_save_notice_without_javascript_stays_in_document_flow" time="1.016" /><testcase classname="tests.e2e.test_workflow_feedback_browser" name="test_signed_in_contact_landing_returns_to_workspace" time="1.286" /><testcase classname="tests.e2e.test_workspace_search_browser" name="test_workspace_search_overlay_preserves_form_and_navigates_record[1440]" time="5.911" /><testcase classname="tests.e2e.test_workspace_search_browser" name="test_workspace_search_overlay_preserves_form_and_navigates_record[390]" time="2.509" /><testcase classname="tests.e2e.test_workspace_search_browser" name="test_workspace_search_overlay_preserves_form_and_navigates_record[320]" time="2.504" /><testcase classname="tests.e2e.test_workspace_search_browser" name="test_workspace_search_native_page_without_javascript" time="1.062" /><testcase classname="tests.e2e.test_workspace_search_browser" name="test_dashboard_panels_and_chart_switch_keep_distinct_actions[1440]" time="6.344"><properties><property name="bars_card_heights" value="{'clients': 462.328125, 'rhythm': 462.328125}" /><property name="contribution_card_heights" value="{'clients': 481.328125, 'rhythm': 481.328125}" /></properties><failure message="AssertionError: Locator expected to have attribute 'true'&#10;Actual value: None &#10;Call log:&#10;  - Expect &quot;to_have_attribute&quot; locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first with timeout 5000ms&#10;  - waiting for locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first&#10;    14 × locator resolved to &lt;rect y=&quot;23&quot; x=&quot;266&quot; rx=&quot;4.5&quot; width=&quot;14&quot; height=&quot;12&quot; data-minutes=&quot;0&quot; data-future=&quot;true&quot; data-weekend=&quot;false&quot; data-contribution-day=&quot;2026-10-27&quot; class=&quot;contribution-day contribution-level-0 contribution-future&quot;&gt;…&lt;/rect&gt;&#10;       - unexpected value &quot;null&quot;">tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
+    expect(future).to_have_attribute("aria-hidden", "true")
+E   AssertionError: Locator expected to have attribute 'true'
+E   Actual value: None 
+E   Call log:
+E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
+E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
+E       14 × locator resolved to &lt;rect y="23" x="266" rx="4.5" width="14" height="12" data-minutes="0" data-future="true" data-weekend="false" data-contribution-day="2026-10-27" class="contribution-day contribution-level-0 contribution-future"&gt;…&lt;/rect&gt;
+E          - unexpected value "null"</failure></testcase><testcase classname="tests.e2e.test_workspace_search_browser" name="test_dashboard_panels_and_chart_switch_keep_distinct_actions[390]" time="6.341"><properties><property name="bars_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /><property name="contribution_card_heights" value="{'clients': 390.484375, 'rhythm': 390.484375}" /></properties><failure message="AssertionError: Locator expected to have attribute 'true'&#10;Actual value: None &#10;Call log:&#10;  - Expect &quot;to_have_attribute&quot; locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first with timeout 5000ms&#10;  - waiting for locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first&#10;    14 × locator resolved to &lt;rect y=&quot;23&quot; x=&quot;266&quot; rx=&quot;4.5&quot; width=&quot;14&quot; height=&quot;12&quot; data-minutes=&quot;0&quot; data-future=&quot;true&quot; data-weekend=&quot;false&quot; data-contribution-day=&quot;2026-10-27&quot; class=&quot;contribution-day contribution-level-0 contribution-future&quot;&gt;…&lt;/rect&gt;&#10;       - unexpected value &quot;null&quot;">tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
+    expect(future).to_have_attribute("aria-hidden", "true")
+E   AssertionError: Locator expected to have attribute 'true'
+E   Actual value: None 
+E   Call log:
+E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
+E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
+E       14 × locator resolved to &lt;rect y="23" x="266" rx="4.5" width="14" height="12" data-minutes="0" data-future="true" data-weekend="false" data-contribution-day="2026-10-27" class="contribution-day contribution-level-0 contribution-future"&gt;…&lt;/rect&gt;
+E          - unexpected value "null"</failure></testcase><testcase classname="tests.e2e.test_workspace_search_browser" name="test_dashboard_panels_and_chart_switch_keep_distinct_actions[320]" time="6.394"><properties><property name="bars_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /><property name="contribution_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /></properties><failure message="AssertionError: Locator expected to have attribute 'true'&#10;Actual value: None &#10;Call log:&#10;  - Expect &quot;to_have_attribute&quot; locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first with timeout 5000ms&#10;  - waiting for locator(&quot;.work-rhythm&quot;).locator(&quot;[data-contribution-day][data-future=\&quot;true\&quot;]&quot;).first&#10;    14 × locator resolved to &lt;rect y=&quot;23&quot; x=&quot;266&quot; rx=&quot;4.5&quot; width=&quot;14&quot; height=&quot;12&quot; data-minutes=&quot;0&quot; data-future=&quot;true&quot; data-weekend=&quot;false&quot; data-contribution-day=&quot;2026-10-27&quot; class=&quot;contribution-day contribution-level-0 contribution-future&quot;&gt;…&lt;/rect&gt;&#10;       - unexpected value &quot;null&quot;">tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
+    expect(future).to_have_attribute("aria-hidden", "true")
+E   AssertionError: Locator expected to have attribute 'true'
+E   Actual value: None 
+E   Call log:
+E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
+E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
+E       14 × locator resolved to &lt;rect y="23" x="266" rx="4.5" width="14" height="12" data-minutes="0" data-future="true" data-weekend="false" data-contribution-day="2026-10-27" class="contribution-day contribution-level-0 contribution-future"&gt;…&lt;/rect&gt;
+E          - unexpected value "null"</failure></testcase><testcase classname="tests.e2e.test_workspace_search_browser" name="test_dashboard_chart_native_get_switch_preserves_selected_detail[390]" time="1.788"><properties><property name="native_bars_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /><property name="native_contribution_card_heights" value="{'clients': 390.484375, 'rhythm': 390.484375}" /><property name="native_bars_after_toggle_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /></properties></testcase><testcase classname="tests.e2e.test_workspace_search_browser" name="test_dashboard_chart_native_get_switch_preserves_selected_detail[320]" time="2.058"><properties><property name="native_bars_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /><property name="native_contribution_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /><property name="native_bars_after_toggle_card_heights" value="{'clients': 388.0625, 'rhythm': 388.0625}" /></properties></testcase></testsuite></testsuites>

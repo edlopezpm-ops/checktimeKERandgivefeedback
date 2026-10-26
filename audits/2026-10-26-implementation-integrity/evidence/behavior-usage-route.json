@@ -1,0 +1,10 @@
+{
+  "oracle": "Enabled optional home category measurement with valid same-origin headers and current signed explicit consent must reach real collector both before and after optional owner login. No runner/router patch.",
+  "consent_status": 200,
+  "consent_usage_enabled": true,
+  "anonymous_usage_status": 303,
+  "anonymous_usage_redirect": "/",
+  "owner_usage_status": 204,
+  "route_expected_status": 204,
+  "default_off_qualification": "Baseline environments keep optional measurement off; defect concerns source readiness of explicitly enabled mode, no activation performed."
+}

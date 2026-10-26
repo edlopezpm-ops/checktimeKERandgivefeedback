@@ -1,0 +1,9 @@
+<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\authlib\integrations\httpx_client\assertion_client.py:5: AuthlibDeprecationWarning: The httpx module is deprecated; please use httpx2 instead.
+  from ._compat import httpx2
+{"event": "application.started", "execution_id": "194f5673-d592-4b2a-956e-e886741acc24", "outcome": "SUCCEEDED", "severity": "INFO", "timestamp": "2026-10-26T20:21:04.073103+00:00"}
+{"duration_ms": 3, "event": "request.completed", "method": "GET", "outcome": "SUCCEEDED", "request_id": "907aee3d-40db-426d-90e7-d0591720fbd1", "route": "/health/ready", "severity": "INFO", "status": 200, "timestamp": "2026-10-26T20:21:04.079015+00:00"}
+{"event": "application.stopped", "execution_id": "fb66ef60-bc72-4816-90b2-7ab195339239", "outcome": "SUCCEEDED", "severity": "INFO", "timestamp": "2026-10-26T20:21:04.081031+00:00"}
+{"configuration": "Valid staging Settings; one configured workspace; onboarding disabled; synthetic Google/Turnstile names never sent; PostgreSQL local TLS verify-full", "database": "behavior_hosted_test", "port": 55527, "ssl_verified_connection": true, "runtime_privileges": {"superuser": true, "createdb": true, "createrole": true, "bypassrls": true, "clients_owner": true}, "application_startup": "ACCEPTED", "health_ready_status": 200, "health_ready_body": {"status": "ready"}, "expected": "Runtime readiness must reject admin/table-owner role under HOSTING.md:247-252 and deploy/postgres/README.md:52-55,58-79.", "live_state": "No hosted or production target contacted; actual Stage role configuration not evaluated."}
+Own SSL audit PostgreSQL stopped.

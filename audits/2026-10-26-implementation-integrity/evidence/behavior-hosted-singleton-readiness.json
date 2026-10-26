@@ -1,0 +1,20 @@
+{
+  "configuration": "Valid staging Settings; one configured workspace; onboarding disabled; synthetic Google/Turnstile names never sent; PostgreSQL local TLS verify-full",
+  "database": "behavior_hosted_test",
+  "port": 55527,
+  "ssl_verified_connection": true,
+  "runtime_privileges": {
+    "superuser": true,
+    "createdb": true,
+    "createrole": true,
+    "bypassrls": true,
+    "clients_owner": true
+  },
+  "application_startup": "ACCEPTED",
+  "health_ready_status": 200,
+  "health_ready_body": {
+    "status": "ready"
+  },
+  "expected": "Runtime readiness must reject admin/table-owner role under HOSTING.md:247-252 and deploy/postgres/README.md:52-55,58-79.",
+  "live_state": "No hosted or production target contacted; actual Stage role configuration not evaluated."
+}

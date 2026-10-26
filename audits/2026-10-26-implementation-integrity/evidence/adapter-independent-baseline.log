@@ -1,0 +1,1 @@
+{"checks":5,"result":"PASS","boundary":"exported Stage handler -> proxy -> stubbed container, no provider proof"}

@@ -1,0 +1,61 @@
+{
+  "reviewed_at_utc": "2026-10-26T20:53:50.064150+00:00",
+  "root_artifact_hashes": {
+    "REPORT.md": "ab4778310784503153c096a5fc37b561d98e9b58f0744762e3b8ec1a88e1399e",
+    "MATRIX.json": "9e77e35d10970660d85d11d29f30eb909af72a719fb177c77fd553f82d93ca28",
+    "SCORECARD.json": "f17fb1b01aa29ed2c78992eb6cee84914aab85b3009fe71e0d8ca75c401499b4",
+    "FINDINGS.json": "f494ed971054e8ade500e612827abc02c7beb0750944826b07a9eca095cff56d",
+    "COVERAGE.json": "98de7902027dd82297c6e39c2b41680518f066399771bf201f934957e0dd22d1",
+    "REPRODUCE.md": "dbc1ab2bcab809dc2c03c622747009d9cef43f98076327366f88c300402dc9cb"
+  },
+  "weight_match": true,
+  "frozen_contract_field_changes": [],
+  "computed_W": 126,
+  "computed_weights": {
+    "PASS": 63,
+    "FAIL": 42,
+    "UNKNOWN": 21
+  },
+  "computed_counts": {
+    "UNKNOWN": 5,
+    "FAIL": 10,
+    "PASS": 15
+  },
+  "score_numerators_match": true,
+  "matrix_hash_matches_score": true,
+  "contract_hash_matches_score": true,
+  "missing_evidence": [],
+  "broken_markdown_links": [],
+  "unlinked_finding_ids": [],
+  "coverage_recorded_files": 568,
+  "coverage_unique_paths": 568,
+  "coverage_full": 212,
+  "coverage_sampled": 27,
+  "coverage_summary_matches": true,
+  "scope_review": "Report distinguishes 100% inventory from212 full semantic files/27 sampled; no line/branch coverage claim; no real provider/authentication/payment/email/capacity/recovery proof inferred.",
+  "publication_review": "Parent confirms dossier README excludes PDF/PNG invoice artifacts and normalizes local paths. This subreview does not certify a public package that has not yet been assembled.",
+  "corrections_requested": [
+    {
+      "id": "R-FINAL01",
+      "topic": "FIN-01 source line_amount is app/domain.py48-49, not52-53."
+    },
+    {
+      "id": "R-FINAL02",
+      "topic": "B02 predicate is app/archiving.py38-42; declared read tool93-101; wrangler cron11."
+    },
+    {
+      "id": "R-FINAL03",
+      "topic": "B01 add startup129-134/deep741-747; cheap health724-730 intentionally bounded."
+    },
+    {
+      "id": "R-FINAL04",
+      "topic": "C12/C15 must incorporate confirmed rounding propagation; parent accepted surface repro and original-weight FAIL adjudication."
+    },
+    {
+      "id": "R-FINAL05",
+      "topic": "REPRODUCE migration_review_probe.py should name actual migration_model_compare.py; parent correcting."
+    }
+  ],
+  "source_changes_made": false,
+  "mechanical_checks_pass": true
+}

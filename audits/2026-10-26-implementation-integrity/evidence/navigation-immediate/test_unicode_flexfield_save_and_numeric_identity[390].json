@@ -1,0 +1,219 @@
+{
+  "node": "repro/navigation_tests/test_stage_refinements.py::test_unicode_flexfield_save_and_numeric_identity[390]",
+  "mode": "immediate",
+  "events": [
+    {
+      "elapsed": 0.5479089000000386,
+      "kind": "request",
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "elapsed": 0.66747979999991,
+      "kind": "response",
+      "status": 200,
+      "path": "/"
+    },
+    {
+      "elapsed": 0.6698112999997647,
+      "kind": "navigated",
+      "path": "/"
+    },
+    {
+      "elapsed": 1.011421700000028,
+      "kind": "request",
+      "method": "POST",
+      "path": "/auth/local"
+    },
+    {
+      "elapsed": 1.0540828999996847,
+      "kind": "response",
+      "status": 303,
+      "path": "/auth/local"
+    },
+    {
+      "elapsed": 1.0543443999999909,
+      "kind": "request",
+      "method": "GET",
+      "path": "/dashboard"
+    },
+    {
+      "elapsed": 1.1358632999999827,
+      "kind": "response",
+      "status": 200,
+      "path": "/dashboard"
+    },
+    {
+      "elapsed": 1.1390854999999647,
+      "kind": "navigated",
+      "path": "/dashboard"
+    },
+    {
+      "elapsed": 1.185345999999754,
+      "kind": "request",
+      "method": "GET",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 1.2241151999996873,
+      "kind": "response",
+      "status": 200,
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 1.22761730000002,
+      "kind": "navigated",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 1.4109977999996772,
+      "kind": "request",
+      "method": "GET",
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.4212322999997014,
+      "kind": "response",
+      "status": 200,
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.4284612999999808,
+      "kind": "request",
+      "method": "POST",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 1.4555584999998246,
+      "kind": "response",
+      "status": 303,
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 1.4558802999999898,
+      "kind": "request",
+      "method": "GET",
+      "path": "/clients"
+    },
+    {
+      "elapsed": 1.4784805999997843,
+      "kind": "response",
+      "status": 200,
+      "path": "/clients"
+    },
+    {
+      "elapsed": 1.4822745999999825,
+      "kind": "navigated",
+      "path": "/clients"
+    },
+    {
+      "elapsed": 1.5525758999997379,
+      "kind": "request",
+      "method": "GET",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff"
+    },
+    {
+      "elapsed": 1.609739300000001,
+      "kind": "response",
+      "status": 200,
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff"
+    },
+    {
+      "elapsed": 1.6126664999997047,
+      "kind": "navigated",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff"
+    },
+    {
+      "elapsed": 1.6599374999996144,
+      "kind": "request",
+      "method": "GET",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 1.6731360999997378,
+      "kind": "response",
+      "status": 200,
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 1.6761177999997017,
+      "kind": "navigated",
+      "path": "/clients/dac61ee1-5de1-5c99-a34a-b2785c8cb1ff/edit"
+    },
+    {
+      "elapsed": 1.7693960999999945,
+      "kind": "request",
+      "method": "GET",
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit"
+    },
+    {
+      "elapsed": 1.8217909999998483,
+      "kind": "response",
+      "status": 200,
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit"
+    },
+    {
+      "elapsed": 1.8251806999996916,
+      "kind": "navigated",
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit"
+    },
+    {
+      "elapsed": 1.9410018999997192,
+      "kind": "request",
+      "method": "GET",
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.9482232000000295,
+      "kind": "request",
+      "method": "GET",
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit"
+    },
+    {
+      "elapsed": 1.9607579999997142,
+      "kind": "response",
+      "status": 200,
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.9614317999999002,
+      "kind": "requestfailed",
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "elapsed": 2.39631079999981,
+      "kind": "request",
+      "method": "POST",
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6"
+    },
+    {
+      "elapsed": 2.396788099999867,
+      "kind": "response",
+      "status": 303,
+      "path": "/projects/f627e279-07da-500a-bd04-ca9d846aabf6"
+    },
+    {
+      "elapsed": 2.3970046999997976,
+      "kind": "request",
+      "method": "GET",
+      "path": "/projects"
+    },
+    {
+      "elapsed": 2.397159599999668,
+      "kind": "response",
+      "status": 200,
+      "path": "/projects"
+    },
+    {
+      "elapsed": 2.397392200000013,
+      "kind": "navigated",
+      "path": "/projects"
+    }
+  ],
+  "independent_new_session_SQL_readback": {
+    "projects_with_expected_flexfield2": 1,
+    "cases_by_status": {},
+    "archived_cases": 0
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "file": "usage-browser-enabled.xml",
+  "counts": {
+    "total": 2,
+    "failure": 0,
+    "error": 0,
+    "skipped": 0
+  },
+  "nonpassing": []
+}

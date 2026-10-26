@@ -1,0 +1,690 @@
+{
+  "collected": 2462,
+  "progress_characters_observed": 1044,
+  "progress_counts": {
+    ".": 912,
+    "E": 130,
+    "F": 2
+  },
+  "events": [
+    {
+      "position": 65,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[new_signup-google]"
+    },
+    {
+      "position": 66,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[new_signup-github]"
+    },
+    {
+      "position": 67,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[existing_signin-google]"
+    },
+    {
+      "position": 68,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[existing_signin-github]"
+    },
+    {
+      "position": 69,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[existing_signup-google]"
+    },
+    {
+      "position": 70,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[existing_signup-github]"
+    },
+    {
+      "position": 71,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_verified_email_notice_survives_duplicate_start_and_records_only_after_proof[new_signup]"
+    },
+    {
+      "position": 72,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_verified_email_notice_survives_duplicate_start_and_records_only_after_proof[existing_signin]"
+    },
+    {
+      "position": 73,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_verified_email_notice_survives_duplicate_start_and_records_only_after_proof[existing_signup]"
+    },
+    {
+      "position": 74,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice0]"
+    },
+    {
+      "position": 75,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice1]"
+    },
+    {
+      "position": 76,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice2]"
+    },
+    {
+      "position": 77,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice3]"
+    },
+    {
+      "position": 78,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice4]"
+    },
+    {
+      "position": 79,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice5]"
+    },
+    {
+      "position": 80,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_failed_or_unlinked_social_attempt_never_records_notice_or_merges_owner[unverified]"
+    },
+    {
+      "position": 81,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_failed_or_unlinked_social_attempt_never_records_notice_or_merges_owner[unknown_signin]"
+    },
+    {
+      "position": 82,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_failed_or_unlinked_social_attempt_never_records_notice_or_merges_owner[same_email_unlinked]"
+    },
+    {
+      "position": 83,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_failed_or_unlinked_social_attempt_never_records_notice_or_merges_owner[csrf]"
+    },
+    {
+      "position": 84,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_bad_email_code_cannot_commit_captured_notice"
+    },
+    {
+      "position": 85,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_explicit_fallback_records_fixed_method_once_and_preserves_security_return[legacy]"
+    },
+    {
+      "position": 86,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_explicit_fallback_records_fixed_method_once_and_preserves_security_return[continue]"
+    },
+    {
+      "position": 87,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed0]"
+    },
+    {
+      "position": 88,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed1]"
+    },
+    {
+      "position": 89,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed2]"
+    },
+    {
+      "position": 90,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed3]"
+    },
+    {
+      "position": 91,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed4]"
+    },
+    {
+      "position": 92,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed5]"
+    },
+    {
+      "position": 93,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_notice_helper_requires_current_attempt_and_preexisting_immutable_binding[link]"
+    },
+    {
+      "position": 94,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_notice_helper_requires_current_attempt_and_preexisting_immutable_binding[signin]"
+    },
+    {
+      "position": 95,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_public_policy_read_and_download_are_complete_identical_and_do_not_accept[False]"
+    },
+    {
+      "position": 96,
+      "result": "E",
+      "node": "tests/integration/test_auth_notice.py::test_public_policy_read_and_download_are_complete_identical_and_do_not_accept[True]"
+    },
+    {
+      "position": 301,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_public_email_start_keeps_delivered_code_usable"
+    },
+    {
+      "position": 302,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_existing_owner_email_signup_and_signin_reuse_exact_owner_without_allocation[signin]"
+    },
+    {
+      "position": 303,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_existing_owner_email_signup_and_signin_reuse_exact_owner_without_allocation[signup]"
+    },
+    {
+      "position": 304,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_unknown_email_signin_has_signup_route_without_creating_any_owner_or_workspace"
+    },
+    {
+      "position": 305,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_cooldown_never_restores_proof_for_a_different_flow[changed0]"
+    },
+    {
+      "position": 306,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_cooldown_never_restores_proof_for_a_different_flow[changed1]"
+    },
+    {
+      "position": 307,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_cooldown_never_restores_proof_for_a_different_flow[changed2]"
+    },
+    {
+      "position": 308,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_recovery_does_not_restore_consumed_inflight_or_exhausted_proof[consumed]"
+    },
+    {
+      "position": 309,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_recovery_does_not_restore_consumed_inflight_or_exhausted_proof[verifying]"
+    },
+    {
+      "position": 310,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_recovery_does_not_restore_consumed_inflight_or_exhausted_proof[failed]"
+    },
+    {
+      "position": 311,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_recovery_requires_exact_destination_and_session_and_unexpired_challenge[True]"
+    },
+    {
+      "position": 312,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_recovery_requires_exact_destination_and_session_and_unexpired_challenge[False]"
+    },
+    {
+      "position": 313,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_unknown_public_social_signin_offers_safe_signup_after_failed_callback"
+    },
+    {
+      "position": 322,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_retained_paid_owner_security_return_survives_required_v2_acknowledgment[email]"
+    },
+    {
+      "position": 323,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_retained_paid_owner_security_return_survives_required_v2_acknowledgment[google]"
+    },
+    {
+      "position": 324,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_new_free_owner_security_return_waits_for_acknowledgment_and_explicit_free_activation"
+    },
+    {
+      "position": 325,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_new_explicit_auth_start_clears_pending_registration_return[email]"
+    },
+    {
+      "position": 326,
+      "result": "E",
+      "node": "tests/integration/test_email_start_retries.py::test_new_explicit_auth_start_clears_pending_registration_return[google]"
+    },
+    {
+      "position": 530,
+      "result": "F",
+      "node": "tests/integration/test_operation_limits.py::test_independent_nonowner_processes_cannot_multiply_the_shared_limit"
+    },
+    {
+      "position": 683,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_two_new_owners_are_private_and_registration_and_plan_remain_explicit"
+    },
+    {
+      "position": 684,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_actual_runtime_roles_have_no_privilege_or_table_ownership"
+    },
+    {
+      "position": 685,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_crash_at_every_allocation_boundary_resumes_exact_ids_after_restart[reserved]"
+    },
+    {
+      "position": 686,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_crash_at_every_allocation_boundary_resumes_exact_ids_after_restart[initialized]"
+    },
+    {
+      "position": 687,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_crash_at_every_allocation_boundary_resumes_exact_ids_after_restart[activated]"
+    },
+    {
+      "position": 688,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_simultaneous_reservations_never_duplicate_identity_or_same_email[True]"
+    },
+    {
+      "position": 689,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_simultaneous_reservations_never_duplicate_identity_or_same_email[False]"
+    },
+    {
+      "position": 690,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_capacity_and_known_email_do_not_fall_back_to_default_workspace"
+    },
+    {
+      "position": 691,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_nonempty_slot_is_blocked_and_never_recycled"
+    },
+    {
+      "position": 692,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_recovers_exact_global_and_local_binding[identity_reserved]"
+    },
+    {
+      "position": 693,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_recovers_exact_global_and_local_binding[identity_bound]"
+    },
+    {
+      "position": 694,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_recovers_exact_global_and_local_binding[identity_activated]"
+    },
+    {
+      "position": 695,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[stale]"
+    },
+    {
+      "position": 696,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[future]"
+    },
+    {
+      "position": 697,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[revision]"
+    },
+    {
+      "position": 698,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[tenant]"
+    },
+    {
+      "position": 699,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[owner]"
+    },
+    {
+      "position": 700,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[unacknowledged]"
+    },
+    {
+      "position": 701,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[revoked]"
+    },
+    {
+      "position": 702,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[browser_revoked]"
+    },
+    {
+      "position": 703,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_global_conflict_and_revoked_tombstone_never_rebind_or_reassign"
+    },
+    {
+      "position": 704,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_revocation_blocks_routing_before_local_commit_and_recovers_after_restart[identity_revocation_blocked]"
+    },
+    {
+      "position": 705,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_revocation_blocks_routing_before_local_commit_and_recovers_after_restart[identity_revoked]"
+    },
+    {
+      "position": 706,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_revocation_blocks_routing_before_local_commit_and_recovers_after_restart[identity_revocation_finalized]"
+    },
+    {
+      "position": 707,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_refused_last_email_revocation_preserves_global_and_local_authority"
+    },
+    {
+      "position": 708,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_overlapping_distinct_revocations_keep_a_globally_active_surviving_method"
+    },
+    {
+      "position": 709,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_backfill_is_explicit_and_accepts_local_uuid_reuse_but_rejects_global_duplicates[False]"
+    },
+    {
+      "position": 710,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_backfill_is_explicit_and_accepts_local_uuid_reuse_but_rejects_global_duplicates[True]"
+    },
+    {
+      "position": 711,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-False-inspect]"
+    },
+    {
+      "position": 712,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-False-apply]"
+    },
+    {
+      "position": 713,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-False-readiness]"
+    },
+    {
+      "position": 714,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-True-inspect]"
+    },
+    {
+      "position": 715,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-True-apply]"
+    },
+    {
+      "position": 716,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-True-readiness]"
+    },
+    {
+      "position": 717,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-False-inspect]"
+    },
+    {
+      "position": 718,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-False-apply]"
+    },
+    {
+      "position": 719,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-False-readiness]"
+    },
+    {
+      "position": 720,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-True-inspect]"
+    },
+    {
+      "position": 721,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-True-apply]"
+    },
+    {
+      "position": 722,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-True-readiness]"
+    },
+    {
+      "position": 723,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_preserves_revoked_bindings_and_inactive_owner_history[missing]"
+    },
+    {
+      "position": 724,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_preserves_revoked_bindings_and_inactive_owner_history[revoked]"
+    },
+    {
+      "position": 725,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_preserves_revoked_bindings_and_inactive_owner_history[blocked]"
+    },
+    {
+      "position": 726,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_readiness_rejects_shadow_privilege_or_unallocated_data_without_mutation[shadow-grant]"
+    },
+    {
+      "position": 727,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_readiness_rejects_shadow_privilege_or_unallocated_data_without_mutation[shadow-trigger]"
+    },
+    {
+      "position": 728,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_readiness_rejects_shadow_privilege_or_unallocated_data_without_mutation[central-revoke]"
+    },
+    {
+      "position": 729,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_readiness_rejects_shadow_privilege_or_unallocated_data_without_mutation[nonempty-slot]"
+    },
+    {
+      "position": 730,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_readiness_rejects_shadow_privilege_or_unallocated_data_without_mutation[nonempty-settings]"
+    },
+    {
+      "position": 731,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_directory_guards_pin_targets_and_preserve_history"
+    },
+    {
+      "position": 732,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_registry_refresh_and_restart_keep_bounded_stable_routing"
+    },
+    {
+      "position": 733,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_ownerless_email_proof_is_encrypted_session_bound_single_use[True]"
+    },
+    {
+      "position": 734,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_ownerless_email_proof_is_encrypted_session_bound_single_use[False]"
+    },
+    {
+      "position": 735,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_attempts_are_durable_and_terminal_after_six"
+    },
+    {
+      "position": 736,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_rejects_expiry_wrong_cipher_purpose_or_key[expired]"
+    },
+    {
+      "position": 737,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_rejects_expiry_wrong_cipher_purpose_or_key[purpose]"
+    },
+    {
+      "position": 738,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_rejects_expiry_wrong_cipher_purpose_or_key[key]"
+    },
+    {
+      "position": 739,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_enforces_shared_durable_rate_limits[address]"
+    },
+    {
+      "position": 740,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_enforces_shared_durable_rate_limits[session]"
+    },
+    {
+      "position": 741,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_enforces_shared_durable_rate_limits[network]"
+    },
+    {
+      "position": 742,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_cooldown_reservation_is_atomic_across_requests"
+    },
+    {
+      "position": 743,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_public_email_uses_provider_captcha_once_then_requires_explicit_ack_and_free"
+    },
+    {
+      "position": 744,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_public_email_switch_off_preserves_uniform_response_without_provider_send"
+    },
+    {
+      "position": 745,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_cross_email_github_signin_authenticates_bound_owner_without_claim_rewrite"
+    },
+    {
+      "position": 746,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_provider_signup_allocates_pending_owner_without_accepting_terms_or_plan[google]"
+    },
+    {
+      "position": 747,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_provider_signup_allocates_pending_owner_without_accepting_terms_or_plan[github]"
+    },
+    {
+      "position": 748,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_google_requires_boolean_verified_claim_before_any_reservation[False]"
+    },
+    {
+      "position": 749,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_google_requires_boolean_verified_claim_before_any_reservation[true]"
+    },
+    {
+      "position": 750,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_google_requires_boolean_verified_claim_before_any_reservation[1]"
+    },
+    {
+      "position": 751,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_google_requires_boolean_verified_claim_before_any_reservation[None]"
+    },
+    {
+      "position": 752,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_fresh_cross_email_link_reserves_global_identity_before_local_binding"
+    },
+    {
+      "position": 753,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[public-google]"
+    },
+    {
+      "position": 754,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[public-github]"
+    },
+    {
+      "position": 755,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[off-google]"
+    },
+    {
+      "position": 756,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[off-github]"
+    },
+    {
+      "position": 757,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[legacy-google]"
+    },
+    {
+      "position": 758,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[legacy-github]"
+    },
+    {
+      "position": 759,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_public_email_rejects_mutation_forgery_before_challenge_or_provider[csrf]"
+    },
+    {
+      "position": 760,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_public_email_rejects_mutation_forgery_before_challenge_or_provider[origin]"
+    },
+    {
+      "position": 761,
+      "result": "E",
+      "node": "tests/integration/test_public_admission.py::test_http_public_email_rejects_mutation_forgery_before_challenge_or_provider[intent]"
+    },
+    {
+      "position": 832,
+      "result": "E",
+      "node": "tests/integration/test_recovery_rehearsal.py::test_current_ph3_custom_dump_restore_preserves_state_and_guards"
+    },
+    {
+      "position": 971,
+      "result": "F",
+      "node": "tests/integration/test_subscription_billing.py::test_first_failure_grace_is_stable_and_old_failure_cannot_reopen_after_renewal"
+    }
+  ],
+  "errors_by_file": {
+    "tests/integration/test_auth_notice.py": 32,
+    "tests/integration/test_email_start_retries.py": 18,
+    "tests/integration/test_public_admission.py": 79,
+    "tests/integration/test_recovery_rehearsal.py": 1
+  },
+  "failures": [
+    {
+      "position": 530,
+      "result": "F",
+      "node": "tests/integration/test_operation_limits.py::test_independent_nonowner_processes_cannot_multiply_the_shared_limit"
+    },
+    {
+      "position": 971,
+      "result": "F",
+      "node": "tests/integration/test_subscription_billing.py::test_first_failure_grace_is_stable_and_old_failure_cannot_reopen_after_renewal"
+    }
+  ],
+  "qualification": "Intermediate progress mapping only; source-node order is collect-only under same args. No root-cause assertion without final traceback."
+}

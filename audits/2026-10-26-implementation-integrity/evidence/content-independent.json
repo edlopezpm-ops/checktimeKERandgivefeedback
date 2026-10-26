@@ -1,0 +1,44 @@
+{
+  "seed": 99123,
+  "checks": [
+    {
+      "name": "500 seeded quote aggregates against Fraction oracle plus order invariance",
+      "status": "PASS"
+    },
+    {
+      "name": "200 novel time rows JSON-BOM and CSV normalize identically without losing Unicode",
+      "status": "PASS"
+    },
+    {
+      "name": "12 malformed/boundary import classes reject before persistence",
+      "status": "PASS"
+    },
+    {
+      "name": "DOCX and Markdown novel editable text;3 malformed imports reject",
+      "status": "PASS"
+    },
+    {
+      "name": "MIME attachment byte/hash roundtrip,UTC date,HTML plain normalization,malformed rejection",
+      "status": "PASS"
+    },
+    {
+      "name": "Flex exact decimals,omit/clear,Unicode limit and6 rejected classes",
+      "status": "PASS"
+    },
+    {
+      "name": "Client proposal preserves unknowns and rejects unpublished contract fields",
+      "status": "PASS"
+    }
+  ],
+  "passed": 7,
+  "failed": 0,
+  "scope": "Pure services/parsers; no DB/provider/pytest hook; no persistence claim",
+  "loaded_sources": {
+    "app.client_drafts": "<SOURCE_ROOT>\\app\\client_drafts.py",
+    "app.flexfields": "<SOURCE_ROOT>\\app\\flexfields.py",
+    "app.library": "<SOURCE_ROOT>\\app\\library.py",
+    "app.mail_service": "<SOURCE_ROOT>\\app\\mail_service.py",
+    "app.quoting": "<SOURCE_ROOT>\\app\\quoting.py",
+    "app.time_import": "<SOURCE_ROOT>\\app\\time_import.py"
+  }
+}

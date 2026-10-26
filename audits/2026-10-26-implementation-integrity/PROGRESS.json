@@ -1,0 +1,115 @@
+{
+  "schema": "functional-integrity.progress.v1",
+  "snapshot": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+  "state": "AUDIT_COMPLETE_WITH_CONFIRMED_FINDINGS_AND_EXPLICIT_UNKNOWNS",
+  "inventory": {
+    "closed": true,
+    "files": 568,
+    "bytes": 15709205,
+    "ignored": "metadata-only; private payload and archives excluded"
+  },
+  "contract": {
+    "frozen": true,
+    "capabilities": 30,
+    "W": 126,
+    "path": "reviews/contract.json"
+  },
+  "completed": [
+    "backend-complete",
+    "backend-setup-recovered",
+    "backend-runtime-role-recovered",
+    "usage-browser-enabled",
+    "browser-complete",
+    "browser-setup-recovered",
+    "browser-navigation-diagnosis",
+    "frozen matrix adjudicated",
+    "independent counterexamples and refutations",
+    "source identity preserved",
+    "score script checked"
+  ],
+  "running": [],
+  "confirmed_candidates": [
+    "monetary half-up undershoot",
+    "MCP read duplicated by unrelated clients",
+    "incomplete runtime role readiness validation",
+    "adapter suite misses exported handler false success"
+  ],
+  "remaining": [],
+  "authority": "audit only; no product fixes, deployment, live data/provider writes",
+  "coverage": {
+    "inventory_files": 568,
+    "inventory_closed": true,
+    "inventory_percent": 100,
+    "semantic_full_files": 212,
+    "sampled_files": 27,
+    "branch_or_line_execution_coverage": "NOT_MEASURED",
+    "third_party": "Vendored HTMX/axe, binary assets/fonts,61 locked Python packages and npm transitive code are inventoried/versions or hashes checked, not semantically audited in full. Node installed dependencies are ignored project-local inputs; lock correspondence checked.",
+    "ignored": "Metadata-only groups in ignored-inventory.json; private instructions read only to operate; credentials, historical logs/outputs, archive payload and personal unrelated credentials not evaluated/exported.",
+    "relevance": "Inventory coverage is not capability verification or full semantic review of every file. No area silently narrowed to diff/src; tests/docs/config/build/migrations/integrations all included with stated depth."
+  },
+  "pending_verification": [
+    [
+      "C01",
+      [
+        "Docker/container build and runtime artifact parity"
+      ]
+    ],
+    [
+      "C02",
+      [
+        "Fresh real Google/GitHub/managed email proof"
+      ]
+    ],
+    [
+      "C03",
+      [
+        "Actual hosted roles not inspected"
+      ]
+    ],
+    [
+      "C18",
+      [
+        "Fresh external provider acceptance/delivery path"
+      ]
+    ],
+    [
+      "C19",
+      [
+        "Fresh external commercial-document delivery"
+      ]
+    ],
+    [
+      "C20",
+      [
+        "Actual inbound provider capture"
+      ]
+    ],
+    [
+      "C22",
+      [
+        "Real assistant host interoperability and financial confirmation"
+      ]
+    ],
+    [
+      "C23",
+      [
+        "Actual current Paddle catalog/checkout/3DS/renewal and provider timezone"
+      ]
+    ],
+    [
+      "C28",
+      [
+        "Unattended backup/rotation, adopted retention/RPO, independent key custody, new-device/provider-loss/business recovery/RTO, sustained C5K capacity"
+      ]
+    ],
+    [
+      "C29",
+      [
+        "Fresh external contact delivery not performed"
+      ]
+    ]
+  ],
+  "verdict": "FAIL",
+  "next_action": "Remediation requires a separately authorized new product snapshot and independent verification.",
+  "cleanup": "All audit-owned PostgreSQL clusters and browser fixture servers stopped; original source identity preserved."
+}

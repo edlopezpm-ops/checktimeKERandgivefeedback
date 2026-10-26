@@ -1,0 +1,3665 @@
+{
+  "seed": 20261026,
+  "case_count": 400,
+  "matching": 398,
+  "mismatches": [
+    {
+      "index": 247,
+      "minutes": 602,
+      "rate": "602.85",
+      "exact_amount_rational": "1209719/200",
+      "expected": "6048.6",
+      "observed": "6048.59",
+      "match": false
+    },
+    {
+      "index": 258,
+      "minutes": 95,
+      "rate": "407.22",
+      "exact_amount_rational": "128953/200",
+      "expected": "644.77",
+      "observed": "644.76",
+      "match": false
+    }
+  ],
+  "cases": [
+    {
+      "index": 0,
+      "minutes": 232,
+      "rate": "298.35",
+      "exact_amount_rational": "57681/50",
+      "expected": "1153.62",
+      "observed": "1153.62",
+      "match": true
+    },
+    {
+      "index": 1,
+      "minutes": 1378,
+      "rate": "174.32",
+      "exact_amount_rational": "1501331/375",
+      "expected": "4003.55",
+      "observed": "4003.55",
+      "match": true
+    },
+    {
+      "index": 2,
+      "minutes": 995,
+      "rate": "530.15",
+      "exact_amount_rational": "2109997/240",
+      "expected": "8791.65",
+      "observed": "8791.65",
+      "match": true
+    },
+    {
+      "index": 3,
+      "minutes": 1109,
+      "rate": "117.44",
+      "exact_amount_rational": "814006/375",
+      "expected": "2170.68",
+      "observed": "2170.68",
+      "match": true
+    },
+    {
+      "index": 4,
+      "minutes": 17,
+      "rate": "525.01",
+      "exact_amount_rational": "892517/6000",
+      "expected": "148.75",
+      "observed": "148.75",
+      "match": true
+    },
+    {
+      "index": 5,
+      "minutes": 1189,
+      "rate": "464.87",
+      "exact_amount_rational": "55273043/6000",
+      "expected": "9212.17",
+      "observed": "9212.17",
+      "match": true
+    },
+    {
+      "index": 6,
+      "minutes": 676,
+      "rate": "447.7",
+      "exact_amount_rational": "756613/150",
+      "expected": "5044.09",
+      "observed": "5044.09",
+      "match": true
+    },
+    {
+      "index": 7,
+      "minutes": 393,
+      "rate": "847.96",
+      "exact_amount_rational": "2777069/500",
+      "expected": "5554.14",
+      "observed": "5554.14",
+      "match": true
+    },
+    {
+      "index": 8,
+      "minutes": 1247,
+      "rate": "355.27",
+      "exact_amount_rational": "44302169/6000",
+      "expected": "7383.69",
+      "observed": "7383.69",
+      "match": true
+    },
+    {
+      "index": 9,
+      "minutes": 1020,
+      "rate": "447.77",
+      "exact_amount_rational": "761209/100",
+      "expected": "7612.09",
+      "observed": "7612.09",
+      "match": true
+    },
+    {
+      "index": 10,
+      "minutes": 1416,
+      "rate": "891.98",
+      "exact_amount_rational": "2631341/125",
+      "expected": "21050.73",
+      "observed": "21050.73",
+      "match": true
+    },
+    {
+      "index": 11,
+      "minutes": 762,
+      "rate": "69.34",
+      "exact_amount_rational": "440309/500",
+      "expected": "880.62",
+      "observed": "880.62",
+      "match": true
+    },
+    {
+      "index": 12,
+      "minutes": 447,
+      "rate": "489.48",
+      "exact_amount_rational": "1823313/500",
+      "expected": "3646.63",
+      "observed": "3646.63",
+      "match": true
+    },
+    {
+      "index": 13,
+      "minutes": 1016,
+      "rate": "811.92",
+      "exact_amount_rational": "1718564/125",
+      "expected": "13748.51",
+      "observed": "13748.51",
+      "match": true
+    },
+    {
+      "index": 14,
+      "minutes": 423,
+      "rate": "650.49",
+      "exact_amount_rational": "9171909/2000",
+      "expected": "4585.95",
+      "observed": "4585.95",
+      "match": true
+    },
+    {
+      "index": 15,
+      "minutes": 264,
+      "rate": "508.05",
+      "exact_amount_rational": "111771/50",
+      "expected": "2235.42",
+      "observed": "2235.42",
+      "match": true
+    },
+    {
+      "index": 16,
+      "minutes": 837,
+      "rate": "403.58",
+      "exact_amount_rational": "5629941/1000",
+      "expected": "5629.94",
+      "observed": "5629.94",
+      "match": true
+    },
+    {
+      "index": 17,
+      "minutes": 445,
+      "rate": "989.2",
+      "exact_amount_rational": "220097/30",
+      "expected": "7336.57",
+      "observed": "7336.57",
+      "match": true
+    },
+    {
+      "index": 18,
+      "minutes": 1074,
+      "rate": "513.64",
+      "exact_amount_rational": "2298539/250",
+      "expected": "9194.16",
+      "observed": "9194.16",
+      "match": true
+    },
+    {
+      "index": 19,
+      "minutes": 884,
+      "rate": "422.81",
+      "exact_amount_rational": "9344101/1500",
+      "expected": "6229.4",
+      "observed": "6229.40",
+      "match": true
+    },
+    {
+      "index": 20,
+      "minutes": 583,
+      "rate": "91.77",
+      "exact_amount_rational": "1783397/2000",
+      "expected": "891.7",
+      "observed": "891.70",
+      "match": true
+    },
+    {
+      "index": 21,
+      "minutes": 692,
+      "rate": "985.57",
+      "exact_amount_rational": "17050361/1500",
+      "expected": "11366.91",
+      "observed": "11366.91",
+      "match": true
+    },
+    {
+      "index": 22,
+      "minutes": 764,
+      "rate": "194.43",
+      "exact_amount_rational": "1237871/500",
+      "expected": "2475.74",
+      "observed": "2475.74",
+      "match": true
+    },
+    {
+      "index": 23,
+      "minutes": 866,
+      "rate": "421.19",
+      "exact_amount_rational": "18237527/3000",
+      "expected": "6079.18",
+      "observed": "6079.18",
+      "match": true
+    },
+    {
+      "index": 24,
+      "minutes": 629,
+      "rate": "765.94",
+      "exact_amount_rational": "24088813/3000",
+      "expected": "8029.6",
+      "observed": "8029.60",
+      "match": true
+    },
+    {
+      "index": 25,
+      "minutes": 978,
+      "rate": "483.02",
+      "exact_amount_rational": "3936613/500",
+      "expected": "7873.23",
+      "observed": "7873.23",
+      "match": true
+    },
+    {
+      "index": 26,
+      "minutes": 957,
+      "rate": "443.09",
+      "exact_amount_rational": "14134571/2000",
+      "expected": "7067.29",
+      "observed": "7067.29",
+      "match": true
+    },
+    {
+      "index": 27,
+      "minutes": 405,
+      "rate": "73.78",
+      "exact_amount_rational": "99603/200",
+      "expected": "498.02",
+      "observed": "498.02",
+      "match": true
+    },
+    {
+      "index": 28,
+      "minutes": 312,
+      "rate": "719.46",
+      "exact_amount_rational": "467649/125",
+      "expected": "3741.19",
+      "observed": "3741.19",
+      "match": true
+    },
+    {
+      "index": 29,
+      "minutes": 418,
+      "rate": "739.17",
+      "exact_amount_rational": "5149551/1000",
+      "expected": "5149.55",
+      "observed": "5149.55",
+      "match": true
+    },
+    {
+      "index": 30,
+      "minutes": 318,
+      "rate": "293.51",
+      "exact_amount_rational": "1555603/1000",
+      "expected": "1555.6",
+      "observed": "1555.60",
+      "match": true
+    },
+    {
+      "index": 31,
+      "minutes": 974,
+      "rate": "904.75",
+      "exact_amount_rational": "1762453/120",
+      "expected": "14687.11",
+      "observed": "14687.11",
+      "match": true
+    },
+    {
+      "index": 32,
+      "minutes": 491,
+      "rate": "989.22",
+      "exact_amount_rational": "8095117/1000",
+      "expected": "8095.12",
+      "observed": "8095.12",
+      "match": true
+    },
+    {
+      "index": 33,
+      "minutes": 124,
+      "rate": "557.26",
+      "exact_amount_rational": "863753/750",
+      "expected": "1151.67",
+      "observed": "1151.67",
+      "match": true
+    },
+    {
+      "index": 34,
+      "minutes": 1410,
+      "rate": "515.23",
+      "exact_amount_rational": "2421581/200",
+      "expected": "12107.91",
+      "observed": "12107.91",
+      "match": true
+    },
+    {
+      "index": 35,
+      "minutes": 229,
+      "rate": "517.37",
+      "exact_amount_rational": "11847773/6000",
+      "expected": "1974.63",
+      "observed": "1974.63",
+      "match": true
+    },
+    {
+      "index": 36,
+      "minutes": 634,
+      "rate": "823.78",
+      "exact_amount_rational": "13056913/1500",
+      "expected": "8704.61",
+      "observed": "8704.61",
+      "match": true
+    },
+    {
+      "index": 37,
+      "minutes": 1095,
+      "rate": "14.05",
+      "exact_amount_rational": "20513/80",
+      "expected": "256.41",
+      "observed": "256.41",
+      "match": true
+    },
+    {
+      "index": 38,
+      "minutes": 1372,
+      "rate": "663.38",
+      "exact_amount_rational": "11376967/750",
+      "expected": "15169.29",
+      "observed": "15169.29",
+      "match": true
+    },
+    {
+      "index": 39,
+      "minutes": 457,
+      "rate": "90.25",
+      "exact_amount_rational": "164977/240",
+      "expected": "687.4",
+      "observed": "687.40",
+      "match": true
+    },
+    {
+      "index": 40,
+      "minutes": 926,
+      "rate": "882.16",
+      "exact_amount_rational": "5105501/375",
+      "expected": "13614.67",
+      "observed": "13614.67",
+      "match": true
+    },
+    {
+      "index": 41,
+      "minutes": 261,
+      "rate": "512.42",
+      "exact_amount_rational": "2229027/1000",
+      "expected": "2229.03",
+      "observed": "2229.03",
+      "match": true
+    },
+    {
+      "index": 42,
+      "minutes": 336,
+      "rate": "72.74",
+      "exact_amount_rational": "50918/125",
+      "expected": "407.34",
+      "observed": "407.34",
+      "match": true
+    },
+    {
+      "index": 43,
+      "minutes": 571,
+      "rate": "942.8",
+      "exact_amount_rational": "1345847/150",
+      "expected": "8972.31",
+      "observed": "8972.31",
+      "match": true
+    },
+    {
+      "index": 44,
+      "minutes": 561,
+      "rate": "792.93",
+      "exact_amount_rational": "14827791/2000",
+      "expected": "7413.9",
+      "observed": "7413.90",
+      "match": true
+    },
+    {
+      "index": 45,
+      "minutes": 1323,
+      "rate": "132.41",
+      "exact_amount_rational": "5839281/2000",
+      "expected": "2919.64",
+      "observed": "2919.64",
+      "match": true
+    },
+    {
+      "index": 46,
+      "minutes": 728,
+      "rate": "952.27",
+      "exact_amount_rational": "8665657/750",
+      "expected": "11554.21",
+      "observed": "11554.21",
+      "match": true
+    },
+    {
+      "index": 47,
+      "minutes": 195,
+      "rate": "777.67",
+      "exact_amount_rational": "1010971/400",
+      "expected": "2527.43",
+      "observed": "2527.43",
+      "match": true
+    },
+    {
+      "index": 48,
+      "minutes": 517,
+      "rate": "385.81",
+      "exact_amount_rational": "19946377/6000",
+      "expected": "3324.4",
+      "observed": "3324.40",
+      "match": true
+    },
+    {
+      "index": 49,
+      "minutes": 945,
+      "rate": "847.42",
+      "exact_amount_rational": "2669373/200",
+      "expected": "13346.87",
+      "observed": "13346.87",
+      "match": true
+    },
+    {
+      "index": 50,
+      "minutes": 166,
+      "rate": "542.39",
+      "exact_amount_rational": "4501837/3000",
+      "expected": "1500.61",
+      "observed": "1500.61",
+      "match": true
+    },
+    {
+      "index": 51,
+      "minutes": 163,
+      "rate": "388.24",
+      "exact_amount_rational": "791039/750",
+      "expected": "1054.72",
+      "observed": "1054.72",
+      "match": true
+    },
+    {
+      "index": 52,
+      "minutes": 21,
+      "rate": "395.16",
+      "exact_amount_rational": "69153/500",
+      "expected": "138.31",
+      "observed": "138.31",
+      "match": true
+    },
+    {
+      "index": 53,
+      "minutes": 1076,
+      "rate": "412.11",
+      "exact_amount_rational": "3695253/500",
+      "expected": "7390.51",
+      "observed": "7390.51",
+      "match": true
+    },
+    {
+      "index": 54,
+      "minutes": 165,
+      "rate": "746.03",
+      "exact_amount_rational": "820633/400",
+      "expected": "2051.58",
+      "observed": "2051.58",
+      "match": true
+    },
+    {
+      "index": 55,
+      "minutes": 546,
+      "rate": "753.64",
+      "exact_amount_rational": "1714531/250",
+      "expected": "6858.12",
+      "observed": "6858.12",
+      "match": true
+    },
+    {
+      "index": 56,
+      "minutes": 1164,
+      "rate": "63.58",
+      "exact_amount_rational": "308363/250",
+      "expected": "1233.45",
+      "observed": "1233.45",
+      "match": true
+    },
+    {
+      "index": 57,
+      "minutes": 24,
+      "rate": "657.96",
+      "exact_amount_rational": "32898/125",
+      "expected": "263.18",
+      "observed": "263.18",
+      "match": true
+    },
+    {
+      "index": 58,
+      "minutes": 117,
+      "rate": "144.38",
+      "exact_amount_rational": "281541/1000",
+      "expected": "281.54",
+      "observed": "281.54",
+      "match": true
+    },
+    {
+      "index": 59,
+      "minutes": 721,
+      "rate": "850.49",
+      "exact_amount_rational": "61320329/6000",
+      "expected": "10220.05",
+      "observed": "10220.05",
+      "match": true
+    },
+    {
+      "index": 60,
+      "minutes": 378,
+      "rate": "586.61",
+      "exact_amount_rational": "3695643/1000",
+      "expected": "3695.64",
+      "observed": "3695.64",
+      "match": true
+    },
+    {
+      "index": 61,
+      "minutes": 721,
+      "rate": "512.46",
+      "exact_amount_rational": "6158061/1000",
+      "expected": "6158.06",
+      "observed": "6158.06",
+      "match": true
+    },
+    {
+      "index": 62,
+      "minutes": 1009,
+      "rate": "46.19",
+      "exact_amount_rational": "4660571/6000",
+      "expected": "776.76",
+      "observed": "776.76",
+      "match": true
+    },
+    {
+      "index": 63,
+      "minutes": 442,
+      "rate": "109.02",
+      "exact_amount_rational": "401557/500",
+      "expected": "803.11",
+      "observed": "803.11",
+      "match": true
+    },
+    {
+      "index": 64,
+      "minutes": 909,
+      "rate": "374.93",
+      "exact_amount_rational": "11360379/2000",
+      "expected": "5680.19",
+      "observed": "5680.19",
+      "match": true
+    },
+    {
+      "index": 65,
+      "minutes": 1130,
+      "rate": "413.9",
+      "exact_amount_rational": "467707/60",
+      "expected": "7795.12",
+      "observed": "7795.12",
+      "match": true
+    },
+    {
+      "index": 66,
+      "minutes": 1309,
+      "rate": "642.96",
+      "exact_amount_rational": "3506811/250",
+      "expected": "14027.24",
+      "observed": "14027.24",
+      "match": true
+    },
+    {
+      "index": 67,
+      "minutes": 892,
+      "rate": "226.79",
+      "exact_amount_rational": "5057417/1500",
+      "expected": "3371.61",
+      "observed": "3371.61",
+      "match": true
+    },
+    {
+      "index": 68,
+      "minutes": 743,
+      "rate": "903.83",
+      "exact_amount_rational": "67154569/6000",
+      "expected": "11192.43",
+      "observed": "11192.43",
+      "match": true
+    },
+    {
+      "index": 69,
+      "minutes": 618,
+      "rate": "501.46",
+      "exact_amount_rational": "2582519/500",
+      "expected": "5165.04",
+      "observed": "5165.04",
+      "match": true
+    },
+    {
+      "index": 70,
+      "minutes": 923,
+      "rate": "563.15",
+      "exact_amount_rational": "10395749/1200",
+      "expected": "8663.12",
+      "observed": "8663.12",
+      "match": true
+    },
+    {
+      "index": 71,
+      "minutes": 870,
+      "rate": "678.24",
+      "exact_amount_rational": "245862/25",
+      "expected": "9834.48",
+      "observed": "9834.48",
+      "match": true
+    },
+    {
+      "index": 72,
+      "minutes": 924,
+      "rate": "991.42",
+      "exact_amount_rational": "3816967/250",
+      "expected": "15267.87",
+      "observed": "15267.87",
+      "match": true
+    },
+    {
+      "index": 73,
+      "minutes": 160,
+      "rate": "174.38",
+      "exact_amount_rational": "34876/75",
+      "expected": "465.01",
+      "observed": "465.01",
+      "match": true
+    },
+    {
+      "index": 74,
+      "minutes": 651,
+      "rate": "436.8",
+      "exact_amount_rational": "118482/25",
+      "expected": "4739.28",
+      "observed": "4739.28",
+      "match": true
+    },
+    {
+      "index": 75,
+      "minutes": 159,
+      "rate": "893.31",
+      "exact_amount_rational": "4734543/2000",
+      "expected": "2367.27",
+      "observed": "2367.27",
+      "match": true
+    },
+    {
+      "index": 76,
+      "minutes": 75,
+      "rate": "626.99",
+      "exact_amount_rational": "62699/80",
+      "expected": "783.74",
+      "observed": "783.74",
+      "match": true
+    },
+    {
+      "index": 77,
+      "minutes": 759,
+      "rate": "933.73",
+      "exact_amount_rational": "23623369/2000",
+      "expected": "11811.68",
+      "observed": "11811.68",
+      "match": true
+    },
+    {
+      "index": 78,
+      "minutes": 733,
+      "rate": "252.19",
+      "exact_amount_rational": "18485527/6000",
+      "expected": "3080.92",
+      "observed": "3080.92",
+      "match": true
+    },
+    {
+      "index": 79,
+      "minutes": 627,
+      "rate": "396.07",
+      "exact_amount_rational": "8277863/2000",
+      "expected": "4138.93",
+      "observed": "4138.93",
+      "match": true
+    },
+    {
+      "index": 80,
+      "minutes": 1141,
+      "rate": "343.62",
+      "exact_amount_rational": "6534507/1000",
+      "expected": "6534.51",
+      "observed": "6534.51",
+      "match": true
+    },
+    {
+      "index": 81,
+      "minutes": 1056,
+      "rate": "994.12",
+      "exact_amount_rational": "2187064/125",
+      "expected": "17496.51",
+      "observed": "17496.51",
+      "match": true
+    },
+    {
+      "index": 82,
+      "minutes": 610,
+      "rate": "208.24",
+      "exact_amount_rational": "158783/75",
+      "expected": "2117.11",
+      "observed": "2117.11",
+      "match": true
+    },
+    {
+      "index": 83,
+      "minutes": 726,
+      "rate": "924.54",
+      "exact_amount_rational": "5593467/500",
+      "expected": "11186.93",
+      "observed": "11186.93",
+      "match": true
+    },
+    {
+      "index": 84,
+      "minutes": 703,
+      "rate": "923.59",
+      "exact_amount_rational": "64928377/6000",
+      "expected": "10821.4",
+      "observed": "10821.40",
+      "match": true
+    },
+    {
+      "index": 85,
+      "minutes": 1423,
+      "rate": "513.44",
+      "exact_amount_rational": "4566407/375",
+      "expected": "12177.09",
+      "observed": "12177.09",
+      "match": true
+    },
+    {
+      "index": 86,
+      "minutes": 1078,
+      "rate": "539",
+      "exact_amount_rational": "290521/30",
+      "expected": "9684.03",
+      "observed": "9684.03",
+      "match": true
+    },
+    {
+      "index": 87,
+      "minutes": 942,
+      "rate": "255.89",
+      "exact_amount_rational": "4017473/1000",
+      "expected": "4017.47",
+      "observed": "4017.47",
+      "match": true
+    },
+    {
+      "index": 88,
+      "minutes": 1058,
+      "rate": "479.54",
+      "exact_amount_rational": "12683833/1500",
+      "expected": "8455.89",
+      "observed": "8455.89",
+      "match": true
+    },
+    {
+      "index": 89,
+      "minutes": 865,
+      "rate": "822.99",
+      "exact_amount_rational": "4745909/400",
+      "expected": "11864.77",
+      "observed": "11864.77",
+      "match": true
+    },
+    {
+      "index": 90,
+      "minutes": 1368,
+      "rate": "421.16",
+      "exact_amount_rational": "1200306/125",
+      "expected": "9602.45",
+      "observed": "9602.45",
+      "match": true
+    },
+    {
+      "index": 91,
+      "minutes": 298,
+      "rate": "879.19",
+      "exact_amount_rational": "13099931/3000",
+      "expected": "4366.64",
+      "observed": "4366.64",
+      "match": true
+    },
+    {
+      "index": 92,
+      "minutes": 1164,
+      "rate": "394.24",
+      "exact_amount_rational": "956032/125",
+      "expected": "7648.26",
+      "observed": "7648.26",
+      "match": true
+    },
+    {
+      "index": 93,
+      "minutes": 936,
+      "rate": "111.05",
+      "exact_amount_rational": "86619/50",
+      "expected": "1732.38",
+      "observed": "1732.38",
+      "match": true
+    },
+    {
+      "index": 94,
+      "minutes": 437,
+      "rate": "503.48",
+      "exact_amount_rational": "5500519/1500",
+      "expected": "3667.01",
+      "observed": "3667.01",
+      "match": true
+    },
+    {
+      "index": 95,
+      "minutes": 1209,
+      "rate": "451.61",
+      "exact_amount_rational": "18199883/2000",
+      "expected": "9099.94",
+      "observed": "9099.94",
+      "match": true
+    },
+    {
+      "index": 96,
+      "minutes": 1100,
+      "rate": "548",
+      "exact_amount_rational": "30140/3",
+      "expected": "10046.67",
+      "observed": "10046.67",
+      "match": true
+    },
+    {
+      "index": 97,
+      "minutes": 289,
+      "rate": "598.27",
+      "exact_amount_rational": "17290003/6000",
+      "expected": "2881.67",
+      "observed": "2881.67",
+      "match": true
+    },
+    {
+      "index": 98,
+      "minutes": 519,
+      "rate": "815.17",
+      "exact_amount_rational": "14102441/2000",
+      "expected": "7051.22",
+      "observed": "7051.22",
+      "match": true
+    },
+    {
+      "index": 99,
+      "minutes": 921,
+      "rate": "476.93",
+      "exact_amount_rational": "14641751/2000",
+      "expected": "7320.88",
+      "observed": "7320.88",
+      "match": true
+    },
+    {
+      "index": 100,
+      "minutes": 397,
+      "rate": "866.92",
+      "exact_amount_rational": "8604181/1500",
+      "expected": "5736.12",
+      "observed": "5736.12",
+      "match": true
+    },
+    {
+      "index": 101,
+      "minutes": 1414,
+      "rate": "844.94",
+      "exact_amount_rational": "29868629/1500",
+      "expected": "19912.42",
+      "observed": "19912.42",
+      "match": true
+    },
+    {
+      "index": 102,
+      "minutes": 1193,
+      "rate": "759.65",
+      "exact_amount_rational": "18125249/1200",
+      "expected": "15104.37",
+      "observed": "15104.37",
+      "match": true
+    },
+    {
+      "index": 103,
+      "minutes": 845,
+      "rate": "286.81",
+      "exact_amount_rational": "4847089/1200",
+      "expected": "4039.24",
+      "observed": "4039.24",
+      "match": true
+    },
+    {
+      "index": 104,
+      "minutes": 398,
+      "rate": "207.14",
+      "exact_amount_rational": "2061043/1500",
+      "expected": "1374.03",
+      "observed": "1374.03",
+      "match": true
+    },
+    {
+      "index": 105,
+      "minutes": 568,
+      "rate": "850.88",
+      "exact_amount_rational": "3020624/375",
+      "expected": "8055",
+      "observed": "8055.00",
+      "match": true
+    },
+    {
+      "index": 106,
+      "minutes": 1351,
+      "rate": "896.89",
+      "exact_amount_rational": "121169839/6000",
+      "expected": "20194.97",
+      "observed": "20194.97",
+      "match": true
+    },
+    {
+      "index": 107,
+      "minutes": 731,
+      "rate": "167.06",
+      "exact_amount_rational": "6106043/3000",
+      "expected": "2035.35",
+      "observed": "2035.35",
+      "match": true
+    },
+    {
+      "index": 108,
+      "minutes": 1384,
+      "rate": "172.77",
+      "exact_amount_rational": "996307/250",
+      "expected": "3985.23",
+      "observed": "3985.23",
+      "match": true
+    },
+    {
+      "index": 109,
+      "minutes": 695,
+      "rate": "533.75",
+      "exact_amount_rational": "296765/48",
+      "expected": "6182.6",
+      "observed": "6182.60",
+      "match": true
+    },
+    {
+      "index": 110,
+      "minutes": 1275,
+      "rate": "630.88",
+      "exact_amount_rational": "67031/5",
+      "expected": "13406.2",
+      "observed": "13406.20",
+      "match": true
+    },
+    {
+      "index": 111,
+      "minutes": 1082,
+      "rate": "739.63",
+      "exact_amount_rational": "40013983/3000",
+      "expected": "13337.99",
+      "observed": "13337.99",
+      "match": true
+    },
+    {
+      "index": 112,
+      "minutes": 606,
+      "rate": "534.7",
+      "exact_amount_rational": "540047/100",
+      "expected": "5400.47",
+      "observed": "5400.47",
+      "match": true
+    },
+    {
+      "index": 113,
+      "minutes": 200,
+      "rate": "775.44",
+      "exact_amount_rational": "12924/5",
+      "expected": "2584.8",
+      "observed": "2584.80",
+      "match": true
+    },
+    {
+      "index": 114,
+      "minutes": 1093,
+      "rate": "897.07",
+      "exact_amount_rational": "98049751/6000",
+      "expected": "16341.63",
+      "observed": "16341.63",
+      "match": true
+    },
+    {
+      "index": 115,
+      "minutes": 187,
+      "rate": "707.08",
+      "exact_amount_rational": "3305599/1500",
+      "expected": "2203.73",
+      "observed": "2203.73",
+      "match": true
+    },
+    {
+      "index": 116,
+      "minutes": 1074,
+      "rate": "769.03",
+      "exact_amount_rational": "13765637/1000",
+      "expected": "13765.64",
+      "observed": "13765.64",
+      "match": true
+    },
+    {
+      "index": 117,
+      "minutes": 612,
+      "rate": "146.4",
+      "exact_amount_rational": "37332/25",
+      "expected": "1493.28",
+      "observed": "1493.28",
+      "match": true
+    },
+    {
+      "index": 118,
+      "minutes": 961,
+      "rate": "919.13",
+      "exact_amount_rational": "88328393/6000",
+      "expected": "14721.4",
+      "observed": "14721.40",
+      "match": true
+    },
+    {
+      "index": 119,
+      "minutes": 923,
+      "rate": "713.82",
+      "exact_amount_rational": "10980931/1000",
+      "expected": "10980.93",
+      "observed": "10980.93",
+      "match": true
+    },
+    {
+      "index": 120,
+      "minutes": 275,
+      "rate": "231.34",
+      "exact_amount_rational": "127237/120",
+      "expected": "1060.31",
+      "observed": "1060.31",
+      "match": true
+    },
+    {
+      "index": 121,
+      "minutes": 842,
+      "rate": "791.37",
+      "exact_amount_rational": "11105559/1000",
+      "expected": "11105.56",
+      "observed": "11105.56",
+      "match": true
+    },
+    {
+      "index": 122,
+      "minutes": 1387,
+      "rate": "25.56",
+      "exact_amount_rational": "295431/500",
+      "expected": "590.86",
+      "observed": "590.86",
+      "match": true
+    },
+    {
+      "index": 123,
+      "minutes": 1376,
+      "rate": "148.81",
+      "exact_amount_rational": "1279766/375",
+      "expected": "3412.71",
+      "observed": "3412.71",
+      "match": true
+    },
+    {
+      "index": 124,
+      "minutes": 114,
+      "rate": "192.35",
+      "exact_amount_rational": "73093/200",
+      "expected": "365.47",
+      "observed": "365.47",
+      "match": true
+    },
+    {
+      "index": 125,
+      "minutes": 959,
+      "rate": "292.44",
+      "exact_amount_rational": "2337083/500",
+      "expected": "4674.17",
+      "observed": "4674.17",
+      "match": true
+    },
+    {
+      "index": 126,
+      "minutes": 692,
+      "rate": "943.78",
+      "exact_amount_rational": "8163697/750",
+      "expected": "10884.93",
+      "observed": "10884.93",
+      "match": true
+    },
+    {
+      "index": 127,
+      "minutes": 3,
+      "rate": "277.55",
+      "exact_amount_rational": "5551/400",
+      "expected": "13.88",
+      "observed": "13.88",
+      "match": true
+    },
+    {
+      "index": 128,
+      "minutes": 682,
+      "rate": "745.35",
+      "exact_amount_rational": "1694429/200",
+      "expected": "8472.15",
+      "observed": "8472.15",
+      "match": true
+    },
+    {
+      "index": 129,
+      "minutes": 590,
+      "rate": "183.2",
+      "exact_amount_rational": "27022/15",
+      "expected": "1801.47",
+      "observed": "1801.47",
+      "match": true
+    },
+    {
+      "index": 130,
+      "minutes": 32,
+      "rate": "885.38",
+      "exact_amount_rational": "177076/375",
+      "expected": "472.2",
+      "observed": "472.20",
+      "match": true
+    },
+    {
+      "index": 131,
+      "minutes": 1143,
+      "rate": "76.19",
+      "exact_amount_rational": "2902839/2000",
+      "expected": "1451.42",
+      "observed": "1451.42",
+      "match": true
+    },
+    {
+      "index": 132,
+      "minutes": 1162,
+      "rate": "776.57",
+      "exact_amount_rational": "45118717/3000",
+      "expected": "15039.57",
+      "observed": "15039.57",
+      "match": true
+    },
+    {
+      "index": 133,
+      "minutes": 1366,
+      "rate": "326.95",
+      "exact_amount_rational": "4466137/600",
+      "expected": "7443.56",
+      "observed": "7443.56",
+      "match": true
+    },
+    {
+      "index": 134,
+      "minutes": 1169,
+      "rate": "284.58",
+      "exact_amount_rational": "5544567/1000",
+      "expected": "5544.57",
+      "observed": "5544.57",
+      "match": true
+    },
+    {
+      "index": 135,
+      "minutes": 89,
+      "rate": "86.01",
+      "exact_amount_rational": "255163/2000",
+      "expected": "127.58",
+      "observed": "127.58",
+      "match": true
+    },
+    {
+      "index": 136,
+      "minutes": 678,
+      "rate": "738.5",
+      "exact_amount_rational": "166901/20",
+      "expected": "8345.05",
+      "observed": "8345.05",
+      "match": true
+    },
+    {
+      "index": 137,
+      "minutes": 1225,
+      "rate": "910.08",
+      "exact_amount_rational": "92904/5",
+      "expected": "18580.8",
+      "observed": "18580.80",
+      "match": true
+    },
+    {
+      "index": 138,
+      "minutes": 1198,
+      "rate": "916.25",
+      "exact_amount_rational": "439067/24",
+      "expected": "18294.46",
+      "observed": "18294.46",
+      "match": true
+    },
+    {
+      "index": 139,
+      "minutes": 924,
+      "rate": "201.68",
+      "exact_amount_rational": "388234/125",
+      "expected": "3105.87",
+      "observed": "3105.87",
+      "match": true
+    },
+    {
+      "index": 140,
+      "minutes": 150,
+      "rate": "100.57",
+      "exact_amount_rational": "10057/40",
+      "expected": "251.43",
+      "observed": "251.43",
+      "match": true
+    },
+    {
+      "index": 141,
+      "minutes": 874,
+      "rate": "548.04",
+      "exact_amount_rational": "1995779/250",
+      "expected": "7983.12",
+      "observed": "7983.12",
+      "match": true
+    },
+    {
+      "index": 142,
+      "minutes": 714,
+      "rate": "633.91",
+      "exact_amount_rational": "7543529/1000",
+      "expected": "7543.53",
+      "observed": "7543.53",
+      "match": true
+    },
+    {
+      "index": 143,
+      "minutes": 781,
+      "rate": "93.73",
+      "exact_amount_rational": "7320313/6000",
+      "expected": "1220.05",
+      "observed": "1220.05",
+      "match": true
+    },
+    {
+      "index": 144,
+      "minutes": 681,
+      "rate": "647.67",
+      "exact_amount_rational": "14702109/2000",
+      "expected": "7351.05",
+      "observed": "7351.05",
+      "match": true
+    },
+    {
+      "index": 145,
+      "minutes": 510,
+      "rate": "635.82",
+      "exact_amount_rational": "540447/100",
+      "expected": "5404.47",
+      "observed": "5404.47",
+      "match": true
+    },
+    {
+      "index": 146,
+      "minutes": 1149,
+      "rate": "506.38",
+      "exact_amount_rational": "9697177/1000",
+      "expected": "9697.18",
+      "observed": "9697.18",
+      "match": true
+    },
+    {
+      "index": 147,
+      "minutes": 771,
+      "rate": "913.7",
+      "exact_amount_rational": "2348209/200",
+      "expected": "11741.05",
+      "observed": "11741.05",
+      "match": true
+    },
+    {
+      "index": 148,
+      "minutes": 921,
+      "rate": "105.01",
+      "exact_amount_rational": "3223807/2000",
+      "expected": "1611.9",
+      "observed": "1611.90",
+      "match": true
+    },
+    {
+      "index": 149,
+      "minutes": 1179,
+      "rate": "931.9",
+      "exact_amount_rational": "3662367/200",
+      "expected": "18311.84",
+      "observed": "18311.84",
+      "match": true
+    },
+    {
+      "index": 150,
+      "minutes": 375,
+      "rate": "910.02",
+      "exact_amount_rational": "45501/8",
+      "expected": "5687.63",
+      "observed": "5687.63",
+      "match": true
+    },
+    {
+      "index": 151,
+      "minutes": 4,
+      "rate": "284.71",
+      "exact_amount_rational": "28471/1500",
+      "expected": "18.98",
+      "observed": "18.98",
+      "match": true
+    },
+    {
+      "index": 152,
+      "minutes": 1311,
+      "rate": "134.72",
+      "exact_amount_rational": "367954/125",
+      "expected": "2943.63",
+      "observed": "2943.63",
+      "match": true
+    },
+    {
+      "index": 153,
+      "minutes": 62,
+      "rate": "661.67",
+      "exact_amount_rational": "2051177/3000",
+      "expected": "683.73",
+      "observed": "683.73",
+      "match": true
+    },
+    {
+      "index": 154,
+      "minutes": 1378,
+      "rate": "133.9",
+      "exact_amount_rational": "922571/300",
+      "expected": "3075.24",
+      "observed": "3075.24",
+      "match": true
+    },
+    {
+      "index": 155,
+      "minutes": 660,
+      "rate": "13.26",
+      "exact_amount_rational": "7293/50",
+      "expected": "145.86",
+      "observed": "145.86",
+      "match": true
+    },
+    {
+      "index": 156,
+      "minutes": 1180,
+      "rate": "80.1",
+      "exact_amount_rational": "15753/10",
+      "expected": "1575.3",
+      "observed": "1575.30",
+      "match": true
+    },
+    {
+      "index": 157,
+      "minutes": 298,
+      "rate": "757.82",
+      "exact_amount_rational": "5645759/1500",
+      "expected": "3763.84",
+      "observed": "3763.84",
+      "match": true
+    },
+    {
+      "index": 158,
+      "minutes": 895,
+      "rate": "317.81",
+      "exact_amount_rational": "5688799/1200",
+      "expected": "4740.67",
+      "observed": "4740.67",
+      "match": true
+    },
+    {
+      "index": 159,
+      "minutes": 801,
+      "rate": "771.78",
+      "exact_amount_rational": "10303263/1000",
+      "expected": "10303.26",
+      "observed": "10303.26",
+      "match": true
+    },
+    {
+      "index": 160,
+      "minutes": 58,
+      "rate": "195.37",
+      "exact_amount_rational": "566573/3000",
+      "expected": "188.86",
+      "observed": "188.86",
+      "match": true
+    },
+    {
+      "index": 161,
+      "minutes": 1428,
+      "rate": "847.3",
+      "exact_amount_rational": "1008287/50",
+      "expected": "20165.74",
+      "observed": "20165.74",
+      "match": true
+    },
+    {
+      "index": 162,
+      "minutes": 705,
+      "rate": "706.65",
+      "exact_amount_rational": "664251/80",
+      "expected": "8303.14",
+      "observed": "8303.14",
+      "match": true
+    },
+    {
+      "index": 163,
+      "minutes": 544,
+      "rate": "683.28",
+      "exact_amount_rational": "774384/125",
+      "expected": "6195.07",
+      "observed": "6195.07",
+      "match": true
+    },
+    {
+      "index": 164,
+      "minutes": 962,
+      "rate": "134.55",
+      "exact_amount_rational": "431457/200",
+      "expected": "2157.29",
+      "observed": "2157.29",
+      "match": true
+    },
+    {
+      "index": 165,
+      "minutes": 914,
+      "rate": "955.11",
+      "exact_amount_rational": "14549509/1000",
+      "expected": "14549.51",
+      "observed": "14549.51",
+      "match": true
+    },
+    {
+      "index": 166,
+      "minutes": 1232,
+      "rate": "428.46",
+      "exact_amount_rational": "1099714/125",
+      "expected": "8797.71",
+      "observed": "8797.71",
+      "match": true
+    },
+    {
+      "index": 167,
+      "minutes": 491,
+      "rate": "574.31",
+      "exact_amount_rational": "28198621/6000",
+      "expected": "4699.77",
+      "observed": "4699.77",
+      "match": true
+    },
+    {
+      "index": 168,
+      "minutes": 562,
+      "rate": "135.61",
+      "exact_amount_rational": "3810641/3000",
+      "expected": "1270.21",
+      "observed": "1270.21",
+      "match": true
+    },
+    {
+      "index": 169,
+      "minutes": 507,
+      "rate": "911.53",
+      "exact_amount_rational": "15404857/2000",
+      "expected": "7702.43",
+      "observed": "7702.43",
+      "match": true
+    },
+    {
+      "index": 170,
+      "minutes": 1294,
+      "rate": "493.64",
+      "exact_amount_rational": "7984627/750",
+      "expected": "10646.17",
+      "observed": "10646.17",
+      "match": true
+    },
+    {
+      "index": 171,
+      "minutes": 1071,
+      "rate": "438.12",
+      "exact_amount_rational": "3910221/500",
+      "expected": "7820.44",
+      "observed": "7820.44",
+      "match": true
+    },
+    {
+      "index": 172,
+      "minutes": 1326,
+      "rate": "625.06",
+      "exact_amount_rational": "6906913/500",
+      "expected": "13813.83",
+      "observed": "13813.83",
+      "match": true
+    },
+    {
+      "index": 173,
+      "minutes": 1408,
+      "rate": "206.74",
+      "exact_amount_rational": "1819312/375",
+      "expected": "4851.5",
+      "observed": "4851.50",
+      "match": true
+    },
+    {
+      "index": 174,
+      "minutes": 791,
+      "rate": "821.6",
+      "exact_amount_rational": "812357/75",
+      "expected": "10831.43",
+      "observed": "10831.43",
+      "match": true
+    },
+    {
+      "index": 175,
+      "minutes": 1273,
+      "rate": "629.07",
+      "exact_amount_rational": "26693537/2000",
+      "expected": "13346.77",
+      "observed": "13346.77",
+      "match": true
+    },
+    {
+      "index": 176,
+      "minutes": 1075,
+      "rate": "253.51",
+      "exact_amount_rational": "1090093/240",
+      "expected": "4542.05",
+      "observed": "4542.05",
+      "match": true
+    },
+    {
+      "index": 177,
+      "minutes": 369,
+      "rate": "662.97",
+      "exact_amount_rational": "8154531/2000",
+      "expected": "4077.27",
+      "observed": "4077.27",
+      "match": true
+    },
+    {
+      "index": 178,
+      "minutes": 131,
+      "rate": "246.94",
+      "exact_amount_rational": "1617457/3000",
+      "expected": "539.15",
+      "observed": "539.15",
+      "match": true
+    },
+    {
+      "index": 179,
+      "minutes": 908,
+      "rate": "773.45",
+      "exact_amount_rational": "3511463/300",
+      "expected": "11704.88",
+      "observed": "11704.88",
+      "match": true
+    },
+    {
+      "index": 180,
+      "minutes": 1391,
+      "rate": "313.4",
+      "exact_amount_rational": "2179697/300",
+      "expected": "7265.66",
+      "observed": "7265.66",
+      "match": true
+    },
+    {
+      "index": 181,
+      "minutes": 1262,
+      "rate": "255.56",
+      "exact_amount_rational": "4031459/750",
+      "expected": "5375.28",
+      "observed": "5375.28",
+      "match": true
+    },
+    {
+      "index": 182,
+      "minutes": 540,
+      "rate": "115.52",
+      "exact_amount_rational": "25992/25",
+      "expected": "1039.68",
+      "observed": "1039.68",
+      "match": true
+    },
+    {
+      "index": 183,
+      "minutes": 660,
+      "rate": "896.64",
+      "exact_amount_rational": "246576/25",
+      "expected": "9863.04",
+      "observed": "9863.04",
+      "match": true
+    },
+    {
+      "index": 184,
+      "minutes": 877,
+      "rate": "812.23",
+      "exact_amount_rational": "71232571/6000",
+      "expected": "11872.1",
+      "observed": "11872.10",
+      "match": true
+    },
+    {
+      "index": 185,
+      "minutes": 643,
+      "rate": "368.44",
+      "exact_amount_rational": "5922673/1500",
+      "expected": "3948.45",
+      "observed": "3948.45",
+      "match": true
+    },
+    {
+      "index": 186,
+      "minutes": 435,
+      "rate": "187.12",
+      "exact_amount_rational": "67831/50",
+      "expected": "1356.62",
+      "observed": "1356.62",
+      "match": true
+    },
+    {
+      "index": 187,
+      "minutes": 1087,
+      "rate": "363.26",
+      "exact_amount_rational": "19743181/3000",
+      "expected": "6581.06",
+      "observed": "6581.06",
+      "match": true
+    },
+    {
+      "index": 188,
+      "minutes": 1037,
+      "rate": "228.29",
+      "exact_amount_rational": "23673673/6000",
+      "expected": "3945.61",
+      "observed": "3945.61",
+      "match": true
+    },
+    {
+      "index": 189,
+      "minutes": 1339,
+      "rate": "11.13",
+      "exact_amount_rational": "496769/2000",
+      "expected": "248.38",
+      "observed": "248.38",
+      "match": true
+    },
+    {
+      "index": 190,
+      "minutes": 75,
+      "rate": "859.58",
+      "exact_amount_rational": "42979/40",
+      "expected": "1074.48",
+      "observed": "1074.48",
+      "match": true
+    },
+    {
+      "index": 191,
+      "minutes": 736,
+      "rate": "605.2",
+      "exact_amount_rational": "556784/75",
+      "expected": "7423.79",
+      "observed": "7423.79",
+      "match": true
+    },
+    {
+      "index": 192,
+      "minutes": 34,
+      "rate": "171.31",
+      "exact_amount_rational": "291227/3000",
+      "expected": "97.08",
+      "observed": "97.08",
+      "match": true
+    },
+    {
+      "index": 193,
+      "minutes": 1281,
+      "rate": "634.7",
+      "exact_amount_rational": "2710169/200",
+      "expected": "13550.85",
+      "observed": "13550.85",
+      "match": true
+    },
+    {
+      "index": 194,
+      "minutes": 841,
+      "rate": "201.7",
+      "exact_amount_rational": "1696297/600",
+      "expected": "2827.16",
+      "observed": "2827.16",
+      "match": true
+    },
+    {
+      "index": 195,
+      "minutes": 1272,
+      "rate": "585.58",
+      "exact_amount_rational": "1551787/125",
+      "expected": "12414.3",
+      "observed": "12414.30",
+      "match": true
+    },
+    {
+      "index": 196,
+      "minutes": 360,
+      "rate": "261.52",
+      "exact_amount_rational": "39228/25",
+      "expected": "1569.12",
+      "observed": "1569.12",
+      "match": true
+    },
+    {
+      "index": 197,
+      "minutes": 1075,
+      "rate": "719.01",
+      "exact_amount_rational": "1030581/80",
+      "expected": "12882.26",
+      "observed": "12882.26",
+      "match": true
+    },
+    {
+      "index": 198,
+      "minutes": 1172,
+      "rate": "982.67",
+      "exact_amount_rational": "28792231/1500",
+      "expected": "19194.82",
+      "observed": "19194.82",
+      "match": true
+    },
+    {
+      "index": 199,
+      "minutes": 485,
+      "rate": "498.96",
+      "exact_amount_rational": "201663/50",
+      "expected": "4033.26",
+      "observed": "4033.26",
+      "match": true
+    },
+    {
+      "index": 200,
+      "minutes": 843,
+      "rate": "666.7",
+      "exact_amount_rational": "1873427/200",
+      "expected": "9367.14",
+      "observed": "9367.14",
+      "match": true
+    },
+    {
+      "index": 201,
+      "minutes": 247,
+      "rate": "652.55",
+      "exact_amount_rational": "3223597/1200",
+      "expected": "2686.33",
+      "observed": "2686.33",
+      "match": true
+    },
+    {
+      "index": 202,
+      "minutes": 75,
+      "rate": "453.38",
+      "exact_amount_rational": "22669/40",
+      "expected": "566.73",
+      "observed": "566.73",
+      "match": true
+    },
+    {
+      "index": 203,
+      "minutes": 991,
+      "rate": "603.24",
+      "exact_amount_rational": "4981757/500",
+      "expected": "9963.51",
+      "observed": "9963.51",
+      "match": true
+    },
+    {
+      "index": 204,
+      "minutes": 193,
+      "rate": "138.06",
+      "exact_amount_rational": "444093/1000",
+      "expected": "444.09",
+      "observed": "444.09",
+      "match": true
+    },
+    {
+      "index": 205,
+      "minutes": 735,
+      "rate": "579.21",
+      "exact_amount_rational": "2838129/400",
+      "expected": "7095.32",
+      "observed": "7095.32",
+      "match": true
+    },
+    {
+      "index": 206,
+      "minutes": 342,
+      "rate": "569.74",
+      "exact_amount_rational": "1623759/500",
+      "expected": "3247.52",
+      "observed": "3247.52",
+      "match": true
+    },
+    {
+      "index": 207,
+      "minutes": 725,
+      "rate": "222.83",
+      "exact_amount_rational": "646207/240",
+      "expected": "2692.53",
+      "observed": "2692.53",
+      "match": true
+    },
+    {
+      "index": 208,
+      "minutes": 98,
+      "rate": "985.16",
+      "exact_amount_rational": "1206821/750",
+      "expected": "1609.09",
+      "observed": "1609.09",
+      "match": true
+    },
+    {
+      "index": 209,
+      "minutes": 216,
+      "rate": "40.44",
+      "exact_amount_rational": "18198/125",
+      "expected": "145.58",
+      "observed": "145.58",
+      "match": true
+    },
+    {
+      "index": 210,
+      "minutes": 881,
+      "rate": "481.82",
+      "exact_amount_rational": "21224171/3000",
+      "expected": "7074.72",
+      "observed": "7074.72",
+      "match": true
+    },
+    {
+      "index": 211,
+      "minutes": 359,
+      "rate": "353.35",
+      "exact_amount_rational": "2537053/1200",
+      "expected": "2114.21",
+      "observed": "2114.21",
+      "match": true
+    },
+    {
+      "index": 212,
+      "minutes": 1185,
+      "rate": "320.51",
+      "exact_amount_rational": "2532029/400",
+      "expected": "6330.07",
+      "observed": "6330.07",
+      "match": true
+    },
+    {
+      "index": 213,
+      "minutes": 41,
+      "rate": "579.42",
+      "exact_amount_rational": "395937/1000",
+      "expected": "395.94",
+      "observed": "395.94",
+      "match": true
+    },
+    {
+      "index": 214,
+      "minutes": 813,
+      "rate": "901.74",
+      "exact_amount_rational": "12218577/1000",
+      "expected": "12218.58",
+      "observed": "12218.58",
+      "match": true
+    },
+    {
+      "index": 215,
+      "minutes": 980,
+      "rate": "265.54",
+      "exact_amount_rational": "650573/150",
+      "expected": "4337.15",
+      "observed": "4337.15",
+      "match": true
+    },
+    {
+      "index": 216,
+      "minutes": 1209,
+      "rate": "469.87",
+      "exact_amount_rational": "18935761/2000",
+      "expected": "9467.88",
+      "observed": "9467.88",
+      "match": true
+    },
+    {
+      "index": 217,
+      "minutes": 1151,
+      "rate": "972.32",
+      "exact_amount_rational": "6994627/375",
+      "expected": "18652.34",
+      "observed": "18652.34",
+      "match": true
+    },
+    {
+      "index": 218,
+      "minutes": 148,
+      "rate": "732.51",
+      "exact_amount_rational": "903429/500",
+      "expected": "1806.86",
+      "observed": "1806.86",
+      "match": true
+    },
+    {
+      "index": 219,
+      "minutes": 1371,
+      "rate": "376.31",
+      "exact_amount_rational": "17197367/2000",
+      "expected": "8598.68",
+      "observed": "8598.68",
+      "match": true
+    },
+    {
+      "index": 220,
+      "minutes": 645,
+      "rate": "762.29",
+      "exact_amount_rational": "3277847/400",
+      "expected": "8194.62",
+      "observed": "8194.62",
+      "match": true
+    },
+    {
+      "index": 221,
+      "minutes": 685,
+      "rate": "739.99",
+      "exact_amount_rational": "10137863/1200",
+      "expected": "8448.22",
+      "observed": "8448.22",
+      "match": true
+    },
+    {
+      "index": 222,
+      "minutes": 112,
+      "rate": "381.36",
+      "exact_amount_rational": "88984/125",
+      "expected": "711.87",
+      "observed": "711.87",
+      "match": true
+    },
+    {
+      "index": 223,
+      "minutes": 1015,
+      "rate": "676.84",
+      "exact_amount_rational": "3434963/300",
+      "expected": "11449.88",
+      "observed": "11449.88",
+      "match": true
+    },
+    {
+      "index": 224,
+      "minutes": 327,
+      "rate": "805.72",
+      "exact_amount_rational": "2195587/500",
+      "expected": "4391.17",
+      "observed": "4391.17",
+      "match": true
+    },
+    {
+      "index": 225,
+      "minutes": 1144,
+      "rate": "810.55",
+      "exact_amount_rational": "2318173/150",
+      "expected": "15454.49",
+      "observed": "15454.49",
+      "match": true
+    },
+    {
+      "index": 226,
+      "minutes": 1390,
+      "rate": "788.85",
+      "exact_amount_rational": "731001/40",
+      "expected": "18275.03",
+      "observed": "18275.03",
+      "match": true
+    },
+    {
+      "index": 227,
+      "minutes": 320,
+      "rate": "770.52",
+      "exact_amount_rational": "102736/25",
+      "expected": "4109.44",
+      "observed": "4109.44",
+      "match": true
+    },
+    {
+      "index": 228,
+      "minutes": 310,
+      "rate": "745.81",
+      "exact_amount_rational": "2312011/600",
+      "expected": "3853.35",
+      "observed": "3853.35",
+      "match": true
+    },
+    {
+      "index": 229,
+      "minutes": 879,
+      "rate": "166.13",
+      "exact_amount_rational": "4867609/2000",
+      "expected": "2433.8",
+      "observed": "2433.80",
+      "match": true
+    },
+    {
+      "index": 230,
+      "minutes": 569,
+      "rate": "117.07",
+      "exact_amount_rational": "6661283/6000",
+      "expected": "1110.21",
+      "observed": "1110.21",
+      "match": true
+    },
+    {
+      "index": 231,
+      "minutes": 584,
+      "rate": "421.68",
+      "exact_amount_rational": "513044/125",
+      "expected": "4104.35",
+      "observed": "4104.35",
+      "match": true
+    },
+    {
+      "index": 232,
+      "minutes": 1257,
+      "rate": "128.08",
+      "exact_amount_rational": "670819/250",
+      "expected": "2683.28",
+      "observed": "2683.28",
+      "match": true
+    },
+    {
+      "index": 233,
+      "minutes": 121,
+      "rate": "251.15",
+      "exact_amount_rational": "607783/1200",
+      "expected": "506.49",
+      "observed": "506.49",
+      "match": true
+    },
+    {
+      "index": 234,
+      "minutes": 557,
+      "rate": "112.49",
+      "exact_amount_rational": "6265693/6000",
+      "expected": "1044.28",
+      "observed": "1044.28",
+      "match": true
+    },
+    {
+      "index": 235,
+      "minutes": 1328,
+      "rate": "232.13",
+      "exact_amount_rational": "1926679/375",
+      "expected": "5137.81",
+      "observed": "5137.81",
+      "match": true
+    },
+    {
+      "index": 236,
+      "minutes": 927,
+      "rate": "299.81",
+      "exact_amount_rational": "9264129/2000",
+      "expected": "4632.06",
+      "observed": "4632.06",
+      "match": true
+    },
+    {
+      "index": 237,
+      "minutes": 689,
+      "rate": "22.34",
+      "exact_amount_rational": "769613/3000",
+      "expected": "256.54",
+      "observed": "256.54",
+      "match": true
+    },
+    {
+      "index": 238,
+      "minutes": 238,
+      "rate": "556.58",
+      "exact_amount_rational": "3311651/1500",
+      "expected": "2207.77",
+      "observed": "2207.77",
+      "match": true
+    },
+    {
+      "index": 239,
+      "minutes": 698,
+      "rate": "101.27",
+      "exact_amount_rational": "3534323/3000",
+      "expected": "1178.11",
+      "observed": "1178.11",
+      "match": true
+    },
+    {
+      "index": 240,
+      "minutes": 708,
+      "rate": "878.84",
+      "exact_amount_rational": "1296289/125",
+      "expected": "10370.31",
+      "observed": "10370.31",
+      "match": true
+    },
+    {
+      "index": 241,
+      "minutes": 472,
+      "rate": "775",
+      "exact_amount_rational": "18290/3",
+      "expected": "6096.67",
+      "observed": "6096.67",
+      "match": true
+    },
+    {
+      "index": 242,
+      "minutes": 1310,
+      "rate": "977.5",
+      "exact_amount_rational": "256105/12",
+      "expected": "21342.08",
+      "observed": "21342.08",
+      "match": true
+    },
+    {
+      "index": 243,
+      "minutes": 1155,
+      "rate": "645.81",
+      "exact_amount_rational": "4972737/400",
+      "expected": "12431.84",
+      "observed": "12431.84",
+      "match": true
+    },
+    {
+      "index": 244,
+      "minutes": 376,
+      "rate": "350.5",
+      "exact_amount_rational": "32947/15",
+      "expected": "2196.47",
+      "observed": "2196.47",
+      "match": true
+    },
+    {
+      "index": 245,
+      "minutes": 1218,
+      "rate": "139.22",
+      "exact_amount_rational": "1413083/500",
+      "expected": "2826.17",
+      "observed": "2826.17",
+      "match": true
+    },
+    {
+      "index": 246,
+      "minutes": 1275,
+      "rate": "648.2",
+      "exact_amount_rational": "55097/4",
+      "expected": "13774.25",
+      "observed": "13774.25",
+      "match": true
+    },
+    {
+      "index": 247,
+      "minutes": 602,
+      "rate": "602.85",
+      "exact_amount_rational": "1209719/200",
+      "expected": "6048.6",
+      "observed": "6048.59",
+      "match": false
+    },
+    {
+      "index": 248,
+      "minutes": 657,
+      "rate": "575.28",
+      "exact_amount_rational": "1574829/250",
+      "expected": "6299.32",
+      "observed": "6299.32",
+      "match": true
+    },
+    {
+      "index": 249,
+      "minutes": 1176,
+      "rate": "365.16",
+      "exact_amount_rational": "894642/125",
+      "expected": "7157.14",
+      "observed": "7157.14",
+      "match": true
+    },
+    {
+      "index": 250,
+      "minutes": 1189,
+      "rate": "293.02",
+      "exact_amount_rational": "17420039/3000",
+      "expected": "5806.68",
+      "observed": "5806.68",
+      "match": true
+    },
+    {
+      "index": 251,
+      "minutes": 575,
+      "rate": "700.34",
+      "exact_amount_rational": "805391/120",
+      "expected": "6711.59",
+      "observed": "6711.59",
+      "match": true
+    },
+    {
+      "index": 252,
+      "minutes": 637,
+      "rate": "231.3",
+      "exact_amount_rational": "491127/200",
+      "expected": "2455.64",
+      "observed": "2455.64",
+      "match": true
+    },
+    {
+      "index": 253,
+      "minutes": 203,
+      "rate": "622.38",
+      "exact_amount_rational": "2105719/1000",
+      "expected": "2105.72",
+      "observed": "2105.72",
+      "match": true
+    },
+    {
+      "index": 254,
+      "minutes": 837,
+      "rate": "908.4",
+      "exact_amount_rational": "633609/50",
+      "expected": "12672.18",
+      "observed": "12672.18",
+      "match": true
+    },
+    {
+      "index": 255,
+      "minutes": 876,
+      "rate": "539.56",
+      "exact_amount_rational": "984697/125",
+      "expected": "7877.58",
+      "observed": "7877.58",
+      "match": true
+    },
+    {
+      "index": 256,
+      "minutes": 153,
+      "rate": "56.09",
+      "exact_amount_rational": "286059/2000",
+      "expected": "143.03",
+      "observed": "143.03",
+      "match": true
+    },
+    {
+      "index": 257,
+      "minutes": 1260,
+      "rate": "920.74",
+      "exact_amount_rational": "966777/50",
+      "expected": "19335.54",
+      "observed": "19335.54",
+      "match": true
+    },
+    {
+      "index": 258,
+      "minutes": 95,
+      "rate": "407.22",
+      "exact_amount_rational": "128953/200",
+      "expected": "644.77",
+      "observed": "644.76",
+      "match": false
+    },
+    {
+      "index": 259,
+      "minutes": 1229,
+      "rate": "311.71",
+      "exact_amount_rational": "38309159/6000",
+      "expected": "6384.86",
+      "observed": "6384.86",
+      "match": true
+    },
+    {
+      "index": 260,
+      "minutes": 643,
+      "rate": "400.46",
+      "exact_amount_rational": "12874789/3000",
+      "expected": "4291.6",
+      "observed": "4291.60",
+      "match": true
+    },
+    {
+      "index": 261,
+      "minutes": 675,
+      "rate": "262.44",
+      "exact_amount_rational": "59049/20",
+      "expected": "2952.45",
+      "observed": "2952.45",
+      "match": true
+    },
+    {
+      "index": 262,
+      "minutes": 536,
+      "rate": "957.9",
+      "exact_amount_rational": "213931/25",
+      "expected": "8557.24",
+      "observed": "8557.24",
+      "match": true
+    },
+    {
+      "index": 263,
+      "minutes": 832,
+      "rate": "73.95",
+      "exact_amount_rational": "25636/25",
+      "expected": "1025.44",
+      "observed": "1025.44",
+      "match": true
+    },
+    {
+      "index": 264,
+      "minutes": 858,
+      "rate": "232.13",
+      "exact_amount_rational": "3319459/1000",
+      "expected": "3319.46",
+      "observed": "3319.46",
+      "match": true
+    },
+    {
+      "index": 265,
+      "minutes": 803,
+      "rate": "964.93",
+      "exact_amount_rational": "77483879/6000",
+      "expected": "12913.98",
+      "observed": "12913.98",
+      "match": true
+    },
+    {
+      "index": 266,
+      "minutes": 1046,
+      "rate": "490.09",
+      "exact_amount_rational": "25631707/3000",
+      "expected": "8543.9",
+      "observed": "8543.90",
+      "match": true
+    },
+    {
+      "index": 267,
+      "minutes": 1340,
+      "rate": "319.15",
+      "exact_amount_rational": "427661/60",
+      "expected": "7127.68",
+      "observed": "7127.68",
+      "match": true
+    },
+    {
+      "index": 268,
+      "minutes": 271,
+      "rate": "764.6",
+      "exact_amount_rational": "1036033/300",
+      "expected": "3453.44",
+      "observed": "3453.44",
+      "match": true
+    },
+    {
+      "index": 269,
+      "minutes": 821,
+      "rate": "283.19",
+      "exact_amount_rational": "23249899/6000",
+      "expected": "3874.98",
+      "observed": "3874.98",
+      "match": true
+    },
+    {
+      "index": 270,
+      "minutes": 939,
+      "rate": "945.96",
+      "exact_amount_rational": "7402137/500",
+      "expected": "14804.27",
+      "observed": "14804.27",
+      "match": true
+    },
+    {
+      "index": 271,
+      "minutes": 566,
+      "rate": "51.77",
+      "exact_amount_rational": "1465091/3000",
+      "expected": "488.36",
+      "observed": "488.36",
+      "match": true
+    },
+    {
+      "index": 272,
+      "minutes": 1363,
+      "rate": "272.99",
+      "exact_amount_rational": "37208537/6000",
+      "expected": "6201.42",
+      "observed": "6201.42",
+      "match": true
+    },
+    {
+      "index": 273,
+      "minutes": 1319,
+      "rate": "12.91",
+      "exact_amount_rational": "1702829/6000",
+      "expected": "283.8",
+      "observed": "283.80",
+      "match": true
+    },
+    {
+      "index": 274,
+      "minutes": 973,
+      "rate": "769.86",
+      "exact_amount_rational": "12484563/1000",
+      "expected": "12484.56",
+      "observed": "12484.56",
+      "match": true
+    },
+    {
+      "index": 275,
+      "minutes": 463,
+      "rate": "537.98",
+      "exact_amount_rational": "12454237/3000",
+      "expected": "4151.41",
+      "observed": "4151.41",
+      "match": true
+    },
+    {
+      "index": 276,
+      "minutes": 3,
+      "rate": "421.57",
+      "exact_amount_rational": "42157/2000",
+      "expected": "21.08",
+      "observed": "21.08",
+      "match": true
+    },
+    {
+      "index": 277,
+      "minutes": 727,
+      "rate": "572.81",
+      "exact_amount_rational": "41643287/6000",
+      "expected": "6940.55",
+      "observed": "6940.55",
+      "match": true
+    },
+    {
+      "index": 278,
+      "minutes": 832,
+      "rate": "294.9",
+      "exact_amount_rational": "102232/25",
+      "expected": "4089.28",
+      "observed": "4089.28",
+      "match": true
+    },
+    {
+      "index": 279,
+      "minutes": 1436,
+      "rate": "735.8",
+      "exact_amount_rational": "1320761/75",
+      "expected": "17610.15",
+      "observed": "17610.15",
+      "match": true
+    },
+    {
+      "index": 280,
+      "minutes": 1131,
+      "rate": "58.87",
+      "exact_amount_rational": "2219399/2000",
+      "expected": "1109.7",
+      "observed": "1109.70",
+      "match": true
+    },
+    {
+      "index": 281,
+      "minutes": 1092,
+      "rate": "881.27",
+      "exact_amount_rational": "8019557/500",
+      "expected": "16039.11",
+      "observed": "16039.11",
+      "match": true
+    },
+    {
+      "index": 282,
+      "minutes": 160,
+      "rate": "53.7",
+      "exact_amount_rational": "716/5",
+      "expected": "143.2",
+      "observed": "143.20",
+      "match": true
+    },
+    {
+      "index": 283,
+      "minutes": 1097,
+      "rate": "456.44",
+      "exact_amount_rational": "12517867/1500",
+      "expected": "8345.24",
+      "observed": "8345.24",
+      "match": true
+    },
+    {
+      "index": 284,
+      "minutes": 998,
+      "rate": "714.79",
+      "exact_amount_rational": "35668021/3000",
+      "expected": "11889.34",
+      "observed": "11889.34",
+      "match": true
+    },
+    {
+      "index": 285,
+      "minutes": 1251,
+      "rate": "555.3",
+      "exact_amount_rational": "2315601/200",
+      "expected": "11578.01",
+      "observed": "11578.01",
+      "match": true
+    },
+    {
+      "index": 286,
+      "minutes": 784,
+      "rate": "74.38",
+      "exact_amount_rational": "364462/375",
+      "expected": "971.9",
+      "observed": "971.90",
+      "match": true
+    },
+    {
+      "index": 287,
+      "minutes": 220,
+      "rate": "454.34",
+      "exact_amount_rational": "249887/150",
+      "expected": "1665.91",
+      "observed": "1665.91",
+      "match": true
+    },
+    {
+      "index": 288,
+      "minutes": 546,
+      "rate": "396.32",
+      "exact_amount_rational": "450814/125",
+      "expected": "3606.51",
+      "observed": "3606.51",
+      "match": true
+    },
+    {
+      "index": 289,
+      "minutes": 126,
+      "rate": "684.05",
+      "exact_amount_rational": "287301/200",
+      "expected": "1436.51",
+      "observed": "1436.51",
+      "match": true
+    },
+    {
+      "index": 290,
+      "minutes": 156,
+      "rate": "810.23",
+      "exact_amount_rational": "1053299/500",
+      "expected": "2106.6",
+      "observed": "2106.60",
+      "match": true
+    },
+    {
+      "index": 291,
+      "minutes": 471,
+      "rate": "316.59",
+      "exact_amount_rational": "4970463/2000",
+      "expected": "2485.23",
+      "observed": "2485.23",
+      "match": true
+    },
+    {
+      "index": 292,
+      "minutes": 746,
+      "rate": "405.31",
+      "exact_amount_rational": "15118063/3000",
+      "expected": "5039.35",
+      "observed": "5039.35",
+      "match": true
+    },
+    {
+      "index": 293,
+      "minutes": 187,
+      "rate": "415.72",
+      "exact_amount_rational": "1943491/1500",
+      "expected": "1295.66",
+      "observed": "1295.66",
+      "match": true
+    },
+    {
+      "index": 294,
+      "minutes": 1286,
+      "rate": "635.81",
+      "exact_amount_rational": "40882583/3000",
+      "expected": "13627.53",
+      "observed": "13627.53",
+      "match": true
+    },
+    {
+      "index": 295,
+      "minutes": 215,
+      "rate": "547.79",
+      "exact_amount_rational": "2355497/1200",
+      "expected": "1962.91",
+      "observed": "1962.91",
+      "match": true
+    },
+    {
+      "index": 296,
+      "minutes": 321,
+      "rate": "109.18",
+      "exact_amount_rational": "584113/1000",
+      "expected": "584.11",
+      "observed": "584.11",
+      "match": true
+    },
+    {
+      "index": 297,
+      "minutes": 1285,
+      "rate": "666.5",
+      "exact_amount_rational": "342581/24",
+      "expected": "14274.21",
+      "observed": "14274.21",
+      "match": true
+    },
+    {
+      "index": 298,
+      "minutes": 671,
+      "rate": "457.68",
+      "exact_amount_rational": "1279597/250",
+      "expected": "5118.39",
+      "observed": "5118.39",
+      "match": true
+    },
+    {
+      "index": 299,
+      "minutes": 842,
+      "rate": "206.02",
+      "exact_amount_rational": "4336721/1500",
+      "expected": "2891.15",
+      "observed": "2891.15",
+      "match": true
+    },
+    {
+      "index": 300,
+      "minutes": 176,
+      "rate": "509.33",
+      "exact_amount_rational": "560263/375",
+      "expected": "1494.03",
+      "observed": "1494.03",
+      "match": true
+    },
+    {
+      "index": 301,
+      "minutes": 691,
+      "rate": "523.18",
+      "exact_amount_rational": "18075869/3000",
+      "expected": "6025.29",
+      "observed": "6025.29",
+      "match": true
+    },
+    {
+      "index": 302,
+      "minutes": 26,
+      "rate": "731.77",
+      "exact_amount_rational": "951301/3000",
+      "expected": "317.1",
+      "observed": "317.10",
+      "match": true
+    },
+    {
+      "index": 303,
+      "minutes": 89,
+      "rate": "59.63",
+      "exact_amount_rational": "530707/6000",
+      "expected": "88.45",
+      "observed": "88.45",
+      "match": true
+    },
+    {
+      "index": 304,
+      "minutes": 699,
+      "rate": "363.47",
+      "exact_amount_rational": "8468851/2000",
+      "expected": "4234.43",
+      "observed": "4234.43",
+      "match": true
+    },
+    {
+      "index": 305,
+      "minutes": 290,
+      "rate": "603.87",
+      "exact_amount_rational": "583741/200",
+      "expected": "2918.71",
+      "observed": "2918.71",
+      "match": true
+    },
+    {
+      "index": 306,
+      "minutes": 600,
+      "rate": "611.23",
+      "exact_amount_rational": "61123/10",
+      "expected": "6112.3",
+      "observed": "6112.30",
+      "match": true
+    },
+    {
+      "index": 307,
+      "minutes": 917,
+      "rate": "157.78",
+      "exact_amount_rational": "7234213/3000",
+      "expected": "2411.4",
+      "observed": "2411.40",
+      "match": true
+    },
+    {
+      "index": 308,
+      "minutes": 171,
+      "rate": "958.86",
+      "exact_amount_rational": "2732751/1000",
+      "expected": "2732.75",
+      "observed": "2732.75",
+      "match": true
+    },
+    {
+      "index": 309,
+      "minutes": 654,
+      "rate": "545.36",
+      "exact_amount_rational": "743053/125",
+      "expected": "5944.42",
+      "observed": "5944.42",
+      "match": true
+    },
+    {
+      "index": 310,
+      "minutes": 1155,
+      "rate": "126.56",
+      "exact_amount_rational": "60907/25",
+      "expected": "2436.28",
+      "observed": "2436.28",
+      "match": true
+    },
+    {
+      "index": 311,
+      "minutes": 681,
+      "rate": "78.13",
+      "exact_amount_rational": "1773551/2000",
+      "expected": "886.78",
+      "observed": "886.78",
+      "match": true
+    },
+    {
+      "index": 312,
+      "minutes": 655,
+      "rate": "271.49",
+      "exact_amount_rational": "3556519/1200",
+      "expected": "2963.77",
+      "observed": "2963.77",
+      "match": true
+    },
+    {
+      "index": 313,
+      "minutes": 1416,
+      "rate": "606.91",
+      "exact_amount_rational": "3580769/250",
+      "expected": "14323.08",
+      "observed": "14323.08",
+      "match": true
+    },
+    {
+      "index": 314,
+      "minutes": 631,
+      "rate": "286.93",
+      "exact_amount_rational": "18105283/6000",
+      "expected": "3017.55",
+      "observed": "3017.55",
+      "match": true
+    },
+    {
+      "index": 315,
+      "minutes": 1302,
+      "rate": "841.88",
+      "exact_amount_rational": "4567199/250",
+      "expected": "18268.8",
+      "observed": "18268.80",
+      "match": true
+    },
+    {
+      "index": 316,
+      "minutes": 529,
+      "rate": "248.17",
+      "exact_amount_rational": "13128193/6000",
+      "expected": "2188.03",
+      "observed": "2188.03",
+      "match": true
+    },
+    {
+      "index": 317,
+      "minutes": 1273,
+      "rate": "857.95",
+      "exact_amount_rational": "21843407/1200",
+      "expected": "18202.84",
+      "observed": "18202.84",
+      "match": true
+    },
+    {
+      "index": 318,
+      "minutes": 334,
+      "rate": "65.34",
+      "exact_amount_rational": "181863/500",
+      "expected": "363.73",
+      "observed": "363.73",
+      "match": true
+    },
+    {
+      "index": 319,
+      "minutes": 1342,
+      "rate": "450.71",
+      "exact_amount_rational": "30242641/3000",
+      "expected": "10080.88",
+      "observed": "10080.88",
+      "match": true
+    },
+    {
+      "index": 320,
+      "minutes": 964,
+      "rate": "126.24",
+      "exact_amount_rational": "253532/125",
+      "expected": "2028.26",
+      "observed": "2028.26",
+      "match": true
+    },
+    {
+      "index": 321,
+      "minutes": 205,
+      "rate": "328",
+      "exact_amount_rational": "3362/3",
+      "expected": "1120.67",
+      "observed": "1120.67",
+      "match": true
+    },
+    {
+      "index": 322,
+      "minutes": 597,
+      "rate": "203.98",
+      "exact_amount_rational": "2029601/1000",
+      "expected": "2029.6",
+      "observed": "2029.60",
+      "match": true
+    },
+    {
+      "index": 323,
+      "minutes": 35,
+      "rate": "452.01",
+      "exact_amount_rational": "105469/400",
+      "expected": "263.67",
+      "observed": "263.67",
+      "match": true
+    },
+    {
+      "index": 324,
+      "minutes": 164,
+      "rate": "448.21",
+      "exact_amount_rational": "1837661/1500",
+      "expected": "1225.11",
+      "observed": "1225.11",
+      "match": true
+    },
+    {
+      "index": 325,
+      "minutes": 673,
+      "rate": "773.15",
+      "exact_amount_rational": "10406599/1200",
+      "expected": "8672.17",
+      "observed": "8672.17",
+      "match": true
+    },
+    {
+      "index": 326,
+      "minutes": 1437,
+      "rate": "497.63",
+      "exact_amount_rational": "23836477/2000",
+      "expected": "11918.24",
+      "observed": "11918.24",
+      "match": true
+    },
+    {
+      "index": 327,
+      "minutes": 1286,
+      "rate": "735.9",
+      "exact_amount_rational": "1577279/100",
+      "expected": "15772.79",
+      "observed": "15772.79",
+      "match": true
+    },
+    {
+      "index": 328,
+      "minutes": 380,
+      "rate": "632.24",
+      "exact_amount_rational": "300314/75",
+      "expected": "4004.19",
+      "observed": "4004.19",
+      "match": true
+    },
+    {
+      "index": 329,
+      "minutes": 720,
+      "rate": "343.42",
+      "exact_amount_rational": "103026/25",
+      "expected": "4121.04",
+      "observed": "4121.04",
+      "match": true
+    },
+    {
+      "index": 330,
+      "minutes": 362,
+      "rate": "688.5",
+      "exact_amount_rational": "83079/20",
+      "expected": "4153.95",
+      "observed": "4153.95",
+      "match": true
+    },
+    {
+      "index": 331,
+      "minutes": 656,
+      "rate": "596.48",
+      "exact_amount_rational": "2445568/375",
+      "expected": "6521.51",
+      "observed": "6521.51",
+      "match": true
+    },
+    {
+      "index": 332,
+      "minutes": 867,
+      "rate": "936.95",
+      "exact_amount_rational": "5415571/400",
+      "expected": "13538.93",
+      "observed": "13538.93",
+      "match": true
+    },
+    {
+      "index": 333,
+      "minutes": 180,
+      "rate": "343.95",
+      "exact_amount_rational": "20637/20",
+      "expected": "1031.85",
+      "observed": "1031.85",
+      "match": true
+    },
+    {
+      "index": 334,
+      "minutes": 1198,
+      "rate": "423.11",
+      "exact_amount_rational": "25344289/3000",
+      "expected": "8448.1",
+      "observed": "8448.10",
+      "match": true
+    },
+    {
+      "index": 335,
+      "minutes": 1025,
+      "rate": "777.36",
+      "exact_amount_rational": "132799/10",
+      "expected": "13279.9",
+      "observed": "13279.90",
+      "match": true
+    },
+    {
+      "index": 336,
+      "minutes": 1120,
+      "rate": "980.12",
+      "exact_amount_rational": "1372168/75",
+      "expected": "18295.57",
+      "observed": "18295.57",
+      "match": true
+    },
+    {
+      "index": 337,
+      "minutes": 1330,
+      "rate": "239.46",
+      "exact_amount_rational": "530803/100",
+      "expected": "5308.03",
+      "observed": "5308.03",
+      "match": true
+    },
+    {
+      "index": 338,
+      "minutes": 224,
+      "rate": "118.56",
+      "exact_amount_rational": "55328/125",
+      "expected": "442.62",
+      "observed": "442.62",
+      "match": true
+    },
+    {
+      "index": 339,
+      "minutes": 1212,
+      "rate": "484.43",
+      "exact_amount_rational": "4892743/500",
+      "expected": "9785.49",
+      "observed": "9785.49",
+      "match": true
+    },
+    {
+      "index": 340,
+      "minutes": 675,
+      "rate": "573.22",
+      "exact_amount_rational": "257949/40",
+      "expected": "6448.73",
+      "observed": "6448.73",
+      "match": true
+    },
+    {
+      "index": 341,
+      "minutes": 640,
+      "rate": "695.57",
+      "exact_amount_rational": "556456/75",
+      "expected": "7419.41",
+      "observed": "7419.41",
+      "match": true
+    },
+    {
+      "index": 342,
+      "minutes": 414,
+      "rate": "63.51",
+      "exact_amount_rational": "438219/1000",
+      "expected": "438.22",
+      "observed": "438.22",
+      "match": true
+    },
+    {
+      "index": 343,
+      "minutes": 1176,
+      "rate": "509.33",
+      "exact_amount_rational": "2495717/250",
+      "expected": "9982.87",
+      "observed": "9982.87",
+      "match": true
+    },
+    {
+      "index": 344,
+      "minutes": 522,
+      "rate": "920.17",
+      "exact_amount_rational": "8005479/1000",
+      "expected": "8005.48",
+      "observed": "8005.48",
+      "match": true
+    },
+    {
+      "index": 345,
+      "minutes": 397,
+      "rate": "718.92",
+      "exact_amount_rational": "2378427/500",
+      "expected": "4756.85",
+      "observed": "4756.85",
+      "match": true
+    },
+    {
+      "index": 346,
+      "minutes": 605,
+      "rate": "741.72",
+      "exact_amount_rational": "747901/100",
+      "expected": "7479.01",
+      "observed": "7479.01",
+      "match": true
+    },
+    {
+      "index": 347,
+      "minutes": 1346,
+      "rate": "645.58",
+      "exact_amount_rational": "21723767/1500",
+      "expected": "14482.51",
+      "observed": "14482.51",
+      "match": true
+    },
+    {
+      "index": 348,
+      "minutes": 360,
+      "rate": "49.86",
+      "exact_amount_rational": "7479/25",
+      "expected": "299.16",
+      "observed": "299.16",
+      "match": true
+    },
+    {
+      "index": 349,
+      "minutes": 397,
+      "rate": "227.79",
+      "exact_amount_rational": "3014421/2000",
+      "expected": "1507.21",
+      "observed": "1507.21",
+      "match": true
+    },
+    {
+      "index": 350,
+      "minutes": 176,
+      "rate": "83.97",
+      "exact_amount_rational": "30789/125",
+      "expected": "246.31",
+      "observed": "246.31",
+      "match": true
+    },
+    {
+      "index": 351,
+      "minutes": 1252,
+      "rate": "576.55",
+      "exact_amount_rational": "3609203/300",
+      "expected": "12030.68",
+      "observed": "12030.68",
+      "match": true
+    },
+    {
+      "index": 352,
+      "minutes": 793,
+      "rate": "26.07",
+      "exact_amount_rational": "689117/2000",
+      "expected": "344.56",
+      "observed": "344.56",
+      "match": true
+    },
+    {
+      "index": 353,
+      "minutes": 1036,
+      "rate": "286.71",
+      "exact_amount_rational": "2475263/500",
+      "expected": "4950.53",
+      "observed": "4950.53",
+      "match": true
+    },
+    {
+      "index": 354,
+      "minutes": 818,
+      "rate": "535.38",
+      "exact_amount_rational": "3649507/500",
+      "expected": "7299.01",
+      "observed": "7299.01",
+      "match": true
+    },
+    {
+      "index": 355,
+      "minutes": 1350,
+      "rate": "563.12",
+      "exact_amount_rational": "63351/5",
+      "expected": "12670.2",
+      "observed": "12670.20",
+      "match": true
+    },
+    {
+      "index": 356,
+      "minutes": 1429,
+      "rate": "273.79",
+      "exact_amount_rational": "39124591/6000",
+      "expected": "6520.77",
+      "observed": "6520.77",
+      "match": true
+    },
+    {
+      "index": 357,
+      "minutes": 54,
+      "rate": "754.86",
+      "exact_amount_rational": "339687/500",
+      "expected": "679.37",
+      "observed": "679.37",
+      "match": true
+    },
+    {
+      "index": 358,
+      "minutes": 1259,
+      "rate": "316.09",
+      "exact_amount_rational": "39795731/6000",
+      "expected": "6632.62",
+      "observed": "6632.62",
+      "match": true
+    },
+    {
+      "index": 359,
+      "minutes": 292,
+      "rate": "162.81",
+      "exact_amount_rational": "396171/500",
+      "expected": "792.34",
+      "observed": "792.34",
+      "match": true
+    },
+    {
+      "index": 360,
+      "minutes": 1011,
+      "rate": "702.23",
+      "exact_amount_rational": "23665151/2000",
+      "expected": "11832.58",
+      "observed": "11832.58",
+      "match": true
+    },
+    {
+      "index": 361,
+      "minutes": 906,
+      "rate": "292.08",
+      "exact_amount_rational": "551301/125",
+      "expected": "4410.41",
+      "observed": "4410.41",
+      "match": true
+    },
+    {
+      "index": 362,
+      "minutes": 164,
+      "rate": "679.1",
+      "exact_amount_rational": "278431/150",
+      "expected": "1856.21",
+      "observed": "1856.21",
+      "match": true
+    },
+    {
+      "index": 363,
+      "minutes": 216,
+      "rate": "836.27",
+      "exact_amount_rational": "752643/250",
+      "expected": "3010.57",
+      "observed": "3010.57",
+      "match": true
+    },
+    {
+      "index": 364,
+      "minutes": 248,
+      "rate": "935.9",
+      "exact_amount_rational": "290129/75",
+      "expected": "3868.39",
+      "observed": "3868.39",
+      "match": true
+    },
+    {
+      "index": 365,
+      "minutes": 1371,
+      "rate": "738.06",
+      "exact_amount_rational": "16864671/1000",
+      "expected": "16864.67",
+      "observed": "16864.67",
+      "match": true
+    },
+    {
+      "index": 366,
+      "minutes": 575,
+      "rate": "672.72",
+      "exact_amount_rational": "64469/10",
+      "expected": "6446.9",
+      "observed": "6446.90",
+      "match": true
+    },
+    {
+      "index": 367,
+      "minutes": 374,
+      "rate": "13.52",
+      "exact_amount_rational": "31603/375",
+      "expected": "84.27",
+      "observed": "84.27",
+      "match": true
+    },
+    {
+      "index": 368,
+      "minutes": 349,
+      "rate": "901.68",
+      "exact_amount_rational": "1311193/250",
+      "expected": "5244.77",
+      "observed": "5244.77",
+      "match": true
+    },
+    {
+      "index": 369,
+      "minutes": 725,
+      "rate": "744.05",
+      "exact_amount_rational": "431549/48",
+      "expected": "8990.6",
+      "observed": "8990.60",
+      "match": true
+    },
+    {
+      "index": 370,
+      "minutes": 1069,
+      "rate": "527.8",
+      "exact_amount_rational": "2821091/300",
+      "expected": "9403.64",
+      "observed": "9403.64",
+      "match": true
+    },
+    {
+      "index": 371,
+      "minutes": 409,
+      "rate": "566.09",
+      "exact_amount_rational": "23153081/6000",
+      "expected": "3858.85",
+      "observed": "3858.85",
+      "match": true
+    },
+    {
+      "index": 372,
+      "minutes": 940,
+      "rate": "288.99",
+      "exact_amount_rational": "452751/100",
+      "expected": "4527.51",
+      "observed": "4527.51",
+      "match": true
+    },
+    {
+      "index": 373,
+      "minutes": 708,
+      "rate": "14.63",
+      "exact_amount_rational": "86317/500",
+      "expected": "172.63",
+      "observed": "172.63",
+      "match": true
+    },
+    {
+      "index": 374,
+      "minutes": 283,
+      "rate": "573.24",
+      "exact_amount_rational": "1351891/500",
+      "expected": "2703.78",
+      "observed": "2703.78",
+      "match": true
+    },
+    {
+      "index": 375,
+      "minutes": 1016,
+      "rate": "183.58",
+      "exact_amount_rational": "1165733/375",
+      "expected": "3108.62",
+      "observed": "3108.62",
+      "match": true
+    },
+    {
+      "index": 376,
+      "minutes": 305,
+      "rate": "847.39",
+      "exact_amount_rational": "5169079/1200",
+      "expected": "4307.57",
+      "observed": "4307.57",
+      "match": true
+    },
+    {
+      "index": 377,
+      "minutes": 924,
+      "rate": "815.57",
+      "exact_amount_rational": "6279889/500",
+      "expected": "12559.78",
+      "observed": "12559.78",
+      "match": true
+    },
+    {
+      "index": 378,
+      "minutes": 376,
+      "rate": "402.09",
+      "exact_amount_rational": "629941/250",
+      "expected": "2519.76",
+      "observed": "2519.76",
+      "match": true
+    },
+    {
+      "index": 379,
+      "minutes": 825,
+      "rate": "104.25",
+      "exact_amount_rational": "22935/16",
+      "expected": "1433.44",
+      "observed": "1433.44",
+      "match": true
+    },
+    {
+      "index": 380,
+      "minutes": 643,
+      "rate": "380.41",
+      "exact_amount_rational": "24460363/6000",
+      "expected": "4076.73",
+      "observed": "4076.73",
+      "match": true
+    },
+    {
+      "index": 381,
+      "minutes": 568,
+      "rate": "843.14",
+      "exact_amount_rational": "2993147/375",
+      "expected": "7981.73",
+      "observed": "7981.73",
+      "match": true
+    },
+    {
+      "index": 382,
+      "minutes": 174,
+      "rate": "541.54",
+      "exact_amount_rational": "785233/500",
+      "expected": "1570.47",
+      "observed": "1570.47",
+      "match": true
+    },
+    {
+      "index": 383,
+      "minutes": 716,
+      "rate": "276.39",
+      "exact_amount_rational": "1649127/500",
+      "expected": "3298.25",
+      "observed": "3298.25",
+      "match": true
+    },
+    {
+      "index": 384,
+      "minutes": 1170,
+      "rate": "635.28",
+      "exact_amount_rational": "309699/25",
+      "expected": "12387.96",
+      "observed": "12387.96",
+      "match": true
+    },
+    {
+      "index": 385,
+      "minutes": 529,
+      "rate": "769.1",
+      "exact_amount_rational": "4068539/600",
+      "expected": "6780.9",
+      "observed": "6780.90",
+      "match": true
+    },
+    {
+      "index": 386,
+      "minutes": 226,
+      "rate": "685.57",
+      "exact_amount_rational": "7746941/3000",
+      "expected": "2582.31",
+      "observed": "2582.31",
+      "match": true
+    },
+    {
+      "index": 387,
+      "minutes": 752,
+      "rate": "491.55",
+      "exact_amount_rational": "154019/25",
+      "expected": "6160.76",
+      "observed": "6160.76",
+      "match": true
+    },
+    {
+      "index": 388,
+      "minutes": 562,
+      "rate": "835.18",
+      "exact_amount_rational": "11734279/1500",
+      "expected": "7822.85",
+      "observed": "7822.85",
+      "match": true
+    },
+    {
+      "index": 389,
+      "minutes": 318,
+      "rate": "918.79",
+      "exact_amount_rational": "4869587/1000",
+      "expected": "4869.59",
+      "observed": "4869.59",
+      "match": true
+    },
+    {
+      "index": 390,
+      "minutes": 366,
+      "rate": "537",
+      "exact_amount_rational": "32757/10",
+      "expected": "3275.7",
+      "observed": "3275.70",
+      "match": true
+    },
+    {
+      "index": 391,
+      "minutes": 809,
+      "rate": "189.91",
+      "exact_amount_rational": "15363719/6000",
+      "expected": "2560.62",
+      "observed": "2560.62",
+      "match": true
+    },
+    {
+      "index": 392,
+      "minutes": 1150,
+      "rate": "544.28",
+      "exact_amount_rational": "312961/30",
+      "expected": "10432.03",
+      "observed": "10432.03",
+      "match": true
+    },
+    {
+      "index": 393,
+      "minutes": 10,
+      "rate": "943.95",
+      "exact_amount_rational": "6293/40",
+      "expected": "157.33",
+      "observed": "157.33",
+      "match": true
+    },
+    {
+      "index": 394,
+      "minutes": 1403,
+      "rate": "909.29",
+      "exact_amount_rational": "127573387/6000",
+      "expected": "21262.23",
+      "observed": "21262.23",
+      "match": true
+    },
+    {
+      "index": 395,
+      "minutes": 640,
+      "rate": "580.1",
+      "exact_amount_rational": "92816/15",
+      "expected": "6187.73",
+      "observed": "6187.73",
+      "match": true
+    },
+    {
+      "index": 396,
+      "minutes": 441,
+      "rate": "360.06",
+      "exact_amount_rational": "2646441/1000",
+      "expected": "2646.44",
+      "observed": "2646.44",
+      "match": true
+    },
+    {
+      "index": 397,
+      "minutes": 628,
+      "rate": "58.46",
+      "exact_amount_rational": "458911/750",
+      "expected": "611.88",
+      "observed": "611.88",
+      "match": true
+    },
+    {
+      "index": 398,
+      "minutes": 734,
+      "rate": "351.8",
+      "exact_amount_rational": "645553/150",
+      "expected": "4303.69",
+      "observed": "4303.69",
+      "match": true
+    },
+    {
+      "index": 399,
+      "minutes": 514,
+      "rate": "136.81",
+      "exact_amount_rational": "3516017/3000",
+      "expected": "1172.01",
+      "observed": "1172.01",
+      "match": true
+    }
+  ],
+  "oracle": "positive exact integer cents: floor((minutes * rate_cents + 30) / 60); half-up tie established by exact Fraction, stdlib Decimal at precision80 as second check",
+  "native_HTTP": {
+    "observed": {
+      "number": "AEKR-2026-0001",
+      "total": "0.50",
+      "line_minutes": 2,
+      "line_rate": "15.15",
+      "line_amount": "0.50"
+    },
+    "expected_total": "0.51",
+    "exact": "0.505",
+    "status": 200,
+    "fresh_SQL": true
+  },
+  "exported_PDF": {
+    "status": 200,
+    "sha256": "5bc41b82b46662149a46a361a310d14c5f3a78e8854a2ac86ce4adc684da1989",
+    "text": "Liquidaci\u00f3n de servicios \u00b7 AEKR-2026-0001\n2026-10-19 \u2014 2026-10-25 \u00b7 2026-10-26 \u00b7 USD\nSynthetic Consulting Ltd\nSynthetic Issuer\nServicio / semana Minutos H:MM Tarifa/h Importe\nSCALE Consulting Fixture\n2026-10-19 2 0:02 15.15 0.50\nTiempo total: 2 minutos \u00b7 0:02\nUSD 0.50\nDocumento comercial de liquidaci\u00f3n de servicios. El documento tributario aplicable se emite por separado\ncuando corresponda.\nBORRADOR\ntime\n1\nDetalle del tiempo\nFecha Descripci\u00f3n Minutos\n2026-10-19 2\nBORRADOR\n2",
+    "observed_total": "0.50",
+    "expected_total": "0.51"
+  },
+  "report_CSV": {
+    "status": 200,
+    "rows": [
+      {
+        "Client": "Fixture Consulting",
+        "Month": "2026-10",
+        "Minutes": "2",
+        "H:MM": "0:02",
+        "Currency": "USD",
+        "Hourly estimate": "0.50",
+        "Unbilled hourly minutes": "0",
+        "Minutes with unknown retained rate": "0"
+      }
+    ],
+    "observed_hourly_estimate": "0.50",
+    "expected_hourly_estimate": "0.51"
+  }
+}

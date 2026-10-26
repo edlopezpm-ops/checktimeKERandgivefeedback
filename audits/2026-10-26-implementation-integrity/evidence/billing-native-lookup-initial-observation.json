@@ -1,0 +1,30 @@
+{
+  "snapshot_config": "test/full create_app, own loopback timeker_diagnostic_test, no test imports/no route patches",
+  "requirement": "Native lookup search/paging preserves chosen dates and selector controls, including clearing selected client when page size1",
+  "initial_billing_status": 200,
+  "actual_form_method": "get",
+  "actual_form_action": "/billing/work",
+  "actual_lookup_button": {
+    "name": "_lookup",
+    "value": "client_id:search",
+    "aria-label": "Search client records"
+  },
+  "period_start_submitted": "2026-10-01",
+  "period_end_submitted": "2026-10-31",
+  "cleared_client_lookup_status": 400,
+  "cleared_client_error_page": true,
+  "cleared_client_period_controls_preserved": false,
+  "selected_client_lookup_status": 200,
+  "selected_client_wrong_work_page": true,
+  "selected_client_lookup_controls_preserved": false,
+  "normal_business_action_status": 200,
+  "normal_business_action_work_page": true,
+  "source_locations": [
+    "app/web/templates/billing.html:4",
+    "app/web/templates/lookup.html:17-19",
+    "app/main.py:1539"
+  ],
+  "source_modules": {
+    "create_app": "<AUDIT_ROOT>\\sandbox\\product\\app\\main.py"
+  }
+}

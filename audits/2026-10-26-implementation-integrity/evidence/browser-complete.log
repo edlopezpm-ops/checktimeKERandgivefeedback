@@ -1,0 +1,1346 @@
+EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE...EEE.... [ 21%]
+................F....................................................... [ 43%]
+........................................FF.............................. [ 65%]
+...FF..............................FFFF................................. [ 87%]
+..FFF..................FF..........FFF..                                 [100%]
+=================================== ERRORS ====================================
+_____ ERROR at setup of test_export_then_close_native_account[1440-True] ______
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+______ ERROR at setup of test_export_then_close_native_account[390-True] ______
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_____ ERROR at setup of test_export_then_close_native_account[390-False] ______
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_archive_settings_exports_and_screen_accessibility[1440-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_archive_settings_exports_and_screen_accessibility[390-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_archive_settings_exports_and_screen_accessibility[1440-False] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+______________ ERROR at setup of test_complete_browser_workflow _______________
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_____ ERROR at setup of test_visual_accessibility_primary_pages[1440-900] _____
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_____ ERROR at setup of test_visual_accessibility_primary_pages[1280-800] _____
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_____ ERROR at setup of test_visual_accessibility_primary_pages[390-844] ______
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+__________________ ERROR at setup of test_without_javascript __________________
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+______ ERROR at setup of test_additional_modules_accessibility[1440-900] ______
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+______ ERROR at setup of test_additional_modules_accessibility[390-844] _______
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_unsaved_settings_survive_revocation_and_new_tab_login _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_sessions_native_controls_and_accessibility[1440-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_sessions_native_controls_and_accessibility[390-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_sessions_native_controls_and_accessibility[390-False] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_case_mass_edit_project_filter_native_fallback_and_status_type_only[1280-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-False] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_case_single_form_dependency_and_enter_save[1280-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_case_single_form_dependency_and_enter_save[390-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_case_single_form_dependency_and_enter_save[1280-False] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_case_single_form_dependency_and_enter_save[390-False] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_cases_typed_search_keeps_focus_and_updates_only_results[1280] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_cases_typed_search_keeps_focus_and_updates_only_results[390] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_clock_uses_browser_zone_and_fractional_seconds[America/New_York-10-15] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_clock_uses_browser_zone_and_fractional_seconds[Europe/Madrid-16-15] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_clock_uses_browser_zone_and_fractional_seconds[Asia/Kathmandu-20-0] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_________ ERROR at setup of test_clock_rollover_and_visibility_resync _________
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_clock_respects_reduced_motion_and_preference_changes _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+______ ERROR at setup of test_contact_preview_and_repeated_session[1440] ______
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+______ ERROR at setup of test_contact_preview_and_repeated_session[390] _______
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+______________ ERROR at setup of test_contact_without_javascript ______________
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_mobile_open_preferences_preserve_sign_in_flow[568-320] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_mobile_open_preferences_preserve_sign_in_flow[568-390] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_mobile_open_preferences_preserve_sign_in_flow[568-760] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_mobile_open_preferences_preserve_sign_in_flow[568-1024] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_mobile_open_preferences_preserve_sign_in_flow[844-320] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_mobile_open_preferences_preserve_sign_in_flow[844-390] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_mobile_open_preferences_preserve_sign_in_flow[844-760] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_mobile_open_preferences_preserve_sign_in_flow[844-1024] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_cookie_choices_are_nonmodal_reversible_and_private[1440] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_cookie_choices_are_nonmodal_reversible_and_private[390] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_browser_privacy_signals_keep_marketing_refused[gpc-header] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_browser_privacy_signals_keep_marketing_refused[dnt-header] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_browser_privacy_signals_keep_marketing_refused[gpc-browser] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_cookie_choice_without_javascript_and_failure_keeps_control _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_owner_reviewed_credit_preserves_original_and_downloads_note[390-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-False] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+____ ERROR at setup of test_cancel_draft_has_distinct_action_and_no_credit ____
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[1440-True-1] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-True-50] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-False-1] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_outstanding_five_rows_preserve_card_chart_and_native_navigation[1440-True-1] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-True-50] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-False-1] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_authorize_reaches_registered_callback_with_persisted_code _
+tests\e2e\test_delegated_oauth_browser.py:49: in server
+    yield from local_server.__wrapped__(factory)
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_decline_reaches_callback_without_creating_credentials _
+tests\e2e\test_delegated_oauth_browser.py:49: in server
+    yield from local_server.__wrapped__(factory)
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_modified_consent_rejects_without_callback_or_grant[scope] _
+tests\e2e\test_delegated_oauth_browser.py:49: in server
+    yield from local_server.__wrapped__(factory)
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_modified_consent_rejects_without_callback_or_grant[csrf] _
+tests\e2e\test_delegated_oauth_browser.py:49: in server
+    yield from local_server.__wrapped__(factory)
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[1440-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-True] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+_ ERROR at setup of test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-False] _
+tests\e2e\conftest.py:35: in server
+    with Path(".local/e2e-server.log").open("w", encoding="utf-8") as log:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<USER_HOME>\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '.local\\e2e-server.log'
+================================== FAILURES ===================================
+__________ test_native_single_slot_clear_browse_and_billing_periods ___________
+tests\e2e\test_lookups_browser.py:82: in test_native_single_slot_clear_browse_and_billing_periods
+    expect(page.get_by_label("Period start", exact=True)).to_have_value("2026-10-01")
+E   AssertionError: Locator expected to have Value '2026-10-01'
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_have_value" get_by_label("Period start", exact=True) with timeout 5000ms
+E     - waiting for get_by_label("Period start", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EL
+E     - button "Menu"
+E   - main:
+E     - alert:
+E       - heading "Invalid request" [level=1]
+E       - paragraph: Review the supplied date or identifier.
+E       - button "Back"
+E       - link "Dashboard":
+E         - /url: /dashboard
+E     - group: help
+E   - group:
+E     - text: Close
+E     - region "Cookies and privacy choices":
+E       - heading "Cookies and privacy choices" [level=2]
+E       - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.
+E       - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.
+E       - paragraph:
+E         - text: You can reject or change your choice here at any time without affecting access.
+E         - link "Read privacy and cookies":
+E           - /url: /?info=privacy#privacy-and-cookies
+E       - paragraph: Optional measurement is disabled in this environment.
+E       - paragraph: No optional preference has been selected.
+E       - button "Accept measurement" [disabled]
+E       - button "Reject nonessential"
+_______________ test_fixed_fee_and_authorized_extra[1440-True] ________________
+tests\e2e\test_project_billing_browser.py:33: in test_fixed_fee_and_authorized_extra
+    expect(page.get_by_text("Fixed fee", exact=True)).to_be_visible()
+E   AssertionError: Locator expected to be visible
+E   Actual value: None
+E   Error: strict mode violation: get_by_text("Fixed fee", exact=True) resolved to 2 elements:
+E       1) <h2>Fixed fee</h2> aka get_by_role("heading", name="Fixed fee")
+E       2) <h3>Fixed fee</h3> aka locator("#screen-help-dialog").get_by_text("Fixed fee", exact=True)
+E    
+E   Call log:
+E     - Expect "to_be_visible" get_by_text("Fixed fee", exact=True) with timeout 5000ms
+E     - waiting for get_by_text("Fixed fee", exact=True)
+________________ test_fixed_fee_and_authorized_extra[390-True] ________________
+tests\e2e\test_project_billing_browser.py:33: in test_fixed_fee_and_authorized_extra
+    expect(page.get_by_text("Fixed fee", exact=True)).to_be_visible()
+E   AssertionError: Locator expected to be visible
+E   Actual value: None
+E   Error: strict mode violation: get_by_text("Fixed fee", exact=True) resolved to 2 elements:
+E       1) <h2>Fixed fee</h2> aka get_by_role("heading", name="Fixed fee")
+E       2) <h3>Fixed fee</h3> aka locator("#screen-help-dialog").get_by_text("Fixed fee", exact=True)
+E    
+E   Call log:
+E     - Expect "to_be_visible" get_by_text("Fixed fee", exact=True) with timeout 5000ms
+E     - waiting for get_by_text("Fixed fee", exact=True)
+___ test_review_confirmation_stop_and_templates_use_native_forms[1440-True] ___
+tests\e2e\test_sending_browser.py:59: in test_review_confirmation_stop_and_templates_use_native_forms
+    expect(page.get_by_role("heading", name="Review sending", exact=True)).to_be_visible()
+E   AssertionError: Locator expected to be visible
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_be_visible" get_by_role("heading", name="Review sending", exact=True) with timeout 5000ms
+E     - waiting for get_by_role("heading", name="Review sending", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - text: clients • billing • timecards
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EO
+E     - text: Example Owner
+E   - complementary:
+E     - navigation "Primary":
+E       - link "Dashboard":
+E         - /url: /dashboard
+E       - link "Clients":
+E         - /url: /clients
+E       - link "Projects":
+E         - /url: /projects
+E       - link "Timecards":
+E         - /url: /timecards
+E       - link "Cases":
+E         - /url: /cases
+E       - link "Mail":
+E         - /url: /mail
+E       - link "Billing":
+E         - /url: /billing
+E       - link "Sending":
+E         - /url: /sending
+E       - link "Reports":
+E         - /url: /reports
+E       - link "Archive":
+E         - /url: /archive
+E       - link "Settings":
+E         - /url: /settings
+E       - link "Audit history":
+E         - /url: /audit
+E     - text: AEKR Private workspace
+E   - main:
+E     - alert:
+E       - text: The session check could not finish. Your changes are still here. Check your connection and submit again.
+E       - link "Open sign-in in a new tab":
+E         - /url: /
+E     - note: Stage
+E     - heading "Prepare sending" [level=1]
+E     - paragraph:
+E       - link "SYNTHETIC-001":
+E         - /url: /billing/10000000-0000-0000-0000-000000000001
+E       - text: · Example Studio <private> · USD 30.00
+E     - link "Back":
+E       - /url: /sending
+E     - note:
+E       - strong: Sending is not configured.
+E       - text: You can review and prepare statements. No outgoing email or scheduled follow-up can run until a separate sender is enabled.
+E     - heading "Statement message" [level=2]
+E     - paragraph: Choose the client's confirmed recipient and review the issued PDF. Preparing a message does not change its payment or receipt status.
+E     - paragraph:
+E       - link "Open issued PDF":
+E         - /url: /billing/10000000-0000-0000-0000-000000000001/pdf
+E       - text: · SYNTHETIC-001.pdf
+E     - paragraph:
+E       - text: "PDF SHA-256:"
+E       - code: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+E     - text: Recipient email *
+E     - textbox "Recipient email *": reviewed@example.com
+E     - text: One confirmed recipient. No CC or BCC. Subject *
+E     - textbox "Subject *": "Statement {invoice_number}"
+E     - text: Message
+E     - textbox "Message": An explicitly reviewed message.
+E     - paragraph:
+E       - text: "Placeholders:"
+E       - code: "{invoice_number}"
+E       - text: ","
+E       - code: "{client_name}"
+E       - text: ","
+E       - code: "{currency}"
+E       - text: ","
+E       - code: "{total}"
+E       - text: ","
+E       - code: "{balance}"
+E       - text: .
+E     - group "Unpaid follow-ups":
+E       - text: Unpaid follow-ups
+E       - checkbox "Enable follow-ups for this statement" [checked]
+E       - text: Enable follow-ups for this statement
+E       - paragraph: Off unless selected. Any payment, void or Stop cancels future messages. Reversing a payment does not restart sending.
+E       - text: Days between follow-ups
+E       - spinbutton "Days between follow-ups": "7"
+E       - text: Maximum follow-ups
+E       - spinbutton "Maximum follow-ups": "1"
+E       - text: Follow-up subject
+E       - textbox "Follow-up subject": "Follow-up {invoice_number}"
+E       - text: Follow-up message
+E       - textbox "Follow-up message": "Outstanding balance: {currency} {balance}."
+E     - button "Review message"
+E     - link "Cancel":
+E       - /url: /sending
+E     - group: help
+___ test_review_confirmation_stop_and_templates_use_native_forms[390-True] ____
+tests\e2e\test_sending_browser.py:59: in test_review_confirmation_stop_and_templates_use_native_forms
+    expect(page.get_by_role("heading", name="Review sending", exact=True)).to_be_visible()
+E   AssertionError: Locator expected to be visible
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_be_visible" get_by_role("heading", name="Review sending", exact=True) with timeout 5000ms
+E     - waiting for get_by_role("heading", name="Review sending", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EO
+E     - button "Menu"
+E   - main:
+E     - alert:
+E       - text: The session check could not finish. Your changes are still here. Check your connection and submit again.
+E       - link "Open sign-in in a new tab":
+E         - /url: /
+E     - note: Stage
+E     - heading "Prepare sending" [level=1]
+E     - paragraph:
+E       - link "SYNTHETIC-001":
+E         - /url: /billing/10000000-0000-0000-0000-000000000001
+E       - text: · Example Studio <private> · USD 30.00
+E     - link "Back":
+E       - /url: /sending
+E     - note:
+E       - strong: Sending is not configured.
+E       - text: You can review and prepare statements. No outgoing email or scheduled follow-up can run until a separate sender is enabled.
+E     - heading "Statement message" [level=2]
+E     - paragraph: Choose the client's confirmed recipient and review the issued PDF. Preparing a message does not change its payment or receipt status.
+E     - paragraph:
+E       - link "Open issued PDF":
+E         - /url: /billing/10000000-0000-0000-0000-000000000001/pdf
+E       - text: · SYNTHETIC-001.pdf
+E     - paragraph:
+E       - text: "PDF SHA-256:"
+E       - code: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+E     - text: Recipient email *
+E     - textbox "Recipient email *": reviewed@example.com
+E     - text: One confirmed recipient. No CC or BCC. Subject *
+E     - textbox "Subject *": "Statement {invoice_number}"
+E     - text: Message
+E     - textbox "Message": An explicitly reviewed message.
+E     - paragraph:
+E       - text: "Placeholders:"
+E       - code: "{invoice_number}"
+E       - text: ","
+E       - code: "{client_name}"
+E       - text: ","
+E       - code: "{currency}"
+E       - text: ","
+E       - code: "{total}"
+E       - text: ","
+E       - code: "{balance}"
+E       - text: .
+E     - group "Unpaid follow-ups":
+E       - text: Unpaid follow-ups
+E       - checkbox "Enable follow-ups for this statement" [checked]
+E       - text: Enable follow-ups for this statement
+E       - paragraph: Off unless selected. Any payment, void or Stop cancels future messages. Reversing a payment does not restart sending.
+E       - text: Days between follow-ups
+E       - spinbutton "Days between follow-ups": "7"
+E       - text: Maximum follow-ups
+E       - spinbutton "Maximum follow-ups": "1"
+E       - text: Follow-up subject
+E       - textbox "Follow-up subject": "Follow-up {invoice_number}"
+E       - text: Follow-up message
+E       - textbox "Follow-up message": "Outstanding balance: {currency} {balance}."
+E     - button "Review message"
+E     - link "Cancel":
+E       - /url: /sending
+E     - group: help
+____________ test_unicode_flexfield_save_and_numeric_identity[390] ____________
+tests\e2e\test_stage_refinements.py:119: in test_unicode_flexfield_save_and_numeric_identity
+    page.goto(f"{server}/projects/{project_id}/edit")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit", waiting until "load"
+___________ test_unicode_flexfield_save_and_numeric_identity[1440] ____________
+tests\e2e\test_stage_refinements.py:119: in test_unicode_flexfield_save_and_numeric_identity
+    page.goto(f"{server}/projects/{project_id}/edit")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/projects/f627e279-07da-500a-bd04-ca9d846aabf6/edit", waiting until "load"
+____________ test_full_preset_tiles_and_semantic_work_colors[390] _____________
+tests\e2e\test_stage_refinements.py:190: in test_full_preset_tiles_and_semantic_work_colors
+    expect(page.get_by_role("button", name="Create draft statement", exact=True)).to_have_class(
+E   AssertionError: Locator expected to have class 'draft-action'
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_have_class" get_by_role("button", name="Create draft statement", exact=True) with timeout 5000ms
+E     - waiting for get_by_role("button", name="Create draft statement", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EL
+E     - button "Menu"
+E   - main:
+E     - heading "Billing" [level=1]
+E     - link "+ Create statement":
+E       - /url: "#create"
+E     - article:
+E       - strong: "0.00"
+E       - text: Outstanding balance
+E     - article:
+E       - strong: "0.00"
+E       - text: Paid this month
+E     - article:
+E       - strong: "0"
+E       - text: Overdue statements
+E     - article:
+E       - strong: "0.00"
+E       - text: Billed year to date
+E     - text: Search statements or clients
+E     - searchbox "Search statements or clients"
+E     - text: Status
+E     - combobox "Status":
+E       - option "All statuses" [selected]
+E       - option "Draft"
+E       - option "Issued"
+E       - option "Sent"
+E       - option "Partially Paid"
+E       - option "Paid"
+E       - option "Credited"
+E       - option "Customer credit"
+E       - option "Overdue"
+E       - option "Void"
+E       - option "Cancelled draft"
+E     - button "Search"
+E     - region "Scrollable data table":
+E       - table:
+E         - rowgroup:
+E           - row "Statement Client Period Amount Status Due date":
+E             - columnheader "Statement"
+E             - columnheader "Client"
+E             - columnheader "Period"
+E             - columnheader "Amount"
+E             - columnheader "Status"
+E             - columnheader "Due date"
+E         - rowgroup:
+E           - row "STYLE-DRAFT Fixture Consulting 2026-10-01 — 2026-10-17 USD 0.00 Draft Not delivered":
+E             - cell "STYLE-DRAFT":
+E               - link "STYLE-DRAFT":
+E                 - /url: /billing/1572ce21-c12d-4210-9aca-113bd75b8d49
+E             - cell "Fixture Consulting"
+E             - cell "2026-10-01 — 2026-10-17"
+E             - cell "USD 0.00"
+E             - cell "Draft"
+E             - cell "Not delivered"
+E     - navigation "Pagination":
+E       - status: 1 records · Page 1 of 1
+E       - text: Previous Next
+E     - heading "Create statement" [level=2]
+E     - text: Client
+E     - combobox "Client":
+E       - option "Choose…"
+E       - option "Fixture Consulting" [selected]
+E     - status: 1 records
+E     - text: Period start *
+E     - textbox "Period start *"
+E     - text: Period end *
+E     - textbox "Period end *"
+E     - button "Choose work batches"
+E     - paragraph: Review Available, On hold, In draft and Published work by explicit batch, within project budgets. Fixed fees and manual extras are prepared in Project billing below. No email is sent.
+E     - heading "Project billing" [level=2]
+E     - paragraph: Manage fixed fees, budgets and additional-charge permissions for each client's project.
+E     - region "Project billing":
+E       - table:
+E         - rowgroup:
+E           - row "Client Project Budget / fixed fee Overbilling":
+E             - columnheader "Client"
+E             - columnheader "Project"
+E             - columnheader "Budget / fixed fee"
+E             - columnheader "Overbilling"
+E         - rowgroup:
+E           - row "Fixture Consulting SCALE Consulting Fixture Not set Disabled":
+E             - cell "Fixture Consulting"
+E             - cell "SCALE Consulting Fixture":
+E               - link "SCALE Consulting Fixture":
+E                 - /url: /project-billing/f627e279-07da-500a-bd04-ca9d846aabf6
+E             - cell "Not set"
+E             - cell "Disabled"
+E     - navigation "Billing project pages":
+E       - status: 1 records · Page 1 of 1
+E       - text: Previous Next
+E     - heading "Recent payments" [level=2]
+E     - region "Scrollable data table":
+E       - table:
+E         - rowgroup:
+E           - row "Date Statement Amount Method Status":
+E             - columnheader "Date"
+E             - columnheader "Statement"
+E             - columnheader "Amount"
+E             - columnheader "Method"
+E             - columnheader "Status"
+E         - rowgroup:
+E           - row "No payments recorded.":
+E             - cell "No payments recorded."
+E     - navigation "Payment pages":
+E       - status: 0 records · Page 1 of 1
+E       - text: Previous Next
+E     - group: help
+E   - group:
+E     - text: Close
+E     - region "Cookies and privacy choices":
+E       - heading "Cookies and privacy choices" [level=2]
+E       - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.
+E       - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.
+E       - paragraph:
+E         - text: You can reject or change your choice here at any time without affecting access.
+E         - link "Read privacy and cookies":
+E           - /url: /?info=privacy#privacy-and-cookies
+E       - paragraph: Optional measurement is disabled in this environment.
+E       - paragraph: No optional preference has been selected.
+E       - button "Accept measurement" [disabled]
+E       - button "Reject nonessential"
+____________ test_full_preset_tiles_and_semantic_work_colors[1440] ____________
+tests\e2e\test_stage_refinements.py:190: in test_full_preset_tiles_and_semantic_work_colors
+    expect(page.get_by_role("button", name="Create draft statement", exact=True)).to_have_class(
+E   AssertionError: Locator expected to have class 'draft-action'
+E   Actual value: None
+E   Error: element(s) not found 
+E   Call log:
+E     - Expect "to_have_class" get_by_role("button", name="Create draft statement", exact=True) with timeout 5000ms
+E     - waiting for get_by_role("button", name="Create draft statement", exact=True)
+E   
+E   Aria snapshot:
+E   - link "Skip to content":
+E     - /url: "#main"
+E   - banner:
+E     - link "timeKER":
+E       - /url: /dashboard
+E       - img "timeKER"
+E     - text: clients • billing • timecards
+E     - link "Search workspace":
+E       - /url: /search
+E     - group: EL
+E     - text: Ed López
+E   - complementary:
+E     - navigation "Primary":
+E       - link "Dashboard":
+E         - /url: /dashboard
+E       - link "Clients":
+E         - /url: /clients
+E       - link "Projects":
+E         - /url: /projects
+E       - link "Timecards":
+E         - /url: /timecards
+E       - link "Cases":
+E         - /url: /cases
+E       - link "Mail":
+E         - /url: /mail
+E       - link "Quoting":
+E         - /url: /quoting
+E       - link "Billing":
+E         - /url: /billing
+E       - link "Sending":
+E         - /url: /sending
+E       - link "Library":
+E         - /url: /library
+E       - link "Reports":
+E         - /url: /reports
+E       - link "Archive":
+E         - /url: /archive
+E       - link "Settings":
+E         - /url: /settings
+E       - link "Audit history":
+E         - /url: /audit
+E     - text: AEKR Private workspace
+E   - main:
+E     - heading "Billing" [level=1]
+E     - link "+ Create statement":
+E       - /url: "#create"
+E     - article:
+E       - strong: "0.00"
+E       - text: Outstanding balance
+E     - article:
+E       - strong: "0.00"
+E       - text: Paid this month
+E     - article:
+E       - strong: "0"
+E       - text: Overdue statements
+E     - article:
+E       - strong: "0.00"
+E       - text: Billed year to date
+E     - text: Search statements or clients
+E     - searchbox "Search statements or clients"
+E     - text: Status
+E     - combobox "Status":
+E       - option "All statuses" [selected]
+E       - option "Draft"
+E       - option "Issued"
+E       - option "Sent"
+E       - option "Partially Paid"
+E       - option "Paid"
+E       - option "Credited"
+E       - option "Customer credit"
+E       - option "Overdue"
+E       - option "Void"
+E       - option "Cancelled draft"
+E     - button "Search"
+E     - region "Scrollable data table":
+E       - table:
+E         - rowgroup:
+E           - row "Statement Client Period Amount Status Due date":
+E             - columnheader "Statement"
+E             - columnheader "Client"
+E             - columnheader "Period"
+E             - columnheader "Amount"
+E             - columnheader "Status"
+E             - columnheader "Due date"
+E         - rowgroup:
+E           - row "STYLE-DRAFT Fixture Consulting 2026-10-01 — 2026-10-17 USD 0.00 Draft Not delivered":
+E             - cell "STYLE-DRAFT":
+E               - link "STYLE-DRAFT":
+E                 - /url: /billing/3be02e78-19e8-4430-a6c1-3f640d633ed1
+E             - cell "Fixture Consulting"
+E             - cell "2026-10-01 — 2026-10-17"
+E             - cell "USD 0.00"
+E             - cell "Draft"
+E             - cell "Not delivered"
+E     - navigation "Pagination":
+E       - status: 1 records · Page 1 of 1
+E       - text: Previous Next
+E     - heading "Create statement" [level=2]
+E     - text: Client
+E     - combobox "Client":
+E       - option "Choose…"
+E       - option "Fixture Consulting" [selected]
+E     - status: 1 records
+E     - text: Period start *
+E     - textbox "Period start *"
+E     - text: Period end *
+E     - textbox "Period end *"
+E     - button "Choose work batches"
+E     - paragraph: Review Available, On hold, In draft and Published work by explicit batch, within project budgets. Fixed fees and manual extras are prepared in Project billing below. No email is sent.
+E     - heading "Project billing" [level=2]
+E     - paragraph: Manage fixed fees, budgets and additional-charge permissions for each client's project.
+E     - region "Project billing":
+E       - table:
+E         - rowgroup:
+E           - row "Client Project Budget / fixed fee Overbilling":
+E             - columnheader "Client"
+E             - columnheader "Project"
+E             - columnheader "Budget / fixed fee"
+E             - columnheader "Overbilling"
+E         - rowgroup:
+E           - row "Fixture Consulting SCALE Consulting Fixture Not set Disabled":
+E             - cell "Fixture Consulting"
+E             - cell "SCALE Consulting Fixture":
+E               - link "SCALE Consulting Fixture":
+E                 - /url: /project-billing/f627e279-07da-500a-bd04-ca9d846aabf6
+E             - cell "Not set"
+E             - cell "Disabled"
+E     - navigation "Billing project pages":
+E       - status: 1 records · Page 1 of 1
+E       - text: Previous Next
+E     - heading "Recent payments" [level=2]
+E     - region "Scrollable data table":
+E       - table:
+E         - rowgroup:
+E           - row "Date Statement Amount Method Status":
+E             - columnheader "Date"
+E             - columnheader "Statement"
+E             - columnheader "Amount"
+E             - columnheader "Method"
+E             - columnheader "Status"
+E         - rowgroup:
+E           - row "No payments recorded.":
+E             - cell "No payments recorded."
+E     - navigation "Payment pages":
+E       - status: 0 records · Page 1 of 1
+E       - text: Previous Next
+E     - group: help
+E   - group:
+E     - text: Close
+E     - region "Cookies and privacy choices":
+E       - heading "Cookies and privacy choices" [level=2]
+E       - paragraph: Necessary cookies protect sign-in and forms and remember this choice for 180 days. They remain required. Advertising remains off.
+E       - paragraph: Optional measurement counts selected page views and navigation clicks in this product using our existing Cloudflare-hosted logs. No names, account IDs, record URLs, form text, time entries, payments or Mail contents are sent. Connection metadata still reaches our hosting provider. These are events, not people. Usage records are kept for up to seven days.
+E       - paragraph:
+E         - text: You can reject or change your choice here at any time without affecting access.
+E         - link "Read privacy and cookies":
+E           - /url: /?info=privacy#privacy-and-cookies
+E       - paragraph: Optional measurement is disabled in this environment.
+E       - paragraph: No optional preference has been selected.
+E       - button "Accept measurement" [disabled]
+E       - button "Reject nonessential"
+_ test_week_metrics_keep_global_scope_clock_and_editor[1440-True-America/New_York] _
+tests\e2e\test_timecard_week_metrics_browser.py:104: in test_week_metrics_keep_global_scope_clock_and_editor
+    data = populate_week_metrics(factory, seeded)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\e2e\test_timecard_week_metrics_browser.py:78: in populate_week_metrics
+    save(second.id, monday, [(east.id, ["1:30", "", "", "", "", "", ""])], "Finalized")
+tests\e2e\test_timecard_week_metrics_browser.py:66: in save
+    timecards.finalize(db, owner.id, card.id, expected_version=card.version)
+app\timecards.py:331: in finalize
+    freeze_ready_rates(db, card, choices=rate_choices)
+app\work_rates.py:78: in freeze_ready_rates
+    raise DomainError("Choose an explicit rate for backdated work whose historical rate is unknown")
+E   app.domain.DomainError: Choose an explicit rate for backdated work whose historical rate is unknown
+_ test_week_metrics_keep_global_scope_clock_and_editor[390-True-Asia/Kathmandu] _
+tests\e2e\test_timecard_week_metrics_browser.py:104: in test_week_metrics_keep_global_scope_clock_and_editor
+    data = populate_week_metrics(factory, seeded)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\e2e\test_timecard_week_metrics_browser.py:78: in populate_week_metrics
+    save(second.id, monday, [(east.id, ["1:30", "", "", "", "", "", ""])], "Finalized")
+tests\e2e\test_timecard_week_metrics_browser.py:66: in save
+    timecards.finalize(db, owner.id, card.id, expected_version=card.version)
+app\timecards.py:331: in finalize
+    freeze_ready_rates(db, card, choices=rate_choices)
+app\work_rates.py:78: in freeze_ready_rates
+    raise DomainError("Choose an explicit rate for backdated work whose historical rate is unknown")
+E   app.domain.DomainError: Choose an explicit rate for backdated work whose historical rate is unknown
+_ test_week_metrics_keep_global_scope_clock_and_editor[390-False-Pacific/Kiritimati] _
+tests\e2e\test_timecard_week_metrics_browser.py:104: in test_week_metrics_keep_global_scope_clock_and_editor
+    data = populate_week_metrics(factory, seeded)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\e2e\test_timecard_week_metrics_browser.py:78: in populate_week_metrics
+    save(second.id, monday, [(east.id, ["1:30", "", "", "", "", "", ""])], "Finalized")
+tests\e2e\test_timecard_week_metrics_browser.py:66: in save
+    timecards.finalize(db, owner.id, card.id, expected_version=card.version)
+app\timecards.py:331: in finalize
+    freeze_ready_rates(db, card, choices=rate_choices)
+app\work_rates.py:78: in freeze_ready_rates
+    raise DomainError("Choose an explicit rate for backdated work whose historical rate is unknown")
+E   app.domain.DomainError: Choose an explicit rate for backdated work whose historical rate is unknown
+________________ test_cases_time_and_screen_walkthrough[1440] _________________
+tests\e2e\test_work_management.py:103: in test_cases_time_and_screen_walkthrough
+    page.goto(f"{server}/timecards?client_id={client.id}&week=2026-10-05")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&week=2026-10-05
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&week=2026-10-05", waiting until "load"
+_________________ test_cases_time_and_screen_walkthrough[390] _________________
+tests\e2e\test_work_management.py:103: in test_cases_time_and_screen_walkthrough
+    page.goto(f"{server}/timecards?client_id={client.id}&week=2026-10-05")
+.venv\Lib\site-packages\playwright\sync_api\_generated.py:9903: in goto
+    self._sync(
+.venv\Lib\site-packages\playwright\_impl\_page.py:562: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\playwright\_impl\_frame.py:157: in goto
+    await self._channel.send(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:76: in send
+    return await self._connection.wrap_api_call(
+.venv\Lib\site-packages\playwright\_impl\_connection.py:632: in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E   playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&week=2026-10-05
+E   Call log:
+E     - navigating to "http://127.0.0.1:8019/timecards?client_id=dac61ee1-5de1-5c99-a34a-b2785c8cb1ff&week=2026-10-05", waiting until "load"
+_____ test_dashboard_panels_and_chart_switch_keep_distinct_actions[1440] ______
+tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
+    expect(future).to_have_attribute("aria-hidden", "true")
+E   AssertionError: Locator expected to have attribute 'true'
+E   Actual value: None 
+E   Call log:
+E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
+E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
+E       14 × locator resolved to <rect y="23" x="266" rx="4.5" width="14" height="12" data-minutes="0" data-future="true" data-weekend="false" data-contribution-day="2026-10-27" class="contribution-day contribution-level-0 contribution-future">…</rect>
+E          - unexpected value "null"
+______ test_dashboard_panels_and_chart_switch_keep_distinct_actions[390] ______
+tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
+    expect(future).to_have_attribute("aria-hidden", "true")
+E   AssertionError: Locator expected to have attribute 'true'
+E   Actual value: None 
+E   Call log:
+E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
+E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
+E       14 × locator resolved to <rect y="23" x="266" rx="4.5" width="14" height="12" data-minutes="0" data-future="true" data-weekend="false" data-contribution-day="2026-10-27" class="contribution-day contribution-level-0 contribution-future">…</rect>
+E          - unexpected value "null"
+______ test_dashboard_panels_and_chart_switch_keep_distinct_actions[320] ______
+tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
+    expect(future).to_have_attribute("aria-hidden", "true")
+E   AssertionError: Locator expected to have attribute 'true'
+E   Actual value: None 
+E   Call log:
+E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
+E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
+E       14 × locator resolved to <rect y="23" x="266" rx="4.5" width="14" height="12" data-minutes="0" data-future="true" data-weekend="false" data-contribution-day="2026-10-27" class="contribution-day contribution-level-0 contribution-future">…</rect>
+E          - unexpected value "null"
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  <AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv\Lib\site-packages\authlib\integrations\httpx_client\assertion_client.py:5
+  <AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\authlib\integrations\httpx_client\assertion_client.py:5: AuthlibDeprecationWarning: The httpx module is deprecated; please use httpx2 instead.
+    from ._compat import httpx2
+
+tests/e2e/test_workspace_search_browser.py::test_dashboard_panels_and_chart_switch_keep_distinct_actions[1440]
+tests/e2e/test_workspace_search_browser.py::test_dashboard_panels_and_chart_switch_keep_distinct_actions[390]
+tests/e2e/test_workspace_search_browser.py::test_dashboard_panels_and_chart_switch_keep_distinct_actions[320]
+  tests\e2e\test_workspace_search_browser.py:147: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize("width", [1440, 390, 320])
+
+tests/e2e/test_workspace_search_browser.py::test_dashboard_chart_native_get_switch_preserves_selected_detail[390]
+tests/e2e/test_workspace_search_browser.py::test_dashboard_chart_native_get_switch_preserves_selected_detail[320]
+  tests\e2e\test_workspace_search_browser.py:232: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize("width", [390, 320])
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/e2e/test_account_closure_browser.py::test_export_then_close_native_account[1440-True]
+ERROR tests/e2e/test_account_closure_browser.py::test_export_then_close_native_account[390-True]
+ERROR tests/e2e/test_account_closure_browser.py::test_export_then_close_native_account[390-False]
+ERROR tests/e2e/test_archive_browser.py::test_archive_settings_exports_and_screen_accessibility[1440-True]
+ERROR tests/e2e/test_archive_browser.py::test_archive_settings_exports_and_screen_accessibility[390-True]
+ERROR tests/e2e/test_archive_browser.py::test_archive_settings_exports_and_screen_accessibility[1440-False]
+ERROR tests/e2e/test_browser.py::test_complete_browser_workflow - FileNotFoun...
+ERROR tests/e2e/test_browser.py::test_visual_accessibility_primary_pages[1440-900]
+ERROR tests/e2e/test_browser.py::test_visual_accessibility_primary_pages[1280-800]
+ERROR tests/e2e/test_browser.py::test_visual_accessibility_primary_pages[390-844]
+ERROR tests/e2e/test_browser.py::test_without_javascript - FileNotFoundError:...
+ERROR tests/e2e/test_browser.py::test_additional_modules_accessibility[1440-900]
+ERROR tests/e2e/test_browser.py::test_additional_modules_accessibility[390-844]
+ERROR tests/e2e/test_browser_session_expiry.py::test_unsaved_settings_survive_revocation_and_new_tab_login
+ERROR tests/e2e/test_browser_session_expiry.py::test_sessions_native_controls_and_accessibility[1440-True]
+ERROR tests/e2e/test_browser_session_expiry.py::test_sessions_native_controls_and_accessibility[390-True]
+ERROR tests/e2e/test_browser_session_expiry.py::test_sessions_native_controls_and_accessibility[390-False]
+ERROR tests/e2e/test_case_mass_edit_browser.py::test_case_mass_edit_project_filter_native_fallback_and_status_type_only[1280-True]
+ERROR tests/e2e/test_case_mass_edit_browser.py::test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-True]
+ERROR tests/e2e/test_case_mass_edit_browser.py::test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-False]
+ERROR tests/e2e/test_case_workflow_browser.py::test_case_single_form_dependency_and_enter_save[1280-True]
+ERROR tests/e2e/test_case_workflow_browser.py::test_case_single_form_dependency_and_enter_save[390-True]
+ERROR tests/e2e/test_case_workflow_browser.py::test_case_single_form_dependency_and_enter_save[1280-False]
+ERROR tests/e2e/test_case_workflow_browser.py::test_case_single_form_dependency_and_enter_save[390-False]
+ERROR tests/e2e/test_case_workflow_browser.py::test_cases_typed_search_keeps_focus_and_updates_only_results[1280]
+ERROR tests/e2e/test_case_workflow_browser.py::test_cases_typed_search_keeps_focus_and_updates_only_results[390]
+ERROR tests/e2e/test_clock.py::test_clock_uses_browser_zone_and_fractional_seconds[America/New_York-10-15]
+ERROR tests/e2e/test_clock.py::test_clock_uses_browser_zone_and_fractional_seconds[Europe/Madrid-16-15]
+ERROR tests/e2e/test_clock.py::test_clock_uses_browser_zone_and_fractional_seconds[Asia/Kathmandu-20-0]
+ERROR tests/e2e/test_clock.py::test_clock_rollover_and_visibility_resync - Fi...
+ERROR tests/e2e/test_clock.py::test_clock_respects_reduced_motion_and_preference_changes
+ERROR tests/e2e/test_contact_browser.py::test_contact_preview_and_repeated_session[1440]
+ERROR tests/e2e/test_contact_browser.py::test_contact_preview_and_repeated_session[390]
+ERROR tests/e2e/test_contact_browser.py::test_contact_without_javascript - Fi...
+ERROR tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[568-320]
+ERROR tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[568-390]
+ERROR tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[568-760]
+ERROR tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[568-1024]
+ERROR tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[844-320]
+ERROR tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[844-390]
+ERROR tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[844-760]
+ERROR tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[844-1024]
+ERROR tests/e2e/test_cookie_preferences_browser.py::test_cookie_choices_are_nonmodal_reversible_and_private[1440]
+ERROR tests/e2e/test_cookie_preferences_browser.py::test_cookie_choices_are_nonmodal_reversible_and_private[390]
+ERROR tests/e2e/test_cookie_preferences_browser.py::test_browser_privacy_signals_keep_marketing_refused[gpc-header]
+ERROR tests/e2e/test_cookie_preferences_browser.py::test_browser_privacy_signals_keep_marketing_refused[dnt-header]
+ERROR tests/e2e/test_cookie_preferences_browser.py::test_browser_privacy_signals_keep_marketing_refused[gpc-browser]
+ERROR tests/e2e/test_cookie_preferences_browser.py::test_cookie_choice_without_javascript_and_failure_keeps_control
+ERROR tests/e2e/test_credit_memos_browser.py::test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-True]
+ERROR tests/e2e/test_credit_memos_browser.py::test_owner_reviewed_credit_preserves_original_and_downloads_note[390-True]
+ERROR tests/e2e/test_credit_memos_browser.py::test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-False]
+ERROR tests/e2e/test_credit_memos_browser.py::test_cancel_draft_has_distinct_action_and_no_credit
+ERROR tests/e2e/test_dashboard_detail_pagination_browser.py::test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[1440-True-1]
+ERROR tests/e2e/test_dashboard_detail_pagination_browser.py::test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-True-50]
+ERROR tests/e2e/test_dashboard_detail_pagination_browser.py::test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-False-1]
+ERROR tests/e2e/test_dashboard_outstanding_pagination_browser.py::test_outstanding_five_rows_preserve_card_chart_and_native_navigation[1440-True-1]
+ERROR tests/e2e/test_dashboard_outstanding_pagination_browser.py::test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-True-50]
+ERROR tests/e2e/test_dashboard_outstanding_pagination_browser.py::test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-False-1]
+ERROR tests/e2e/test_delegated_oauth_browser.py::test_authorize_reaches_registered_callback_with_persisted_code
+ERROR tests/e2e/test_delegated_oauth_browser.py::test_decline_reaches_callback_without_creating_credentials
+ERROR tests/e2e/test_delegated_oauth_browser.py::test_modified_consent_rejects_without_callback_or_grant[scope]
+ERROR tests/e2e/test_delegated_oauth_browser.py::test_modified_consent_rejects_without_callback_or_grant[csrf]
+ERROR tests/e2e/test_ker_navigation_browser.py::test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[1440-True]
+ERROR tests/e2e/test_ker_navigation_browser.py::test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-True]
+ERROR tests/e2e/test_ker_navigation_browser.py::test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-False]
+FAILED tests/e2e/test_lookups_browser.py::test_native_single_slot_clear_browse_and_billing_periods
+FAILED tests/e2e/test_project_billing_browser.py::test_fixed_fee_and_authorized_extra[1440-True]
+FAILED tests/e2e/test_project_billing_browser.py::test_fixed_fee_and_authorized_extra[390-True]
+FAILED tests/e2e/test_sending_browser.py::test_review_confirmation_stop_and_templates_use_native_forms[1440-True]
+FAILED tests/e2e/test_sending_browser.py::test_review_confirmation_stop_and_templates_use_native_forms[390-True]
+FAILED tests/e2e/test_stage_refinements.py::test_unicode_flexfield_save_and_numeric_identity[390]
+FAILED tests/e2e/test_stage_refinements.py::test_unicode_flexfield_save_and_numeric_identity[1440]
+FAILED tests/e2e/test_stage_refinements.py::test_full_preset_tiles_and_semantic_work_colors[390]
+FAILED tests/e2e/test_stage_refinements.py::test_full_preset_tiles_and_semantic_work_colors[1440]
+FAILED tests/e2e/test_timecard_week_metrics_browser.py::test_week_metrics_keep_global_scope_clock_and_editor[1440-True-America/New_York]
+FAILED tests/e2e/test_timecard_week_metrics_browser.py::test_week_metrics_keep_global_scope_clock_and_editor[390-True-Asia/Kathmandu]
+FAILED tests/e2e/test_timecard_week_metrics_browser.py::test_week_metrics_keep_global_scope_clock_and_editor[390-False-Pacific/Kiritimati]
+FAILED tests/e2e/test_work_management.py::test_cases_time_and_screen_walkthrough[1440]
+FAILED tests/e2e/test_work_management.py::test_cases_time_and_screen_walkthrough[390]
+FAILED tests/e2e/test_workspace_search_browser.py::test_dashboard_panels_and_chart_switch_keep_distinct_actions[1440]
+FAILED tests/e2e/test_workspace_search_browser.py::test_dashboard_panels_and_chart_switch_keep_distinct_actions[390]
+FAILED tests/e2e/test_workspace_search_browser.py::test_dashboard_panels_and_chart_switch_keep_distinct_actions[320]
+17 failed, 246 passed, 7 warnings, 65 errors in 592.72s (0:09:52)

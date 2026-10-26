@@ -1,0 +1,126 @@
+{
+  "method": "Exact baseline4nodes then copied-tests observer with disabled/enabled completion waits; no product modification",
+  "source_changes": "none",
+  "runs": [
+    {
+      "name": "browser-navigation-diagnosis",
+      "tests": "4",
+      "failures": "4",
+      "errors": "0",
+      "time": "15.084"
+    },
+    {
+      "name": "browser-navigation-observed",
+      "tests": "4",
+      "failures": "4",
+      "errors": "0",
+      "time": "15.838"
+    },
+    {
+      "name": "browser-navigation-waited",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "time": "31.239"
+    }
+  ],
+  "nodes": [
+    {
+      "file": "evidence/navigation-immediate/test_cases_time_and_screen_walkthrough[1440].json",
+      "mode": "immediate",
+      "dialogs": 0,
+      "aborted_requests": 2,
+      "new_session_SQL_readback": {
+        "projects_with_expected_flexfield2": 0,
+        "cases_by_status": {
+          "Open": 1
+        },
+        "archived_cases": 0
+      }
+    },
+    {
+      "file": "evidence/navigation-immediate/test_cases_time_and_screen_walkthrough[390].json",
+      "mode": "immediate",
+      "dialogs": 0,
+      "aborted_requests": 2,
+      "new_session_SQL_readback": {
+        "projects_with_expected_flexfield2": 0,
+        "cases_by_status": {
+          "Open": 1
+        },
+        "archived_cases": 0
+      }
+    },
+    {
+      "file": "evidence/navigation-immediate/test_unicode_flexfield_save_and_numeric_identity[1440].json",
+      "mode": "immediate",
+      "dialogs": 0,
+      "aborted_requests": 1,
+      "new_session_SQL_readback": {
+        "projects_with_expected_flexfield2": 1,
+        "cases_by_status": {},
+        "archived_cases": 0
+      }
+    },
+    {
+      "file": "evidence/navigation-immediate/test_unicode_flexfield_save_and_numeric_identity[390].json",
+      "mode": "immediate",
+      "dialogs": 0,
+      "aborted_requests": 1,
+      "new_session_SQL_readback": {
+        "projects_with_expected_flexfield2": 1,
+        "cases_by_status": {},
+        "archived_cases": 0
+      }
+    },
+    {
+      "file": "evidence/navigation-waited/test_cases_time_and_screen_walkthrough[1440].json",
+      "mode": "waited",
+      "dialogs": 0,
+      "aborted_requests": 0,
+      "new_session_SQL_readback": {
+        "projects_with_expected_flexfield2": 0,
+        "cases_by_status": {
+          "Closed": 1
+        },
+        "archived_cases": 0
+      }
+    },
+    {
+      "file": "evidence/navigation-waited/test_cases_time_and_screen_walkthrough[390].json",
+      "mode": "waited",
+      "dialogs": 0,
+      "aborted_requests": 0,
+      "new_session_SQL_readback": {
+        "projects_with_expected_flexfield2": 0,
+        "cases_by_status": {
+          "Closed": 1
+        },
+        "archived_cases": 0
+      }
+    },
+    {
+      "file": "evidence/navigation-waited/test_unicode_flexfield_save_and_numeric_identity[1440].json",
+      "mode": "waited",
+      "dialogs": 0,
+      "aborted_requests": 0,
+      "new_session_SQL_readback": {
+        "projects_with_expected_flexfield2": 1,
+        "cases_by_status": {},
+        "archived_cases": 0
+      }
+    },
+    {
+      "file": "evidence/navigation-waited/test_unicode_flexfield_save_and_numeric_identity[390].json",
+      "mode": "waited",
+      "dialogs": 0,
+      "aborted_requests": 0,
+      "new_session_SQL_readback": {
+        "projects_with_expected_flexfield2": 1,
+        "cases_by_status": {},
+        "archived_cases": 0
+      }
+    }
+  ],
+  "verdict": "CONFIRMED test synchronization race; all4 succeed after actual savecompletion waits, no property is bypassed; currentsource remains unchanged"
+}

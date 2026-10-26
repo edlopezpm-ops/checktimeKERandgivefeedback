@@ -1,0 +1,9 @@
+{
+  "actual_script": "session_recovery.js",
+  "route": "/oauth/authorize",
+  "initial_dom_token": "invalid synthetic marker",
+  "session_preflight_calls": 1,
+  "submitted_matches_refreshed_valid_token": true,
+  "invalid_dom_token_replaced": true,
+  "scope": "Source JS execution with minimal DOM/fetch boundary, no browser/provider proof"
+}

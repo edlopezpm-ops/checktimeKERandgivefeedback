@@ -1,0 +1,1907 @@
+{
+  "snapshot": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+  "runs": [
+    {
+      "source": "backend-complete.xml",
+      "counts": {
+        "passed": 2327,
+        "error": 130,
+        "failure": 3,
+        "skipped": 2
+      }
+    },
+    {
+      "source": "browser-complete.xml",
+      "counts": {
+        "error": 65,
+        "passed": 246,
+        "failure": 17
+      }
+    },
+    {
+      "source": "browser-setup-recovered.xml",
+      "counts": {
+        "passed": 59,
+        "failure": 6
+      }
+    }
+  ],
+  "classifications": [
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[new_signup-google]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[new_signup-github]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[existing_signin-google]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[existing_signin-github]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[existing_signup-google]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_verified_social_notice_records_once_and_preserves_paid_workspace[existing_signup-github]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_verified_email_notice_survives_duplicate_start_and_records_only_after_proof[new_signup]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_verified_email_notice_survives_duplicate_start_and_records_only_after_proof[existing_signin]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_verified_email_notice_survives_duplicate_start_and_records_only_after_proof[existing_signup]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice0]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice1]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice2]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice3]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice4]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_incomplete_or_stale_start_notice_authenticates_but_requires_explicit_continue[notice5]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_failed_or_unlinked_social_attempt_never_records_notice_or_merges_owner[unverified]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_failed_or_unlinked_social_attempt_never_records_notice_or_merges_owner[unknown_signin]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_failed_or_unlinked_social_attempt_never_records_notice_or_merges_owner[same_email_unlinked]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_failed_or_unlinked_social_attempt_never_records_notice_or_merges_owner[csrf]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_bad_email_code_cannot_commit_captured_notice",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_explicit_fallback_records_fixed_method_once_and_preserves_security_return[legacy]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_explicit_fallback_records_fixed_method_once_and_preserves_security_return[continue]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed0]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed1]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed2]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed3]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed4]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_fallback_rejects_stale_partial_and_mixed_acceptance_contracts[changed5]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_notice_helper_requires_current_attempt_and_preexisting_immutable_binding[link]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_notice_helper_requires_current_attempt_and_preexisting_immutable_binding[signin]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_public_policy_read_and_download_are_complete_identical_and_do_not_accept[False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_auth_notice.py::test_public_policy_read_and_download_are_complete_identical_and_do_not_accept[True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_public_email_start_keeps_delivered_code_usable",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_existing_owner_email_signup_and_signin_reuse_exact_owner_without_allocation[signin]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_existing_owner_email_signup_and_signin_reuse_exact_owner_without_allocation[signup]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_unknown_email_signin_has_signup_route_without_creating_any_owner_or_workspace",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_cooldown_never_restores_proof_for_a_different_flow[changed0]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_cooldown_never_restores_proof_for_a_different_flow[changed1]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_cooldown_never_restores_proof_for_a_different_flow[changed2]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_recovery_does_not_restore_consumed_inflight_or_exhausted_proof[consumed]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_recovery_does_not_restore_consumed_inflight_or_exhausted_proof[verifying]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_recovery_does_not_restore_consumed_inflight_or_exhausted_proof[failed]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_recovery_requires_exact_destination_and_session_and_unexpired_challenge[True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_duplicate_recovery_requires_exact_destination_and_session_and_unexpired_challenge[False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_unknown_public_social_signin_offers_safe_signup_after_failed_callback",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_retained_paid_owner_security_return_survives_required_v2_acknowledgment[email]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_retained_paid_owner_security_return_survives_required_v2_acknowledgment[google]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_new_free_owner_security_return_waits_for_acknowledgment_and_explicit_free_activation",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_new_explicit_auth_start_clears_pending_registration_return[email]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_email_start_retries.py::test_new_explicit_auth_start_clears_pending_registration_return[google]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_operation_limits.py::test_independent_nonowner_processes_cannot_multiply_the_shared_limit",
+      "raw_status": "failure",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_two_new_owners_are_private_and_registration_and_plan_remain_explicit",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_actual_runtime_roles_have_no_privilege_or_table_ownership",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_crash_at_every_allocation_boundary_resumes_exact_ids_after_restart[reserved]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_crash_at_every_allocation_boundary_resumes_exact_ids_after_restart[initialized]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_crash_at_every_allocation_boundary_resumes_exact_ids_after_restart[activated]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_simultaneous_reservations_never_duplicate_identity_or_same_email[True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_simultaneous_reservations_never_duplicate_identity_or_same_email[False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_capacity_and_known_email_do_not_fall_back_to_default_workspace",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_nonempty_slot_is_blocked_and_never_recycled",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_recovers_exact_global_and_local_binding[identity_reserved]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_recovers_exact_global_and_local_binding[identity_bound]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_recovers_exact_global_and_local_binding[identity_activated]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[stale]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[future]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[revision]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[tenant]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[owner]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[unacknowledged]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[revoked]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_cross_email_link_rejects_stale_forged_or_revoked_independent_owner_proof[browser_revoked]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_global_conflict_and_revoked_tombstone_never_rebind_or_reassign",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_revocation_blocks_routing_before_local_commit_and_recovers_after_restart[identity_revocation_blocked]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_revocation_blocks_routing_before_local_commit_and_recovers_after_restart[identity_revoked]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_revocation_blocks_routing_before_local_commit_and_recovers_after_restart[identity_revocation_finalized]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_refused_last_email_revocation_preserves_global_and_local_authority",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_overlapping_distinct_revocations_keep_a_globally_active_surviving_method",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_backfill_is_explicit_and_accepts_local_uuid_reuse_but_rejects_global_duplicates[False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_backfill_is_explicit_and_accepts_local_uuid_reuse_but_rejects_global_duplicates[True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-False-inspect]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-False-apply]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-False-readiness]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-True-inspect]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-True-apply]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[missing-True-readiness]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-False-inspect]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-False-apply]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-False-readiness]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-True-inspect]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-True-apply]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_rejects_before_any_directory_or_business_change[revoked-True-readiness]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_preserves_revoked_bindings_and_inactive_owner_history[missing]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_preserves_revoked_bindings_and_inactive_owner_history[revoked]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_fixed_owner_coverage_preserves_revoked_bindings_and_inactive_owner_history[blocked]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_readiness_rejects_shadow_privilege_or_unallocated_data_without_mutation[shadow-grant]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_readiness_rejects_shadow_privilege_or_unallocated_data_without_mutation[shadow-trigger]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_readiness_rejects_shadow_privilege_or_unallocated_data_without_mutation[central-revoke]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_readiness_rejects_shadow_privilege_or_unallocated_data_without_mutation[nonempty-slot]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_readiness_rejects_shadow_privilege_or_unallocated_data_without_mutation[nonempty-settings]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_directory_guards_pin_targets_and_preserve_history",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_registry_refresh_and_restart_keep_bounded_stable_routing",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_ownerless_email_proof_is_encrypted_session_bound_single_use[True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_ownerless_email_proof_is_encrypted_session_bound_single_use[False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_attempts_are_durable_and_terminal_after_six",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_rejects_expiry_wrong_cipher_purpose_or_key[expired]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_rejects_expiry_wrong_cipher_purpose_or_key[purpose]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_rejects_expiry_wrong_cipher_purpose_or_key[key]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_enforces_shared_durable_rate_limits[address]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_enforces_shared_durable_rate_limits[session]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_enforces_shared_durable_rate_limits[network]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_public_challenge_cooldown_reservation_is_atomic_across_requests",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_public_email_uses_provider_captcha_once_then_requires_explicit_ack_and_free",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_public_email_switch_off_preserves_uniform_response_without_provider_send",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_cross_email_github_signin_authenticates_bound_owner_without_claim_rewrite",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_provider_signup_allocates_pending_owner_without_accepting_terms_or_plan[google]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_provider_signup_allocates_pending_owner_without_accepting_terms_or_plan[github]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_google_requires_boolean_verified_claim_before_any_reservation[False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_google_requires_boolean_verified_claim_before_any_reservation[true]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_google_requires_boolean_verified_claim_before_any_reservation[1]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_generic_google_requires_boolean_verified_claim_before_any_reservation[None]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_fresh_cross_email_link_reserves_global_identity_before_local_binding",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[public-google]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[public-github]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[off-google]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[off-github]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[legacy-google]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_social_first_owner_email_link_creates_provider_account_only_under_explicit_public_flag[legacy-github]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_public_email_rejects_mutation_forgery_before_challenge_or_provider[csrf]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_public_email_rejects_mutation_forgery_before_challenge_or_provider[origin]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_public_admission.py::test_http_public_email_rejects_mutation_forgery_before_challenge_or_provider[intent]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_recovery_rehearsal.py::test_current_ph3_custom_dump_restore_preserves_state_and_guards",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_subscription_billing.py::test_first_failure_grace_is_stable_and_old_failure_cannot_reopen_after_renewal",
+      "raw_status": "failure",
+      "classification": "CONTRACT_FAILURE",
+      "confidence": "CONFIRMED",
+      "reason": "Repeated failure changes actual grace instant across DST. Independent fixed-instant service/DB controls confirm fall+1h and spring-1h; UTC/nonDST stable."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_supplemental_batches.py::test_runtime_sql_cannot_reset_batch_identity_or_bypass_aggregate_daily_cap",
+      "raw_status": "failure",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Disposable cluster role prerequisite absent; failure before tested business property. Parent replays after explicit isolated role provisioning."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_usage_browser_flow.py::test_real_choice_round_trip_and_withdrawal[390]",
+      "raw_status": "skipped",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Explicit BROWSER_EXECUTABLE not selected for two in-memory usage browser widths."
+    },
+    {
+      "run": "backend-complete.xml",
+      "node": "tests/integration/test_usage_browser_flow.py::test_real_choice_round_trip_and_withdrawal[1440]",
+      "raw_status": "skipped",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Explicit BROWSER_EXECUTABLE not selected for two in-memory usage browser widths."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_account_closure_browser.py::test_export_then_close_native_account[1440-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_account_closure_browser.py::test_export_then_close_native_account[390-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_account_closure_browser.py::test_export_then_close_native_account[390-False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_archive_browser.py::test_archive_settings_exports_and_screen_accessibility[1440-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_archive_browser.py::test_archive_settings_exports_and_screen_accessibility[390-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_archive_browser.py::test_archive_settings_exports_and_screen_accessibility[1440-False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser.py::test_complete_browser_workflow",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser.py::test_visual_accessibility_primary_pages[1440-900]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser.py::test_visual_accessibility_primary_pages[1280-800]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser.py::test_visual_accessibility_primary_pages[390-844]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser.py::test_without_javascript",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser.py::test_additional_modules_accessibility[1440-900]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser.py::test_additional_modules_accessibility[390-844]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser_session_expiry.py::test_unsaved_settings_survive_revocation_and_new_tab_login",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser_session_expiry.py::test_sessions_native_controls_and_accessibility[1440-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser_session_expiry.py::test_sessions_native_controls_and_accessibility[390-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_browser_session_expiry.py::test_sessions_native_controls_and_accessibility[390-False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_case_mass_edit_browser.py::test_case_mass_edit_project_filter_native_fallback_and_status_type_only[1280-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_case_mass_edit_browser.py::test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_case_mass_edit_browser.py::test_case_mass_edit_project_filter_native_fallback_and_status_type_only[390-False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_case_workflow_browser.py::test_case_single_form_dependency_and_enter_save[1280-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_case_workflow_browser.py::test_case_single_form_dependency_and_enter_save[390-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_case_workflow_browser.py::test_case_single_form_dependency_and_enter_save[1280-False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_case_workflow_browser.py::test_case_single_form_dependency_and_enter_save[390-False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_case_workflow_browser.py::test_cases_typed_search_keeps_focus_and_updates_only_results[1280]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_case_workflow_browser.py::test_cases_typed_search_keeps_focus_and_updates_only_results[390]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_clock.py::test_clock_uses_browser_zone_and_fractional_seconds[America/New_York-10-15]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_clock.py::test_clock_uses_browser_zone_and_fractional_seconds[Europe/Madrid-16-15]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_clock.py::test_clock_uses_browser_zone_and_fractional_seconds[Asia/Kathmandu-20-0]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_clock.py::test_clock_rollover_and_visibility_resync",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_clock.py::test_clock_respects_reduced_motion_and_preference_changes",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_contact_browser.py::test_contact_preview_and_repeated_session[1440]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_contact_browser.py::test_contact_preview_and_repeated_session[390]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_contact_browser.py::test_contact_without_javascript",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[568-320]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[568-390]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[568-760]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[568-1024]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[844-320]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[844-390]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[844-760]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_flow_browser.py::test_mobile_open_preferences_preserve_sign_in_flow[844-1024]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_preferences_browser.py::test_cookie_choices_are_nonmodal_reversible_and_private[1440]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_preferences_browser.py::test_cookie_choices_are_nonmodal_reversible_and_private[390]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_preferences_browser.py::test_browser_privacy_signals_keep_marketing_refused[gpc-header]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_preferences_browser.py::test_browser_privacy_signals_keep_marketing_refused[dnt-header]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_preferences_browser.py::test_browser_privacy_signals_keep_marketing_refused[gpc-browser]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_cookie_preferences_browser.py::test_cookie_choice_without_javascript_and_failure_keeps_control",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_credit_memos_browser.py::test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_credit_memos_browser.py::test_owner_reviewed_credit_preserves_original_and_downloads_note[390-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_credit_memos_browser.py::test_owner_reviewed_credit_preserves_original_and_downloads_note[1440-False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_credit_memos_browser.py::test_cancel_draft_has_distinct_action_and_no_credit",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_dashboard_detail_pagination_browser.py::test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[1440-True-1]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_dashboard_detail_pagination_browser.py::test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-True-50]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_dashboard_detail_pagination_browser.py::test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-False-1]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_dashboard_outstanding_pagination_browser.py::test_outstanding_five_rows_preserve_card_chart_and_native_navigation[1440-True-1]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_dashboard_outstanding_pagination_browser.py::test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-True-50]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_dashboard_outstanding_pagination_browser.py::test_outstanding_five_rows_preserve_card_chart_and_native_navigation[390-False-1]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_delegated_oauth_browser.py::test_authorize_reaches_registered_callback_with_persisted_code",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_delegated_oauth_browser.py::test_decline_reaches_callback_without_creating_credentials",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_delegated_oauth_browser.py::test_modified_consent_rejects_without_callback_or_grant[scope]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_delegated_oauth_browser.py::test_modified_consent_rejects_without_callback_or_grant[csrf]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_ker_navigation_browser.py::test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[1440-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_ker_navigation_browser.py::test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-True]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_ker_navigation_browser.py::test_brand_navigation_native_destinations_focus_and_existing_dirty_guard[390-False]",
+      "raw_status": "error",
+      "classification": "ENVIRONMENT_BLOCKER",
+      "confidence": "CONFIRMED",
+      "reason": "Missing ignored .local directory before the E2E server log opened; product request not exercised.65-case replay exists separately."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_lookups_browser.py::test_native_single_slot_clear_browse_and_billing_periods",
+      "raw_status": "failure",
+      "classification": "CONTRACT_FAILURE",
+      "confidence": "CONFIRMED",
+      "reason": "Actual native Billing lookup submits to business/work-selection endpoint. Independently reproduced fullcreate_app: clearclient400, validclientwrongpage200; native controls and submitted dates disappear."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_project_billing_browser.py::test_fixed_fee_and_authorized_extra[1440-True]",
+      "raw_status": "failure",
+      "classification": "TEST_LOCATOR_AMBIGUITY",
+      "confidence": "CONFIRMED",
+      "reason": "get_by_text Fixed fee matches visible h2 and hidden help-dialog h3; strict locator fails before assertion of visible screen. No fee defect or axe violation demonstrated."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_project_billing_browser.py::test_fixed_fee_and_authorized_extra[390-True]",
+      "raw_status": "failure",
+      "classification": "TEST_LOCATOR_AMBIGUITY",
+      "confidence": "CONFIRMED",
+      "reason": "get_by_text Fixed fee matches visible h2 and hidden help-dialog h3; strict locator fails before assertion of visible screen. No fee defect or axe violation demonstrated."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_sending_browser.py::test_review_confirmation_stop_and_templates_use_native_forms[1440-True]",
+      "raw_status": "failure",
+      "classification": "STALE_SYNTHETIC_FIXTURE",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Mock transport serves HTML for /auth/session, while current sessionpreflight requires JSON before POST. JSfalse case and realowner flow are separate; no product send defect demonstrated."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_sending_browser.py::test_review_confirmation_stop_and_templates_use_native_forms[390-True]",
+      "raw_status": "failure",
+      "classification": "STALE_SYNTHETIC_FIXTURE",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Mock transport serves HTML for /auth/session, while current sessionpreflight requires JSON before POST. JSfalse case and realowner flow are separate; no product send defect demonstrated."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_stage_refinements.py::test_unicode_flexfield_save_and_numeric_identity[390]",
+      "raw_status": "failure",
+      "classification": "TEST_ASYNC_NAVIGATION_RACE",
+      "confidence": "CONFIRMED",
+      "reason": "Exact4-node baseline and observedcopy fail; trace shows sessionpreflight pending while test launches goto, then resumedPOST aborts competing navigation. Zero dialogs. Samecopiedtests with explicit completed-save URL/FinalizedDOM waits4PASS plus new-session SQL readback; product source unchanged."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_stage_refinements.py::test_unicode_flexfield_save_and_numeric_identity[1440]",
+      "raw_status": "failure",
+      "classification": "TEST_ASYNC_NAVIGATION_RACE",
+      "confidence": "CONFIRMED",
+      "reason": "Exact4-node baseline and observedcopy fail; trace shows sessionpreflight pending while test launches goto, then resumedPOST aborts competing navigation. Zero dialogs. Samecopiedtests with explicit completed-save URL/FinalizedDOM waits4PASS plus new-session SQL readback; product source unchanged."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_stage_refinements.py::test_full_preset_tiles_and_semantic_work_colors[390]",
+      "raw_status": "failure",
+      "classification": "SUPERSEDED_UI_ASSERTION",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Expects Create draft statement button; accepted PH3 selective billing uses Choose work batches before draft preparation. Existing draft-action class remains on actual button."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_stage_refinements.py::test_full_preset_tiles_and_semantic_work_colors[1440]",
+      "raw_status": "failure",
+      "classification": "SUPERSEDED_UI_ASSERTION",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Expects Create draft statement button; accepted PH3 selective billing uses Choose work batches before draft preparation. Existing draft-action class remains on actual button."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_timecard_week_metrics_browser.py::test_week_metrics_keep_global_scope_clock_and_editor[1440-True-America/New_York]",
+      "raw_status": "failure",
+      "classification": "STALE_DOMAIN_FIXTURE",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Fixture creates new clients/projects then finalizes historical work without explicit rate choice. PH3 correctly rejects invented historical rate before browser exercise."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_timecard_week_metrics_browser.py::test_week_metrics_keep_global_scope_clock_and_editor[390-True-Asia/Kathmandu]",
+      "raw_status": "failure",
+      "classification": "STALE_DOMAIN_FIXTURE",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Fixture creates new clients/projects then finalizes historical work without explicit rate choice. PH3 correctly rejects invented historical rate before browser exercise."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_timecard_week_metrics_browser.py::test_week_metrics_keep_global_scope_clock_and_editor[390-False-Pacific/Kiritimati]",
+      "raw_status": "failure",
+      "classification": "STALE_DOMAIN_FIXTURE",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Fixture creates new clients/projects then finalizes historical work without explicit rate choice. PH3 correctly rejects invented historical rate before browser exercise."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_work_management.py::test_cases_time_and_screen_walkthrough[1440]",
+      "raw_status": "failure",
+      "classification": "TEST_ASYNC_NAVIGATION_RACE",
+      "confidence": "CONFIRMED",
+      "reason": "Exact4-node baseline and observedcopy fail; trace shows sessionpreflight pending while test launches goto, then resumedPOST aborts competing navigation. Zero dialogs. Samecopiedtests with explicit completed-save URL/FinalizedDOM waits4PASS plus new-session SQL readback; product source unchanged."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_work_management.py::test_cases_time_and_screen_walkthrough[390]",
+      "raw_status": "failure",
+      "classification": "TEST_ASYNC_NAVIGATION_RACE",
+      "confidence": "CONFIRMED",
+      "reason": "Exact4-node baseline and observedcopy fail; trace shows sessionpreflight pending while test launches goto, then resumedPOST aborts competing navigation. Zero dialogs. Samecopiedtests with explicit completed-save URL/FinalizedDOM waits4PASS plus new-session SQL readback; product source unchanged."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_workspace_search_browser.py::test_dashboard_panels_and_chart_switch_keep_distinct_actions[1440]",
+      "raw_status": "failure",
+      "classification": "SUPERSEDED_UI_ASSERTION",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Expects aria-hidden future cells or empty future title; accepted D084 requires explicit dated Future date/No recorded work yet titles and readable placeholder explanation."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_workspace_search_browser.py::test_dashboard_panels_and_chart_switch_keep_distinct_actions[390]",
+      "raw_status": "failure",
+      "classification": "SUPERSEDED_UI_ASSERTION",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Expects aria-hidden future cells or empty future title; accepted D084 requires explicit dated Future date/No recorded work yet titles and readable placeholder explanation."
+    },
+    {
+      "run": "browser-complete.xml",
+      "node": "tests/e2e/test_workspace_search_browser.py::test_dashboard_panels_and_chart_switch_keep_distinct_actions[320]",
+      "raw_status": "failure",
+      "classification": "SUPERSEDED_UI_ASSERTION",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Expects aria-hidden future cells or empty future title; accepted D084 requires explicit dated Future date/No recorded work yet titles and readable placeholder explanation."
+    },
+    {
+      "run": "browser-setup-recovered.xml",
+      "node": "tests/e2e/test_browser.py::test_complete_browser_workflow",
+      "raw_status": "failure",
+      "classification": "SUPERSEDED_UI_ASSERTION",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Expects Create draft statement button; accepted PH3 selective billing uses Choose work batches before draft preparation. Existing draft-action class remains on actual button."
+    },
+    {
+      "run": "browser-setup-recovered.xml",
+      "node": "tests/e2e/test_browser.py::test_without_javascript",
+      "raw_status": "failure",
+      "classification": "SUPERSEDED_UI_ASSERTION",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Aria snapshot shows saved0:15 in entry/history and Batch total0:15. Test expects old Weekly total label; no lost minutes demonstrated."
+    },
+    {
+      "run": "browser-setup-recovered.xml",
+      "node": "tests/e2e/test_dashboard_detail_pagination_browser.py::test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[1440-True-1]",
+      "raw_status": "failure",
+      "classification": "SUPERSEDED_UI_ASSERTION",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Expects aria-hidden future cells or empty future title; accepted D084 requires explicit dated Future date/No recorded work yet titles and readable placeholder explanation."
+    },
+    {
+      "run": "browser-setup-recovered.xml",
+      "node": "tests/e2e/test_dashboard_detail_pagination_browser.py::test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-True-50]",
+      "raw_status": "failure",
+      "classification": "SUPERSEDED_UI_ASSERTION",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Expects aria-hidden future cells or empty future title; accepted D084 requires explicit dated Future date/No recorded work yet titles and readable placeholder explanation."
+    },
+    {
+      "run": "browser-setup-recovered.xml",
+      "node": "tests/e2e/test_dashboard_detail_pagination_browser.py::test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-False-1]",
+      "raw_status": "failure",
+      "classification": "SUPERSEDED_UI_ASSERTION",
+      "confidence": "CONFIRMED_STATIC",
+      "reason": "Expects aria-hidden future cells or empty future title; accepted D084 requires explicit dated Future date/No recorded work yet titles and readable placeholder explanation."
+    },
+    {
+      "run": "browser-setup-recovered.xml",
+      "node": "tests/e2e/test_delegated_oauth_browser.py::test_modified_consent_rejects_without_callback_or_grant[csrf]",
+      "raw_status": "failure",
+      "classification": "OBSOLETE_TAMPER_INJECTION",
+      "confidence": "REFUTED_AS_PRODUCT_DEFECT",
+      "reason": "DOM invalidCSRF is replaced by valid fresh token in session_recovery preflight. Independent rawinvalidPOST403/zero grants and validcontrol302/+1grant; real source JS confirms replacement."
+    }
+  ],
+  "findings": [
+    {
+      "id": "BILLING-NATIVE-LOOKUP",
+      "category": "CONTRACT_FAILURE",
+      "status": "CONFIRMED",
+      "severity": "medium",
+      "title": "Native Billing client search/paging invokes work selection and loses selector form",
+      "requirement_sources": [
+        "docs/design/DESIGN_SPEC.md:334-338",
+        "docs/DECISIONS.md:D048"
+      ],
+      "locations": [
+        {
+          "path": "app/web/templates/billing.html",
+          "line": 4
+        },
+        {
+          "path": "app/web/templates/lookup.html",
+          "line": 17
+        },
+        {
+          "path": "app/main.py",
+          "line": 1539
+        }
+      ],
+      "snapshot": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+      "configuration": "test/fullcreate_app, native noJS behavior; selector_page_size1/search_limit4; own loopback diagnostic_test",
+      "minimal_input": {
+        "client_id": "",
+        "period_start": "2026-10-01",
+        "period_end": "2026-10-31",
+        "_lookup": "client_id:search"
+      },
+      "expected": "HTTP200 Billing selector page with preserved dates, searched/paged client options; no business navigation",
+      "observed": "Rendered action/billing/work receives native lookup submit. Clearclient400 Invalidrequest; selectedclient200 workpage. Both lose lookup/periodediting controls. Normal validbusinesssubmit200workpage is positive control.",
+      "repro": "python repro/run_check.py billing-native-lookup-r2 <audit>/repro/billing_native_lookup.py",
+      "evidence": [
+        "evidence/billing-native-lookup.json",
+        "evidence/billing-native-lookup-r2.log",
+        "evidence/billing-native-lookup-r2.receipt.json",
+        "evidence/browser-complete.xml"
+      ],
+      "impact": "NoJS user cannot search/page Billing client selector; clearing the sole selected record under page size1 cannot recover a different client and entered dates disappear with errorpage",
+      "alternatives_refuted": "PH3 workselection is accepted business behavior, but shared selector fallback remains explicitly required; actual Searchbutton is submitted, not Choosework action. Validclient control independently shows the wrong branch even without validationfailure.",
+      "correction": "Route native selector actions back through Billing form rendering with retained form state; only explicit Choosework reaches/billing/work. Verify Search/Previous/Next with empty/selectedclient, native/JS and size1/multipage.",
+      "audit_instrumentation_note": "Initial probe assumed422; actual application errorhandler returns400. Initial failedoracle/log preserved; corrected probe reproduces same observed defect exit0. Original product untouched.",
+      "capabilities_affected": [
+        "C11",
+        "C27"
+      ]
+    }
+  ],
+  "a11y_qualification": "None of the original17 plus recovered6 browser failures is an axe violation. Initially65 setup errors did not exercise accessibility. Successful cases/replays remain separately counted; no global WCAG certification.",
+  "usage_B03_refutation": "Confirmed conditional source defect: accepted disabled-by-default public collector is excluded from anonymous middleware routes; activation deferral does not waive source readiness. No actual Stage activation claimed.",
+  "csrf_refutation_evidence": [
+    "evidence/oauth-csrf-refutation.json",
+    "evidence/oauth-csrf-refutation-r2.log",
+    "evidence/session-preflight-csrf.json"
+  ],
+  "navigation_refutation_evidence": [
+    "evidence/browser-navigation-diagnosis.xml",
+    "evidence/browser-navigation-observed.xml",
+    "evidence/browser-navigation-waited.xml",
+    "evidence/navigation-race-proof.json"
+  ],
+  "additional_semantically_reviewed_files": [
+    "app/web/static/session_recovery.js",
+    "app/web/static/settings_cache.js",
+    "app/db.py",
+    "app/usage.py",
+    "app/web/templates/lookup.html",
+    "tests/e2e/test_lookups_browser.py",
+    "tests/e2e/test_sending_browser.py",
+    "tests/unit/test_sending_templates.py",
+    "docs/optional-usage-implementation.md"
+  ],
+  "additional_sampled_files": [
+    "app/main.py",
+    "app/tenancy.py",
+    "app/subscription_billing.py",
+    "tests/e2e/test_stage_refinements.py",
+    "tests/e2e/test_work_management.py",
+    "tests/e2e/test_delegated_oauth_browser.py",
+    "tests/e2e/test_onboarding_browser.py",
+    "tests/integration/test_subscription_billing.py",
+    "tests/integration/test_public_admission.py",
+    "tests/integration/test_auth_notice.py",
+    "tests/integration/test_email_start_retries.py",
+    "tests/integration/test_recovery_rehearsal.py",
+    "tests/integration/test_operation_limits.py"
+  ],
+  "qualification": "Raw unsuccessful runs stay unsuccessful. Do not sum repeated nodes as new tests or present aggregate reruns as one full green invocation. Further parent recovery runs may supersede only individual node decisions."
+}

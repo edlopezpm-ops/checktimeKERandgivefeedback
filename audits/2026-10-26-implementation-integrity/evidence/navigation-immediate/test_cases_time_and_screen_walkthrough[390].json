@@ -1,0 +1,395 @@
+{
+  "node": "repro/navigation_tests/test_work_management.py::test_cases_time_and_screen_walkthrough[390]",
+  "mode": "immediate",
+  "events": [
+    {
+      "elapsed": 0.4427199000001565,
+      "kind": "request",
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "elapsed": 0.4535312000002705,
+      "kind": "response",
+      "status": 200,
+      "path": "/"
+    },
+    {
+      "elapsed": 0.4564484000002267,
+      "kind": "navigated",
+      "path": "/"
+    },
+    {
+      "elapsed": 0.5889784999999392,
+      "kind": "request",
+      "method": "POST",
+      "path": "/auth/local"
+    },
+    {
+      "elapsed": 0.6028387000001203,
+      "kind": "response",
+      "status": 303,
+      "path": "/auth/local"
+    },
+    {
+      "elapsed": 0.6031474000001253,
+      "kind": "request",
+      "method": "GET",
+      "path": "/dashboard"
+    },
+    {
+      "elapsed": 0.6329454000001533,
+      "kind": "response",
+      "status": 200,
+      "path": "/dashboard"
+    },
+    {
+      "elapsed": 0.6357937000002494,
+      "kind": "navigated",
+      "path": "/dashboard"
+    },
+    {
+      "elapsed": 0.6796665000001667,
+      "kind": "request",
+      "method": "GET",
+      "path": "/cases/new"
+    },
+    {
+      "elapsed": 0.697220500000185,
+      "kind": "response",
+      "status": 200,
+      "path": "/cases/new"
+    },
+    {
+      "elapsed": 0.702045999999882,
+      "kind": "navigated",
+      "path": "/cases/new"
+    },
+    {
+      "elapsed": 0.7872154000001501,
+      "kind": "request",
+      "method": "GET",
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 0.7993483000000197,
+      "kind": "response",
+      "status": 200,
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 0.807895500000086,
+      "kind": "request",
+      "method": "POST",
+      "path": "/cases/new"
+    },
+    {
+      "elapsed": 0.8249533000002884,
+      "kind": "response",
+      "status": 303,
+      "path": "/cases/new"
+    },
+    {
+      "elapsed": 0.8254125000003114,
+      "kind": "request",
+      "method": "GET",
+      "path": "/cases"
+    },
+    {
+      "elapsed": 0.8465277000000242,
+      "kind": "response",
+      "status": 200,
+      "path": "/cases"
+    },
+    {
+      "elapsed": 0.8496754000002511,
+      "kind": "navigated",
+      "path": "/cases"
+    },
+    {
+      "elapsed": 0.9325923999999759,
+      "kind": "request",
+      "method": "GET",
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48"
+    },
+    {
+      "elapsed": 0.9569354000000203,
+      "kind": "response",
+      "status": 200,
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48"
+    },
+    {
+      "elapsed": 0.959867800000211,
+      "kind": "navigated",
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48"
+    },
+    {
+      "elapsed": 0.9994040000001405,
+      "kind": "request",
+      "method": "GET",
+      "path": "/timecards"
+    },
+    {
+      "elapsed": 1.0241914000002907,
+      "kind": "response",
+      "status": 200,
+      "path": "/timecards"
+    },
+    {
+      "elapsed": 1.0270752999999786,
+      "kind": "navigated",
+      "path": "/timecards"
+    },
+    {
+      "elapsed": 1.1210312000002887,
+      "kind": "request",
+      "method": "GET",
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.1331481000001986,
+      "kind": "response",
+      "status": 200,
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.1410353000001123,
+      "kind": "request",
+      "method": "POST",
+      "path": "/timecards/save"
+    },
+    {
+      "elapsed": 1.166334800000186,
+      "kind": "response",
+      "status": 400,
+      "path": "/timecards/save"
+    },
+    {
+      "elapsed": 1.1698531000001822,
+      "kind": "navigated",
+      "path": "/timecards/save"
+    },
+    {
+      "elapsed": 1.2531105000002754,
+      "kind": "request",
+      "method": "GET",
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.266681200000221,
+      "kind": "response",
+      "status": 200,
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.2743030999999974,
+      "kind": "request",
+      "method": "POST",
+      "path": "/timecards/save"
+    },
+    {
+      "elapsed": 1.300438700000086,
+      "kind": "response",
+      "status": 303,
+      "path": "/timecards/save"
+    },
+    {
+      "elapsed": 1.300691800000095,
+      "kind": "request",
+      "method": "GET",
+      "path": "/timecards"
+    },
+    {
+      "elapsed": 1.327943199999936,
+      "kind": "response",
+      "status": 200,
+      "path": "/timecards"
+    },
+    {
+      "elapsed": 1.331500799999958,
+      "kind": "navigated",
+      "path": "/timecards"
+    },
+    {
+      "elapsed": 1.4126199000002089,
+      "kind": "request",
+      "method": "GET",
+      "path": "/timecards"
+    },
+    {
+      "elapsed": 1.4504296000000068,
+      "kind": "response",
+      "status": 200,
+      "path": "/timecards"
+    },
+    {
+      "elapsed": 1.4544694000001073,
+      "kind": "navigated",
+      "path": "/timecards"
+    },
+    {
+      "elapsed": 1.5269357000001946,
+      "kind": "request",
+      "method": "GET",
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.544545400000061,
+      "kind": "response",
+      "status": 200,
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.547206300000198,
+      "kind": "navigated",
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.6193661000002066,
+      "kind": "request",
+      "method": "GET",
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.63278100000025,
+      "kind": "response",
+      "status": 200,
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.640090599999894,
+      "kind": "request",
+      "method": "POST",
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.6626326000000518,
+      "kind": "response",
+      "status": 400,
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.6659583999999086,
+      "kind": "navigated",
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.735828599999877,
+      "kind": "request",
+      "method": "GET",
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.749170800000229,
+      "kind": "response",
+      "status": 200,
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 1.7560876000002281,
+      "kind": "request",
+      "method": "POST",
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.779321600000003,
+      "kind": "response",
+      "status": 303,
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.7795608000001266,
+      "kind": "request",
+      "method": "GET",
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.7958002000000306,
+      "kind": "response",
+      "status": 200,
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.7993390000001455,
+      "kind": "navigated",
+      "path": "/timecards/entries/c938f303-0a58-4f52-98df-340bfd583201/cases"
+    },
+    {
+      "elapsed": 1.8294832000001406,
+      "kind": "request",
+      "method": "GET",
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48"
+    },
+    {
+      "elapsed": 1.8499191000000792,
+      "kind": "response",
+      "status": 200,
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48"
+    },
+    {
+      "elapsed": 1.8531864999999925,
+      "kind": "navigated",
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48"
+    },
+    {
+      "elapsed": 1.9260318000001462,
+      "kind": "request",
+      "method": "GET",
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48/edit"
+    },
+    {
+      "elapsed": 1.9417080000002898,
+      "kind": "response",
+      "status": 200,
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48/edit"
+    },
+    {
+      "elapsed": 1.9446123000002444,
+      "kind": "navigated",
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48/edit"
+    },
+    {
+      "elapsed": 2.021112500000072,
+      "kind": "request",
+      "method": "GET",
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 2.0285518000000593,
+      "kind": "request",
+      "method": "GET",
+      "path": "/timecards"
+    },
+    {
+      "elapsed": 2.0357919000002767,
+      "kind": "response",
+      "status": 200,
+      "path": "/auth/session"
+    },
+    {
+      "elapsed": 2.0365255000001525,
+      "kind": "requestfailed",
+      "path": "/timecards",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "elapsed": 2.0392455999999584,
+      "kind": "request",
+      "method": "POST",
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48/edit"
+    },
+    {
+      "elapsed": 2.044939599999907,
+      "kind": "requestfailed",
+      "path": "/cases/82d06659-10b2-46c3-a5e8-43dc75e03a48/edit",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "independent_new_session_SQL_readback": {
+    "projects_with_expected_flexfield2": 0,
+    "cases_by_status": {
+      "Open": 1
+    },
+    "archived_cases": 0
+  }
+}

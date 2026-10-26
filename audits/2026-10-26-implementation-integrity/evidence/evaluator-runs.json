@@ -1,0 +1,37 @@
+[
+  {
+    "name": "adapter-node-tests",
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "test\\contact.test.mjs",
+      "test\\internal.test.mjs",
+      "test\\paddle.test.mjs",
+      "test\\production.test.mjs",
+      "test\\proxy.test.mjs",
+      "test\\sending.test.mjs",
+      "test\\stage-archive.test.mjs"
+    ],
+    "cwd": "<SOURCE_ROOT>\\deploy\\cloudflare",
+    "exit_code": 0,
+    "elapsed_seconds": 0.26985340000010183,
+    "tests": 55,
+    "pass": 55,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  {
+    "name": "adapter-typescript",
+    "command": [
+      "node",
+      "node_modules/typescript/bin/tsc",
+      "--noEmit"
+    ],
+    "cwd": "<SOURCE_ROOT>\\deploy\\cloudflare",
+    "exit_code": 0,
+    "elapsed_seconds": 0.16009859999985565
+  }
+]

@@ -1,0 +1,1 @@
+{"status": "PASS", "checks": 1936, "H_MM_cases": 1441, "decimal_hour_cases": 481, "invalid_duration_cases": 8, "invalid_money_cases": 5, "timezone_cases": 1, "oracle": "Every allowed H:MM integer minute through24:00; decimal-hours five-hundredths steps equal3minutes; independently known Santiago Sunday/UTC Monday boundary"}

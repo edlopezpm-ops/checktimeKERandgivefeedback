@@ -1,0 +1,19 @@
+Liquidación de servicios · AEKR-2026-0001
+2026-10-19 — 2026-10-25 · 2026-10-26 · USD
+Independent synthetic audit client
+Synthetic Issuer
+Servicio / semana Minutos H:MM Tarifa/h Importe
+SCALE Consulting Fixture
+2026-10-19 69 1:09 47.13 54.20
+Tiempo total: 69 minutos · 1:09
+USD 54.20
+Documento comercial de liquidación de servicios. El documento tributario aplicable se emite por separado
+cuando corresponda.
+time
+1
+Detalle del tiempo
+Fecha Descripción Minutos
+2026-10-19 7
+2026-10-20 19
+2026-10-21 43
+2

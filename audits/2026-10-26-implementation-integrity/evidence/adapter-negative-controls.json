@@ -1,0 +1,81 @@
+{
+  "tool": "custom Python orchestrator + Node native test runner",
+  "node_version": "v24.18.0",
+  "operators": 4,
+  "detected": 3,
+  "survived": 1,
+  "timeouts": 0,
+  "not_covered": 0,
+  "equivalent": 0,
+  "invalid": 0,
+  "results": [
+    {
+      "name": "adapter-control-mail-false-ack",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "test/internal.test.mjs"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.1625819999999294,
+      "baseline_exit_code": 0,
+      "mutation_detected": true,
+      "operator": "targeted source substitution",
+      "source": "src/internal.ts"
+    },
+    {
+      "name": "adapter-control-contact-no-send",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "test/contact.test.mjs"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.17284620000009454,
+      "baseline_exit_code": 0,
+      "mutation_detected": true,
+      "operator": "targeted source substitution",
+      "source": "src/contact.ts"
+    },
+    {
+      "name": "adapter-control-forwarding-spoof",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "test/proxy.test.mjs"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.21464109999988068,
+      "baseline_exit_code": 0,
+      "mutation_detected": true,
+      "operator": "targeted source substitution",
+      "source": "src/proxy.ts"
+    },
+    {
+      "name": "adapter-control-entrypoint-false-success",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "test\\contact.test.mjs",
+        "test\\internal.test.mjs",
+        "test\\paddle.test.mjs",
+        "test\\production.test.mjs",
+        "test\\proxy.test.mjs",
+        "test\\sending.test.mjs",
+        "test\\stage-archive.test.mjs"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.2765381000003799,
+      "baseline_exit_code": 0,
+      "mutation_detected": false,
+      "operator": "targeted source substitution",
+      "source": "src/index.ts"
+    }
+  ],
+  "source_unchanged": true,
+  "copy_restored": true
+}

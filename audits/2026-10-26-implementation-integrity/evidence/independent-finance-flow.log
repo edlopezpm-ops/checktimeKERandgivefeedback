@@ -1,0 +1,20 @@
+<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\authlib\integrations\httpx_client\assertion_client.py:5: AuthlibDeprecationWarning: The httpx module is deprecated; please use httpx2 instead.
+  from ._compat import httpx2
+timestamp=2026-10-26T20:22:47.376323+00:00 severity=INFO event=application.started execution_id=630fd2b8-c1e5-4f3d-bd23-201ad6cabf50 outcome=SUCCEEDED
+timestamp=2026-10-26T20:22:47.378606+00:00 severity=INFO event=request.completed request_id=e32ca0d8-c8ae-40b6-9f45-f210511bb858 route=/unmatched method=POST status=303 outcome=SUCCEEDED duration_ms=0
+timestamp=2026-10-26T20:22:47.469873+00:00 severity=INFO event=request.completed request_id=fcee9c6e-ee00-4f7b-8cc5-40c208c65211 route=/ method=GET status=200 outcome=SUCCEEDED duration_ms=89
+timestamp=2026-10-26T20:22:47.471361+00:00 severity=INFO event=application.stopped execution_id=5ac5391d-e8b6-42ad-ab1a-50b4e679bd35 outcome=SUCCEEDED
+{"status": "FAIL", "checks_completed": 0, "last_checks": [], "error_type": "AssertionError", "error": "guest-cannot-save"}
+Traceback (most recent call last):
+  File "<AUDIT_ROOT>\repro\independent_finance.py", line 173, in <module>
+    financial_route_oracle()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "<AUDIT_ROOT>\repro\independent_finance.py", line 91, in financial_route_oracle
+    check(web.post('/timecards/save', data={}).status_code in (303, 403), 'guest-cannot-save')
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<AUDIT_ROOT>\repro\independent_finance.py", line 35, in check
+    assert condition, label
+           ^^^^^^^^^
+AssertionError: guest-cannot-save

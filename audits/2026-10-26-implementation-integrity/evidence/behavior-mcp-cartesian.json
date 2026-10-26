@@ -1,0 +1,18 @@
+{
+  "oracle": "Metamorphic property: adding an unrelated client must not change a client+exact-timecard read; independent SQL count proves exactly one stored timecard. Public MCP OAuth/PKCE/token/tool path used, only synthetic local owner login.",
+  "stored_timecards": 1,
+  "stored_clients_after": 2,
+  "before_timecard_ids": [
+    "5082750c-0942-4f2d-947b-e72b85279b1a"
+  ],
+  "after_timecard_ids": [
+    "5082750c-0942-4f2d-947b-e72b85279b1a",
+    "5082750c-0942-4f2d-947b-e72b85279b1a"
+  ],
+  "before_singular_timecard_present": true,
+  "after_singular_timecard_present": false,
+  "entry_minutes_after": [
+    37
+  ],
+  "unexpected_duplicate_count": 1
+}

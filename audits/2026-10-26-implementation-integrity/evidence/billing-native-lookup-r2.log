@@ -1,0 +1,43 @@
+<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\authlib\integrations\httpx_client\assertion_client.py:5: AuthlibDeprecationWarning: The httpx module is deprecated; please use httpx2 instead.
+  from ._compat import httpx2
+timestamp=2026-10-26T20:33:20.004846+00:00 severity=INFO event=application.started execution_id=a20e79d6-42eb-40f5-817e-6d07f58bb936 outcome=SUCCEEDED
+timestamp=2026-10-26T20:33:20.065138+00:00 severity=INFO event=request.completed request_id=9868807b-25fb-4f0a-bd6b-f05e15e9b817 route=/ method=GET status=200 outcome=SUCCEEDED duration_ms=58
+timestamp=2026-10-26T20:33:20.081935+00:00 severity=INFO event=request.completed request_id=e3c7c319-73df-420a-9555-69873a4e2ec8 route=/auth/local method=POST status=303 outcome=SUCCEEDED duration_ms=12
+timestamp=2026-10-26T20:33:20.189323+00:00 severity=INFO event=request.completed request_id=1e1190d6-91d6-4ad0-a39c-5430122ea14c route=/dashboard method=GET status=200 outcome=SUCCEEDED duration_ms=105
+timestamp=2026-10-26T20:33:20.262084+00:00 severity=INFO event=request.completed request_id=e16e7b34-7025-4757-aa9d-4caf91d82680 route=/billing method=GET status=200 outcome=SUCCEEDED duration_ms=70
+timestamp=2026-10-26T20:33:20.284233+00:00 severity=INFO event=request.completed request_id=25c862c2-49df-4ecf-a793-3355f1f8c824 route=/billing/work method=GET status=400 outcome=FAILED duration_ms=14
+timestamp=2026-10-26T20:33:20.316878+00:00 severity=INFO event=request.completed request_id=d21d72d3-f017-41c3-b9c0-cd1710618a20 route=/billing/work method=GET status=200 outcome=SUCCEEDED duration_ms=30
+timestamp=2026-10-26T20:33:20.333764+00:00 severity=INFO event=request.completed request_id=1cf4923b-715b-4d68-8c7a-20bfa386f509 route=/billing/work method=GET status=200 outcome=SUCCEEDED duration_ms=14
+timestamp=2026-10-26T20:33:20.340704+00:00 severity=INFO event=application.stopped execution_id=462f4a79-2eab-4db2-b461-e99fe770db2b outcome=SUCCEEDED
+{
+  "snapshot_config": "test/full create_app, own loopback timeker_diagnostic_test, no test imports/no route patches",
+  "requirement": "Native lookup search/paging preserves chosen dates and selector controls, including clearing selected client when page size1",
+  "initial_billing_status": 200,
+  "actual_form_method": "get",
+  "actual_form_action": "/billing/work",
+  "actual_lookup_button": {
+    "name": "_lookup",
+    "value": "client_id:search",
+    "aria-label": "Search client records"
+  },
+  "period_start_submitted": "2026-10-01",
+  "period_end_submitted": "2026-10-31",
+  "cleared_client_lookup_status": 400,
+  "cleared_client_error_page": true,
+  "cleared_client_period_controls_preserved": false,
+  "selected_client_lookup_status": 200,
+  "selected_client_wrong_work_page": true,
+  "selected_client_lookup_controls_preserved": false,
+  "normal_business_action_status": 200,
+  "normal_business_action_work_page": true,
+  "source_locations": [
+    "app/web/templates/billing.html:4",
+    "app/web/templates/lookup.html:17-19",
+    "app/main.py:1539"
+  ],
+  "source_modules": {
+    "create_app": "<AUDIT_ROOT>\\sandbox\\product\\app\\main.py"
+  }
+}

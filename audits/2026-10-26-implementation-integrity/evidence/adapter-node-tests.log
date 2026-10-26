@@ -1,0 +1,340 @@
+TAP version 13
+# Subtest: contact sends only fixed operator recipient and sender with escaped content
+ok 1 - contact sends only fixed operator recipient and sender with escaped content
+  ---
+  duration_ms: 27.5837
+  type: 'test'
+  ...
+# Subtest: invalid addressing, recipients, content and IDs never reach email
+ok 2 - invalid addressing, recipients, content and IDs never reach email
+  ---
+  duration_ms: 4.8489
+  type: 'test'
+  ...
+# Subtest: only exact virtual endpoint POST JSON is accepted
+ok 3 - only exact virtual endpoint POST JSON is accepted
+  ---
+  duration_ms: 1.2131
+  type: 'test'
+  ...
+# Subtest: actual bytes are bounded even with missing or misleading Content-Length
+ok 4 - actual bytes are bounded even with missing or misleading Content-Length
+  ---
+  duration_ms: 1.734
+  type: 'test'
+  ...
+# Subtest: provider failures are sanitized and never retried or logged
+ok 5 - provider failures are sanitized and never retried or logged
+  ---
+  duration_ms: 0.6026
+  type: 'test'
+  ...
+# Subtest: private transport signs exact body, path and envelope
+ok 6 - private transport signs exact body, path and envelope
+  ---
+  duration_ms: 27.4869
+  type: 'test'
+  ...
+# Subtest: mail accepts only committed204; errors and loginHTML never acknowledge
+ok 7 - mail accepts only committed204; errors and loginHTML never acknowledge
+  ---
+  duration_ms: 8.5
+  type: 'test'
+  ...
+# Subtest: disabled capture and invalid recipients never invoke persistence
+ok 8 - disabled capture and invalid recipients never invoke persistence
+  ---
+  duration_ms: 0.3274
+  type: 'test'
+  ...
+# Subtest: optional operational limits forward only validated bounded integer strings
+ok 9 - optional operational limits forward only validated bounded integer strings
+  ---
+  duration_ms: 31.6805
+  type: 'test'
+  ...
+# Subtest: legacy configuration without a provider remains explicitly disabled
+ok 10 - legacy configuration without a provider remains explicitly disabled
+  ---
+  duration_ms: 1.3343
+  type: 'test'
+  ...
+# Subtest: disabled configuration forwards no Paddle or unrelated bindings
+ok 11 - disabled configuration forwards no Paddle or unrelated bindings
+  ---
+  duration_ms: 0.6457
+  type: 'test'
+  ...
+# Subtest: complete sandbox forwards exactly five explicitly allowed subscription fields
+ok 12 - complete sandbox forwards exactly five explicitly allowed subscription fields
+  ---
+  duration_ms: 0.9955
+  type: 'test'
+  ...
+# Subtest: unknown, live, empty and nonstring provider selections fail before container lookup
+ok 13 - unknown, live, empty and nonstring provider selections fail before container lookup
+  ---
+  duration_ms: 4.2617
+  type: 'test'
+  ...
+# Subtest: disabled or implicit-disabled mixed with any Paddle binding fails closed
+ok 14 - disabled or implicit-disabled mixed with any Paddle binding fails closed
+  ---
+  duration_ms: 2.8542
+  type: 'test'
+  ...
+# Subtest: every sandbox binding is required, bounded and a nonempty string
+ok 15 - every sandbox binding is required, bounded and a nonempty string
+  ---
+  duration_ms: 8.6208
+  type: 'test'
+  ...
+# Subtest: sandbox API and client token formats reject live and malformed keys
+ok 16 - sandbox API and client token formats reject live and malformed keys
+  ---
+  duration_ms: 1.6151
+  type: 'test'
+  ...
+# Subtest: price JSON requires precisely the four distinct configured offer IDs
+ok 17 - price JSON requires precisely the four distinct configured offer IDs
+  ---
+  duration_ms: 2.7544
+  type: 'test'
+  ...
+# Subtest: sandbox mode preserves existing environment, tenant, origin and disabled-surface guards
+ok 18 - sandbox mode preserves existing environment, tenant, origin and disabled-surface guards
+  ---
+  duration_ms: 1.6456
+  type: 'test'
+  ...
+# Subtest: production retains its existing identities, contact route and archive schedule
+ok 19 - production retains its existing identities, contact route and archive schedule
+  ---
+  duration_ms: 4.0185
+  type: 'test'
+  ...
+# Subtest: production legacy config remains valid, with no optional credential forwarding
+ok 20 - production legacy config remains valid, with no optional credential forwarding
+  ---
+  duration_ms: 1.4903
+  type: 'test'
+  ...
+# Subtest: production rejects Stage projects, roles, origins and alternate mode keys
+ok 21 - production rejects Stage projects, roles, origins and alternate mode keys
+  ---
+  duration_ms: 1.9111
+  type: 'test'
+  ...
+# Subtest: public production requires an independent complete prepared inventory and exact providers
+ok 22 - public production requires an independent complete prepared inventory and exact providers
+  ---
+  duration_ms: 1.9932
+  type: 'test'
+  ...
+# Subtest: production outbound capability is separately explicit and never exposes auth keys
+ok 23 - production outbound capability is separately explicit and never exposes auth keys
+  ---
+  duration_ms: 1.0886
+  type: 'test'
+  ...
+# Subtest: production Live billing cannot inherit Sandbox credentials or enable itself
+ok 24 - production Live billing cannot inherit Sandbox credentials or enable itself
+  ---
+  duration_ms: 0.7925
+  type: 'test'
+  ...
+# Subtest: production prelaunch permits fixed-owner Google enrollment and only Sandbox
+ok 25 - production prelaunch permits fixed-owner Google enrollment and only Sandbox
+  ---
+  duration_ms: 3.8597
+  type: 'test'
+  ...
+# Subtest: production contact and auth HMACs preserve strict proxy identity and streaming cookies
+ok 26 - production contact and auth HMACs preserve strict proxy identity and streaming cookies
+  ---
+  duration_ms: 27.6103
+  type: 'test'
+  ...
+# Subtest: production blocks all public internal variants and diagnostics omit path and query
+ok 27 - production blocks all public internal variants and diagnostics omit path and query
+  ---
+  duration_ms: 1.3095
+  type: 'test'
+  ...
+# Subtest: prepared Stage signup requires inventory and closed generic mode retains existing access
+ok 28 - prepared Stage signup requires inventory and closed generic mode retains existing access
+  ---
+  duration_ms: 3.656
+  type: 'test'
+  ...
+# Subtest: public enrollment accepts only a complete bounded independent Stage slot inventory
+ok 29 - public enrollment accepts only a complete bounded independent Stage slot inventory
+  ---
+  duration_ms: 1.1801
+  type: 'test'
+  ...
+# Subtest: public auth receives only a recomputed edge network HMAC and no caller or raw IP
+ok 30 - public auth receives only a recomputed edge network HMAC and no caller or raw IP
+  ---
+  duration_ms: 29.8412
+  type: 'test'
+  ...
+# Subtest: social providers forward only complete explicitly configured pairs
+ok 31 - social providers forward only complete explicitly configured pairs
+  ---
+  duration_ms: 1.2759
+  type: 'test'
+  ...
+# Subtest: social provider misconfiguration fails before a container or provider request
+ok 32 - social provider misconfiguration fails before a container or provider request
+  ---
+  duration_ms: 1.219
+  type: 'test'
+  ...
+# Subtest: all missing required bindings fail closed without resolving a container
+ok 33 - all missing required bindings fail closed without resolving a container
+  ---
+  duration_ms: 1.4651
+  type: 'test'
+  ...
+# Subtest: Stage switches and strong signing remain mandatory; forbidden surfaces fail closed
+ok 34 - Stage switches and strong signing remain mandatory; forbidden surfaces fail closed
+  ---
+  duration_ms: 1.2934
+  type: 'test'
+  ...
+# Subtest: original or foreign projects, weak TLS and duplicate TLS parameters fail closed
+ok 35 - original or foreign projects, weak TLS and duplicate TLS parameters fail closed
+  ---
+  duration_ms: 0.9272
+  type: 'test'
+  ...
+# Subtest: every registry target uses a Stage schema and role on the exact independent project
+ok 36 - every registry target uses a Stage schema and role on the exact independent project
+  ---
+  duration_ms: 0.5674
+  type: 'test'
+  ...
+# Subtest: origin config forbids production, alternate hosts, credentials, path, query and fragment
+ok 37 - origin config forbids production, alternate hosts, credentials, path, query and fragment
+  ---
+  duration_ms: 0.4146
+  type: 'test'
+  ...
+# Subtest: noncanonical incoming origins and upgrade never invoke a container
+ok 38 - noncanonical incoming origins and upgrade never invoke a container
+  ---
+  duration_ms: 0.6512
+  type: 'test'
+  ...
+# Subtest: spoofed forwarding and private target are stripped; Stage identity rebuilt
+ok 39 - spoofed forwarding and private target are stripped; Stage identity rebuilt
+  ---
+  duration_ms: 3.9805
+  type: 'test'
+  ...
+# Subtest: redirects, streaming body and multiple session cookies survive unchanged
+ok 40 - redirects, streaming body and multiple session cookies survive unchanged
+  ---
+  duration_ms: 0.6375
+  type: 'test'
+  ...
+# Subtest: exceptions and injected diagnostics contain no sensitive request or raw error
+ok 41 - exceptions and injected diagnostics contain no sensitive request or raw error
+  ---
+  duration_ms: 0.9347
+  type: 'test'
+  ...
+# Subtest: observer failure cannot change a successful committed response
+ok 42 - observer failure cannot change a successful committed response
+  ---
+  duration_ms: 0.4048
+  type: 'test'
+  ...
+# Subtest: only explicit app, tenant and integration bindings enter the container
+ok 43 - only explicit app, tenant and integration bindings enter the container
+  ---
+  duration_ms: 0.5095
+  type: 'test'
+  ...
+# Subtest: internal jobs and disabled public contact never reach the container
+ok 44 - internal jobs and disabled public contact never reach the container
+  ---
+  duration_ms: 1.8912
+  type: 'test'
+  ...
+# Subtest: Stage manifest keeps existing resources, case-only cron and disabled Sending jobs and telemetry
+ok 45 - Stage manifest keeps existing resources, case-only cron and disabled Sending jobs and telemetry
+  ---
+  duration_ms: 0.5973
+  type: 'test'
+  ...
+# Subtest: default Stage logger emits no Worker telemetry
+ok 46 - default Stage logger emits no Worker telemetry
+  ---
+  duration_ms: 0.0824
+  type: 'test'
+  ...
+# Subtest: email authentication remains disabled unless complete exact Stage provider is selected
+ok 47 - email authentication remains disabled unless complete exact Stage provider is selected
+  ---
+  duration_ms: 1.1206
+  type: 'test'
+  ...
+# Subtest: retention catalog identity is explicit Sandbox-only and never accepts an arbitrary upstream
+ok 48 - retention catalog identity is explicit Sandbox-only and never accepts an arbitrary upstream
+  ---
+  duration_ms: 0.8529
+  type: 'test'
+  ...
+# Subtest: Sending defaults disabled and keeps authentication credentials separate
+ok 49 - Sending defaults disabled and keeps authentication credentials separate
+  ---
+  duration_ms: 1.2705
+  type: 'test'
+  ...
+# Subtest: Sending forwards only complete separate Stage configuration
+ok 50 - Sending forwards only complete separate Stage configuration
+  ---
+  duration_ms: 0.2726
+  type: 'test'
+  ...
+# Subtest: Stage daily job signs only the empty case archive endpoint
+ok 51 - Stage daily job signs only the empty case archive endpoint
+  ---
+  duration_ms: 19.9762
+  type: 'test'
+  ...
+# Subtest: Stage job rejects login HTML, redirects and failures without exposing response bodies
+ok 52 - Stage job rejects login HTML, redirects and failures without exposing response bodies
+  ---
+  duration_ms: 4.0654
+  type: 'test'
+  ...
+# Subtest: Wrong origin or missing signer cannot dispatch a Stage archive
+ok 53 - Wrong origin or missing signer cannot dispatch a Stage archive
+  ---
+  duration_ms: 0.3198
+  type: 'test'
+  ...
+# Subtest: Stage archive upstream exceptions are sanitized and are never retried
+ok 54 - Stage archive upstream exceptions are sanitized and are never retried
+  ---
+  duration_ms: 1.1812
+  type: 'test'
+  ...
+# Subtest: Only Stage adds the daily case archive schedule and retains Sending off
+ok 55 - Only Stage adds the daily case archive schedule and retains Sending off
+  ---
+  duration_ms: 1.922
+  type: 'test'
+  ...
+1..55
+# tests 55
+# suites 0
+# pass 55
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 217.615

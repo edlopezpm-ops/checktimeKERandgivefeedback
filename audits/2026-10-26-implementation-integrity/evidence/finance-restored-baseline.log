@@ -1,0 +1,32 @@
+<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+<AUDIT_ROOT>\sandbox\product\.venv\Lib\site-packages\authlib\integrations\httpx_client\assertion_client.py:5: AuthlibDeprecationWarning: The httpx module is deprecated; please use httpx2 instead.
+  from ._compat import httpx2
+timestamp=2026-10-26T20:37:29.185845+00:00 severity=INFO event=application.started execution_id=aa073ef4-e1bb-4707-9404-78c650405f92 outcome=SUCCEEDED
+timestamp=2026-10-26T20:37:29.187364+00:00 severity=INFO event=request.completed request_id=efd045fb-dc71-496b-96c4-4d33b332dedb route=/unmatched method=POST status=303 outcome=SUCCEEDED duration_ms=0
+timestamp=2026-10-26T20:37:29.242195+00:00 severity=INFO event=request.completed request_id=029d6279-2606-43fd-874c-4de2a3fd3ce6 route=/ method=GET status=200 outcome=SUCCEEDED duration_ms=53
+timestamp=2026-10-26T20:37:29.253145+00:00 severity=INFO event=request.completed request_id=12ac30fd-b399-4774-b7fa-a1ae6f64d8d8 route=/auth/local method=POST status=303 outcome=SUCCEEDED duration_ms=9
+timestamp=2026-10-26T20:37:29.328606+00:00 severity=INFO event=request.completed request_id=f2ea5bc7-1605-425a-bcc1-c13dd67d5bb6 route=/dashboard method=GET status=200 outcome=SUCCEEDED duration_ms=74
+timestamp=2026-10-26T20:37:29.335315+00:00 severity=INFO event=request.completed request_id=a6a37069-da0e-46f1-a236-d706a57bd143 route=/timecards/save method=POST status=403 outcome=FAILED duration_ms=5
+timestamp=2026-10-26T20:37:29.428909+00:00 severity=INFO event=request.completed request_id=0f41942d-74f8-421f-8d47-48cedcca43dd route=/timecards method=GET status=200 outcome=SUCCEEDED duration_ms=92
+timestamp=2026-10-26T20:37:29.465103+00:00 severity=INFO event=request.completed request_id=dd6dc3e5-40ca-4e28-8315-d04be58c08dd route=/timecards/save method=POST status=303 outcome=SUCCEEDED duration_ms=34
+timestamp=2026-10-26T20:37:29.496282+00:00 severity=INFO event=request.completed request_id=5f6bfbe4-6d34-4ea2-97a9-06d042b2e536 route=/timecards method=GET status=200 outcome=SUCCEEDED duration_ms=29
+timestamp=2026-10-26T20:37:29.525504+00:00 severity=INFO event=request.completed request_id=644ced65-5bf9-49aa-be13-deec40ca2504 route=/timecards/{card_id}/finalize method=POST status=303 outcome=SUCCEEDED duration_ms=21
+timestamp=2026-10-26T20:37:29.548975+00:00 severity=INFO event=request.completed request_id=b0d1cead-7a08-4e49-8e2d-0f57b9c54064 route=/timecards method=GET status=200 outcome=SUCCEEDED duration_ms=22
+timestamp=2026-10-26T20:37:29.590904+00:00 severity=INFO event=request.completed request_id=22feaf41-057a-4560-ab62-d185de3d7009 route=/billing/create method=POST status=303 outcome=SUCCEEDED duration_ms=40
+timestamp=2026-10-26T20:37:29.635389+00:00 severity=INFO event=request.completed request_id=96504c36-f754-4d6c-a63e-d87411d4441d route=/billing method=GET status=200 outcome=SUCCEEDED duration_ms=43
+timestamp=2026-10-26T20:37:29.687655+00:00 severity=INFO event=request.completed request_id=70cf9697-3c24-4003-bc1c-8640f5806884 route=/billing/{invoice_id} method=GET status=200 outcome=SUCCEEDED duration_ms=46
+timestamp=2026-10-26T20:37:29.697592+00:00 severity=INFO event=pdf.started execution_id=331a3eda-37fb-41a7-90bd-63f550a570b3 outcome=NO_ACTION
+timestamp=2026-10-26T20:37:31.086731+00:00 severity=INFO event=pdf.completed execution_id=331a3eda-37fb-41a7-90bd-63f550a570b3 outcome=SUCCEEDED duration_ms=1389
+timestamp=2026-10-26T20:37:31.088852+00:00 severity=INFO event=request.completed request_id=5b0ce170-1cb7-45fb-83b1-bc92afba15f4 route=/billing/{invoice_id}/pdf method=GET status=200 outcome=SUCCEEDED duration_ms=1399
+timestamp=2026-10-26T20:37:31.139481+00:00 severity=INFO event=request.failed request_id=9faf3bce-97e0-4987-97a4-949c9d632ecf route=/billing/{invoice_id}/{operation} method=POST status=503 outcome=FAILED duration_ms=31
+timestamp=2026-10-26T20:37:31.168986+00:00 severity=INFO event=pdf.started execution_id=9bfd7996-d047-491e-a87d-f64ed26daca6 outcome=NO_ACTION
+timestamp=2026-10-26T20:37:31.288580+00:00 severity=INFO event=pdf.completed execution_id=9bfd7996-d047-491e-a87d-f64ed26daca6 outcome=SUCCEEDED duration_ms=119
+timestamp=2026-10-26T20:37:31.302464+00:00 severity=INFO event=request.completed request_id=e806b262-30a9-4d80-933c-53811c7a3b31 route=/billing/{invoice_id}/{operation} method=POST status=303 outcome=SUCCEEDED duration_ms=157
+timestamp=2026-10-26T20:37:31.319558+00:00 severity=INFO event=request.completed request_id=3feadab4-df48-44f6-88f2-efd39d6f425b route=/billing/{invoice_id} method=GET status=200 outcome=SUCCEEDED duration_ms=15
+timestamp=2026-10-26T20:37:31.358214+00:00 severity=INFO event=request.completed request_id=38452f65-d570-4e9e-a47c-536956d98757 route=/billing/{invoice_id}/{operation} method=POST status=303 outcome=SUCCEEDED duration_ms=15
+timestamp=2026-10-26T20:37:31.373704+00:00 severity=INFO event=request.completed request_id=8248d0d0-34f5-4007-b97f-049a76bffded route=/billing/{invoice_id} method=GET status=200 outcome=SUCCEEDED duration_ms=14
+timestamp=2026-10-26T20:37:31.374911+00:00 severity=INFO event=application.stopped execution_id=ef8bdf38-05af-4f44-926b-1c9b5e9ee924 outcome=SUCCEEDED
+timestamp=2026-10-26T20:37:31.450927+00:00 severity=INFO event=pdf.started execution_id=891440a2-9f50-43ac-9120-ffb7eeb9b03d outcome=NO_ACTION
+timestamp=2026-10-26T20:37:31.543380+00:00 severity=INFO event=pdf.completed execution_id=891440a2-9f50-43ac-9120-ffb7eeb9b03d outcome=SUCCEEDED duration_ms=92
+{"status": "PASS", "checks": 24, "seed": 20261026, "domain": "native financial lifecycle", "last_checks": ["guest-cannot-save", "local-explicit-auth", "CSRF-required", "native-save-response", "fresh-SQL-saved-minutes", "native-finalize", "native-billing-create", "independent-69min-47.13-total-54.20", "draft-PDF-open-text-total-watermark", "render-failure-not-success", "fresh-SQL-render-failure-rollback", "native-publish", "fresh-SQL-publish-effect", "independent-issued-checksum", "frozen-snapshot-independent-values", "issued-PDF-text-total-no-watermark", "native-manual-payment", "fresh-engine-payment-persistence", "independent-unpaid-balance", "fresh-engine-issued-bytes-stable", "independent-credit-payment-net-balance", "credit-preserves-issued-PDF", "credit-preserves-permanent-source-claims", "SQL-issued-total-immutable"]}

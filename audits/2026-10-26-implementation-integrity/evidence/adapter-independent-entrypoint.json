@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "kind": "baseline",
+      "command": [
+        "node",
+        "<AUDIT_ROOT>\\repro\\adapter_entrypoint_independent.mjs",
+        "<AUDIT_ROOT>\\repro\\adapter-entrypoint-copy\\src\\index.ts"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.1187246999998024
+    },
+    {
+      "kind": "mutated",
+      "command": [
+        "node",
+        "<AUDIT_ROOT>\\repro\\adapter_entrypoint_independent.mjs",
+        "<AUDIT_ROOT>\\repro\\adapter-entrypoint-copy\\src\\index.ts"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.11403000000018437
+    }
+  ],
+  "baseline_passed": true,
+  "previously_surviving_mutation_detected": true,
+  "product_source_unchanged": true,
+  "limitation": "SDK/container provider implementation is stubbed; actual exported application binding and proxy execute."
+}

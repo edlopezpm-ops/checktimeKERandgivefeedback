@@ -1,0 +1,24 @@
+{
+  "label": "browser-complete",
+  "argv": [
+    "<AUDIT_ROOT>\\sandbox\\product\\.venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "tests/e2e",
+    "--junitxml=../../evidence/browser-complete.xml",
+    "-q",
+    "--tb=short"
+  ],
+  "cwd": "<AUDIT_ROOT>\\sandbox\\product",
+  "started_utc": "2026-10-26T20:18:38.579707+00:00",
+  "duration_seconds": 599.4489257,
+  "exit_code": 1,
+  "environment": {
+    "TIMEKER_TEST_DATABASE_URL": "postgresql+psycopg://timeker_app@127.0.0.1:55526/timeker_browser_audit_test",
+    "TIMEKER_DATABASE_URL": "postgresql+psycopg://timeker_app@127.0.0.1:55526/timeker_browser_audit_test",
+    "TIMEKER_ENVIRONMENT": "test",
+    "WEASYPRINT_DLL_DIRECTORIES": "<WORKSPACE_ROOT>\\timeKER\\.local\\weasyprint\\onedir\\weasyprint\\_internal",
+    "TIMEKER_TEST_ADMIN_ROLE": "timeker_test",
+    "TIMEKER_TEST_MIGRATIONS_DATABASE": "timeker_migrations_test"
+  }
+}

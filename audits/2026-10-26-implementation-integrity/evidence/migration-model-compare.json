@@ -1,0 +1,903 @@
+{
+  "target": "new disposable loopback database timeker_schema_contract_audit_test",
+  "head": "ph3_017_operation_limits",
+  "elapsed_seconds": 0.5681279999998878,
+  "actual_tables": [
+    "account_closures",
+    "admission_identities",
+    "app_settings",
+    "audit_events",
+    "browser_sessions",
+    "case_time_allocations",
+    "cases",
+    "client_drafts",
+    "client_source_references",
+    "clients",
+    "contact_attempts",
+    "contacts",
+    "credit_drafts",
+    "credit_memos",
+    "email_auth_challenges",
+    "integration_codes",
+    "integration_grants",
+    "integration_operations",
+    "integration_tokens",
+    "invoice_artifacts",
+    "invoice_lines",
+    "invoice_time_entries",
+    "invoices",
+    "library_document_versions",
+    "library_documents",
+    "library_uploads",
+    "mail_addresses",
+    "mail_attachments",
+    "mail_messages",
+    "operation_counters",
+    "owner_identities",
+    "owner_registrations",
+    "payments",
+    "project_agreements",
+    "projects",
+    "proposal_sending_attempts",
+    "proposal_sending_deliveries",
+    "public_email_challenges",
+    "publication_reviews",
+    "quote_artifacts",
+    "quote_lines",
+    "quote_revisions",
+    "quotes",
+    "sending_attempts",
+    "sending_deliveries",
+    "sending_plans",
+    "sending_preferences",
+    "subscription_billing_accounts",
+    "subscription_billing_events",
+    "subscription_billing_operations",
+    "subscription_operations",
+    "time_contributions",
+    "time_entries",
+    "time_import_records",
+    "time_operations",
+    "timecards",
+    "users",
+    "workspace_admissions",
+    "workspace_subscriptions"
+  ],
+  "model_tables": [
+    "account_closures",
+    "admission_identities",
+    "app_settings",
+    "audit_events",
+    "browser_sessions",
+    "case_time_allocations",
+    "cases",
+    "client_drafts",
+    "client_source_references",
+    "clients",
+    "contact_attempts",
+    "contacts",
+    "credit_drafts",
+    "credit_memos",
+    "email_auth_challenges",
+    "integration_codes",
+    "integration_grants",
+    "integration_operations",
+    "integration_tokens",
+    "invoice_artifacts",
+    "invoice_lines",
+    "invoice_time_entries",
+    "invoices",
+    "library_document_versions",
+    "library_documents",
+    "library_uploads",
+    "mail_addresses",
+    "mail_attachments",
+    "mail_messages",
+    "operation_counters",
+    "owner_identities",
+    "owner_registrations",
+    "payments",
+    "project_agreements",
+    "projects",
+    "proposal_sending_attempts",
+    "proposal_sending_deliveries",
+    "public_email_challenges",
+    "publication_reviews",
+    "quote_artifacts",
+    "quote_lines",
+    "quote_revisions",
+    "quotes",
+    "sending_attempts",
+    "sending_deliveries",
+    "sending_plans",
+    "sending_preferences",
+    "subscription_billing_accounts",
+    "subscription_billing_events",
+    "subscription_billing_operations",
+    "subscription_operations",
+    "time_contributions",
+    "time_entries",
+    "time_import_records",
+    "time_operations",
+    "timecards",
+    "users",
+    "workspace_admissions",
+    "workspace_subscriptions"
+  ],
+  "actual_table_count": 59,
+  "model_table_count": 59,
+  "missing_model_tables": [],
+  "missing_actual_tables": [],
+  "missing_columns": [],
+  "extra_columns": [],
+  "type_string_differences": [],
+  "autogenerate_differences": [
+    {
+      "kind": "modify_default",
+      "table": "projects",
+      "column": "status",
+      "actual_server_default": "'draft'::character varying",
+      "model_server_default": null
+    }
+  ],
+  "check_constraint_count": 150,
+  "functions": [
+    {
+      "proname": "guard_account_closure",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "guard_browser_session",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "guard_closed_account_owner",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_admission_history_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_allocated_entry_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_allocated_parent_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_allocation_contribution_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_allocation_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_archive_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_artifact_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_billing_hold_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_case_archive_status_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_case_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_commercial_case_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_contribution_allocation_check",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_contribution_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_credit_draft_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_credit_memo_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_entry_contribution_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_entry_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_internal_billing_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_internal_card_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_invoice_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_issued_artifact_check",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_library_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_line_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_mail_attachment_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_mail_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_object_id_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_payment_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_project_agreement_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_project_billing_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_proposal_sending_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_publication_claim_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_publication_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_publication_review_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_quote_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_registration_history_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_sending_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_sending_revision_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_subscription_billing_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_subscription_history_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_time_operation_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_timecard_void_restriction",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    },
+    {
+      "proname": "timeker_work_batch_guard",
+      "proconfig": [
+        "search_path=pg_catalog, public, pg_temp"
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "relname": "account_closures",
+      "tgname": "account_closure_guard",
+      "proname": "guard_account_closure",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "admission_identities",
+      "tgname": "admission_identity_history",
+      "proname": "timeker_admission_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "audit_events",
+      "tgname": "audit_guard",
+      "proname": "timeker_artifact_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "browser_sessions",
+      "tgname": "browser_session_guard",
+      "proname": "guard_browser_session",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "case_time_allocations",
+      "tgname": "allocation_contribution_guard",
+      "proname": "timeker_allocation_contribution_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "case_time_allocations",
+      "tgname": "allocation_guard",
+      "proname": "timeker_allocation_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "cases",
+      "tgname": "case_archive_status_guard",
+      "proname": "timeker_case_archive_status_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "cases",
+      "tgname": "case_guard",
+      "proname": "timeker_case_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "cases",
+      "tgname": "commercial_case_guard",
+      "proname": "timeker_commercial_case_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "clients",
+      "tgname": "object_id_guard",
+      "proname": "timeker_object_id_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "credit_drafts",
+      "tgname": "credit_draft_guard",
+      "proname": "timeker_credit_draft_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "credit_memos",
+      "tgname": "credit_memo_guard",
+      "proname": "timeker_credit_memo_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "email_auth_challenges",
+      "tgname": "email_challenge_history",
+      "proname": "timeker_registration_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoice_artifacts",
+      "tgname": "artifact_guard",
+      "proname": "timeker_artifact_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoice_lines",
+      "tgname": "line_guard",
+      "proname": "timeker_line_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoice_time_entries",
+      "tgname": "billing_hold_guard",
+      "proname": "timeker_billing_hold_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoice_time_entries",
+      "tgname": "internal_billing_guard",
+      "proname": "timeker_internal_billing_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoice_time_entries",
+      "tgname": "publication_claim_guard",
+      "proname": "timeker_publication_claim_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoices",
+      "tgname": "invoice_guard",
+      "proname": "timeker_invoice_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoices",
+      "tgname": "issued_artifact_check",
+      "proname": "timeker_issued_artifact_check",
+      "tgdeferrable": true,
+      "tginitdeferred": true
+    },
+    {
+      "relname": "invoices",
+      "tgname": "object_id_guard",
+      "proname": "timeker_object_id_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "invoices",
+      "tgname": "publication_guard",
+      "proname": "timeker_publication_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "library_document_versions",
+      "tgname": "library_version_guard",
+      "proname": "timeker_library_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "library_documents",
+      "tgname": "library_document_guard",
+      "proname": "timeker_library_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "library_documents",
+      "tgname": "object_id_guard",
+      "proname": "timeker_object_id_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "library_uploads",
+      "tgname": "library_upload_guard",
+      "proname": "timeker_library_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "mail_addresses",
+      "tgname": "mail_address_guard",
+      "proname": "timeker_mail_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "mail_attachments",
+      "tgname": "mail_attachment_guard",
+      "proname": "timeker_mail_attachment_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "mail_messages",
+      "tgname": "archive_mail_guard",
+      "proname": "timeker_archive_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "mail_messages",
+      "tgname": "mail_message_guard",
+      "proname": "timeker_mail_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "owner_identities",
+      "tgname": "identity_binding_history",
+      "proname": "timeker_registration_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "owner_registrations",
+      "tgname": "registration_acceptance_history",
+      "proname": "timeker_registration_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "payments",
+      "tgname": "payment_guard",
+      "proname": "timeker_payment_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "project_agreements",
+      "tgname": "project_agreement_guard",
+      "proname": "timeker_project_agreement_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "projects",
+      "tgname": "allocated_project_guard",
+      "proname": "timeker_allocated_parent_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "projects",
+      "tgname": "object_id_guard",
+      "proname": "timeker_object_id_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "projects",
+      "tgname": "project_billing_guard",
+      "proname": "timeker_project_billing_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "proposal_sending_attempts",
+      "tgname": "proposal_attempt_guard",
+      "proname": "timeker_proposal_sending_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "proposal_sending_deliveries",
+      "tgname": "proposal_delivery_guard",
+      "proname": "timeker_proposal_sending_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "public_email_challenges",
+      "tgname": "public_email_challenge_history",
+      "proname": "timeker_admission_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "publication_reviews",
+      "tgname": "publication_review_history",
+      "proname": "timeker_publication_review_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "quote_artifacts",
+      "tgname": "quote_artifact_guard",
+      "proname": "timeker_quote_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "quote_lines",
+      "tgname": "quote_line_guard",
+      "proname": "timeker_quote_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "quote_revisions",
+      "tgname": "quote_revision_guard",
+      "proname": "timeker_quote_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "quotes",
+      "tgname": "quote_root_guard",
+      "proname": "timeker_quote_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "sending_attempts",
+      "tgname": "sending_attempt_history",
+      "proname": "timeker_sending_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "sending_deliveries",
+      "tgname": "sending_delivery_history",
+      "proname": "timeker_sending_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "sending_plans",
+      "tgname": "sending_plan_history",
+      "proname": "timeker_sending_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "sending_plans",
+      "tgname": "sending_plan_revision",
+      "proname": "timeker_sending_revision_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "subscription_billing_accounts",
+      "tgname": "subscription_billing_account_history",
+      "proname": "timeker_subscription_billing_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "subscription_billing_events",
+      "tgname": "subscription_billing_event_history",
+      "proname": "timeker_subscription_billing_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "subscription_billing_operations",
+      "tgname": "subscription_billing_operation_history",
+      "proname": "timeker_subscription_billing_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "subscription_operations",
+      "tgname": "subscription_operation_history",
+      "proname": "timeker_subscription_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_contributions",
+      "tgname": "contribution_allocation_check",
+      "proname": "timeker_contribution_allocation_check",
+      "tgdeferrable": true,
+      "tginitdeferred": true
+    },
+    {
+      "relname": "time_contributions",
+      "tgname": "contribution_guard",
+      "proname": "timeker_contribution_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_entries",
+      "tgname": "entry_allocation_guard",
+      "proname": "timeker_allocated_entry_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_entries",
+      "tgname": "entry_contribution_guard",
+      "proname": "timeker_entry_contribution_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_entries",
+      "tgname": "entry_guard",
+      "proname": "timeker_entry_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_import_records",
+      "tgname": "time_import_record_guard",
+      "proname": "timeker_time_operation_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "time_operations",
+      "tgname": "time_operation_guard",
+      "proname": "timeker_time_operation_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "allocated_card_guard",
+      "proname": "timeker_allocated_parent_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "archive_card_guard",
+      "proname": "timeker_archive_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "internal_card_guard",
+      "proname": "timeker_internal_card_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "object_id_guard",
+      "proname": "timeker_object_id_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "timecard_void_restriction",
+      "proname": "timeker_timecard_void_restriction",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "timecards",
+      "tgname": "work_batch_guard",
+      "proname": "timeker_work_batch_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "users",
+      "tgname": "closed_account_owner_guard",
+      "proname": "guard_closed_account_owner",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "workspace_admissions",
+      "tgname": "admission_allocation_history",
+      "proname": "timeker_admission_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "relname": "workspace_subscriptions",
+      "tgname": "subscription_assignment_history",
+      "proname": "timeker_subscription_history_guard",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    }
+  ],
+  "limits": "No external provider. Autogenerate does not compare all CHECK expressions or trigger semantics. Static review covers these separately. Target retained for audit, no data from Stage/PROD.",
+  "instrumentation_note": "Initial generic type __str__ comparison emitted dialect aliases as differences; corrected to compile both types against the same PostgreSQL dialect. Initial output retained separately; those aliases are not defects."
+}
