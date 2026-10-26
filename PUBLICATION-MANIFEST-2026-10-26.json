@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "effectiveDate": "2026-10-26",
+  "baselinePublicCommit": "04cb3650fd10522e93696d2d70f6786a3b3fa6e1",
+  "scope": "Minimal public status and continuity navigation; historical evidence unchanged. This manifest covers only this update and excludes itself. Older package manifests and current-state files remain historical snapshots.",
+  "historicalFilesByteIdentical": 55,
+  "navigationFilesChanged": [
+    "README.md",
+    "00-START-HERE.md"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7419,
+      "sha256": "5dc0c8754d9e05886729530404ba05e9314310c0c14984b52a39fbac0621fd7d"
+    },
+    {
+      "path": "00-START-HERE.md",
+      "bytes": 11123,
+      "sha256": "9e4057a38d96504297ffa7eb6978cb1ac421b50cfe317b7a9ef4adbd627d0246"
+    },
+    {
+      "path": "PUBLIC_STATUS_2026-10-26.md",
+      "bytes": 1837,
+      "sha256": "099e05eef935a2d4f2fc73e26d558eb82b2ce4d0981c26db1930a68f0965c773"
+    },
+    {
+      "path": "PUBLIC-STATUS-2026-10-26.json",
+      "bytes": 1844,
+      "sha256": "797464f1bc81ec0fe75baeca9f389eec06cafba41b31078bf54633a67f70ec5f"
+    }
+  ]
+}
