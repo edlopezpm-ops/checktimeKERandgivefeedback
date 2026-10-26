@@ -74,9 +74,9 @@ not ok 12 - spoofed forwarding and private target are stripped; Stage identity r
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     503 !== 200
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 200

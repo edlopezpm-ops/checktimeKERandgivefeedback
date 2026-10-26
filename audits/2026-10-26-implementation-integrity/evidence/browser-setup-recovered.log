@@ -22,11 +22,11 @@ tests\e2e\test_browser.py:134: in test_without_javascript
     expect(page.get_by_text("Weekly total: 0:15", exact=True)).to_be_visible()
 E   AssertionError: Locator expected to be visible
 E   Actual value: None
-E   Error: element(s) not found 
+E   Error: element(s) not found
 E   Call log:
 E     - Expect "to_be_visible" get_by_text("Weekly total: 0:15", exact=True) with timeout 5000ms
 E     - waiting for get_by_text("Weekly total: 0:15", exact=True)
-E   
+E
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -228,19 +228,19 @@ _ test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[1440-Tr
 tests\e2e\test_dashboard_detail_pagination_browser.py:104: in test_dashboard_five_panels_keep_independent_pages_chart_and_navigation
     assert expected == 0 and cell["title"] == ""
 E   AssertionError: assert (0 == 0 and 'Tue 27 Oct 2...rded work yet' == ''
-E     
+E
 E     + Tue 27 Oct 2026 · Future date · No recorded work yet)
 _ test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-True-50] _
 tests\e2e\test_dashboard_detail_pagination_browser.py:104: in test_dashboard_five_panels_keep_independent_pages_chart_and_navigation
     assert expected == 0 and cell["title"] == ""
 E   AssertionError: assert (0 == 0 and 'Tue 27 Oct 2...rded work yet' == ''
-E     
+E
 E     + Tue 27 Oct 2026 · Future date · No recorded work yet)
 _ test_dashboard_five_panels_keep_independent_pages_chart_and_navigation[390-False-1] _
 tests\e2e\test_dashboard_detail_pagination_browser.py:104: in test_dashboard_five_panels_keep_independent_pages_chart_and_navigation
     assert expected == 0 and cell["title"] == ""
 E   AssertionError: assert (0 == 0 and 'Tue 27 Oct 2...rded work yet' == ''
-E     
+E
 E     + Tue 27 Oct 2026 · Future date · No recorded work yet)
 ________ test_modified_consent_rejects_without_callback_or_grant[csrf] ________
 tests\e2e\test_delegated_oauth_browser.py:223: in test_modified_consent_rejects_without_callback_or_grant

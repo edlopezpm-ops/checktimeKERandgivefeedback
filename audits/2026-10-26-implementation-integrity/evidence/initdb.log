@@ -20,4 +20,3 @@ syncing data to disk ... ok
 Success. You can now start the database server using:
 
     ^"C^:^\Program^ Files^\PostgreSQL^\18^\bin^\pg^_ctl^" -D ^"C^:^\Users^\edlop^\OneDrive^\Documents^\VS^ Code^\checktimeKERandgivefeedback^\audit^-20261026^-1036d705^\sandbox^\pgdata^" -l logfile start
-

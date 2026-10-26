@@ -8,9 +8,9 @@ not ok 1 - contact sends only fixed operator recipient and sender with escaped c
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     0 !== 1
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 1
@@ -48,9 +48,9 @@ not ok 5 - provider failures are sanitized and never retried or logged
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
-    
+
     0 !== 1
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 1

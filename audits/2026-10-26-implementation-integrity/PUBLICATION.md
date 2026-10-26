@@ -7,3 +7,5 @@ Machine paths are aliased as <AUDIT_ROOT>, <SOURCE_ROOT>, <DOCUMENTATION_ROOT>, 
 Before running machine-bound reproduction templates, substitute aliases in a separate working copy with your explicit disposable locations. The evaluator and financial logic remain unchanged. calculate_score.py is directly portable and checks the published matrix against its frozen contract. Synthetic test configuration constants in repro code are test inputs, not hosted credentials.
 
 No PDF/PNG was published. Extracted synthetic totals, hashes and the recorded visual-inspection result provide the public evidence; originals remain in local audit custody. Scripts referring to those raw outputs explain how to regenerate them in an isolated environment.
+
+Public text uses canonical LF and removes trailing transport whitespace. Raw evidence retains its original whitespace outside the public repository. This representation change does not change measured outcomes; the publication manifest seals the actual Git blob bytes.

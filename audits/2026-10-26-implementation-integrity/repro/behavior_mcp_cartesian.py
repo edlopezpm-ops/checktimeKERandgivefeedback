@@ -59,4 +59,3 @@ with TestClient(create_app(settings)) as web:
 result={'oracle':'Metamorphic property: adding an unrelated client must not change a client+exact-timecard read; independent SQL count proves exactly one stored timecard. Public MCP OAuth/PKCE/token/tool path used, only synthetic local owner login.','stored_timecards':persisted_cards,'stored_clients_after':clients,'before_timecard_ids':[c['id'] for c in before['timecards']],'after_timecard_ids':[c['id'] for c in after['timecards']],'before_singular_timecard_present':before['timecard'] is not None,'after_singular_timecard_present':after['timecard'] is not None,'entry_minutes_after':[e['minutes'] for e in after['entries']],'unexpected_duplicate_count':len(after['timecards'])-persisted_cards}
 (ROOT/'evidence'/'behavior-mcp-cartesian.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
 print(json.dumps(result))
-

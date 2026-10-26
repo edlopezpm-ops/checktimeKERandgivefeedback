@@ -68,4 +68,3 @@ finally:
         stop=subprocess.run([str(PG/'pg_ctl.exe'),'-D',str(DATA),'-m','fast','-w','stop'],capture_output=True,text=True)
         if stop.returncode:raise RuntimeError('Own audit cluster failed stop')
         print('Own SSL audit PostgreSQL stopped.')
-

@@ -538,11 +538,11 @@ tests\e2e\test_lookups_browser.py:82: in test_native_single_slot_clear_browse_an
     expect(page.get_by_label("Period start", exact=True)).to_have_value("2026-10-01")
 E   AssertionError: Locator expected to have Value '2026-10-01'
 E   Actual value: None
-E   Error: element(s) not found 
+E   Error: element(s) not found
 E   Call log:
 E     - Expect "to_have_value" get_by_label("Period start", exact=True) with timeout 5000ms
 E     - waiting for get_by_label("Period start", exact=True)
-E   
+E
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -584,7 +584,7 @@ E   Actual value: None
 E   Error: strict mode violation: get_by_text("Fixed fee", exact=True) resolved to 2 elements:
 E       1) <h2>Fixed fee</h2> aka get_by_role("heading", name="Fixed fee")
 E       2) <h3>Fixed fee</h3> aka locator("#screen-help-dialog").get_by_text("Fixed fee", exact=True)
-E    
+E
 E   Call log:
 E     - Expect "to_be_visible" get_by_text("Fixed fee", exact=True) with timeout 5000ms
 E     - waiting for get_by_text("Fixed fee", exact=True)
@@ -596,7 +596,7 @@ E   Actual value: None
 E   Error: strict mode violation: get_by_text("Fixed fee", exact=True) resolved to 2 elements:
 E       1) <h2>Fixed fee</h2> aka get_by_role("heading", name="Fixed fee")
 E       2) <h3>Fixed fee</h3> aka locator("#screen-help-dialog").get_by_text("Fixed fee", exact=True)
-E    
+E
 E   Call log:
 E     - Expect "to_be_visible" get_by_text("Fixed fee", exact=True) with timeout 5000ms
 E     - waiting for get_by_text("Fixed fee", exact=True)
@@ -605,11 +605,11 @@ tests\e2e\test_sending_browser.py:59: in test_review_confirmation_stop_and_templ
     expect(page.get_by_role("heading", name="Review sending", exact=True)).to_be_visible()
 E   AssertionError: Locator expected to be visible
 E   Actual value: None
-E   Error: element(s) not found 
+E   Error: element(s) not found
 E   Call log:
 E     - Expect "to_be_visible" get_by_role("heading", name="Review sending", exact=True) with timeout 5000ms
 E     - waiting for get_by_role("heading", name="Review sending", exact=True)
-E   
+E
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -714,11 +714,11 @@ tests\e2e\test_sending_browser.py:59: in test_review_confirmation_stop_and_templ
     expect(page.get_by_role("heading", name="Review sending", exact=True)).to_be_visible()
 E   AssertionError: Locator expected to be visible
 E   Actual value: None
-E   Error: element(s) not found 
+E   Error: element(s) not found
 E   Call log:
 E     - Expect "to_be_visible" get_by_role("heading", name="Review sending", exact=True) with timeout 5000ms
 E     - waiting for get_by_role("heading", name="Review sending", exact=True)
-E   
+E
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -829,11 +829,11 @@ tests\e2e\test_stage_refinements.py:190: in test_full_preset_tiles_and_semantic_
     expect(page.get_by_role("button", name="Create draft statement", exact=True)).to_have_class(
 E   AssertionError: Locator expected to have class 'draft-action'
 E   Actual value: None
-E   Error: element(s) not found 
+E   Error: element(s) not found
 E   Call log:
 E     - Expect "to_have_class" get_by_role("button", name="Create draft statement", exact=True) with timeout 5000ms
 E     - waiting for get_by_role("button", name="Create draft statement", exact=True)
-E   
+E
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -969,11 +969,11 @@ tests\e2e\test_stage_refinements.py:190: in test_full_preset_tiles_and_semantic_
     expect(page.get_by_role("button", name="Create draft statement", exact=True)).to_have_class(
 E   AssertionError: Locator expected to have class 'draft-action'
 E   Actual value: None
-E   Error: element(s) not found 
+E   Error: element(s) not found
 E   Call log:
 E     - Expect "to_have_class" get_by_role("button", name="Create draft statement", exact=True) with timeout 5000ms
 E     - waiting for get_by_role("button", name="Create draft statement", exact=True)
-E   
+E
 E   Aria snapshot:
 E   - link "Skip to content":
 E     - /url: "#main"
@@ -1213,7 +1213,7 @@ _____ test_dashboard_panels_and_chart_switch_keep_distinct_actions[1440] ______
 tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
     expect(future).to_have_attribute("aria-hidden", "true")
 E   AssertionError: Locator expected to have attribute 'true'
-E   Actual value: None 
+E   Actual value: None
 E   Call log:
 E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
 E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
@@ -1223,7 +1223,7 @@ ______ test_dashboard_panels_and_chart_switch_keep_distinct_actions[390] ______
 tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
     expect(future).to_have_attribute("aria-hidden", "true")
 E   AssertionError: Locator expected to have attribute 'true'
-E   Actual value: None 
+E   Actual value: None
 E   Call log:
 E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
 E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
@@ -1233,7 +1233,7 @@ ______ test_dashboard_panels_and_chart_switch_keep_distinct_actions[320] ______
 tests\e2e\test_workspace_search_browser.py:194: in test_dashboard_panels_and_chart_switch_keep_distinct_actions
     expect(future).to_have_attribute("aria-hidden", "true")
 E   AssertionError: Locator expected to have attribute 'true'
-E   Actual value: None 
+E   Actual value: None
 E   Call log:
 E     - Expect "to_have_attribute" locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first with timeout 5000ms
 E     - waiting for locator(".work-rhythm").locator("[data-contribution-day][data-future=\"true\"]").first
