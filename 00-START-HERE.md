@@ -1,5 +1,8 @@
 # timeKER — current codebase dossier and PH3 prompt handoff
 
+> **Latest public update: 26 October 2026.** Read the [minimal current status](PUBLIC_STATUS_2026-10-26.md) and [machine-readable snapshot](PUBLIC-STATUS-2026-10-26.json). Future internal reviews continue in [private AEKR Console Dossier](https://console.aekr.io/dossier). All earlier sections and machine seals below retain their original historical dates and evidence scope.
+
+
 Snapshot **2026-10-18**, candidate `4bb5c424d6e7d270cdca1479283896be77d581c3`. Ed Lopez has approved a bounded private PH2 production prelaunch under D076. The candidate uses Paddle Sandbox and existing fixed-owner Google enrollment; generic/public/email-public/Stage onboarding stay false, and Live/Sending jobs stay disabled. Production migration, deployment and hosted readback are technically verified. Personal Google proof/acknowledgment, owner catalog verification/plan choice and UAT remain pending. PH3 feature prompts still follow this release.
 
 This is a descriptive public review snapshot. Canonical contracts remain in the
