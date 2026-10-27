@@ -1,0 +1,2042 @@
+{
+  "schema": "timeker.derived-test-results.v1",
+  "selected_complete_runs": [
+    {
+      "carrier": "PH3",
+      "label": "backend-full-r4",
+      "source_head": "a6979425af4d8327ae52d93adb3aa56575438c04",
+      "started_utc": "2026-10-27T00:55:57.705846+00:00",
+      "seconds": 1643.3904992000002,
+      "exit_code": 0,
+      "clean_source": true,
+      "counts": {
+        "failure": 0,
+        "error": 0,
+        "skipped": 0,
+        "total": 2509,
+        "passed": 2509,
+        "unique_testcase_identities": 2509,
+        "declared_counts_match": true
+      },
+      "private_evidence": {
+        "receipt_sha256": "bb200a40d87de10e0f945c873710f2b8bb0e3829239999f76705d0cbbb17aae3",
+        "xml_sha256": "d3465d6b61f6c6b95889fd43f499d929e55782f89ef33f18c116c831b0b7b294",
+        "log_sha256": "30e0365e75755a51b6f20aa51d20d81690d96238cedf4d0c07afdbe2e45cb2e0"
+      },
+      "command": "python scripts/isolated_tests.py run backend -- tests/unit tests/integration -q --tb=short --junitxml=.local/hoc-repair/evidence/backend-full-r4.xml",
+      "scope": "complete backend"
+    },
+    {
+      "carrier": "PH3",
+      "label": "browser-full-r4",
+      "source_head": "a6979425af4d8327ae52d93adb3aa56575438c04",
+      "started_utc": "2026-10-27T01:02:38.454492+00:00",
+      "seconds": 713.2551543999998,
+      "exit_code": 0,
+      "clean_source": true,
+      "counts": {
+        "failure": 0,
+        "error": 0,
+        "skipped": 0,
+        "total": 352,
+        "passed": 352,
+        "unique_testcase_identities": 352,
+        "declared_counts_match": true
+      },
+      "private_evidence": {
+        "receipt_sha256": "398d6e1df4ff49453c82b927c0bae2d66b80dee01b9c7451cf4f592967641fdf",
+        "xml_sha256": "efd3fa57a965361de11061e904bd4d21b2b413e619eae0a4d11bcddd8c4dec99",
+        "log_sha256": "d99e32a67f12e01068df8305a27f3cde584d15f12be5daa576a17bf60a76ed64"
+      },
+      "command": "python scripts/isolated_tests.py run browser -- tests/e2e -q --tb=short --junitxml=.local/hoc-repair/evidence/browser-full-r4.xml",
+      "scope": "complete browser"
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "stage-ph2-fullbackend-r2",
+      "source_head": "7b034a157d188b9a658c0dce59fb74b1d7a8f29b",
+      "started_utc": "2026-10-26T23:57:03.242230+00:00",
+      "seconds": 1390.0478724999994,
+      "exit_code": 0,
+      "clean_source": true,
+      "counts": {
+        "failure": 0,
+        "error": 0,
+        "skipped": 0,
+        "total": 2267,
+        "passed": 2267,
+        "unique_testcase_identities": 2267,
+        "declared_counts_match": true
+      },
+      "private_evidence": {
+        "receipt_sha256": "b1aa9b4fb24f131de750422016d71420aed425507bcd5d5904229a89f79e0359",
+        "xml_sha256": "2480712c5b2f797e58684f57932b22725ba145312ef85442843bee24362b9878",
+        "log_sha256": "8a24b225caa9137612a5a77fad959e2e12872b8cbd626b80cf1a9964740c5193"
+      },
+      "command": "python -m pytest tests/unit tests/integration -q --tb=short",
+      "scope": "complete backend"
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "stage-ph2-fullbrowser-r3",
+      "source_head": "42910224ccff417b1bbc38c1772de240487f1125",
+      "started_utc": "2026-10-27T00:50:12.762267+00:00",
+      "seconds": 746.6629284999999,
+      "exit_code": 0,
+      "clean_source": true,
+      "counts": {
+        "failure": 0,
+        "error": 0,
+        "skipped": 0,
+        "total": 316,
+        "passed": 316,
+        "unique_testcase_identities": 316,
+        "declared_counts_match": true
+      },
+      "private_evidence": {
+        "receipt_sha256": "ca77e7cb193614ed70b7aa9abf08c22639dfdf35fa139de73d271fe8b3d19ba3",
+        "xml_sha256": "bf64d413daba5e18439b838ae1b73e18b04fb6c5b2b241ae3b3eaa062cc67288",
+        "log_sha256": "60ccd9774202ab5d82ea082a9d133a972b8fa01e11966435a2556ed12d5afb70"
+      },
+      "command": "python -m pytest tests/e2e -q --tb=short",
+      "scope": "complete browser"
+    },
+    {
+      "carrier": "PROD_RUNTIME",
+      "label": "prod-runtime-fullbackend-r1",
+      "source_head": "0e4d4e95c9552710518c838f02e31717934b4e15",
+      "started_utc": "2026-10-27T00:03:28.270704+00:00",
+      "seconds": 1309.7001071999985,
+      "exit_code": 0,
+      "clean_source": true,
+      "counts": {
+        "failure": 0,
+        "error": 0,
+        "skipped": 0,
+        "total": 2253,
+        "passed": 2253,
+        "unique_testcase_identities": 2253,
+        "declared_counts_match": true
+      },
+      "private_evidence": {
+        "receipt_sha256": "f6ee369febe936e582a9d775852c0967d9c5eee9851df5e15653599002bc64eb",
+        "xml_sha256": "53feb575e8218dcac1583abb0ef124f1f4142e40bf87dcf736d1c75083a3f222",
+        "log_sha256": "b4878e47202dc4d139a9961a05208b0e93ed382abe77b80c5b5ef8fcf206998d"
+      },
+      "command": "python -m pytest tests/unit tests/integration -q --tb=short",
+      "scope": "complete backend"
+    },
+    {
+      "carrier": "PROD_RUNTIME",
+      "label": "prod-runtime-fullbrowser-r1",
+      "source_head": "a4d916e770558165492d325292814dc4f1be9397",
+      "started_utc": "2026-10-27T00:49:32.854083+00:00",
+      "seconds": 754.5328674,
+      "exit_code": 0,
+      "clean_source": true,
+      "counts": {
+        "failure": 0,
+        "error": 0,
+        "skipped": 0,
+        "total": 322,
+        "passed": 322,
+        "unique_testcase_identities": 322,
+        "declared_counts_match": true
+      },
+      "private_evidence": {
+        "receipt_sha256": "7418c41ad90dd661c4adc4880d24047fef07b34ab490b27ca9aae6bca7b84316",
+        "xml_sha256": "c187fe00c56fc819c442ab8c6148f6b4cd2fa7630e31c58aad43d1902ccfeb0c",
+        "log_sha256": "bdefdbf327112516dbf4d5da165b4b1bcdfbcf21e397bc0e951ff9190816cd62"
+      },
+      "command": "python -m pytest tests/e2e -q --tb=short",
+      "scope": "complete browser"
+    },
+    {
+      "carrier": "PROD_MAIN",
+      "label": "prod-main-capacity-focus-r3",
+      "source_head": "42482d0ddcda8b56acf305eba465700965c34582",
+      "started_utc": "2026-10-27T01:17:53.628464+00:00",
+      "seconds": 105.09049079999977,
+      "exit_code": 0,
+      "clean_source": true,
+      "counts": {
+        "failure": 0,
+        "error": 0,
+        "skipped": 0,
+        "total": 3,
+        "passed": 3,
+        "unique_testcase_identities": 3,
+        "declared_counts_match": true
+      },
+      "private_evidence": {
+        "receipt_sha256": "7c5c57cd4542f8d068a56232e2132306d961f1a65d42f22ddefa9b7b6d26936a",
+        "xml_sha256": "fa1a1baf93227e7a3d23f7b68451473ebfe559ee1c46c8c74080d5f4c91dff54",
+        "log_sha256": "c0ef5e7395df982ced1b71e1966a901a96ef6bc3149b673fcaace61a5b808a8e"
+      },
+      "command": "python -m pytest tests/integration/test_tenancy_capacity.py -q --tb=long",
+      "scope": "focused capacity under C3 common coverage reuse"
+    }
+  ],
+  "additional_gates": {
+    "schema": "timeker.additional-gates-derived.v1",
+    "created_utc": "2026-10-27T01:41:13.581993+00:00",
+    "fresh_static_adapter_gates": [
+      {
+        "target": "stage-image",
+        "source": "ac46c5184b60950b6631e31661edfd3885df92aa",
+        "ended_utc": "2026-10-27T01:37:19.468554+00:00",
+        "status": "PASS",
+        "ruff": {
+          "scope": "Changed Python paths in the bounded repair relative to the stated baseline",
+          "path_count": 57,
+          "command": "python -m ruff check <repaired Python paths>",
+          "exit_code": 0
+        },
+        "mypy": {
+          "command": "python -m mypy app",
+          "source_files": 105,
+          "exit_code": 0
+        },
+        "adapter": {
+          "test_command": "npm test",
+          "counts": {
+            "tests": 65,
+            "pass": 65,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "typecheck_command": "npm run typecheck",
+          "typecheck_exit_code": 0
+        },
+        "source_and_locks_unchanged": true,
+        "package_install_performed": false,
+        "private_receipt_sha256": "917f42a73b00f8eb7c82fe77d441cedefef5d88007467d3c5712a1e20318360b"
+      },
+      {
+        "target": "stage-main",
+        "source": "42910224ccff417b1bbc38c1772de240487f1125",
+        "ended_utc": "2026-10-27T01:37:27.347015+00:00",
+        "status": "PASS",
+        "ruff": {
+          "scope": "Changed Python paths in the bounded repair relative to the stated baseline",
+          "path_count": 49,
+          "command": "python -m ruff check <repaired Python paths>",
+          "exit_code": 0
+        },
+        "mypy": {
+          "command": "python -m mypy app",
+          "source_files": 92,
+          "exit_code": 0
+        },
+        "adapter": {
+          "test_command": "npm test",
+          "counts": {
+            "tests": 60,
+            "pass": 60,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "typecheck_command": "npm run typecheck",
+          "typecheck_exit_code": 0
+        },
+        "source_and_locks_unchanged": true,
+        "package_install_performed": false,
+        "private_receipt_sha256": "9ec46ef693432fc9d54b23a42b767facd05574240f4babed09cd6eb064effbb5"
+      },
+      {
+        "target": "prod-main",
+        "source": "42482d0ddcda8b56acf305eba465700965c34582",
+        "ended_utc": "2026-10-27T01:37:19.468166+00:00",
+        "status": "PASS",
+        "ruff": {
+          "scope": "Changed Python paths in the bounded repair relative to the stated baseline",
+          "path_count": 50,
+          "command": "python -m ruff check <repaired Python paths>",
+          "exit_code": 0
+        },
+        "mypy": {
+          "command": "python -m mypy app",
+          "source_files": 92,
+          "exit_code": 0
+        },
+        "adapter": {
+          "test_command": "npm test",
+          "counts": {
+            "tests": 62,
+            "pass": 62,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "typecheck_command": "npm run typecheck",
+          "typecheck_exit_code": 0
+        },
+        "source_and_locks_unchanged": true,
+        "package_install_performed": false,
+        "private_receipt_sha256": "5b95bc56094bac8eb8cc4bf1df586c4ddf3ef8775e1278d20f8ea07881c1ab61"
+      },
+      {
+        "target": "prod-image",
+        "source": "0e4d4e95c9552710518c838f02e31717934b4e15",
+        "ended_utc": "2026-10-27T01:37:19.469367+00:00",
+        "status": "PASS",
+        "ruff": {
+          "scope": "Changed Python paths in the bounded repair relative to the stated baseline",
+          "path_count": 47,
+          "command": "python -m ruff check <repaired Python paths>",
+          "exit_code": 0
+        },
+        "mypy": {
+          "command": "python -m mypy app",
+          "source_files": 92,
+          "exit_code": 0
+        },
+        "adapter": {
+          "test_command": "npm test",
+          "counts": {
+            "tests": 60,
+            "pass": 60,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "typecheck_command": "npm run typecheck",
+          "typecheck_exit_code": 0
+        },
+        "source_and_locks_unchanged": true,
+        "package_install_performed": false,
+        "private_receipt_sha256": "b2f331d2ec747a7ac9fdd3d0aa9ca76c0daf904d716969e44ff66589fc123161"
+      }
+    ],
+    "retained_negative_controls": {
+      "schema": "timeker.mutation-evidence-binding.v1",
+      "verified_utc": "2026-10-27T01:38:53.860421+00:00",
+      "current_source": "ac46c5184b60950b6631e31661edfd3885df92aa",
+      "new_mutation_run": false,
+      "adapter": {
+        "prior_recorded_utc": "2026-10-26T22:59:42.370497+00:00",
+        "detected_controls": 5,
+        "restored_source_paths_match_current_bytes": [
+          "src/contact.ts",
+          "src/index.ts",
+          "src/internal.ts",
+          "src/production-proxy.ts",
+          "src/production.ts",
+          "src/proxy.ts",
+          "src/stage-archive.ts",
+          "test/entrypoint.test.mjs"
+        ],
+        "entrypoint_test_sha256": "ae7ea2f2721bd46acf5c33698f3502e493e1c8e92596e3fcb37df34a7f295850",
+        "receipt_sha256": "074674637e508ae97c0e3727b84e7a40142b519511e5129d6c610d9e2f6b2f60"
+      },
+      "finance": {
+        "old_algorithm_detected": true,
+        "source_and_oracle_match_recorded_after_hashes": true,
+        "receipt_sha256": "c5614e31f04b2d252e164735ddc61a8c07415fced61f3a1e255f31334fbbc9f3"
+      },
+      "scope": "Exact source/test byte identity binds retained successful negative controls to the current PH3 image source. These are not newly executed controls and no claim is made that all controls were rerun independently on each PH2 carrier."
+    },
+    "prod_main_common_coverage": {
+      "decision": "C3 common capacity gate reuse accepted after independent review",
+      "observed_utc": "2026-10-27T01:24:18.140067+00:00",
+      "prod_main_source": "42482d0ddcda8b56acf305eba465700965c34582",
+      "full_attempt": {
+        "label": "prod-main-fullbackend-r2",
+        "passed": 2280,
+        "setup_errors": 3,
+        "failures": 0,
+        "skipped": 0,
+        "exit_code": 1
+      },
+      "focused_attempt": {
+        "label": "prod-main-capacity-focus-r3",
+        "passed": 3,
+        "setup_errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      "common_capacity_dependency_paths": 25,
+      "changed_main_backend_cases_passed": 53,
+      "common_full_suites": [
+        {
+          "label": "stage-ph2-fullbackend-r2",
+          "passed": 2267,
+          "source": "7b034a157d188b9a658c0dce59fb74b1d7a8f29b"
+        },
+        {
+          "label": "prod-runtime-fullbackend-r1",
+          "passed": 2253,
+          "source": "0e4d4e95c9552710518c838f02e31717934b4e15"
+        }
+      ],
+      "receipt_sha256": "ef51bcc34ea7896512fe27ff59166a6225b049fded54047ebecc2d3674fd671f",
+      "limits": [
+        "PROD-main full attempt remains 2280 passed, 3 setup errors, exit 1. It is not a full-green run and is not recombined with the focused 3 passed run.",
+        "Unexplained connection termination remains UNKNOWN. A retry passing does not prove the root cause, exclude every suite-order/resource interaction, or validate matched-host capacity.",
+        "This review permits the bounded C3 evidence-reuse decision and finds no backend blocker to normal PROD-main publication; it does not replace source-specific build, browser, hosted deployment/readback, identity, acceptance or external control gates.",
+        "Cron observer v1 remains UNKNOWN; this review does not alter its receipt or interpretation."
+      ]
+    },
+    "hosted_observations": {
+      "schema": "timeker.derived-hosted-observations.v1",
+      "recorded_utc": "2026-10-27T02:20:22.537283+00:00",
+      "stage_deployment": {
+        "source": "ac46c5184b60950b6631e31661edfd3885df92aa",
+        "worker": "a0d47467-aba3-4826-854e-0931454074b9",
+        "container_version": 53,
+        "image_digest": "sha256:f21568164c63f382fa23940d0f65a4b1361652bd0c910429316b5b87a9fd6400",
+        "observed_utc": "2026-10-27T01:43:44.662256+00:00",
+        "http_observed_utc": "2026-10-27T01:44:22.371927+00:00",
+        "http_checks": [
+          {
+            "path": "/health/live",
+            "status": 200
+          },
+          {
+            "path": "/health/ready",
+            "status": 200
+          },
+          {
+            "path": "/",
+            "status": 200
+          },
+          {
+            "path": "/sign-in",
+            "status": 200
+          },
+          {
+            "path": "/privacy/data",
+            "status": 200
+          },
+          {
+            "path": "/legal/policies?lang=en",
+            "status": 200
+          },
+          {
+            "path": "/legal/policies?lang=es",
+            "status": 200
+          }
+        ],
+        "static_assets_exact": true,
+        "bindings_preserved": true,
+        "non_image_configuration_preserved": true,
+        "provider_errors": 0,
+        "running_instance_versions": [
+          53
+        ],
+        "postdeploy_role_observation": {
+          "status": "OBSERVED",
+          "workspace_count": 8,
+          "restricted_roles_observed": 8,
+          "read_only": true,
+          "operator_verified_tls": true,
+          "runtime_deployed_secret_value_parity": "UNKNOWN; encrypted provider values are unreadable",
+          "pooler_backend_ssl_scope": "The operator-to-pooler connection used verify-full TLS. Backend pg_stat_ssl is a separate pooler hop and is not substituted for client TLS."
+        },
+        "private_evidence": {
+          "observed_sha256": "28385e0c24c59846fbc1aade374a585e30b893543131fa27bd1e9e5fd76d327d",
+          "http_sha256": "7703fdd57e4790ba46317e55cb67b2dafb6d13251e217651430c6d325a99f0be",
+          "roles_sha256": "2bc5b2191bb3be7f82e4cfb8516b2b206cc46626afc6c696556050121cad85a9"
+        }
+      },
+      "stage_financial_draft": {
+        "status": "PASS_WITH_BOUNDED_DRAFT_SCOPE",
+        "observed_utc": "2026-10-27T01:50:36.423524+00:00",
+        "runtime": {
+          "worker": "a0d47467-aba3-4826-854e-0931454074b9",
+          "container_version": 53,
+          "image_digest": "sha256:f21568164c63f382fa23940d0f65a4b1361652bd0c910429316b5b87a9fd6400",
+          "source": "ac46c5184b60950b6631e31661edfd3885df92aa"
+        },
+        "controlled_fixture": true,
+        "real_client_changes": false,
+        "integer_minutes": 2,
+        "hourly_rate": "15.15",
+        "currency": "USD",
+        "ui_reload_total": "0.51",
+        "independent_sql": {
+          "fresh_connection": true,
+          "read_only": true,
+          "verify_full_tls": true,
+          "line_amount": "0.51",
+          "subtotal": "0.51",
+          "total": "0.51",
+          "exact_fixture_scope": true,
+          "invoice_status": "Draft",
+          "retained_issued_artifacts": 0
+        },
+        "downloaded_draft_pdf": {
+          "page_count": 2,
+          "bytes": 12771,
+          "sha256": "4e097513c9c162e0c60d152b01079348ea458af6bff46a679977aec1ed69ffba",
+          "rate_15_15": true,
+          "total_0_51": true,
+          "old_total_0_50_absent": true,
+          "download_via_authenticated_hosted_ui": true
+        },
+        "pdf_visual_review": {
+          "pages": 2,
+          "legible": true,
+          "total": "USD 0.51",
+          "draft_watermark": true
+        },
+        "native_no_javascript": {
+          "script_execution_disabled_during_flow": true,
+          "explicit_choose_work": true,
+          "back_preserves_client": true,
+          "back_preserves_dates": true,
+          "search_pagination": "Not exposed for current small client selector; covered by six isolated browser cases",
+          "script_execution_restored": true
+        },
+        "mobile": {
+          "effective_css_width": 320,
+          "document_scroll_width": 305,
+          "header_controls_visible": true,
+          "horizontal_document_overflow": false,
+          "overrides_restored": true
+        },
+        "issuance": "Not performed; blank commercial-source validation was retained and no source was invented.",
+        "stored_issued_pdf_hash_match_claim": false,
+        "human_product_acceptance": false,
+        "private_evidence": {
+          "journey_sha256": "d536762006f2af9163f4a1b22440ac8c2e863674b1c1828c8779e939f3494e95",
+          "sql_receipt_sha256": "af8fec24601d88e743a3c4bb3269b06724a59c3a94c0fab47a4fbcbe7c4428f2"
+        }
+      },
+      "predeployment_owner_sessions": [
+        {
+          "environment": "Stage",
+          "host": "stage-timeker.aekr.io",
+          "observed_utc": "2026-10-27T01:40:56.474023+00:00",
+          "browser": "ChatGPT in-app browser",
+          "existing_owner_google_proof": "completed",
+          "explicit_human_approval": true,
+          "protected_dashboard_reached": true,
+          "versioned_acknowledgment": {
+            "terms": "2026-10-25.v1",
+            "privacy": "2026-10-22.v4",
+            "cookies": "2026-10-22-usage-v2",
+            "catalog": "2026-10-15.v1"
+          },
+          "runtime_qualification": "Observed before repair deployment, not repaired candidate runtime proof",
+          "human_product_acceptance": false,
+          "private_receipt_sha256": "1b938c25ccbf3892f075be1d80fa9deb7ee0af45d81949e91e9d3161ebf3f7d6",
+          "sandbox_read_only_provider_observation": {
+            "fresh_check_utc": "2026-10-27T01:39:54.110130+00:00",
+            "provider_status": "Active",
+            "existing_access_preserved": true,
+            "existing_cancellation_setting_preserved": true,
+            "new_checkout_charge_or_cancellation": false,
+            "qualification": "One existing-account status read; not a fresh checkout, renewal, grace, cancellation or full Sandbox lifecycle."
+          }
+        },
+        {
+          "environment": "PROD",
+          "host": "timeker.aekr.io",
+          "observed_utc": "2026-10-27T02:02:30.721829+00:00",
+          "browser": "ChatGPT in-app browser",
+          "existing_owner_google_proof": "completed",
+          "explicit_human_approval": true,
+          "protected_dashboard_reached": true,
+          "versioned_acknowledgment": {
+            "terms": "2026-10-25.v1",
+            "privacy": "2026-10-15.v2",
+            "cookies": "2026-10-12-usage-v1",
+            "catalog": "2026-10-15.v1"
+          },
+          "runtime_qualification": "Fresh Google proof and explicit versioned acknowledgment occurred before repair promotion. The later authenticated readback is recorded separately.",
+          "human_product_acceptance": false,
+          "private_receipt_sha256": "f9fb1b55a4b89f4a347597f0ac62e1d1ab6334b8116d276afd881202c6fb0d2c"
+        }
+      ],
+      "postdeployment_owner_sessions": [
+        {
+          "environment": "PROD",
+          "observed_utc": "2026-10-27T02:15:54.624804+00:00",
+          "worker": "6fc35460-118c-4ddd-8c87-a854379264a2",
+          "container_version": 22,
+          "source": "0e4d4e95c9552710518c838f02e31717934b4e15",
+          "image_digest": "sha256:1225b22f42756403fc634173e18cff434c7ca3de405994a7ceeb45ead602a637",
+          "protected_paths": [
+            "/dashboard",
+            "/billing",
+            "/clients"
+          ],
+          "all_authenticated_rendered": true,
+          "business_writes": false,
+          "private_receipt_sha256": "f9fb1b55a4b89f4a347597f0ac62e1d1ab6334b8116d276afd881202c6fb0d2c",
+          "human_product_acceptance": false
+        }
+      ],
+      "prod_deployment": {
+        "source": "0e4d4e95c9552710518c838f02e31717934b4e15",
+        "worker": "6fc35460-118c-4ddd-8c87-a854379264a2",
+        "container_version": 22,
+        "image_digest": "sha256:1225b22f42756403fc634173e18cff434c7ca3de405994a7ceeb45ead602a637",
+        "observed_utc": "2026-10-27T02:13:56.157905+00:00",
+        "http_observed_utc": "2026-10-27T02:14:21.939635+00:00",
+        "http_checks": [
+          {
+            "path": "/health/live",
+            "status": 200
+          },
+          {
+            "path": "/health/ready",
+            "status": 200
+          },
+          {
+            "path": "/",
+            "status": 200
+          },
+          {
+            "path": "/sign-in",
+            "status": 200
+          },
+          {
+            "path": "/privacy/data",
+            "status": 200
+          },
+          {
+            "path": "/legal/policies?lang=en",
+            "status": 200
+          },
+          {
+            "path": "/legal/policies?lang=es",
+            "status": 200
+          }
+        ],
+        "static_assets_exact": true,
+        "bindings_preserved": true,
+        "non_image_configuration_preserved": true,
+        "provider_errors": 0,
+        "running_instance_versions": [
+          22
+        ],
+        "postdeploy_role_observation": {
+          "status": "OBSERVED",
+          "workspace_count": 2,
+          "restricted_roles_observed": 2,
+          "read_only": true,
+          "operator_verified_tls": true,
+          "runtime_deployed_secret_value_parity": "UNKNOWN; encrypted provider values are unreadable"
+        },
+        "private_evidence": {
+          "observed_sha256": "aa8a950d39bacff6c70f5899fa1d66f9d8dcc30ecf6c9fdb9c1996965d4045c1",
+          "http_sha256": "396e8f92770dee1ade9aa94e748e6849bcbd3ca8a3ca75453d89563658bfe67c",
+          "roles_sha256": "734bc734e944be36f2851f0df2a03659902987175ed88c77c307e877cc05cfb7",
+          "registry_manifest_finalize_sha256": "5de52ffc309640d59ded3f187deb45d2aea99af245e7ed4d753df85cd70def16",
+          "cleanup_sha256": "73b326ba03297094da16c7302fd691ec9c3c23a0afddb50391dd98af316f4cfe"
+        },
+        "release_transport": "After retained upload failures, the same verified image used a reviewed serial blob upload and manifest finalization. Source, image and activation settings were not changed to solve transport. Registry tag and digest were read back before deployment; temporary registry authentication was logged out."
+      },
+      "actual_stage_scheduled_invocation": {
+        "status": "OBSERVED",
+        "environment": "Stage",
+        "container_version": 53,
+        "event": {
+          "event_type": "scheduled",
+          "cron": "17 2 * * *",
+          "scheduled_utc": "2026-10-27T02:17:27.037000+00:00",
+          "outcome": "ok",
+          "event_timestamp_utc": "2026-10-27T02:17:27.893000+00:00",
+          "worker_version": "a0d47467-aba3-4826-854e-0931454074b9",
+          "expected_worker_version_match": true
+        },
+        "manual_invocation": false,
+        "provider_trigger_or_configuration_changed": false,
+        "raw_logs_retained": false,
+        "observer_exit_code": 0,
+        "normal_cli_stop": true,
+        "private_receipt_sha256": "c7c15cb0efcc3bb7f6dfa00361782ecb525d33f01638662a28fc326ef29ce4b9",
+        "qualification": "One actual scheduled Worker invocation and outcome. No durable business-effect, Sending, recovery-policy or full product acceptance inference. PROD invocation remains unobserved."
+      }
+    },
+    "read_only_grace_impact": {
+      "schema": "timeker.derived-grace-impact.v1",
+      "created_utc": "2026-10-27T01:04:35.085613+00:00",
+      "status": "OBSERVED_NO_RETAINED_GRACE_RECORDS_IN_SCOPE",
+      "observations": [
+        {
+          "environment": "stage",
+          "observed_utc": "2026-10-27T01:03:52.073135+00:00",
+          "runtime_credential_workspaces_observed": 8,
+          "transaction_read_only": true,
+          "verify_full_tls": true,
+          "session_timezones": [
+            "UTC"
+          ],
+          "retained_failure_anchors": 0,
+          "stored_grace_receipts": 0,
+          "expected_expiry_mismatches": 0,
+          "missing_or_incomplete_grace_metadata": 0,
+          "data_or_schema_mutated": false,
+          "private_receipt_sha256": "d845cf5528392fdc4e495443194f306a3ad5e339cde94ff97c296ea0db7c63cc"
+        },
+        {
+          "environment": "prod",
+          "observed_utc": "2026-10-27T01:03:45.366419+00:00",
+          "runtime_credential_workspaces_observed": 2,
+          "transaction_read_only": true,
+          "verify_full_tls": true,
+          "session_timezones": [
+            "UTC"
+          ],
+          "retained_failure_anchors": 0,
+          "stored_grace_receipts": 0,
+          "expected_expiry_mismatches": 0,
+          "missing_or_incomplete_grace_metadata": 0,
+          "data_or_schema_mutated": false,
+          "private_receipt_sha256": "d4456f2a40bc957c8e23a84c9f3234e659a0457474423dbecc400a4f6d9f7c9d"
+        }
+      ],
+      "conclusion": "The observed Stage and PROD runtime-credential scopes contain no retained grace anchor or GRACE_RECORDED receipt. No affected retained interval was identified and no entitlement reconciliation was performed. This is an aggregate read-only inventory, not proof of provider lifecycle or unreadable deployed-secret values.",
+      "limits": [
+        "No business rows, owners, provider identifiers, business timestamps or credentials were returned.",
+        "The model cannot reconstruct a deleted or cleared historical anchor outside retained evidence.",
+        "Future Sandbox checkout, renewal, failure and reconciliation scenarios remain separate proof."
+      ]
+    },
+    "controlled_sending": {
+      "schema": "timeker.controlled-sending-derived.v1",
+      "recorded_utc": "2026-10-27T02:17:10.805878+00:00",
+      "status": "TWO_BOUNDED_CONTROLLED_DELIVERIES_COMPLETE",
+      "environment": "Stage",
+      "container_version": 53,
+      "runtime_source": "ac46c5184b60950b6631e31661edfd3885df92aa",
+      "image_digest": "sha256:f21568164c63f382fa23940d0f65a4b1361652bd0c910429316b5b87a9fd6400",
+      "actual_external_messages": 2,
+      "maximum_approved_external_messages": 2,
+      "scheduled_jobs_changed": false,
+      "historical_consumed_or_simulated_records_replayed": false,
+      "financial_records_or_immutable_artifacts_changed": false,
+      "cases": [
+        {
+          "capability": "C18",
+          "case": "statement",
+          "status": "PASS_BOUNDED_PROVIDER_AND_INBOX_PROOF",
+          "runtime_source": "ac46c5184b60950b6631e31661edfd3885df92aa",
+          "container_version": 53,
+          "controlled_recipient_reviewed": true,
+          "explicit_root_review_of_exact_message_and_frozen_pdf": true,
+          "native_hosted_send_count": 1,
+          "fresh_durable_record": true,
+          "provider_outcome": "provider_queued",
+          "provider_attempt_count": 1,
+          "provider_accepted_utc": "2026-10-27 02:07:38.449092+00:00",
+          "fresh_read_only_database_observation_utc": "2026-10-27T02:11:19.847899+00:00",
+          "future_attempts_stopped": true,
+          "stopped_utc": "2026-10-27 02:08:47.906453+00:00",
+          "automated_followups": 0,
+          "original_attachment_bytes": 12873,
+          "original_attachment_sha256": "04b05652d9fa336db2dad6a5bfe9772966c61f65dd2b56a8454642c4698d1757",
+          "inbox_message_date": "Tue, 27 Oct 2026 02:07:39 +0000",
+          "inbox_observed": true,
+          "spam_observed": false,
+          "trash_observed": false,
+          "authentication": {
+            "spf": "PASS",
+            "dkim_product_domain": "PASS",
+            "dmarc": "PASS"
+          },
+          "received_original_attachment_sha256": "04b05652d9fa336db2dad6a5bfe9772966c61f65dd2b56a8454642c4698d1757",
+          "received_bytes_equal_frozen_artifact": true,
+          "exact_approved_message_with_native_crlf": true,
+          "provider_emitted_mail_message_identity_present": true,
+          "fixture_finance_unchanged": true,
+          "no_payment_receipt_due_date_or_acceptance_writes": true,
+          "mailbox_writes": 0,
+          "revision_number": null,
+          "qualification": "Exactly one approved controlled external delivery. Duplicate/concurrent dispatch, induced uncertainty, definitive-only retry and stale-state invalidation are supported by the fresh local contract suites, not by deliberately inducing uncertain live mail. No human reading, client receipt, legal acceptance, due date, payment or universal deliverability is inferred.",
+          "private_evidence": {
+            "sql_receipt_sha256": "7699a92596236cd64a908bcf78a1b98faf2060b9727e66492bc1165b6d345090",
+            "inbox_receipt_sha256": "490feb85b1d495005da1391fb5abbb4a30038b3558d11b73192896425aa08596",
+            "approved_plan_sha256": "615a9d6ddaa76e208398485938aefda797b2e8922d5bd2fef38481e66aa2d036"
+          }
+        },
+        {
+          "capability": "C19",
+          "case": "commercial",
+          "status": "PASS_BOUNDED_PROVIDER_AND_INBOX_PROOF",
+          "runtime_source": "ac46c5184b60950b6631e31661edfd3885df92aa",
+          "container_version": 53,
+          "controlled_recipient_reviewed": true,
+          "explicit_root_review_of_exact_message_and_frozen_pdf": true,
+          "native_hosted_send_count": 1,
+          "fresh_durable_record": true,
+          "provider_outcome": "provider_queued",
+          "provider_attempt_count": 1,
+          "provider_accepted_utc": "2026-10-27 02:13:49.755161+00:00",
+          "fresh_read_only_database_observation_utc": "2026-10-27T02:16:12.365013+00:00",
+          "future_attempts_stopped": true,
+          "stopped_utc": "2026-10-27 02:14:27.762669+00:00",
+          "automated_followups": 0,
+          "original_attachment_bytes": 13121,
+          "original_attachment_sha256": "e38355f6d34dc03fb204d62131b8d7887e6a2b26dd0be904709ff6cfb0506918",
+          "inbox_message_date": "Tue, 27 Oct 2026 02:13:48 +0000",
+          "inbox_observed": true,
+          "spam_observed": false,
+          "trash_observed": false,
+          "authentication": {
+            "spf": "PASS",
+            "dkim_product_domain": "PASS",
+            "dmarc": "PASS"
+          },
+          "received_original_attachment_sha256": "e38355f6d34dc03fb204d62131b8d7887e6a2b26dd0be904709ff6cfb0506918",
+          "received_bytes_equal_frozen_artifact": true,
+          "exact_approved_message_with_native_crlf": true,
+          "provider_emitted_mail_message_identity_present": true,
+          "fixture_finance_unchanged": true,
+          "no_payment_receipt_due_date_or_acceptance_writes": true,
+          "mailbox_writes": 0,
+          "revision_number": 1,
+          "qualification": "Exactly one approved controlled external delivery. Duplicate/concurrent dispatch, induced uncertainty, definitive-only retry and stale-state invalidation are supported by the fresh local contract suites, not by deliberately inducing uncertain live mail. No human reading, client receipt, legal acceptance, due date, payment or universal deliverability is inferred.",
+          "private_evidence": {
+            "sql_receipt_sha256": "0fa5f7cc2adee84a83ad7ca9d7edc2b916345ea2ea6384716f60cc09375b3c70",
+            "inbox_receipt_sha256": "59366dc30435285eb2a803d55617dbeaa0402560b3af737262da3eef29e8823c",
+            "approved_plan_sha256": "615a9d6ddaa76e208398485938aefda797b2e8922d5bd2fef38481e66aa2d036"
+          }
+        }
+      ],
+      "retained_diagnostic": {
+        "initial_statement_body_probe": "Exact LF byte comparison initially differed from browser-native CRLF. Persisted and received text hashes matched the exact approved CRLF serialization; only that exact serialization was added to the checker. The original review-required receipt remains retained.",
+        "private_receipt_sha256": "f36a61480301ae870230423ffeb24a7dd872773eeaa4b323ce51b3357e37384c"
+      },
+      "scope": "Separate statement and commercial outboxes each have one fresh provider acceptance and independently verified owner-inbox attachment receipt. This does not activate public Sending or alter production."
+    },
+    "test_to_image_source_equivalence": [
+      {
+        "scope": "PH3 image to complete test source",
+        "left_source": "ac46c5184b60950b6631e31661edfd3885df92aa",
+        "right_source": "a6979425af4d8327ae52d93adb3aa56575438c04",
+        "changed_paths": [
+          "tests/e2e/isolated_redirects.py",
+          "tests/e2e/test_delegated_oauth_browser.py",
+          "tests/e2e/test_oauth_csp_browser.py"
+        ],
+        "exact_identical_tree_or_blob_paths": [
+          "app",
+          "tests/unit",
+          "tests/integration",
+          "alembic",
+          "alembic.ini",
+          "Dockerfile",
+          ".dockerignore",
+          "pyproject.toml",
+          "uv.lock",
+          "scripts/postgres-runtime-grants.sql",
+          "deploy/postgres/supabase-ca.crt",
+          "deploy/cloudflare"
+        ],
+        "verified": true,
+        "qualification": "Only listed E2E files differ. Application, backend tests, dependency locks, migrations, grants and build inputs are identical; this is source equivalence, not a rerun."
+      },
+      {
+        "scope": "PROD image to browser test source",
+        "left_source": "0e4d4e95c9552710518c838f02e31717934b4e15",
+        "right_source": "a4d916e770558165492d325292814dc4f1be9397",
+        "changed_paths": [
+          "tests/e2e/isolated_redirects.py",
+          "tests/e2e/test_delegated_oauth_browser.py",
+          "tests/e2e/test_oauth_csp_browser.py",
+          "tests/e2e/test_stage_refinements.py"
+        ],
+        "exact_identical_tree_or_blob_paths": [
+          "app",
+          "tests/unit",
+          "tests/integration",
+          "alembic",
+          "alembic.ini",
+          "Dockerfile",
+          ".dockerignore",
+          "pyproject.toml",
+          "uv.lock",
+          "scripts/postgres-runtime-grants.sql",
+          "deploy/postgres/supabase-ca.crt",
+          "deploy/cloudflare"
+        ],
+        "verified": true,
+        "qualification": "Only listed E2E files differ. Application, backend tests, dependency locks, migrations, grants and build inputs are identical; this is source equivalence, not a rerun."
+      },
+      {
+        "scope": "Stage backend to code main source",
+        "left_source": "7b034a157d188b9a658c0dce59fb74b1d7a8f29b",
+        "right_source": "42910224ccff417b1bbc38c1772de240487f1125",
+        "changed_paths": [
+          "tests/e2e/conftest.py",
+          "tests/e2e/isolated_redirects.py",
+          "tests/e2e/test_delegated_oauth_browser.py",
+          "tests/e2e/test_oauth_csp_browser.py",
+          "tests/e2e/test_stage_refinements.py"
+        ],
+        "exact_identical_tree_or_blob_paths": [
+          "app",
+          "tests/unit",
+          "tests/integration",
+          "alembic",
+          "alembic.ini",
+          "Dockerfile",
+          ".dockerignore",
+          "pyproject.toml",
+          "uv.lock",
+          "scripts/postgres-runtime-grants.sql",
+          "deploy/postgres/supabase-ca.crt",
+          "deploy/cloudflare"
+        ],
+        "verified": true,
+        "qualification": "Only listed E2E files differ. Application, backend tests, dependency locks, migrations, grants and build inputs are identical; this is source equivalence, not a rerun."
+      }
+    ],
+    "contact_delivery_readback": {
+      "status": "CONFIGURATION_OBSERVED_DELIVERY_NOT_ATTEMPTED",
+      "environment": "Stage",
+      "worker": "a0d47467-aba3-4826-854e-0931454074b9",
+      "observed_utc": "2026-10-27T02:23:56.644617+00:00",
+      "effective_contact_delivery": "disabled",
+      "email_binding_count": 0,
+      "native_public_form_inspected": true,
+      "form_submitted": false,
+      "messages_sent": 0,
+      "activation_changed": false,
+      "secret_values_read": false,
+      "private_receipt_sha256": "5cd1b0f89f924524f388a89fd3a2e316bc876d60265d7ab50d97123e58b5467f",
+      "qualification": "Effective live configuration was independently read back. It is not provider delivery or CAPTCHA success evidence; no activation or submission was performed."
+    }
+  },
+  "retained_attempts": [
+    {
+      "carrier": "PH3",
+      "label": "b01-owner-gap-red-r1",
+      "started_utc": "2026-10-26T23:48:20.657577+00:00",
+      "seconds": 7.5023708999997325,
+      "exit_code": 1,
+      "source_head": "e70c06091581a6e831a3feb8bedcaf90447591fd",
+      "source_dirty": false,
+      "receipt_sha256": "2952c6a220b109c615ab9b4824c61f081361f16be08509f9ea80fc8dc1225f9a",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 2,
+        "error": 0,
+        "skipped": 0,
+        "total": 2,
+        "passed": 0,
+        "unique_testcase_identities": 2,
+        "declared_counts_match": true
+      },
+      "log_sha256": "9dd16baced25506e63fe73be6f158e16c92ba39e888dd236bd0213d1c18a3e93",
+      "xml_sha256": "ee9d130aa3e5b2723914338be280300dd00b3290814b5bd90e00a14d6d8b0a83",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "b01-owner-gap-red-r2",
+      "started_utc": "2026-10-26T23:48:56.660383+00:00",
+      "seconds": 7.998100999999224,
+      "exit_code": 1,
+      "source_head": "e70c06091581a6e831a3feb8bedcaf90447591fd",
+      "source_dirty": false,
+      "receipt_sha256": "4578a14c00a6fce5db106e18b70046db3b515f2bbc0c88b02856d34bbc0a014c",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 2,
+        "error": 0,
+        "skipped": 0,
+        "total": 2,
+        "passed": 0,
+        "unique_testcase_identities": 2,
+        "declared_counts_match": true
+      },
+      "log_sha256": "bd089eb0e4b30f4ea38836b1449744dcb3a000732d6f40ec3a751322be45fe66",
+      "xml_sha256": "de2728635c8327c540683856474fc742de9fec6645bd4531662857f517411db5",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "b01-red-r1",
+      "started_utc": "2026-10-26T22:58:10.167273+00:00",
+      "seconds": 8.503516200000377,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "df1276183cbf5b40f8870d64ea511e1f9c6b52e1d5df20499d3c8d2f579a7566",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 10,
+        "error": 0,
+        "skipped": 0,
+        "total": 11,
+        "passed": 1,
+        "unique_testcase_identities": 11,
+        "declared_counts_match": true
+      },
+      "log_sha256": "0bb760e9180f19254213e22021416ec0fffd01665dfc5e32c2bd18078ad3ca9f",
+      "xml_sha256": "2faf1e3b087ebb67f252f26fd0b0a6836327a589af0a7698b5fc1ed50009c49c",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "b02-b04-green-r1",
+      "started_utc": "2026-10-26T22:57:44.074695+00:00",
+      "seconds": 17.492552000001524,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "8800b0d6bc2e215d6aad8e9132de09a2e3d29bcb4605309feefe48cf11b4784e",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 2,
+        "error": 0,
+        "skipped": 0,
+        "total": 12,
+        "passed": 10,
+        "unique_testcase_identities": 12,
+        "declared_counts_match": true
+      },
+      "log_sha256": "94de4b0df13e682e30c9d534fa9ebb0932af35c2c2e4c7b22b264e073203570e",
+      "xml_sha256": "8199123b8b72d520c0f3d09d6864f8cacdac2f71d0d17e97736d0306a803737d",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "b02-b04-green-r2",
+      "started_utc": "2026-10-26T22:58:14.759102+00:00",
+      "seconds": 67.39233189999868,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "df02af84c1fd3464201dc6a8c93d4377cf8d7ecbb6282fc229ce546c8cf47367",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 95,
+        "passed": 94,
+        "unique_testcase_identities": 95,
+        "declared_counts_match": true
+      },
+      "log_sha256": "cea5c6422aae32ae26160f2eb8db2304e0b867a97263a797f885fa58f8530546",
+      "xml_sha256": "acc9a78bd20fa75975e615a42ccc98e3ba9f0a201f7f6b419ed35be87398b548",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "b02-b04-red-r1",
+      "started_utc": "2026-10-26T22:57:17.821062+00:00",
+      "seconds": 16.325151900000492,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "434df7312160d3f9bf39a36ed3a91900fd529671fa297c9f091116caa8997e37",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 9,
+        "error": 0,
+        "skipped": 0,
+        "total": 12,
+        "passed": 3,
+        "unique_testcase_identities": 12,
+        "declared_counts_match": true
+      },
+      "log_sha256": "11ffd9bc2ea7daeb898a80a223c9e928f5869e36ca6ee01bf379131f23a38945",
+      "xml_sha256": "9e4995f4b53b05e92fda45afa1aedb9f9226a2190ab2e294d29ae5f6b1beb535",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "b03-full-app-r1",
+      "started_utc": "2026-10-26T22:59:02.787236+00:00",
+      "seconds": 33.504491800000324,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "4f9071f545febaa77633aa97e0f1ab1b05ee82fb926da22c23e0629456054059",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 51,
+        "passed": 50,
+        "unique_testcase_identities": 51,
+        "declared_counts_match": true
+      },
+      "log_sha256": "70129bea9f52be4e7445a3df3d50ba6a6cdac4db60e0aae695dda2bcf9231020",
+      "xml_sha256": "6d3aa2bdb1f5edae47a28860eb377d11ac0ff53b08d35d4c5e2f5c29521f713e",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "backend-failures-r1",
+      "started_utc": "2026-10-26T23:19:53.725077+00:00",
+      "seconds": 27.81219389999933,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "f955418c2544010d3dc08c0f33053b158844731e2ab0b3859cae75cafe655de0",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 7,
+        "error": 0,
+        "skipped": 0,
+        "total": 28,
+        "passed": 21,
+        "unique_testcase_identities": 28,
+        "declared_counts_match": true
+      },
+      "log_sha256": "4c43f5a788eef09547a5bbd2ef6fd854576d90566e1b8204e80480ab7cc9584c",
+      "xml_sha256": "0b47b3356ebe9da80965b4318192e64a2d93f3a2a3b43a59ba8084ab06ec1522",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "backend-fixtures-r2",
+      "started_utc": "2026-10-26T23:24:34.365731+00:00",
+      "seconds": 12.638562199999797,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "3d5af791198c9b061b79d5f1f1b57a5ae865655632085435234da6c67d0cf66f",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 0,
+        "error": 28,
+        "skipped": 0,
+        "total": 31,
+        "passed": 3,
+        "unique_testcase_identities": 31,
+        "declared_counts_match": true
+      },
+      "log_sha256": "736b78c82ce62df00288c0234a11546b865ecf4dea8793d0b8707509e811fdcc",
+      "xml_sha256": "1efb76b4e83a179d1ba4d638d614e157e571dc6c06da3c732ff44f6ac7bcbbb4",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "backend-fixtures-r4",
+      "started_utc": "2026-10-26T23:26:25.459707+00:00",
+      "seconds": 38.46363160000146,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "9cc0ab5444951e00e7886d706e1ffc52729e285eb94b004e28884890689e4f89",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 10,
+        "skipped": 0,
+        "total": 37,
+        "passed": 26,
+        "unique_testcase_identities": 37,
+        "declared_counts_match": true
+      },
+      "log_sha256": "4cb78d05e08214539c9937c6eb551cb8aaca56b88eff6c0cae375c4b14deebe9",
+      "xml_sha256": "390807555afc6a693f3304523fa8436d5f46bffbc89a80602d8a18a164e599a5",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "backend-full-r1",
+      "started_utc": "2026-10-26T23:14:06.081357+00:00",
+      "seconds": 1510.0118918999997,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "93aee6b67e594ecc5f416f191c5da7ba66ea82fb56f06d01b72628925d3db283",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 19,
+        "error": 0,
+        "skipped": 2,
+        "total": 2505,
+        "passed": 2484,
+        "unique_testcase_identities": 2505,
+        "declared_counts_match": true
+      },
+      "log_sha256": "626ee519fa50d8482582372a662f4b1431b1961171b74c66f2c420a8e8efa916",
+      "xml_sha256": "14817374d3248e40f87438c56e89d2f663d716ee407c999561791e93890c153a",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "billing-lookup-red-r1",
+      "started_utc": "2026-10-26T22:59:02.783937+00:00",
+      "seconds": 15.189087900000231,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "0d0ff116ea68b929390efd51f4b14a98c02ebb5fe9675aedb1166f4f71695bfc",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 1,
+        "passed": 0,
+        "unique_testcase_identities": 1,
+        "declared_counts_match": true
+      },
+      "log_sha256": "849b6aca058c3c1452ad4befd987d77937fc5a2845c7e9a831bac3f8bbd8a2e3",
+      "xml_sha256": "58b34109e854501be5caa32c365e1a8bc7f8a10bb768cf9a1dc7cc4bf1657cfa",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "browser-full-r1",
+      "started_utc": "2026-10-26T23:16:07.234658+00:00",
+      "seconds": 1487.992190699999,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "5d9abee14153657da681f525bfea04e66a50990f22bd52c960b282c8ac4ac768",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 52,
+        "error": 1,
+        "skipped": 0,
+        "total": 353,
+        "passed": 300,
+        "unique_testcase_identities": 352,
+        "declared_counts_match": true
+      },
+      "log_sha256": "28f3eb502d298f63cad91b7d2a18595fa655e6bf20aa29fe12549336e0327f3d",
+      "xml_sha256": "871865fb726e1d86b252ca598efab38a366042764c35c4419a9cf59bba6b93dc",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "browser-full-r2",
+      "started_utc": "2026-10-26T23:43:02.535458+00:00",
+      "seconds": 822.6337631999995,
+      "exit_code": 1,
+      "source_head": "e70c06091581a6e831a3feb8bedcaf90447591fd",
+      "source_dirty": false,
+      "receipt_sha256": "539d4ca77ba87fc4ff3770ab8cbe8cda8a59a2ef5c37365a9f2292dc3e9f17fe",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 352,
+        "passed": 351,
+        "unique_testcase_identities": 352,
+        "declared_counts_match": true
+      },
+      "log_sha256": "1ea5d9b240b68020070840457a7fc91c39ee53127ea6ebaa3b14dd80d4dd6e0d",
+      "xml_sha256": "37b82f07bff24d8fedb65d698f8170a27a8bc2c506a347f3e99983f64a8c3fb9",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "browser-full-r3",
+      "started_utc": "2026-10-27T00:14:56.287140+00:00",
+      "seconds": 737.5915208000006,
+      "exit_code": 1,
+      "source_head": "ac46c5184b60950b6631e31661edfd3885df92aa",
+      "source_dirty": false,
+      "receipt_sha256": "c0ccbc7da0659f2baa5ab7719057a62a22ce8ea148643aab9c548c5783cf7a9b",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 6,
+        "error": 0,
+        "skipped": 0,
+        "total": 352,
+        "passed": 346,
+        "unique_testcase_identities": 352,
+        "declared_counts_match": true
+      },
+      "log_sha256": "e0274d691f585148ad11d5218d4a0bf918a5c7172931cc7663e91dee0e3f5c5f",
+      "xml_sha256": "62dc1f384ef28cee7cb970d7039bcee09e6c576cc061a53ab15c62c74e307065",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "browser-harness-r1",
+      "started_utc": "2026-10-26T23:03:28.496501+00:00",
+      "seconds": 458.549006700001,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "07a821f0ec2b147f2d98466488923a91785fb92f4f65bc67a567f9818980c47c",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 13,
+        "error": 0,
+        "skipped": 0,
+        "total": 50,
+        "passed": 37,
+        "unique_testcase_identities": 50,
+        "declared_counts_match": true
+      },
+      "log_sha256": "df8a805e38207bbcb9169f5477ccad83fe004f917fca61219858c82c78c91310",
+      "xml_sha256": "d8a19967b145fb1945f4d221abb2b9f2f2345e0699d687ab60a182bd7b6cd25b",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "cookie-focused-red-r1",
+      "started_utc": "2026-10-26T23:22:30.521293+00:00",
+      "seconds": 192.82374309999977,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "ef61f5e28595658000f244a3229b2573709cb67527477cec85155fc3ab789239",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 6,
+        "error": 0,
+        "skipped": 0,
+        "total": 6,
+        "passed": 0,
+        "unique_testcase_identities": 6,
+        "declared_counts_match": true
+      },
+      "log_sha256": "decc0d3bc123147a93fad7d293b03c44abd7596161c5bd87d3d2baa67d5c6e30",
+      "xml_sha256": "11a22167d4b6b676860a5b5006063d8d44ac2e15c5695c3aca5de5b9ecd3d713",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "fin-regression-r1",
+      "started_utc": "2026-10-26T23:00:11.174920+00:00",
+      "seconds": 73.4433527000001,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "621ee56e2e2327118c7e5803a984f9baf24aebce846d3c65d2cea048c3a587fa",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 8,
+        "error": 0,
+        "skipped": 0,
+        "total": 122,
+        "passed": 114,
+        "unique_testcase_identities": 122,
+        "declared_counts_match": true
+      },
+      "log_sha256": "55652db7faf59882ddc5b1f165cef995d06b1c31f5e96dd566f8c8bff003e2bd",
+      "xml_sha256": "228cd719c3581b906adc4ededab262cee8ad1e1d6233d71e6f2f05275dbcd4b3",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "fin-static-logging-r1",
+      "started_utc": "2026-10-26T23:00:55.671250+00:00",
+      "seconds": 4.1580228000002535,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "f0bb32e03778246b3eb026424d7c89bee058b1554cbcd08fd91677f07aecbacf",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 24,
+        "passed": 23,
+        "unique_testcase_identities": 24,
+        "declared_counts_match": true
+      },
+      "log_sha256": "87782bb9a76c32ab1c7d8b98b381996c527a15b1e1185ead95a59844580cbaf9",
+      "xml_sha256": "d29d976d0f3d397afa101c16773f8760a79d6d2211c89c1544c43eafd894da75",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "live-checkout-red-r1",
+      "started_utc": "2026-10-26T23:27:22.728878+00:00",
+      "seconds": 35.24490020000121,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "5d05e559b326d3ed301c7cc6f8a35e4836a6b5d01e6ded403c3cf32225831b8b",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 1,
+        "skipped": 0,
+        "total": 2,
+        "passed": 0,
+        "unique_testcase_identities": 1,
+        "declared_counts_match": true
+      },
+      "log_sha256": "c690b475e4b50d589b9116bdfb78831947313feaac7026cab14d0a25775c0c52",
+      "xml_sha256": "1c21c02b0f62dc942d78bd00511d351c397068c18ccc37ca0e8374e67cdbdc06",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "live-template-diagnosis-r1",
+      "started_utc": "2026-10-26T23:28:15.419137+00:00",
+      "seconds": 2.3493479000007937,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "10b748171563da5694f968b78eb09285e13511577f98870a4bddb8597df0f88b",
+      "status": "COMPLETE_NONZERO",
+      "log_sha256": "53091d80b320840e5f0c73de670e7c275d9098ae1599297792b0a6ae87d3fd10",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "live-template-diagnosis-r2",
+      "started_utc": "2026-10-26T23:28:23.142331+00:00",
+      "seconds": 2.109676000000036,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "da23af0fb2e5039b695f6c6d59e765b2706b1eb9b7d6ac6f7a3814561e637370",
+      "status": "COMPLETE_NONZERO",
+      "log_sha256": "1ba3f02c24f689f1b95086af1fac33e7dff448dbb6afaa1fa1f9e253274d6684",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "oauth-cdp-candidate-r1",
+      "started_utc": "2026-10-27T00:32:02.031109+00:00",
+      "seconds": 29.690442600000097,
+      "exit_code": 1,
+      "source_head": "ac46c5184b60950b6631e31661edfd3885df92aa",
+      "source_dirty": false,
+      "receipt_sha256": "926c7c41fa40c20ed36fa96a11fb1a51003646ac07e1800bd028e6dd7dc73a43",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 16,
+        "passed": 15,
+        "unique_testcase_identities": 16,
+        "declared_counts_match": true
+      },
+      "log_sha256": "eea07f9c23bb0e6dbbea767c787e475e1a3d79c2870ed0d6adc9a9a69fbffab3",
+      "xml_sha256": "ff680fdcb9b4f70095329065970c57e330dfe60904873a46cde2a85bb65b66ce",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "oauth-csp-red-r1",
+      "started_utc": "2026-10-26T23:30:21.639298+00:00",
+      "seconds": 5.591690399998697,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "4e354631b01b9dd80288e2a7b9b72509f1ce262d9226c8af1d454902b40bce14",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 1,
+        "passed": 0,
+        "unique_testcase_identities": 1,
+        "declared_counts_match": true
+      },
+      "log_sha256": "0132ec41a589c1b871294adcb01b02b0296c8f5ef0ca6d33b84e4c47ac7287d1",
+      "xml_sha256": "78f50b291504a1904596104f0a6c53d096e288865a2b93f2ebc498d6c47044c3",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "oauth-forwarded-callback-r1",
+      "started_utc": "2026-10-27T00:25:32.302040+00:00",
+      "seconds": 18.16879759999938,
+      "exit_code": 1,
+      "source_head": "ac46c5184b60950b6631e31661edfd3885df92aa",
+      "source_dirty": false,
+      "receipt_sha256": "a28bde9076943e6a3adff8bc288fdf8622d9331356d911778bf2e4cb93072ecc",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 2,
+        "error": 0,
+        "skipped": 0,
+        "total": 2,
+        "passed": 0,
+        "unique_testcase_identities": 2,
+        "declared_counts_match": true
+      },
+      "log_sha256": "e12ceec4cca2b8680d8fbf97a51c514bc9fcbb8ca1b6dcacd0af1ee78f214663",
+      "xml_sha256": "c5bb59cef9447308e197e9452ec886c84cbd418269d63f5543bdf407d4dae281",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "oauth-headless-callback-r1",
+      "started_utc": "2026-10-27T00:23:15.109958+00:00",
+      "seconds": 18.765084099999513,
+      "exit_code": 1,
+      "source_head": "ac46c5184b60950b6631e31661edfd3885df92aa",
+      "source_dirty": false,
+      "receipt_sha256": "d39a8b27422b6f430ed249f87cf5ef4fccffb4ed86f478bfa6ea6bf1d233710a",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 2,
+        "error": 0,
+        "skipped": 0,
+        "total": 2,
+        "passed": 0,
+        "unique_testcase_identities": 2,
+        "declared_counts_match": true
+      },
+      "log_sha256": "be171cf55b3525c829752cfeaa81a5484da2245d95bc6f4f5a0a9552eab360ec",
+      "xml_sha256": "fd2b5941a2f21c50a5479c852a2c40be60af272cf33d2377c4eb29b9fa742b93",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "onboarding-recovery-green-r1",
+      "started_utc": "2026-10-26T23:34:57.293418+00:00",
+      "seconds": 32.954495699999825,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "8d04024f5f614623e6765e897a2e1c3533d6cb83cce5fd85a5bfc328f98f869a",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 3,
+        "error": 0,
+        "skipped": 0,
+        "total": 6,
+        "passed": 3,
+        "unique_testcase_identities": 6,
+        "declared_counts_match": true
+      },
+      "log_sha256": "1e86d2e28159e88c87bb432d31d16b8ab37aa444e872790d1c2b4ab6154daf71",
+      "xml_sha256": "cef5ccff4482a48311c3634c522a258961f8cf792b6bec493e2c1abc8942afca",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "onboarding-recovery-red-r1",
+      "started_utc": "2026-10-26T23:34:29.390573+00:00",
+      "seconds": 7.594202500000392,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "12e99537f6953ca1f37d5bea37aa49a4262994e52f147cd806a12937410ae525",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 1,
+        "passed": 0,
+        "unique_testcase_identities": 1,
+        "declared_counts_match": true
+      },
+      "log_sha256": "e9649bcfd758c0bd509fa7518588da57d02ba6e2ca6f7527d470d526196640a5",
+      "xml_sha256": "071dab043243defd38c368ead753b2f0f53d84ca573a99ce194cdaa3565fda0d",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "ph3-final-browser-smoke",
+      "started_utc": "2026-10-27T00:11:08.386543+00:00",
+      "seconds": 29.007665699999052,
+      "exit_code": 1,
+      "source_head": "e70c06091581a6e831a3feb8bedcaf90447591fd",
+      "source_dirty": true,
+      "receipt_sha256": "e21cb9d94e22dba566164e1d21657b9153d1caf992b3e40571a3763fab1319e6",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 3,
+        "passed": 2,
+        "unique_testcase_identities": 3,
+        "declared_counts_match": true
+      },
+      "log_sha256": "3d7d6a34206f31611743529b76dd67d58e43156989b8d7fa4b92e43c8048b77b",
+      "xml_sha256": "e35217f6438290c5772c078d5811f90d70074019ed015adf8305a588dfdec41d",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "ph3-oauth-cdp-focus-r1",
+      "started_utc": "2026-10-27T00:47:39.243231+00:00",
+      "seconds": 53.680602499999964,
+      "exit_code": 4294967295,
+      "source_head": "ac46c5184b60950b6631e31661edfd3885df92aa",
+      "source_dirty": true,
+      "receipt_sha256": "9d207be4fc8251aa2fa0c774bb8b03c2644358a017564c9ed72e531c5af1677f",
+      "status": "COMPLETE_NONZERO",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "prelaunch-checkout-red-r1",
+      "started_utc": "2026-10-26T23:33:06.691720+00:00",
+      "seconds": 34.90810650000094,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "365af3b33ace669e4bb4f08369f447ae24e963b5288d652cb4b2c5c9a0a4dbe7",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 1,
+        "skipped": 0,
+        "total": 2,
+        "passed": 0,
+        "unique_testcase_identities": 1,
+        "declared_counts_match": true
+      },
+      "log_sha256": "b505e199202b1f46d306c2d0a14cfd117700c47a608ae73ea647978e1da4da8e",
+      "xml_sha256": "d9016aa33a600e4b4afa2826779372cb8ba579ab1e166d0cfa37d979392c1393",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "template-full-failures-r1",
+      "started_utc": "2026-10-26T23:18:53.643918+00:00",
+      "seconds": 4.67779100000007,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "151c2f11d0439fe06d705112bb6ec0829fe0064b79f38ac6a5995ac42507fe69",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 6,
+        "error": 0,
+        "skipped": 0,
+        "total": 47,
+        "passed": 41,
+        "unique_testcase_identities": 47,
+        "declared_counts_match": true
+      },
+      "log_sha256": "5e75779cd4d7fc1c4cdf1abdf0761ba3ba309d6c8b2c83dbf55cb1cd32a2b98d",
+      "xml_sha256": "1d933fcaee2c5a27a8caac8f9f4eb1c6bc7837935e0399506f808c833855bbe3",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "template-full-failures-r2",
+      "started_utc": "2026-10-26T23:19:27.788053+00:00",
+      "seconds": 5.157279000000926,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "4969a3b36bb6b75b1fbf94f0a634f6905ff538151345f4ec54ae300d9698bedf",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 47,
+        "passed": 46,
+        "unique_testcase_identities": 47,
+        "declared_counts_match": true
+      },
+      "log_sha256": "904974e487d9abce1ae55dd20c3a060d4870b5752f144a82a19ff830902e7054",
+      "xml_sha256": "3a094bdde479ac38e8587662265dbf45d2360d05bad6711a3a3efb1d6ccf0c94",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "ui-refresh-red-r1",
+      "started_utc": "2026-10-26T23:39:15.880870+00:00",
+      "seconds": 17.396745399999418,
+      "exit_code": 1,
+      "source_head": "0dc28213f619a6e11fe6c7c672ec40cecc7d21be",
+      "source_dirty": true,
+      "receipt_sha256": "42c5b867221433d8d23b0285329782a0a04802351c7ab2046c08e70c77332e82",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 5,
+        "passed": 4,
+        "unique_testcase_identities": 5,
+        "declared_counts_match": true
+      },
+      "log_sha256": "ffacff57770e1bb5bf748b00ef1c1eacf0b903fa845b3518b11a5725a0231664",
+      "xml_sha256": "ee7d9876261b4c60a38c0ad12274cf61d0ec2adcb7dc4c11b3884f999a32d2dd",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "b01-owner-expanded-red-r1",
+      "started_utc": "2026-10-26T23:54:36.117815+00:00",
+      "seconds": 8.959223200001361,
+      "exit_code": 1,
+      "source_head": "a3752878f1c734f287f0ddb6fd84f14bc63ba9e5",
+      "source_dirty": true,
+      "receipt_sha256": "583bccdc1efa8bd01eee1e87dfb8205d4850b3b62d90e694f3c7b2bfbb0ef741",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 3,
+        "error": 0,
+        "skipped": 0,
+        "total": 15,
+        "passed": 12,
+        "unique_testcase_identities": 15,
+        "declared_counts_match": true
+      },
+      "log_sha256": "90b800b0608638fe90a649a522628a5fb081f0f8727f8b3745298c455378a098",
+      "xml_sha256": "d0cef4e3852a19ca654a938c86508ed1d70f8c13ba6ceb215ecafbde64f7d88f",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "b01-owner-expanded-red-r2",
+      "started_utc": "2026-10-26T23:55:14.168215+00:00",
+      "seconds": 8.973906900000657,
+      "exit_code": 1,
+      "source_head": "a3752878f1c734f287f0ddb6fd84f14bc63ba9e5",
+      "source_dirty": true,
+      "receipt_sha256": "1a0de3b33b0ab5935b793d2058ecf233ea4e25926c1f4751b8dc25e902917871",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 2,
+        "error": 0,
+        "skipped": 0,
+        "total": 15,
+        "passed": 13,
+        "unique_testcase_identities": 15,
+        "declared_counts_match": true
+      },
+      "log_sha256": "307d018e87eb648d39c243addb921ce1d2a5cbbb3dacdbf9abe3909e06f1b49a",
+      "xml_sha256": "ad11e2b10940999a6b0a7555ff1afbaf1aa34ae557c701763c06fb82e03cd166",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "fin-ph2-regression-r1",
+      "started_utc": "2026-10-26T23:07:37.737338+00:00",
+      "seconds": 55.940977700000076,
+      "exit_code": 1,
+      "source_head": "a3752878f1c734f287f0ddb6fd84f14bc63ba9e5",
+      "source_dirty": true,
+      "receipt_sha256": "f4b59a525b2dcae06492e108760762db0cc439d8d6547c1fddd2b58e556ec66c",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 7,
+        "error": 0,
+        "skipped": 0,
+        "total": 110,
+        "passed": 103,
+        "unique_testcase_identities": 110,
+        "declared_counts_match": true
+      },
+      "log_sha256": "656fa070cf03fe7dfd8b0baaf6d84fa2247108d2d79e100e36808ec51d81072a",
+      "xml_sha256": "0b1975a8494a1b2ce343eabadc488d6c06eac4fc0ac3037cfb25c87823add26c",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "ph2-bounded-r1",
+      "started_utc": "2026-10-26T23:16:11.687849+00:00",
+      "seconds": 42.72549810000055,
+      "exit_code": 1,
+      "source_head": "a3752878f1c734f287f0ddb6fd84f14bc63ba9e5",
+      "source_dirty": true,
+      "receipt_sha256": "b8bc2bf3a1341059cefe5ee0d93b69650b4e8a34789b7e0582cc37d84ffecd00",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 3,
+        "error": 0,
+        "skipped": 0,
+        "total": 59,
+        "passed": 56,
+        "unique_testcase_identities": 59,
+        "declared_counts_match": true
+      },
+      "log_sha256": "b36e981b04699e945340d25cc13f6bd539e9b6c07ea535ae29abfc36c4058234",
+      "xml_sha256": "8b256425a2142e6e65ff16df46ba3e770a4a891afc08fdb9c318e5ae6f5fe290",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "ph2-browser-contracts-r1",
+      "started_utc": "2026-10-26T23:43:21.223672+00:00",
+      "seconds": 128.46056580000004,
+      "exit_code": 1,
+      "source_head": "a3752878f1c734f287f0ddb6fd84f14bc63ba9e5",
+      "source_dirty": true,
+      "receipt_sha256": "5b582bb59bf6f176b79f2869201d9c48039f1ee8aac072e7660e0d2b5bc6df82",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 3,
+        "error": 0,
+        "skipped": 0,
+        "total": 65,
+        "passed": 62,
+        "unique_testcase_identities": 65,
+        "declared_counts_match": true
+      },
+      "log_sha256": "472e0762cb182132a171fdc780b9838f4e1ae571e6efe4f8976f93fbae2f1065",
+      "xml_sha256": "133d31c34b040d05ed531c7ad70521e652e961a4782fb7e3302c5169ee5198ae",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "ph2-failures-r2",
+      "started_utc": "2026-10-26T23:43:11.143490+00:00",
+      "seconds": 42.3491197000003,
+      "exit_code": 1,
+      "source_head": "a3752878f1c734f287f0ddb6fd84f14bc63ba9e5",
+      "source_dirty": true,
+      "receipt_sha256": "5dcf2b38400aea60742779c53a8f489f4d92a36628477c2d619230ceac893a31",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 1,
+        "error": 0,
+        "skipped": 0,
+        "total": 20,
+        "passed": 19,
+        "unique_testcase_identities": 20,
+        "declared_counts_match": true
+      },
+      "log_sha256": "a58c77f1c56803087cde242dfb72cb0a1d9ec68962ad8249e7ce23885dced77d",
+      "xml_sha256": "fb74dd0d3774ba06de8f335089fa4d9e37998724e4ba4a4dc40356ae32795fbf",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "ph2-fullbackend-r1",
+      "started_utc": "2026-10-26T23:18:31.615623+00:00",
+      "seconds": 1231.115369000001,
+      "exit_code": 1,
+      "source_head": "a3752878f1c734f287f0ddb6fd84f14bc63ba9e5",
+      "source_dirty": true,
+      "receipt_sha256": "eb9038c3647c1c8bbbe54a3035cbf9bce90e56995fd21299c0bfe48a37012a9f",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 20,
+        "error": 0,
+        "skipped": 0,
+        "total": 2263,
+        "passed": 2243,
+        "unique_testcase_identities": 2263,
+        "declared_counts_match": true
+      },
+      "log_sha256": "112d2d207ce82ca9e6de1203dee7f9dc5b81f6dd562ac9958afc4e52eae96d5f",
+      "xml_sha256": "389b2072dcf2401b5dcde1652648719db5a2fec0950ab01d42925796de2c3172",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "ph2-lookup-browser-r1",
+      "started_utc": "2026-10-26T23:17:35.394482+00:00",
+      "seconds": 20.08457400000043,
+      "exit_code": 1,
+      "source_head": "a3752878f1c734f287f0ddb6fd84f14bc63ba9e5",
+      "source_dirty": true,
+      "receipt_sha256": "4fa98d802b5e96e92821697938321884e7a05dbd1231ca2b5eb6986f00b2ff74",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 2,
+        "error": 0,
+        "skipped": 0,
+        "total": 6,
+        "passed": 4,
+        "unique_testcase_identities": 6,
+        "declared_counts_match": true
+      },
+      "log_sha256": "1130312c57ce2a20d47b29337c7dfdca81484f86eb647f78d7de1458aaceb50e",
+      "xml_sha256": "b24402cfaf6740676f3cdf0866ac6afcf017042006fbf655170950c4ffa8b81d",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "stage-ph2-fullbrowser-r1",
+      "started_utc": "2026-10-26T23:57:03.242617+00:00",
+      "seconds": 800.5813067000017,
+      "exit_code": 1,
+      "source_head": "7b034a157d188b9a658c0dce59fb74b1d7a8f29b",
+      "source_dirty": false,
+      "receipt_sha256": "276352cc9d46b08c04c1e95f97a65f40f96fe04848efafc2aa3a5349e110b2a8",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 2,
+        "error": 0,
+        "skipped": 0,
+        "total": 316,
+        "passed": 314,
+        "unique_testcase_identities": 316,
+        "declared_counts_match": true
+      },
+      "log_sha256": "a0c5d84e2939ce424fd738bb38a5ca6f85d180f05ddb9711cced92cb2c01a311",
+      "xml_sha256": "9a72b912d369e1f0ae3c0fd379ef6c4dc8fd8f343c4424cc2e201d1842a73120",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PROD_MAIN",
+      "label": "prod-main-fullbackend-r1",
+      "started_utc": "2026-10-27T00:03:28.259209+00:00",
+      "seconds": 1832.4879988999983,
+      "exit_code": 1,
+      "source_head": "ed528e945242f7b4ebbdf2903cb2b07111f739d4",
+      "source_dirty": false,
+      "receipt_sha256": "646c75374b7309e1c60d248ec9a650b6bb7a674a92b10d82d7737d86a211324a",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 0,
+        "error": 2,
+        "skipped": 0,
+        "total": 2283,
+        "passed": 2281,
+        "unique_testcase_identities": 2283,
+        "declared_counts_match": true
+      },
+      "log_sha256": "b3c4af97e295414d46af87a1d91a8ddbc55c236aef9fefbce3af764f9735ba00",
+      "xml_sha256": "cc45bdecb59b25e731a63e53c8339801808e5da068d584cf719b40ec9d99d0ef",
+      "disposition": "Prior interrupted/stalled capacity connection diagnostic with a bounded documented operator intervention. Not used as a clean full-suite success."
+    },
+    {
+      "carrier": "PROD_MAIN",
+      "label": "prod-main-fullbackend-r2",
+      "started_utc": "2026-10-27T00:51:45.551811+00:00",
+      "seconds": 1436.5809229000001,
+      "exit_code": 1,
+      "source_head": "42482d0ddcda8b56acf305eba465700965c34582",
+      "source_dirty": false,
+      "receipt_sha256": "32a90d363bde0636a8f8792c1927f95ee0abd4eec087ba0f2eb0ca86f50cb341",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 0,
+        "error": 3,
+        "skipped": 0,
+        "total": 2283,
+        "passed": 2280,
+        "unique_testcase_identities": 2283,
+        "declared_counts_match": true
+      },
+      "log_sha256": "326fcb2a5cf813cc226b221f3f40cb4b87cf1fed8b7e36421ff4548026ec5717",
+      "xml_sha256": "06f8557c905d451b0958f581d24357e2c25d676350e92a922a77c224c3fc5ca0",
+      "disposition": "Retained full attempt with three shared capacity setup errors. The unchanged exact three-node focus passed. Formal C3 common coverage reuse applies; no combined full-green result or established connection-failure cause is claimed."
+    },
+    {
+      "carrier": "PROD_RUNTIME",
+      "label": "runtime-oauth-cdp-focus-r1",
+      "started_utc": "2026-10-27T00:34:57.749568+00:00",
+      "seconds": 105.19277820000207,
+      "exit_code": 1,
+      "source_head": "0e4d4e95c9552710518c838f02e31717934b4e15",
+      "source_dirty": true,
+      "receipt_sha256": "cac0be1c4f30cd782c2f425cb99eceb9809fbf2088c73e6c9b10b19e60ed1182",
+      "status": "COMPLETE_NONZERO",
+      "counts": {
+        "failure": 9,
+        "error": 0,
+        "skipped": 0,
+        "total": 16,
+        "passed": 7,
+        "unique_testcase_identities": 16,
+        "declared_counts_match": true
+      },
+      "log_sha256": "901b7388acc215dbc7c227355c265b2f282171d5bb69c97342da8c1f796fb758",
+      "xml_sha256": "07a4b1f70ca4b2e8ab19bab325d98e6b8a84769689a3cee5526aa637f1d7fb9a",
+      "disposition": "Retained earlier reproduction, diagnostic or intermediate test result. No success credit is assigned from this invocation; the selected final complete run and specific repair evidence are separate."
+    },
+    {
+      "carrier": "PH3",
+      "label": "backend-full-r3",
+      "log_sha256": "655dadc504457fc28e727436f923fa7a006b4a9d33aa3935a9efaf5d7ce43758",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "PH3",
+      "label": "setup-r1",
+      "log_sha256": "5449ac8d78429353d1bff58cd3f43ea1d394c62d018fe0ea18ba2697f911d64a",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "adapter-install",
+      "log_sha256": "cf11b92e45f5d4d8965f7aa794687c459fb6605fbec549f96b38bb0574ab4dcb",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "adapter-test",
+      "log_sha256": "d4e9e055daafb89b200e8a4d12598e79a904ca42565a21f9e779d0ddb524fc8c",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "adapter-typecheck",
+      "log_sha256": "5dcad9152bf56a54352c49fc0f1e4fefafb653ca92f987b708b5a1f4b2acada2",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "STAGE_MAIN",
+      "label": "stage-ph2-fullbrowser-r2",
+      "log_sha256": "5c817da1476384508afff7f702ec511d3cc8d9166d33ee7ab5cc23a7438be175",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "PROD_MAIN",
+      "label": "adapter-install",
+      "log_sha256": "cf11b92e45f5d4d8965f7aa794687c459fb6605fbec549f96b38bb0574ab4dcb",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "PROD_MAIN",
+      "label": "adapter-test",
+      "log_sha256": "22a53213c3c7e16404fe28fc70c2403fc4dfa7ce9970bab3b632d51ee9fcaa44",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "PROD_MAIN",
+      "label": "adapter-typecheck",
+      "log_sha256": "5dcad9152bf56a54352c49fc0f1e4fefafb653ca92f987b708b5a1f4b2acada2",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "PROD_MAIN",
+      "label": "prod-main-mypy-committed-r1",
+      "log_sha256": "c29d4e74ca1a69538dfd18072cca994d92327f00e32893fcc6cc665b61e9ede8",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "PROD_RUNTIME",
+      "label": "adapter-install",
+      "log_sha256": "cf11b92e45f5d4d8965f7aa794687c459fb6605fbec549f96b38bb0574ab4dcb",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "PROD_RUNTIME",
+      "label": "adapter-test",
+      "log_sha256": "a4ff3b7d02bec4cbdcb5cc32cfeba72592694ddb813358aa88d09a6536d617ae",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "PROD_RUNTIME",
+      "label": "adapter-typecheck",
+      "log_sha256": "5dcad9152bf56a54352c49fc0f1e4fefafb653ca92f987b708b5a1f4b2acada2",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    },
+    {
+      "carrier": "PROD_RUNTIME",
+      "label": "prod-runtime-mypy-committed-r1",
+      "log_sha256": "c29d4e74ca1a69538dfd18072cca994d92327f00e32893fcc6cc665b61e9ede8",
+      "state": "NO_RUNNER_COMPLETION_RECEIPT_NO_PASS_CREDIT",
+      "disposition": "The PH3 backend-full-r3 and Stage browser-r2 processes were interrupted. Other entries may use separate tool receipts; no terminal success is inferred from these logs."
+    }
+  ],
+  "count_policy": "Counts belong to separate complete invocations; repeated nodes and focused retries are never summed into a claimed full-suite pass.",
+  "local_scope": "Disposable synthetic PostgreSQL/browser/provider doubles support the hosted release; they are not actual external provider, identity, mail or assistant-host proof."
+}

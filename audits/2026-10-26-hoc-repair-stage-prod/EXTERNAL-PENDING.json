@@ -1,0 +1,186 @@
+{
+  "schema": "timeker.external-pending.v1",
+  "created_utc": "2026-10-27T01:05:57.916537+00:00",
+  "state": "FINAL_BOUNDED_EVIDENCE_AND_EXPLICIT_REMAINING_GAPS",
+  "items": [
+    {
+      "id": "EXT01",
+      "capabilities": [
+        "C01"
+      ],
+      "status": "PASS",
+      "operation": "Docker/Container build and runtime parity",
+      "missing_evidence": "None for the selected build/startup and restricted-role deployment checks. Unreadable encrypted provider secret-value parity is not claimed.",
+      "minimum_external_prerequisite": "Usable Docker/Container build-run environment and exact candidate artifact; a wheel, dry-run or SDK double is insufficient.",
+      "bounded_observed": [
+        "Both exact source images passed isolated PostgreSQL startup and were observed on their separately configured hosted runtimes with matching static assets, HTTP readiness and postdeployment restricted-role metadata."
+      ]
+    },
+    {
+      "id": "EXT02",
+      "capabilities": [
+        "C02"
+      ],
+      "status": "UNKNOWN",
+      "operation": "Real identity providers and current sessions",
+      "missing_evidence": "Remaining real GitHub and managed-email provider proof plus selected registered-session lifecycle, scoped logout/revoke and form recovery. Existing-owner Google proof and explicit versioned acknowledgment were observed; they are not still wholly absent.",
+      "minimum_external_prerequisite": "Existing configured test identities/provider access and personal proof when required. Do not invent proof or create/link accounts without the required human identity step.",
+      "bounded_observed": [
+        "Real existing-owner Google chooser/callback, explicitly approved current legal acknowledgment and protected Dashboard reached in both Stage and PROD before image promotion; protected repaired PROD routes were read back after promotion.",
+        "Complete local identity/session/CSRF tests remain separate from actual provider proof."
+      ]
+    },
+    {
+      "id": "EXT03",
+      "capabilities": [
+        "C03",
+        "C28"
+      ],
+      "status": "PASS",
+      "operation": "Effective hosted roles and TLS",
+      "missing_evidence": "None for the selected build/startup and restricted-role deployment checks. Unreadable encrypted provider secret-value parity is not claimed.",
+      "minimum_external_prerequisite": "Authorized read-only access to each existing environment; no credential disclosure, grants or cross-environment copying.",
+      "bounded_observed": [
+        "Both exact source images passed isolated PostgreSQL startup and were observed on their separately configured hosted runtimes with matching static assets, HTTP readiness and postdeployment restricted-role metadata."
+      ]
+    },
+    {
+      "id": "EXT04",
+      "capabilities": [
+        "C22"
+      ],
+      "status": "UNKNOWN",
+      "operation": "Real assistant-host lifecycle and finance",
+      "missing_evidence": "Use the real supported host with two controlled owners to prove connection, least scopes, PKCE/refresh/replay/revoke, foreign-owner denial, current financial preview and permitted native confirmation/terminal workflow.",
+      "minimum_external_prerequisite": "Existing compatible assistant-host connection and controlled owner identities/grants. Local tools/call via TestClient is not host interoperability.",
+      "bounded_observed": [
+        "No registered timeKER host tools were discoverable in the checked session; no compatible host lifecycle was claimed.",
+        "Actual local PKCE/token/tools-call, cardinality and independent persistence checks are separate application evidence."
+      ]
+    },
+    {
+      "id": "EXT05",
+      "capabilities": [
+        "C23"
+      ],
+      "status": "UNKNOWN",
+      "operation": "Paddle Sandbox current lifecycle",
+      "missing_evidence": "Actual controlled Sandbox checkout, selected 3DS, monthly/annual renewal events, failure/grace, webhook reconciliation and effective cancellation/downgrade. An existing-account renewal-status GET and current catalog/aggregate-impact reads do not prove event transitions.",
+      "minimum_external_prerequisite": "Existing configured Paddle Sandbox account/catalog/test payment and webhook access. No Live activation, real charge, invented provider event or mass entitlement repair.",
+      "bounded_observed": [
+        "Actual per-environment Sandbox catalog read-only GET validated four current configured offers.",
+        "Read-only aggregate impact inventory covered all ten current runtime-credential scopes: UTC sessions, no retained failure anchors or stored GRACE_RECORDED receipts, no mismatched or incomplete grace metadata; no reconciliation performed.",
+        "One existing Sandbox account's fresh renewal-status read showed Active and preserved its existing access and cancellation setting. This was a status read, not a new renewal event or lifecycle transition."
+      ]
+    },
+    {
+      "id": "EXT06",
+      "capabilities": [
+        "C18"
+      ],
+      "status": "PASS",
+      "operation": "Statement Sending provider acceptance",
+      "missing_evidence": "None for the selected controlled provider/attachment journey. Broader deliverability or human receipt is not claimed.",
+      "minimum_external_prerequisite": "Existing bounded Sending test configuration and controlled destination. Provider acceptance and client receipt remain distinct.",
+      "bounded_observed": [
+        "Current local statement Sending tests cover durable claims, replay/concurrency, payment/credit invalidation, stop, definitive-only retry and honest uncertainty. On repaired Stage 53, one newly reviewed fictional issued PDF was sent once to the controlled owner mailbox, independently read from a fresh restricted database connection and received with exact attachment-byte equality and authentication passes. The new plan was stopped; no follow-ups or financial writes occurred."
+      ],
+      "evidence": [
+        "TEST-RESULTS.json:additional_gates.controlled_sending"
+      ]
+    },
+    {
+      "id": "EXT07",
+      "capabilities": [
+        "C19"
+      ],
+      "status": "PASS",
+      "operation": "Commercial-document Sending",
+      "missing_evidence": "None for the selected controlled provider/attachment journey. Broader deliverability or human receipt is not claimed.",
+      "minimum_external_prerequisite": "Existing provider/test destination access; statement Sending proof cannot substitute for this separate outbox.",
+      "bounded_observed": [
+        "Current local commercial-document tests cover the separate outbox, immutable version selection, owner review, durable claims and conservative retry. On repaired Stage 53, one new outbox sent the exact published fictional HLE revision once; fresh restricted SQL and owner-inbox attachment bytes matched the frozen hash. Future attempts were stopped and financial state remained unchanged."
+      ],
+      "evidence": [
+        "TEST-RESULTS.json:additional_gates.controlled_sending"
+      ]
+    },
+    {
+      "id": "EXT08",
+      "capabilities": [
+        "C20"
+      ],
+      "status": "UNKNOWN",
+      "operation": "Actual inbound provider capture",
+      "missing_evidence": "Receive a controlled message through the configured provider and verify trusted receipt basis, durable identity, routing/tenant assignment, normalized content and attachment hashes.",
+      "minimum_external_prerequisite": "Existing inbound test routing/address and controlled message sender; local .eml import does not prove provider capture.",
+      "bounded_observed": []
+    },
+    {
+      "id": "EXT09",
+      "capabilities": [
+        "C29"
+      ],
+      "status": "UNKNOWN",
+      "operation": "Public contact delivery and bot control",
+      "missing_evidence": "A separately enabled, reviewed controlled contact transport and actual CAPTCHA/provider/inbox journey. Current disabled effective mode was preserved; no user approval is currently pending.",
+      "minimum_external_prerequisite": "Existing CAPTCHA/contact provider access and controlled submission. No marketing, arbitrary recipient or remote measurement activation.",
+      "bounded_observed": [
+        "Native public contact form inspected without submission. Independent current Worker metadata confirms contact delivery disabled and zero email bindings. No secret, activation or configuration changed."
+      ]
+    },
+    {
+      "id": "EXT10",
+      "capabilities": [
+        "C28"
+      ],
+      "status": "UNKNOWN",
+      "operation": "Observed scheduled invocation",
+      "missing_evidence": "Actual PROD scheduled invocation and any explicitly selected durable business effects remain unobserved. Configuration or an event outcome alone does not prove those effects.",
+      "minimum_external_prerequisite": "Existing scheduler telemetry or a permitted controlled invocation. Do not activate scheduled Sending or other disabled services.",
+      "bounded_observed": [
+        "Actual Stage 53 scheduled Worker event at 02:17:27.037 UTC with outcome ok and exact Worker-version match. The observer ended normally."
+      ]
+    },
+    {
+      "id": "EXT11",
+      "capabilities": [
+        "C28"
+      ],
+      "status": "UNKNOWN",
+      "operation": "Operational backup, rotation and key custody",
+      "missing_evidence": "Demonstrate encrypted off-host backup/rotation and restoration using already adopted retention/cadence/RPO and independently held keys; retain checksum and restored identity/claim/pending-effect checks.",
+      "minimum_external_prerequisite": "Existing adopted operational objectives, authorized backup location and independent key custodian. Missing policy stays unknown; no invented RPO/retention/purge.",
+      "bounded_observed": [
+        "Synthetic full dump/restore tests preserve row inventories, IDs, issued/credit PDF hashes, balances, idempotency, revoked MCP state and reciprocal role denials; this is an attended local mechanism test."
+      ]
+    },
+    {
+      "id": "EXT12",
+      "capabilities": [
+        "C28"
+      ],
+      "status": "UNKNOWN",
+      "operation": "New-device/provider-loss business recovery",
+      "missing_evidence": "Execute the selected fresh-device/provider-loss/full-business recovery and measure against adopted RTO; reconcile IDs, issued bytes, claims and pending external effects.",
+      "minimum_external_prerequisite": "Isolated recovery target, existing keys/artifacts, provider-loss procedure and adopted objective; attended local dump/restore proves only its narrower scope.",
+      "bounded_observed": [
+        "Synthetic full dump/restore tests preserve row inventories, IDs, issued/credit PDF hashes, balances, idempotency, revoked MCP state and reciprocal role denials; this is an attended local mechanism test."
+      ]
+    },
+    {
+      "id": "EXT13",
+      "capabilities": [
+        "C28"
+      ],
+      "status": "UNKNOWN",
+      "operation": "Matched-host sustained capacity/headroom",
+      "missing_evidence": "Measure the adopted mixed workload, process/shared limits and sustained resource/latency headroom on the selected matched host; record scope and limits.",
+      "minimum_external_prerequisite": "Available matched environment and adopted workload/objectives. C5K remains the frozen planning boundary; no tenancy rewrite or invented capacity acceptance.",
+      "bounded_observed": [
+        "Disposable local mixed-workload and durable operation-limit tests are included in the complete backend suite; provider-matched sustained headroom is separate."
+      ]
+    }
+  ],
+  "rule": "Missing external evidence stays UNKNOWN without turning completed local repairs into failures. These records do not invent provider operations, human acknowledgment or product acceptance."
+}

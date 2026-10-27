@@ -1,0 +1,807 @@
+{
+  "schema": "aekr.functional-integrity.contract.v1",
+  "frozen_at_utc": "2026-10-26T20:17:30.578408+00:00",
+  "snapshot_head": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+  "policy": "Weights fixed before behavior results; critical=5 important=3 ordinary=1. Commitments within a capability share its weight. UNKNOWN receives no credit. Additions require explicit revision history and no result-driven weights.",
+  "capabilities": [
+    {
+      "id": "C01",
+      "description": "Reproducible installation, build and forward schema migration",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "A failed build or corrupt migration blocks the entire workspace.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:30-46",
+        "docs/PROJECT_BRIEF.md:362-427",
+        "docs/PROJECT_BRIEF.md:645-666"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "One FastAPI/Jinja/HTMX monolith; locked Python dependencies; one PostgreSQL per environment; install from README; forward migration preserves original IDs, issued bytes and guards; no runtime DDL.",
+      "public_path_and_components": "README, pyproject/uv.lock, Dockerfile, Alembic, app/db.py",
+      "acceptance_criterion_and_independent_oracle": "Clean disposable install/build and migrate fresh/legacy schemas; compare preserved IDs and hashes independently.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C02",
+      "description": "Verified immutable identity and protected web requests",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Unauthorized identity or mutation can expose or alter all private business data.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:40",
+        "docs/PROJECT_BRIEF.md:623-643",
+        "docs/DECISIONS.md:804-958"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Verified issuer/subject; fresh explicit linking; no email-only merge; normal production bypass fails closed; CSRF, restricted redirects, state/nonce, secure cookies, request-local authorization.",
+      "public_path_and_components": "app/auth.py, social_auth.py, email_auth.py, main.py",
+      "acceptance_criterion_and_independent_oracle": "Malformed state/nonce/callback/CSRF and foreign owner negatives; fresh legitimate identity proof adapter; cookies inspected; local test stub explicitly scoped.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C03",
+      "description": "Tenant schema/role isolation and no default-workspace fallback",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Cross-owner disclosure or writes are critical.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:30,40",
+        "docs/DECISIONS.md:444-457",
+        "AGENTS.md:Authentication and authorization"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "One owner per tenant; authenticated registry selects existing schema/nonowner role; no caller tenant override/runtime DDL/default fallback; preserve foreign schema/role denial.",
+      "public_path_and_components": "app/tenancy.py, db.py, repositories and routing",
+      "acceptance_criterion_and_independent_oracle": "Two synthetic owners with distinct data; new normal-role connections demonstrate reciprocal read/write denial; missing context fails closed.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C04",
+      "description": "Versioned enrollment, explicit first plan and bounded prepared admission",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Admission without proof or plan would violate access and commercial boundaries.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:19-25",
+        "docs/DECISIONS.md:708-790",
+        "docs/DECISIONS.md:804-849",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:138,158"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Verified owner explicitly acknowledges current revisions and activates initial plan before use; bounded operator-prepared slots; no operator acceptance/backfill; exhausted capacity visible; activation flags separate.",
+      "public_path_and_components": "enrollment/admission services and routes; /registration, /sign-up",
+      "acceptance_criterion_and_independent_oracle": "New isolated owner follows proof-notice-plan-use; failed proof/view creates no receipt; replay does not consume extra slot; exhausted capacity and disabled flags fail honestly.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C05",
+      "description": "Client lifecycle and explicit real-world completeness",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Wrong commercial metadata or lifecycle breaks daily work.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:113-126",
+        "docs/legal/PRIVACY_DISCOVERY.md:1-3",
+        "docs/DECISIONS.md:1025-1045"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Search/filter/order/paginate; owner CRUD/archive/reactivate; legal/display separated; Draft may omit four fields but Active requires owner-supplied completeness; retain incomplete historical Active facts.",
+      "public_path_and_components": "app/clients.py, client_drafts.py, main routes/templates",
+      "acceptance_criterion_and_independent_oracle": "Create/edit/archive/reactivate synthetic client; prove fresh persistence, foreign denial, activation missing-field rejection, immutable history and all-page totals.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C06",
+      "description": "Project billing arrangements and private agreement custody",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Incorrect project fee/cap behavior can misbill or leak agreements.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:128-153"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Owned project classification, explicit currency/budget; fixed fee not hourly; one nonvoid base fee; manual extras explicit reason/reference; overbilling defaults off; immutable <=5MiB owner-only agreement; lifecycle preserves history.",
+      "public_path_and_components": "projects, project_terms, project_attachments, project_billing_routes",
+      "acceptance_criterion_and_independent_oracle": "New fixed-fee/T&M cases with independently calculated charge/budget outcomes; duplicate fee rejection; foreign attachment denial; archive/reopen persistence.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C07",
+      "description": "Cases, allocations, bulk status edits and 90-day retention",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Case relationships must preserve exact time and source associations.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:673-695",
+        "docs/DECISIONS.md:997-1020"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Owned client/project/case associations; exact minute allocations; bulk edits only owned-project status/type with versions; closing guards; archive only Closed; 90 elapsed-day idempotent archive marker with retained audit.",
+      "public_path_and_components": "app/cases.py, case_routes.py, mail associations, internal retention route",
+      "acceptance_criterion_and_independent_oracle": "Synthetic allocations cannot exceed source minutes; stale/foreign bulk edit rejects; 89/90-day boundaries; separate actual scheduled invocation evidence from manual endpoint.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C08",
+      "description": "Weekly timecards, exact minutes and contractual limits",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Time and cap errors directly alter billed work.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:155-182",
+        "docs/contracts/ALCO_CONTRACT_SOURCE_NOTES.md:10-21",
+        "docs/PROJECT_BRIEF.md:609-621"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Monday-Sunday IANA contract weeks; H:MM/decimal input persists integer minutes; ALCO 1200 combined minutes/no minimum/exact minutes; audited cap override only; internal nonbillable; Draft/finalize/reopen restrictions and invoice locks.",
+      "public_path_and_components": "app/domain.py, timecards.py, time_command services/routes",
+      "acceptance_criterion_and_independent_oracle": "Independent minute arithmetic and timezone/week boundaries; known 1200 cap and 1201 refusal; one-minute/mixed entries; new-session read after save; allowed override has explicit source/reason.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C09",
+      "description": "Supplemental source identity, persistent holds and frozen Ready rates",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Source duplication, cap reset or silent repricing can double-bill.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:60-74",
+        "docs/DECISIONS.md:1207-1215"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Explicit same-week supplemental batch; all writers preserve source IDs and aggregate limits; published edit cannot silently become new work; hold only unpublished; nonselection not hold; Ready rate/provenance frozen; unknown history explicit; versioned reprice refreshes previews.",
+      "public_path_and_components": "timecards, time_commands, time_import, work_lifecycle, work_rates",
+      "acceptance_criterion_and_independent_oracle": "Publish old batch then add missed real-date minutes to distinct batch; prove original immutable and cap aggregate; rate change after Ready leaves old rate; stale/held/reserved edits exercise normal lifecycle.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C10",
+      "description": "Strict imports and source-preserving delegated contributions",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Import/replay mistakes can silently duplicate or overwrite billable work.",
+      "sources": [
+        "docs/DECISIONS.md:472-486",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:68,140"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "JSON v1/strict CSV; UTF8 256KiB/200 rows/depth5; populated reviewed Draft entries only; atomic commit; idempotent retained source receipts across rebatches/deletion; corrections preserve manual/other-source contributions and allocations; downloadable template/row feedback.",
+      "public_path_and_components": "time_import.py/routes, time_commands.py/models, integration routes",
+      "acceptance_criterion_and_independent_oracle": "Novel JSON/CSV equivalent imports; exact independent totals; replay/new batch with old source; invalid one row atomic no-write; manual/foreign-source contribution survives correction.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C11",
+      "description": "Selective bill preparation and atomic reviewed publication",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Wrong selection or partial issuance violates financial integrity.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:76-93",
+        "docs/DECISIONS.md:1217-1221"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Available/Held/Reserved/Published groups; explicit eligible sources; stale/current review/version and currency/budget checks; atomic snapshot/artifact/claims/state/audit; same intent one invoice; concurrent claims exclusive; draft selection release recalculates; publication survives later send failure.",
+      "public_path_and_components": "billing.py, main publication routes, publication_delivery.py",
+      "acceptance_criterion_and_independent_oracle": "Ten eligible batches, select five, retain five editable; stale settings/rate/source review rejects; PDF failure leaves Draft; concurrency/replay yields one publication and exact claims.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C12",
+      "description": "Selectable on-demand PDFs and immutable retained artifacts",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Document mismatch or mutation undermines the financial record.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:311-335",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:34,87",
+        "docs/PROJECT_BRIEF.md:623-638"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Server-rendered selectable ES/EN PDF; ALCO ES; exact Decimal totals/time appendix; draft watermark only; no invented fields; remote/file fetch restricted; issued JSON/PDF/SHA256/renderer immutable; stable safe filename.",
+      "public_path_and_components": "pdf.py, billing/credits/quoting/library artifact paths and download routes",
+      "acceptance_criterion_and_independent_oracle": "Open exported bytes, extract text independently, calculate total from new minutes/rates, hash with hashlib; mutate source after issue and verify bytes/snapshot unchanged; deny external fetch and foreign download.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C13",
+      "description": "Multiple partial/full immutable credits with cumulative limits",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Overcredit or released published claims corrupt balances and billing eligibility.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:95-107",
+        "docs/DECISIONS.md:1223-1229"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Reviewed minute/amount/full credits including paid bills; original rate/currency/adjustments; atomic immutable credit PDF/hash; cumulative per-line and total bounds with shared monetary remainder; payment history/work minutes/claims preserved; legacy Void retained.",
+      "public_path_and_components": "credits.py, credit_memo_models.py, billing/shared balances",
+      "acceptance_criterion_and_independent_oracle": "Three minutes at USD1/hour original USD0.05; three minute credits total USD0.05; mixed amount+minute cannot overcredit; paid credit customer-credit without refund; replay/concurrent limit checks.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C14",
+      "description": "Payments, receipt-based due dates and shared financial balances",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "False payment or due-state alters collection and customer obligations.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:229-233",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:91,105-107"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Owner-recorded complete client receipt distinct from provider acceptance; frozen day-count terms determine due; audited correction; explicit manual payments/currency/reference; shared original-credit-net-payment-due-customer-credit across UI/reports/MCP/Sending; no automatic refund/tax/FX.",
+      "public_path_and_components": "billing.py, reports.py, dashboard.py, integration_finance.py, Sending",
+      "acceptance_criterion_and_independent_oracle": "Independent balance table across partial paid/credited/reversed cases; day-count boundary oracles; same values on each read surface; provider success cannot create receipt/payment.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C15",
+      "description": "Dashboard, search, exact totals and stable pagination",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Misleading summaries obscure work or balances.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:101-111,350-360",
+        "docs/DECISIONS.md:1045-1071",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:136-144",
+        "docs/DECISIONS.md:1249-1262"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Fixed-five Dashboard details and outstanding invoices; complete aggregate totals independent of pages; owner-scope search/filter/order; 14-week 98-cell UTC calendar, exact bins and D084 grey/violet zero/future fills; bars/native switch retain selected metric.",
+      "public_path_and_components": "dashboard.py, reports.py, workspace_search.py, pagination.py, templates/static",
+      "acceptance_criterion_and_independent_oracle": "Synthetic >page-size datasets; independent count/sum; stable no-loss pages; all seven current weekdays yield 98 dates and correct future placeholders; keyboard/JS/no-JS state.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C16",
+      "description": "Case-linked estimates and immutable quotation revisions",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Quotes must represent user inputs and retain publication history.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:184-201",
+        "docs/DECISIONS.md:959-997"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "HLE/T&M/fixed fee; owned case derives project/client; explicit minutes/ranges/pricing/currency; optional duration-only; aggregate rounding; estimate creates no time/invoice; reviewed immutable revision/PDF/hash; edit starts new revision.",
+      "public_path_and_components": "quoting.py/models/routes, quote templates",
+      "acceptance_criterion_and_independent_oracle": "New case estimate independent Decimal amount; invalid range/foreign case rejects; publish/revise compares old bytes/hash; verify no actual work/invoice created.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C17",
+      "description": "Private Library editable templates and complete uploaded originals",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Lost or exposed document bytes violate private document custody.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:202-208",
+        "docs/DECISIONS.md:959-997"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Working document requires case; reusable templates may unbound; <=5MiB PDF/DOCX/TXT/MD; text editable; original and published versions private/downloadable/immutable; no fabricated legal agreement.",
+      "public_path_and_components": "library.py/models/routes and download templates",
+      "acceptance_criterion_and_independent_oracle": "Novel originals round-trip exact bytes/hash via fresh download; case-bound ownership; publish/edit retains old revision; malformed/oversize/foreign reads denied.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C18",
+      "description": "Reviewed statement Sending, durable attempts and uncertainty",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "False success or replay can send duplicate or wrong collection messages.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:248-279",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:38,89,107"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Stage explicit activation/recipient/content/exact immutable PDF review; commit durable claim before provider; concurrent/replay no duplicate; payment/credit/stop/void invalidate stale collection; uncertain never blind retry; only definitive failure permits explicit retry; manual advance binds original schedule; jobs/Live disabled.",
+      "public_path_and_components": "sending.py/routes/transport/models, sending_dispatch_routes.py",
+      "acceptance_criterion_and_independent_oracle": "Local controlled provider records call count; timeout-after-accept stays Uncertain and no second call; partial payment/credit stops plan; definitive rejection retry; persisted attempt fresh read; actual delivery remains UNKNOWN without test credentials.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C19",
+      "description": "Independent commercial-document Sending",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Quote delivery must not inherit collection or payment side effects.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:209-212,239-246"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Separate outbox exact published HLE/Library version or selected original; owner-recipient/content review; durable pre-provider claim, stop, definitive-only retry; no scheduled collection/payment side effects.",
+      "public_path_and_components": "proposal_sending.py/routes/transport/models",
+      "acceptance_criterion_and_independent_oracle": "Local fake provider call count plus new-session retained attempt; immutable attachment selection; quote send never changes invoices/payments; real provider confirmation requires separate evidence.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C20",
+      "description": "Bounded Mail capture/import and attachment custody",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Untrusted messages must remain private reference data.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:281-309"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Owner .eml <=5MiB explicit client/project/case; normalized plain data and attachments within message budget, SHA256 dedupe; no original MIME/HTML execution/remote fetch; receipt basis not sender Date; conflicts reject; no inbox sync or work/billing inference.",
+      "public_path_and_components": "mail_service.py/models/routes, Worker capture adapter",
+      "acceptance_criterion_and_independent_oracle": "New multipart sample exact attachment download hash; owner dedupe/conflicting assignment; malicious HTML external reference never executes/fetches; foreign denial; no work/invoice side effects.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C21",
+      "description": "Read-only historical consultation and bounded exports",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Archive must preserve useful history without reviving edits.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:294-306",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:142"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Six calendar months by client-week-end or server receipt UTC; effective expiry before job; searchable Active/Archived/All with dates/pagination/detail/attachments; no erase/restore; finalized unbilled available for billing/reports; bounded CSV export.",
+      "public_path_and_components": "archiving.py, archive_routes.py, timecard/mail history",
+      "acceptance_criterion_and_independent_oracle": "Boundary dates including month-end/timezone; pre-marker mutation denied; archive query fresh read retains all facts; exports parsed independently and authorized attachment roundtrip.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C22",
+      "description": "Scoped OAuth/MCP real workflow and native financial review",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Delegated terminal authority or fake connection state is critical.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:109-132",
+        "docs/DECISIONS.md:488-508,1413-1434"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Fixed callbacks/audience/PKCE; hashed grant-bound short tokens and refresh replay/revoke; 26 tools/13 scopes as documented; old grants no silent powers; same domain services; terminal current server preview/native functional review; caller confirmed boolean not human proof; honest actual connection; real two-owner/refresh/revoke host evidence.",
+      "public_path_and_components": "integration_auth.py/routes/finance/models and integration package",
+      "acceptance_criterion_and_independent_oracle": "Unauthenticated/foreign/scopeless/stale review negatives; real ASGI persisted grant lifecycle; two fictional owners; actual supported host consent/discovery/read/write/replay/correction/refresh/revoke separately observed, never mock credited as host.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C23",
+      "description": "Sandbox subscription catalog, entitlement and provider reconciliation",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "False paid proof or period errors grant unauthorized access or misstate charges.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:42,156",
+        "docs/DECISIONS.md:637-706,1384-1412"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Free1/1 USD0; Solo5/10 USD7/70; Pro no commercial cap USD12/120; atomic capacity; signed provider payment/reconcile only; owner proration review; exact paid end; downgrade/cancel at period end; 7day failure grace; uncertain no replay; active cross-frequency fail closed; annual initial/3DS/provider lifecycle evidence separate.",
+      "public_path_and_components": "subscriptions.py, subscription_billing.py, paddle.py, subscription/payment routes",
+      "acceptance_criterion_and_independent_oracle": "Independent capacity/count and period/grace oracles; raw-body HMAC/replay/order tests; controlled provider request trace; real Sandbox event/annual/3DS/cancel-effective/failure/grace only PASS with separate actual evidence.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C24",
+      "description": "Simultaneous browser sessions and scoped recovery/revocation",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Global or ineffective revocation breaks private authenticated access.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:146-150",
+        "docs/legal/PRIVACY_DISCOVERY.md:401-405"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Per-browser revocable rows, one-hour idle/twelve-hour absolute; second normal login preserves first; logout current vs all separate epoch; assistant grants independent; fresh reauth keeps unsaved fields in page only and requires explicit resubmit.",
+      "public_path_and_components": "browser_sessions.py/models, auth.py, session_recovery.js",
+      "acceptance_criterion_and_independent_oracle": "Two browsers then current/all revocation with fresh requests; grant remains correct; idle/absolute boundaries; expired unsaved form reauth never auto-submits/persists business fields.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C25",
+      "description": "Private export, truthful account closure and retention-pending state",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Incomplete closure or credential export can leak retained private data.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:152-154",
+        "docs/legal/PRIVACY_DISCOVERY.md:407-425"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Export tenant records/settings/original artifacts+hashes, exclude keys/tokens/central records; closure restricts account/revokes browsers/grants/stops Sending; durable provider cancellation status distinct from effective; pending policy holds records; no invented purge; bounded receipt 12hours.",
+      "public_path_and_components": "account_closure.py/models, auth, export/privacy routes and templates",
+      "acceptance_criterion_and_independent_oracle": "Isolated owner export independently parsed for records+hashes and forbidden secret names; actual closure old sessions/grants cannot operate; provider uncertain/pending shown honestly; retained history unchanged and receipt expiry enforced.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C26",
+      "description": "Sanitized diagnostics, durable business audit and telemetry independence",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Sensitive logs or logging-dependent commits violate privacy and integrity.",
+      "sources": [
+        "AGENTS.md:Logging: match kommiBo semantics",
+        "docs/PROJECT_BRIEF.md:36,623-643"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Std logging structured production/readable dev; UTC/request or execution ID/method/route/outcome/duration/internal UUID; no forbidden PII/credentials/business text/PDF; sanitized exceptions; business audit DB; logging/telemetry failure cannot change committed result.",
+      "public_path_and_components": "app/logging.py, main middleware, audit.py and diagnostic callers",
+      "acceptance_criterion_and_independent_oracle": "Novel sentinel sensitive fields across exception/auth/billing/client log paths; independent captured output search; force logging/audit sink failures separately and inspect committed business result using a fresh session.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C27",
+      "description": "Brand fidelity, keyboard/mobile accessibility and native fallbacks",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Core workflows must remain usable and match accepted visual design.",
+      "sources": [
+        "docs/design/DESIGN_SPEC.md:3-130",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:30,136-144",
+        "docs/DECISIONS.md:1249-1321"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Exact timeKER wordmark/ivory/teal/decorative lower-right browser-local clock; current rounded calendar retained; references plus superseding decisions; mobile/keyboard/focus/labels/reduced-motion; native no-JS flows; WCAG2.2AA target.",
+      "public_path_and_components": "web/templates, local JS/CSS/SVG assets, design/reference/01-05",
+      "acceptance_criterion_and_independent_oracle": "Compare fresh desktop/mobile rendered screens with source images and later ADRs; clock browser-local/reduced motion; keyboard/no-JS journey; axe checks plus visual inspection, no full AA certification from axe alone.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C28",
+      "description": "Operational readiness, shared limits, recovery and capacity honesty",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Unbounded operations or false recovery/capacity claims threaten availability and custody.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:160-184",
+        "HOSTING.md:22-87",
+        "docs/PH3.md:409-509"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Cheap bounded health; deep migration/role diagnostics; owner/credential/expensive-op durable limits across UI/MCP/processes; operational capacity independent quotas; deferred PDF/blobs; measured mixed workload and headroom; isolated encrypted/offhost restore verifies identity/pending effects; distinguish attended scoped recovery and proposed cadence/RPO/RTO; C5K plan only.",
+      "public_path_and_components": "operation_limits.py, db.py, readiness/internal routes, scripts/ph3_capacity_probe.py, deployment/operations runbooks",
+      "acceptance_criterion_and_independent_oracle": "Repeated fresh-process limits and retry outcomes; no workspace fallback; local mixed probe with error/latency/DB resource evidence; independently parse backup/restore records and artifact hashes on disposable destination; live capacity/recovery claims need matched profile and provider measurements.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C29",
+      "description": "Public support, bot controls and privacy choices",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Support or optional tracking must not bypass authorized purpose or abuse controls.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:234-236",
+        "docs/PROJECT_BRIEF.md:623-643",
+        "docs/legal/PRIVACY_DISCOVERY.md:42-82,271-330"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Only user-submitted support to fixed operator; CAPTCHA plus durable abuse controls; no automatic marketing; policy links/current receipts after actual successful identity; optional measurement separate default-off/withdrawable; no invented legal/tax/controller facts.",
+      "public_path_and_components": "contact.py, bot_check.py, privacy.py, Worker/contact.ts, policy templates",
+      "acceptance_criterion_and_independent_oracle": "Invalid/absent CAPTCHA blocks without send; repeated abuse persists across process; destination fixed; optional analytics no dispatch before opt-in and withdrawal; notice version capture failure/proof/GET distinction.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    },
+    {
+      "id": "C30",
+      "description": "Evaluation integrity, quality gates and truthful delivery documentation",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "A compromised runner would invalidate product assurance.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:645-666",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:46,184-206",
+        "docs/STATUS.md:38-96"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Tests discover/run actual current code; no failure-to-success or fixture/evaluator special casing; mocks explicitly bounded; build/static/backend/migration/browser/accessibility checks truthful; source/build/deployment distinct; failed/skipped/historical outcomes retained; no forced full acceptance.",
+      "public_path_and_components": "pyproject, tests/conftest, CI/build/config/scripts, README, STATUS/PH3/HOSTING",
+      "acceptance_criterion_and_independent_oracle": "Independent collection/process exit/JUnit reconciliation, AST/runtime import provenance, negative mutations detected outside evaluated hooks; compare docs claims with fresh evidence and retained limits; no green suite substitutes audit verdict.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "unknown_reason": "UNTESTED at contract freeze",
+      "evidence": []
+    }
+  ],
+  "total_weight": 126,
+  "version_history": [
+    {
+      "revision": 1,
+      "reason": "Initial contract-only freeze before behavior outcomes",
+      "capability_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C23",
+        "C24",
+        "C25",
+        "C26",
+        "C27",
+        "C28",
+        "C29",
+        "C30"
+      ]
+    }
+  ],
+  "scope_boundaries": [
+    "The evaluated product is the current Stage source snapshot, not PROD or a remote deployment inferred from local code.",
+    "Source readiness and local adapters do not prove actual OAuth host, external payment/email delivery, production activation, or owner UAT.",
+    "Active monthly/annual migration is deliberately unavailable under D060 clarification; fail-closed is the accepted requirement, not missing implementation.",
+    "Apple, teams/shared ownership, public/Live activation, scheduled Sending activation, automatic tax/FX, destructive purge and C5K tenancy rewrite are out of scope.",
+    "Actual host lifecycle, annual/3DS/due-failure/grace, scheduled invocation, matched-host capacity and broader recovery remain required evidence gaps where selected; they are UNKNOWN without evidence, not code defects merely because credentials or policy are unavailable.",
+    "No adopted purge period/unattended backup cadence/RPO/RTO is invented; policy-pending mechanism/runbooks can be evaluated while irreversible action remains excluded.",
+    "Agent governance is operational authority, excluded as the object of product evaluation."
+  ],
+  "source_conflicts": [
+    {
+      "id": "SC01",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:621",
+        "docs/DECISIONS.md:1217-1221",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:34,103"
+      ],
+      "resolution": "The old blanket Void/releases-time rule is superseded for new PH3 published claims by permanent claims; retain only historical Void semantics."
+    },
+    {
+      "id": "SC02",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:688-710",
+        "docs/DECISIONS.md:804-849,1198-1205"
+      ],
+      "resolution": "Historical no-public-signup/no-automatic-issuance statements describe earlier increments; current source supports separately gated registration and new explicitly scoped reviewed terminal powers, without hosted broad admission."
+    },
+    {
+      "id": "SC03",
+      "sources": [
+        "docs/design/DESIGN_SPEC.md:76-83",
+        "docs/DECISIONS.md:1050-1052"
+      ],
+      "resolution": "D070 moves clock into fourth metric without visible timezone claim, superseding earlier visible Time zone metric wording."
+    },
+    {
+      "id": "SC04",
+      "sources": [
+        "docs/contracts/ALCO_CONTRACT_SOURCE_NOTES.md:10-21"
+      ],
+      "resolution": "Application follows explicit Monday-Sunday/exact-minute/1200 cap/no automatic gross-up rules, not contradictory unsigned-draft clauses; original commercial acceptance cannot be certified from source notes alone."
+    },
+    {
+      "id": "SC05",
+      "sources": [
+        "docs/PH3.md:154-166",
+        "docs/STATUS.md:1-66",
+        "docs/DECISIONS.md:1249-1321"
+      ],
+      "resolution": "D084 current rounded squares/solid future fills supersede historical D081 hourglass report and D083 dashed fills; historical sections are not current visual contract."
+    },
+    {
+      "id": "SC06",
+      "sources": [
+        "docs/legal/PRIVACY_DISCOVERY.md:121-140,147-207,396-431"
+      ],
+      "resolution": "Dated historical processing statements are superseded by current notice/session/export/closure sections; no legal worldwide compliance finding is inferred."
+    }
+  ]
+}

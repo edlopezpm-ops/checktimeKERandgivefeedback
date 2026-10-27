@@ -1,0 +1,573 @@
+{
+  "schema": "timeker.repair-proof.v1",
+  "created_utc": "2026-10-27T00:57:38.406845+00:00",
+  "state": "FINAL_REPAIR_DISPOSITIONS_WITH_SEPARATE_CAPABILITY_LIMITS",
+  "repairs": [
+    {
+      "id": "FIN-01",
+      "capabilities": [
+        "C11",
+        "C12",
+        "C15"
+      ],
+      "paths": [
+        "app/domain.py",
+        "app/billing.py",
+        "app/reports.py",
+        "app/main.py",
+        "app/web/templates/invoice.html",
+        "app/web/templates/reports.html"
+      ],
+      "local_result": "PASS",
+      "evidence": [
+        "fin-regression-r2",
+        "fin-old-calculation-mutation",
+        "fin-static-logging-r1"
+      ],
+      "reason": "Exact rational cents, one grouped half-up rounding; explicit stale-draft recalculation/review; retained issued amounts, claims, PDF and balances; independent SQL, parsed PDF and distinct estimate/statement CSV checks.",
+      "remaining": "No remaining repair gate. Issued history is unchanged. The hosted financial journey deliberately remains a Draft; issued-artifact behavior is established separately by the complete isolated contract suites and the retained existing issued PDF used in controlled Sending.",
+      "root_cause": "Converting minutes to rounded decimal hours before multiplying could move exact half-cent ties and misprice a grouped line. Views also needed to distinguish new estimates from retained issued amounts.",
+      "additional_evidence": [
+        "fin-old-calculation-mutation",
+        "fin-regression-r2"
+      ],
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": [
+        {
+          "label": "fin-regression-r2",
+          "receipt_sha256": "1b3ab46866165efd1b2a21194d418297c13f278d408b874f7592e4def43a0b16",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 122,
+            "passed": 122,
+            "unique_testcase_identities": 122,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "b3888e3ec912a87bd5781e252854846066950f7b4c07c93ecc8492af61812952"
+        },
+        {
+          "label": "fin-old-calculation-mutation",
+          "receipt_sha256": "c5614e31f04b2d252e164735ddc61a8c07415fced61f3a1e255f31334fbbc9f3"
+        },
+        {
+          "label": "fin-static-logging-r1",
+          "receipt_sha256": "f0bb32e03778246b3eb026424d7c89bee058b1554cbcd08fd91677f07aecbacf",
+          "exit_code": 1,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 1,
+            "error": 0,
+            "skipped": 0,
+            "total": 24,
+            "passed": 23,
+            "unique_testcase_identities": 24,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "d29d976d0f3d397afa101c16773f8760a79d6d2211c89c1544c43eafd894da75"
+        }
+      ]
+    },
+    {
+      "id": "BILLING-NATIVE-LOOKUP",
+      "capabilities": [
+        "C11",
+        "C27"
+      ],
+      "paths": [
+        "app/main.py",
+        "app/web/templates/billing.html",
+        "app/web/templates/billing_work.html",
+        "tests/e2e/test_lookups_browser.py"
+      ],
+      "local_result": "PASS",
+      "evidence": [
+        "billing-lookup-green-r1"
+      ],
+      "reason": "Search/Previous/Next remain on Billing; only explicit work selection opens /billing/work; client, dates and lookup context survive native and JavaScript flows.",
+      "remaining": "No remaining repair gate. Full browser coverage and hosted native Choose work/back context passed; hosted pagination was not exposed by the small controlled selector and is covered separately by isolated browser cases.",
+      "root_cause": "Native selector actions could follow the work-selection action or lose entered context. The PH2 equivalent retained its native POST workflow but dropped dates.",
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": [
+        {
+          "label": "billing-lookup-green-r1",
+          "receipt_sha256": "1f046a9ab0d955de80659a3c598e8c804024509389c1041ce2c8604ddbd12f29",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 6,
+            "passed": 6,
+            "unique_testcase_identities": 6,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "4b0078f2d078412729674f4585f82a398b35e7440cfe6c3b440f122317f13363"
+        }
+      ]
+    },
+    {
+      "id": "B01",
+      "capabilities": [
+        "C03",
+        "C28"
+      ],
+      "paths": [
+        "app/tenancy.py",
+        "tests/integration/test_hosted_readiness.py"
+      ],
+      "local_result": "PASS",
+      "evidence": [
+        "b01-green-r1",
+        "reusable-harness-smoke-r1"
+      ],
+      "reason": "Hosted singleton own-privilege checks are independent of reciprocal multi-tenant checks; replication, ownership, CREATE and memberships fail closed; actual loopback verify-full TLS.",
+      "remaining": "No remaining own-role repair gate. Both hosted runtimes and their postdeployment role observations passed. Encrypted provider secret-value parity remains unreadable and is not inferred.",
+      "root_cause": "Own-role safety checks were incorrectly tied to a multi-workspace count. Follow-up probes also proved that schema/database owners remain unsafe even after revoking their own CREATE privilege.",
+      "additional_evidence": [
+        "b01-owner-gap-red-r1",
+        "b01-owner-gap-red-r2",
+        "b01-owner-ph3-green-r1"
+      ],
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": [
+        {
+          "label": "b01-green-r1",
+          "receipt_sha256": "5691de9cf0f99d8ac0b41d3cec4449ca8184181f90a0a486fe27702db202f4d7",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 62,
+            "passed": 62,
+            "unique_testcase_identities": 62,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "d5e86fad3331c6085a61ac6bb736c7795a13c560b76bb90013f74bb0b7a3f94e"
+        },
+        {
+          "label": "reusable-harness-smoke-r1",
+          "receipt_sha256": "f0e1c4a033c9b4e1ecfddb0c4732c803d8ed43bb0ab4bf98f51360217a1a721e",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 18,
+            "passed": 18,
+            "unique_testcase_identities": 18,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "ea0d6541a1b861acd79bb249ddd0c883e9088c68e91f512bd3cd91fa84d48086"
+        },
+        {
+          "label": "b01-owner-gap-red-r1",
+          "receipt_sha256": "2952c6a220b109c615ab9b4824c61f081361f16be08509f9ea80fc8dc1225f9a",
+          "exit_code": 1,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 2,
+            "error": 0,
+            "skipped": 0,
+            "total": 2,
+            "passed": 0,
+            "unique_testcase_identities": 2,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "ee9d130aa3e5b2723914338be280300dd00b3290814b5bd90e00a14d6d8b0a83"
+        },
+        {
+          "label": "b01-owner-gap-red-r2",
+          "receipt_sha256": "4578a14c00a6fce5db106e18b70046db3b515f2bbc0c88b02856d34bbc0a014c",
+          "exit_code": 1,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 2,
+            "error": 0,
+            "skipped": 0,
+            "total": 2,
+            "passed": 0,
+            "unique_testcase_identities": 2,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "de2728635c8327c540683856474fc742de9fec6645bd4531662857f517411db5"
+        },
+        {
+          "label": "b01-owner-ph3-green-r1",
+          "receipt_sha256": "36450a629cc07fccd2663bacb0e22c2d89a70f29223a80d254758ee6419b98ca",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 15,
+            "passed": 15,
+            "unique_testcase_identities": 15,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "6bd84b893e32ec32410969b694b14fa47db699bdeae9946b10a58d410b13944d"
+        }
+      ]
+    },
+    {
+      "id": "B02",
+      "capabilities": [
+        "C22"
+      ],
+      "paths": [
+        "app/integration_routes.py",
+        "tests/integration/test_hoc_mcp_cardinality.py"
+      ],
+      "local_result": "PASS",
+      "evidence": [
+        "b02-b04-green-r3"
+      ],
+      "reason": "Explicit own-client join before active-card filtering and limit; actual local PKCE/token/tools-call, unique UUID/minutes, supplementary batches, truncation and independent SQL.",
+      "remaining": "Actual assistant-host lifecycle remains UNKNOWN; repaired local OAuth/token/tools-call and independent SQL proof is separate.",
+      "root_cause": "Active-card predicates referenced Client without an explicit own-client join before filters/order/limit, allowing unrelated client rows to distort cardinality.",
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": [
+        {
+          "label": "b02-b04-green-r3",
+          "receipt_sha256": "2fc94159e4a9ea29673ca4ab3ecf61f7fbc98539a129e82f56ad2c9401fb1ab2",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 95,
+            "passed": 95,
+            "unique_testcase_identities": 95,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "c8d92f537a3e0f3f0c39571a0b3c0ace667a3d1438bf7263c87e666d45285249"
+        }
+      ]
+    },
+    {
+      "id": "B04",
+      "capabilities": [
+        "C23"
+      ],
+      "paths": [
+        "app/subscription_billing.py",
+        "tests/integration/test_hoc_grace_utc.py"
+      ],
+      "local_result": "PASS",
+      "evidence": [
+        "b02-b04-green-r3"
+      ],
+      "reason": "UTC-normalized first failure precedes technical-duration addition; 604800 seconds across DST and fresh sessions, replay, paid-period binding and stale-event rejection.",
+      "remaining": "The read-only impact inventory observed no retained affected anchors. Full actual Sandbox event lifecycle remains UNKNOWN; no entitlement or historical financial repair was performed.",
+      "root_cause": "Adding a seven-day duration before normalizing a non-UTC first failure could produce a non-604800-second interval across DST.",
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": [
+        {
+          "label": "b02-b04-green-r3",
+          "receipt_sha256": "2fc94159e4a9ea29673ca4ab3ecf61f7fbc98539a129e82f56ad2c9401fb1ab2",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 95,
+            "passed": 95,
+            "unique_testcase_identities": 95,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "c8d92f537a3e0f3f0c39571a0b3c0ace667a3d1438bf7263c87e666d45285249"
+        }
+      ]
+    },
+    {
+      "id": "B03",
+      "capabilities": [
+        "C29"
+      ],
+      "paths": [
+        "app/tenancy.py",
+        "tests/integration/test_optional_usage.py"
+      ],
+      "local_result": "PASS",
+      "evidence": [
+        "b03-full-app-r2"
+      ],
+      "reason": "Current baseline already exposes /privacy/usage; full create_app positive/negative consent, withdrawal, flag, origin and privacy-signal checks verify actual middleware reachability and bounded effects.",
+      "remaining": "No new route repair was needed because the selected baseline route was already reachable. Full-application consent/purpose checks pass. Actual contact delivery remains UNKNOWN under verified disabled configuration.",
+      "root_cause": "The assessed current PH3 and PROD-main baselines already exposed the public collector path; Stage-main and actual PROD runtime lacked that middleware exemption. Existing consent and purpose controls still apply.",
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": [
+        {
+          "label": "b03-full-app-r2",
+          "receipt_sha256": "c7dcbad5eb6856c80ec8900999b8717e242ff720e52fa72323fa6d075c99f85b",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 51,
+            "passed": 51,
+            "unique_testcase_identities": 51,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "c9b33f5699da678da79a3bc89dbc1789539a8b3c3935d1080d2c98ef60e4fdf5"
+        }
+      ]
+    },
+    {
+      "id": "EVAL-01",
+      "capabilities": [
+        "C30"
+      ],
+      "paths": [
+        "deploy/cloudflare/test/entrypoint.test.mjs"
+      ],
+      "local_result": "PASS",
+      "evidence": [
+        "eval-01/receipt.json"
+      ],
+      "reason": "Actual Stage/PROD exports, proxy and binding boundary with unpredictable upstream response; constant-200 mutations and three existing negative controls detected; restored source hashes.",
+      "remaining": "The SDK infrastructure is doubled in unit tests; actual built image startup and hosted runtime observation provide separate deployment evidence. Negative controls are retained and source-equivalent, not described as freshly rerun.",
+      "root_cause": "The prior tests did not directly reject a constant-success mutation of the actual default.fetch exports. The existing handler itself was wired correctly.",
+      "additional_evidence": [
+        "eval-01/receipt.json"
+      ],
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": [
+        {
+          "label": "eval-01/receipt.json",
+          "receipt_sha256": "074674637e508ae97c0e3727b84e7a40142b519511e5129d6c610d9e2f6b2f60"
+        }
+      ]
+    },
+    {
+      "id": "EVAL-02",
+      "capabilities": [
+        "C30"
+      ],
+      "paths": [
+        "deploy/cloudflare/README.md",
+        "docs/HOC_REPAIR_2026-10-26.md",
+        "docs/STATUS.md",
+        "CONTINUE.md"
+      ],
+      "local_result": "SOURCE_DOCUMENTATION_UPDATED",
+      "evidence": [],
+      "reason": "Historical PH2 delivery and implemented daily scheduled handler must be described separately from current PH3 authority and observed invocation.",
+      "remaining": "Canonical documentation separates historical PH2 evidence, current PH3 scope and exact runtime sources. Actual Stage scheduled invocation is now observed; PROD invocation and unobserved business effects remain distinct gaps.",
+      "root_cause": "Historical PH2 headings and the existence of scheduled handlers/configuration needed explicit separation from the current PH3 authority and actual scheduler invocation.",
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": []
+    },
+    {
+      "id": "HARNESS-SUITE",
+      "capabilities": [
+        "C01",
+        "C30"
+      ],
+      "paths": [
+        "scripts/isolated_tests.py",
+        "tests/database_guards.py",
+        "tests/e2e/conftest.py"
+      ],
+      "local_result": "PASS",
+      "evidence": [
+        "reusable-harness-smoke-r1",
+        "browser-harness-r1",
+        "browser-harness-r2"
+      ],
+      "reason": "Fresh marked loopback PostgreSQL, separate databases, nonowner runtime and explicit operator trigger checks; classified stale labels, rate fixtures and observable preflight/navigation waits repaired without weaker assertions.",
+      "remaining": "Complete final PH3, Stage-main and PROD-runtime suites pass on exact clean sources. PROD-main full setup errors and separately accepted C3 reuse remain explicit; there is no recombined full-green claim.",
+      "root_cause": "Obsolete fixtures diverged from current legal/auth/UI contracts and canonical nonowner grants. Browser redirect interception and animated screenshot stabilization required test-only corrections without weakening business assertions.",
+      "additional_evidence": [
+        "ph3-oauth-cdp-focus-r2",
+        "ph3-resume-diagnostic-r1"
+      ],
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": [
+        {
+          "label": "reusable-harness-smoke-r1",
+          "receipt_sha256": "f0e1c4a033c9b4e1ecfddb0c4732c803d8ed43bb0ab4bf98f51360217a1a721e",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 18,
+            "passed": 18,
+            "unique_testcase_identities": 18,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "ea0d6541a1b861acd79bb249ddd0c883e9088c68e91f512bd3cd91fa84d48086"
+        },
+        {
+          "label": "browser-harness-r1",
+          "receipt_sha256": "07a821f0ec2b147f2d98466488923a91785fb92f4f65bc67a567f9818980c47c",
+          "exit_code": 1,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 13,
+            "error": 0,
+            "skipped": 0,
+            "total": 50,
+            "passed": 37,
+            "unique_testcase_identities": 50,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "d8a19967b145fb1945f4d221abb2b9f2f2345e0699d687ab60a182bd7b6cd25b"
+        },
+        {
+          "label": "browser-harness-r2",
+          "receipt_sha256": "f5946077407620b6805a70c9de6b1647d5ca575c9b30608ae4a4fe3aeee91364",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 13,
+            "passed": 13,
+            "unique_testcase_identities": 13,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "aff12dcbe89ac89a7a11a60da322be90ce270fe095e5e54223de77cc04041dd7"
+        },
+        {
+          "label": "ph3-oauth-cdp-focus-r2",
+          "receipt_sha256": "89b4ae28dee0da527a61eafb227343d319d572134a07c897a5d29c1b93247916",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 16,
+            "passed": 16,
+            "unique_testcase_identities": 16,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "a58b98947a14d7e059d39bd831524e42ba5e2c1f9e971118c3d29c5219db8044"
+        },
+        {
+          "label": "ph3-resume-diagnostic-r1",
+          "receipt_sha256": "7a736222aba0915db34c0b20055e691261acd4a32669824040d5fd3abf4e0b78"
+        }
+      ]
+    },
+    {
+      "id": "MOBILE-A11Y",
+      "capabilities": [
+        "C27"
+      ],
+      "paths": [
+        "app/web/static/workspace.css",
+        "tests/e2e/test_workspace_search_browser.py"
+      ],
+      "local_result": "PASS",
+      "evidence": [
+        "browser-harness-r1",
+        "mobile-accessibility-r1",
+        "mobile-accessibility-r2"
+      ],
+      "reason": "At 320 CSS pixels, the centered workspace-search target overlapped the language controls. Narrow-screen spacing and control widths now keep the targets separate; the complete browser suite and hosted mobile readback pass. Earlier failing observations remain retained.",
+      "remaining": "Final complete browser tests and hosted 320-CSS-pixel presentation pass. Automated axe checks and inspected screens are scoped evidence, not a blanket WCAG certification.",
+      "root_cause": "At 320px the centered workspace search and language control overlapped, violating target size/spacing.",
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": [
+        {
+          "label": "browser-harness-r1",
+          "receipt_sha256": "07a821f0ec2b147f2d98466488923a91785fb92f4f65bc67a567f9818980c47c",
+          "exit_code": 1,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 13,
+            "error": 0,
+            "skipped": 0,
+            "total": 50,
+            "passed": 37,
+            "unique_testcase_identities": 50,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "d8a19967b145fb1945f4d221abb2b9f2f2345e0699d687ab60a182bd7b6cd25b"
+        },
+        {
+          "label": "mobile-accessibility-r1",
+          "receipt_sha256": "71e2d37ebecd3c9e17e508da2babf1beb794dbc7112fb156b54eec3e777c9d39",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 9,
+            "passed": 9,
+            "unique_testcase_identities": 9,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "3d30f1e0b2f1a0d45ac49893c62fe479ae985f03b385c527ea090eb24a4242d8"
+        },
+        {
+          "label": "mobile-accessibility-r2",
+          "receipt_sha256": "afab7c7e8ece1fe4dcfe6dcbeea8eff72977218bb15e54441e9012f3a3856bc3",
+          "exit_code": 0,
+          "qualification": "Original invocation result retained; a nonzero exit is not success evidence. Final complete suites are recorded separately.",
+          "counts": {
+            "failure": 0,
+            "error": 0,
+            "skipped": 0,
+            "total": 9,
+            "passed": 9,
+            "unique_testcase_identities": 9,
+            "declared_counts_match": true
+          },
+          "xml_sha256": "7b8c16ebb01dc9a85ecc2ced83ab35d2d8ab66d660b4558e9eef2d0570881167"
+        }
+      ]
+    },
+    {
+      "id": "PUB-01",
+      "capabilities": [
+        "C30"
+      ],
+      "paths": [
+        "repro/sanitize_xml.py",
+        "repro/test_sanitize_xml.py"
+      ],
+      "local_result": "PASS_SEPARATE_DOSSIER",
+      "evidence": [
+        "historical/PUB01-REPAIR.json",
+        "historical/PUBLICATION-VALIDATION.json"
+      ],
+      "reason": "Parsed XML text/tail/attributes sanitized and serialized/reparsed; 2 AUDIT_ROOT and 65 USER_HOME aliases escaped, node identities/status/counts preserved; dossier HEAD 5fa0b23868d47c5fc407b5286b6691e230e9d232.",
+      "remaining": "The separate XML publication repair remains published at its own immutable dossier commit. This new derived packet preserves the historical audit and requires its own publication receipt.",
+      "root_cause": "Text substitution inside serialized XML produced invalid unescaped placeholder aliases. Sanitizing parsed text, tails and attributes before serialization/reparse preserves XML semantics.",
+      "status_scope": "Final disposition of this bounded repair. Capability verdicts and remaining external gaps are recorded separately in MATRIX.json and EXTERNAL-PENDING.json.",
+      "retained_evidence_records": [
+        {
+          "label": "historical/PUB01-REPAIR.json",
+          "receipt_sha256": "b259091ea751388857e9aeb10c78de6eda4f1b6a3e3e738430c52018d3a771e2",
+          "public_reference": "../2026-10-26-implementation-integrity/PUB01-REPAIR.json"
+        },
+        {
+          "label": "historical/PUBLICATION-VALIDATION.json",
+          "receipt_sha256": "c249de33b54ab55609079a7b425d932cecd99a1341a0f1e1c81a18f36d83370d",
+          "public_reference": "../2026-10-26-implementation-integrity/PUBLICATION-VALIDATION.json"
+        }
+      ]
+    }
+  ],
+  "port_rule": "Same logical root-cause repair in four carriers; preserve PH2/PH3 schema and workflow deltas. No wholesale PH3 promotion.",
+  "historical_evidence_preserved": true
+}

@@ -1,0 +1,1383 @@
+{
+  "schema": "functional-integrity.matrix.v1",
+  "frozen_at_utc": "2026-10-26T20:17:30.578408+00:00",
+  "snapshot_head": "a6979425af4d8327ae52d93adb3aa56575438c04",
+  "policy": "Weights fixed before behavior results; critical=5 important=3 ordinary=1. Commitments within a capability share its weight. UNKNOWN receives no credit. Additions require explicit revision history and no result-driven weights.",
+  "capabilities": [
+    {
+      "id": "C01",
+      "description": "Reproducible installation, build and forward schema migration",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "A failed build or corrupt migration blocks the entire workspace.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:30-46",
+        "docs/PROJECT_BRIEF.md:362-427",
+        "docs/PROJECT_BRIEF.md:645-666"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "One FastAPI/Jinja/HTMX monolith; locked Python dependencies; one PostgreSQL per environment; install from README; forward migration preserves original IDs, issued bytes and guards; no runtime DDL.",
+      "public_path_and_components": "README, pyproject/uv.lock, Dockerfile, Alembic, app/db.py",
+      "acceptance_criterion_and_independent_oracle": "Clean disposable install/build and migrate fresh/legacy schemas; compare preserved IDs and hashes independently.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Fresh locked installation, independent migration/recovery checks, exact image build and actual isolated Container startup demonstrate the selected installation and schema contract. Final hosted source/image/readiness binding is recorded separately.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "UNKNOWN",
+      "historical_reason": "Instalación con lock y wheel/sdist válidos; migraciones limpias e históricas verificadas. Falta construir/arrancar la imagen Docker en este host sin Docker CLI.",
+      "historical_evidence": [
+        "evidence/build.receipt.json",
+        "evidence/migration-model-compare.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/integration/test_migrations.py",
+        "tests/integration/test_recovery_rehearsal.py",
+        "tests/unit/test_migration_target.py"
+      ]
+    },
+    {
+      "id": "C02",
+      "description": "Verified immutable identity and protected web requests",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Unauthorized identity or mutation can expose or alter all private business data.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:40",
+        "docs/PROJECT_BRIEF.md:623-643",
+        "docs/DECISIONS.md:804-958"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Verified issuer/subject; fresh explicit linking; no email-only merge; normal production bypass fails closed; CSRF, restricted redirects, state/nonce, secure cookies, request-local authorization.",
+      "public_path_and_components": "app/auth.py, social_auth.py, email_auth.py, main.py",
+      "acceptance_criterion_and_independent_oracle": "Malformed state/nonce/callback/CSRF and foreign owner negatives; fresh legitimate identity proof adapter; cookies inspected; local test stub explicitly scoped.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json",
+        "EXTERNAL-PENDING.json"
+      ],
+      "reason": "Current local identity, CSRF, redirect, cookie and session tests pass. Real existing-owner Google proof, explicitly approved versioned acknowledgments and protected Dashboards were observed in Stage and PROD before repair promotion. The remaining selected providers and registered-session proof are incomplete; these bounded owner flows do not establish full authentication lifecycle acceptance.",
+      "finding_ids": [],
+      "pending_checks": [
+        "Remaining real GitHub and managed-email provider proof plus selected registered-session lifecycle, scoped logout/revoke and form recovery. Existing-owner Google proof and explicit versioned acknowledgment were observed; they are not still wholly absent."
+      ],
+      "historical_status": "UNKNOWN",
+      "historical_reason": "Rutas, tokens, linking, CSRF y negativas locales verificadas; falta prueba nueva de los proveedores de identidad reales. No se suplanta prueba personal.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/backend-setup-recovered.xml",
+        "evidence/oauth-csrf-refutation.json",
+        "evidence/behavior-independent.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_oauth_csp_browser.py",
+        "tests/e2e/test_onboarding_browser.py",
+        "tests/integration/test_auth_get_sessions.py",
+        "tests/integration/test_auth_notice.py",
+        "tests/integration/test_oauth.py",
+        "tests/integration/test_social_auth.py",
+        "tests/unit/test_email_auth.py"
+      ]
+    },
+    {
+      "id": "C03",
+      "description": "Tenant schema/role isolation and no default-workspace fallback",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Cross-owner disclosure or writes are critical.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:30,40",
+        "docs/DECISIONS.md:444-457",
+        "AGENTS.md:Authentication and authorization"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "One owner per tenant; authenticated registry selects existing schema/nonowner role; no caller tenant override/runtime DDL/default fallback; preserve foreign schema/role denial.",
+      "public_path_and_components": "app/tenancy.py, db.py, repositories and routing",
+      "acceptance_criterion_and_independent_oracle": "Two synthetic owners with distinct data; new normal-role connections demonstrate reciprocal read/write denial; missing context fails closed.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Singleton and multiple-workspace role checks now reject elevated privileges and explicit database/schema ownership independently of cross-tenant count. Current TLS/read-only role metadata and local reciprocal denials support the repaired boundary; hosted postdeploy binding is separately recorded.",
+      "finding_ids": [
+        "B01"
+      ],
+      "pending_checks": [],
+      "historical_status": "FAIL",
+      "historical_reason": "La configuración singleton hosted admite rol administrador/propietario y la validación multi-tenant omite REPLICATION. Las denegaciones recíprocas normales sí funcionan.",
+      "historical_evidence": [
+        "evidence/behavior-hosted-singleton-readiness.json",
+        "evidence/behavior-replication-readiness.json",
+        "evidence/backend-setup-recovered.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/integration/test_hosted_readiness.py",
+        "tests/integration/test_public_admission.py",
+        "tests/integration/test_tenancy.py",
+        "tests/integration/test_tenancy_capacity.py",
+        "tests/integration/test_tenant_demo.py"
+      ]
+    },
+    {
+      "id": "C04",
+      "description": "Versioned enrollment, explicit first plan and bounded prepared admission",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Admission without proof or plan would violate access and commercial boundaries.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:19-25",
+        "docs/DECISIONS.md:708-790",
+        "docs/DECISIONS.md:804-849",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:138,158"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Verified owner explicitly acknowledges current revisions and activates initial plan before use; bounded operator-prepared slots; no operator acceptance/backfill; exhausted capacity visible; activation flags separate.",
+      "public_path_and_components": "enrollment/admission services and routes; /registration, /sign-up",
+      "acceptance_criterion_and_independent_oracle": "New isolated owner follows proof-notice-plan-use; failed proof/view creates no receipt; replay does not consume extra slot; exhausted capacity and disabled flags fail honestly.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Fresh current onboarding and notice/plan tests preserve explicit versioned owner acknowledgment, fresh proof gates, bounded prepared slots, idempotence and honest capacity/disabled-state refusal. A separate authorized existing-owner Google and legal-acknowledgment flow was observed before deployment; this is not product UAT or acceptance.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Registro y slots preparados conservan identidad, acknowledgment y elección explícita bajo configuraciones locales permitidas; flags públicos remotos no se activan.",
+      "historical_evidence": [
+        "evidence/backend-setup-recovered.xml",
+        "evidence/behavior-independent.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_onboarding_browser.py",
+        "tests/e2e/test_subscription_browser.py",
+        "tests/integration/test_auth_notice.py",
+        "tests/integration/test_onboarding_auth.py",
+        "tests/integration/test_prelaunch_auth.py",
+        "tests/integration/test_public_admission.py"
+      ]
+    },
+    {
+      "id": "C05",
+      "description": "Client lifecycle and explicit real-world completeness",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Wrong commercial metadata or lifecycle breaks daily work.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:113-126",
+        "docs/legal/PRIVACY_DISCOVERY.md:1-3",
+        "docs/DECISIONS.md:1025-1045"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Search/filter/order/paginate; owner CRUD/archive/reactivate; legal/display separated; Draft may omit four fields but Active requires owner-supplied completeness; retain incomplete historical Active facts.",
+      "public_path_and_components": "app/clients.py, client_drafts.py, main routes/templates",
+      "acceptance_criterion_and_independent_oracle": "Create/edit/archive/reactivate synthetic client; prove fresh persistence, foreign denial, activation missing-field rejection, immutable history and all-page totals.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current client tests verify owned create/edit/archive/reactivate, required activation fields, retained incomplete history, search and pagination with independent persisted results.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Lifecycle, completitud, referencias y reactivación ejecutan servicios y persistencia; campos reales desconocidos se conservan.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/content-independent.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_stage_refinements.py",
+        "tests/e2e/test_work_management.py",
+        "tests/integration/test_client_codes.py",
+        "tests/integration/test_record_fields.py",
+        "tests/integration/test_reference_fields.py",
+        "tests/integration/test_work_forms.py",
+        "tests/unit/test_client_code_validation.py"
+      ]
+    },
+    {
+      "id": "C06",
+      "description": "Project billing arrangements and private agreement custody",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Incorrect project fee/cap behavior can misbill or leak agreements.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:128-153"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Owned project classification, explicit currency/budget; fixed fee not hourly; one nonvoid base fee; manual extras explicit reason/reference; overbilling defaults off; immutable <=5MiB owner-only agreement; lifecycle preserves history.",
+      "public_path_and_components": "projects, project_terms, project_attachments, project_billing_routes",
+      "acceptance_criterion_and_independent_oracle": "New fixed-fee/T&M cases with independently calculated charge/budget outcomes; duplicate fee rejection; foreign attachment denial; archive/reopen persistence.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current project and exact-money tests verify owned classification, fixed-fee and manual-extra constraints, attachment ownership, lifecycle and retained billing facts.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Arreglos de proyecto, presupuesto, extras y custodia de acuerdo tienen rutas y efectos locales comprobados; selecciones antiguas de tests se distinguen.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/browser-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_project_billing_browser.py",
+        "tests/integration/test_exact_money_flow.py",
+        "tests/integration/test_project_attachments.py",
+        "tests/integration/test_project_billing_routes.py",
+        "tests/integration/test_project_lifecycle_work.py",
+        "tests/integration/test_projects.py"
+      ]
+    },
+    {
+      "id": "C07",
+      "description": "Cases, allocations, bulk status edits and 90-day retention",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Case relationships must preserve exact time and source associations.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:673-695",
+        "docs/DECISIONS.md:997-1020"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Owned client/project/case associations; exact minute allocations; bulk edits only owned-project status/type with versions; closing guards; archive only Closed; 90 elapsed-day idempotent archive marker with retained audit.",
+      "public_path_and_components": "app/cases.py, case_routes.py, mail associations, internal retention route",
+      "acceptance_criterion_and_independent_oracle": "Synthetic allocations cannot exceed source minutes; stale/foreign bulk edit rejects; 89/90-day boundaries; separate actual scheduled invocation evidence from manual endpoint.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current case tests verify owned associations, integer-minute allocations, stale/foreign bulk denials, closing/archive boundaries and retained markers. Actual scheduler invocation remains a distinct C28 evidence requirement.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Casos, asignaciones exactas, cambios masivos y retención tienen consultas y guards reales con pruebas locales.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/browser-complete.xml",
+        "evidence/content-independent.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_case_mass_edit_browser.py",
+        "tests/e2e/test_case_workflow_browser.py",
+        "tests/integration/test_case_mass_edit.py",
+        "tests/integration/test_case_retention.py",
+        "tests/integration/test_case_workflow.py",
+        "tests/integration/test_cases.py",
+        "tests/integration/test_internal_jobs.py"
+      ]
+    },
+    {
+      "id": "C08",
+      "description": "Weekly timecards, exact minutes and contractual limits",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Time and cap errors directly alter billed work.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:155-182",
+        "docs/contracts/ALCO_CONTRACT_SOURCE_NOTES.md:10-21",
+        "docs/PROJECT_BRIEF.md:609-621"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Monday-Sunday IANA contract weeks; H:MM/decimal input persists integer minutes; ALCO 1200 combined minutes/no minimum/exact minutes; audited cap override only; internal nonbillable; Draft/finalize/reopen restrictions and invoice locks.",
+      "public_path_and_components": "app/domain.py, timecards.py, time_command services/routes",
+      "acceptance_criterion_and_independent_oracle": "Independent minute arithmetic and timezone/week boundaries; known 1200 cap and 1201 refusal; one-minute/mixed entries; new-session read after save; allowed override has explicit source/reason.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current timecard tests verify integer minutes, contract-local Monday-Sunday weeks, combined limits, no minimum, overrides and finalized/invoiced mutation guards.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Minutos enteros, formatos admitidos, semana contractual, cap y negativos verificados con 1936 checks independientes y flujos persistidos.",
+      "historical_evidence": [
+        "evidence/duration-oracle.log",
+        "evidence/finance-restored-baseline.log",
+        "evidence/backend-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_timecard_local_clock.py",
+        "tests/e2e/test_timecard_week_metrics_browser.py",
+        "tests/integration/test_time_commands.py",
+        "tests/integration/test_timecard_cross_module.py",
+        "tests/integration/test_timecard_week_metrics.py",
+        "tests/unit/test_domain.py"
+      ]
+    },
+    {
+      "id": "C09",
+      "description": "Supplemental source identity, persistent holds and frozen Ready rates",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Source duplication, cap reset or silent repricing can double-bill.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:60-74",
+        "docs/DECISIONS.md:1207-1215"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Explicit same-week supplemental batch; all writers preserve source IDs and aggregate limits; published edit cannot silently become new work; hold only unpublished; nonselection not hold; Ready rate/provenance frozen; unknown history explicit; versioned reprice refreshes previews.",
+      "public_path_and_components": "timecards, time_commands, time_import, work_lifecycle, work_rates",
+      "acceptance_criterion_and_independent_oracle": "Publish old batch then add missed real-date minutes to distinct batch; prove original immutable and cap aggregate; rate change after Ready leaves old rate; stale/held/reserved edits exercise normal lifecycle.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current supplemental-batch and rate/hold tests verify distinct work sources, immutable published history, aggregate caps, frozen Ready rates and explicit versioned repricing.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Batches suplementales, identidad, holds y tarifas Ready congeladas están conectados; roles de prueba recuperados sin cambiar producto.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/backend-runtime-role-recovered.xml",
+        "evidence/migration-guard-probe.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_supplemental_batches_browser.py",
+        "tests/e2e/test_timecard_selection.py",
+        "tests/integration/test_owner_work_refinements.py",
+        "tests/integration/test_ph3_work_rates_holds.py",
+        "tests/integration/test_supplemental_batches.py"
+      ]
+    },
+    {
+      "id": "C10",
+      "description": "Strict imports and source-preserving delegated contributions",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Import/replay mistakes can silently duplicate or overwrite billable work.",
+      "sources": [
+        "docs/DECISIONS.md:472-486",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:68,140"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "JSON v1/strict CSV; UTF8 256KiB/200 rows/depth5; populated reviewed Draft entries only; atomic commit; idempotent retained source receipts across rebatches/deletion; corrections preserve manual/other-source contributions and allocations; downloadable template/row feedback.",
+      "public_path_and_components": "time_import.py/routes, time_commands.py/models, integration routes",
+      "acceptance_criterion_and_independent_oracle": "Novel JSON/CSV equivalent imports; exact independent totals; replay/new batch with old source; invalid one row atomic no-write; manual/foreign-source contribution survives correction.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current import tests verify equivalent JSON/CSV results, bounded parsing, atomic invalid-row refusal, durable replay identity and preservation of manual/other-source work.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Imports estrictos, contribuciones idempotentes y preservación de otras fuentes verificados localmente; 200 filas Unicode JSON/CSV nuevas.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/content-independent.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_time_import_browser.py",
+        "tests/integration/test_mcp_time_batches.py",
+        "tests/integration/test_time_commands.py",
+        "tests/integration/test_time_import_http.py",
+        "tests/unit/test_time_import.py"
+      ]
+    },
+    {
+      "id": "C11",
+      "description": "Selective bill preparation and atomic reviewed publication",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Wrong selection or partial issuance violates financial integrity.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:76-93",
+        "docs/DECISIONS.md:1217-1221"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Available/Held/Reserved/Published groups; explicit eligible sources; stale/current review/version and currency/budget checks; atomic snapshot/artifact/claims/state/audit; same intent one invoice; concurrent claims exclusive; draft selection release recalculates; publication survives later send failure.",
+      "public_path_and_components": "billing.py, main publication routes, publication_delivery.py",
+      "acceptance_criterion_and_independent_oracle": "Ten eligible batches, select five, retain five editable; stale settings/rate/source review rejects; PDF failure leaves Draft; concurrency/replay yields one publication and exact claims.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "The native selector retains client/date/query/page context and only explicit work selection opens the PH3 work route. Publication tests and independent exact-money/PDF/SQL checks verify reviewed totals, claims, replay, stale-state refusal and renderer rollback.",
+      "finding_ids": [
+        "FIN-01",
+        "BILLING-NATIVE-LOOKUP"
+      ],
+      "pending_checks": [],
+      "historical_status": "FAIL",
+      "historical_reason": "El cálculo redondea mal algunos empates y el selector nativo de Billing se desvía al flujo de trabajo; publicación atómica y persistencia sí operan.",
+      "historical_evidence": [
+        "evidence/rounding-counterexample.json",
+        "evidence/billing-native-lookup.json",
+        "evidence/finance-restored-baseline.log"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_lookups_browser.py",
+        "tests/e2e/test_ph3_billing_credit_browser.py",
+        "tests/integration/test_exact_money_flow.py",
+        "tests/integration/test_lookups.py",
+        "tests/integration/test_ph3_publication_flow.py",
+        "tests/integration/test_publication_delivery.py"
+      ]
+    },
+    {
+      "id": "C12",
+      "description": "Selectable on-demand PDFs and immutable retained artifacts",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Document mismatch or mutation undermines the financial record.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:311-335",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:34,87",
+        "docs/PROJECT_BRIEF.md:623-638"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Server-rendered selectable ES/EN PDF; ALCO ES; exact Decimal totals/time appendix; draft watermark only; no invented fields; remote/file fetch restricted; issued JSON/PDF/SHA256/renderer immutable; stable safe filename.",
+      "public_path_and_components": "pdf.py, billing/credits/quoting/library artifact paths and download routes",
+      "acceptance_criterion_and_independent_oracle": "Open exported bytes, extract text independently, calculate total from new minutes/rates, hash with hashlib; mutate source after issue and verify bytes/snapshot unchanged; deny external fetch and foreign download.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Exact rational-cent arithmetic matches an independent Fraction oracle, including the specified half-cent cases. Fresh HTTP-to-SQL-to-PDF/CSV tests verify new amounts and retained issued snapshot/PDF/hash immutability.",
+      "finding_ids": [
+        "FIN-01"
+      ],
+      "pending_checks": [],
+      "historical_status": "FAIL",
+      "historical_reason": "PDF real y custodia/immutabilidad comprobados, pero el contraejemplo monetario se exporta como USD0.50 en PDF frente a USD0.51; no se omite el compromiso de totales exactos.",
+      "historical_evidence": [
+        "evidence/rounding-counterexample.json",
+        "evidence/rounding-exports-counterexample.log",
+        "evidence/finance-restored-baseline.log",
+        "evidence/fresh-process-reader-r2.log",
+        "evidence/migration-guard-probe.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/integration/test_credit_memos.py",
+        "tests/integration/test_exact_money_flow.py",
+        "tests/integration/test_legacy_credit_upgrade.py",
+        "tests/integration/test_retained_history.py",
+        "tests/integration/test_workflow.py"
+      ]
+    },
+    {
+      "id": "C13",
+      "description": "Multiple partial/full immutable credits with cumulative limits",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Overcredit or released published claims corrupt balances and billing eligibility.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:95-107",
+        "docs/DECISIONS.md:1223-1229"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Reviewed minute/amount/full credits including paid bills; original rate/currency/adjustments; atomic immutable credit PDF/hash; cumulative per-line and total bounds with shared monetary remainder; payment history/work minutes/claims preserved; legacy Void retained.",
+      "public_path_and_components": "credits.py, credit_memo_models.py, billing/shared balances",
+      "acceptance_criterion_and_independent_oracle": "Three minutes at USD1/hour original USD0.05; three minute credits total USD0.05; mixed amount+minute cannot overcredit; paid credit customer-credit without refund; replay/concurrent limit checks.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current partial/full credit tests verify bounded shared monetary remainder, immutable credit artifacts, paid-bill customer-credit semantics, retained work/payment facts and replay/concurrency limits.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Créditos parciales/cumulativos y completos conservan original y claims; oracle SQL verifica .02+.01+.02=.05 y rechaza mutaciones.",
+      "historical_evidence": [
+        "evidence/migration-guard-probe.json",
+        "evidence/finance-restored-baseline.log",
+        "evidence/backend-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_ph3_billing_credit_browser.py",
+        "tests/integration/test_credit_memos.py",
+        "tests/integration/test_exact_money_flow.py",
+        "tests/integration/test_legacy_credit_upgrade.py",
+        "tests/integration/test_partial_credits.py"
+      ]
+    },
+    {
+      "id": "C14",
+      "description": "Payments, receipt-based due dates and shared financial balances",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "False payment or due-state alters collection and customer obligations.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:229-233",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:91,105-107"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Owner-recorded complete client receipt distinct from provider acceptance; frozen day-count terms determine due; audited correction; explicit manual payments/currency/reference; shared original-credit-net-payment-due-customer-credit across UI/reports/MCP/Sending; no automatic refund/tax/FX.",
+      "public_path_and_components": "billing.py, reports.py, dashboard.py, integration_finance.py, Sending",
+      "acceptance_criterion_and_independent_oracle": "Independent balance table across partial paid/credited/reversed cases; day-count boundary oracles; same values on each read surface; provider success cannot create receipt/payment.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current workflow and financial-query tests verify manual receipt/payment boundaries and coherent original/credit/net/payment/due/customer-credit values using retained issued amounts.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Pagos manuales, reversión, receipt/due date y saldo compartido se verifican por rutas, SQL nuevo y balances independientes.",
+      "historical_evidence": [
+        "evidence/finance-restored-baseline.log",
+        "evidence/fresh-process-reader-r2.log",
+        "evidence/backend-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_ph3_billing_credit_browser.py",
+        "tests/integration/test_credit_memos.py",
+        "tests/integration/test_exact_money_flow.py",
+        "tests/integration/test_financial_query_growth.py",
+        "tests/integration/test_partial_credits.py",
+        "tests/integration/test_workflow.py"
+      ]
+    },
+    {
+      "id": "C15",
+      "description": "Dashboard, search, exact totals and stable pagination",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Misleading summaries obscure work or balances.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:101-111,350-360",
+        "docs/DECISIONS.md:1045-1071",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:136-144",
+        "docs/DECISIONS.md:1249-1262"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Fixed-five Dashboard details and outstanding invoices; complete aggregate totals independent of pages; owner-scope search/filter/order; 14-week 98-cell UTC calendar, exact bins and D084 grey/violet zero/future fills; bars/native switch retain selected metric.",
+      "public_path_and_components": "dashboard.py, reports.py, workspace_search.py, pagination.py, templates/static",
+      "acceptance_criterion_and_independent_oracle": "Synthetic >page-size datasets; independent count/sum; stable no-loss pages; all seven current weekdays yield 98 dates and correct future placeholders; keyboard/JS/no-JS state.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current dashboard/report tests verify complete aggregates independent of pagination, stable owned search, retained issued amounts, the 98-cell calendar and current D084 styling and native chart state.",
+      "finding_ids": [
+        "FIN-01"
+      ],
+      "pending_checks": [],
+      "historical_status": "FAIL",
+      "historical_reason": "Consultas y navegación funcionan, pero Reports CSV repite la estimación USD0.50 para2min a15.15 frente0.51. Se conserva el compromiso de exactitud monetaria de la matriz congelada.",
+      "historical_evidence": [
+        "evidence/rounding-counterexample.json",
+        "evidence/rounding-exports-counterexample.log",
+        "evidence/backend-complete.xml",
+        "evidence/browser-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_workspace_search_browser.py",
+        "tests/integration/test_dashboard_contribution_scope.py",
+        "tests/integration/test_dashboard_detail_pagination.py",
+        "tests/integration/test_dashboard_outstanding_pagination.py",
+        "tests/integration/test_exact_money_flow.py",
+        "tests/integration/test_record_pagination.py",
+        "tests/integration/test_report_pagination.py",
+        "tests/integration/test_workspace_overview_search.py",
+        "tests/unit/test_dashboard_calendar.py",
+        "tests/unit/test_dashboard_calendar_template.py"
+      ]
+    },
+    {
+      "id": "C16",
+      "description": "Case-linked estimates and immutable quotation revisions",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Quotes must represent user inputs and retain publication history.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:184-201",
+        "docs/DECISIONS.md:959-997"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "HLE/T&M/fixed fee; owned case derives project/client; explicit minutes/ranges/pricing/currency; optional duration-only; aggregate rounding; estimate creates no time/invoice; reviewed immutable revision/PDF/hash; edit starts new revision.",
+      "public_path_and_components": "quoting.py/models/routes, quote templates",
+      "acceptance_criterion_and_independent_oracle": "New case estimate independent Decimal amount; invalid range/foreign case rejects; publish/revise compares old bytes/hash; verify no actual work/invoice created.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current quoting tests verify owned case derivation, exact independent amounts, explicit range/currency rules and immutable revisions without creating actual time or invoices.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Estimaciones y revisiones publicadas están conectadas; 500 oráculos Fraction y transformación de orden nuevos pasan.",
+      "historical_evidence": [
+        "evidence/content-independent.json",
+        "evidence/backend-complete.xml",
+        "evidence/browser-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_quoting_library_browser.py",
+        "tests/e2e/test_quoting_lookup_browser.py",
+        "tests/integration/test_quoting.py",
+        "tests/integration/test_quoting_list_performance.py",
+        "tests/integration/test_quoting_routes.py",
+        "tests/unit/test_quote_pagination.py",
+        "tests/unit/test_quoting.py",
+        "tests/unit/test_quoting_routes.py"
+      ]
+    },
+    {
+      "id": "C17",
+      "description": "Private Library editable templates and complete uploaded originals",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Lost or exposed document bytes violate private document custody.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:202-208",
+        "docs/DECISIONS.md:959-997"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Working document requires case; reusable templates may unbound; <=5MiB PDF/DOCX/TXT/MD; text editable; original and published versions private/downloadable/immutable; no fabricated legal agreement.",
+      "public_path_and_components": "library.py/models/routes and download templates",
+      "acceptance_criterion_and_independent_oracle": "Novel originals round-trip exact bytes/hash via fresh download; case-bound ownership; publish/edit retains old revision; malformed/oversize/foreign reads denied.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current library tests verify exact private original/version roundtrips, case ownership, immutable publication and malformed/oversize/foreign denial.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Library preserva originales completos/versiones, valida documentos y publica PDF local real.",
+      "historical_evidence": [
+        "evidence/content-independent.json",
+        "evidence/backend-complete.xml",
+        "evidence/browser-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_quoting_library_browser.py",
+        "tests/integration/test_library.py",
+        "tests/unit/test_library.py"
+      ]
+    },
+    {
+      "id": "C18",
+      "description": "Reviewed statement Sending, durable attempts and uncertainty",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "False success or replay can send duplicate or wrong collection messages.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:248-279",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:38,89,107"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Stage explicit activation/recipient/content/exact immutable PDF review; commit durable claim before provider; concurrent/replay no duplicate; payment/credit/stop/void invalidate stale collection; uncertain never blind retry; only definitive failure permits explicit retry; manual advance binds original schedule; jobs/Live disabled.",
+      "public_path_and_components": "sending.py/routes/transport/models, sending_dispatch_routes.py",
+      "acceptance_criterion_and_independent_oracle": "Local controlled provider records call count; timeout-after-accept stays Uncertain and no second call; partial payment/credit stops plan; definitive rejection retry; persisted attempt fresh read; actual delivery remains UNKNOWN without test credentials.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json",
+        "EXTERNAL-PENDING.json"
+      ],
+      "reason": "Current local statement Sending tests cover durable claims, replay/concurrency, payment/credit invalidation, stop, definitive-only retry and honest uncertainty. On repaired Stage 53, one newly reviewed fictional issued PDF was sent once to the controlled owner mailbox, independently read from a fresh restricted database connection and received with exact attachment-byte equality and authentication passes. The new plan was stopped; no follow-ups or financial writes occurred.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "UNKNOWN",
+      "historical_reason": "Claims durables, estados y fallos de transporte se verifican localmente; no hay nueva confirmación externa Email Sending y no se autoriza otro envío.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/behavior-independent.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_sending_browser.py",
+        "tests/e2e/test_sending_manual_followup_browser.py",
+        "tests/integration/test_sending_credit_revisions.py",
+        "tests/integration/test_sending_dispatch.py",
+        "tests/integration/test_sending_isolation.py",
+        "tests/integration/test_sending_manual_followup.py",
+        "tests/integration/test_sending_routes.py"
+      ]
+    },
+    {
+      "id": "C19",
+      "description": "Independent commercial-document Sending",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Quote delivery must not inherit collection or payment side effects.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:209-212,239-246"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Separate outbox exact published HLE/Library version or selected original; owner-recipient/content review; durable pre-provider claim, stop, definitive-only retry; no scheduled collection/payment side effects.",
+      "public_path_and_components": "proposal_sending.py/routes/transport/models",
+      "acceptance_criterion_and_independent_oracle": "Local fake provider call count plus new-session retained attempt; immutable attachment selection; quote send never changes invoices/payments; real provider confirmation requires separate evidence.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json",
+        "EXTERNAL-PENDING.json"
+      ],
+      "reason": "Current local commercial-document tests cover the separate outbox, immutable version selection, owner review, durable claims and conservative retry. On repaired Stage 53, one new outbox sent the exact published fictional HLE revision once; fresh restricted SQL and owner-inbox attachment bytes matched the frozen hash. Future attempts were stopped and financial state remained unchanged.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "UNKNOWN",
+      "historical_reason": "Outbox comercial y revisión local verificadas; el transporte externo y aceptación real no se ejercitan de nuevo.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/behavior-independent.json",
+        "evidence/browser-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_proposal_sending_browser.py",
+        "tests/integration/test_proposal_sending.py",
+        "tests/unit/test_proposal_sending.py",
+        "tests/unit/test_proposal_sending_transport.py"
+      ]
+    },
+    {
+      "id": "C20",
+      "description": "Bounded Mail capture/import and attachment custody",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Untrusted messages must remain private reference data.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:281-309"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Owner .eml <=5MiB explicit client/project/case; normalized plain data and attachments within message budget, SHA256 dedupe; no original MIME/HTML execution/remote fetch; receipt basis not sender Date; conflicts reject; no inbox sync or work/billing inference.",
+      "public_path_and_components": "mail_service.py/models/routes, Worker capture adapter",
+      "acceptance_criterion_and_independent_oracle": "New multipart sample exact attachment download hash; owner dedupe/conflicting assignment; malicious HTML external reference never executes/fetches; foreign denial; no work/invoice side effects.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json",
+        "EXTERNAL-PENDING.json"
+      ],
+      "reason": "Local mail import and attachment tests pass; actual configured inbound provider capture, trusted routing and exact attachment receipt remain unobserved.",
+      "finding_ids": [],
+      "pending_checks": [
+        "Actual configured inbound capture and provider identity/routing/attachment verification."
+      ],
+      "historical_status": "UNKNOWN",
+      "historical_reason": "EML, adjuntos, normalización/hash y asignación local verificados; captura real de proveedor no comprobada en esta auditoría.",
+      "historical_evidence": [
+        "evidence/content-independent.json",
+        "evidence/backend-complete.xml",
+        "evidence/browser-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_mail_attachments_browser.py",
+        "tests/e2e/test_mail_browser.py",
+        "tests/integration/test_mail.py",
+        "tests/integration/test_mail_attachments.py",
+        "tests/integration/test_mail_case_reference.py"
+      ]
+    },
+    {
+      "id": "C21",
+      "description": "Read-only historical consultation and bounded exports",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Archive must preserve useful history without reviving edits.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:294-306",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:142"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Six calendar months by client-week-end or server receipt UTC; effective expiry before job; searchable Active/Archived/All with dates/pagination/detail/attachments; no erase/restore; finalized unbilled available for billing/reports; bounded CSV export.",
+      "public_path_and_components": "archiving.py, archive_routes.py, timecard/mail history",
+      "acceptance_criterion_and_independent_oracle": "Boundary dates including month-end/timezone; pre-marker mutation denied; archive query fresh read retains all facts; exports parsed independently and authorized attachment roundtrip.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current archive tests verify six-month boundaries, effective expiry before marking, retained searchable history, complete exports and owner-only attachment access.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Archivo conserva consultas/exportes y rechazos de edición por expiry; guards y lectura local vigentes comprobados.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/browser-setup-recovered.xml",
+        "evidence/migration-guard-probe.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_archive_browser.py",
+        "tests/integration/test_archiving.py",
+        "tests/integration/test_retained_history.py",
+        "tests/unit/test_archive_dates.py"
+      ]
+    },
+    {
+      "id": "C22",
+      "description": "Scoped OAuth/MCP real workflow and native financial review",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Delegated terminal authority or fake connection state is critical.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:109-132",
+        "docs/DECISIONS.md:488-508,1413-1434"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Fixed callbacks/audience/PKCE; hashed grant-bound short tokens and refresh replay/revoke; 26 tools/13 scopes as documented; old grants no silent powers; same domain services; terminal current server preview/native functional review; caller confirmed boolean not human proof; honest actual connection; real two-owner/refresh/revoke host evidence.",
+      "public_path_and_components": "integration_auth.py/routes/finance/models and integration package",
+      "acceptance_criterion_and_independent_oracle": "Unauthenticated/foreign/scopeless/stale review negatives; real ASGI persisted grant lifecycle; two fictional owners; actual supported host consent/discovery/read/write/replay/correction/refresh/revoke separately observed, never mock credited as host.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json",
+        "EXTERNAL-PENDING.json"
+      ],
+      "reason": "The explicit own-client join is verified through local OAuth PKCE/token/tools-call and independent SQL cardinality tests. An actual supported assistant-host connection, reciprocal owners, scopes, refresh/revoke and financial confirmation remain unobserved.",
+      "finding_ids": [
+        "B02"
+      ],
+      "pending_checks": [
+        "Actual supported assistant host connection, two controlled owners, scopes/PKCE/refresh/revoke/correction and native finance confirmation; current discovery0tools."
+      ],
+      "historical_status": "FAIL",
+      "historical_reason": "OAuth/PKCE/MCP local real duplica el mismo timecard al añadir un cliente ajeno. La compatibilidad/refresh/revoke del host asistente real sigue pendiente.",
+      "historical_evidence": [
+        "evidence/behavior-mcp-cartesian.json",
+        "evidence/refutation-mcp-duplicate.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_delegated_oauth_browser.py",
+        "tests/integration/test_assistant_connection_status.py",
+        "tests/integration/test_delegated_integration.py",
+        "tests/integration/test_hoc_mcp_cardinality.py",
+        "tests/integration/test_mcp_financial_workflow.py",
+        "tests/integration/test_mcp_time_batches.py",
+        "tests/integration/test_oauth.py"
+      ]
+    },
+    {
+      "id": "C23",
+      "description": "Sandbox subscription catalog, entitlement and provider reconciliation",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "False paid proof or period errors grant unauthorized access or misstate charges.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:42,156",
+        "docs/DECISIONS.md:637-706,1384-1412"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Free1/1 USD0; Solo5/10 USD7/70; Pro no commercial cap USD12/120; atomic capacity; signed provider payment/reconcile only; owner proration review; exact paid end; downgrade/cancel at period end; 7day failure grace; uncertain no replay; active cross-frequency fail closed; annual initial/3DS/provider lifecycle evidence separate.",
+      "public_path_and_components": "subscriptions.py, subscription_billing.py, paddle.py, subscription/payment routes",
+      "acceptance_criterion_and_independent_oracle": "Independent capacity/count and period/grace oracles; raw-body HMAC/replay/order tests; controlled provider request trace; real Sandbox event/annual/3DS/cancel-effective/failure/grace only PASS with separate actual evidence.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json",
+        "EXTERNAL-PENDING.json"
+      ],
+      "reason": "UTC grace now uses 604800 elapsed seconds before applying the retained paid floor. Actual catalog GET and aggregate read-only impact inventory are observed; no retained grace anchor/receipt was found in the ten scoped stores. Actual Sandbox checkout/3DS/renewal/failure/reconciliation lifecycle remains incomplete.",
+      "finding_ids": [
+        "B04"
+      ],
+      "pending_checks": [
+        "Actual controlled Sandbox checkout, selected 3DS, monthly/annual renewal events, failure/grace, webhook reconciliation and effective cancellation/downgrade. An existing-account renewal-status GET and current catalog/aggregate-impact reads do not prove event transitions."
+      ],
+      "historical_status": "FAIL",
+      "historical_reason": "Eventos fallidos repetidos alteran la gracia una hora al cruzar DST en sesiones no UTC. Checkout/3DS/renovación real actuales siguen sin observar.",
+      "historical_evidence": [
+        "evidence/behavior-grace-dst.json",
+        "evidence/backend-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_prelaunch_checkout_browser.py",
+        "tests/e2e/test_subscription_browser.py",
+        "tests/integration/test_hoc_grace_utc.py",
+        "tests/integration/test_live_billing.py",
+        "tests/integration/test_subscription_billing.py",
+        "tests/integration/test_subscription_capacity.py",
+        "tests/integration/test_subscription_domain.py",
+        "tests/integration/test_subscription_http.py",
+        "tests/integration/test_subscription_payments_http.py",
+        "tests/integration/test_subscription_proration.py",
+        "tests/integration/test_subscription_retention.py"
+      ]
+    },
+    {
+      "id": "C24",
+      "description": "Simultaneous browser sessions and scoped recovery/revocation",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Global or ineffective revocation breaks private authenticated access.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:146-150",
+        "docs/legal/PRIVACY_DISCOVERY.md:401-405"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Per-browser revocable rows, one-hour idle/twelve-hour absolute; second normal login preserves first; logout current vs all separate epoch; assistant grants independent; fresh reauth keeps unsaved fields in page only and requires explicit resubmit.",
+      "public_path_and_components": "browser_sessions.py/models, auth.py, session_recovery.js",
+      "acceptance_criterion_and_independent_oracle": "Two browsers then current/all revocation with fresh requests; grant remains correct; idle/absolute boundaries; expired unsaved form reauth never auto-submits/persists business fields.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current browser-session tests verify current/all revocation, independent grants, idle/absolute boundaries and preservation of unsaved fields without automatic business resubmission.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Sesiones simultáneas, revocación y recuperación local de formularios verificadas; el preflight renueva CSRF sin aceptar un POST crudo inválido.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/browser-setup-recovered.xml",
+        "evidence/oauth-csrf-refutation.json",
+        "evidence/session-preflight-csrf.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_browser_session_expiry.py",
+        "tests/e2e/test_session_recovery_browser.py",
+        "tests/integration/test_auth_get_sessions.py",
+        "tests/integration/test_browser_sessions.py",
+        "tests/integration/test_session_recovery.py"
+      ]
+    },
+    {
+      "id": "C25",
+      "description": "Private export, truthful account closure and retention-pending state",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Incomplete closure or credential export can leak retained private data.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:152-154",
+        "docs/legal/PRIVACY_DISCOVERY.md:407-425"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Export tenant records/settings/original artifacts+hashes, exclude keys/tokens/central records; closure restricts account/revokes browsers/grants/stops Sending; durable provider cancellation status distinct from effective; pending policy holds records; no invented purge; bounded receipt 12hours.",
+      "public_path_and_components": "account_closure.py/models, auth, export/privacy routes and templates",
+      "acceptance_criterion_and_independent_oracle": "Isolated owner export independently parsed for records+hashes and forbidden secret names; actual closure old sessions/grants cannot operate; provider uncertain/pending shown honestly; retained history unchanged and receipt expiry enforced.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current export/closure tests verify private record/artifact hashes, exclusion of secrets, session/grant revocation, retained history and honest pending/uncertain cancellation presentation. No real account closure was performed.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Export/cierre local conserva PDFs, historial y estado de retención pendiente; errores/cancelación no probada se declaran action-required y no purgan.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/browser-setup-recovered.xml",
+        "evidence/behavior-independent.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_account_closure_browser.py",
+        "tests/integration/test_account_closure.py",
+        "tests/integration/test_privacy_rights.py"
+      ]
+    },
+    {
+      "id": "C26",
+      "description": "Sanitized diagnostics, durable business audit and telemetry independence",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Sensitive logs or logging-dependent commits violate privacy and integrity.",
+      "sources": [
+        "AGENTS.md:Logging: match kommiBo semantics",
+        "docs/PROJECT_BRIEF.md:36,623-643"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Std logging structured production/readable dev; UTC/request or execution ID/method/route/outcome/duration/internal UUID; no forbidden PII/credentials/business text/PDF; sanitized exceptions; business audit DB; logging/telemetry failure cannot change committed result.",
+      "public_path_and_components": "app/logging.py, main middleware, audit.py and diagnostic callers",
+      "acceptance_criterion_and_independent_oracle": "Novel sentinel sensitive fields across exception/auth/billing/client log paths; independent captured output search; force logging/audit sink failures separately and inspect committed business result using a fresh session.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current logging/redaction and exact-money tests verify sensitive sentinels are absent and diagnostic failures do not change committed business results; business audit remains separate.",
+      "finding_ids": [],
+      "pending_checks": [],
+      "historical_status": "PASS",
+      "historical_reason": "Logs sanitizados y auditoría de negocio ejecutados; fallo técnico no convierte un commit en fracaso ni imprime payloads reales en las pruebas revisadas.",
+      "historical_evidence": [
+        "evidence/backend-complete.xml",
+        "evidence/behavior-independent.json",
+        "evidence/fresh-process-reader-r2.log"
+      ],
+      "current_selected_test_paths": [
+        "tests/integration/test_collect_security.py",
+        "tests/integration/test_exact_money_flow.py",
+        "tests/integration/test_hardening.py",
+        "tests/unit/test_logging.py"
+      ]
+    },
+    {
+      "id": "C27",
+      "description": "Brand fidelity, keyboard/mobile accessibility and native fallbacks",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Core workflows must remain usable and match accepted visual design.",
+      "sources": [
+        "docs/design/DESIGN_SPEC.md:3-130",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:30,136-144",
+        "docs/DECISIONS.md:1249-1321"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Exact timeKER wordmark/ivory/teal/decorative lower-right browser-local clock; current rounded calendar retained; references plus superseding decisions; mobile/keyboard/focus/labels/reduced-motion; native no-JS flows; WCAG2.2AA target.",
+      "public_path_and_components": "web/templates, local JS/CSS/SVG assets, design/reference/01-05",
+      "acceptance_criterion_and_independent_oracle": "Compare fresh desktop/mobile rendered screens with source images and later ADRs; clock browser-local/reduced motion; keyboard/no-JS journey; axe checks plus visual inspection, no full AA certification from axe alone.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Current desktop/mobile/native/JavaScript/reduced-motion and accessibility cases pass with the specified brand and calendar. The 320px overlap is corrected; axe and inspected screens are scoped evidence, not blanket WCAG certification.",
+      "finding_ids": [
+        "BILLING-NATIVE-LOOKUP"
+      ],
+      "pending_checks": [],
+      "historical_status": "FAIL",
+      "historical_reason": "El lookup nativo de Billing pierde formulario/fechas. Checks axe y renders desktop/mobile ejecutados no detectaron violaciones; no certifican todo WCAG.",
+      "historical_evidence": [
+        "evidence/billing-native-lookup.json",
+        "evidence/browser-complete.xml",
+        "evidence/browser-setup-recovered.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_clock.py",
+        "tests/e2e/test_cookie_preferences_browser.py",
+        "tests/e2e/test_landing_policy_dialog_browser.py",
+        "tests/e2e/test_lookups_browser.py",
+        "tests/e2e/test_ui_refresh_browser.py",
+        "tests/e2e/test_workspace_search_browser.py"
+      ]
+    },
+    {
+      "id": "C28",
+      "description": "Operational readiness, shared limits, recovery and capacity honesty",
+      "weight": 5,
+      "criticality": "critical",
+      "weight_reason": "Unbounded operations or false recovery/capacity claims threaten availability and custody.",
+      "sources": [
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:160-184",
+        "HOSTING.md:22-87",
+        "docs/PH3.md:409-509"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Cheap bounded health; deep migration/role diagnostics; owner/credential/expensive-op durable limits across UI/MCP/processes; operational capacity independent quotas; deferred PDF/blobs; measured mixed workload and headroom; isolated encrypted/offhost restore verifies identity/pending effects; distinguish attended scoped recovery and proposed cadence/RPO/RTO; C5K plan only.",
+      "public_path_and_components": "operation_limits.py, db.py, readiness/internal routes, scripts/ph3_capacity_probe.py, deployment/operations runbooks",
+      "acceptance_criterion_and_independent_oracle": "Repeated fresh-process limits and retry outcomes; no workspace fallback; local mixed probe with error/latency/DB resource evidence; independently parse backup/restore records and artifact hashes on disposable destination; live capacity/recovery claims need matched profile and provider measurements.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json",
+        "EXTERNAL-PENDING.json"
+      ],
+      "reason": "Local limits, restricted-role startup/readiness, mixed workload and synthetic recovery checks pass. One actual Stage 53 scheduled invocation is observed with matching Worker version and outcome ok. Adopted backup/key/retention objectives, new-device/provider-loss recovery, matched-host sustained capacity and the remaining PROD invocation evidence are incomplete.",
+      "finding_ids": [
+        "B01"
+      ],
+      "pending_checks": [
+        "Adopted recovery retention, backup/key custody and RPO/RTO objectives; off-host/new-device or provider-loss recovery; matched-host sustained capacity; remaining PROD scheduled invocation and selected durable business effects. The actual Stage scheduled invocation was observed."
+      ],
+      "historical_status": "FAIL",
+      "historical_reason": "Readiness acepta configuraciones prohibidas. Recovery local de regresión pasa, pero operación desatendida, RPO/RTO, nuevo dispositivo y capacidad sostenida siguen sin acreditar.",
+      "historical_evidence": [
+        "evidence/behavior-hosted-singleton-readiness.json",
+        "evidence/backend-setup-recovered.xml",
+        "evidence/hosted-public-readback.json"
+      ],
+      "current_selected_test_paths": [
+        "tests/integration/test_hosted_readiness.py",
+        "tests/integration/test_internal_jobs.py",
+        "tests/integration/test_operation_limits.py",
+        "tests/integration/test_ph3_mixed_workload_probe.py",
+        "tests/integration/test_ph3_readiness_probe.py",
+        "tests/integration/test_recovery_rehearsal.py",
+        "tests/integration/test_tenancy_capacity.py"
+      ]
+    },
+    {
+      "id": "C29",
+      "description": "Public support, bot controls and privacy choices",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "Support or optional tracking must not bypass authorized purpose or abuse controls.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:234-236",
+        "docs/PROJECT_BRIEF.md:623-643",
+        "docs/legal/PRIVACY_DISCOVERY.md:42-82,271-330"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Only user-submitted support to fixed operator; CAPTCHA plus durable abuse controls; no automatic marketing; policy links/current receipts after actual successful identity; optional measurement separate default-off/withdrawable; no invented legal/tax/controller facts.",
+      "public_path_and_components": "contact.py, bot_check.py, privacy.py, Worker/contact.ts, policy templates",
+      "acceptance_criterion_and_independent_oracle": "Invalid/absent CAPTCHA blocks without send; repeated abuse persists across process; destination fixed; optional analytics no dispatch before opt-in and withdrawal; notice version capture failure/proof/GET distinction.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "UNKNOWN",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json",
+        "EXTERNAL-PENDING.json"
+      ],
+      "reason": "The full public collector middleware path passes positive and negative consent/purpose tests. The native Stage contact form was inspected but not submitted. Independent live metadata confirms effective contact delivery is disabled and no email binding exists; no activation changed. Actual contact CAPTCHA and provider delivery remain unverified.",
+      "finding_ids": [
+        "B03"
+      ],
+      "pending_checks": [
+        "A separately enabled, reviewed controlled contact transport and actual CAPTCHA/provider/inbox journey. Current disabled effective mode was preserved; no user approval is currently pending."
+      ],
+      "historical_status": "FAIL",
+      "historical_reason": "La medición opcional pública con consentimiento queda desconectada por middleware cuando se habilita localmente; baseline remoto OFF no se altera. Contacto externo no se reenvía.",
+      "historical_evidence": [
+        "evidence/behavior-usage-route.json",
+        "evidence/usage-browser-enabled.xml",
+        "evidence/backend-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/e2e/test_analytics_source_browser.py",
+        "tests/e2e/test_cookie_preferences_browser.py",
+        "tests/integration/test_analytics_source.py",
+        "tests/integration/test_contact.py",
+        "tests/integration/test_optional_usage.py",
+        "tests/integration/test_privacy_preferences.py",
+        "tests/integration/test_usage_browser_flow.py"
+      ]
+    },
+    {
+      "id": "C30",
+      "description": "Evaluation integrity, quality gates and truthful delivery documentation",
+      "weight": 3,
+      "criticality": "important",
+      "weight_reason": "A compromised runner would invalidate product assurance.",
+      "sources": [
+        "docs/PROJECT_BRIEF.md:645-666",
+        "timeKER-PH3-Master-Prompt-2026-10-18.txt:46,184-206",
+        "docs/STATUS.md:38-96"
+      ],
+      "accepted_version": "Stage PH3 D077, with D079-D084 refinements",
+      "mandatory_commitments": "Tests discover/run actual current code; no failure-to-success or fixture/evaluator special casing; mocks explicitly bounded; build/static/backend/migration/browser/accessibility checks truthful; source/build/deployment distinct; failed/skipped/historical outcomes retained; no forced full acceptance.",
+      "public_path_and_components": "pyproject, tests/conftest, CI/build/config/scripts, README, STATUS/PH3/HOSTING",
+      "acceptance_criterion_and_independent_oracle": "Independent collection/process exit/JUnit reconciliation, AST/runtime import provenance, negative mutations detected outside evaluated hooks; compare docs claims with fresh evidence and retained limits; no green suite substitutes audit verdict.",
+      "required_evidence": [
+        "Contract-derived new cases",
+        "Real route/service effect and fresh read where persistence applies",
+        "Relevant existing tests and static trace"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "TEST-RESULTS.json",
+        "REPAIR-PROOF.json",
+        "PROMOTION.json"
+      ],
+      "reason": "Fresh complete PH3 backend and browser invocations pass on one clean source. Actual export mutations are detected and restored hashes retained. Prior failures, interrupted runs and PROD-main setup errors remain explicit; C3 common capacity reuse is independently reviewed and is not a recombined full-green claim.",
+      "finding_ids": [
+        "EVAL-01",
+        "EVAL-02"
+      ],
+      "pending_checks": [],
+      "historical_status": "FAIL",
+      "historical_reason": "Suite del Worker acepta el entrypoint desconectado; fixtures/expectativas desactualizadas y docs contradictorias impiden declarar suite verde. Sin manipulación indebida observada.",
+      "historical_evidence": [
+        "evidence/adapter-negative-controls.json",
+        "evidence/adapter-independent-entrypoint.json",
+        "evidence/backend-complete.xml",
+        "evidence/browser-complete.xml"
+      ],
+      "current_selected_test_paths": [
+        "tests/unit/test_live_templates.py",
+        "tests/unit/test_readiness_worker.py",
+        "tests/unit/test_subscription_templates.py",
+        "tests/unit/test_templates.py"
+      ]
+    }
+  ],
+  "inventory_closed": true,
+  "recorded_utc": "2026-10-27T02:28:58.319129+00:00",
+  "scope": "Current PH3 candidate under the frozen contract. PH2 main/runtime equivalence and remote delivery are separately evidenced. Bounded repair inventory is closed; historical semantic reads are not claimed as fresh full-repository review.",
+  "historical_snapshot": "1036d705f7f3721e2fa83df67cf913a40dad65b8",
+  "historical_score_unchanged": {
+    "W": 126,
+    "P": 63,
+    "F": 42,
+    "U": 21
+  }
+}

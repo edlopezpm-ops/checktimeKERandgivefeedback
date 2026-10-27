@@ -1,0 +1,44 @@
+{
+  "schema": "functional-integrity.scorecard.v1",
+  "snapshot": "a6979425af4d8327ae52d93adb3aa56575438c04",
+  "contract_sha256": "9f23a903539fd2fa172eff3682b4500130a79f38e09ce2241214d91e12412008",
+  "matrix_sha256": "62d83b8fba22df6cf0b9820ab64975d1e0e0cd22178cfe3d58b27dd34ad10502",
+  "W": 126,
+  "P": 100,
+  "F": 0,
+  "U": 26,
+  "identity_W_equals_P_F_U": true,
+  "D_demonstrated": {
+    "numerator": 100,
+    "denominator": 126,
+    "exact_percent": "5000/63",
+    "display_percent": 79.37
+  },
+  "C_decision": {
+    "numerator": 100,
+    "denominator": 126,
+    "exact_percent": "5000/63",
+    "display_percent": 79.37
+  },
+  "confirmed_failure": {
+    "numerator": 0,
+    "denominator": 126,
+    "exact_percent": "0",
+    "display_percent": 0.0
+  },
+  "pending": {
+    "numerator": 26,
+    "denominator": 126,
+    "exact_percent": "1300/63",
+    "display_percent": 20.63
+  },
+  "capability_counts": {
+    "PASS": 24,
+    "FAIL": 0,
+    "UNKNOWN": 6
+  },
+  "inventory_closed": true,
+  "provisional": false,
+  "verdict": "INCONCLUSIVE",
+  "interpretation": "Audit policy of capability evidence; not probability of cheating, author attribution, branch coverage or estimate of every possible defect."
+}

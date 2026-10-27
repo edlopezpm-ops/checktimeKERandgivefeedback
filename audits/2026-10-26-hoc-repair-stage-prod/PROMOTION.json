@@ -1,0 +1,197 @@
+{
+  "stage": {
+    "remote_main_verified": true,
+    "runtime_observed": true,
+    "http_verified": true,
+    "code_main": "42910224ccff417b1bbc38c1772de240487f1125",
+    "host": "stage-timeker.aekr.io",
+    "source": "ac46c5184b60950b6631e31661edfd3885df92aa",
+    "worker": "a0d47467-aba3-4826-854e-0931454074b9",
+    "container_version": 53,
+    "image_digest": "sha256:f21568164c63f382fa23940d0f65a4b1361652bd0c910429316b5b87a9fd6400",
+    "observed_utc": "2026-10-27T01:43:44.662256+00:00",
+    "http_observed_utc": "2026-10-27T01:44:22.371927+00:00",
+    "http_checks": [
+      {
+        "path": "/health/live",
+        "status": 200
+      },
+      {
+        "path": "/health/ready",
+        "status": 200
+      },
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/sign-in",
+        "status": 200
+      },
+      {
+        "path": "/privacy/data",
+        "status": 200
+      },
+      {
+        "path": "/legal/policies?lang=en",
+        "status": 200
+      },
+      {
+        "path": "/legal/policies?lang=es",
+        "status": 200
+      }
+    ],
+    "static_assets_exact": true,
+    "bindings_preserved": true,
+    "non_image_configuration_preserved": true,
+    "provider_errors": 0,
+    "running_instance_versions": [
+      53
+    ],
+    "postdeploy_role_observation": {
+      "status": "OBSERVED",
+      "workspace_count": 8,
+      "restricted_roles_observed": 8,
+      "read_only": true,
+      "operator_verified_tls": true,
+      "runtime_deployed_secret_value_parity": "UNKNOWN; encrypted provider values are unreadable",
+      "pooler_backend_ssl_scope": "The operator-to-pooler connection used verify-full TLS. Backend pg_stat_ssl is a separate pooler hop and is not substituted for client TLS."
+    },
+    "private_evidence": {
+      "observed_sha256": "28385e0c24c59846fbc1aade374a585e30b893543131fa27bd1e9e5fd76d327d",
+      "http_sha256": "7703fdd57e4790ba46317e55cb67b2dafb6d13251e217651430c6d325a99f0be",
+      "roles_sha256": "2bc5b2191bb3be7f82e4cfb8516b2b206cc46626afc6c696556050121cad85a9"
+    },
+    "final_main": "bdd03c7dcf16629126fe795ce8ffa59cabcf40ce",
+    "documentation_only_descendant_of": "42910224ccff417b1bbc38c1772de240487f1125",
+    "remote_main_verification": "Exact git ls-remote main readback after normal publication"
+  },
+  "prod": {
+    "remote_main_verified": true,
+    "runtime_observed": true,
+    "http_verified": true,
+    "code_main": "42482d0ddcda8b56acf305eba465700965c34582",
+    "host": "timeker.aekr.io",
+    "source": "0e4d4e95c9552710518c838f02e31717934b4e15",
+    "worker": "6fc35460-118c-4ddd-8c87-a854379264a2",
+    "container_version": 22,
+    "image_digest": "sha256:1225b22f42756403fc634173e18cff434c7ca3de405994a7ceeb45ead602a637",
+    "observed_utc": "2026-10-27T02:13:56.157905+00:00",
+    "http_observed_utc": "2026-10-27T02:14:21.939635+00:00",
+    "http_checks": [
+      {
+        "path": "/health/live",
+        "status": 200
+      },
+      {
+        "path": "/health/ready",
+        "status": 200
+      },
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/sign-in",
+        "status": 200
+      },
+      {
+        "path": "/privacy/data",
+        "status": 200
+      },
+      {
+        "path": "/legal/policies?lang=en",
+        "status": 200
+      },
+      {
+        "path": "/legal/policies?lang=es",
+        "status": 200
+      }
+    ],
+    "static_assets_exact": true,
+    "bindings_preserved": true,
+    "non_image_configuration_preserved": true,
+    "provider_errors": 0,
+    "running_instance_versions": [
+      22
+    ],
+    "postdeploy_role_observation": {
+      "status": "OBSERVED",
+      "workspace_count": 2,
+      "restricted_roles_observed": 2,
+      "read_only": true,
+      "operator_verified_tls": true,
+      "runtime_deployed_secret_value_parity": "UNKNOWN; encrypted provider values are unreadable"
+    },
+    "private_evidence": {
+      "observed_sha256": "aa8a950d39bacff6c70f5899fa1d66f9d8dcc30ecf6c9fdb9c1996965d4045c1",
+      "http_sha256": "396e8f92770dee1ade9aa94e748e6849bcbd3ca8a3ca75453d89563658bfe67c",
+      "roles_sha256": "734bc734e944be36f2851f0df2a03659902987175ed88c77c307e877cc05cfb7",
+      "registry_manifest_finalize_sha256": "5de52ffc309640d59ded3f187deb45d2aea99af245e7ed4d753df85cd70def16",
+      "cleanup_sha256": "73b326ba03297094da16c7302fd691ec9c3c23a0afddb50391dd98af316f4cfe"
+    },
+    "release_transport": "After retained upload failures, the same verified image used a reviewed serial blob upload and manifest finalization. Source, image and activation settings were not changed to solve transport. Registry tag and digest were read back before deployment; temporary registry authentication was logged out.",
+    "final_main": "7fd285d538f38a17f4dd884bd4484f28fb1ffdaa",
+    "documentation_only_descendant_of": "42482d0ddcda8b56acf305eba465700965c34582",
+    "remote_main_verification": "Exact git ls-remote main readback after normal publication"
+  },
+  "documentation_checkpoints": [
+    {
+      "carrier": "STAGE_MAIN",
+      "source": "bdd03c7dcf16629126fe795ce8ffa59cabcf40ce",
+      "code_or_test_parent": "42910224ccff417b1bbc38c1772de240487f1125",
+      "paths": [
+        "CONTINUE.md",
+        "docs/HOC_REPAIR_2026-10-26.md",
+        "docs/STATUS.md",
+        "docs/releases/HOC_REPAIR_2026-10-26_RELEASE.json",
+        "docs/releases/HOC_REPAIR_2026-10-26_RELEASE.schema.json"
+      ],
+      "documentation_only": true,
+      "deleted_historical_lines": 0
+    },
+    {
+      "carrier": "PROD_MAIN",
+      "source": "7fd285d538f38a17f4dd884bd4484f28fb1ffdaa",
+      "code_or_test_parent": "42482d0ddcda8b56acf305eba465700965c34582",
+      "paths": [
+        "CONTINUE.md",
+        "docs/HOC_REPAIR_2026-10-26.md",
+        "docs/STATUS.md",
+        "docs/releases/HOC_REPAIR_2026-10-26_RELEASE.json",
+        "docs/releases/HOC_REPAIR_2026-10-26_RELEASE.schema.json"
+      ],
+      "documentation_only": true,
+      "deleted_historical_lines": 0
+    },
+    {
+      "carrier": "PH3",
+      "source": "f90af25475a6fa0d955c63c3ef5354a72b356e67",
+      "code_or_test_parent": "a6979425af4d8327ae52d93adb3aa56575438c04",
+      "paths": [
+        "CONTINUE.md",
+        "docs/HOC_REPAIR_2026-10-26.md",
+        "docs/STATUS.md",
+        "docs/releases/HOC_REPAIR_2026-10-26_RELEASE.json",
+        "docs/releases/HOC_REPAIR_2026-10-26_RELEASE.schema.json"
+      ],
+      "documentation_only": true,
+      "deleted_historical_lines": 0
+    },
+    {
+      "carrier": "PROD_RUNTIME",
+      "source": "20d37fa1d2d3133eb70eee1170ca99c9e6b42810",
+      "code_or_test_parent": "a4d916e770558165492d325292814dc4f1be9397",
+      "paths": [
+        "CONTINUE.md",
+        "docs/HOC_REPAIR_2026-10-26.md",
+        "docs/STATUS.md",
+        "docs/releases/HOC_REPAIR_2026-10-26_RELEASE.json",
+        "docs/releases/HOC_REPAIR_2026-10-26_RELEASE.schema.json"
+      ],
+      "documentation_only": true,
+      "deleted_historical_lines": 0
+    }
+  ],
+  "boundary": "Code mains, their documentation-only descendants, tested sources and hosted image sources are distinct. PH3 was not promoted wholesale into PH2 or PROD. The pre-existing undeployed PROD-main Collect scope remains outside the selected runtime image."
+}
